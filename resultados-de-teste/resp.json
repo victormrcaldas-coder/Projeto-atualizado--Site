@@ -1,0 +1,702 @@
+[
+ {
+  "vp": "390x844",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    533,
+    675,
+    1133,
+    1175,
+    1850,
+    2450
+   ],
+   "crescente": true,
+   "scrollWFinal": 390,
+   "innerW": 390
+  },
+  "erros": [],
+  "http400": 0
+ },
+ {
+  "vp": "430x932",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    531,
+    1081,
+    1081,
+    1514,
+    1858,
+    2521
+   ],
+   "crescente": true,
+   "scrollWFinal": 430,
+   "innerW": 430
+  },
+  "erros": [],
+  "http400": 0
+ },
+ {
+  "vp": "768x1024",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 768,
+    "innerW": 768,
+    "vazando": [
+     "BUTTON.btn btn-coral btn-sm",
+     "DIV.mobile-menu-head",
+     "SPAN.logo"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    643,
+    1360,
+    1381,
+    2200,
+    2760,
+    3332
+   ],
+   "crescente": true,
+   "scrollWFinal": 768,
+   "innerW": 768
+  },
+  "erros": [],
+  "http400": 0
+ },
+ {
+  "vp": "1024x768",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 1024,
+    "innerW": 1024,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    568,
+    1126,
+    1685,
+    2244,
+    2803,
+    3362
+   ],
+   "crescente": true,
+   "scrollWFinal": 1024,
+   "innerW": 1024
+  },
+  "erros": [],
+  "http400": 0
+ },
+ {
+  "vp": "1366x768",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 1366,
+    "innerW": 1366,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    568,
+    1126,
+    1685,
+    2244,
+    2748,
+    3292
+   ],
+   "crescente": true,
+   "scrollWFinal": 1366,
+   "innerW": 1366
+  },
+  "erros": [],
+  "http400": 0
+ },
+ {
+  "vp": "1440x900",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    649,
+    1285,
+    1922,
+    2559,
+    3130,
+    3750
+   ],
+   "crescente": true,
+   "scrollWFinal": 1440,
+   "innerW": 1440
+  },
+  "erros": [],
+  "http400": 0
+ },
+ {
+  "vp": "1920x1080",
+  "paginas": {
+   "home/light": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/light": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/light": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/light": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "home/dark": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "explorar/dark": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "historias/dark": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   },
+   "comunidade/dark": {
+    "over": false,
+    "scrollW": 1920,
+    "innerW": 1920,
+    "vazando": [
+     "DIV.mobile-menu-head",
+     "SPAN.logo",
+     "SPAN.logo-dot"
+    ]
+   }
+  },
+  "rolagem": {
+   "marcas": [
+    751,
+    1486,
+    2222,
+    2958,
+    3718,
+    4452
+   ],
+   "crescente": true,
+   "scrollWFinal": 1920,
+   "innerW": 1920
+  },
+  "erros": [],
+  "http400": 0
+ }
+]

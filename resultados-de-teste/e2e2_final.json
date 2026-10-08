@@ -1,0 +1,258 @@
+{
+ "tag": "final",
+ "url": "http://127.0.0.1:8803/index.html",
+ "viewports": {
+  "mobile": {
+   "checks": {
+    "semLoginAbreModal": true,
+    "logado": true,
+    "formatoGravado": {
+     "n": 3,
+     "todosComQid": true,
+     "exemplo": {
+      "type": "quote",
+      "qid": "f990vr9k2s"
+     }
+    },
+    "resolveAposFavoritar": true,
+    "aposRemocaoAnterior": true,
+    "indicesDeslocados": {
+     "idxLuteroAntes": 2976,
+     "idxLuteroDepois": 2975
+    },
+    "aposEmbaralhar": true,
+    "perfilTextos": [
+     true,
+     true,
+     true
+    ],
+    "perfilContagem": 3,
+    "coracaoNoCartaoCerto": {
+     "isFavQuote": true,
+     "cartaoNaTela": true,
+     "ariaPressed": "true"
+    },
+    "gravadoAntesDeRecarregar": 3,
+    "removerFavoritada": {
+     "luteroNosFav": false,
+     "restantes": 2
+    },
+    "legadoDescartado": {
+     "quotes": 0,
+     "posts": 1
+    },
+    "busca": {
+     "carnegie": "14 resultados para \"Carnegie\"",
+     "santosDumont": "1 resultado para \"Santos Dumont\"",
+     "plutarcoVaso": "0 resultados para \"vaso a ser enchido\"",
+     "maquina": "0 resultados para \"máquina que voa\""
+    },
+    "overflowX_home": {
+     "over": false,
+     "scrollW": 390,
+     "innerW": 390
+    },
+    "overflowX_explorar": {
+     "over": false,
+     "scrollW": 390,
+     "innerW": 390
+    }
+   },
+   "recursos": {
+    "css": true,
+    "cssRegras": 725,
+    "js": true
+   },
+   "data": {
+    "frases": 2977,
+    "autores": 528,
+    "lacunas": 96,
+    "pendentes": 0,
+    "qidDup": 0,
+    "qidInconsist": 0,
+    "homeFrases": "2977+",
+    "homeAutores": "528+",
+    "registroRemocoes": 1573,
+    "porTipo": {
+     "removida": 8,
+     "nao-inserir": 1,
+     "historico-substituida": 2,
+     "historico-removida": 283,
+     "historico-fundida-duplicata": 189,
+     "historico-reatribuida": 2,
+     "historico-quarentena-restaurada": 77,
+     "historico-quarentena": 918,
+     "historico-removida-ou-fundida": 74,
+     "variante-removida": 18,
+     "removida-antes-do-merge": 1
+    },
+    "guardaCesar": true,
+    "guardaHistorica": true,
+    "guardaQuarentena": true,
+    "guardaFundida": false,
+    "checarNietzsche": {
+     "exata": false,
+     "bloqueada": true,
+     "ativas": [
+      "Torna-te quem tu és."
+     ]
+    },
+    "checarNovaTraducao": {
+     "exata": false,
+     "bloqueada": false,
+     "registro": 2
+    },
+    "divisaAtiva": false,
+    "santosDumont": 1,
+    "fridaAtivas": 1,
+    "variantesRemovidasAindaAtivas": 0,
+    "ativasNoRegistro": 13
+   },
+   "local404": 0,
+   "pageErrors": [],
+   "consoleErrorsUnicos": {
+    "Failed to load resource: net::ERR_FAILED": 97
+   },
+   "warns": [
+    "MeMotiva · Fase 100: remoção não aplicada (registro não encontrado): Frida Kahlo — undefined; Frida Kahlo — undefined; George Bernard Shaw — undefined; Santo Agostinho — undefined; Albert Schweitzer —",
+    "MeMotiva · favoritos: 2 entrada(s) antigas por índice e 0 de frase removida descartadas."
+   ],
+   "bloqueados": [
+    "fonts.googleapis.com",
+    "commons.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+   ],
+   "http404": {}
+  },
+  "desktop": {
+   "checks": {
+    "semLoginAbreModal": true,
+    "logado": true,
+    "formatoGravado": {
+     "n": 3,
+     "todosComQid": true,
+     "exemplo": {
+      "type": "quote",
+      "qid": "f990vr9k2s"
+     }
+    },
+    "resolveAposFavoritar": true,
+    "aposRemocaoAnterior": true,
+    "indicesDeslocados": {
+     "idxLuteroAntes": 2976,
+     "idxLuteroDepois": 2975
+    },
+    "aposEmbaralhar": true,
+    "perfilTextos": [
+     true,
+     true,
+     true
+    ],
+    "perfilContagem": 3,
+    "coracaoNoCartaoCerto": {
+     "isFavQuote": true,
+     "cartaoNaTela": true,
+     "ariaPressed": "true"
+    },
+    "gravadoAntesDeRecarregar": 3,
+    "removerFavoritada": {
+     "luteroNosFav": false,
+     "restantes": 2
+    },
+    "legadoDescartado": {
+     "quotes": 0,
+     "posts": 1
+    },
+    "busca": {
+     "carnegie": "14 resultados para \"Carnegie\"",
+     "santosDumont": "1 resultado para \"Santos Dumont\"",
+     "plutarcoVaso": "0 resultados para \"vaso a ser enchido\"",
+     "maquina": "0 resultados para \"máquina que voa\""
+    },
+    "overflowX_home": {
+     "over": false,
+     "scrollW": 1440,
+     "innerW": 1440
+    },
+    "overflowX_explorar": {
+     "over": false,
+     "scrollW": 1440,
+     "innerW": 1440
+    }
+   },
+   "recursos": {
+    "css": true,
+    "cssRegras": 725,
+    "js": true
+   },
+   "data": {
+    "frases": 2977,
+    "autores": 528,
+    "lacunas": 96,
+    "pendentes": 0,
+    "qidDup": 0,
+    "qidInconsist": 0,
+    "homeFrases": "2977+",
+    "homeAutores": "528+",
+    "registroRemocoes": 1573,
+    "porTipo": {
+     "removida": 8,
+     "nao-inserir": 1,
+     "historico-substituida": 2,
+     "historico-removida": 283,
+     "historico-fundida-duplicata": 189,
+     "historico-reatribuida": 2,
+     "historico-quarentena-restaurada": 77,
+     "historico-quarentena": 918,
+     "historico-removida-ou-fundida": 74,
+     "variante-removida": 18,
+     "removida-antes-do-merge": 1
+    },
+    "guardaCesar": true,
+    "guardaHistorica": true,
+    "guardaQuarentena": true,
+    "guardaFundida": false,
+    "checarNietzsche": {
+     "exata": false,
+     "bloqueada": true,
+     "ativas": [
+      "Torna-te quem tu és."
+     ]
+    },
+    "checarNovaTraducao": {
+     "exata": false,
+     "bloqueada": false,
+     "registro": 2
+    },
+    "divisaAtiva": false,
+    "santosDumont": 1,
+    "fridaAtivas": 1,
+    "variantesRemovidasAindaAtivas": 0,
+    "ativasNoRegistro": 13
+   },
+   "csvArquivos": [
+    "curadoria-frases.csv",
+    "catalogo-obras.csv",
+    "lacunas-restantes.csv",
+    "remocoes-curadoria.csv"
+   ],
+   "local404": 0,
+   "pageErrors": [],
+   "consoleErrorsUnicos": {
+    "Failed to load resource: net::ERR_FAILED": 230
+   },
+   "warns": [
+    "MeMotiva · Fase 100: remoção não aplicada (registro não encontrado): Frida Kahlo — undefined; Frida Kahlo — undefined; George Bernard Shaw — undefined; Santo Agostinho — undefined; Albert Schweitzer —",
+    "MeMotiva · favoritos: 2 entrada(s) antigas por índice e 0 de frase removida descartadas."
+   ],
+   "bloqueados": [
+    "fonts.googleapis.com",
+    "commons.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+   ],
+   "http404": {}
+  }
+ }
+}

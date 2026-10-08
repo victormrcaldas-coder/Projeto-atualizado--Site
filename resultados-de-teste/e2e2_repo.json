@@ -1,0 +1,304 @@
+{
+ "tag": "repo",
+ "url": "http://127.0.0.1:8803/C%C3%B3digo.html",
+ "viewports": {
+  "mobile": {
+   "checks": {
+    "semLoginAbreModal": true,
+    "logado": true,
+    "formatoGravado": {
+     "n": 3,
+     "todosComQid": true,
+     "exemplo": {
+      "type": "quote",
+      "qid": "f990vr9k2s"
+     }
+    },
+    "resolveAposFavoritar": true,
+    "aposRemocaoAnterior": true,
+    "indicesDeslocados": {
+     "idxLuteroAntes": 3001,
+     "idxLuteroDepois": 3000
+    },
+    "aposEmbaralhar": true,
+    "perfilTextos": [
+     true,
+     true,
+     true
+    ],
+    "perfilContagem": 3,
+    "coracaoNoCartaoCerto": {
+     "isFavQuote": true,
+     "cartaoNaTela": true,
+     "ariaPressed": "true"
+    },
+    "gravadoAntesDeRecarregar": 3,
+    "removerFavoritada": {
+     "luteroNosFav": false,
+     "restantes": 2
+    },
+    "legadoDescartado": {
+     "quotes": 0,
+     "posts": 1
+    },
+    "busca": {
+     "carnegie": "14 resultados para \"Carnegie\"",
+     "santosDumont": "2 resultados para \"Santos Dumont\"",
+     "plutarcoVaso": "0 resultados para \"vaso a ser enchido\"",
+     "maquina": "0 resultados para \"máquina que voa\""
+    },
+    "overflowX_home": {
+     "over": false,
+     "scrollW": 390,
+     "innerW": 390
+    },
+    "overflowX_explorar": {
+     "over": false,
+     "scrollW": 390,
+     "innerW": 390
+    }
+   },
+   "recursos": {
+    "css": true,
+    "cssRegras": 725,
+    "js": true
+   },
+   "data": {
+    "frases": 3002,
+    "autores": 528,
+    "lacunas": 94,
+    "pendentes": 0,
+    "qidDup": 0,
+    "qidInconsist": 0,
+    "homeFrases": "3002+",
+    "homeAutores": "528+",
+    "registroRemocoes": 187,
+    "porTipo": {
+     "removida": 2,
+     "nao-inserir": 1,
+     "historico-substituida": 2,
+     "historico-removida": 141,
+     "historico-fundida-duplicata": 40,
+     "historico-reatribuida": 1
+    },
+    "guardaCesar": true,
+    "guardaHistorica": true,
+    "guardaFundida": false,
+    "ativasNoRegistro": 0
+   },
+   "pageErrors": [],
+   "consoleErrorsUnicos": {
+    "Failed to load resource: net::ERR_FAILED": 95,
+    "Failed to load resource: the server responded with a status of 404 (File not found)": 44
+   },
+   "warns": [
+    "MeMotiva · favoritos: 2 entrada(s) antigas por índice e 0 de frase removida descartadas."
+   ],
+   "bloqueados": [
+    "fonts.googleapis.com",
+    "commons.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+   ],
+   "http404": {
+    "http://127.0.0.1:8803/assets/authors/livro-de-naum-1-7.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/jeff-bezos.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/bill-gates.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/cora-coralina.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/paulo-freire.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/malala-yousafzai.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/ayrton-senna.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/martinho-lutero.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/andrew-carnegie.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/dale-carnegie.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/reinhold-niebuhr.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/george-s-clason.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/david-aaker.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/philip-kotler.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/alcorao-7-31.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/seneca.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/socrates.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/karl-marx.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/winston-churchill.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/madre-teresa-de-calcuta.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/henry-david-thoreau.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/voltaire.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/santos-dumont.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/adam-smith.jpg": 404
+   }
+  },
+  "desktop": {
+   "checks": {
+    "semLoginAbreModal": true,
+    "logado": true,
+    "formatoGravado": {
+     "n": 3,
+     "todosComQid": true,
+     "exemplo": {
+      "type": "quote",
+      "qid": "f990vr9k2s"
+     }
+    },
+    "resolveAposFavoritar": true,
+    "aposRemocaoAnterior": true,
+    "indicesDeslocados": {
+     "idxLuteroAntes": 3001,
+     "idxLuteroDepois": 3000
+    },
+    "aposEmbaralhar": true,
+    "perfilTextos": [
+     true,
+     true,
+     true
+    ],
+    "perfilContagem": 3,
+    "coracaoNoCartaoCerto": {
+     "isFavQuote": true,
+     "cartaoNaTela": true,
+     "ariaPressed": "true"
+    },
+    "gravadoAntesDeRecarregar": 3,
+    "removerFavoritada": {
+     "luteroNosFav": false,
+     "restantes": 2
+    },
+    "legadoDescartado": {
+     "quotes": 0,
+     "posts": 1
+    },
+    "busca": {
+     "carnegie": "14 resultados para \"Carnegie\"",
+     "santosDumont": "2 resultados para \"Santos Dumont\"",
+     "plutarcoVaso": "0 resultados para \"vaso a ser enchido\"",
+     "maquina": "0 resultados para \"máquina que voa\""
+    },
+    "overflowX_home": {
+     "over": false,
+     "scrollW": 1440,
+     "innerW": 1440
+    },
+    "overflowX_explorar": {
+     "over": false,
+     "scrollW": 1440,
+     "innerW": 1440
+    }
+   },
+   "recursos": {
+    "css": true,
+    "cssRegras": 725,
+    "js": true
+   },
+   "data": {
+    "frases": 3002,
+    "autores": 528,
+    "lacunas": 94,
+    "pendentes": 0,
+    "qidDup": 0,
+    "qidInconsist": 0,
+    "homeFrases": "3002+",
+    "homeAutores": "528+",
+    "registroRemocoes": 187,
+    "porTipo": {
+     "removida": 2,
+     "nao-inserir": 1,
+     "historico-substituida": 2,
+     "historico-removida": 141,
+     "historico-fundida-duplicata": 40,
+     "historico-reatribuida": 1
+    },
+    "guardaCesar": true,
+    "guardaHistorica": true,
+    "guardaFundida": false,
+    "ativasNoRegistro": 0
+   },
+   "csvArquivos": [
+    "curadoria-frases.csv",
+    "catalogo-obras.csv",
+    "lacunas-restantes.csv",
+    "remocoes-curadoria.csv"
+   ],
+   "pageErrors": [],
+   "consoleErrorsUnicos": {
+    "Failed to load resource: net::ERR_FAILED": 236,
+    "Failed to load resource: the server responded with a status of 404 (File not found)": 88
+   },
+   "warns": [
+    "MeMotiva · favoritos: 2 entrada(s) antigas por índice e 0 de frase removida descartadas."
+   ],
+   "bloqueados": [
+    "fonts.googleapis.com",
+    "commons.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+   ],
+   "http404": {
+    "http://127.0.0.1:8803/assets/authors/livro-de-naum-1-7.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/rubem-alves.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/biblia-sagrada.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/proverbio-chines.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/jeff-bezos.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/cora-coralina.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/bill-gates.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/paulo-freire.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/malala-yousafzai.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/ayrton-senna.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/madre-teresa-de-calcuta.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/nelson-mandela.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/michelle-obama.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/chimamanda-ngozi-adichie.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/viktor-frankl.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/warren-buffett.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/luiza-trajano.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/leonardo-da-vinci.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/socrates.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/william-shakespeare.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/ralph-waldo-emerson.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/confucio.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/martin-luther-king-jr.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/mahatma-gandhi.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/epicuro.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/jean-jacques-rousseau.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/aristoteles.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/chico-xavier.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/martinho-lutero.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/andrew-carnegie.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/dale-carnegie.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/reinhold-niebuhr.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/george-s-clason.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/david-aaker.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/philip-kotler.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/andre-kostolany.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/alcorao-7-31.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/abul-kalam-azad.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/francois-de-la-rochefoucauld.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/baltasar-gracian.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/conceicao-evaristo.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/millor-fernandes.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/theodore-roosevelt.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/mihaly-csikszentmihalyi.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/franklin-d-roosevelt.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/robert-cialdini.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/karl-marx.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/seneca.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/ditado-popular.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/krishna.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/morgan-housel.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/alcorao-65-3.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/adam-smith.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/winston-churchill.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/henry-david-thoreau.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/voltaire.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/jane-austen.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/michel-de-montaigne.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/getulio-vargas.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/ludwig-van-beethoven.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/howard-marks.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/abraham-lincoln.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/john-stuart-mill.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/peter-lynch.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/mary-wollstonecraft.jpg": 404,
+    "http://127.0.0.1:8803/assets/authors/santos-dumont.jpg": 404
+   }
+  }
+ }
+}

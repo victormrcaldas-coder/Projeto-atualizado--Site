@@ -1,0 +1,12 @@
+import chromium from '@sparticuz/chromium';
+import { chromium as pw } from 'playwright-core';
+const exe = await chromium.executablePath();
+const b = await pw.launch({ executablePath: exe, args: chromium.args, headless: true });
+const page = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+const logs=[]; page.on('console', m => { if (/Fase 107/.test(m.text())) logs.push(m.text().slice(0,200)); });
+await page.route('**/*', r => r.request().url().startsWith('http://127.0.0.1') ? r.continue() : r.abort());
+await page.goto(`http://127.0.0.1:${process.argv[2]}/index.html`, { waitUntil: 'load' });
+await page.waitForFunction(() => typeof QUOTES !== 'undefined' && QUOTES.length > 2000, null, { timeout: 60000 });
+await page.waitForFunction(() => { const n = QUOTES.length; window.__l = window.__l || {n:-1,t:Date.now()}; if (window.__l.n !== n) { window.__l = {n,t:Date.now()}; return false; } return Date.now() - window.__l.t > 5000; }, null, { timeout: 90000, polling: 500 });
+console.log(JSON.stringify({ logs, tipos: await page.evaluate(() => CURADORIA_REMOVIDAS.reduce((a, x) => (a[x.tipo] = (a[x.tipo]||0)+1, a), {})), frases: await page.evaluate(() => QUOTES.length) }));
+await b.close();

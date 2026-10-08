@@ -1,0 +1,13 @@
+import chromium from '@sparticuz/chromium';
+import { chromium as pw } from 'playwright-core';
+const port=process.argv[2]; const exe=await chromium.executablePath();
+const b=await pw.launch({executablePath:exe,args:chromium.args,headless:true});
+const p=await (await b.newContext({viewport:{width:1440,height:900}})).newPage();
+const bad={}; const ext={};
+p.on('response',r=>{ if(r.status()>=400){ const u=r.url(); bad[u]=(bad[u]||0)+1; }});
+await p.route('**/*',r=>{const u=r.request().url(); if(u.startsWith('http://127.0.0.1')) return r.continue(); const h=new URL(u).host; ext[h]=(ext[h]||0)+1; return r.abort();});
+await p.goto(`http://127.0.0.1:${port}/`,{waitUntil:'load'});
+await p.waitForFunction(()=>{const n=QUOTES.length; window.__l=window.__l||{n:-1,t:Date.now()}; if(window.__l.n!==n){window.__l={n,t:Date.now()};return false;} return Date.now()-window.__l.t>4000;},null,{timeout:90000,polling:500});
+const d=await p.evaluate(()=>({frases:QUOTES.length,home:document.getElementById('statQuotes').textContent,autores:AUTOR_INDEX.size,lacunas:LACUNAS().length}));
+console.log(JSON.stringify({port,d,bad404:Object.entries(bad).slice(0,8),ext}));
+await b.close();

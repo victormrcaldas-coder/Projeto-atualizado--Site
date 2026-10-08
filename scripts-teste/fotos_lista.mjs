@@ -1,0 +1,16 @@
+import chromium from '@sparticuz/chromium';
+import { chromium as pw } from 'playwright-core';
+import fs from 'fs';
+const exe = await chromium.executablePath();
+const b = await pw.launch({ executablePath: exe, args: chromium.args, headless: true });
+const page = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+await page.route('**/*', r => r.request().url().startsWith('http://127.0.0.1') ? r.continue() : r.abort());
+await page.goto(`http://127.0.0.1:${process.argv[2]}/index.html`, { waitUntil: 'load' });
+await page.waitForFunction(() => typeof QUOTES !== 'undefined' && QUOTES.length > 2000, null, { timeout: 60000 });
+await page.waitForFunction(() => { const n = QUOTES.length; window.__l = window.__l || {n:-1,t:Date.now()}; if (window.__l.n !== n) { window.__l = {n,t:Date.now()}; return false; } return Date.now() - window.__l.t > 4000; }, null, { timeout: 90000, polling: 500 });
+const rows = await page.evaluate(() => [...AUTOR_INDEX.keys()].map(n => ({ n, slug: slugify(n), frases: QUOTES.filter(q => q.author === n).length, curada: !!photoInfo(n), historia: STORIES.some(s => s.author === n) })));
+const cel = v => /[;"\n]/.test(String(v)) ? '"' + String(v).replace(/"/g, '""') + '"' : String(v);
+const sem = rows.filter(r => !r.curada).sort((a, b) => b.frases - a.frases);
+fs.writeFileSync('/tmp/t/fotos-sem-entrada.csv', '\ufeff' + 'autor;slug;frases;tem_historia;situacao\n' + sem.map(r => [r.n, r.slug, r.frases, r.historia ? 'sim' : 'não', 'sem entrada curada em PHOTOS; depende do lookup em tempo de execução na Wikipédia (pt→en) e, se falhar, mostra iniciais'].map(cel).join(';')).join('\n') + '\n');
+console.log(JSON.stringify({ autores: rows.length, comEntrada: rows.length - sem.length, semEntrada: sem.length }));
+await b.close();

@@ -1,0 +1,295 @@
+{
+ "tag": "branch",
+ "viewports": {
+  "mobile": {
+   "checks": {
+    "exploreCards": 18,
+    "buscaCarnegie": {
+     "count": "14 resultados para \"Carnegie\"",
+     "cards": [
+      "INFLUÊNCIA E PERSUASÃO “Mostre respeito pelas opiniões dos outros; nunca diga diretamente que estão errados.” ",
+      "LIDERANÇA “A maneira de desenvolver o melhor que há em uma pessoa é pela apreciação e pelo encorajamento.” DC ",
+      "LIDERANÇA “Você pode conquistar mais amigos em dois meses se interessando pelas outras pessoas do que em dois ",
+      "MOTIVAÇÃO “A felicidade não depende do que você tem ou de quem você é; depende apenas do que você pensa.” DC —",
+      "INFLUÊNCIA E PERSUASÃO “A crítica é perigosa porque fere o orgulho e desperta ressentimento.” DC — Dale Carneg",
+      "INFLUÊNCIA E PERSUASÃO “O desejo de ser importante é uma das maiores necessidades humanas.” DC — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “A única maneira de obter o melhor de uma discussão é evitá-la.” DC — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “A maneira de conseguir que alguém faça algo é fazer com que essa pessoa queira fazê-lo",
+      "INFLUÊNCIA E PERSUASÃO “Desperte na outra pessoa um desejo sincero de realizar algo.” DC — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “O nome de uma pessoa é, para ela, o som mais doce e mais importante de qualquer idioma",
+      "FINANÇAS “O homem que morre rico morre desonrado.” AC — Andrew Carnegie",
+      "REFLEXÃO “Quando lidamos com pessoas, lembremos que não estamos lidando com criaturas de lógica, mas com criat"
+     ]
+    },
+    "buscaSD": {
+     "count": "2 resultados para \"Santos Dumont\"",
+     "cards": [
+      "MOTIVAÇÃO “Sem pretender ser gênio, teimei em ser um grande paciente. As invenções são, sobretudo, o resultado",
+      "MOTIVAÇÃO “Sempre segui a divisa: “Quem quer vai, quem não quer manda”.” SD — Santos Dumont"
+     ]
+    },
+    "buscaPlutarco": {
+     "count": "2 resultados para \"Plutarco\"",
+     "cards": [
+      "POLÍTICA “Vim, vi e venci.” JC — Júlio César",
+      "REFLEXÃO “Não escrevo histórias, e sim vidas; e nem sempre é nas ações mais gloriosas que se revela a virtude "
+     ]
+    },
+    "buscaLutero": {
+     "count": "3 resultados para \"Lutero\"",
+     "cards": [
+      "RELIGIOSIDADE “Aqui estou; não posso fazer de outro modo.” ML — Martinho Lutero",
+      "RELIGIOSIDADE “Nosso Senhor e Mestre Jesus Cristo, ao dizer arrepende-te, quis que toda a vida dos fiéis fosse",
+      "RELIGIOSIDADE “O verdadeiro tesouro da Igreja é o santíssimo Evangelho da glória e da graça de Deus.” ML — Mar"
+     ]
+    },
+    "buscaMaquina": {
+     "count": "0 resultados para \"máquina que voa\"",
+     "cards": []
+    },
+    "favoritoSemLogin": {
+     "modalAberto": true,
+     "logado": false
+    },
+    "logado": true,
+    "favorito": {
+     "idx": "2518",
+     "ativoNoEstado": true,
+     "qidDoIdx": "f2848a8smqg",
+     "texto": "Aqui estou; não posso fazer de outro modo.",
+     "aria": "true"
+    },
+    "favoritoNova": {
+     "persistido": true,
+     "textoNoIdx": "O problema da nossa era é a administraçã"
+    },
+    "favoritoDesfeito": true,
+    "localizacaoQid": {
+     "amostra": 201,
+     "ruim": 0
+    },
+    "overflowX_home": {
+     "scrollW": 390,
+     "innerW": 390,
+     "over": false
+    },
+    "overflowX_explorar": {
+     "scrollW": 390,
+     "innerW": 390,
+     "over": false
+    }
+   },
+   "data": {
+    "frases": 3002,
+    "autores": 528,
+    "lacunas": 94,
+    "pendentes": 0,
+    "qidDup": 0,
+    "qidInconsist": 0,
+    "qidIdxLen": 3002,
+    "homeFrases": "3002+",
+    "homeAutores": "528+",
+    "homeCats": "22",
+    "plutarcoVaso": false,
+    "sdMaquina": false,
+    "novas": [
+     [
+      "Andrew Carnegie|O problema da nossa era",
+      true
+     ],
+     [
+      "Nikola Tesla|O desenvolvimento progressivo",
+      true
+     ],
+     [
+      "Santos Dumont|Sem pretender",
+      true
+     ],
+     [
+      "Santos Dumont|Sempre segui",
+      true
+     ],
+     [
+      "Lima Barreto|A pátria que quisera",
+      true
+     ],
+     [
+      "Benjamin Disraeli|A juventude de uma nação",
+      true
+     ],
+     [
+      "Martinho Lutero|O verdadeiro tesouro",
+      true
+     ]
+    ],
+    "bloqueadaCesar": true,
+    "favoritosNoBoot": 0
+   },
+   "consoleErrorsUnicos": {
+    "Failed to load resource: net::ERR_FAILED": 69,
+    "Failed to load resource: the server responded with a status of 404 (File not found)": 32
+   },
+   "consoleErrors": [],
+   "pageErrors": [],
+   "warns": [],
+   "logs": [
+    "MeMotiva · Fase 99: +7 frases (0 já existentes ignoradas).",
+    "MeMotiva · Fase 100: 2 frases removidas; 3 itens no registro de remoções."
+   ],
+   "blockedHosts": [
+    "fonts.googleapis.com",
+    "commons.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+   ]
+  },
+  "desktop": {
+   "checks": {
+    "exploreCards": 48,
+    "buscaCarnegie": {
+     "count": "14 resultados para \"Carnegie\"",
+     "cards": [
+      "INFLUÊNCIA E PERSUASÃO “Mostre respeito pelas opiniões dos outros; nunca diga diretamente que estão errados.” ",
+      "LIDERANÇA “A maneira de desenvolver o melhor que há em uma pessoa é pela apreciação e pelo encorajamento.” — D",
+      "LIDERANÇA “Você pode conquistar mais amigos em dois meses se interessando pelas outras pessoas do que em dois ",
+      "MOTIVAÇÃO “A felicidade não depende do que você tem ou de quem você é; depende apenas do que você pensa.” — Da",
+      "INFLUÊNCIA E PERSUASÃO “A crítica é perigosa porque fere o orgulho e desperta ressentimento.” — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “O desejo de ser importante é uma das maiores necessidades humanas.” — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “A única maneira de obter o melhor de uma discussão é evitá-la.” — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “A maneira de conseguir que alguém faça algo é fazer com que essa pessoa queira fazê-lo",
+      "INFLUÊNCIA E PERSUASÃO “Desperte na outra pessoa um desejo sincero de realizar algo.” — Dale Carnegie",
+      "INFLUÊNCIA E PERSUASÃO “O nome de uma pessoa é, para ela, o som mais doce e mais importante de qualquer idioma",
+      "FINANÇAS “O homem que morre rico morre desonrado.” — Andrew Carnegie",
+      "REFLEXÃO “Quando lidamos com pessoas, lembremos que não estamos lidando com criaturas de lógica, mas com criat"
+     ]
+    },
+    "buscaSD": {
+     "count": "2 resultados para \"Santos Dumont\"",
+     "cards": [
+      "MOTIVAÇÃO “Sem pretender ser gênio, teimei em ser um grande paciente. As invenções são, sobretudo, o resultado",
+      "MOTIVAÇÃO “Sempre segui a divisa: “Quem quer vai, quem não quer manda”.” SD — Santos Dumont"
+     ]
+    },
+    "buscaPlutarco": {
+     "count": "2 resultados para \"Plutarco\"",
+     "cards": [
+      "POLÍTICA “Vim, vi e venci.” JC — Júlio César",
+      "REFLEXÃO “Não escrevo histórias, e sim vidas; e nem sempre é nas ações mais gloriosas que se revela a virtude "
+     ]
+    },
+    "buscaLutero": {
+     "count": "3 resultados para \"Lutero\"",
+     "cards": [
+      "RELIGIOSIDADE “Aqui estou; não posso fazer de outro modo.” ML — Martinho Lutero",
+      "RELIGIOSIDADE “Nosso Senhor e Mestre Jesus Cristo, ao dizer arrepende-te, quis que toda a vida dos fiéis fosse",
+      "RELIGIOSIDADE “O verdadeiro tesouro da Igreja é o santíssimo Evangelho da glória e da graça de Deus.” ML — Mar"
+     ]
+    },
+    "buscaMaquina": {
+     "count": "0 resultados para \"máquina que voa\"",
+     "cards": []
+    },
+    "favoritoSemLogin": {
+     "modalAberto": true,
+     "logado": false
+    },
+    "logado": true,
+    "favorito": {
+     "idx": "2518",
+     "ativoNoEstado": true,
+     "qidDoIdx": "f2848a8smqg",
+     "texto": "Aqui estou; não posso fazer de outro modo.",
+     "aria": "true"
+    },
+    "favoritoNova": {
+     "persistido": true,
+     "textoNoIdx": "O problema da nossa era é a administraçã"
+    },
+    "favoritoDesfeito": true,
+    "localizacaoQid": {
+     "amostra": 201,
+     "ruim": 0
+    },
+    "overflowX_home": {
+     "scrollW": 1440,
+     "innerW": 1440,
+     "over": false
+    },
+    "overflowX_explorar": {
+     "scrollW": 1440,
+     "innerW": 1440,
+     "over": false
+    }
+   },
+   "data": {
+    "frases": 3002,
+    "autores": 528,
+    "lacunas": 94,
+    "pendentes": 0,
+    "qidDup": 0,
+    "qidInconsist": 0,
+    "qidIdxLen": 3002,
+    "homeFrases": "3002+",
+    "homeAutores": "528+",
+    "homeCats": "22",
+    "plutarcoVaso": false,
+    "sdMaquina": false,
+    "novas": [
+     [
+      "Andrew Carnegie|O problema da nossa era",
+      true
+     ],
+     [
+      "Nikola Tesla|O desenvolvimento progressivo",
+      true
+     ],
+     [
+      "Santos Dumont|Sem pretender",
+      true
+     ],
+     [
+      "Santos Dumont|Sempre segui",
+      true
+     ],
+     [
+      "Lima Barreto|A pátria que quisera",
+      true
+     ],
+     [
+      "Benjamin Disraeli|A juventude de uma nação",
+      true
+     ],
+     [
+      "Martinho Lutero|O verdadeiro tesouro",
+      true
+     ]
+    ],
+    "bloqueadaCesar": true,
+    "favoritosNoBoot": 0
+   },
+   "csvArquivos": [
+    "curadoria-frases.csv",
+    "catalogo-obras.csv",
+    "lacunas-restantes.csv",
+    "remocoes-curadoria.csv"
+   ],
+   "consoleErrorsUnicos": {
+    "Failed to load resource: net::ERR_FAILED": 171,
+    "Failed to load resource: the server responded with a status of 404 (File not found)": 94
+   },
+   "consoleErrors": [],
+   "pageErrors": [],
+   "warns": [],
+   "logs": [
+    "MeMotiva · Fase 99: +7 frases (0 já existentes ignoradas).",
+    "MeMotiva · Fase 100: 2 frases removidas; 3 itens no registro de remoções."
+   ],
+   "blockedHosts": [
+    "fonts.googleapis.com",
+    "commons.wikimedia.org",
+    "pt.wikipedia.org",
+    "en.wikipedia.org"
+   ]
+  }
+ }
+}

@@ -1,0 +1,178 @@
+[
+ {
+  "size": "390x844",
+  "views": {
+   "light/home": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "light/explorar": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "light/autores": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "light/historias": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/home": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/explorar": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/autores": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/historias": {
+    "overX": false,
+    "scrollW": 390,
+    "innerW": 390,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   }
+  },
+  "errs": [],
+  "http400": 0,
+  "local404": 0
+ },
+ {
+  "size": "430x932",
+  "views": {
+   "light/home": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "light/explorar": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "light/autores": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "light/historias": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/home": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/explorar": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/autores": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   },
+   "dark/historias": {
+    "overX": false,
+    "scrollW": 430,
+    "innerW": 430,
+    "cortados": [
+     "mobile-menu-head",
+     "logo",
+     "logo-dot"
+    ]
+   }
+  },
+  "errs": [],
+  "http400": 0,
+  "local404": 0
+ }
+]

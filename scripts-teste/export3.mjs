@@ -1,0 +1,16 @@
+import chromium from '@sparticuz/chromium';
+import { chromium as pw } from 'playwright-core';
+import fs from 'fs';
+const exe = await chromium.executablePath();
+const b = await pw.launch({ executablePath: exe, args: chromium.args, headless: true });
+const page = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+const logs = []; page.on('console', m => { if (/Fase 116|Fase 115/.test(m.text())) logs.push(m.text().slice(0,200)); });
+await page.route('**/*', r => r.request().url().startsWith('http://127.0.0.1') ? r.continue() : r.abort());
+await page.goto(`http://127.0.0.1:${process.argv[2]}/index.html`, { waitUntil: 'domcontentloaded', timeout: 120000 });
+await page.waitForFunction(() => typeof QUOTES !== 'undefined' && QUOTES.length > 2000, null, { timeout: 90000 });
+await page.waitForFunction(() => { const n = QUOTES.length; window.__l = window.__l || {n:-1,t:Date.now()}; if (window.__l.n !== n) { window.__l = {n,t:Date.now()}; return false; } return Date.now() - window.__l.t > 5000; }, null, { timeout: 90000, polling: 500 });
+const info = await page.evaluate(() => ({ frases: QUOTES.length, home: document.getElementById('statQuotes').textContent, autores: AUTOR_INDEX.size, lacunas: LACUNAS().length, pend: MEMOTIVA_PENDENTES().length, registros: CURADORIA_REMOVIDAS.length, comNotaPublica: QUOTES.filter(q => q.notaAutoria).length, comNotaInterna: QUOTES.filter(q => q.notaInterna).length }));
+const csv = await page.evaluate(() => CURADORIA_EXPORT_CSV(false));
+fs.mkdirSync('/tmp/t/csv_clean', { recursive: true }); for (const [k, v] of Object.entries(csv)) fs.writeFileSync('/tmp/t/csv_clean/' + k, v);
+console.log(JSON.stringify({ info, logs, arquivos: Object.keys(csv) }));
+await b.close();
