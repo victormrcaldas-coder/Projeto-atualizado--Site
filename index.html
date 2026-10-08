@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MeMotiva — Frases, histórias e motivação para cada dia</title>
+<meta name="description" content="Frases motivacionais, histórias inspiradoras e uma comunidade para guardar e compartilhar o que te move.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/memotiva.css">
+</head>
+<body data-theme="light">
+
+<div class="scrim" id="scrim"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <button class="logo" data-nav="home" aria-label="MeMotiva, ir para o início">
+      <span class="logo-dot"></span>MeMotiva
+    </button>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <button class="nav-link" data-nav="home">Início</button>
+      <button class="nav-link" data-nav="explorar">Explorar</button>
+      <button class="nav-link" data-nav="descubra">Descubra</button>
+      <button class="nav-link" data-nav="historias">Histórias</button>
+      <button class="nav-link" data-nav="comunidade">Comunidade</button>
+      <button class="nav-link" data-nav="perfil">Perfil</button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn-icon" id="themeToggle" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro">
+        <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="M20.5 14.7A8.5 8.5 0 1 1 9.3 3.5a7 7 0 0 0 11.2 11.2Z"/></svg>
+      </button>
+      <div id="headerAuthArea"></div>
+      <button class="btn-icon hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-head">
+    <span class="logo"><span class="logo-dot"></span>MeMotiva</span>
+    <button class="btn-icon" id="closeMobileMenu" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <button class="nav-link" data-nav="home">Início</button>
+    <button class="nav-link" data-nav="explorar">Explorar frases</button>
+    <button class="nav-link" data-nav="descubra">Descubra pessoas</button>
+    <button class="nav-link" data-nav="historias">Histórias</button>
+    <button class="nav-link" data-nav="comunidade">Comunidade</button>
+    <button class="nav-link" data-nav="perfil">Perfil</button>
+  </nav>
+</div>
+
+<!-- ===================== MAIN ===================== -->
+<main id="mainApp">
+
+  <!-- ---------- HOME ---------- -->
+  <section class="view" id="view-home" data-view="home">
+    <div class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-glow-2"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">frases · histórias · comunidade</span>
+          <h1 class="hero-title">Palavras que <em>acolhem</em> nos dias difíceis e <em>impulsionam</em> nos dias de agir.</h1>
+          <p class="hero-sub">Uma coleção viva de frases, histórias e vozes que ajudam você a atravessar qualquer capítulo — e um espaço para guardar e compartilhar as suas próprias palavras.</p>
+          <div class="hero-ctas">
+            <button class="btn btn-coral btn-lg" data-nav="explorar">Explorar frases</button>
+            <button class="btn btn-outline btn-lg" data-nav="historias">Ver histórias</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><b id="statQuotes">—</b><span>frases curadas</span></div>
+            <div class="hero-stat"><b id="statCats">—</b><span>temas</span></div>
+            <div class="hero-stat"><b id="statAuthors">—</b><span>autores e vozes</span></div>
+          </div>
+        </div>
+        <div class="card-stack" id="heroCardStack" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="wrap section-tight reveal">
+      <div id="quoteOfDaySlot"></div>
+    </div>
+
+    <div class="wrap section reveal">
+      <div class="generator" id="generatorBox">
+        <span class="generator-eyebrow">Gerador de frases</span>
+        <div class="generator-card">
+          <p class="generator-quote" id="generatorQuote">Clique para receber uma frase para este exato momento.</p>
+        </div>
+        <button class="btn btn-coral btn-lg" id="generateBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6M3 22v-6h6M3.5 9a8.5 8.5 0 0 1 14.5-4.9L21 8M20.5 15a8.5 8.5 0 0 1-14.5 4.9L3 16"/></svg>
+          Gerar frase aleatória
+        </button>
+      </div>
+    </div>
+
+    <div class="wrap section reveal">
+      <div class="section-head">
+        <span class="eyebrow">conselhos temáticos</span>
+        <h2 class="section-title">Um tema para cada momento</h2>
+        <p class="section-sub">Curadoria de filósofos, líderes, mães, artistas e pensadores — organizada pelo que você está vivendo agora.</p>
+      </div>
+      <div class="cat-grid" id="catGridHome"></div>
+    </div>
+
+    <div class="wrap section reveal">
+      <div class="section-head section-head-row">
+        <div>
+          <span class="eyebrow">histórias e relatos</span>
+          <h2 class="section-title">Vidas que inspiram</h2>
+        </div>
+        <button class="btn btn-ghost btn-sm" data-nav="historias">Ver todas →</button>
+      </div>
+      <div class="stories-grid" id="storiesPreview"></div>
+    </div>
+
+    <div class="wrap section reveal">
+      <div class="section-head section-head-row">
+        <div>
+          <span class="eyebrow">encontre pessoas</span>
+          <h2 class="section-title">Da comunidade, para você</h2>
+        </div>
+        <button class="btn btn-ghost btn-sm" data-nav="comunidade">Ver comunidade →</button>
+      </div>
+      <div class="feed" id="communityPreview"></div>
+    </div>
+  </section>
+
+  <!-- ---------- EXPLORAR ---------- -->
+  <section class="view hidden" id="view-explorar" data-view="explorar">
+    <div class="wrap section">
+      <div class="section-head">
+        <span class="eyebrow">explorar</span>
+        <h2 class="section-title">Busque por autor ou tema</h2>
+        <p class="section-sub">Cada cartão traz só a frase e a assinatura de quem a disse — simples assim.</p>
+        <p class="curation-note">Parte do acervo foi escrita originalmente em outros idiomas. Nem sempre é possível uma tradução literal sem perder o sentido, e por isso a curadoria busca a maior proximidade possível com o texto e a intenção do original, admitindo pequenas adaptações necessárias ao português. Leia cada tradução como uma aproximação cuidadosa do original, não como uma reprodução palavra por palavra.</p>
+      </div>
+      <div class="toolbar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" class="search-input" id="authorSearch" placeholder="Buscar por autor, palavra ou trecho de frase…" autocomplete="off">
+          <button class="search-clear hidden" id="clearSearch" aria-label="Limpar busca">✕</button>
+        </div>
+        <div class="chip-nav">
+          <button class="chip-arrow" id="chipPrev" type="button" aria-label="Ver campos anteriores">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>
+          </button>
+          <div class="chip-row" id="categoryChips"></div>
+          <button class="chip-arrow" id="chipNext" type="button" aria-label="Ver mais campos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="results-bar">
+        <p class="results-count" id="resultsCount"></p>
+        <div class="profile-filter-wrap hidden" id="traditionFilterWrap">
+          <button class="profile-filter-btn" id="traditionFilterBtn" type="button" aria-haspopup="true" aria-expanded="false" title="Escolher a tradição religiosa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14"/><circle cx="12" cy="12" r="9"/></svg>
+            <span class="pf-label">Escolha</span>
+          </button>
+          <div class="profile-panel" id="traditionPanel" role="dialog" aria-label="Escolher tradição religiosa">
+            <div class="profile-panel-head">
+              <span class="profile-panel-title">Tradição</span>
+              <button class="profile-panel-clear" id="traditionClear" type="button">Limpar</button>
+            </div>
+            <div class="profile-options" id="traditionOptions"></div>
+          </div>
+        </div>
+        <div class="profile-filter-wrap" id="profileFilterWrap">
+          <button class="profile-filter-btn" id="profileFilterBtn" type="button" aria-haspopup="true" aria-expanded="false" title="Filtrar por atuação do autor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5h17l-6.5 7.6v5.6l-4 2.3v-7.9L3.5 5.5Z"/></svg>
+            <span class="pf-label">Atuação</span>
+          </button>
+          <div class="profile-panel" id="profilePanel" role="dialog" aria-label="Filtrar por atuação">
+            <div class="profile-panel-head">
+              <span class="profile-panel-title">Atuação do autor</span>
+              <button class="profile-panel-clear" id="profileClear" type="button">Limpar</button>
+            </div>
+            <div class="profile-options" id="profileOptions"></div>
+            <div class="cur-sep"></div>
+            <span class="cur-title">Curadoria</span>
+            <div id="curadoriaOpcoes"></div>
+          </div>
+        </div>
+        <button class="random-cat-btn" id="randomFieldBtn" type="button" title="Sortear uma frase deste campo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.6" cy="8.6" r="1.1" fill="currentColor"/><circle cx="15.4" cy="15.4" r="1.1" fill="currentColor"/><circle cx="15.4" cy="8.6" r="1.1" fill="currentColor"/><circle cx="8.6" cy="15.4" r="1.1" fill="currentColor"/></svg>
+          Frase aleatória
+        </button>
+      </div>
+      <div class="random-slot hidden" id="randomSlot"></div>
+      <div class="quote-grid" id="exploreGrid"></div>
+      <div id="exploreSentinel" aria-hidden="true"></div>
+      <div class="empty-state hidden" id="exploreEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <h3>Nada por aqui ainda</h3>
+        <p>Tente buscar outro nome ou escolher outro tema.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ---------- DESCUBRA ---------- -->
+  <section class="view hidden" id="view-descubra" data-view="descubra">
+    <div class="wrap section">
+      <div class="section-head">
+        <span class="eyebrow">pessoas por trás das frases</span>
+        <h2 class="section-title">Descubra quem disse</h2>
+        <p class="section-sub">Cada cartão é uma porta de entrada. Toque para ler a história completa da pessoa.</p>
+      </div>
+      <div class="filter-bar">
+        <button class="chip-arrow hidden" data-farrow="prev" type="button" aria-label="Ver anteriores">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>
+        </button>
+        <div class="filter-row" id="discoverFilterRow"></div>
+        <button class="chip-arrow hidden" data-farrow="next" type="button" aria-label="Ver mais">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+      <p class="bio-count" id="discoverCount"></p>
+      <div class="discover-grid" id="discoverGrid"></div>
+      <div id="discoverSentinel" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ---------- HISTÓRIAS ---------- -->
+  <section class="view hidden" id="view-historias" data-view="historias">
+    <div class="wrap section">
+      <div class="section-head">
+        <span class="eyebrow">histórias e relatos longos</span>
+        <h2 class="section-title">Biografias para ouvir ou ler</h2>
+        <p class="section-sub">Toque em reproduzir para gerar a narração em voz alta, na hora — escolha a voz que preferir.</p>
+      </div>
+      <div class="filter-bar">
+        <span class="filter-label">Atuação</span>
+        <button class="chip-arrow hidden" data-farrow="prev" type="button" aria-label="Ver anteriores">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>
+        </button>
+        <div class="filter-row" id="bioProfileRow"></div>
+        <button class="chip-arrow hidden" data-farrow="next" type="button" aria-label="Ver mais">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="filter-bar">
+        <span class="filter-label">Origem</span>
+        <button class="chip-arrow hidden" data-farrow="prev" type="button" aria-label="Ver anteriores">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg>
+        </button>
+        <div class="filter-row" id="bioOriginRow"></div>
+        <button class="chip-arrow hidden" data-farrow="next" type="button" aria-label="Ver mais">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+      <p class="bio-count" id="bioCount"></p>
+      <div class="stories-grid" id="storiesGrid"></div>
+      <div id="bioSentinel" aria-hidden="true"></div>
+      <div class="empty-state hidden" id="bioEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <h3>Nenhuma biografia com esses filtros</h3>
+        <p>Combine outros filtros ou volte para "Todas".</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- COMUNIDADE ---------- -->
+  <section class="view hidden" id="view-comunidade" data-view="comunidade">
+    <div class="wrap section">
+      <div class="section-head">
+        <span class="eyebrow">encontre pessoas</span>
+        <h2 class="section-title">Espaço comunitário</h2>
+        <p class="section-sub">Escreva sua frase ou relato do dia, personalize o estilo, e interaja com o que a comunidade compartilha.</p>
+      </div>
+      <div id="composerSlot"></div>
+      <div class="toolbar" style="margin-bottom:22px;">
+        <div class="chip-row" id="feedFilterChips">
+          <button class="chip active" data-feed-filter="recentes">Recentes</button>
+          <button class="chip" data-feed-filter="seguindo">Seguindo</button>
+          <button class="chip" data-feed-filter="minhas">Minhas publicações</button>
+        </div>
+      </div>
+      <div class="feed" id="communityFeed"></div>
+      <div class="empty-state hidden" id="feedEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <h3>Ainda não há publicações aqui</h3>
+        <p>Seja a primeira pessoa a compartilhar algo hoje.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- PERFIL ---------- -->
+  <section class="view hidden" id="view-perfil" data-view="perfil">
+    <div class="wrap section">
+      <div id="perfilContent"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== BOTTOM NAV (mobile) ===================== -->
+<nav class="bottom-nav" aria-label="Navegação inferior">
+  <button class="bn-item" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>Início</button>
+  <button class="bn-item" data-nav="explorar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Explorar</button>
+  <button class="bn-item" data-nav="descubra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c.6-3.6 3-5.6 6.5-5.6s5.9 2 6.5 5.6"/><path d="m19.5 4.2.7 1.6 1.6.7-1.6.7-.7 1.6-.7-1.6-1.6-.7 1.6-.7Z"/></svg>Descubra</button>
+  <button class="bn-item" data-nav="historias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Histórias</button>
+  <button class="bn-item" data-nav="perfil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</button>
+</nav>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="footer-brand"><span class="logo-dot"></span> MeMotiva</span>
+    <p class="footer-note">Frases e biografias reunidas de fontes verificadas, com atribuição correta a cada autor. Feito para acompanhar você nos dias difíceis e nos dias de agir.</p>
+    <p class="footer-note">Frases de outros idiomas aparecem em tradução que busca a maior fidelidade possível ao texto e ao sentido original, com as pequenas adaptações que o português exige.</p>
+  </div>
+</footer>
+
+<!-- ===================== AUTH MODAL ===================== -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="btn-icon modal-close" id="closeAuthModal" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 class="modal-title" id="authModalTitle">Bem-vinda(o) de volta</h3>
+    <p class="modal-sub" id="authModalSub">Entre para curtir, comentar e guardar suas frases.</p>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin">Entrar</button>
+      <button class="auth-tab" id="tabRegister">Criar conta</button>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-field">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-input" id="loginEmail" required autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Senha</label>
+        <input type="password" class="form-input" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <p class="form-error" id="loginError"></p>
+      <button type="submit" class="btn btn-coral auth-submit">Entrar</button>
+    </form>
+
+    <form id="registerForm" class="hidden">
+      <div class="form-field">
+        <label class="form-label">Nome de usuário</label>
+        <input type="text" class="form-input" id="regUsername" required minlength="3" maxlength="24" placeholder="ex: mari_santos">
+      </div>
+      <div class="form-field">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-input" id="regEmail" required autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Senha</label>
+        <input type="password" class="form-input" id="regPassword" required minlength="6" autocomplete="new-password">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Confirmar senha</label>
+        <input type="password" class="form-input" id="regPassword2" required minlength="6" autocomplete="new-password">
+      </div>
+      <p class="form-error" id="registerError"></p>
+      <button type="submit" class="btn btn-coral auth-submit">Criar minha conta</button>
+    </form>
+
+    <p class="auth-switch" id="authSwitchLine">Ainda não tem conta? <button id="switchToRegister">Criar conta</button></p>
+  </div>
+</div>
+
+<!-- ===================== EXPANDIR FRASE ===================== -->
+<div class="expand-overlay" id="quoteExpand" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Frase ampliada">
+  <div class="expand-quote" id="quoteExpandBox"></div>
+</div>
+
+<!-- ===================== EXPANDIR FOTOGRAFIA ===================== -->
+<div class="expand-overlay photo-overlay" id="photoExpand" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Fotografia ampliada">
+  <div class="photo-frame" id="photoExpandBox"></div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/memotiva.js"></script>
+</body>
+</html>

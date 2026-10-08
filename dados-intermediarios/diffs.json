@@ -1,0 +1,1587 @@
+{
+ "8d1d990->2d04b2e": {
+  "removidas": [],
+  "novas": [
+   {
+    "autor": "Oliver Goldsmith",
+    "frase": "O homem pouco precisa aqui embaixo, e não precisa desse pouco por muito tempo.",
+    "fonte": "O Vigário de Wakefield (1766), capítulo VIII, do poema \"O Eremita\" recitado no romance",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "reflexao"
+   }
+  ]
+ },
+ "2d04b2e->0ebade6": {
+  "removidas": [
+   {
+    "autor": "Albert Einstein",
+    "frase": "O mundo é um lugar perigoso de se viver, não por causa daqueles que fazem o mal, mas por causa daqueles que observam e deixam o mal acontecer.",
+    "fonte": "Entrevista registrada",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Mahatma Gandhi",
+    "frase": "A felicidade é quando o que você pensa, o que você diz e o que você faz estão em harmonia.",
+    "fonte": "Autobiografia e Collected Works of Mahatma Gandhi",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "felicidade"
+   },
+   {
+    "autor": "Mahatma Gandhi",
+    "frase": "A felicidade é alcançada quando aquilo que pensamos, dizemos e fazemos está em harmonia.",
+    "fonte": "Autobiografia e Collected Works of Mahatma Gandhi",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "felicidade"
+   },
+   {
+    "autor": "Rosa Parks",
+    "frase": "Aprendi ao longo dos anos que, quando a decisão está tomada, o medo diminui.",
+    "fonte": "Rosa Parks: My Story",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "Meister Eckhart",
+    "frase": "Se a única oração que você fizer em toda a sua vida for \"obrigado\", isso será suficiente.",
+    "fonte": "Sermões Alemães",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Abraham Maslow",
+    "frase": "O que um homem pode ser, ele deve ser.",
+    "fonte": "Motivation and Personality",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "autorreconhecimento"
+   },
+   {
+    "autor": "Marcel Proust",
+    "frase": "Os únicos paraísos são os paraísos que perdemos.",
+    "fonte": "O Tempo Redescoberto (1927), volume VII de Em Busca do Tempo Perdido",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "John Ruskin",
+    "frase": "A qualidade nunca é um acidente; é sempre o resultado de esforço inteligente.",
+    "fonte": "Atribuído a Ruskin em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "Cleantes",
+    "frase": "Conduze-me, ó Zeus, e tu, Destino, para onde quer que me tenhais designado.",
+    "fonte": "Hino a Zeus, versos finais",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "São Jerônimo",
+    "frase": "Ignorar as Escrituras é ignorar Cristo.",
+    "fonte": "Comentário sobre Isaías (408), prólogo",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Norman Schwarzkopf",
+    "frase": "A liderança é uma combinação poderosa de estratégia e caráter. Mas se você tiver de ficar sem um deles, fique sem a estratégia.",
+    "fonte": "Entrevista registrada",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Conceição Evaristo",
+    "frase": "A escrevivência não pode ser lida como história para ninar os da casa-grande, e sim para incomodá-los em seus sonos injustos.",
+    "fonte": "Palestra registrada, formulação da autora sobre escrevivência",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Tarsila do Amaral",
+    "frase": "Quero ser a pintora da minha terra.",
+    "fonte": "Carta à família, 1923",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "autorreconhecimento"
+   },
+   {
+    "autor": "Wolfgang Amadeus Mozart",
+    "frase": "Nem uma inteligência elevada nem a imaginação fazem o gênio. Amor, amor, amor: essa é a alma do gênio.",
+    "fonte": "Atribuído a Mozart em coletâneas, sem localização em sua correspondência",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "amor"
+   },
+   {
+    "autor": "Pelé",
+    "frase": "Sucesso não é acidente. É trabalho duro, perseverança, aprendizado, estudo, sacrifício e, acima de tudo, amor pelo que se está fazendo.",
+    "fonte": "Entrevista registrada",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Booker T. Washington",
+    "frase": "O sucesso deve ser medido não pela posição alcançada na vida, mas pelos obstáculos superados no caminho.",
+    "fonte": "Da Escravidão à Liberdade",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "Max Planck",
+    "frase": "Uma nova verdade científica não triunfa convencendo seus adversários: ela triunfa porque eles morrem e uma nova geração cresce familiarizada com ela.",
+    "fonte": "Autobiografia Científica",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "Reinhold Niebuhr",
+    "frase": "Concedei-me a serenidade para aceitar o que não posso mudar, coragem para mudar o que posso, e sabedoria para distinguir uma coisa da outra.",
+    "fonte": "Oração da Serenidade",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "conforto"
+   },
+   {
+    "autor": "Santo Isidoro de Sevilha",
+    "frase": "As letras são sinais das coisas e têm tanta força que nos dizem, sem voz, o que os ausentes disseram.",
+    "fonte": "Etimologias",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "educacao"
+   },
+   {
+    "autor": "Thomas Sowell",
+    "frase": "Não há soluções: há apenas escolhas entre custos.",
+    "fonte": "Conflito de Visões",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Angela Duckworth",
+    "frase": "Garra é paixão e perseverança por objetivos de longo prazo.",
+    "fonte": "Garra",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Henry Chesbrough",
+    "frase": "Nem todas as pessoas inteligentes trabalham para nós: precisamos trabalhar com as de dentro e com as de fora.",
+    "fonte": "Open Innovation",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Donald Winnicott",
+    "frase": "Não existe isso de um bebê sozinho: quando se encontra um bebê, encontra-se também alguém que dele cuida.",
+    "fonte": "A Criança e o Seu Mundo",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "familia"
+   },
+   {
+    "autor": "Hillary Clinton",
+    "frase": "Direitos humanos são direitos das mulheres e direitos das mulheres são direitos humanos, de uma vez por todas.",
+    "fonte": "O Que Aconteceu",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Jean Piaget",
+    "frase": "O objetivo principal da educação é formar pessoas capazes de fazer coisas novas, e não de repetir o que outras gerações fizeram.",
+    "fonte": "A Epistemologia Genética",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "educacao"
+   },
+   {
+    "autor": "Wolfgang Amadeus Mozart",
+    "frase": "Nem um temperamento vivaz nem uma mente aguçada fazem o gênio: o amor é a alma do gênio.",
+    "fonte": "Cartas",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "amor"
+   },
+   {
+    "autor": "Marie Curie",
+    "frase": "Nada na vida deve ser temido: deve apenas ser compreendido. É hora de compreender mais, para temer menos.",
+    "fonte": "Pierre Curie",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "George Sand",
+    "frase": "Não há mais do que uma felicidade na vida: amar e ser amado.",
+    "fonte": "Indiana",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "amor"
+   },
+   {
+    "autor": "Grace Hopper",
+    "frase": "É mais fácil pedir perdão do que obter permissão.",
+    "fonte": "Declarações e palestras registradas",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Florbela Espanca",
+    "frase": "Ser poeta é ser mais alto, é ser maior do que os homens! Morder como quem beija!",
+    "fonte": "Charneca em Flor",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "autorreconhecimento"
+   },
+   {
+    "autor": "Henry Stanley Haskins",
+    "frase": "O que fica atrás de nós e o que fica à nossa frente são questões pequenas diante do que existe dentro de nós.",
+    "fonte": "Meditações em Wall Street",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "autorreconhecimento"
+   }
+  ],
+  "novas": [
+   {
+    "autor": "Albert Einstein",
+    "frase": "Ele percebeu com muita clareza que o mundo corre maior perigo da parte dos que toleram ou encorajam o mal do que da parte daqueles que o cometem.",
+    "fonte": "Nota sobre Pablo Casals, 30 de março de 1953, publicada em Conversations avec Pablo Casals, de J. M. Corredor (1955)",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "manipulacao"
+   }
+  ]
+ },
+ "0ebade6->7cb1303": {
+  "removidas": [
+   {
+    "autor": "W. Edwards Deming",
+    "frase": "Sem dados, você é apenas mais uma pessoa com uma opinião.",
+    "fonte": "",
+    "procedencia": "Amplamente repetida em seminários e cursos de qualidade, sem registro localizado nos escritos ou nas conferências documentadas de Deming.",
+    "status": "P",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Muhammad Ali",
+    "frase": "Não conte os dias; faça os dias contarem.",
+    "fonte": "",
+    "procedencia": "Atribuída a Ali em coletâneas e reproduções, sem entrevista, discurso ou texto de origem identificado.",
+    "status": "P",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Ken Blanchard",
+    "frase": "A liderança começa com uma visão e termina com resultados.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Winston Churchill",
+    "frase": "O sucesso não é final, o fracasso não é fatal: é a coragem de continuar que conta.",
+    "fonte": "Discurso registrado",
+    "procedencia": "Não consta nos discursos nem nos escritos de Churchill. É um caso do fenômeno que o pesquisador Nigel Rees chamou de deriva churchilliana, em que o autor original é substituído por alguém mais famoso.",
+    "status": "P",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Thomas Edison",
+    "frase": "O gênio é 1% inspiração e 99% transpiração.",
+    "fonte": "Entrevista registrada",
+    "procedencia": "Circulam formulações semelhantes antes de Edison, entre elas em palestras da professora Kate Sanborn nos anos 1890. Edison usou versões da frase em declarações à imprensa a partir do início do século XX, mas a autoria original é disputada.",
+    "status": "P",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão é a mais saudável de todas as emoções humanas.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Peter Drucker",
+    "frase": "Cultura come estratégia no café da manhã.",
+    "fonte": "",
+    "procedencia": "O Instituto Drucker confirma que ele nunca escreveu nem disse isto. O registro impresso mais antigo localizado é uma manchete do Giga Information Group, de março de 2000. A frase foi popularizada por Mark Fields, executivo da Ford, que a manteve afixada na parede de sua sala a partir de 2006, e só passou a ser atribuída a Drucker por volta de 2011. A ideia próxima que existe de fato é de Edgar Schein, que escreveu que a cultura determina e limita a estratégia.",
+    "status": "P",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Peter Drucker",
+    "frase": "O que é medido é gerenciado.",
+    "fonte": "",
+    "procedencia": "Não consta em nenhuma obra de Drucker. A formulação é do jornalista Simon Caulkin, resumindo um artigo de V. F. Ridgway publicado em 1956 que, ao contrário do que a frase sugere, criticava as práticas de medição em uso.",
+    "status": "P",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Andrew Carnegie",
+    "frase": "Tire minhas fábricas, mas deixe meu pessoal, e logo teremos fábricas melhores.",
+    "fonte": "",
+    "procedencia": "A frase circula em variantes desde o fim do século XIX e é atribuída também a outros industriais do período. Não foi localizada em The Gospel of Wealth nem em outro escrito de Carnegie.",
+    "status": "P",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Henry Ford",
+    "frase": "Reunir-se é um começo, permanecer juntos é um progresso, trabalhar juntos é um sucesso.",
+    "fonte": "",
+    "procedencia": "Não localizada em My Life and Work nem em outro escrito de Ford. A atribuição é corrente, mas sem documento primário identificado.",
+    "status": "P",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Aristóteles",
+    "frase": "É sinal de uma mente educada ser capaz de acolher um pensamento sem aceitá-lo.",
+    "fonte": "",
+    "procedencia": "Não aparece em nenhuma obra sobrevivente de Aristóteles. A primeira ocorrência impressa localizada está em Religion and the Pursuit of Truth, de Lowell L. Bennion (1959), que a apresentou como pensamento de Aristóteles sem indicar fonte. A passagem real da Ética a Nicômaco, em 1094b, diz outra coisa: que é próprio de uma mente educada contentar-se com o grau de precisão que a natureza do assunto permite, sem buscar exatidão onde só cabe aproximação.",
+    "status": "P",
+    "categoria": "filosofos"
+   },
+   {
+    "autor": "Arthur Schopenhauer",
+    "frase": "Toda verdade passa por três estágios: primeiro é ridicularizada, depois é violentamente combatida, por fim é aceita como evidente.",
+    "fonte": "",
+    "procedencia": "Não foi escrita nem dita por Schopenhauer, e especialistas em sua obra não localizam a passagem. A atribuição aparece na Alemanha a partir de 1913 e foi amplamente difundida por uma coletânea de citações publicada em 1981. Schopenhauer tem, em O Mundo como Vontade e Representação, uma observação distinta sobre a resistência às verdades novas.",
+    "status": "P",
+    "categoria": "filosofos"
+   },
+   {
+    "autor": "Charles Chaplin",
+    "frase": "A vida é uma tragédia em close-up e uma comédia em plano geral.",
+    "fonte": "",
+    "procedencia": "Atribuída a Chaplin em coletâneas a partir da segunda metade do século XX, sem indicação de filme, entrevista ou texto de origem.",
+    "status": "P",
+    "categoria": "felicidade"
+   },
+   {
+    "autor": "Liev Tolstói",
+    "frase": "Se você quer ser feliz, seja.",
+    "fonte": "",
+    "procedencia": "A formulação aparece em Tolstói de forma indireta, atribuída dentro de sua ficção a Kozma Prutkov, autor satírico fictício criado por escritores russos do século XIX. A citação direta a Tolstói é, portanto, imprecisa.",
+    "status": "P",
+    "categoria": "vida"
+   }
+  ],
+  "novas": []
+ },
+ "7cb1303->b9daa7e": {
+  "removidas": [
+   {
+    "autor": "Simone de Beauvoir",
+    "frase": "Que nada nos defina, que nada nos sujeite. Que a liberdade seja a nossa própria substância, já que viver é ser livre.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "Quando expressamos gratidão, reconhecemos que nossas vidas estão ligadas às dos outros.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Brené Brown",
+    "frase": "A confiança é construída quando líderes demonstram competência, conexão e caráter.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Clayton Christensen",
+    "frase": "A inovação disruptiva cria novos mercados e transforma setores existentes.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão é uma escolha que muda a forma como vemos a vida.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Ken Blanchard",
+    "frase": "A liderança não é sobre controlar pessoas, mas sobre capacitá-las.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Ken Blanchard",
+    "frase": "O líder deve criar um ambiente onde as pessoas possam crescer e assumir responsabilidades.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Ken Blanchard",
+    "frase": "O poder de um líder cresce quando ele ajuda outros a desenvolverem seu próprio poder.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Ken Blanchard",
+    "frase": "Líderes eficazes criam líderes em todos os níveis.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Ken Blanchard",
+    "frase": "O líder deve criar mais valor nas pessoas do que encontra nelas.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Simone de Beauvoir",
+    "frase": "A mulher é o segundo sexo porque a sociedade a coloca nessa posição, não por causa de uma natureza feminina fixa.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão é o sentimento que nasce quando percebemos que a vida nos oferece mais do que merecemos.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão permite reconhecer o valor das coisas boas da vida.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão não é apenas uma reação ao bem recebido; é uma forma de enxergar o mundo.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão é uma das maneiras mais eficazes de fortalecer o bem-estar psicológico.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Robert Emmons",
+    "frase": "A gratidão permite que as pessoas reconheçam o valor das experiências positivas.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Clayton Christensen",
+    "frase": "A inovação acontece quando você combina conhecimentos existentes de novas maneiras.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Clayton Christensen",
+    "frase": "Grandes empresas frequentemente falham porque fazem muito bem aquilo que deixou de importar.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Clayton Christensen",
+    "frase": "A disrupção acontece quando uma inovação cria uma nova maneira de atender necessidades.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Clayton Christensen",
+    "frase": "A melhor forma de criar valor é resolver problemas importantes.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Clayton Christensen",
+    "frase": "Grandes empresas podem fracassar quando deixam de ouvir as necessidades emergentes dos clientes.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "O maior perigo para a maioria das pessoas é a crença de que sabem mais do que realmente sabem.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "Compreender as emoções humanas é essencial para compreender o comportamento das pessoas.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "As pessoas tendem a ver o mundo através de seus próprios interesses e experiências.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "A maior sabedoria é compreender as motivações e interesses das pessoas.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "As pessoas frequentemente veem o mundo não como ele é, mas como seus desejos e emoções determinam.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "A capacidade de observar as pessoas sem julgá-las imediatamente é uma habilidade essencial.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "A maioria das pessoas é guiada mais pelas emoções do que pela razão.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Robert Greene",
+    "frase": "Conhecer a natureza humana é compreender padrões recorrentes de comportamento.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   }
+  ],
+  "novas": [
+   {
+    "autor": "Simone de Beauvoir",
+    "frase": "Nada, portanto, nos limitava, nada nos definia, nada nos sujeitava: nossa ligação com o mundo, nós é que a criávamos; a liberdade era nossa própria substância.",
+    "fonte": "A Força da Idade (1960)",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   }
+  ]
+ },
+ "b9daa7e->e0f3f78": {
+  "removidas": [
+   {
+    "autor": "Robert Greene",
+    "frase": "A primeira habilidade para lidar com pessoas é observar sem julgamentos precipitados.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Simone de Beauvoir",
+    "frase": "A mulher não é definida pelo que ela é, mas pelo que ela faz.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Simone de Beauvoir",
+    "frase": "A mulher deve deixar de ser um objeto e tornar-se um sujeito de sua própria história.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Simone de Beauvoir",
+    "frase": "A liberdade é uma conquista, não uma dádiva.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "John Dewey",
+    "frase": "A felicidade é um estado de atividade, não de repouso.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "felicidade"
+   },
+   {
+    "autor": "Henry Kissinger",
+    "frase": "A política externa é a arte de equilibrar interesses nacionais.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Henry Kissinger",
+    "frase": "A diplomacia é a adaptação de interesses nacionais às realidades do mundo.",
+    "fonte": "",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   }
+  ],
+  "novas": [
+   {
+    "autor": "Aristóteles",
+    "frase": "A felicidade é um estado de atividade, não de repouso.",
+    "fonte": "Ética a Nicômaco",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "felicidade"
+   }
+  ]
+ },
+ "e0f3f78->9f81582": {
+  "removidas": [
+   {
+    "autor": "Winston Churchill",
+    "frase": "Se você está atravessando o inferno, continue andando.",
+    "fonte": "Atribuído em discursos de guerra, 1940",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "William Butler Yeats",
+    "frase": "A educação não é encher um balde, mas acender um fogo.",
+    "fonte": "Atribuído a Yeats sem localização em sua obra; formulação próxima aparece em Plutarco",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "educacao"
+   },
+   {
+    "autor": "Hipócrates",
+    "frase": "Que teu alimento seja teu remédio.",
+    "fonte": "Atribuído ao Corpus Hippocraticum sem localização confirmada em tratado específico",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "vida"
+   },
+   {
+    "autor": "George Bernard Shaw",
+    "frase": "O maior problema da comunicação é a ilusão de que ela aconteceu.",
+    "fonte": "Atribuído a Shaw em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "George Eliot",
+    "frase": "Nunca é tarde demais para ser o que você poderia ter sido.",
+    "fonte": "Atribuído a George Eliot em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Stephen Hawking",
+    "frase": "O maior inimigo do conhecimento não é a ignorância, é a ilusão de conhecimento.",
+    "fonte": "Atribuído a Hawking em coletâneas; formulação próxima aparece em Daniel Boorstin",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "educacao"
+   },
+   {
+    "autor": "Nikola Tesla",
+    "frase": "Se você quer descobrir os segredos do universo, pense em termos de energia, frequência e vibração.",
+    "fonte": "Atribuído a Tesla em coletâneas, sem localização em seus escritos",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "educacao"
+   },
+   {
+    "autor": "Harriet Tubman",
+    "frase": "Eu libertei mil escravos. Poderia ter libertado mais mil, se soubessem que eram escravos.",
+    "fonte": "Atribuído a Tubman em coletâneas, sem registro documental localizado",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "Zumbi dos Palmares",
+    "frase": "Não somos nada sem a nossa liberdade.",
+    "fonte": "Atribuído a Zumbi na tradição oral; sem registro documental contemporâneo",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "Walt Disney",
+    "frase": "Se você pode sonhar, você pode fazer.",
+    "fonte": "Atribuído a Disney em coletâneas, sem registro primário localizado",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Martinho Lutero",
+    "frase": "Se eu soubesse que o mundo acabaria amanhã, ainda hoje plantaria minha macieira.",
+    "fonte": "Atribuído a Lutero a partir do século XX, sem registro em seus escritos",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "conforto"
+   },
+   {
+    "autor": "Chico Xavier",
+    "frase": "Embora ninguém possa voltar atrás e fazer um novo começo, qualquer um pode começar agora e fazer um novo fim.",
+    "fonte": "Atribuído a Chico Xavier em coletâneas; formulação anterior é de Carl Bard",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Oscar Wilde",
+    "frase": "Seja você mesmo; todos os outros já existem.",
+    "fonte": "Atribuído a Wilde em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "autorreconhecimento"
+   },
+   {
+    "autor": "Voltaire",
+    "frase": "Julgue um homem por suas perguntas, e não por suas respostas.",
+    "fonte": "Atribuído a Voltaire em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "Maya Angelou",
+    "frase": "As pessoas esquecerão o que você disse, esquecerão o que você fez, mas nunca esquecerão como você as fez sentir.",
+    "fonte": "Atribuído a Maya Angelou em coletâneas; formulação anterior aparece em Carl W. Buehner",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "amor"
+   },
+   {
+    "autor": "Albert Camus",
+    "frase": "Não caminhe atrás de mim, talvez eu não saiba liderar. Não caminhe à minha frente, talvez eu não queira seguir.",
+    "fonte": "Atribuído a Camus em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "amizade"
+   },
+   {
+    "autor": "Oscar Wilde",
+    "frase": "Somos todos feitos da mesma matéria, mas nem todos temos o mesmo destino.",
+    "fonte": "Atribuído a Wilde em coletâneas, sem localização em sua obra",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "reflexao"
+   },
+   {
+    "autor": "Cora Coralina",
+    "frase": "Sou aquela mulher a quem o tempo muito ensinou.",
+    "fonte": "Poema Assim Eu Vejo a Vida, atribuído a Cora Coralina e não localizado em edição autorizada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "autorreconhecimento"
+   }
+  ],
+  "novas": []
+ },
+ "9f81582->376355e": {
+  "removidas": [
+   {
+    "autor": "John D. Rockefeller",
+    "frase": "Sempre tentei transformar todo desastre em uma oportunidade.",
+    "fonte": "Random Reminiscences of Men and Events ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "John D. Rockefeller",
+    "frase": "Cada direito carrega uma responsabilidade; toda oportunidade, uma obrigação; toda posse, um dever.",
+    "fonte": "Random Reminiscences of Men and Events ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "financas"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Nós subestimamos o nosso poder — e essa é a primeira coisa que precisamos combater.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Podiam tomar nossas canetas e nossos livros, mas não podiam impedir nossas mentes de pensar.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "Michelle Obama",
+    "frase": "Uma das lições com que cresci foi a de permanecer sempre verdadeira comigo mesma e nunca deixar que as palavras de alguém me afastem dos meus objetivos.",
+    "fonte": "Minha História ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "autorreconhecimento"
+   },
+   {
+    "autor": "Michelle Obama",
+    "frase": "Fracassar é parte crucial do sucesso. Toda vez que você fracassa e se recupera, exercita a perseverança que é a chave da vida.",
+    "fonte": "Minha História ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "John D. Rockefeller",
+    "frase": "Uma amizade criada nos negócios é melhor do que negócios criados na amizade.",
+    "fonte": "Random Reminiscences of Men and Events ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Henry Ford",
+    "frase": "Se o dinheiro for a sua esperança de independência, você nunca a terá. A única segurança verdadeira é uma reserva de sabedoria, experiência e competência.",
+    "fonte": "My Life and Work ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Eu decidi que não há nada de errado em se considerar feminista. Feminismo é uma outra palavra para igualdade.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Michelle Obama",
+    "frase": "Não existe limite para o que nós, como mulheres, podemos realizar.",
+    "fonte": "Minha História ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Madre Teresa de Calcutá",
+    "frase": "Por vezes sentimos que aquilo que fazemos não é senão uma gota de água no mar. Mas o mar seria menor se lhe faltasse uma gota.",
+    "fonte": "A Simple Path ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Eu levanto minha voz — não para que eu possa gritar, mas para que aquelas sem voz possam ser ouvidas.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Simone Weil",
+    "frase": "A amizade é o único afeto que escolhemos livremente.",
+    "fonte": "A Gravidade e a Graça ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "amizade"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "Otimismo perpétuo é um multiplicador de forças.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "Os líderes assumem responsabilidade; eles não colocam culpa nos outros.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "Treine as pessoas bem o suficiente para que elas possam sair, trate-as bem o suficiente para que elas queiram ficar.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Nelson Mandela",
+    "frase": "Um verdadeiro líder usa qualquer problema, por mais grave que seja, como oportunidade para melhorar.",
+    "fonte": "Longo Caminho para a Liberdade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Nelson Mandela",
+    "frase": "Uma nação não deve ser julgada pela forma como trata seus cidadãos mais elevados, mas seus cidadãos mais baixos.",
+    "fonte": "Longo Caminho para a Liberdade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "Uma maneira confiável de fazer as pessoas acreditarem em falsidades é a repetição frequente.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "John D. Rockefeller",
+    "frase": "Não tenha medo de desistir do bom para perseguir o ótimo.",
+    "fonte": "Random Reminiscences of Men and Events ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "John D. Rockefeller",
+    "frase": "O segredo do sucesso é fazer as coisas comuns de maneira extraordinariamente bem.",
+    "fonte": "Random Reminiscences of Men and Events ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Henry Ford",
+    "frase": "O fracasso é simplesmente a oportunidade de recomeçar, desta vez de forma mais inteligente.",
+    "fonte": "My Life and Work ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Madre Teresa de Calcutá",
+    "frase": "A alegria é uma rede de amor pela qual você pode capturar almas.",
+    "fonte": "A Simple Path ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "Nunca deixe seu ego ficar tão ligado à sua posição que, quando sua posição cair, seu ego caia junto.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "Se você não se diverte fazendo algo, provavelmente não deveria fazê-lo.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Konrad Adenauer",
+    "frase": "A liberdade não é algo que o homem recebe de presente; é algo que deve defender constantemente.",
+    "fonte": "Memórias de Konrad Adenauer ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "As pessoas tendem a substituir perguntas difíceis por perguntas mais fáceis.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Henry Ford",
+    "frase": "Qualidade significa fazer certo quando ninguém está olhando.",
+    "fonte": "My Life and Work ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Henry Ford",
+    "frase": "Um negócio absolutamente dedicado ao serviço terá apenas uma preocupação com os lucros: eles serão surpreendentemente grandes.",
+    "fonte": "My Life and Work ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "negocios"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "Não existe segredo para o sucesso. É resultado de preparação, trabalho duro e aprendizado com o fracasso.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "Não há mais importante habilidade de liderança do que saber ouvir.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Nelson Mandela",
+    "frase": "Liderança poderosa é liderar a partir do fundo, não do topo.",
+    "fonte": "Longo Caminho para a Liberdade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Nelson Mandela",
+    "frase": "Não há paixão em se contentar com pouco; em aceitar uma vida menor do que aquela que você é capaz de viver.",
+    "fonte": "Longo Caminho para a Liberdade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "A liderança é baseada em confiança, respeito e exemplo.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "A liderança é a arte de conseguir mais do que a ciência da gestão considera possível.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "A responsabilidade da liderança é resolver problemas e criar oportunidades para as pessoas.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "Um líder deve inspirar confiança e criar um ambiente onde as pessoas possam ter sucesso.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Colin Powell",
+    "frase": "A liderança exige coragem para tomar decisões impopulares quando elas são necessárias.",
+    "fonte": "My American Journey ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "As mulheres são a verdadeira força da mudança.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "A educação é o caminho para a liberdade das mulheres.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Quando o mundo inteiro está em silêncio, até uma voz se torna poderosa.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Michelle Obama",
+    "frase": "Acredito que uma das coisas mais importantes que uma mulher pode fazer é elevar outras mulheres.",
+    "fonte": "Minha História ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "As mulheres são capazes de realizar qualquer coisa quando têm acesso à educação e às oportunidades.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Eu conto minha história não porque ela seja única, mas porque muitas mulheres têm histórias semelhantes.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Malala Yousafzai",
+    "frase": "Não podemos todos ter sucesso quando metade de nós é mantida para trás.",
+    "fonte": "Eu Sou Malala ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Michelle Obama",
+    "frase": "Não existe uma maneira única de ser uma mulher forte.",
+    "fonte": "Minha História ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empoderamento"
+   },
+   {
+    "autor": "Simone Weil",
+    "frase": "A coragem não é a ausência de medo, mas a capacidade de agir apesar dele.",
+    "fonte": "A Gravidade e a Graça ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "filosofos"
+   },
+   {
+    "autor": "Simone Weil",
+    "frase": "A raiz da vida moral está na atenção ao outro.",
+    "fonte": "A Gravidade e a Graça ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "filosofos"
+   },
+   {
+    "autor": "Júlio César",
+    "frase": "A experiência é a professora de todas as coisas.",
+    "fonte": "Comentários de Júlio César ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Júlio César",
+    "frase": "É mais fácil encontrar homens dispostos a morrer do que encontrar aqueles dispostos a suportar a dor com paciência.",
+    "fonte": "Comentários de Júlio César ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Nelson Mandela",
+    "frase": "A verdadeira característica de uma sociedade livre é que ela pode ser criticada livremente.",
+    "fonte": "Longo Caminho para a Liberdade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Konrad Adenauer",
+    "frase": "A história é a soma das coisas que poderiam ter sido evitadas.",
+    "fonte": "Memórias de Konrad Adenauer ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Konrad Adenauer",
+    "frase": "A paz não pode ser mantida pela força, mas pela compreensão.",
+    "fonte": "Memórias de Konrad Adenauer ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Konrad Adenauer",
+    "frase": "A Europa deve ser construída sobre a reconciliação e a cooperação.",
+    "fonte": "Memórias de Konrad Adenauer ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Mikhail Gorbachev",
+    "frase": "A paz não é a unidade na semelhança, mas a unidade na diversidade.",
+    "fonte": "Perestroika ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Mikhail Gorbachev",
+    "frase": "Precisamos de democracia como precisamos de ar para respirar.",
+    "fonte": "Perestroika ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Mikhail Gorbachev",
+    "frase": "A vida pune aqueles que chegam tarde demais.",
+    "fonte": "Perestroika ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Mikhail Gorbachev",
+    "frase": "Acredito que a responsabilidade de cada geração é construir um mundo melhor.",
+    "fonte": "Perestroika ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Madre Teresa de Calcutá",
+    "frase": "A vida é uma oportunidade, agarre-a.",
+    "fonte": "A Simple Path ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Henry Ford",
+    "frase": "Um negócio que não faz nada além de dinheiro é um negócio pobre.",
+    "fonte": "My Life and Work ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "Cuide dos seus funcionários e eles cuidarão dos seus clientes.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "As oportunidades de negócio são como ônibus: sempre há outro chegando.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "Não aprenda regras demais. Aprenda princípios.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "O negócio é simplesmente uma ideia para melhorar a vida das pessoas.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Richard Branson",
+    "frase": "Arrisque-se. É melhor tentar e falhar do que nunca saber o que poderia ter acontecido.",
+    "fonte": "Perdendo a Virgindade ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "empreendedorismo"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "A forma como uma questão é apresentada influencia a resposta das pessoas.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "As pessoas são influenciadas por atalhos mentais que nem sempre percebem.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "A confiança excessiva é uma das principais fontes de erro humano.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "A facilidade com que uma informação vem à mente influencia sua avaliação.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   },
+   {
+    "autor": "Daniel Kahneman",
+    "frase": "Erros previsíveis revelam padrões no modo como pensamos.",
+    "fonte": "Rápido e Devagar ou declaração pública registrada",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "manipulacao"
+   }
+  ],
+  "novas": []
+ },
+ "376355e->183c1e7": {
+  "removidas": [
+   {
+    "autor": "Elizabeth Stone",
+    "frase": "A maternidade é a única profissão em que o sucesso se mede pela capacidade de se tornar dispensável.",
+    "fonte": "Black Sheep and Kissing Cousins",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "familia"
+   }
+  ],
+  "novas": []
+ },
+ "6b63032->fb579b1": {
+  "removidas": [
+   {
+    "autor": "Morgan Housel",
+    "frase": "A independência financeira é ter controle sobre seu tempo.",
+    "fonte": "A Psicologia Financeira",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "financas"
+   },
+   {
+    "autor": "Warren Bennis",
+    "frase": "A confiança é o combustível da liderança.",
+    "fonte": "On Becoming a Leader",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "lideranca"
+   },
+   {
+    "autor": "Marco Aurélio",
+    "frase": "A vida de um homem é aquilo que seus pensamentos fazem dela.",
+    "fonte": "Meditações, Livro IV",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "vida"
+   },
+   {
+    "autor": "Nicolau Maquiavel",
+    "frase": "Todos veem aquilo que você parece ser, poucos conhecem aquilo que você realmente é.",
+    "fonte": "O Príncipe",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "politica"
+   },
+   {
+    "autor": "Buda",
+    "frase": "Melhor do que mil versos sem significado é uma única frase que traz paz ao ouvinte.",
+    "fonte": "Dhammapada, 100–101",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Krishna",
+    "frase": "O homem alcança a perfeição quando realiza seu dever com desapego.",
+    "fonte": "Bhagavad Gita, 18.45–46",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Krishna",
+    "frase": "Aquele que conquistou a mente alcançou um amigo; aquele que não a conquistou possui um inimigo.",
+    "fonte": "Bhagavad Gita, 6.6",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Krishna",
+    "frase": "Aquele que abandona o egoísmo e o apego encontra a paz.",
+    "fonte": "Bhagavad Gita",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Lao Tsé",
+    "frase": "Aquele que sabe contentar-se é sempre feliz.",
+    "fonte": "Tao Te Ching, 33 e 46",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Lao Tsé",
+    "frase": "O sábio não disputa, por isso ninguém pode disputar com ele.",
+    "fonte": "Tao Te Ching, 22 e 66",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Alcorão 8:46",
+    "frase": "E sejam firmes, pois Deus está com os perseverantes.",
+    "fonte": "Alcorão 8:46 · Alcorão — tradução de Samir El Hayek (edição brasileira de referência)",
+    "procedencia": "",
+    "status": "B",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Krishna",
+    "frase": "Aquele que abandona o apego e realiza suas ações com equilíbrio alcança a paz.",
+    "fonte": "Bhagavad Gita",
+    "procedencia": "",
+    "status": "A-",
+    "categoria": "fe"
+   },
+   {
+    "autor": "Marco Aurélio",
+    "frase": "O obstáculo à ação faz avançar a ação. O que está no caminho torna-se o caminho.",
+    "fonte": "Meditações, Livro V",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "dificeis"
+   },
+   {
+    "autor": "Sêneca",
+    "frase": "Quem recebe um benefício com gratidão já pagou a primeira parcela.",
+    "fonte": "Sobre os Benefícios, II",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "gratidao"
+   },
+   {
+    "autor": "Plutarco",
+    "frase": "A mente não é um vaso a ser enchido, mas uma lenha a ser acesa.",
+    "fonte": "Sobre o Ouvir",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "educacao"
+   },
+   {
+    "autor": "Santos Dumont",
+    "frase": "Não é a máquina que voa. É o homem.",
+    "fonte": "Registrado em seus escritos e depoimentos sobre a aviação",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "motivacao"
+   },
+   {
+    "autor": "Lima Barreto",
+    "frase": "A pátria que quisera ter era um mito; um fantasma criado por ele no silêncio de seu gabinete.",
+    "fonte": "Triste Fim de Policarpo Quaresma (1915), reflexão final do protagonista",
+    "procedencia": "",
+    "status": "A",
+    "categoria": "reflexao"
+   }
+  ],
+  "novas": [
+   {
+    "autor": "Lima Barreto",
+    "frase": "A pátria que quisera ter era um mito; era um fantasma criado por ele no silêncio do seu gabinete.",
+    "fonte": "Triste Fim de Policarpo Quaresma (1915), parte III, capítulo V",
+    "procedencia": "Pensamento do protagonista, narrado em terceira pessoa; não é fala de Lima Barreto em primeira pessoa. Redação conforme a transcrição da Wikisource; a versão reproduzida em prova do ENEM 2012 traz “um fantasma” e “de seu gabinete”.",
+    "status": "A",
+    "categoria": "reflexao"
+   }
+  ]
+ }
+}

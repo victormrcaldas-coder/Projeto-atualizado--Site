@@ -1,0 +1,475 @@
+﻿ordem,nome,papel,frases,verificaveis,genericas,pendentes,obras,panorama,concluido
+1,Dale Carnegie,Escritor e palestrante (1888–1955),21,0,19,0,2,curado,true
+2,Erich Fromm,Psicanalista alemão (1900–1980),23,1,18,0,3,curado,true
+3,Henry David Thoreau,Escritor e naturalista norte-americano (1817–1862),17,0,15,0,1,curado,true
+4,Benjamin Graham,Investidor e professor americano (1894–1976),16,0,14,0,2,curado,true
+5,Elisabeth Kübler-Ross,Autor do acervo MeMotiva,3,2,0,0,0,ausente,false
+6,G. K. Chesterton,Autor do acervo MeMotiva,3,2,0,0,0,ausente,false
+7,Donald Winnicott,Autor do acervo MeMotiva,3,2,0,0,0,ausente,false
+8,Jean-Jacques Rousseau,Filósofo genebrino (1712–1778),15,0,15,0,4,curado,true
+9,Albert Einstein,Físico alemão (1879–1955),12,5,0,0,5,historia,false
+10,Baruch Spinoza,Filósofo holandês (1632–1677),9,3,6,0,2,historia,false
+11,Meister Eckhart,Religiosos,2,0,0,0,0,ausente,false
+12,Darcy Ribeiro,Educadores,2,1,0,0,0,ausente,false
+13,Anísio Teixeira,Educadores,2,1,0,0,0,ausente,false
+14,John Bowlby,Autor do acervo MeMotiva,2,1,0,0,0,ausente,false
+15,Michelangelo,Escultor  pintor e arquiteto italiano (1475–1564),2,0,0,0,3,ausente,false
+16,Carl Sagan,Astrônomo americano (1934–1996),9,3,4,0,5,historia,false
+17,Ray Dalio,Investidor americano (1949–),11,2,0,0,2,historia,false
+18,Bíblia Sagrada,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+19,Provérbio Chinês,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+20,Miqueias 6:8,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+21,Henry Stanley Haskins,Autor do acervo MeMotiva,1,1,0,0,0,ausente,false
+22,Primeira Carta de Pedro 5:7,Autor do acervo MeMotiva,1,1,0,0,0,ausente,false
+23,Levítico 19:18,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+24,Torá,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+25,Rig Veda 1.164.46,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+26,Shimon HaTzadik,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+27,1 Samuel 16:7,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+28,Katha Upanishad 2:3:14,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+29,Ben Sirá,Autor do acervo MeMotiva,1,0,0,0,0,ausente,false
+30,Epicteto,Filósofo estoico (c. 50–135 d.C.),29,26,1,0,2,curado,true
+31,Viktor Frankl,Psiquiatra austríaco (1905–1997),27,1,0,0,2,curado,true
+32,Warren Buffett,Investidor americano (1930–),38,2,0,0,2,curado,true
+33,Marco Aurélio,Imperador romano e estoico (121–180),46,45,0,0,1,curado,true
+34,Confúcio,Pensador chinês (551–479 a.C.),21,10,0,0,1,curado,true
+35,Martin Luther King Jr.,Pastor e líder americano (1929–1968),22,4,0,0,3,curado,true
+36,Aristóteles,Filósofo grego (384–322 a.C.),55,53,0,0,7,curado,true
+37,Sêneca,Filósofo e senador romano (4 a.C.–65 d.C.),50,38,0,0,7,curado,true
+38,Buda,Fundador do budismo (c. 563–483 a.C.),53,41,0,0,3,curado,true
+39,Lao Tsé,Pensador chinês (séc. VI a.C.),58,50,0,0,1,curado,true
+40,Cícero,Orador e cônsul romano (106–43 a.C.),23,20,0,0,8,curado,true
+41,William Shakespeare,Dramaturgo inglês (1564–1616),51,38,0,0,12,curado,true
+42,Kahlil Gibran,Poeta e pintor libanês (1883–1931),59,0,0,0,3,curado,true
+43,Michel de Montaigne,Pensador francês (1533–1592),34,26,0,0,1,curado,true
+44,Ralph Waldo Emerson,Ensaísta americano (1803–1882),21,0,0,0,3,curado,true
+45,Jane Austen,Escritora inglesa (1775–1817),27,0,0,0,4,curado,true
+46,Charlie Munger,Investidor americano (1924–2023),20,1,0,0,2,curado,true
+47,Epicuro,Filósofo grego (341–270 a.C.),25,19,0,0,3,curado,true
+48,Daniel Goleman,Psicólogo americano (1946–),10,2,0,0,2,historia,false
+49,Jesus Cristo,Figura central do cristianismo (séc. I),31,0,0,0,8,curado,true
+50,Krishna,Figura central do Bhagavad Gita (tradição hindu),61,52,0,0,1,curado,true
+51,Morgan Housel,Escritor e sócio de fundo de investimentos (1983–),24,0,0,0,2,curado,true
+52,Franz Kafka,Autor do acervo MeMotiva,0,0,0,0,3,ausente,false
+53,Gabriel García Márquez,Autor do acervo MeMotiva,0,0,0,0,3,ausente,false
+54,Homero,Autor do acervo MeMotiva,0,0,0,0,2,ausente,false
+55,Dante Alighieri,Autor do acervo MeMotiva,0,0,0,0,1,ausente,false
+56,Antoine Lavoisier,Autor do acervo MeMotiva,0,0,0,0,1,ausente,false
+57,Simone de Beauvoir,Filósofa francesa (1908–1986),14,0,10,0,5,curado,true
+58,Platão,Filósofo grego (c. 428–348 a.C.),9,8,0,0,4,historia,false
+59,Carl Rogers,Psicólogo norte-americano (1902–1987),19,0,0,0,2,curado,true
+60,Philip Kotler,Professor de marketing (1931–),19,0,0,0,2,curado,true
+61,Milton Friedman,Economista americano (1912–2006),6,1,5,0,2,historia,false
+62,Ayrton Senna,Piloto brasileiro (1960–1994),8,0,0,0,1,historia,false
+63,Helen Keller,Escritora e ativista (1880–1968),13,0,10,0,2,curado,true
+64,Guimarães Rosa,Escritor e diplomata brasileiro (1908–1967),8,5,0,0,3,historia,false
+65,Rumi,Poeta e místico persa (1207–1273),6,0,4,0,2,historia,false
+66,Profeta Muhammad,Profeta do Islã (c. 570–632),8,0,0,0,2,historia,false
+67,Adam Smith,Filósofo moral e economista escocês (1723–1790),12,0,12,0,2,curado,true
+68,Nelson Mandela,Líder sul-africano (1918–2013),17,3,0,0,3,curado,true
+69,Luiza Trajano,Empresária brasileira (1951–),7,0,0,0,1,historia,false
+70,Carlos Drummond de Andrade,Poeta brasileiro (1902–1987),7,5,0,0,4,historia,false
+71,John D. Rockefeller,Industrial americano (1839–1937),7,1,0,0,1,historia,false
+72,Howard Marks,Investidor americano (1946–),7,1,0,0,2,historia,false
+73,Amartya Sen,Economista indiano (1933–),5,1,4,0,2,historia,false
+74,Kofi Annan,Diplomata ganês (1938–2018),7,0,0,0,1,historia,false
+75,Benjamin Franklin,Inventor  escritor e diplomata (1706–1790),17,0,0,0,1,curado,true
+76,Mary Wollstonecraft,Escritora e filósofa britânica (1759–1797),17,0,0,0,1,curado,true
+77,Maria Montessori,Médica e educadora italiana (1870–1952),6,2,1,0,2,historia,false
+78,John Dewey,Filósofo e educador americano (1859–1952),5,1,3,0,2,historia,false
+79,Paulo Freire,Educador brasileiro (1921–1997),16,5,0,0,3,curado,true
+80,Friedrich Nietzsche,Filósofo alemão (1844–1900),16,16,0,0,5,curado,true
+81,Graciliano Ramos,Escritor brasileiro (1892–1953),6,4,0,0,4,historia,false
+82,Vincent van Gogh,Pintor holandês (1853–1890),6,6,0,0,3,historia,false
+83,Charles Chaplin,Cineasta e ator britânico (1889–1977),6,2,0,0,3,historia,false
+84,Johann Wolfgang von Goethe,Escritor alemão (1749–1832),6,6,0,0,3,historia,false
+85,Mário Quintana,Poeta brasileiro (1906–1994),6,3,0,0,3,historia,false
+86,Warren Bennis,Pesquisador de liderança (1925–2014),16,0,0,0,1,curado,true
+87,Steve Jobs,Cofundador da Apple (1955–2011),15,0,0,0,2,curado,true
+88,Stephen Hawking,Físico britânico (1942–2018),5,3,0,0,3,historia,false
+89,Muhammad Ali,Boxeador americano (1942–2016),5,1,0,0,2,historia,false
+90,Jack Ma,Empresário chinês (1964–),5,0,0,0,1,historia,false
+91,Simón Bolívar,Militar e estadista venezuelano (1783–1830),5,2,0,0,2,historia,false
+92,Michel Foucault,Filósofo francês (1926–1984),5,4,0,0,3,historia,false
+93,Getúlio Vargas,Presidente brasileiro (1882–1954),5,1,0,0,1,historia,false
+94,Mao Tsé-Tung,Líder chinês (1893–1976),5,0,0,0,3,historia,false
+95,David Hume,Filósofo escocês (1711–1776),10,0,10,0,2,curado,true
+96,Robert Emmons,Psicólogo  pesquisador da gratidão (1958–),10,0,9,0,0,curado,true
+97,Michael Porter,Professor de estratégia competitiva (1947–),10,1,9,0,2,curado,true
+98,Anne Frank,Escritora alemã (1929–1945),4,3,0,0,1,historia,false
+99,Mahatma Gandhi,Líder indiano (1869–1948),14,0,0,0,3,curado,true
+100,Chico Xavier,Médium brasileiro (1910–2002),4,0,0,0,3,historia,false
+101,Fernando Pessoa,Poeta português (1888–1935),14,8,0,0,7,curado,true
+102,Sun Tzu,Estrategista chinês (séc. V a.C.),14,0,0,0,1,curado,true
+103,Cecília Meireles,Poeta e educadora brasileira (1901–1964),4,3,0,0,3,historia,false
+104,Thich Nhat Hanh,Monge budista vietnamita (1926–2022),4,1,0,0,2,historia,false
+105,Winston Churchill,Estadista britânico (1874–1965),14,3,0,0,3,curado,true
+106,Rui Barbosa,Jurista e político brasileiro (1849–1923),14,0,0,0,2,curado,true
+107,Sigmund Freud,Neurologista austríaco (1856–1939),4,3,0,0,3,historia,false
+108,Leonardo da Vinci,Artista e inventor italiano (1452–1519),4,0,0,0,4,historia,false
+109,Santo Agostinho,Teólogo norte-africano (354–430),4,3,0,0,2,historia,false
+110,Manuel Bandeira,Poeta brasileiro (1886–1968),4,2,0,0,3,historia,false
+111,Vinicius de Moraes,Poeta e compositor brasileiro (1913–1980),4,3,0,0,3,historia,false
+112,Peter Lynch,Investidor americano (1944–),14,0,0,0,2,curado,true
+113,Jeff Bezos,Fundador da Amazon (1964–),14,0,0,0,3,curado,true
+114,Alexis de Tocqueville,Pensador político francês (1805–1859),14,1,0,0,1,curado,true
+115,Isaac Newton,Físico e matemático inglês (1643–1727),3,2,1,0,2,historia,false
+116,Robert Greene,Escritor norte-americano (1959–),9,0,9,0,3,curado,true
+117,J.K. Rowling,Escritora britânica (1965–),3,3,0,0,3,historia,false
+118,Ariano Suassuna,Escritor brasileiro (1927–2014),3,0,0,0,3,historia,false
+119,Peter Drucker,Pensador da administração (1909–2005),13,2,0,0,7,curado,true
+120,Charles Darwin,Naturalista britânico (1809–1882),3,2,0,0,3,historia,false
+121,Florbela Espanca,Poeta portuguesa (1894–1930),3,2,0,0,3,historia,false
+122,George Orwell,Escritor britânico (1903–1950),3,3,0,0,4,historia,false
+123,Václav Havel,Dramaturgo e presidente tcheco (1936–2011),3,2,0,0,2,historia,false
+124,John Wooden,Educadores,13,0,0,0,1,curado,true
+125,Ludwig van Beethoven,Compositor alemão (1770–1827),2,1,1,0,4,historia,false
+126,Malala Yousafzai,Ativista paquistanesa (1997–),12,2,0,0,1,curado,true
+127,Oprah Winfrey,Apresentadora e empresária (1954–),2,0,0,0,0,historia,false
+128,Rosa Parks,Ativista americana (1913–2005),2,1,0,0,1,historia,false
+129,Coco Chanel,Estilista francesa (1883–1971),2,0,0,0,0,historia,false
+130,Charles Dickens,Escritor inglês (1812–1870),12,0,0,0,5,curado,true
+131,Francisco de Assis,Frade italiano (1181–1226),2,0,0,0,2,historia,false
+132,Andrew Carnegie,Industrial escocês-americano (1835–1919),2,1,0,0,2,historia,false
+133,John Bogle,Investidor americano (1929–2019),12,12,0,0,2,curado,true
+134,Malcolm X,Ativista americano (1925–1965),2,2,0,0,2,historia,false
+135,Pelé,Futebolista brasileiro (1940–2022),2,0,0,0,1,historia,false
+136,Grace Hopper,Cientista da computação americana (1906–1992),2,1,0,0,2,historia,false
+137,Jane Goodall,Primatologista britânica (1934–),2,1,0,0,2,historia,false
+138,Galileu Galilei,Astrônomo italiano (1564–1642),2,1,0,0,2,historia,false
+139,Nikola Tesla,Engenheiro sérvio-americano (1856–1943),2,0,0,0,2,historia,false
+140,Miguel de Cervantes,Escritor espanhol (1547–1616),2,2,0,0,2,historia,false
+141,Jorge Amado,Escritor brasileiro (1912–2001),2,2,0,0,3,historia,false
+142,Walt Disney,Animador americano (1901–1966),2,0,0,0,2,historia,false
+143,John Maynard Keynes,Economista britânico (1883–1946),2,2,0,0,2,historia,false
+144,Martinho Lutero,Teólogo alemão (1483–1546),2,1,0,0,2,historia,false
+145,Frederick Douglass,Abolicionista americano (1818–1895),2,2,0,0,2,historia,false
+146,Pablo Picasso,Pintor espanhol (1881–1973),2,0,0,0,2,historia,false
+147,Jean Piaget,Psicólogo suíço (1896–1980),2,1,0,0,2,historia,false
+148,Michael Jordan,Basquetebolista americano (1963–),2,2,0,0,1,historia,false
+149,W. Edwards Deming,Estatístico e consultor de qualidade (1900–1993),12,0,0,0,3,curado,true
+150,Robert Cialdini,Psicólogo social e pesquisador da persuasão (1945–),12,0,0,0,2,curado,true
+151,Apóstolo Paulo,Apóstolo e autor de cartas do Novo Testamento (séc. I),12,0,0,0,3,curado,true
+152,Barbara McClintock,Geneticista americana (1902–1992),1,0,1,0,1,historia,false
+153,Antoine de Saint-Exupéry,Aviador e escritor francês (1900–1944),9,2,5,0,3,curado,true
+154,Clayton Christensen,Professor de administração (1952–2020),8,0,7,0,2,curado,true
+155,Nassim Nicholas Taleb,Ensaísta e ex-operador de mercado (1960–),8,0,7,0,3,curado,true
+156,Santos Dumont,Inventor brasileiro (1873–1932),1,0,0,0,3,historia,false
+157,Zumbi dos Palmares,Líder quilombola (1655–1695),1,0,0,0,1,historia,false
+158,Wangari Maathai,Bióloga e ativista queniana (1940–2011),1,0,0,0,2,historia,false
+159,Tarsila do Amaral,Pintora brasileira (1886–1973),1,1,0,0,3,historia,false
+160,Rosalind Franklin,Química britânica (1920–1958),1,1,0,0,1,historia,false
+161,Oswaldo Cruz,Médico sanitarista brasileiro (1872–1917),1,0,0,0,1,historia,false
+162,Lima Barreto,Escritor brasileiro (1881–1922),1,1,0,0,3,historia,false
+163,Howard Schultz,Empresário americano (1953–),1,1,0,0,1,historia,false
+164,Melinda French Gates,Filantropa americana (1964–),1,1,0,0,1,historia,false
+165,Abílio Diniz,Empresário brasileiro (1936–2024),1,0,0,0,2,historia,false
+166,Desmond Tutu,Arcebispo sul-africano (1931–2021),1,0,0,0,2,historia,false
+167,Harriet Tubman,Abolicionista americana (c. 1822–1913),1,0,0,0,1,historia,false
+168,Marielle Franco,Socióloga e vereadora brasileira (1979–2018),1,0,0,0,1,historia,false
+169,Rosa Luxemburgo,Revolucionária polonesa-alemã (1871–1919),1,1,0,0,3,historia,false
+170,Wolfgang Amadeus Mozart,Compositor austríaco (1756–1791),1,0,0,0,3,historia,false
+171,Candido Portinari,Pintor brasileiro (1903–1962),1,0,0,0,2,historia,false
+172,Maria Callas,Soprano greco-americana (1923–1977),1,0,0,0,2,historia,false
+173,Nise da Silveira,Psiquiatra brasileira (1905–1999),1,0,0,0,2,historia,false
+174,Serena Williams,Tenista americana (1981–),1,0,0,0,1,historia,false
+175,Jesse Owens,Atleta americano (1913–1980),1,1,0,0,1,historia,false
+176,Nicolau Maquiavel,Diplomata e pensador político florentino (1469–1527),11,3,0,0,2,curado,true
+177,Jim Collins,Pesquisador de gestão (1958–),8,0,6,0,2,curado,true
+178,Stephen R. Covey,Autor e educador norte-americano (1932–2012),11,0,0,0,2,curado,true
+179,Amelia Earhart,Aviadora americana (1897–1937),0,0,0,0,0,historia,false
+180,Sócrates,Filósofo grego (c. 470–399 a.C.),10,2,0,0,2,curado,true
+181,Bertrand Russell,Filósofo e matemático britânico (1872–1970),10,4,0,0,4,curado,true
+182,Abraham Lincoln,Presidente americano (1809–1865),10,3,0,0,3,curado,true
+183,Lise Meitner,Física austríaca (1878–1968),0,0,0,0,1,historia,false
+184,Chien-Shiung Wu,Física chinesa-americana (1912–1997),0,0,0,0,1,historia,false
+185,Hipátia,Matemática e filósofa grega (c. 360–415),0,0,0,0,1,historia,false
+186,Katherine Johnson,Matemática americana (1918–2020),0,0,0,0,1,historia,false
+187,Richard Branson,Empresário britânico (1950–),10,0,0,0,1,curado,true
+188,Colin Powell,General e secretário de Estado (1937–2021),10,0,0,0,3,curado,true
+189,John Stuart Mill,Filósofo e economista britânico (1806–1873),10,5,0,0,3,curado,true
+190,Chimamanda Ngozi Adichie,Escritora nigeriana (1977–),7,1,5,0,3,curado,true
+191,Henry Ford,Industrial americano (1863–1947),9,0,0,0,1,curado,true
+192,Daniel Kahneman,Psicólogo israelense (1934–2024),9,0,0,0,3,curado,true
+193,Bill Gates,Empresário e filantropo norte-americano (1955–),9,0,0,0,2,curado,true
+194,Philip Fisher,Investidor norte-americano (1907–2004),9,0,0,0,1,curado,true
+195,George S. Clason,Escritor e empresário norte-americano (1874–1957),9,0,0,0,1,curado,true
+196,Max Weber,Sociólogo  jurista e economista alemão (1864–1920),6,0,6,0,3,curado,true
+197,Ken Blanchard,Escritor e consultor norte-americano de liderança (1939–),6,0,6,0,1,curado,true
+198,Martin Seligman,Psicólogo  fundador da psicologia positiva (1942–),6,0,5,0,2,curado,true
+199,Simon Sinek,Autor e palestrante britânico-americano (1973–),6,0,5,0,2,curado,true
+200,Jack Welch,Executivo norte-americano (1935–2020),6,0,5,0,2,curado,true
+201,Michelle Obama,Advogada e ex-primeira-dama (1964–),8,2,0,0,2,curado,true
+202,Carl Gustav Jung,Psiquiatra suíço (1875–1961),8,3,0,0,4,curado,true
+203,Machado de Assis,Escritor brasileiro (1839–1908),8,6,0,0,5,curado,true
+204,Oscar Wilde,Escritor irlandês (1854–1900),8,6,0,0,4,curado,true
+205,Fiódor Dostoiévski,Escritor russo (1821–1881),8,5,0,0,4,curado,true
+206,Rainer Maria Rilke,Poeta austríaco (1875–1926),8,2,0,0,3,curado,true
+207,John F. Kennedy,Presidente americano (1917–1963),8,1,0,0,2,curado,true
+208,Francis Bacon,Filósofos,8,7,0,0,2,curado,true
+209,Thomas Hobbes,Filósofo político inglês (1588–1679),6,0,4,0,2,curado,true
+210,Theodore Roosevelt,Presidente dos Estados Unidos (1858–1919),8,1,0,0,0,curado,true
+211,Sam Walton,Fundador do Walmart (1918–1992),8,0,0,0,1,curado,true
+212,Baltasar Gracián,Jesuíta e escritor espanhol (1601–1658),8,0,0,0,2,curado,true
+213,Napoleão Bonaparte,Militar e imperador francês (1769–1821),8,0,0,0,3,curado,true
+214,J. R. R. Tolkien,Escritor e filólogo britânico (1892–1973),5,0,5,0,4,curado,true
+215,Henry Kissinger,Diplomata e cientista político norte-americano (1923–2023),5,0,5,0,0,curado,true
+216,Edward Bernays,Publicitário e teórico das relações públicas austríaco-americano (1891–1995),5,0,5,0,2,curado,true
+217,Maya Angelou,Escritora americana (1928–2014),7,4,0,0,4,curado,true
+218,Albert Camus,Escritor franco-argelino (1913–1960),7,3,0,0,4,curado,true
+219,Hannah Arendt,Pensadora política alemã (1906–1975),7,5,0,0,3,curado,true
+220,Montesquieu,Pensador político francês (1689–1755),7,0,0,0,2,curado,true
+221,Mary Parker Follett,Teórica da administração e cientista social norte-americana (1868–1933),7,0,0,0,3,curado,true
+222,John Kotter,Professor e pesquisador norte-americano de liderança (1947–),7,7,0,0,6,curado,true
+223,Elon Musk,Empresário sul-africano naturalizado norte-americano (1971–),7,0,0,0,1,curado,true
+224,Gustave Le Bon,Psicólogo social francês (1841–1931),7,0,0,0,1,curado,true
+225,Philip Zimbardo,Psicólogo social norte-americano (1933–2024),7,0,0,0,1,curado,true
+226,Marshall McLuhan,Teórico da comunicação canadense (1911–1980),7,0,0,0,1,curado,true
+227,Dalai Lama,Líder espiritual tibetano (1935–),6,3,1,0,3,curado,true
+228,Audre Lorde,Poeta e ativista norte-americana (1934–1992),5,0,3,0,2,curado,true
+229,Clarice Lispector,Escritora brasileira (1920–1977),6,2,0,0,5,curado,true
+230,Voltaire,Escritor francês (1694–1778),6,5,0,0,4,curado,true
+231,Rubem Alves,Educador  teólogo e escritor brasileiro (1933–2014),6,2,0,0,2,curado,true
+232,Ronald Reagan,Ator e político norte-americano  40º presidente dos Estados Unidos (1911–2004),6,0,0,0,0,curado,true
+233,Thomas Edison,Inventor e empresário norte-americano (1847–1931),6,0,0,0,2,curado,true
+234,Franklin D. Roosevelt,Político norte-americano  32º presidente dos Estados Unidos (1882–1945),6,0,0,0,0,curado,true
+235,Ruth Bader Ginsburg,Juíza da Suprema Corte dos EUA (1933–2020),6,1,0,0,1,curado,true
+236,Heráclito,Filósofo pré-socrático grego (séc. VI–V a.C.),6,0,0,0,1,curado,true
+237,José Ortega y Gasset,Filósofo espanhol (1883–1955),4,0,4,0,2,curado,true
+238,Napoleon Hill,Escritor norte-americano de autoajuda (1883–1970),6,0,0,0,1,curado,true
+239,Hillel,Sábio judeu do período do Segundo Templo (séc. I a.C.),6,0,0,0,2,curado,true
+240,Ben Zoma,Sábio judeu do período tanaítico (séc. II),6,0,0,0,1,curado,true
+241,Norberto Bobbio,Filósofo político e jurista italiano (1909–2004),4,0,4,0,2,curado,true
+242,Erving Goffman,Sociólogo canadense (1922–1982),4,0,4,0,3,curado,true
+243,Marshall Rosenberg,Psicólogo  criador da Comunicação Não Violenta (1934–2015),6,0,0,0,1,curado,true
+244,Tomás de Aquino,Teólogo e filósofo italiano (1225–1274),6,0,0,0,1,curado,true
+245,Albert Bandura,Psicólogo canadense-americano (1925–2021),4,0,4,0,1,curado,true
+246,Pierre Bourdieu,Sociólogo francês (1930–2002),4,0,4,0,3,curado,true
+247,Guy Debord,Escritor  cineasta e teórico francês (1931–1994),6,0,0,0,1,curado,true
+248,Chris Voss,Ex-negociador de reféns do FBI (1957–),6,0,0,0,1,curado,true
+249,Jonathan Haidt,Psicólogo social norte-americano (1963–),4,0,4,0,2,curado,true
+250,Karl Marx,Filósofo e economista alemão (1818–1883),6,5,0,0,2,curado,true
+251,Friedrich Hayek,Economista e filósofo político austro-britânico (1899–1992),4,0,4,0,3,curado,true
+252,Frida Kahlo,Pintora mexicana (1907–1954),5,1,1,0,3,curado,true
+253,Theodore Levitt,Economista e professor de marketing alemão-americano (1925–2006),4,0,3,0,1,curado,true
+254,Cora Coralina,Poeta e doceira (1889–1985),5,0,0,0,4,curado,true
+255,Arthur Schopenhauer,Filósofo alemão (1788–1860),5,2,0,0,3,curado,true
+256,Søren Kierkegaard,Filósofo dinamarquês (1813–1855),5,5,0,0,3,curado,true
+257,Victor Hugo,Escritor francês (1802–1885),5,2,0,0,4,curado,true
+258,Liev Tolstói,Escritor russo (1828–1910),5,3,0,0,5,curado,true
+259,Luís de Camões,Poeta português (c. 1524–1580),5,4,0,0,3,curado,true
+260,Madre Teresa de Calcutá,Religiosa albanesa-indiana (1910–1997),5,0,0,0,3,curado,true
+261,Gerda Lerner,Historiadora austríaca-americana (1920–2013),5,0,0,0,2,curado,true
+262,Nísia Floresta,Educadora e escritora brasileira (1810–1885),5,0,0,0,1,curado,true
+263,Simone Weil,Filósofa e mística francesa (1909–1943),5,1,0,0,2,curado,true
+264,Jim Rohn,Palestrante e escritor norte-americano de desenvolvimento pessoal (1930–2009),5,0,0,0,1,curado,true
+265,Edith Eger,Psicologia,5,0,0,0,2,curado,true
+266,Larry Page,Empresário e cientista da computação norte-americano (1973–),5,0,0,0,0,curado,true
+267,Eric Ries,Empreendedor e escritor norte-americano (1978–),5,0,0,0,1,curado,true
+268,Walter Lippmann,Jornalista e analista político norte-americano (1889–1974),5,0,0,0,2,curado,true
+269,Roger Fisher e William Ury,Especialistas norte-americanos em negociação,5,0,0,0,2,curado,true
+270,Ray Kroc,Empresário norte-americano (1902–1984),5,0,0,0,1,curado,true
+271,James Kouzes e Barry Posner,Pesquisadores norte-americanos de liderança,5,0,0,0,1,curado,true
+272,Bernard Montgomery,Marechal britânico (1887–1976),5,0,0,0,1,curado,true
+273,Júlio César,General e estadista romano (100 a.C.–44 a.C.),5,0,0,0,2,curado,true
+274,Margaret Thatcher,Política britânica  primeira-ministra do Reino Unido (1925–2013),5,0,0,0,0,curado,true
+275,Reed Hastings,Empresário norte-americano (1960–),5,0,0,0,1,curado,true
+276,William James,Filósofo e psicólogo norte-americano (1842–1910),5,3,0,0,0,curado,true
+277,Marie Curie,Física e química polonesa (1867–1934),3,0,2,0,2,curado,true
+278,Immanuel Kant,Filósofo alemão (1724–1804),4,2,0,0,4,curado,true
+279,Virginia Woolf,Escritora britânica (1882–1941),4,2,0,0,5,curado,true
+280,bell hooks,Escritora e educadora americana (1952–2021),4,1,0,0,4,curado,true
+281,John Locke,Filósofo inglês (1632–1704),4,3,0,0,4,curado,true
+282,Ailton Krenak,Líder indígena brasileiro (1953–),4,3,0,0,2,curado,true
+283,Thomas Jefferson,Político e escritor norte-americano  3º presidente dos Estados Unidos (1743–1826),4,0,0,0,2,curado,true
+284,François de La Rochefoucauld,Escritor e moralista francês (1613–1680),4,0,0,0,1,curado,true
+285,Betty Friedan,Escritora e ativista feminista norte-americana (1921–2006),4,0,0,0,1,curado,true
+286,Susan B. Anthony,Ativista norte-americana pelo sufrágio feminino (1820–1906),4,0,0,0,0,curado,true
+287,Edmund Burke,Político e pensador irlandês-britânico (1729–1797),4,0,0,0,2,curado,true
+288,Solomon Asch,Psicólogo social polonês-americano (1907–1996),4,4,0,0,1,curado,true
+289,Zenão de Cítio,Filósofo grego  fundador do estoicismo (c. 334 a.C.–c. 262 a.C.),4,0,0,0,2,curado,true
+290,Scott Belsky,Empresário e escritor norte-americano (1980–),4,0,0,0,2,curado,true
+291,André Kostolany,Investidor e escritor húngaro-francês (1906–1999),4,0,0,0,1,curado,true
+292,Konrad Adenauer,Político alemão  primeiro chanceler da Alemanha Ocidental (1876–1967),4,0,0,0,0,curado,true
+293,Dan Ariely,Psicólogo e economista comportamental israelense-americano (1967–),4,0,0,0,1,curado,true
+294,John C. Maxwell,Autor e conferencista de liderança (1947–),4,2,0,0,1,curado,true
+295,Juscelino Kubitschek,Médico e político brasileiro  presidente do Brasil (1902–1976),4,0,0,0,0,curado,true
+296,Mikhail Gorbachev,Político soviético  último líder da União Soviética (1931–2022),4,0,0,0,1,curado,true
+297,Carl von Clausewitz,General e teórico militar prussiano (1780–1831),4,0,0,0,1,curado,true
+298,Tristan Harris,Especialista em ética da tecnologia norte-americano (1984–),4,0,0,0,0,curado,true
+299,José Saramago,Escritor português (1922–2010),4,4,0,0,4,curado,true
+300,Conceição Evaristo,Escritora brasileira (1946–),3,0,1,0,0,curado,true
+301,Vince Lombardi,Treinador de futebol americano (1913–1970),3,0,1,0,0,curado,true
+302,Mark Twain,Escritor americano (1835–1910),3,3,0,0,4,curado,true
+303,Eleanor Roosevelt,Diplomata americana (1884–1962),3,2,0,0,2,curado,true
+304,Jean-Paul Sartre,Filósofo e escritor francês (1905–1980),3,2,0,0,3,curado,true
+305,René Descartes,Filósofos,3,2,0,0,2,curado,true
+306,Blaise Pascal,Matemático  físico e filósofo francês (1623–1662),3,2,0,0,2,curado,true
+307,Robert Kiyosaki,Escritor e empresário norte-americano (1947–),3,1,0,0,1,curado,true
+308,George Washington,Militar e político norte-americano  1º presidente dos Estados Unidos (1732–1799),3,0,0,0,0,curado,true
+309,Sófocles,Dramaturgo grego (c. 496 a.C.–406 a.C.),3,0,0,0,3,curado,true
+310,C. S. Lewis,Escritor e professor britânico (1898–1963),3,0,0,0,3,curado,true
+311,Primo Levi,Químico e escritor italiano (1919–1987),3,2,0,0,0,curado,true
+312,Carol Dweck,Psicóloga norte-americana (1946–),3,1,0,0,0,curado,true
+313,Angela Duckworth,Psicóloga norte-americana (1970–),3,2,0,0,0,curado,true
+314,Seth Godin,Escritor e empreendedor de marketing (1960–),3,2,0,0,3,curado,true
+315,Agatha Christie,Escritora britânica (1890–1976),3,3,0,0,3,curado,true
+316,Jorge Luis Borges,Escritor argentino (1899–1986),3,3,0,0,3,curado,true
+317,Hermann Hesse,Escritor alemão naturalizado suíço (1877–1962),3,3,0,0,4,curado,true
+318,William Butler Yeats,Poeta irlandês (1865–1939),3,2,0,0,2,curado,true
+319,Robert Frost,Poeta norte-americano (1874–1963),3,2,0,0,1,curado,true
+320,Alfred Tennyson,Poeta britânico (1809–1892),3,3,0,0,1,curado,true
+321,Alexander Pope,Poeta britânico (1688–1744),3,3,0,0,2,curado,true
+322,Horácio,Poeta romano (65 a.C.–8 a.C.),3,3,0,0,3,curado,true
+323,Virgílio,Poeta romano (70 a.C.–19 a.C.),3,3,0,0,3,curado,true
+324,Augusto,Primeiro imperador romano (63 a.C.–14 d.C.),2,0,2,0,1,curado,true
+325,Reid Hoffman,Empresário e investidor norte-americano (1967–),2,0,1,0,2,curado,true
+326,Lord Byron,Poeta britânico (1788–1824),2,1,1,0,2,curado,true
+327,Charles de Gaulle,General e estadista francês (1890–1970),2,1,1,0,1,curado,true
+328,Alan Turing,Matemático britânico (1912–1954),2,2,0,0,2,curado,true
+329,Will Durant,Historiador e filósofo norte-americano (1885–1981),2,1,0,0,2,curado,true
+330,Rabi Tarfon,Sábio judeu do período tanaítico (séc. I–II),2,0,0,0,1,curado,true
+331,Ernest Hemingway,Escritor norte-americano (1899–1961),2,0,0,0,4,curado,true
+332,Lev Vygotsky,Psicólogo soviético (1896–1934),2,0,0,0,2,curado,true
+333,Booker T. Washington,Educador norte-americano (1856–1915),2,1,0,0,0,curado,true
+334,Tom Peters,Escritor e consultor de gestão norte-americano (1942–),2,0,0,0,1,curado,true
+335,Abraham Maslow,Psicólogo norte-americano (1908–1970),2,1,0,0,0,curado,true
+336,Mihaly Csikszentmihalyi,Psicólogo húngaro-americano (1934–2021),2,1,0,0,1,curado,true
+337,Sojourner Truth,Abolicionista e ativista norte-americana (c. 1797–1883),2,2,0,0,0,curado,true
+338,Peter Thiel,Empresário e investidor alemão-americano (1967–),2,1,0,0,1,curado,true
+339,Guy Kawasaki,Empresário e escritor norte-americano (1954–),2,1,0,0,1,curado,true
+340,Marguerite Yourcenar,Escritora belga-francesa naturalizada americana (1903–1987),2,2,0,0,2,curado,true
+341,Marcel Proust,Escritor francês (1871–1922),2,2,0,0,1,curado,true
+342,Rabindranath Tagore,Poeta e polímata indiano (1861–1941),2,2,0,0,2,curado,true
+343,Robert Louis Stevenson,Escritor escocês (1850–1894),2,2,0,0,2,curado,true
+344,Aldous Huxley,Escritor britânico (1894–1963),2,2,0,0,2,curado,true
+345,Gustave Flaubert,Escritor francês (1821–1880),2,2,0,0,3,curado,true
+346,Stendhal,Escritor francês (1783–1842),2,2,0,0,2,curado,true
+347,George Sand,Escritora francesa (1804–1876),2,2,0,0,2,curado,true
+348,Nathaniel Hawthorne,Escritor norte-americano (1804–1864),2,2,0,0,2,curado,true
+349,Ambrose Bierce,Escritor e jornalista norte-americano (1842–c. 1914),2,2,0,0,2,curado,true
+350,John Ruskin,Crítico de arte e pensador social britânico (1819–1900),2,1,0,0,2,curado,true
+351,Pierre-Joseph Proudhon,Filósofo político francês (1809–1865),2,2,0,0,1,curado,true
+352,John Galbraith,Economista canadense-americano (1908–2006),2,1,0,0,3,curado,true
+353,Neil Postman,Crítico da cultura e educador norte-americano (1931–2003),2,2,0,0,3,curado,true
+354,Herbert Simon,Cientista social norte-americano (1916–2001),2,2,0,0,1,curado,true
+355,Isaiah Berlin,Filósofo político britânico nascido na Letônia (1909–1997),2,2,0,0,2,curado,true
+356,Gottfried Wilhelm Leibniz,Filósofo e matemático alemão (1646–1716),2,2,0,0,3,curado,true
+357,Eurípides,Dramaturgo grego (c. 480 a.C.–406 a.C.),2,1,0,0,3,curado,true
+358,Quintiliano,Professor de retórica romano (c. 35–c. 100),2,2,0,0,1,curado,true
+359,Jean de La Fontaine,Poeta francês (1621–1695),2,2,0,0,1,curado,true
+360,Publílio Siro,Escritor latino de máximas (séc. I a.C.),2,2,0,0,1,curado,true
+361,Hipócrates,Médico grego (c. 460 a.C.–c. 370 a.C.),2,1,0,0,1,curado,true
+362,Douglas MacArthur,General norte-americano (1880–1964),2,2,0,0,1,curado,true
+363,Dwight D. Eisenhower,General e político norte-americano  34º presidente dos Estados Unidos (1890–1969),2,2,0,0,1,curado,true
+364,Dag Hammarskjöld,Diplomata sueco  2º secretário-geral da ONU (1905–1961),2,2,0,0,1,curado,true
+365,B. R. Ambedkar,Jurista e reformador social indiano (1891–1956),2,2,0,0,2,curado,true
+366,Joseph Joubert,Moralista francês (1754–1824),2,2,0,0,1,curado,true
+367,Paul Tillich,Teólogo e filósofo alemão-americano (1886–1965),2,2,0,0,1,curado,true
+368,John Lennon,Músico e compositor britânico (1940–1980),2,2,0,0,1,curado,true
+369,Nelson Rodrigues,Dramaturgo  jornalista e escritor brasileiro (1912–1980),2,0,0,0,3,curado,true
+370,Anaïs Nin,Escritora franco-cubana-americana (1903–1977),2,2,0,0,2,curado,true
+371,T. S. Eliot,Poeta e crítico anglo-americano (1888–1965),2,2,0,0,3,curado,true
+372,David Ogilvy,Publicitário britânico (1911–1999),2,2,0,0,2,curado,true
+373,George Bernard Shaw,Dramaturgo e crítico irlandês (1856–1950),2,0,0,0,3,curado,true
+374,George Eliot,Escritora britânica (1819–1880),2,1,0,0,3,curado,true
+375,Noam Chomsky,Linguista e crítico político norte-americano (1928–),2,2,0,0,3,curado,true
+376,José Martí,Escritor e revolucionário cubano (1853–1895),2,2,0,0,3,curado,true
+377,Albert Schweitzer,Médico  teólogo e músico alsaciano (1875–1965),2,1,0,0,3,curado,true
+378,Max Planck,Físico alemão (1858–1947),2,2,0,0,0,curado,true
+379,Brené Brown,Pesquisadora e escritora norte-americana (1965–),1,0,1,0,2,curado,true
+380,Leon C. Megginson,Professor de administração norte-americano (1921–2010),1,0,1,0,0,curado,true
+381,Sophie Scholl,Estudante e resistente alemã (1921–1943),1,0,1,0,1,curado,true
+382,Ada Lovelace,Matemática britânica (1815–1852),1,1,0,0,1,curado,true
+383,Emily Dickinson,Poeta americana (1830–1886),1,0,0,0,1,curado,true
+384,Andy Grove,Engenheiro e executivo húngaro-americano (1936–2016),1,0,0,0,2,curado,true
+385,Plutarco,Historiador e biógrafo grego (c. 46–c. 120),1,0,0,0,2,curado,true
+386,Angela Davis,Filósofa e ativista norte-americana (1944–),1,0,0,0,2,curado,true
+387,Adélia Prado,Poeta e escritora brasileira (1935–),1,1,0,0,2,curado,true
+388,Érico Veríssimo,Escritor brasileiro (1905–1975),1,1,0,0,3,curado,true
+389,Padre Antônio Vieira,Jesuíta  orador e diplomata português (1608–1697),1,1,0,0,3,curado,true
+390,Millôr Fernandes,Escritor  humorista e desenhista brasileiro (1923–2012),1,1,0,0,2,curado,true
+391,Alexandre Dumas,Escritor francês (1802–1870),1,1,0,0,2,curado,true
+392,Herbert Spencer,Filósofo e sociólogo britânico (1820–1903),1,1,0,0,1,curado,true
+393,Shoshana Zuboff,Socióloga e professora norte-americana (1951–),1,1,0,0,1,curado,true
+394,Jaron Lanier,Cientista da computação e músico norte-americano (1960–),1,1,0,0,2,curado,true
+395,George Lakoff,Linguista cognitivo norte-americano (1941–),1,1,0,0,2,curado,true
+396,Esopo,Fabulista grego (séc. VI a.C.),1,0,0,0,1,curado,true
+397,Cleantes,Filósofo estoico grego (c. 330 a.C.–c. 230 a.C.),1,0,0,0,1,curado,true
+398,São Jerônimo,Tradutor e teólogo cristão (c. 347–420),1,0,0,0,1,curado,true
+399,Santo Isidoro de Sevilha,Bispo e erudito hispano-romano (c. 560–636),1,1,0,0,1,curado,true
+400,Woodrow Wilson,Acadêmico e político norte-americano  28º presidente dos Estados Unidos (1856–1924),1,1,0,0,1,curado,true
+401,Georg Simmel,Sociólogo e filósofo alemão (1858–1918),1,1,0,0,3,curado,true
+402,Stanley Milgram,Psicólogo social norte-americano (1933–1984),1,1,0,0,1,curado,true
+403,Harry Markowitz,Economista norte-americano (1927–2023),1,0,0,0,1,curado,true
+404,Estée Lauder,Empresária norte-americana (1908–2004),1,1,0,0,1,curado,true
+405,Sheryl Sandberg,Executiva e escritora norte-americana (1969–),1,1,0,0,2,curado,true
+406,Louisa May Alcott,Escritora norte-americana (1832–1888),1,1,0,0,2,curado,true
+407,James M. Barrie,Escritor e dramaturgo escocês (1860–1937),1,1,0,0,2,curado,true
+408,Alice Walker,Escritora e ativista norte-americana (1944–),1,0,0,0,2,curado,true
+409,Alex Haley,Escritor norte-americano (1921–1992),1,1,0,0,2,curado,true
+410,Harriet Beecher Stowe,Escritora norte-americana (1811–1896),1,0,0,0,1,curado,true
+411,Madame de Staël,Escritora e pensadora franco-suíça (1766–1817),1,1,0,0,2,curado,true
+412,Ernest Renan,Historiador e filólogo francês (1823–1892),1,1,0,0,2,curado,true
+413,Samuel Butler,Escritor britânico (1835–1902),1,1,0,0,2,curado,true
+414,Théophile Gautier,Escritor e crítico francês (1811–1872),1,1,0,0,2,curado,true
+415,François Mauriac,Escritor francês (1885–1970),1,1,0,0,2,curado,true
+416,Oliver Wendell Holmes,Médico  escritor e poeta norte-americano (1809–1894),1,1,0,0,2,curado,true
+417,Reinhold Niebuhr,Teólogo norte-americano (1892–1971),1,1,0,0,2,curado,true
+418,Jacques Maritain,Filósofo francês (1882–1973),1,1,0,0,1,curado,true
+419,Abul Kalam Azad,Erudito islâmico e político indiano (1888–1958),1,1,0,0,1,curado,true
+420,Henri Matisse,Pintor francês (1869–1954),1,1,0,0,3,curado,true
+421,Louis Armstrong,Trompetista e cantor norte-americano (1901–1971),1,0,0,0,1,curado,true
+422,Caio Fernando Abreu,Escritor brasileiro (1948–1996),1,1,0,0,2,curado,true
+423,Martha Medeiros,Escritora e cronista brasileira (1961–),1,1,0,0,1,curado,true
+424,Vladimir Maiakóvski,Poeta russo (1893–1930),1,1,0,0,1,curado,true
+425,Gertrude Stein,Escritora norte-americana (1874–1946),1,1,0,0,2,curado,true
+426,Sholom Aleichem,Escritor iídiche russo-americano (1859–1916),1,0,0,0,1,curado,true
+427,Ring Lardner,Escritor e cronista esportivo norte-americano (1885–1933),1,1,0,0,1,curado,true
+428,Charles Kuralt,Jornalista norte-americano (1934–1997),1,1,0,0,1,curado,true
+429,Elizabeth Stone,Escritora e professora norte-americana (1946–),1,1,0,0,1,curado,true
+430,Laurel Thatcher Ulrich,Historiadora norte-americana (1938–),1,1,0,0,1,curado,true
+431,Nora Ephron,Escritora  roteirista e diretora norte-americana (1941–2012),1,1,0,0,3,curado,true
+432,Michael J. Fox,Ator canadense-americano (1961–),1,1,0,0,1,curado,true
+433,Phil Jackson,Treinador de basquete norte-americano (1945–),1,1,0,0,2,curado,true
+434,Max De Pree,Empresário e escritor norte-americano (1924–2017),1,1,0,0,1,curado,true
+435,Robert K. Greenleaf,Executivo e escritor norte-americano (1904–1990),1,1,0,0,1,curado,true
+436,Lee Iacocca,Executivo automobilístico norte-americano (1924–2019),1,1,0,0,1,curado,true
+437,Stephen Covey,Escritor e consultor norte-americano (1932–2012),1,1,0,0,2,curado,true
+438,Brian Tracy,Escritor e palestrante canadense-americano (1944–),1,1,0,0,2,curado,true
+439,Alain de Botton,Escritor e filósofo suíço-britânico (1969–),1,1,0,0,2,curado,true
+440,Melody Beattie,Escritora norte-americana (1948–2025),1,1,0,0,1,curado,true
+441,Leandro Karnal,Historiador e escritor brasileiro (1963–),1,1,0,0,1,curado,true
+442,Roberto Shinyashiki,Médico psiquiatra e escritor brasileiro (1954–),1,1,0,0,2,curado,true
+443,Haemin Sunim,Monge budista sul-coreano (1973–),1,1,0,0,1,curado,true
+444,Émile-Auguste Chartier,Filósofo e professor francês (1868–1951),1,1,0,0,1,curado,true
+445,Elbert Hubbard,Escritor e editor norte-americano (1856–1915),1,1,0,0,1,curado,true
+446,Yuval Noah Harari,Historiador israelense (1976–),1,1,0,0,3,curado,true
+447,Thomas Sowell,Economista e escritor norte-americano (1930–),1,1,0,0,2,curado,true
+448,Ayn Rand,Escritora e filósofa russo-americana (1905–1982),1,1,0,0,3,curado,true
+449,Hans Kelsen,Jurista e filósofo do direito austríaco (1881–1973),1,1,0,0,1,curado,true
+450,Amos Tversky,Psicólogo cognitivo israelense (1937–1996),1,0,0,0,2,curado,true
+451,Salvador Dalí,Pintor espanhol (1904–1989),1,0,0,0,3,curado,true
+452,P. T. Barnum,Empresário do entretenimento norte-americano (1810–1891),1,1,0,0,1,curado,true
+453,Benjamin Disraeli,Político e escritor britânico (1804–1881),1,1,0,0,1,curado,true
+454,Oliver Goldsmith,Escritor irlandês (1728–1774),1,1,0,0,2,curado,true
+455,Arthur Ashe,Tenista e ativista norte-americano (1943–1993),1,0,0,0,2,curado,true
+456,Leo Buscaglia,Professor e escritor norte-americano (1924–1998),1,1,0,0,1,curado,true
+457,Miguel Reale,Jurista e filósofo brasileiro (1910–2006),1,1,0,0,3,curado,true
+458,Hillary Clinton,Advogada e política norte-americana (1947–),1,1,0,0,2,curado,true
+459,Karl Jaspers,Psiquiatra e filósofo alemão (1883–1969),1,1,0,0,2,curado,true
+460,Benjamin Constant,Escritor e político franco-suíço (1767–1830),1,1,0,0,2,curado,true
+461,Augusto Cury,Psiquiatra e escritor brasileiro (1958–),1,1,0,0,3,curado,true
+462,Viviane Mosé,Filósofa  poeta e psicóloga brasileira (1964–),1,1,0,0,1,curado,true
+463,Clóvis de Barros Filho,Filósofo e professor brasileiro (1966–),1,1,0,0,1,curado,true
+464,Coelho Neto,Escritor e político brasileiro (1864–1934),1,1,0,0,2,curado,true
+465,David Aaker,Professor e consultor norte-americano de marketing (1938–),1,1,0,0,2,curado,true
+466,Henry Chesbrough,Professor e pesquisador norte-americano (1956–),1,1,0,0,1,curado,true
+467,Thomas J. Stanley,Pesquisador norte-americano (1944–2015),1,1,0,0,1,curado,true
+468,Al Ries e Jack Trout,Estrategistas de marketing norte-americanos,1,1,0,0,2,curado,true
+469,Robert M. Hutchins,Educador norte-americano (1899–1977),1,1,0,0,1,curado,true
+470,Norman Schwarzkopf,General norte-americano (1934–2012),1,0,0,0,1,curado,true
+471,Robert Collier,Escritor norte-americano (1885–1950),1,1,0,0,1,curado,true
+472,Dinah Maria Craik,Romancista britânica (1826–1887),1,1,0,0,0,curado,true
+473,Honoré de Balzac,Escritor francês (1799–1850),0,0,0,0,4,curado,true
+474,William Arthur Lewis,Economista santa-lucense (1915–1991),0,0,0,0,2,curado,true
