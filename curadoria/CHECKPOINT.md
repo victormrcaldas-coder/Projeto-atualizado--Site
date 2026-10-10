@@ -1700,3 +1700,11 @@ A regra autorizada diz "não confirmada → remove". Aplicada ao pé da letra à
 
 ### Observação sobre o ambiente
 O texto de apoio (Standard Ebooks) cobre só parte do acervo. Para ampliar: textos do GITenberg (nomes de repositório não adivinháveis sem a API), Wikisource, ou os livros impressos que você puder fornecer.
+
+
+### Fase 118 — auditoria das A− com fonte genérica: Austen e Dickens (08/10/2026)
+Ponto de partida: 617 frases A−; o maior bloco tinha como fonte só o rótulo "Romance de Jane Austen" / "Romance de Charles Dickens" (27 frases, sem obra).
+- **Dickens (8):** todas encontradas literalmente em *Um Conto de Duas Cidades* (livro I, cap. 1) e *Um Conto de Natal* (Estrofe III); fonte, original e status A corrigidos.
+- **Austen (19 → 10 mantidas, 9 removidas):** 7 confirmadas no texto integral de *Orgulho e Preconceito* e *Emma* (capítulos identificados); *Northanger Abbey* ("finest balm") e *Razão e Sensibilidade* ("Know your own happiness") confirmadas por várias fontes de citação com a obra, **sem acesso ao texto integral** (por isso sem capítulo). Traduções ajustadas: "injusto julgar a conduta de qualquer corpo" → "de alguém"; a frase de Charlotte Lucas tinha uma versão com sentido alterado ("boa vontade") e outra com final inventado ("e de conhecer bem o outro antes") — mantida só a literal. **Removidas 8** que não aparecem em *Emma* nem *Orgulho e Preconceito* e não consegui confirmar em outra obra (inclui "Meu coração é, e sempre será, teu", provável falsa atribuição de adaptação) **+ 1 variante** da frase de Charlotte.
+- **Números (Chromium real):** frases **2.923** (−9) · lacunas **102** (inalterado) · autores 528 · obras 1.245 · A− agora 591 (A 1865 · X 386 · B 81).
+- **Cobertura:** foram tratadas 27 das 617 A−. **590 A− continuam não auditadas.** Maiores blocos restantes (fonte = só o nome da obra): Buffett/Cartas aos acionistas (28), Housel (21), Frankl (19), Kotler (18), Franklin (16), Munger (16), Rogers (14), Bennis (14), Wollstonecraft (14), Lynch (13), Tocqueville (13), Rui Barbosa (12), Sun Tzu (12). A maioria exige texto impresso ou busca individual.
