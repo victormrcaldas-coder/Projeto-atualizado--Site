@@ -41903,4 +41903,48 @@ window.CURADORIA_EXPORT_CSV = function(download){
 })();
 
 
+(function(){
+ /* Fase 117 — verificação do campo `orig` contra textos de domínio público
+    (08/10/2026). Método: o campo `orig` de cada frase foi comparado, por
+    correspondência de texto normalizado, com o texto integral das edições
+    do Standard Ebooks (domínio público) clonadas do GitHub. 48 frases tiveram
+    o original encontrado literalmente na obra citada (registro em
+    notaInterna). Na leitura dos pares português/original apareceram defeitos
+    reais, corrigidos aqui: tradução que não correspondia ao original
+    (Barrie, Booker T. Washington), original registrado alterado (Booker T.
+    Washington, Mill, Goldsmith), obra ou capítulo errados (Christie,
+    Hawthorne, Booker T. Washington) e localização acrescentada onde faltava.
+    Cobertura: só a parte do acervo cujo texto está no corpus (cerca de 8 por
+    cento das 633 frases com orig); o restante NÃO foi verificado por esta fase. */
+ var VERIFICADAS = [["f2406max", "oscar-wilde_lady-windermeres-fan"], ["f241b167", "oscar-wilde_lady-windermeres-fan"], ["f242d8lu", "oscar-wilde_the-picture-of-dorian-gray"], ["f24463z0", "mark-twain_the-adventures-of-huckleberry-finn"], ["f241n95yi", "agatha-christie_the-mysterious-affair-at-styles"], ["f26c38q38", "rabindranath-tagore_gitanjali"], ["f26e28t50", "robert-louis-stevenson_treasure-island"], ["f26h2v98e", "w-b-yeats_poetry"], ["f26i5v032", "w-b-yeats_poetry"], ["f261283t82", "nathaniel-hawthorne_the-scarlet-letter"], ["f26134subp", "ambrose-bierce_the-devils-dictionary"], ["f26143aywd", "ambrose-bierce_the-devils-dictionary"], ["f26151olur", "john-ruskin_unto-this-last"], ["f262p3fgin", "j-m-barrie_peter-and-wendy"], ["f264l3qokc", "benjamin-disraeli_sybil"], ["f285foubtxj", "booker-t-washington_up-from-slavery"], ["f31g10hv8mk", "william-shakespeare_as-you-like-it"], ["f31ijuwcmv", "william-shakespeare_hamlet"], ["f31kqu2up2", "william-shakespeare_poetry"], ["f31lqar9x7", "oscar-wilde_lady-windermeres-fan"], ["f31xrwq08s", "john-locke_two-treatises-of-government"], ["f34k24vd5bf", "john-stuart-mill_on-liberty"], ["f34l1dleaec", "john-stuart-mill_on-liberty"], ["f63n12o7a81", "thomas-hobbes_leviathan"], ["f63oge2lz4", "thomas-hobbes_leviathan"], ["f63tt72ee6", "adam-smith_the-theory-of-moral-sentiments"], ["f63wiftxq0", "david-hume_a-treatise-of-human-nature"], ["f631al013em", "henry-david-thoreau_walden"], ["f645iy9rnq", "ambrose-bierce_the-devils-dictionary"], ["f646biw7kr", "ambrose-bierce_the-devils-dictionary"], ["f64ujpxikb", "george-bernard-shaw_pygmalion"], ["f64v12ezd96", "george-eliot_middlemarch"], ["f6509h4vtv", "lord-byron_don-juan"], ["f745765n44", "booker-t-washington_up-from-slavery"], ["f79i7olh1u", "j-m-barrie_peter-and-wendy"], ["f81no2o30y", "nathaniel-hawthorne_the-scarlet-letter"], ["f862mjcl7s", "rabindranath-tagore_gitanjali"], ["f880g4up09", "oliver-goldsmith_the-vicar-of-wakefield"], ["f991bs44jm", "benjamin-disraeli_sybil"], ["f1040keg5", "george-eliot_middlemarch"], ["f1041jg7z", "louisa-may-alcott_little-women"], ["f10467mwz", "samuel-butler_the-way-of-all-flesh"], ["f1047e3yf", "george-eliot_middlemarch"], ["f104851p7", "george-eliot_silas-marner"], ["f1100d2t9", "george-bernard-shaw_pygmalion"], ["f11017aj9", "george-bernard-shaw_pygmalion"], ["f1102cy2w", "george-bernard-shaw_mrs-warrens-profession"], ["f31bis9735", "fyodor-dostoevsky_the-brothers-karamazov_constance-garnett"]];
+ var CORRECOES = [["f6411b9oalw", {"text": "Basta pensar pensamentos lindos e maravilhosos, e eles levantam você no ar.", "src": "Peter Pan e Wendy (1911), capítulo III", "orig": "You just think lovely wonderful thoughts and they lift you up in the air.", "motivo": "Tradução anterior (“Basta pensar em coisas alegres e o coração ganha asas”) não correspondia ao original; substituída por tradução fiel do texto conferido em Peter and Wendy, cap. III (Standard Ebooks)."}], ["f744c1c1ih", {"text": "Eu não permitiria que homem algum, fosse qual fosse a sua cor, estreitasse e degradasse a minha alma fazendo-me odiá-lo.", "src": "Da Escravidão à Liberdade (1901), capítulo XI", "orig": "I would permit no man, no matter what his colour might be, to narrow and degrade my soul by making me hate him.", "motivo": "Texto anterior era paráfrase sem correspondência literal e o original registrado estava alterado (“I will permit”); substituídos pelo trecho exato de Up from Slavery, cap. XI (Standard Ebooks)."}], ["f2417kjcn", {"orig": "That the sole end for which mankind are warranted, individually or collectively, in interfering with the liberty of action of any of their number, is self-protection.", "motivo": "O original registrado era a frase seguinte da mesma passagem; corrigido para a frase que a tradução traduz de fato (Sobre a Liberdade, cap. 1)."}], ["f74kqdnbqp", {"orig": "chose my wife as she did her wedding gown, not for a fine glossy surface, but such qualities as would wear well.", "src": "O Vigário de Wakefield (1766), capítulo 1", "motivo": "Original registrado trazia “I chose my wife,” com pontuação e sujeito alterados; corrigido para o texto de Standard Ebooks, cap. 1."}], ["f241n95yi", {"src": "O Misterioso Caso de Styles (1920), capítulo XI", "motivo": "Fonte anterior (“O Retrato de Elsa Greer, 1942”) estava errada: a fala de Poirot consta em The Mysterious Affair at Styles, cap. XI (Standard Ebooks)."}], ["f81no2o30y", {"src": "A Letra Escarlate (1850), capítulo XXIV", "motivo": "Capítulo conferido no texto (Standard Ebooks): XXIV."}], ["f261283t82", {"src": "A Letra Escarlate (1850), capítulo XX", "motivo": "Fonte anterior indicava cap. 11; a passagem está no cap. XX (Standard Ebooks)."}], ["f745765n44", {"src": "Discurso da Exposição de Atlanta (1895), reproduzido em Da Escravidão à Liberdade (1901), capítulo XIV", "motivo": "Passagem do discurso de Atlanta (cap. XIV de Up from Slavery); a fonte anterior (“Instituto Tuskegee”) não era a obra de onde vem a frase."}], ["f285foubtxj", {"src": "Da Escravidão à Liberdade (1901), capítulo II", "motivo": "Capítulo conferido no texto (Standard Ebooks)."}], ["f79i7olh1u", {"src": "Peter Pan e Wendy (1911), capítulo I", "motivo": "Capítulo conferido no texto (Standard Ebooks)."}], ["f6509h4vtv", {"src": "Dom Juan (1819–1824), canto XIV", "motivo": "Canto conferido no texto (Standard Ebooks)."}], ["f63oge2lz4", {"src": "Leviatã (1651), capítulo XIII", "motivo": "Capítulo conferido no texto (Standard Ebooks)."}], ["f63usxuhfb", {"src": "A Riqueza das Nações (1776), livro IV, capítulo II", "motivo": "Localização conferida no texto (Standard Ebooks). Atenção: a tradução funde “intends only his own gain” (frase anterior) com a da “mão invisível”; o original registrado é só a segunda parte."}], ["f63wiftxq0", {"src": "Tratado da Natureza Humana (1739–40), livro II, parte III, seção III", "motivo": "Localização conferida no texto (Standard Ebooks)."}], ["f631al013em", {"src": "Walden (1854), “Conclusão”", "motivo": "Localização conferida no texto (Standard Ebooks)."}]];
+ function aplicar(){
+  var nv=0, nc=0, nt=0, ausentes=[];
+  function nota(q, t){ q.notaInterna = (q.notaInterna ? q.notaInterna+' ' : '') + t; }
+  VERIFICADAS.forEach(function(r){
+   var q = QUOTES.filter(function(x){ return x.qid===r[0]; })[0];
+   if(!q){ ausentes.push(r[0]); return; }
+   nota(q, 'Fase 117: original (campo orig) encontrado literalmente em '+r[1]+' (Standard Ebooks, domínio público), conferido em 08/10/2026.'); nv++;
+  });
+  CORRECOES.forEach(function(r){
+   var q = QUOTES.filter(function(x){ return x.qid===r[0]; })[0], d=r[1];
+   if(!q){ ausentes.push(r[0]); return; }
+   if(d.text && d.text!==q.text){
+    window.CURADORIA_REMOVIDAS.push({ data:'2026-10-08', lote:'Fase 117 — verificação de orig', commit_base:'', commit_remocao:'', autor:q.author, texto:q.text, tipo:'substituida', motivo:d.motivo, fontes:'Standard Ebooks (texto de domínio público), conferido em 08/10/2026', qid:q.qid, fonte_anterior:q.src, status_anterior:q.st, categoria_anterior:q.cat, contraparte:d.text, similaridade:'', origem:'decisão desta sessão' });
+    q.text = d.text; nt++;
+   }
+   if(d.orig) q.orig = d.orig;
+   if(d.src) q.src = d.src;
+   nota(q, 'Fase 117 (correção): '+d.motivo); nc++;
+  });
+  if(ausentes.length) console.warn('MeMotiva · Fase 117: qid não encontrado — '+ausentes.join(', '));
+  console.log('MeMotiva · Fase 117: '+nv+' originais conferidos; '+nc+' correções ('+nt+' textos substituídos).');
+  if(typeof reindexarQuotes==='function') reindexarQuotes();
+  if(typeof reconstruirIndices==='function') reconstruirIndices();
+ }
+ var prev = window.__fase5Boot;
+ window.__fase5Boot = function(){ if(typeof prev==='function') prev(); aplicar(); };
+})();
+
+
 init().then(()=>{ if(window.__fase5Boot) window.__fase5Boot(); });

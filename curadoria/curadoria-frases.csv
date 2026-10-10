@@ -2151,7 +2151,7 @@ Charles Darwin;Há grandeza nesta visão da vida.;A Origem das Espécies (1859),
 Malcolm X;A educação é o passaporte para o futuro, pois o amanhã pertence a quem se prepara hoje.;Discurso em Nova York, 1964;;A;educacao
 Vincent van Gogh;Sonho minha pintura e depois pinto meu sonho.;Carta a Theo van Gogh, 1888;;A;vida
 Vincent van Gogh;O que seria a vida se não tivéssemos coragem de tentar alguma coisa?;Carta a Theo van Gogh, 1888;;A;empoderamento
-Agatha Christie;Todo assassino é provavelmente o velho amigo de alguém.;O Retrato de Elsa Greer (1942), capítulo 1;;A;reflexao
+Agatha Christie;Todo assassino é provavelmente o velho amigo de alguém.;O Misterioso Caso de Styles (1920), capítulo XI;;A;reflexao
 Dalai Lama;Minha religião é muito simples. Minha religião é a bondade.;Uma Ética para o Novo Milênio (1999);;A;fe
 Marguerite Yourcenar;"Fundemos bibliotecas; são celeiros públicos.";Memórias de Adriano (1951), seção Saeculum Aureum;;A;educacao
 Adélia Prado;Não quero faca nem queijo. Quero a fome.;Bagagem (1976), poema Antes do Nome;;A;vida
@@ -2197,7 +2197,7 @@ Stendhal;Um romance é um espelho que se leva ao longo de um caminho.;O Vermelho
 George Sand;Não se pode dominar o próprio coração, mas pode-se dominar as próprias ações.;Indiana (1832);;A;reflexao
 George Sand;Há uma só felicidade na vida: amar e ser amado.;Carta a Lina Calamatta, 31 de março de 1862;;A;amor
 Nathaniel Hawthorne;"A felicidade é uma borboleta que, quando perseguida, está sempre além do alcance; mas que, se você se sentar quieto, pode pousar sobre você.";Cadernos Americanos (1838), anotação;;A;felicidade
-Nathaniel Hawthorne;Nenhum homem pode usar uma face para si mesmo e outra para a multidão por muito tempo sem acabar confuso sobre qual é a verdadeira.;A Letra Escarlate (1850), capítulo 11;;A;reflexao
+Nathaniel Hawthorne;Nenhum homem pode usar uma face para si mesmo e outra para a multidão por muito tempo sem acabar confuso sobre qual é a verdadeira.;A Letra Escarlate (1850), capítulo XX;;A;reflexao
 Ambrose Bierce;Paz: em assuntos internacionais, período de trapaça entre dois períodos de luta.;O Dicionário do Diabo (1911), verbete Paz;;A;politica
 Ambrose Bierce;Ano: período de trezentos e sessenta e cinco decepções.;O Dicionário do Diabo (1911), verbete Ano;;A;reflexao
 John Ruskin;Não há riqueza senão a vida.;Até Este Último (1860), ensaio IV;;A;vida
@@ -2494,7 +2494,7 @@ Howard Schultz;"Não estamos no negócio de café servindo pessoas; estamos no n
 Luiza Trajano;O varejo é detalhe. Quem cuida do detalhe ganha.;Entrevista registrada;;A;negocios
 Melinda French Gates;Uma mulher com voz é, por definição, uma mulher forte.;O Momento de Voar (2019);;A;empoderamento
 Oprah Winfrey;Transforme suas feridas em sabedoria.;Entrevista registrada;;A;dificeis
-Booker T. Washington;O sucesso deve ser medido não pela posição que a pessoa alcançou, mas pelos obstáculos que superou.;Da Escravidão à Liberdade (1901);;A;dificeis
+Booker T. Washington;O sucesso deve ser medido não pela posição que a pessoa alcançou, mas pelos obstáculos que superou.;Da Escravidão à Liberdade (1901), capítulo II;;A;dificeis
 Abílio Diniz;O maior risco é não correr risco nenhum.;Entrevista registrada;;A;negocios
 Luís de Camões;As armas e os barões assinalados que da Ocidental praia Lusitana por mares nunca de antes navegados passaram ainda além da Taprobana.;Os Lusíadas (1572), canto I, estrofe 1;;A;reflexao
 Luís de Camões;Cessem do sábio Grego e do Troiano as navegações grandes que fizeram.;Os Lusíadas (1572), canto I, estrofe 3;;A;reflexao
@@ -2627,15 +2627,15 @@ Jack Welch;Antes de ser líder, crescer significa crescer você mesmo. Quando vo
 Friedrich Hayek;Quem controla toda a atividade econômica controla os meios para todos os nossos fins.;O Caminho da Servidão;;A;politica
 Friedrich Hayek;O problema econômico da sociedade é sobretudo um problema de adaptação rápida a mudanças nas circunstâncias particulares de tempo e lugar.;O Uso do Conhecimento na Sociedade;;A;financas
 Thomas Hobbes;Durante o tempo em que os homens vivem sem um poder comum capaz de os manter a todos em respeito, eles se encontram naquela condição a que se chama guerra: uma guerra de todos contra todos.;Leviatã;;A;politica
-Thomas Hobbes;A vida do homem, nessa condição, é solitária, pobre, sórdida, embrutecida e curta.;Leviatã;;A;reflexao
+Thomas Hobbes;A vida do homem, nessa condição, é solitária, pobre, sórdida, embrutecida e curta.;Leviatã (1651), capítulo XIII;;A;reflexao
 Nassim Nicholas Taleb;Algumas coisas se beneficiam de choques: prosperam e crescem quando expostas à volatilidade, ao acaso, à desordem e ao estresse.;Antifrágil;;A;reflexao
 Nassim Nicholas Taleb;"Não me diga o que você pensa; diga-me o que você tem na sua carteira.";Arriscando a Própria Pele;;A;financas
 Milton Friedman;Uma sociedade que coloca a igualdade de resultado à frente da liberdade terminará sem uma nem outra.;Livre para Escolher;;A;politica
 Milton Friedman;Existe uma e só uma responsabilidade social da empresa: usar seus recursos e engajar-se em atividades destinadas a aumentar seus lucros, dentro das regras do jogo.;Capitalismo e Liberdade;;A;negocios
 Adam Smith;Por mais egoísta que se suponha o homem, existem evidentemente em sua natureza princípios que o fazem interessar-se pela sorte dos outros.;Teoria dos Sentimentos Morais;;A;reflexao
-Adam Smith;Cada indivíduo, ao buscar apenas seu próprio ganho, é conduzido por uma mão invisível a promover um fim que não fazia parte de sua intenção.;A Riqueza das Nações;;A;financas
+Adam Smith;Cada indivíduo, ao buscar apenas seu próprio ganho, é conduzido por uma mão invisível a promover um fim que não fazia parte de sua intenção.;A Riqueza das Nações (1776), livro IV, capítulo II;;A;financas
 David Hume;O homem sábio ajusta sua crença à evidência.;Investigação sobre o Entendimento Humano;;A;reflexao
-David Hume;Não é contrário à razão preferir a destruição do mundo inteiro a um arranhão no meu dedo.;Tratado da Natureza Humana;;A;filosofos
+David Hume;Não é contrário à razão preferir a destruição do mundo inteiro a um arranhão no meu dedo.;Tratado da Natureza Humana (1739–40), livro II, parte III, seção III;;A;filosofos
 Jim Collins;O bom é inimigo do ótimo.;Empresas Feitas para Vencer;;A;negocios
 Jim Collins;As pessoas não são o seu ativo mais importante. As pessoas certas são.;Empresas Feitas para Vencer;;A;lideranca
 Jim Collins;Construa o relógio, em vez de dar a hora.;Feitas para Durar;;A;empreendedorismo
@@ -2647,7 +2647,7 @@ Norberto Bobbio;O problema grave de nosso tempo, quanto aos direitos do homem, n
 Pierre Bourdieu;O gosto une e separa.;A Distinção: Crítica Social do Julgamento;;A;reflexao
 Edward Bernays;Se compreendemos o mecanismo e os motivos da mente coletiva, é possível controlar e arregimentar as massas conforme nossa vontade, sem que elas o saibam.;Propaganda;;A;manipulacao
 J. R. R. Tolkien;É preciso ter coragem para sair pela porta de casa.;O Senhor dos Anéis;;A;motivacao
-Henry David Thoreau;Se um homem não acompanha o passo de seus companheiros, talvez seja porque ouve um tambor diferente.;Walden;;A;autorreconhecimento
+Henry David Thoreau;Se um homem não acompanha o passo de seus companheiros, talvez seja porque ouve um tambor diferente.;Walden (1854), “Conclusão”;;A;autorreconhecimento
 Erich Fromm;A tarefa mais importante da vida humana é dar à luz a si mesmo, tornar-se aquilo que se é potencialmente.;A Arte de Amar;;A;autorreconhecimento
 Dale Carnegie;Quando lidamos com pessoas, lembremos que não estamos lidando com criaturas de lógica, mas com criaturas de emoção.;Como Fazer Amigos e Influenciar Pessoas;;A;reflexao
 Jean-Jacques Rousseau;Renunciar à liberdade é renunciar à condição de homem.;O Contrato Social;;A;politica
@@ -2681,7 +2681,7 @@ George Eliot;"O bem que cresce no mundo depende em parte de atos não histórico
 Gustave Flaubert;A linguagem humana é como um caldeirão rachado em que batemos melodias para ursos dançarem, quando aspirávamos comover as estrelas.;Madame Bovary (1857), parte II, capítulo 12;;A;reflexao
 Hipócrates;Antes de tudo, não causar dano.;Corpus Hippocraticum;;A;reflexao
 Isaiah Berlin;Sou livre na medida em que nenhum homem interfere na minha atividade.;Dois Conceitos de Liberdade;;A;politica
-James M. Barrie;Basta pensar em coisas alegres e o coração ganha asas.;Peter Pan;;A;felicidade
+James M. Barrie;Basta pensar pensamentos lindos e maravilhosos, e eles levantam você no ar.;Peter Pan e Wendy (1911), capítulo III;;A;felicidade
 Jean Piaget;A inteligência organiza o mundo organizando-se a si mesma.;O Nascimento da Inteligência na Criança;;A;educacao
 John Maynard Keynes;Não há meio mais sutil nem mais seguro de destruir a base existente de uma sociedade do que corromper sua moeda.;As Consequências Econômicas da Paz;;A;financas
 Lev Vygotsky;O pensamento não se expressa simplesmente em palavras: é nelas que ele passa a existir.;Pensamento e Linguagem;;A;educacao
@@ -2695,7 +2695,7 @@ Alan Turing;Proponho considerar a seguinte pergunta: podem as máquinas pensar?;
 Ernest Renan;Uma nação é uma alma, um princípio espiritual.;O Que é uma Nação?;;A;politica
 Georg Simmel;O habitante da metrópole reage com a cabeça, e não com o coração.;As Grandes Cidades e a Vida do Espírito;;A;reflexao
 Herbert Simon;A capacidade da mente humana para formular e resolver problemas complexos é muito pequena diante do tamanho dos problemas cuja solução o comportamento racional exigiria.;Comportamento Administrativo;;A;reflexao
-Lord Byron;A verdade é sempre mais estranha que a ficção.;Dom Juan;;A;reflexao
+Lord Byron;A verdade é sempre mais estranha que a ficção.;Dom Juan (1819–1824), canto XIV;;A;reflexao
 Lord Byron;Amo não menos o homem, mas mais a Natureza.;A Peregrinação de Childe Harold;;A;reflexao
 Ludwig van Beethoven;Foi somente a minha arte que me impediu de dar cabo da minha vida.;Testamento de Heiligenstadt;;A;dificeis
 Ludwig van Beethoven;Ó vós, homens que me julgais hostil, teimoso ou misantropo, como me injuriais: não conheceis a causa secreta do que assim vos parece.;Testamento de Heiligenstadt;;A;conforto
@@ -2760,8 +2760,8 @@ Georg Simmel;O dinheiro é o exemplo mais puro de um meio que se converteu em fi
 Adélia Prado;Quando nasci, um anjo esbelto, desses que tocam trombeta, anunciou: vai carregar bandeira.;Bagagem;;A;autorreconhecimento
 Abraham Maslow;O que um homem pode ser, ele precisa ser.;Motivação e Personalidade;;A;autorreconhecimento
 Abraham Maslow;É bem verdade que o homem vive só de pão — quando não há pão.;Motivação e Personalidade;;A;vida
-Booker T. Washington;Ninguém consegue rebaixar-me ao ponto de me fazer odiá-lo.;Da Escravidão à Liberdade;;A;empoderamento
-Booker T. Washington;Lancem seu balde onde vocês estão.;Instituto Tuskegee;;A;motivacao
+Booker T. Washington;Eu não permitiria que homem algum, fosse qual fosse a sua cor, estreitasse e degradasse a minha alma fazendo-me odiá-lo.;Da Escravidão à Liberdade (1901), capítulo XI;;A;empoderamento
+Booker T. Washington;Lancem seu balde onde vocês estão.;Discurso da Exposição de Atlanta (1895), reproduzido em Da Escravidão à Liberdade (1901), capítulo XIV;;A;motivacao
 Sojourner Truth;Eu arei, plantei e enchi celeiros, e nenhum homem podia me superar. E não sou eu uma mulher?;Não Sou Eu uma Mulher?;;A;empoderamento
 Sojourner Truth;Se a primeira mulher que Deus fez foi forte o bastante para virar o mundo de cabeça para baixo sozinha, estas mulheres juntas deveriam ser capazes de virá-lo de volta.;Não Sou Eu uma Mulher?;;A;empoderamento
 Max Planck;A ciência não consegue resolver o mistério último da natureza, porque nós mesmos somos parte do enigma que tentamos resolver.;Autobiografia Científica;;A;reflexao
@@ -2772,7 +2772,7 @@ Anísio Teixeira;Só existe democracia onde a educação é um direito de todos 
 John Bowlby;A criança precisa de uma base segura a partir da qual possa explorar o mundo e à qual possa retornar.;Apego;;A;familia
 John Bowlby;O que para o psicanalista é a perda da mãe, para o etólogo é a perda da proteção contra o perigo.;Apego;;A;familia
 Oprah Winfrey;A gratidão é o caminho mais rápido para transformar o que você tem no bastante.;O Que Eu Sei com Certeza;;A;gratidao
-Oliver Goldsmith;Escolhi minha esposa como ela escolheu o vestido de noiva: não pelo brilho da superfície, mas por qualidades que durassem bem.;O Vigário de Wakefield;;A;amor
+Oliver Goldsmith;Escolhi minha esposa como ela escolheu o vestido de noiva: não pelo brilho da superfície, mas por qualidades que durassem bem.;O Vigário de Wakefield (1766), capítulo 1;;A;amor
 Norman Schwarzkopf;A liderança é uma combinação poderosa de estratégia e caráter. Mas, se você tiver de ficar sem um dos dois, fique sem a estratégia.;It Doesn’t Take a Hero;;A;lideranca
 Nora Ephron;Se eu contar a história, controlo a versão. Se eu contar a história, posso fazer você rir — e prefiro que você ria de mim a sentir pena de mim.;Heartburn;;A;dificeis
 Reinhold Niebuhr;Os grupos sociais são menos capazes de autocrítica e de justiça do que os indivíduos que os compõem.;Moral Man and Immoral Society;;A;politica
@@ -2830,7 +2830,7 @@ Haemin Sunim;Quando você se aceita como é, o mundo também passa a aceitá-lo.
 Cleantes;Conduz-me, ó Zeus, e tu, Destino, para onde quer que tenhais decretado que eu vá: seguirei sem hesitar.;Hino a Zeus;;A;filosofos
 Harry Markowitz;A carteira com o maior retorno esperado não é necessariamente a que tem o menor risco.;Seleção de Carteiras;;A;financas
 Estée Lauder;Telefone, telégrafo, conte a uma mulher.;Estée: Uma História de Sucesso;;A;negocios
-James M. Barrie;Todas as crianças crescem — menos uma.;Peter Pan;;A;familia
+James M. Barrie;Todas as crianças crescem — menos uma.;Peter Pan e Wendy (1911), capítulo I;;A;familia
 Anaïs Nin;Cada amigo representa um mundo dentro de nós, um mundo que talvez só nasça quando ele chega.;Diário de Anaïs Nin;;A;amizade
 Alexandre Dumas;Só quem já esteve na miséria mais profunda é capaz de sentir a felicidade mais alta.;O Conde de Monte Cristo;;A;conforto
 Ayn Rand;Toda obra criadora nasce de um indivíduo que pensa sozinho, e não de um coletivo que aprova.;A Nascente;;A;empreendedorismo
@@ -2872,7 +2872,7 @@ Max De Pree;Não podemos tornar-nos aquilo que precisamos ser permanecendo aquil
 Melody Beattie;Cuidar de si mesmo não é egoísmo: é autopreservação.;Codependência Nunca Mais;;A;autorreconhecimento
 Michael J. Fox;Aceitar não é resignar-se: é entender que algo é o que é e que há de haver um jeito de atravessá-lo.;Lucky Man;;A;dificeis
 Miguel Reale;O direito é fato, valor e norma: os três elementos são inseparáveis na experiência jurídica.;Filosofia do Direito;;A;politica
-Nathaniel Hawthorne;Sê verdadeiro! Mostra livremente ao mundo, se não o teu pior, ao menos algum traço pelo qual o pior possa ser inferido.;A Letra Escarlate;;A;autorreconhecimento
+Nathaniel Hawthorne;Sê verdadeiro! Mostra livremente ao mundo, se não o teu pior, ao menos algum traço pelo qual o pior possa ser inferido.;A Letra Escarlate (1850), capítulo XXIV;;A;autorreconhecimento
 P. T. Barnum;O engano consiste em cobrir com aparências falsas aquilo que se quer mostrar, para despertar a atenção do público.;As Fraudes do Mundo;;A;manipulacao
 Padre Antônio Vieira;O pregador há de pregar como quem semeia, e não como quem ladrilha.;Sermão da Sexagésima;;A;educacao
 Robert M. Hutchins;"A educação implica ensino; o ensino implica conhecimento; conhecimento é verdade — e a verdade é a mesma em toda parte.";The Higher Learning in America;;A;educacao

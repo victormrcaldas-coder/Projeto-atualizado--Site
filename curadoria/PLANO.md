@@ -9,9 +9,9 @@ Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.
 | 1 | Auditoria das 49 atribuições fracas | feito | — |
 | 2 | Atribuições concorrentes e duplicatas entre autores (Fase 115) | feito (9 removidas) | repetir após cada lote |
 | 3 | Versículos bíblicos com texto exato de edição publicada (Fase 116) | feito (97 frases) | **decidir** se quer padronizar em uma só edição |
-| 4 | Verificar o campo `orig` (633 frases com original) contra textos em domínio público (GITenberg/Standard Ebooks) | **não iniciado** | verificação automática em lote; só cobre autores PD (Shakespeare, Wilde, Bacon, Twain etc.); modernos ficam sem verificação |
+| 4 | Verificar o campo `orig` (633 frases com original) contra textos em domínio público | **parcial (08/10): 53 de 633 tratadas** (48 confirmadas, 15 corrigidas); 580 pendentes em `verificacao-orig-pendente.csv` | decidir regra para as sem texto acessível (ver CHECKPOINT); ampliar corpus |
 | 5 | Escrituras não bíblicas (Alcorão 16, Upanishads 10, Gita 47, Dhammapada, Tao Te Ching 45, Pirkei Avot): conferir contra tradução publicada ou original | **não iniciado** | verificar caso a caso contra textos abertos |
-| 6 | Frases com status A− e fonte genérica (635 A−) | **não iniciado** | classificar por padrão de fonte; remover as que não têm obra/local conferível |
+| 6 | Frases com status A− e fonte genérica (617 A− no CSV atual; o plano dizia 635) | **não iniciado** | classificar por padrão de fonte; remover as que não têm obra/local conferível |
 | 7 | Descrições das obras: conferir fatos contra fontes (não reescrever) | **não iniciado** | amostragem por tipo + obras mais citadas |
 | 8 | Motivos de remoção ainda "não reconsultados" (Pessoa/Pompeu, Epicteto/Zenão, Chaplin/Chamfort, Levitt/McGivena, Oprah/Angelou, Mao/Lao Tsé) | pendente (não muda o resultado) | 6 buscas |
 | 9 | Auditoria de código (funções duplicadas, listeners, desempenho) | parcial | só correções reais |

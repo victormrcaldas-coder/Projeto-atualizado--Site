@@ -1665,3 +1665,38 @@ Conferi as **104 frases bíblicas** contra três edições em texto aberto (Alme
 
 ## Plano consolidado (04/10/2026)
 Ver `curadoria/PLANO.md`: lista dos processos restantes que não são lacunas (A), o plano das 102 lacunas em três grupos (B) e as decisões pendentes (C). **A resolução das lacunas só começa com a permissão do proprietário.**
+
+
+---
+
+## Novo repositório oficial — conferência e Fase 117 (08/10/2026)
+
+**Repositório oficial:** `victormrcaldas-coder/Projeto-atualizado--Site` (branch `main`). O antigo é só backup. Trabalho feito num clone local; **sem push** (ambiente sem credencial) — entrega por `git bundle` e patch. Nada foi mesclado nem publicado.
+
+### Conferência do estado (antes de qualquer alteração)
+- 157 dos 158 arquivos batem com `MANIFESTO.txt` (hash SHA-256, 16 primeiros caracteres); nenhum faltando. O 158º é o próprio manifesto (esperado). A pasta `_auxiliares/` do manifesto está na raiz do repositório novo.
+- Chromium real (1440×900): 2.932 frases · 528 autores · 1.245 obras · 102 lacunas · 633 frases com `orig` · 0 exceções JS. Bate com o checkpoint anterior. Estado confirmado como a versão atual.
+- **Divergências do PLANO (a corrigir lá):** frases A− = **617** (o plano dizia 635); status B = **81** (o checkpoint de 04/10 falava em 145 escrituras; o CSV exportado mostra 81). Status atuais: A 1.848 · A− 617 · X 386 · B 81.
+
+### Fase 117 — verificação do campo `orig` contra textos de domínio público
+**Método:** clone raso, via `git`, de **67 edições do Standard Ebooks** (domínio público; achadas por teste de nomes de repositório, a API do GitHub está limitada); texto integral extraído; `orig` normalizado (caixa, acentos, pontuação) e procurado como trecho literal; correspondência parcial por sequências de 4 palavras (≥ 70%) só para revisão manual.
+
+**Resultado, sem maquiagem:**
+- **48 frases** tiveram o original encontrado literalmente na obra citada (registro em `notaInterna`, exportado em `notas-internas.csv`).
+- **15 correções** a partir da leitura dos pares português/original (2 textos substituídos):
+  - Barrie, "pensar em coisas alegres…": a tradução não correspondia ao original; trocada pelo texto fiel (*Peter e Wendy*, cap. III).
+  - Booker T. Washington, "Ninguém consegue rebaixar-me…": paráfrase sem correspondência e original alterado ("I will permit"); trocado pelo trecho exato (*Up from Slavery*, cap. XI).
+  - Mill: o `orig` era a frase seguinte da mesma passagem; corrigido para a que a tradução traduz.
+  - Goldsmith: original com pontuação alterada; corrigido.
+  - Christie: a fonte "O Retrato de Elsa Greer (1942), cap. 1" estava **errada**; a fala é de *O Misterioso Caso de Styles*, cap. XI.
+  - Hawthorne: capítulo errado (11 → XX).
+  - Booker T. Washington, "balde": passagem do Discurso de Atlanta (cap. XIV), não do "Instituto Tuskegee".
+  - Localizações acrescentadas (Hobbes, Smith, Hume, Thoreau, Byron, Barrie, Booker T.).
+- **Falsos positivos descartados:** Agostinho ("Tarde te amei") e Tennyson ("Lutar, buscar…") apareceram em corpora de outros autores por citação ou coincidência; **não** contam como verificadas. Winnicott ("não existe bebê") também apareceu só por sequências comuns.
+- **580 frases com `orig` NÃO foram verificadas** (575 sem texto no corpus + 5 com correspondência parcial a revisar). Lista em `curadoria/verificacao-orig-pendente.csv`. Cobertura da fase: **≈ 8,4%**. Nenhuma foi removida: ausência de texto no meu corpus é limitação do ambiente, não evidência de falsidade.
+
+### Decisão que preciso do proprietário
+A regra autorizada diz "não confirmada → remove". Aplicada ao pé da letra às 580, removeria centenas de frases possivelmente legítimas **só porque o texto não está acessível aqui** (autores contemporâneos, livros impressos, obras em outros idiomas). Não fiz isso. Proposta: remover somente as que, além de sem texto verificável, **não têm localização específica** na fonte (obra + capítulo/ano/discurso); as com localização específica seguem para verificação por busca individual.
+
+### Observação sobre o ambiente
+O texto de apoio (Standard Ebooks) cobre só parte do acervo. Para ampliar: textos do GITenberg (nomes de repositório não adivinháveis sem a API), Wikisource, ou os livros impressos que você puder fornecer.
