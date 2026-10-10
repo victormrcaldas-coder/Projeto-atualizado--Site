@@ -1783,3 +1783,76 @@ O critério segue o das Fases 117–118. **Confirma** quando o texto ou a fonte 
 - Status: A 1.737 · A− 580 · X 386 · B 81.
 - Testes: 0 exceções JS; favoritos por `qid` OK (inclui remoção, embaralhamento e legado); busca OK; sem rolagem horizontal; nenhuma frase ativa igual a texto do registro de remoções.
 - Erros de console: só recursos externos bloqueados no ambiente (Google Fonts, Wikimedia), iguais aos da versão anterior.
+
+## Fase 120 — escrituras não bíblicas (10/10/2026)
+
+Autorização do proprietário (09/10): conferir as escrituras não bíblicas contra uma tradução publicada confiável ou contra o original. Não inventar correspondências; remover o que não for confirmado.
+
+**Universo.** São 240 frases: todas as de Alcorão, hadith, Pirkei Avot/Mishná/Talmude, Tao Te Ching, Buda, Bhagavad Gita, Analectos, Upanishads e Vedas. Já estavam fora as que a Fase 119 tinha resolvido. Todas foram decididas.
+
+**Método: texto integral lido em cada tradição.**
+
+| Tradição | Frases | Texto conferido | Resultado |
+|---|---|---|---|
+| Alcorão | 47 | Árabe + traduções publicadas de **Samir El Hayek** e **Helmi Nasr** (texto integral via repositórios abertos no GitHub) | 35 corrigidas, 12 duplicatas |
+| Bhagavad Gita | 47 | Sânscrito (devanágari) + tradução inglesa de Swami Sivananda (repositório `gita/gita`) | 29 corrigidas, 14 duplicatas, 4 removidas |
+| Buda | 45 | Páli + tradução de Bhikkhu Sujato (SuttaCentral `bilara-data`): Dhammapada, DN 16, Sn 1.8, SN 56.11 | 27 corrigidas, 10 duplicatas, 8 removidas |
+| Lao Tsé | 45 | Tradução de James Legge (1891, PG #216), capítulo a capítulo, + chinês do texto recebido (Wang Bi) | 27 corrigidas, 1 duplicata, 17 removidas |
+| Confúcio | 20 | Chinês dos Analectos (`chinese-poetry`, 論語) + Legge (1861, PG #3330) | 14 corrigidas, 1 duplicata, 5 removidas |
+| Tradição judaica | 17 | Sefaria (hebraico/aramaico + inglês), Pirkei Avot na tradução publicada de Pires/Albano, Dt 10:19 na ACF | 13 corrigidas, 2 duplicatas, 2 removidas |
+| Upanishads e Rig Veda | 11 | Paramananda (PG #3283) para Isha; texto canônico para Brihadaranyaka, Mundaka e Rig Veda | 6 corrigidas, 5 removidas |
+| Hadith | 8 | Coleções em árabe e inglês (`fawazahmed0/hadith-api`), com número e classificação | 7 corrigidas, 1 removida |
+
+**Totais: 158 corrigidas, 42 removidas, 40 duplicatas.**
+- Todas as 158 corrigidas ficam com status A.
+- Em 152 o texto mudou; a versão anterior fica registrada como `substituida`.
+- 107 ganharam original e 108 ganharam localização exata (surata:versículo, capítulo, verso, número do hadith).
+- 39 mudaram de autor:
+  - "Alcorão 2:153" e similares passam a "Alcorão", com o versículo na fonte;
+  - Pirkei Avot 4:2 e 4:3 vão de Ben Zoma e Hillel para **Ben Azzai**;
+  - "Mishná, Sanhedrin 4:5" e "Tradição judaica" passam a **Mishná**.
+
+**Critério aplicado (o mesmo das Fases 117–119):**
+- **Corrige** quando a passagem existe. O texto passa a ser a tradução publicada (Alcorão) ou uma tradução fiel do original conferido (as demais), sem acréscimos.
+- **Remove** quando a frase é resumo de doutrina apresentado como fala. Exemplos: "O apego é a raiz do sofrimento" (não é a redação de SN 56.11) e "A simplicidade é a maior manifestação do Tao".
+- **Remove** também a paráfrase sem passagem correspondente no texto integral e a atribuição contestada. Caso: "A busca do conhecimento é obrigatória para todo muçulmano", Ibn Majah 224, cadeia classificada como muito fraca.
+- **Duplicata** quando duas entradas são a mesma passagem em traduções diferentes. Fica a que tem a tradução fiel, e a outra entra no registro como `variante-removida` com a contraparte.
+
+**Notas públicas (factuais), exemplos:**
+- "No versículo, a prescrição é dirigida aos filhos de Israel; ecoa a Mishná (Sanhedrin 4:5)" (Alcorão 5:32).
+- Na Mishná Sanhedrin 4:5, os manuscritos mais antigos (Kaufmann) trazem "uma vida de Israel"; a forma universal é a das edições impressas.
+- "Fala do sábio; a mesma frase reaparece no cap. 66" (Tao 22).
+
+**Interação com o portão automático de duplicatas (Fase 75), registrada para não surpreender:**
+- O portão roda depois de toda a cadeia de fases e mantém, em cada par parecido do mesmo autor, a entrada com a "nota" de fonte mais alta.
+- A nota de fonte reconhece "Tao Te Ching, 22", mas não "cap. 22". Por isso as fontes do Tao ficaram no formato "Tao Te Ching, N".
+- Quatro correções que o portão apagaria foram tratadas explicitamente:
+  - Alcorão 8:46 virou duplicata de 2:153;
+  - 99:7–8 foram unidos numa entrada;
+  - Dhammapada 1 e 2 foram reduzidos às metades que os distinguem.
+- A reexportação confirma que nenhuma frase corrigida some depois do portão.
+- O console passa a mostrar "Fase 78 · não localizadas: Lao Tsé :: O sábio não disputa… (0)". Não é erro:
+  - essa duplicata de base agora é removida antes, pelo portão (confirmado em `DUPLICATAS_F75`: mantida "Justamente porque não disputa…", Tao 22);
+  - o texto já constava do registro histórico.
+
+**Limites desta fase:**
+- Brihadaranyaka 1.3.28, Mundaka 3.1.5–6, Rig Veda 1.164.46 e o chinês do Tao Te Ching foram conferidos pelo texto canônico conhecido. Não houve edição integral acessível neste ambiente. A `notaInterna` de cada um diz isso.
+- As traduções de Gita, Buda, Tao, Analectos e Upanishads são próprias do site, feitas nesta curadoria a partir do original e de tradução inglesa publicada. Não reproduzem tradução portuguesa protegida.
+
+**Arquivos:**
+- Bloco Fase 120 em `assets/js/memotiva.js`.
+- Decisões completas em `curadoria/trabalho/fase120-escrituras-decisoes.jsonl`, com evidência e motivo por frase.
+- CSVs reexportados no Chromium.
+
+**Estado (Chromium real, 390×844 e 1440×900):**
+- Números: frases **2.702** (−82) · autores 529 · obras 1.245 · lacunas **142** · registros 2.110 · frases com `orig` 619.
+- Lacunas novas: Ben Azzai, 2, e Hillel, 2. Uma frase de Hillel era de Ben Azzai.
+- Status: A 1.768 · A− 542 · X 386 · B 6.
+- Testes:
+  - 0 exceções JS;
+  - favoritos por `qid` OK, incluindo remoção, embaralhamento e legado;
+  - busca OK;
+  - sem rolagem horizontal;
+  - nenhuma frase ativa igual a texto do registro;
+  - nenhuma variante removida ainda ativa;
+  - `qid` sem duplicidade.
