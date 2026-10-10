@@ -1708,3 +1708,78 @@ Ponto de partida: 617 frases A−; o maior bloco tinha como fonte só o rótulo 
 - **Austen (19 → 10 mantidas, 9 removidas):** 7 confirmadas no texto integral de *Orgulho e Preconceito* e *Emma* (capítulos identificados); *Northanger Abbey* ("finest balm") e *Razão e Sensibilidade* ("Know your own happiness") confirmadas por várias fontes de citação com a obra, **sem acesso ao texto integral** (por isso sem capítulo). Traduções ajustadas: "injusto julgar a conduta de qualquer corpo" → "de alguém"; a frase de Charlotte Lucas tinha uma versão com sentido alterado ("boa vontade") e outra com final inventado ("e de conhecer bem o outro antes") — mantida só a literal. **Removidas 8** que não aparecem em *Emma* nem *Orgulho e Preconceito* e não consegui confirmar em outra obra (inclui "Meu coração é, e sempre será, teu", provável falsa atribuição de adaptação) **+ 1 variante** da frase de Charlotte.
 - **Números (Chromium real):** frases **2.923** (−9) · lacunas **102** (inalterado) · autores 528 · obras 1.245 · A− agora 591 (A 1865 · X 386 · B 81).
 - **Cobertura:** foram tratadas 27 das 617 A−. **590 A− continuam não auditadas.** Maiores blocos restantes (fonte = só o nome da obra): Buffett/Cartas aos acionistas (28), Housel (21), Frankl (19), Kotler (18), Franklin (16), Munger (16), Rogers (14), Bennis (14), Wollstonecraft (14), Lynch (13), Tocqueville (13), Rui Barbosa (12), Sun Tzu (12). A maioria exige texto impresso ou busca individual.
+
+
+---
+
+## Fase 119 — verificação do `orig` das 580 frases pendentes (09–10/10/2026)
+
+Autorização do proprietário (mensagem de 09/10): verificar as frases com `orig`; "se uma frase não puder ser confirmada dentro do padrão de curadoria, remova-a do catálogo ativo e registre claramente a decisão". Também: Fases 117–118 incorporadas ao repositório oficial antes de qualquer alteração (o patch do bundle é idêntico ao aplicado).
+
+**Método.** Para cada frase, o original foi conferido:
+- no **texto integral** quando acessível (Project Gutenberg via espelho GITenberg no GitHub, The Latin Library via espelho cltk, Perseus `canonical-greekLit`); 134 decisões se apoiam em texto integral lido;
+- nos demais casos (307), em **fonte confiável que reproduz o trecho com a obra**: Quote Investigator, transcrições oficiais (ONU, Fundação Gates, discursos), editoras, artigos acadêmicos, Wikiquote com página, destaques de leitores da edição publicada, ou várias fontes independentes com a mesma redação ligada à mesma obra.
+
+O critério segue o das Fases 117–118. **Confirma** quando o texto ou a fonte confiável mostra a frase na obra. **Corrige** quando a passagem existe, mas o original, a tradução, a fonte ou a nota estavam errados. **Remove** quando a atribuição é falsa ou contestada, quando a frase circula só em sites de citação sem obra, ou quando o português não traduz o original e nenhum dos dois foi localizado.
+
+**Resultado (580 de 580 decididas):**
+- **247 confirmadas.** Ganham `notaInterna` com a evidência; as A− com obra identificada passam a A.
+- **194 corrigidas:**
+  - 87 traduções trocadas (registradas como `substituida`);
+  - 128 originais ajustados ao texto real;
+  - 201 fontes corrigidas ou detalhadas;
+  - 49 notas públicas factuais (por exemplo: de quem é a fala; versão de Frances Gage de Sojourner Truth; lema que Lennon usou mas já circulava).
+- **139 removidas.** Aproximadamente:
+  - 102 não localizadas ou só em coletâneas sem obra;
+  - 26 de atribuição errada ou de outro autor;
+  - 11 em que o português não traduzia o original.
+
+**Exemplos do que a fase encontrou:**
+- **Atribuições erradas:**
+  - Rowling, "A felicidade pode ser encontrada…": é do roteiro do filme de 2004, não do livro.
+  - Twain, "a bondade é a linguagem…": é de Bovee, 1857.
+  - King, "o silêncio dos nossos amigos": sem fonte.
+  - Ruskin, "a qualidade nunca é acidente".
+  - Picasso, "toda criança é artista": aparece pela primeira vez em 1976, depois da morte dele.
+  - Collier, "o sucesso é a soma de pequenos esforços": o próprio Collier credita a Florence Taylor.
+  - Buffett, "20 anos para construir uma reputação": dito anônimo de 1891.
+  - Panfletos da Rosa Branca atribuídos a Sophie Scholl: escritos por Hans Scholl e Schmorell.
+  - "Pressure is a privilege": é de Billie Jean King.
+- **Obra errada:**
+  - Alcott, "too fond of books": é de *Work*, não de *Mulherzinhas*.
+  - Wilde, "amar a si mesmo": *Um Marido Ideal*.
+  - Holmes, "o jovem conhece as regras": *Medical Essays*.
+  - Anne Frank, "ninguém precisa esperar…": é do conto "Dar", não do diário.
+  - Angelou, "o pássaro na gaiola": poema de 1983.
+  - Hawking: as duas frases tinham as fontes trocadas.
+  - Thich Nhat Hanh, "o milagre é andar sobre a terra": *Touching Peace*.
+  - Megginson: artigo de 1963, com a nota de que costuma ser atribuída a Darwin.
+- **Original que era versão popular, trocado pelo texto real:**
+  - Keynes ("The difficulty lies, not in the new ideas…");
+  - Borges ("Yo, que me figuraba el Paraíso…");
+  - Proust ("le seul véritable voyage…");
+  - Kierkegaard (anotação JJ:167 completa);
+  - Freud ("das Ich nicht Herr sei in seinem eigenen Haus");
+  - Victor Hugo (o português era a versão inglesa "uma ideia cujo tempo chegou"; agora traduz "On résiste à l'invasion des armées…");
+  - Stendhal (II.19 e II.22);
+  - Weber, Beethoven (Testamento de Heiligenstadt), Woolf ("Anon… was often a woman"), Drucker (HBR 1963), Bobbio, Friedman (*Free to Choose*, cap. 5), Goldsmith (carta VII).
+
+**Limites desta fase (registrar, não esconder):**
+- Uma parte das confirmações (307) não leu o livro inteiro; apoia-se em fonte secundária confiável.
+- Algumas frases contemporâneas foram confirmadas por destaques de leitores da edição publicada (Goodreads/Kindle) somados a resumos do livro.
+- Textos canônicos curtos conhecidos (por exemplo, Freud NV 31, Agostinho VII.8, Bolívar a Flores, Havel) foram confirmados sem leitura do texto integral neste ambiente. A evidência de cada um está na `notaInterna`.
+- Rede: Wikisource, Gutenberg.org, archive.org e sites de citação estão bloqueados aqui. Só GitHub (raw) e a busca na web funcionam. A busca tem limite de 200 consultas por turno.
+
+**Arquivos:**
+- Bloco Fase 119 em `assets/js/memotiva.js`.
+- Decisões completas em `curadoria/trabalho/fase119-orig-decisoes.jsonl`.
+- Coluna `resultado` preenchida em `curadoria/verificacao-orig-pendente.csv`.
+- CSVs reexportados no Chromium.
+
+**Achados para a etapa de duplicatas (não tratados aqui):** Michelle Obama tem duas traduções da mesma fala ("Quando eles descem, nós subimos" / "Quando eles vão baixo, nós vamos alto"); Megginson/"Não é o mais forte que sobrevive" tem uma variante; Sojourner Truth tem duas entradas com o mesmo refrão.
+
+**Estado (Chromium real, 390×844 e 1440×900):**
+- Números: frases **2.784** (−139) · autores 528 · obras 1.245 · lacunas **140** (+38, efeito das remoções) · registros 1.876 · frases com `orig` 512.
+- Status: A 1.737 · A− 580 · X 386 · B 81.
+- Testes: 0 exceções JS; favoritos por `qid` OK (inclui remoção, embaralhamento e legado); busca OK; sem rolagem horizontal; nenhuma frase ativa igual a texto do registro de remoções.
+- Erros de console: só recursos externos bloqueados no ambiente (Google Fonts, Wikimedia), iguais aos da versão anterior.

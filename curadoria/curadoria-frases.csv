@@ -107,7 +107,7 @@ Thomas Jefferson;A felicidade do lar é a primeira dádiva do céu.;Correspondê
 Martin Luther King Jr.;A função da educação é ensinar a pensar intensamente e a pensar criticamente. Inteligência mais caráter — esse é o objetivo da verdadeira educação.;Discurso registrado;;A;educacao
 Rubem Alves;Educar é mostrar a vida a quem ainda não a viu.;A Alegria de Ensinar;;A;educacao
 Carl Rogers;A única pessoa verdadeiramente educada é aquela que aprendeu a aprender e a mudar.;Tornar-se Pessoa;;A-;educacao
-John Dewey;A educação é o método fundamental do progresso e da reforma social.;My Pedagogic Creed (1897), parte V;;A-;educacao
+John Dewey;A educação é o método fundamental do progresso e da reforma social.;My Pedagogic Creed (1897), parte V;;A;educacao
 Erich Fromm;Amar significa comprometer-se sem garantia.;A Arte de Amar;;A;amor
 François de La Rochefoucauld;A ausência diminui as pequenas paixões e aumenta as grandes, assim como o vento apaga a vela e atiça o fogo.;Máximas;;A-;amor
 Steve Jobs;"Seu tempo é limitado; não o desperdice vivendo a vida de outra pessoa.";Entrevista registrada;;A;negocios
@@ -379,11 +379,9 @@ Sun Tzu;A melhor vitória é aquela que não exige batalha.;A Arte da Guerra;;A-
 Mary Parker Follett;A administração é a arte de fazer as coisas através das pessoas.;Dynamic Administration;;A-;lideranca
 Napoleão Bonaparte;Um líder é um negociante de esperança.;Correspondência e ditos registrados por contemporâneos;;A-;lideranca
 John Kotter;A gestão faz um sistema funcionar: ela ajuda você a fazer o que já sabe fazer. A liderança constrói sistemas novos ou transforma os antigos.;Leading Change (1996);;A;lideranca
-Henry Kissinger;A tarefa do líder é levar as pessoas de onde elas estão para onde nunca estiveram.;Discurso nos Marshall Foundation Awards (2017);;A-;lideranca
 Scott Belsky;A criatividade sem execução é apenas uma ideia.;Fazendo Ideias Acontecer;;A-;empreendedorismo
 Sam Walton;A maneira de superar a concorrência é oferecer mais valor aos clientes.;Sam Walton: Made in America;;A-;empreendedorismo
 Jack Ma;As oportunidades estão sempre onde as pessoas reclamam.;Entrevista registrada;;A;empreendedorismo
-Clayton Christensen;"As pessoas não compram produtos; elas os contratam para realizar um trabalho em suas vidas.";Competing Against Luck (2016);;A-;empreendedorismo
 Warren Buffett;O melhor investimento que você pode fazer é em você mesmo.;Cartas aos acionistas da Berkshire Hathaway;;A-;empreendedorismo
 Warren Buffett;Não importa o quão talentoso ou esforçado você seja, algumas coisas levam tempo.;Cartas aos acionistas da Berkshire Hathaway;;A-;empreendedorismo
 Benjamin Graham;A margem de segurança é o conceito central do investimento inteligente.;O Investidor Inteligente;;A;financas
@@ -509,7 +507,7 @@ Paulo Freire;Ensinar exige ética e estética.;Pedagogia da Autonomia;;A;educaca
 Paulo Freire;Ensinar exige a convicção de que a mudança é possível.;Pedagogia da Autonomia;;A;educacao
 Paulo Freire;Ensinar exige saber escutar.;Pedagogia da Autonomia;;A;educacao
 Paulo Freire;Ensinar exige compreender que a educação é uma forma de intervenção no mundo.;Pedagogia da Autonomia;;A;educacao
-John Dewey;A única educação verdadeira acontece por meio do estímulo das capacidades da criança pelas exigências das situações sociais em que ela vive.;My Pedagogic Creed (1897), parte I;;A-;educacao
+John Dewey;A única educação verdadeira acontece por meio do estímulo das capacidades da criança pelas exigências das situações sociais em que ela vive.;My Pedagogic Creed (1897), parte I;;A;educacao
 Mary Wollstonecraft;"É uma farsa dizer que as mulheres são inferiores aos homens em razão natural; a educação e os costumes produzem grande parte da diferença.";Reivindicação dos Direitos da Mulher;;A-;educacao
 Martin Luther King Jr.;A educação deve nos dar o poder de pensar de forma eficaz e objetiva.;Discurso registrado;;A;educacao
 Martin Luther King Jr.;Educação sem moral é como um navio sem bússola, vagando sem rumo.;Discurso registrado;;A;educacao
@@ -720,7 +718,6 @@ Stephen R. Covey;A força de uma organização está na qualidade das pessoas qu
 Warren Bennis;O líder deve ter visão para o futuro e sabedoria para agir no presente.;On Becoming a Leader;;A-;lideranca
 Warren Bennis;A liderança requer duas coisas: uma visão do mundo como ele é e uma visão do mundo como ele poderia ser.;On Becoming a Leader;;A-;lideranca
 Warren Bennis;O líder deve ser um estudante permanente das pessoas e das situações.;On Becoming a Leader;;A-;lideranca
-John Kotter;Transformação é um processo, não um acontecimento.;Leading Change (1996);;A;lideranca
 Winston Churchill;A coragem é justamente a primeira das qualidades humanas porque garante todas as outras.;Discurso registrado;;A;lideranca
 Winston Churchill;Atitude é uma pequena coisa que faz uma grande diferença.;Discurso registrado;;A;lideranca
 Winston Churchill;A responsabilidade da liderança é decidir e agir quando a situação exige.;Discurso registrado;;A;lideranca
@@ -733,7 +730,7 @@ James Kouzes e Barry Posner;Grandes líderes mobilizam pessoas em torno de uma v
 James Kouzes e Barry Posner;A liderança é uma relação fundada em confiança entre líderes e seguidores.;O Desafio da Liderança;;A-;lideranca
 James Kouzes e Barry Posner;Líderes exemplares mostram o caminho antes de pedir que outros o sigam.;O Desafio da Liderança;;A-;lideranca
 James Kouzes e Barry Posner;O líder deve desafiar o processo, inspirar uma visão compartilhada e permitir que outros ajam.;O Desafio da Liderança;;A-;lideranca
-John Kotter;Visão é uma imagem do futuro que deixa claro por que as pessoas deveriam trabalhar para construí-lo.;Leading Change (1996) — definição de visão;;A;lideranca
+John Kotter;Visão é uma imagem do futuro acompanhada de algum comentário, implícito ou explícito, sobre por que as pessoas deveriam se empenhar em construí-lo.;Leading Change (1996), capítulo 5;;A;lideranca
 Sun Tzu;A arte da liderança consiste em saber quando avançar e quando recuar.;A Arte da Guerra;;A-;lideranca
 Sun Tzu;Aquele que não sabe comandar a si mesmo dificilmente poderá comandar outros.;A Arte da Guerra;;A-;lideranca
 Sun Tzu;A velocidade é a essência da guerra.;A Arte da Guerra;;A-;lideranca
@@ -786,9 +783,7 @@ Susan B. Anthony;"As mulheres têm descoberto que não podem confiar na cavalari
 Ruth Bader Ginsburg;A mulher deve ter igualdade de direitos, igualdade de oportunidades e igualdade de respeito.;Entrevista registrada;;A;empoderamento
 Martin Luther King Jr.;"A liberdade não é dada voluntariamente pelo opressor; deve ser exigida pelo oprimido.";Discurso registrado;;A;empoderamento
 Ruth Bader Ginsburg;"A igualdade não é um favor; é um direito.";Entrevista registrada;;A;empoderamento
-Simone de Beauvoir;"A representação do mundo, como o próprio mundo, é obra dos homens; eles o descrevem a partir de seu próprio ponto de vista.";O Segundo Sexo (1949), Introdução;;A-;empoderamento
-Simone de Beauvoir;A humanidade é masculina, e o homem define a mulher não em si mesma, mas em relação a ele.;O Segundo Sexo (1949), Introdução;;A-;empoderamento
-Simone de Beauvoir;A mulher livre é exatamente o oposto da mulher fácil.;O Segundo Sexo (1949);;A-;empoderamento
+Simone de Beauvoir;A humanidade é masculina, e o homem define a mulher não em si mesma, mas em relação a ele.;O Segundo Sexo (1949), Introdução;;A;empoderamento
 Nísia Floresta;A mulher deve ser instruída para que possa cumprir dignamente sua missão na sociedade.;Direitos das Mulheres e Injustiça dos Homens;;A-;empoderamento
 Mary Wollstonecraft;"A mulher não é inferior ao homem por natureza; a desigualdade é produzida pela falta de educação e oportunidades.";Reivindicação dos Direitos da Mulher;;A-;empoderamento
 Mary Wollstonecraft;Fortalecei a mente feminina pelo alargamento de seus conhecimentos, e haverá um fim para a obediência cega.;Reivindicação dos Direitos da Mulher;;A-;empoderamento
@@ -844,7 +839,7 @@ Aristóteles;O homem feliz é aquele que vive bem e age bem.;Ética a Nicômaco,
 Aristóteles;A felicidade é a finalidade de toda ação humana.;Ética a Nicômaco, I;;A;felicidade
 Sêneca;Nenhum homem é feliz se não se considera feliz.;Cartas a Lucílio, VII e VIII;;A;felicidade
 Epicuro;O prazer é o começo e o fim de uma vida feliz.;Carta a Meneceu;;A;felicidade
-Aristóteles;A felicidade é um estado de atividade, não de repouso.;Ética a Nicômaco;;A-;felicidade
+Aristóteles;A felicidade é uma atividade, e a atividade evidentemente se realiza, e não está presente como uma posse.;Ética a Nicômaco, livro IX, capítulo 9 (1169b29);;A;felicidade
 Viktor Frankl;A vida nunca se torna insuportável pelas circunstâncias, mas apenas pela falta de significado e propósito.;Em Busca de Sentido;;A-;felicidade
 Carl Rogers;A felicidade é o resultado de uma vida em harmonia com nossos valores.;Tornar-se Pessoa;;A-;felicidade
 Aristóteles;A felicidade é uma forma de contemplação e realização daquilo que há de melhor em nós.;Ética a Nicômaco, X;;A;felicidade
@@ -1063,8 +1058,8 @@ Jean-Jacques Rousseau;A força não faz o direito, e só se é obrigado a obedec
 Jean-Jacques Rousseau;A lei é a expressão da vontade geral.;O Contrato Social;;A;politica
 Cícero;O bem do povo é a principal lei.;Sobre as Leis (De Legibus), III;;A;politica
 Cícero;A autoridade da lei deve ser maior que a autoridade dos homens.;Sobre as Leis (De Legibus), III;;A;politica
-Júlio César;Vim, vi e venci.;"Plutarco, Vida de César, 50.2 (carta a Amâncio); Suetônio, Divus Iulius, 37.2 (cartaz no triunfo pôntico, 46 a.C.)";Em latim: “Veni, vidi, vici”. Relatada por Plutarco (César, 50) e Suetônio (César, 37).;A-;politica
-Júlio César;Os homens acreditam facilmente naquilo que desejam.;Comentários sobre a Guerra das Gálias, livro III;;A-;politica
+Júlio César;Vim, vi e venci.;"Plutarco, Vida de César, 50.2 (carta a Amâncio); Suetônio, Divus Iulius, 37.2 (cartaz no triunfo pôntico, 46 a.C.)";Em latim: “Veni, vidi, vici”. Relatada por Plutarco (César, 50) e Suetônio (César, 37).;A;politica
+Júlio César;Os homens acreditam facilmente naquilo que desejam.;Comentários sobre a Guerra das Gálias, livro III, capítulo 18;;A;politica
 Lao Tsé;Governar um grande Estado é como cozinhar um pequeno peixe: não se deve mexer demais.;Tao Te Ching, 60;;A;fe
 Confúcio;Aquele que governa pelo exemplo é como a estrela polar, que permanece fixa enquanto as outras estrelas giram ao seu redor.;Analectos;;A-;politica
 Confúcio;Quando a liderança é correta, o povo segue naturalmente.;Analectos;;A-;politica
@@ -1118,8 +1113,7 @@ Ronald Reagan;"O governo não é a solução para o nosso problema; o governo é
 Ronald Reagan;A liberdade nunca está a mais de uma geração de distância da extinção.;Discurso registrado;;A;politica
 Ronald Reagan;A paz não é a ausência de conflito, mas a capacidade de lidar com conflitos por meios pacíficos.;Discurso registrado;;A;politica
 Ronald Reagan;A nação que possui liberdade econômica terá liberdade política.;Discurso registrado;;A;politica
-Henry Kissinger;O poder é o maior afrodisíaco.;The New York Times, 28 de outubro de 1973;;A-;politica
-Henry Kissinger;A ordem internacional depende de um equilíbrio entre legitimidade e poder.;World Order (2014);;A-;politica
+Henry Kissinger;O poder é o maior afrodisíaco.;The New York Times, 28 de outubro de 1973;;A;politica
 Kofi Annan;A paz e o desenvolvimento são inseparáveis.;Discurso registrado;;A;politica
 Kofi Annan;A globalização é um fato, mas deve ser acompanhada por valores humanos.;Discurso registrado;;A;politica
 Kofi Annan;A tolerância é uma virtude que torna possível a convivência entre diferentes povos.;Discurso registrado;;A;politica
@@ -2006,7 +2000,7 @@ Clarice Lispector;Eu sou uma pergunta.;A Paixão Segundo G.H.;;A;autorreconhecim
 Audre Lorde;Cuidar de mim não é autoindulgência, é autopreservação — e isso é um ato de guerra política.;A Burst of Light;;A;autorreconhecimento
 Virginia Woolf;Não há barreira, tranca ou ferrolho que você possa impor à liberdade da minha mente.;Um Teto Todo Seu;;A;autorreconhecimento
 Carl Rogers;O que sou é bom o bastante, se eu apenas for isso abertamente.;Tornar-se Pessoa;;A;autorreconhecimento
-Aristóteles;Um amigo é uma só alma que habita dois corpos.;Diógenes Laércio, Vidas e Doutrinas dos Filósofos Ilustres, V, 20 (ed. Hicks);Dito de Aristóteles registrado por Diógenes Laércio (V, 20).;A-;amizade
+Aristóteles;Um amigo é uma só alma que habita dois corpos.;Diógenes Laércio, Vidas e Doutrinas dos Filósofos Ilustres, V, 20 (ed. Hicks);Dito de Aristóteles registrado por Diógenes Laércio (V, 20).;A;amizade
 Michel de Montaigne;Se me perguntarem por que o amava, sinto que só posso responder: porque era ele, porque era eu.;"Ensaios, Livro I, XXVIII, ""Da Amizade""";;A;amizade
 C. S. Lewis;A amizade nasce naquele momento em que uma pessoa diz a outra: como, você também? Pensei que fosse só eu.;Os Quatro Amores;;A;amizade
 Ralph Waldo Emerson;O único modo de ter um amigo é ser um.;"Ensaios: Primeira Série, ""Amizade""";;A;amizade
@@ -2087,17 +2081,16 @@ Bertrand Russell;A melhor herança que um pai pode deixar é o hábito de pensar
 Oscar Wilde;Posso resistir a tudo, exceto à tentação.;O Leque de Lady Windermere (1892), ato I;;A;reflexao
 Oscar Wilde;Estamos todos na sarjeta, mas alguns de nós olham para as estrelas.;O Leque de Lady Windermere (1892), ato III;;A;conforto
 Oscar Wilde;Não há livro moral ou imoral. Livros são bem escritos ou mal escritos. É só isso.;O Retrato de Dorian Gray (1890), prefácio;;A;vida
-Oscar Wilde;Amar a si mesmo é o começo de um romance para a vida inteira.;Uma Mulher Sem Importância (1893), ato III;;A;amor
+Oscar Wilde;Amar a si mesmo é o começo de um romance para a vida inteira.;Um Marido Ideal (1895), ato III;Fala de Lord Goring.;A;amor
 Mark Twain;Tudo bem, então eu vou para o inferno.;As Aventuras de Huckleberry Finn (1884), capítulo 31;;A;empoderamento
-Mark Twain;O homem é o único animal que cora. Ou que precisa disso.;Seguindo o Equador (1897), capítulo 27;;A;reflexao
-Mark Twain;A bondade é a linguagem que o surdo pode ouvir e o cego pode ver.;Anotação nos cadernos de Mark Twain (1898);;A;amor
+Mark Twain;O homem é o único animal que cora. Ou que precisa disso.;Seguindo o Equador (1897), capítulo 27;Epígrafe do capítulo, atribuída ao “Novo Calendário de Pudd’nhead Wilson”, personagem do próprio Twain.;A;reflexao
 Voltaire;É preciso cultivar o nosso jardim.;Cândido (1759), capítulo 30;;A;vida
 Voltaire;Se Deus não existisse, seria preciso inventá-lo.;Epístola ao Autor do Livro dos Três Impostores (1768), verso 22;;A;reflexao
-Voltaire;O melhor é inimigo do bom.;Dicionário Filosófico (1764), verbete Arte Dramática;;A;filosofos
+Voltaire;O melhor é inimigo do bom.;La Bégueule (1772), versos iniciais;Voltaire apresenta o dito como de “um sábio italiano”.;A;filosofos
 Machado de Assis;Ao verme que primeiro roeu as frias carnes do meu cadáver dedico como saudosa lembrança estas Memórias Póstumas.;Memórias Póstumas de Brás Cubas (1881), dedicatória;;A;reflexao
 Machado de Assis;Não tive filhos, não transmiti a nenhuma criatura o legado da nossa miséria.;Memórias Póstumas de Brás Cubas (1881), capítulo 160;;A;reflexao
 Machado de Assis;A vida é uma ópera e uma grande ópera.;Dom Casmurro (1899), capítulo 9;;A;reflexao
-Victor Hugo;Nada é mais poderoso do que uma ideia cujo tempo chegou.;História de um Crime (1877), conclusão, capítulo 10;;A;motivacao
+Victor Hugo;"Resiste-se à invasão dos exércitos; não se resiste à invasão das ideias.";História de um Crime (1877), conclusão, capítulo 10;Origem da frase popular “nada é mais poderoso do que uma ideia cujo tempo chegou”.;A;motivacao
 Victor Hugo;Ele dorme. Embora sua sorte fosse muito estranha, ele vivia. Morreu quando não teve mais seu anjo.;Os Miseráveis (1862), último capítulo, epitáfio de Jean Valjean;;A;reflexao
 Albert Camus;No meio do inverno aprendi enfim que havia em mim um verão invencível.;O Verão (1954), ensaio Regresso a Tipasa;;A;dificeis
 Albert Camus;Só há um problema filosófico verdadeiramente sério: o suicídio.;O Mito de Sísifo (1942), primeira linha;;A;filosofos
@@ -2105,15 +2098,15 @@ Friedrich Nietzsche;Quem tem um porquê para viver suporta quase qualquer como.;
 Friedrich Nietzsche;Deus está morto. Deus continua morto. E nós o matamos.;A Gaia Ciência (1882), aforismo 125;;A;filosofos
 Friedrich Nietzsche;Quem luta contra monstros deve cuidar para não se tornar um monstro.;Além do Bem e do Mal (1886), aforismo 146;;A;reflexao
 Friedrich Nietzsche;É preciso ter um caos dentro de si para dar à luz uma estrela dançante.;Assim Falou Zaratustra (1883), prólogo, 5;;A;reflexao
-Immanuel Kant;Age apenas segundo a máxima pela qual possas ao mesmo tempo querer que ela se torne lei universal.;Fundamentação da Metafísica dos Costumes (1785), segunda seção;;A;filosofos
+Immanuel Kant;Age apenas segundo a máxima pela qual possas ao mesmo tempo querer que ela se torne lei universal.;Fundamentação da Metafísica dos Costumes (1785), segunda seção (Ak 4:421);;A;filosofos
 Immanuel Kant;Duas coisas enchem o ânimo de admiração sempre nova: o céu estrelado acima de mim e a lei moral dentro de mim.;Crítica da Razão Prática (1788), conclusão;;A;filosofos
-Søren Kierkegaard;A vida só pode ser compreendida olhando para trás, mas só pode ser vivida olhando para a frente.;Diários (1843), anotação IV A 164;;A;reflexao
-Søren Kierkegaard;A angústia é a vertigem da liberdade.;O Conceito de Angústia (1844), capítulo 4;;A;reflexao
+Søren Kierkegaard;É bem verdade o que diz a filosofia: que a vida precisa ser compreendida para trás. Mas esquece-se então a outra proposição: que ela precisa ser vivida para a frente.;Diários, 1843 (JJ:167);;A;reflexao
+Søren Kierkegaard;A angústia é a vertigem da liberdade.;O Conceito de Angústia (1844);;A;reflexao
 Hannah Arendt;"O mal é extremo, mas nunca radical; só o bem pode ser profundo e radical.";Carta a Gershom Scholem, 24 de julho de 1963;;A;filosofos
 Hannah Arendt;O súdito ideal do governo totalitário não é o nazista convicto, mas aquele para quem já não existe distinção entre fato e ficção.;As Origens do Totalitarismo (1951), parte III, capítulo 13;;A;politica
 Virginia Woolf;Uma mulher precisa ter dinheiro e um teto todo seu para escrever ficção.;Um Teto Todo Seu (1929), capítulo 1;;A;reflexao
-Virginia Woolf;Durante a maior parte da história, Anônimo era uma mulher.;Um Teto Todo Seu (1929), capítulo 3;;A;reflexao
-Bertrand Russell;O problema do mundo é que os tolos e fanáticos são sempre tão certos de si, e as pessoas sábias tão cheias de dúvidas.;O Triunfo da Estupidez (1933), ensaio;;A;filosofos
+Virginia Woolf;Eu arriscaria dizer que Anônimo, que escreveu tantos poemas sem assiná-los, foi muitas vezes uma mulher.;Um Teto Todo Seu (1929), capítulo 3;;A;reflexao
+Bertrand Russell;A causa fundamental do problema é que, no mundo moderno, os estúpidos são cheios de certeza, enquanto os inteligentes são cheios de dúvida.;O Triunfo da Estupidez, artigo de 10 de maio de 1933;;A;filosofos
 Bertrand Russell;Três paixões governaram minha vida: o anseio de amor, a busca do conhecimento e uma piedade insuportável pelo sofrimento humano.;Autobiografia (1967), prólogo;;A;vida
 Sigmund Freud;O sonho é a via régia para o conhecimento do inconsciente.;A Interpretação dos Sonhos (1900), capítulo 7;;A;autorreconhecimento
 Sigmund Freud;Onde estava o isso, deve advir o eu.;Novas Conferências Introdutórias à Psicanálise (1933), conferência 31;;A;autorreconhecimento
@@ -2121,41 +2114,38 @@ Johann Wolfgang von Goethe;Duas almas habitam, ah, em meu peito.;Fausto, parte I
 Johann Wolfgang von Goethe;Detém-te, és tão belo!;Fausto, parte I (1808), cena do pacto;;A;reflexao
 George Orwell;Todos os animais são iguais, mas alguns animais são mais iguais que outros.;A Revolução dos Bichos (1945), capítulo 10;;A;politica
 George Orwell;Guerra é paz. Liberdade é escravidão. Ignorância é força.;1984 (1949), parte I, capítulo 1;;A;politica
-George Orwell;Liberdade é o direito de dizer às pessoas o que elas não querem ouvir.;Prefácio inédito de A Revolução dos Bichos (1945);;A;politica
+George Orwell;Se a liberdade significa alguma coisa, significa o direito de dizer às pessoas o que elas não querem ouvir.;Prefácio inédito de A Revolução dos Bichos (1945);;A;politica
 Miguel de Cervantes;A liberdade, Sancho, é um dos mais preciosos dons que aos homens deram os céus.;Dom Quixote (1615), segunda parte, capítulo 58;;A;politica
-Miguel de Cervantes;Onde uma porta se fecha, outra se abre.;Dom Quixote (1605), primeira parte, capítulo 21;;A;conforto
+Miguel de Cervantes;Onde uma porta se fecha, outra se abre.;Dom Quixote (1605), primeira parte, capítulo 21;Refrão citado por Dom Quixote.;A;conforto
 Santo Agostinho;Fizeste-nos para ti, e o nosso coração está inquieto enquanto não repousar em ti.;Confissões (397), livro I, capítulo 1;;A;fe
 Santo Agostinho;Tarde te amei, ó beleza tão antiga e tão nova, tarde te amei.;Confissões (397), livro X, capítulo 27;;A;fe
 John Stuart Mill;O único fim pelo qual a humanidade tem justificativa para interferir na liberdade de ação de qualquer um é a autoproteção.;Sobre a Liberdade (1859), capítulo 1;;A;politica
 John Stuart Mill;É melhor ser um ser humano insatisfeito do que um porco satisfeito.;Utilitarismo (1863), capítulo 2;;A;filosofos
 John Stuart Mill;Se toda a humanidade menos uma pessoa fosse de uma opinião, não teria mais direito de silenciá-la do que ela de silenciar a humanidade.;Sobre a Liberdade (1859), capítulo 2;;A;politica
-Francis Bacon;Saber é poder.;Meditationes Sacrae (1597), Sobre Heresias;;A;educacao
+Francis Bacon;Saber é poder.;Meditationes Sacrae (1597), Sobre Heresias;No original, a frase se refere ao conhecimento de Deus, num argumento contra uma heresia.;A;educacao
 Francis Bacon;A natureza, para ser comandada, deve ser obedecida.;Novum Organum (1620), livro I, aforismo 3;;A;educacao
 Francis Bacon;Alguns livros devem ser provados, outros devorados, e poucos mastigados e digeridos.;Ensaios (1625), Dos Estudos;;A;educacao
 William James;A maior descoberta da minha geração é que um ser humano pode mudar sua vida mudando sua atitude mental.;As Variedades da Experiência Religiosa (1902), conferência final;;A;motivacao
 William James;Aja como se o que você faz fizesse diferença. Faz.;Princípios de Psicologia (1890), capítulo sobre a vontade;;A;vida
 Paulo Freire;Ensinar não é transferir conhecimento, mas criar as possibilidades para a sua produção ou a sua construção.;Pedagogia da Autonomia (1996), capítulo 1;;A;educacao
-Maya Angelou;O pássaro na gaiola canta com um trinado assustado, por coisas desconhecidas mas ainda desejadas.;Eu Sei Por Que o Pássaro Canta na Gaiola (1969), epígrafe;;A;politica
-Eleanor Roosevelt;Onde começam os direitos humanos universais? Em lugares pequenos, perto de casa.;Discurso nas Nações Unidas, 27 de março de 1958;;A;politica
-bell hooks;O amor é uma ação, nunca simplesmente um sentimento.;Tudo Sobre o Amor (2000), capítulo 1;;A;amor
+Maya Angelou;O pássaro na gaiola canta com um trinado assustado, por coisas desconhecidas mas ainda desejadas.;“Pássaro Engaiolado”, em Shaker, Why Don’t You Sing? (1983);;A;politica
+Eleanor Roosevelt;Onde começam os direitos humanos universais? Em lugares pequenos, perto de casa.;Discurso nas Nações Unidas ao apresentar o guia “In Your Hands”, 27 de março de 1958;;A;politica
 Charles Darwin;Há grandeza nesta visão da vida.;A Origem das Espécies (1859), última página;;A;educacao
-Malcolm X;A educação é o passaporte para o futuro, pois o amanhã pertence a quem se prepara hoje.;Discurso em Nova York, 1964;;A;educacao
+Malcolm X;A educação é o nosso passaporte para o futuro, pois o amanhã pertence somente às pessoas que se preparam para ele hoje.;Discurso de fundação da Organização da Unidade Afro-Americana, Nova York (28/06/1964);;A;educacao
 Vincent van Gogh;Sonho minha pintura e depois pinto meu sonho.;Carta a Theo van Gogh, 1888;;A;vida
 Vincent van Gogh;O que seria a vida se não tivéssemos coragem de tentar alguma coisa?;Carta a Theo van Gogh, 1888;;A;empoderamento
 Agatha Christie;Todo assassino é provavelmente o velho amigo de alguém.;O Misterioso Caso de Styles (1920), capítulo XI;;A;reflexao
-Dalai Lama;Minha religião é muito simples. Minha religião é a bondade.;Uma Ética para o Novo Milênio (1999);;A;fe
-Marguerite Yourcenar;"Fundemos bibliotecas; são celeiros públicos.";Memórias de Adriano (1951), seção Saeculum Aureum;;A;educacao
+Dalai Lama;Minha verdadeira religião é a bondade.;Kindness, Clarity, and Insight (1984);;A;fe
 Adélia Prado;Não quero faca nem queijo. Quero a fome.;Bagagem (1976), poema Antes do Nome;;A;vida
 Érico Veríssimo;Não sou pessimista. Sou apenas um homem que não perdeu a esperança.;Solo de Clarineta (1973), volume I;;A;conforto
 Padre Antônio Vieira;"O pregar é falar; o pregar é dizer. Falar é falar; dizer é dizer alguma coisa.";Sermão da Sexagésima (1655), parágrafo VII;;A;reflexao
 Millôr Fernandes;Amor é a palavra que abre o coração, eu sei porque li numa revista.;Millôr Definitivo (1994);;A;amor
 Alexandre Dumas;Toda a sabedoria humana está resumida nestas duas palavras: esperar e ter esperança.;O Conde de Monte Cristo (1844), último capítulo;;A;conforto
-Coco Chanel;A moda passa, o estilo permanece.;Entrevista publicada na imprensa francesa;;A;vida
-J.K. Rowling;São nossas escolhas que mostram quem realmente somos, muito mais do que nossas capacidades.;Harry Potter e a Câmara Secreta (1998), capítulo 18;;A;reflexao
-Jorge Luis Borges;Sempre imaginei o Paraíso como uma espécie de biblioteca.;Poema dos Dons, em O Fazedor (1960);;A;educacao
+J.K. Rowling;São nossas escolhas, Harry, que mostram o que realmente somos, muito mais do que nossas capacidades.;Harry Potter e a Câmara Secreta (1998), capítulo 18;Fala de Dumbledore.;A;reflexao
+Jorge Luis Borges;Eu, que imaginava o Paraíso / sob a espécie de uma biblioteca.;Poema dos Dons, em O Fazedor (1960);;A;educacao
 Jorge Luis Borges;O universo, que outros chamam de Biblioteca, compõe-se de um número indefinido, talvez infinito, de galerias hexagonais.;A Biblioteca de Babel, em Ficções (1944);;A;reflexao
 Jorge Luis Borges;O tempo é a substância de que sou feito.;Nova Refutação do Tempo, em Outras Inquisições (1952);;A;reflexao
-Marcel Proust;A verdadeira viagem de descobrimento não consiste em buscar novas paisagens, mas em ter novos olhos.;A Prisioneira (1923), volume V de Em Busca do Tempo Perdido;;A;reflexao
+Marcel Proust;A única verdadeira viagem, o único banho de juventude, não seria ir em busca de novas paisagens, mas ter outros olhos.;A Prisioneira (1923), volume V de Em Busca do Tempo Perdido;;A;reflexao
 Marcel Proust;Os verdadeiros paraísos são os paraísos que perdemos.;O Tempo Redescoberto (1927), volume VII de Em Busca do Tempo Perdido;;A;reflexao
 José Saramago;Se podes olhar, vê. Se podes ver, repara.;Ensaio sobre a Cegueira (1995), epígrafe;;A;reflexao
 José Saramago;Cegos que, vendo, não veem.;Ensaio sobre a Cegueira (1995), última página;;A;reflexao
@@ -2167,24 +2157,22 @@ Rabindranath Tagore;Dormi e sonhei que a vida era alegria. Acordei e vi que a vi
 Rabindranath Tagore;Onde a mente é sem medo e a cabeça é mantida erguida.;Gitanjali (1912), poema 35;;A;empoderamento
 Robert Louis Stevenson;Não julgue cada dia pela colheita que você faz, mas pelas sementes que planta.;Reflexões e Comentários sobre a Vida Moderna (1888), ensaio;;A;vida
 Robert Louis Stevenson;Quinze homens sobre o baú do defunto.;A Ilha do Tesouro (1883), capítulo 1;;A;reflexao
-Aldous Huxley;Fatos não deixam de existir por serem ignorados.;Ensaios Novos e Velhos (1926);;A;reflexao
-Aldous Huxley;Ó admirável mundo novo, que tem gente assim!;Admirável Mundo Novo (1932), capítulo 8;;A;reflexao
 William Butler Yeats;"As coisas se desfazem; o centro não se sustenta.";A Segunda Vinda (1919), primeira estrofe;;A;politica
 William Butler Yeats;Os melhores carecem de toda convicção, enquanto os piores transbordam de intensidade apaixonada.;A Segunda Vinda (1919), primeira estrofe;;A;politica
 Robert Frost;Duas estradas divergiam num bosque, e eu tomei a menos percorrida.;A Estrada Não Trilhada (1916), última estrofe;;A;vida
 Robert Frost;A floresta é linda, escura e funda, mas tenho promessas a cumprir, e milhas a andar antes de dormir.;Parando na Mata numa Noite de Neve (1923), última estrofe;;A;vida
-Robert Frost;Em três palavras posso resumir tudo o que aprendi sobre a vida: ela continua.;Entrevista registrada;;A;vida
+Robert Frost;Em três palavras posso resumir tudo o que aprendi sobre a vida: ela continua.;Citado por Ray Josephs, “Robert Frost’s Secret”, This Week (1954);Registro do jornalista Ray Josephs, que diz ter ouvido a frase na comemoração dos 80 anos de Frost.;A;vida
 Alfred Tennyson;Lutar, buscar, encontrar e não ceder.;Ulisses (1842), último verso;;A;empoderamento
-Alfred Tennyson;É melhor ter amado e perdido do que nunca ter amado.;In Memoriam A.H.H. (1850), canto 27;;A;amor
-Alfred Tennyson;A natureza, vermelha em dentes e garras.;In Memoriam A.H.H. (1850), canto 56;;A;reflexao
+Alfred Tennyson;É melhor ter amado e perdido do que nunca ter amado.;In Memoriam A.H.H. (1850), canto XXVII;;A;amor
+Alfred Tennyson;A natureza, vermelha em dentes e garras.;In Memoriam A.H.H. (1850), canto LVI;;A;reflexao
 Lord Byron;Acordei uma manhã e me descobri famoso.;Registrado por Thomas Moore em Cartas e Diários de Lord Byron (1830);;A;reflexao
-Lord Byron;Ela caminha em beleza, como a noite de climas sem nuvem e céus estrelados.;Ela Caminha em Beleza (1814), primeira estrofe;;A;amor
+Lord Byron;Ela caminha em beleza, como a noite de climas sem nuvem e céus estrelados.;"Ela Caminha em Beleza (1814; publicado em Hebrew Melodies, 1815), primeira estrofe";;A;amor
 Alexander Pope;"Errar é humano; perdoar, divino.";Ensaio sobre a Crítica (1711), parte II;;A;filosofos
 Alexander Pope;Um pouco de saber é coisa perigosa.;Ensaio sobre a Crítica (1711), parte II;;A;educacao
 Alexander Pope;A esperança brota eterna no peito humano.;Ensaio sobre o Homem (1733), epístola I;;A;conforto
-Gustave Flaubert;Seja regrado e ordenado em sua vida para poder ser violento e original em sua obra.;Carta a Gertrude Tennant, 25 de dezembro de 1876;;A;reflexao
+Gustave Flaubert;Seja regrado e comum em sua vida, como um burguês, para ser violento e original em suas obras.;Carta a Gertrude Tennant, 25 de dezembro de 1876;;A;reflexao
 Stendhal;A beleza é apenas a promessa de felicidade.;Do Amor (1822), nota de rodapé do capítulo 17;;A;felicidade
-Stendhal;Um romance é um espelho que se leva ao longo de um caminho.;O Vermelho e o Negro (1830), livro II, capítulo 19;;A;reflexao
+Stendhal;Um romance é um espelho que passeia por uma grande estrada.;O Vermelho e o Negro (1830), livro II, capítulo 19;;A;reflexao
 George Sand;Não se pode dominar o próprio coração, mas pode-se dominar as próprias ações.;Indiana (1832);;A;reflexao
 George Sand;Há uma só felicidade na vida: amar e ser amado.;Carta a Lina Calamatta, 31 de março de 1862;;A;amor
 Nathaniel Hawthorne;"A felicidade é uma borboleta que, quando perseguida, está sempre além do alcance; mas que, se você se sentar quieto, pode pousar sobre você.";Cadernos Americanos (1838), anotação;;A;felicidade
@@ -2195,19 +2183,19 @@ John Ruskin;Não há riqueza senão a vida.;Até Este Último (1860), ensaio IV;
 Herbert Spencer;A sobrevivência do mais apto.;Princípios de Biologia (1864), volume I;;A;educacao
 Pierre-Joseph Proudhon;A propriedade é um roubo.;O Que é a Propriedade? (1840), capítulo 1;;A;politica
 Pierre-Joseph Proudhon;A liberdade é a mãe, não a filha, da ordem.;Solução do Problema Social (1848);;A;politica
-John Galbraith;Diante da escolha entre mudar de opinião e provar que não há necessidade disso, quase todo mundo fica ocupado com a prova.;Entrevista registrada;;A;reflexao
+John Galbraith;Diante da escolha entre mudar de opinião e provar que não há necessidade disso, quase todo mundo fica ocupado com a prova.;“How Keynes Came to America”, em Economics, Peace and Laughter (1971);;A;reflexao
 John Galbraith;A sabedoria convencional protege a continuidade da compreensão social.;A Sociedade Afluente (1958), capítulo 2;;A;reflexao
 Neil Postman;O que Orwell temia eram os que proibiriam os livros. O que Huxley temia era que não houvesse razão para proibir um livro, porque não haveria ninguém querendo ler.;Divertindo-se até Morrer (1985), prefácio;;A;reflexao
 Neil Postman;"Toda tecnologia é ao mesmo tempo um fardo e uma bênção; não uma coisa ou outra, mas as duas.";Tecnopólio (1992), capítulo 1;;A;reflexao
 Herbert Simon;A riqueza de informação cria a pobreza de atenção.;Projetando Organizações para um Mundo Rico em Informação (1971);;A;reflexao
 Herbert Simon;Decisores satisfazem em vez de maximizar.;Comportamento Administrativo (1947), capítulo 5;;A;negocios
-Isaiah Berlin;A raposa sabe muitas coisas, mas o ouriço sabe uma coisa grande.;O Ouriço e a Raposa (1953), abertura;;A;reflexao
+Isaiah Berlin;A raposa sabe muitas coisas, mas o ouriço sabe uma coisa grande.;O Ouriço e a Raposa (1953), abertura;Fragmento do poeta grego Arquíloco, que Berlin usa como epígrafe e título do ensaio.;A;reflexao
 Isaiah Berlin;A liberdade de lobos costuma ser a morte de ovelhas.;Quatro Ensaios sobre a Liberdade (1969), introdução;;A;politica
 Shoshana Zuboff;O capitalismo de vigilância reivindica unilateralmente a experiência humana como matéria-prima gratuita.;A Era do Capitalismo de Vigilância (2019), definição de abertura;;A;politica
-Jaron Lanier;A informação é alienação da experiência.;Você Não É Um Aplicativo (2010), capítulo 1;;A;reflexao
+Jaron Lanier;A informação é alienação da experiência.;Você Não É Um Aplicativo (2010);;A;reflexao
 George Lakoff;Não pense em um elefante.;Não Pense em um Elefante (2004), abertura;;A;manipulacao
 Gottfried Wilhelm Leibniz;Vivemos no melhor dos mundos possíveis.;Teodiceia (1710), parte I;;A;filosofos
-Gottfried Wilhelm Leibniz;Nada acontece sem uma razão suficiente.;Monadologia (1714), §32;;A;filosofos
+Gottfried Wilhelm Leibniz;Nenhum fato pode ser verdadeiro ou existente, nenhum enunciado verdadeiro, sem que haja uma razão suficiente para que seja assim e não de outro modo.;Monadologia (1714), §32;;A;filosofos
 Eurípides;Nada tem mais força que a necessidade.;Helena (412 a.C.), verso 514;;A;reflexao
 Horácio;Colhe o dia, confiando o mínimo possível no amanhã.;Odes (23 a.C.), livro I, ode 11;;A;vida
 Horácio;Ouse saber.;Epístolas (20 a.C.), livro I, epístola 2;;A;educacao
@@ -2215,33 +2203,28 @@ Horácio;Nem sempre Apolo mantém o arco retesado.;Odes (23 a.C.), livro II, ode
 Virgílio;"O amor vence tudo; cedamos também nós ao amor.";Bucólicas (39 a.C.), écloga X, verso 69;;A;amor
 Virgílio;Temo os gregos, mesmo quando trazem presentes.;Eneida (19 a.C.), livro II, verso 49;;A;reflexao
 Virgílio;A fortuna favorece os audazes.;Eneida (19 a.C.), livro X, verso 284;;A;empoderamento
-Quintiliano;O orador é o homem bom hábil no falar.;Institutio Oratoria (95), livro XII, capítulo 1;;A;reflexao
+Quintiliano;O orador é o homem bom hábil no falar.;Institutio Oratoria (95), livro XII, capítulo 1;Definição de orador que Quintiliano atribui a Catão, o Velho.;A;reflexao
 Quintiliano;Aprendemos não para a escola, mas para a vida.;Institutio Oratoria (95), livro XII;;A;educacao
-Jean de La Fontaine;Ensinam que a razão do mais forte é sempre a melhor.;Fábulas (1668), livro I, O Lobo e o Cordeiro;;A;politica
-Jean de La Fontaine;"De nada adianta correr; é preciso partir a tempo.";Fábulas (1668), livro VI, A Lebre e a Tartaruga;;A;motivacao
-Publílio Siro;Qualquer um pode segurar o leme quando o mar está calmo.;Sentenças, máxima 358;;A;dificeis
-Publílio Siro;É um mau plano aquele que não admite mudança.;Sentenças, máxima 362;;A;reflexao
+Jean de La Fontaine;A razão do mais forte é sempre a melhor.;Fábulas (1668), livro I, fábula 10, “O Lobo e o Cordeiro”;;A;politica
+Jean de La Fontaine;"De nada adianta correr; é preciso partir a tempo.";Fábulas (1668), livro VI, fábula 10, “A Lebre e a Tartaruga”;;A;motivacao
+Publílio Siro;Qualquer um pode segurar o leme quando o mar está calmo.;Sentenças;;A;dificeis
+Publílio Siro;É um mau plano aquele que não admite mudança.;Sentenças (Sententiae);;A;reflexao
 Hipócrates;A vida é breve, a arte é longa, a ocasião fugidia, a experiência enganosa, o julgamento difícil.;Aforismos, livro I, aforismo 1;;A;vida
 Santo Isidoro de Sevilha;As letras são sinais das coisas, indícios das palavras, cuja força é tanta que nos falam sem voz.;Etimologias (630), livro I, capítulo 3;;A;educacao
-Douglas MacArthur;Dever, honra, pátria.;Discurso de despedida em West Point, 12 de maio de 1962;;A;reflexao
-Douglas MacArthur;"Velhos soldados nunca morrem; eles apenas desaparecem.";Discurso ao Congresso dos Estados Unidos, 19 de abril de 1951;;A;reflexao
-Dwight D. Eisenhower;Devemos nos precaver contra a influência injustificada do complexo industrial-militar.;Discurso de despedida à nação, 17 de janeiro de 1961;;A;politica
-Dwight D. Eisenhower;"Planos não são nada; o planejamento é tudo.";Discurso registrado, 1957;;A;negocios
-Charles de Gaulle;A França perdeu uma batalha, mas não perdeu a guerra.;Cartaz de julho de 1940, Londres;;A;empoderamento
-Charles de Gaulle;Como governar um país que tem duzentos e quarenta e seis tipos de queijo?;Registrado por Ernest Mignon em Les Mots du Général (1962);;A;politica
+Douglas MacArthur;"Velhos soldados nunca morrem; eles apenas desaparecem.";Discurso ao Congresso dos Estados Unidos, 19 de abril de 1951;MacArthur cita o refrão de uma antiga balada militar.;A;reflexao
+Dwight D. Eisenhower;Nos conselhos de governo, devemos nos precaver contra a aquisição de influência indevida, buscada ou não, pelo complexo industrial-militar.;Discurso de despedida à nação, 17 de janeiro de 1961;;A;politica
+Dwight D. Eisenhower;Planos não valem nada, mas o planejamento é tudo.;Discurso na National Defense Executive Reserve Conference, 14 de novembro de 1957;Eisenhower apresenta a máxima como algo que ouvira havia muito tempo no Exército.;A;negocios
+Charles de Gaulle;A França perdeu uma batalha, mas não perdeu a guerra.;Cartaz “À tous les Français”, Londres, julho–agosto de 1940;;A;empoderamento
 Woodrow Wilson;O mundo deve se tornar seguro para a democracia.;Discurso ao Congresso pedindo declaração de guerra, 2 de abril de 1917;;A;politica
-Dag Hammarskjöld;Para tudo o que foi, obrigado. Para tudo o que será, sim.;Marcos no Caminho (1963), anotação de 1953;;A;gratidao
 Dag Hammarskjöld;A jornada mais longa é a jornada para dentro.;Marcos no Caminho (1963);;A;autorreconhecimento
-Sophie Scholl;Alguém, afinal, tinha de começar.;Registrado por Else Gebel, companheira de cela, em depoimento de 1943;;A;empoderamento
-B. R. Ambedkar;Eduquem-se, agitem-se, organizem-se.;Discurso à Conferência da Federação das Castas Deprimidas, 1942;;A;empoderamento
-B. R. Ambedkar;"A casta não é uma divisão de trabalho; é uma divisão de trabalhadores.";A Aniquilação das Castas (1936), seção 4;;A;politica
+B. R. Ambedkar;Eduquem-se, agitem-se, organizem-se.;Conferência das Classes Deprimidas de Toda a Índia, Nagpur, julho de 1942;"Lema com que Ambedkar encerrou a conferência; já era divisa da Bahishkrit Hitakarini Sabha, que ele fundou em 1924.";A;empoderamento
+B. R. Ambedkar;O sistema de castas não é apenas uma divisão do trabalho. É também uma divisão de trabalhadores.;A Aniquilação das Castas (1936), seção 4;;A;politica
 Georg Simmel;O dinheiro é o mais terrível nivelador social.;Filosofia do Dinheiro (1900), capítulo 4;;A;financas
 Stanley Milgram;O aspecto mais fundamental que revelamos foi a extrema disposição de adultos em seguir quase qualquer ordem vinda de uma autoridade.;Obediência à Autoridade (1974), capítulo 1;;A;manipulacao
-Estée Lauder;Eu nunca sonhei com o sucesso. Trabalhei por ele.;Estée: Uma História de Sucesso (1985);;A;negocios
-Sheryl Sandberg;Se lhe oferecerem um lugar num foguete, não pergunte qual assento. Apenas entre.;Faça Acontecer (2013), capítulo 4;;A;negocios
-Louisa May Alcott;Não tenho medo de tempestades, pois estou aprendendo a conduzir meu navio.;Mulherzinhas (1868), capítulo 44;;A;dificeis
+Sheryl Sandberg;Se lhe oferecerem um lugar num foguete, não pergunte qual assento. Apenas entre.;Faça Acontecer (2013), capítulo 4;Conselho que Eric Schmidt deu a Sandberg, segundo ela conta no livro.;A;negocios
+Louisa May Alcott;Não tenho medo de tempestades, pois estou aprendendo a conduzir meu navio.;Mulherzinhas (1868), capítulo 44;Fala de Amy March.;A;dificeis
 James M. Barrie;Segunda estrela à direita, e siga em frente até de manhã.;Peter Pan e Wendy (1911), capítulo 4;;A;vida
-Alice Walker;O ativismo é o aluguel que pago por viver neste planeta.;Entrevista registrada;;A;politica
+Alice Walker;Meu ativismo paga o aluguel por estar viva e estar aqui no planeta.;Entrevista a Claudia Dreifus, The Progressive, agosto de 1989;;A;politica
 Alex Haley;Todos nós, com raras exceções, ansiamos por saber de onde viemos.;Raízes (1976), posfácio;;A;familia
 Madame de Staël;Compreender tudo torna a pessoa muito indulgente.;Corinne (1807), livro XVIII, capítulo 5;;A;reflexao
 Ernest Renan;A existência de uma nação é um plebiscito de todos os dias.;O Que é uma Nação? (1882), conferência na Sorbonne;;A;politica
@@ -2249,64 +2232,57 @@ Samuel Butler;A vida é a arte de tirar conclusões suficientes a partir de prem
 Théophile Gautier;Nada é verdadeiramente belo senão o que não serve para nada.;Mademoiselle de Maupin (1835), prefácio;;A;reflexao
 Marcel Proust;Amamos apenas aquilo que não possuímos inteiramente.;A Prisioneira (1923), volume V de Em Busca do Tempo Perdido;;A;amor
 Joseph Joubert;Ensinar é aprender duas vezes.;Pensamentos (1838);;A;educacao
-Joseph Joubert;A meta do debate não deve ser a vitória, mas o progresso.;Pensamentos (1838);;A;reflexao
+Joseph Joubert;O objetivo da disputa ou da discussão não deve ser a vitória, mas o aperfeiçoamento.;Pensamentos (1838);;A;reflexao
 Oliver Wendell Holmes;A mente humana, uma vez esticada por uma ideia nova, nunca retorna às suas dimensões originais.;O Autocrata da Mesa do Café da Manhã (1858);;A;educacao
 Paul Tillich;A coragem de ser é a coragem de aceitar a si mesmo como aceito apesar de ser inaceitável.;A Coragem de Ser (1952), capítulo 6;;A;autorreconhecimento
 Paul Tillich;"A dúvida não é o oposto da fé; é um elemento da fé.";Dinâmica da Fé (1957), capítulo 1;;A;fe
 Jacques Maritain;Não é a razão que se opõe à fé, mas a razão mal empregada.;Humanismo Integral (1936);;A;filosofos
 Abul Kalam Azad;Sou muçulmano e tenho orgulho disso. E sou indiano, parte essencial e indivisível da nação indiana.;Discurso presidencial ao Congresso Nacional Indiano, Ramgarh, 1940;;A;politica
 Henri Matisse;O que sonho é uma arte de equilíbrio, de pureza e serenidade.;Notas de um Pintor (1908), publicado na revista La Grande Revue;;A;reflexao
-John Lennon;A vida é o que acontece enquanto você está ocupado fazendo outros planos.;Beautiful Boy (1980), do álbum Double Fantasy;;A;vida
+John Lennon;A vida é o que acontece enquanto você está ocupado fazendo outros planos.;Beautiful Boy (1980), do álbum Double Fantasy;Lennon usou na canção um dito que já circulava antes: Quote Investigator registra versão de Allen Saunders na Reader’s Digest de 1957.;A;vida
 John Lennon;Imagine todas as pessoas vivendo a vida em paz.;Imagine (1971), segunda estrofe;;A;conforto
 Nelson Rodrigues;Toda unanimidade é burra.;Crônica publicada na imprensa brasileira;;A;reflexao
 Nelson Rodrigues;O óbvio ululante.;Expressão criada por Nelson Rodrigues em suas crônicas;;A;reflexao
 Caio Fernando Abreu;A gente precisa de muito pouco. Precisa apenas de tudo.;Morangos Mofados (1982);;A;vida
 Martha Medeiros;Morre lentamente quem não viaja, quem não lê, quem não ouve música.;A Morte Devagar (2000), crônica publicada no Zero Hora;;A;vida
 Vladimir Maiakóvski;A rua é o meu pincel, as praças a minha paleta.;Ordem ao Exército das Artes (1918);;A;reflexao
-Gertrude Stein;Uma rosa é uma rosa é uma rosa.;Sacred Emily (1913), poema;;A;reflexao
-Anaïs Nin;"Não vemos as coisas como elas são; vemos as coisas como nós somos.";Sedução do Minotauro (1961);;A;reflexao
+Gertrude Stein;Rosa é uma rosa é uma rosa é uma rosa.;Sacred Emily (1913), poema;;A;reflexao
+Anaïs Nin;"Não vemos as coisas como elas são; vemos as coisas como nós somos.";Sedução do Minotauro (1961);No romance, a personagem Lillian lembra a máxima como “palavras talmúdicas”.;A;reflexao
 T. S. Eliot;Abril é o mais cruel dos meses.;A Terra Devastada (1922), primeiro verso;;A;reflexao
 T. S. Eliot;Não cessaremos de explorar, e o fim de toda a nossa exploração será chegar onde começamos e conhecer o lugar pela primeira vez.;Quatro Quartetos (1943), Little Gidding, seção V;;A;vida
-Ring Lardner;Cale a boca, ele explicou.;O Jovem Imigrante (1920);;A;reflexao
-Charles Kuralt;Graças ao sistema de rodovias interestaduais é possível atravessar os Estados Unidos de costa a costa sem ver absolutamente nada.;On the Road with Charles Kuralt (1985);;A;reflexao
-Elizabeth Stone;Decidir ter um filho é decidir para sempre que seu coração passe a andar fora do seu corpo.;"Citada em Ellen Cantarow, ""No Kids"", The Village Voice; reunida em Black Sheep and Kissing Cousins (1988)";;A;familia
+Ring Lardner;Cale a boca, ele explicou.;O Jovem Imigrante (1920);Lardner publicou o livro como se o autor fosse seu filho de quatro anos.;A;reflexao
 Laurel Thatcher Ulrich;Mulheres bem-comportadas raramente fazem história.;Artigo em American Quarterly (1976), sobre sermões funerários puritanos;;A;empoderamento
 Nora Ephron;Acima de tudo, seja a heroína da sua vida, não a vítima.;Discurso de formatura no Wellesley College, 1996;;A;empoderamento
-Michael J. Fox;Minha felicidade cresce na proporção direta da minha aceitação, e na proporção inversa das minhas expectativas.;Lucky Man (2002);;A;felicidade
-Phil Jackson;A força do time é cada membro individual. A força de cada membro é o time.;Cestas Sagradas (1995);;A;lideranca
 Max De Pree;A primeira responsabilidade de um líder é definir a realidade. A última é dizer obrigado.;Liderança é uma Arte (1987), capítulo 1;;A;lideranca
 Robert K. Greenleaf;O líder servidor é servidor primeiro. Começa com o sentimento natural de que se quer servir.;O Servidor como Líder (1970);;A;lideranca
-Lee Iacocca;A administração não é nada mais do que motivar outras pessoas.;Iacocca: Uma Autobiografia (1984);;A;lideranca
-Stephen Covey;A chave não é priorizar o que está na sua agenda, mas agendar suas prioridades.;Primeiro o Mais Importante (1994);;A;negocios
-David Ogilvy;"O consumidor não é um idiota; é sua esposa.";Confissões de um Publicitário (1963), capítulo 5;;A;negocios
+Stephen Covey;A chave não é priorizar o que está na sua agenda, mas agendar suas prioridades.;Os 7 Hábitos das Pessoas Altamente Eficazes (1989), hábito 3;;A;negocios
+David Ogilvy;"O consumidor não é um idiota; é sua esposa.";Confissões de um Publicitário (1963);;A;negocios
 David Ogilvy;Se você contratar pessoas menores do que você, vamos nos tornar uma companhia de anões.;Confissões de um Publicitário (1963), capítulo 3;;A;lideranca
 Brian Tracy;Engula aquele sapo.;Engula Aquele Sapo (2001), capítulo 1;;A;motivacao
 Alain de Botton;A causa da nossa infelicidade não é o fracasso, mas a distância entre o que somos e o que achamos que deveríamos ser.;Desejo de Status (2004);;A;reflexao
-Melody Beattie;A gratidão transforma o que temos em suficiente.;O Livro da Linguagem do Desapego (1990);;A;gratidao
 Leandro Karnal;Ninguém nasce sabendo conviver. Conviver é uma arte que se aprende.;O Dilema do Porco-Espinho (2017);;A;amizade
 Roberto Shinyashiki;O maior prazer da vida é fazer o que os outros dizem que você não é capaz de fazer.;Sem Medo de Vencer (1988);;A;motivacao
 Haemin Sunim;Quando tudo à sua volta parece correr rápido demais, não é o mundo que está apressado. É a sua mente.;As Coisas Que Você Só Vê Quando Desacelera (2012);;A;conforto
 Émile-Auguste Chartier;"O pessimismo é de humor; o otimismo é de vontade.";Sobre Felicidade (1925), propos 93;;A;motivacao
-Elbert Hubbard;"Não leve a vida a sério demais; você nunca sairá vivo dela.";The Philistine (revista editada por Hubbard), 1900;;A;vida
+Elbert Hubbard;"Não leve a vida a sério demais; você nunca sairá vivo dela.";The Philosophy of Elbert Hubbard (1916);;A;vida
 George Eliot;O que somos nós senão o resultado do que os outros fizeram por nós?;Middlemarch (1872), capítulo 20;;A;reflexao
 Noam Chomsky;A propaganda é para a democracia o que o cassetete é para o Estado totalitário.;Controle da Mídia (1991), capítulo 1;;A;manipulacao
-Noam Chomsky;A maneira inteligente de manter as pessoas passivas é limitar estritamente o espectro de opinião aceitável.;O Lucro ou as Pessoas (1998);;A;manipulacao
+Noam Chomsky;A maneira inteligente de manter as pessoas passivas e obedientes é limitar estritamente o espectro de opinião aceitável.;The Common Good (1998);;A;manipulacao
 Yuval Noah Harari;Sapiens governa o mundo porque é o único animal capaz de cooperar de forma flexível em grande número.;Sapiens (2011), parte I;;A;reflexao
 Thomas Sowell;Não há soluções. Há apenas escolhas de trade-offs.;Conflito de Visões (1987);;A;reflexao
-Ayn Rand;A pergunta não é quem vai me deixar, é quem vai me impedir.;A Nascente (1943);;A;empoderamento
+Ayn Rand;Essa não é a questão. A questão é: quem vai me impedir?;A Nascente (1943), parte I, capítulo 1;Resposta de Howard Roark ao reitor, que lhe perguntara quem o deixaria construir daquele modo.;A;empoderamento
 Hans Kelsen;A norma fundamental é pressuposta, não posta.;Teoria Pura do Direito (1934), capítulo 5;;A;politica
 Amos Tversky;Meu trabalho é dizer às pessoas o que elas já sabem, mas de um jeito que as faça enxergar.;Entrevista registrada;;A;reflexao
-Salvador Dalí;Não tenha medo da perfeição: você nunca a alcançará.;A Vida Secreta de Salvador Dalí (1948), capítulo 11;;A;reflexao
+Salvador Dalí;Não tenha medo da perfeição: você nunca a alcançará.;50 Segredos Mágicos para Pintar (1948), “dez regras”;;A;reflexao
 José Martí;Cultivo uma rosa branca, em junho como em janeiro.;Versos Sencillos (1891), poema XXXIX;;A;amizade
-José Martí;Pátria é humanidade.;Ensaio publicado em Patria (1894);;A;politica
+José Martí;Pátria é humanidade.;“La Revista Literaria Dominicense”, no jornal Patria (26/01/1895);;A;politica
 P. T. Barnum;A coisa mais nobre que um homem pode fazer é fazer o máximo de bem ao seu semelhante.;The Art of Money Getting (1880);;A;reflexao
 Benjamin Disraeli;Somos duas nações entre as quais não há relação nem simpatia.;Sybil, ou As Duas Nações (1845), livro II, capítulo 5;;A;politica
-Oliver Goldsmith;Nossa maior glória não está em nunca cair, mas em levantar cada vez que caímos.;O Cidadão do Mundo (1760), carta VII;;A;dificeis
-Leo Buscaglia;Muitas vezes subestimamos o poder de um toque, um sorriso, uma palavra gentil, um ouvido que escuta.;Vivendo, Amando e Aprendendo (1982);;A;amor
+Oliver Goldsmith;Nossa maior glória não está em nunca cair, mas em levantar cada vez que caímos.;O Cidadão do Mundo (1762), carta VII;"Goldsmith põe a máxima na boca de Lien Chi Altangi, viajante chinês fictício; a atribuição a Confúcio não tem base.";A;dificeis
 Miguel Reale;O direito é uma integração normativa de fatos segundo valores.;Filosofia do Direito (1953);;A;politica
 Hillary Clinton;Direitos humanos são direitos das mulheres, e direitos das mulheres são direitos humanos.;Discurso na Quarta Conferência Mundial sobre a Mulher, Pequim, 5 de setembro de 1995;;A;empoderamento
-Augusto;Apressa-te devagar.;Registrado por Suetônio em A Vida dos Doze Césares, Augusto, 25;;A;reflexao
-Augusto;Encontrei Roma feita de tijolos e a deixei feita de mármore.;Registrado por Suetônio em A Vida dos Doze Césares, Augusto, 28;;A;reflexao
+Augusto;Apressa-te devagar.;Registrado por Suetônio em A Vida dos Doze Césares, Augusto, 25;"Máxima que Augusto repetia, segundo Suetônio, em grego; “festina lente” é a forma latina corrente.";A;reflexao
+Augusto;Encontrei Roma feita de tijolos e a deixei feita de mármore.;Registrado por Suetônio em A Vida dos Doze Césares, Augusto, 28;Dito relatado por Suetônio, em discurso indireto.;A;reflexao
 Karl Jaspers;Situações-limite são situações que não podemos superar nem mudar.;Filosofia (1932), volume II;;A;dificeis
 Benjamin Constant;A liberdade dos modernos é o gozo pacífico da independência privada.;Da Liberdade dos Antigos Comparada à dos Modernos (1819);;A;politica
 Augusto Cury;Os fortes constroem pontes, os fracos constroem muros.;O Vendedor de Sonhos (2008);;A;reflexao
@@ -2315,10 +2291,9 @@ Clóvis de Barros Filho;A vida feliz é aquela em que a gente faz o que gosta co
 Coelho Neto;O trabalho é a lei do mundo.;A Conquista (1899);;A;vida
 David Aaker;Uma marca é muito mais do que um nome e um símbolo: é a promessa de uma experiência.;Building Strong Brands (1996);;A;negocios
 Henry Chesbrough;Nem todas as pessoas inteligentes trabalham para nós. Precisamos trabalhar com as de fora também.;Open Innovation (2003), capítulo 1;;A;negocios
-Thomas J. Stanley;Riqueza não é o mesmo que renda. Você pode ganhar muito e não acumular nada.;O Milionário Mora ao Lado (1996), capítulo 1;;A;financas
+Thomas J. Stanley;Riqueza não é o mesmo que renda. Se você ganha bem todo ano e gasta tudo, não está ficando mais rico.;O Milionário Mora ao Lado (1996), capítulo 1;;A;financas
 Al Ries e Jack Trout;O posicionamento não é o que você faz com o produto. É o que você faz com a mente do cliente.;Posicionamento: A Batalha por Sua Mente (1981), capítulo 1;;A;negocios
 Robert M. Hutchins;O objetivo da educação não é encher a cabeça de fatos, mas ensinar a pensar.;The Higher Learning in America (1936);;A;educacao
-Robert Collier;O sucesso é a soma de pequenos esforços repetidos dia após dia.;The Secret of the Ages (1926);;A;motivacao
 Albert Schweitzer;Sou vida que quer viver, em meio a vida que quer viver.;Filosofia da Civilização (1923), volume II;;A;fe
 Carlos Drummond de Andrade;No meio do caminho tinha uma pedra, tinha uma pedra no meio do caminho.;No Meio do Caminho, em Alguma Poesia (1930);;A;reflexao
 Carlos Drummond de Andrade;E agora, José? A festa acabou, a luz apagou, o povo sumiu, a noite esfriou.;José, em Poesias (1942);;A;dificeis
@@ -2372,7 +2347,7 @@ Karl Marx;A religião é o suspiro da criatura oprimida, o coração de um mundo
 G. K. Chesterton;"Os contos de fadas não dizem às crianças que dragões existem; elas já sabem que dragões existem. Dizem que dragões podem ser mortos.";Tremendas Ninharias (1909), ensaio O Livro Vermelho de Contos de Fadas;;A;conforto
 G. K. Chesterton;Um louco não é quem perdeu a razão, mas quem perdeu tudo exceto a razão.;Ortodoxia (1908), capítulo 2;;A;reflexao
 John Dewey;Só a educação pode salvar a sociedade da dissolução.;Democracia e Educação (1916);;A;educacao
-Albert Einstein;Deus não joga dados.;Carta a Max Born, 4 de dezembro de 1926;;A;educacao
+Albert Einstein;Em todo caso, estou convencido de que Ele não joga dados.;Carta a Max Born, 4 de dezembro de 1926;“Ele” é “o Velho”, maneira como Einstein se refere a Deus na frase anterior da carta.;A;educacao
 Albert Einstein;A coisa mais incompreensível sobre o mundo é que ele é compreensível.;Física e Realidade (1936), artigo no Journal of the Franklin Institute;;A;educacao
 Albert Einstein;Não tenho nenhum talento especial. Sou apenas apaixonadamente curioso.;Carta a Carl Seelig, 11 de março de 1952;;A;educacao
 Albert Einstein;A imaginação é mais importante que o conhecimento.;Entrevista ao Saturday Evening Post, 26 de outubro de 1929;;A;educacao
@@ -2381,119 +2356,107 @@ Isaac Newton;Se vi mais longe, foi por estar sobre ombros de gigantes.;Carta a R
 Isaac Newton;A todo ação corresponde uma reação igual e oposta.;Princípios Matemáticos da Filosofia Natural (1687), terceira lei;;A;educacao
 Galileu Galilei;A filosofia está escrita neste grandíssimo livro que continuamente permanece aberto diante de nossos olhos: o universo.;O Ensaiador (1623), capítulo 6;;A;educacao
 Carl Sagan;Somos feitos de poeira de estrelas.;Cosmos (1980), episódio 1;;A;educacao
-Carl Sagan;"A ciência é mais do que um corpo de conhecimento; é um modo de pensar.";O Mundo Assombrado pelos Demônios (1995), capítulo 2;;A;educacao
-Stephen Hawking;Por mais difícil que a vida possa parecer, há sempre algo que você pode fazer e no que pode ter sucesso.;Discurso de abertura das Paralimpíadas de Londres, 29 de agosto de 2012;;A;dificeis
-Stephen Hawking;Lembre-se de olhar para as estrelas e não para os seus pés.;Discurso em Oxford, 2016;;A;motivacao
+Stephen Hawking;Por pior que a vida possa parecer, há sempre algo que você pode fazer e em que pode ter sucesso.;Entrevista coletiva em Hong Kong (13/06/2006);;A;dificeis
+Stephen Hawking;Olhe para as estrelas, e não para os seus pés.;Discurso na abertura dos Jogos Paralímpicos de Londres (29/08/2012);;A;motivacao
 Charles Darwin;Não é a espécie mais forte que sobrevive, mas a que melhor responde à mudança — formulação que é de Megginson, não minha.;Ver o panorama de Leon C. Megginson neste acervo;;A;educacao
 Charles Darwin;A ignorância gera confiança com mais frequência do que o conhecimento.;A Origem do Homem (1871), introdução;;A;educacao
-Nikola Tesla;"O presente é deles; o futuro, pelo qual realmente trabalhei, é meu.";Registrado em entrevista à imprensa americana;;A;motivacao
 Alan Turing;Podemos ver apenas um pouco à frente, mas podemos ver muita coisa que precisa ser feita.;Máquinas de Computação e Inteligência (1950), última linha;;A;educacao
 Alan Turing;Às vezes são as pessoas de quem ninguém espera nada que fazem as coisas que ninguém consegue imaginar.;Frase do filme O Jogo da Imitação (2014), não de Turing;;A-;educacao
 Ada Lovelace;A Máquina Analítica tece padrões algébricos assim como o tear de Jacquard tece flores e folhas.;Notas sobre o Motor Analítico (1843), nota A;;A;educacao
-Jane Goodall;Cada indivíduo importa. Cada indivíduo tem um papel. Cada indivíduo faz diferença.;Razão para Esperança (1999);;A;motivacao
-Jane Goodall;Só se preocupa quem entende, e só entende quem aprende.;Palestra registrada;;A;educacao
+Jane Goodall;Só se entendermos poderemos nos importar. Só se nos importarmos ajudaremos.;“Chimpanzees — Bridging the Gap”, em The Great Ape Project (1993), p. 14;;A;educacao
 Rosalind Franklin;A ciência e a vida cotidiana não podem e não devem ser separadas.;Carta a Ellis Franklin, verão de 1940;;A;educacao
 Barbara McClintock;Você tem que ter a paciência de ouvir o que o material tem a lhe dizer.;Registrado por Evelyn Fox Keller em A Feeling for the Organism (1983);;A;educacao
-Grace Hopper;É mais fácil pedir perdão do que pedir permissão.;Entrevista à revista Computerworld, 1976;;A;empoderamento
-Grace Hopper;A frase mais perigosa da língua é: sempre fizemos assim.;Entrevista registrada;;A;motivacao
+Grace Hopper;É mais fácil pedir perdão do que pedir permissão.;Entrevista à revista Chips Ahoy (Marinha dos EUA), julho de 1986;Hopper popularizou o ditado, que já circulava antes dela.;A;empoderamento
 Oswaldo Cruz;A ciência não conhece fronteiras.;Discurso registrado;;A;educacao
-Anne Frank;Que maravilha é que ninguém precise esperar um único momento antes de começar a melhorar o mundo.;Diário de Anne Frank, 26 de março de 1944;;A;motivacao
+Anne Frank;Que maravilha é que ninguém precise esperar um único momento antes de começar a melhorar o mundo.;“Dar” (26/03/1944), em Contos do Esconderijo;;A;motivacao
 Anne Frank;Papel tem mais paciência que gente.;Diário de Anne Frank, 20 de junho de 1942;;A;reflexao
 Primo Levi;Se isto é um homem.;Se Isto é um Homem (1947), título e poema de abertura;;A;reflexao
 Primo Levi;Aconteceu, portanto pode acontecer de novo.;Os Afogados e os Sobreviventes (1986), conclusão;;A;politica
-Nelson Mandela;Ninguém nasce odiando outra pessoa pela cor de sua pele.;Longo Caminho para a Liberdade (1994), capítulo 115;;A;politica
+Nelson Mandela;Ninguém nasce odiando outra pessoa pela cor de sua pele.;Longo Caminho para a Liberdade (1994);;A;politica
 Martin Luther King Jr.;Eu tenho um sonho: que meus quatro filhos um dia vivam numa nação onde não serão julgados pela cor da pele, mas pelo conteúdo de seu caráter.;Discurso na Marcha sobre Washington, 28 de agosto de 1963;;A;politica
-Martin Luther King Jr.;No fim, não lembraremos das palavras dos nossos inimigos, mas do silêncio dos nossos amigos.;Discurso em Saint Augustine, Flórida, 1964;;A;amizade
-Rosa Parks;As pessoas sempre dizem que não cedi o lugar porque estava cansada. A única coisa de que eu estava cansada era de ceder.;Rosa Parks: Minha História (1992);;A;empoderamento
-Sojourner Truth;E eu não sou uma mulher?;Discurso na Convenção dos Direitos da Mulher, Akron, Ohio, 1851;;A;empoderamento
+Rosa Parks;As pessoas sempre dizem que não cedi o lugar porque estava cansada, mas isso não é verdade. […] Não: a única coisa de que eu estava cansada era de ceder.;Rosa Parks: Minha História (1992);;A;empoderamento
+Sojourner Truth;E eu não sou uma mulher?;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
 Frederick Douglass;O poder não concede nada sem uma exigência. Nunca concedeu e nunca concederá.;Discurso sobre a emancipação nas Índias Ocidentais, 3 de agosto de 1857;;A;politica
 Frederick Douglass;Uma vez que você aprende a ler, será para sempre livre.;Narrativa da Vida de Frederick Douglass (1845);;A;educacao
-Malcolm X;Sou a favor da verdade, não importa quem a diga.;Entrevista registrada, 1965;;A;reflexao
+Malcolm X;Sou a favor da verdade, não importa quem a diga.;Autobiografia de Malcolm X (1965);;A;reflexao
 Abraham Lincoln;Com malícia para com ninguém, com caridade para com todos.;Segundo Discurso de Posse, 4 de março de 1865;;A;politica
 Abraham Lincoln;Uma casa dividida contra si mesma não pode permanecer de pé.;Discurso em Springfield, Illinois, 16 de junho de 1858;;A;politica
 Getúlio Vargas;Serenamente dou o primeiro passo no caminho da eternidade e saio da vida para entrar na história.;Carta-testamento, 24 de agosto de 1954;;A;politica
 Simón Bolívar;Arei no mar.;Carta a Juan José Flores, 9 de novembro de 1830;;A;politica
 Václav Havel;A esperança não é a convicção de que algo dará certo, mas a certeza de que aquilo faz sentido, independentemente do resultado.;Perturbando a Paz (1986), entrevista com Karel Hvížďala;;A;conforto
 Václav Havel;Viver na verdade.;O Poder dos Sem-Poder (1978);;A;politica
-Kofi Annan;O conhecimento é poder. A informação é libertadora. A educação é a premissa do progresso.;Discurso registrado nas Nações Unidas;;A;educacao
+Kofi Annan;O conhecimento é poder. A informação liberta. A educação é a premissa do progresso, em toda sociedade, em toda família.;Discurso na conferência Global Knowledge ’97, Toronto (22/06/1997);;A;educacao
 Michelle Obama;Quando eles descem, nós subimos.;Discurso na Convenção Nacional Democrata, 25 de julho de 2016;;A;empoderamento
 Michelle Obama;Minha história não termina onde começa.;Minha História (2018);;A;autorreconhecimento
-Desmond Tutu;Se você é neutro em situações de injustiça, escolheu o lado do opressor.;Discurso registrado;;A;politica
+Desmond Tutu;Se você é neutro em situações de injustiça, escolheu o lado do opressor.;Citado por Robert McAfee Brown em Unexpected News (1984), p. 19;;A;politica
 Marielle Franco;Não serei interrompida.;Discurso na Câmara Municipal do Rio de Janeiro, registrado em ata;;A;empoderamento
-Rosa Luxemburgo;Liberdade é sempre a liberdade de quem pensa diferente.;A Revolução Russa (1918), nota manuscrita;;A;reflexao
+Rosa Luxemburgo;Liberdade é sempre a liberdade de quem pensa diferente.;"A Revolução Russa (1918; publicada em 1922), nota manuscrita";;A;reflexao
 Ailton Krenak;Adiar o fim do mundo é exatamente sempre poder contar mais uma história.;Ideias para Adiar o Fim do Mundo (2019);;A;reflexao
 Ailton Krenak;A humanidade é uma abstração que não cabe em nós.;Ideias para Adiar o Fim do Mundo (2019);;A;reflexao
 Anísio Teixeira;Só existirá democracia no Brasil no dia em que se montar a máquina que prepara as democracias: a escola pública.;Educação Não é Privilégio (1957);;A;educacao
-Leonardo da Vinci;Quem pouco pensa, muito erra.;Anotação nos cadernos de Leonardo;;A;reflexao
+Leonardo da Vinci;Quem pouco pensa, muito erra.;Manuscrito H (c. 1494), fólio 119;;A;reflexao
 Leonardo da Vinci;A pintura é poesia muda, e a poesia é pintura cega.;Tratado da Pintura, compilado postumamente;;A;reflexao
-Pablo Picasso;Todos nascem artistas. O problema é continuar artista depois de crescer.;Entrevista registrada;;A;reflexao
-Vincent van Gogh;Grandes coisas não são feitas por impulso, mas por uma série de pequenas coisas reunidas.;Carta a Theo van Gogh, 22 de outubro de 1882;;A;motivacao
 Vincent van Gogh;Se você ouvir uma voz dentro de si dizendo que não sabe pintar, pinte de qualquer jeito, e essa voz se calará.;Carta a Theo van Gogh, outubro de 1884;;A;motivacao
-Frida Kahlo;Pés, para que os quero, se tenho asas para voar?;Diário de Frida Kahlo, anotação de 1953;;A;empoderamento
+Frida Kahlo;Pés, para que os quero, se tenho asas para voar?;"Diário de Frida Kahlo (1953), legenda de um desenho; reproduzido em Hayden Herrera, Frida (1983), p. 415";;A;empoderamento
 Tarsila do Amaral;Sinto-me cada vez mais brasileira: quero ser a pintora da minha terra.;Carta à família, 1923;;A;autorreconhecimento
 Candido Portinari;Resolvi pintar a realidade brasileira, nua e crua como ela é.;Depoimento registrado;;A;reflexao
 Ludwig van Beethoven;"Agarrarei o destino pela garganta; ele não me dobrará por completo.";Carta a Franz Wegeler, 16 de novembro de 1801;;A;dificeis
 Ludwig van Beethoven;A música é uma revelação mais alta do que toda sabedoria e filosofia.;Registrado por Bettina von Arnim em carta de 1810;;A;reflexao
 Maria Callas;Não me chamem de diva. Sou apenas uma mulher que trabalha muito.;Entrevista registrada;;A;autorreconhecimento
-Charles Chaplin;Precisamos mais de bondade do que de inteligência.;O Grande Ditador (1940), discurso final;;A;amor
+Charles Chaplin;Mais do que de máquinas, precisamos de humanidade. Mais do que de inteligência, precisamos de bondade e de gentileza.;O Grande Ditador (1940), discurso final;;A;amor
 Charles Chaplin;Pensamos demais e sentimos muito pouco.;O Grande Ditador (1940), discurso final;;A;reflexao
-Walt Disney;A maneira de começar é parar de falar e começar a fazer.;Entrevista registrada;;A;motivacao
+Walt Disney;A maneira de começar é parar de falar e começar a fazer.;Fala atribuída a Disney (verificação Snopes);;A-;motivacao
 Pelé;Quanto mais difícil a vitória, maior a felicidade em ganhar.;Entrevista registrada;;A;motivacao
 Ayrton Senna;Não existe uma curva perfeita, existe apenas a busca pela perfeição.;Entrevista registrada;;A;motivacao
 Ayrton Senna;No momento em que você achar que tudo está sob controle, você não está indo rápido o suficiente.;Entrevista registrada;;A;motivacao
 Ayrton Senna;Ser segundo é ser o primeiro dos últimos.;Entrevista registrada;;A;motivacao
-Michael Jordan;Errei mais de nove mil arremessos na carreira. Perdi quase trezentos jogos. É por isso que tenho sucesso.;Comercial da Nike, 1997;;A;dificeis
+Michael Jordan;Errei mais de 9.000 arremessos na carreira. Perdi quase 300 jogos. Em 26 ocasiões confiaram em mim para o arremesso da vitória, e eu errei. Fracassei muitas e muitas vezes na vida. E é por isso que tenho sucesso.;Comercial da Nike, 1997;Texto escrito por Jamie Barrett para o comercial e narrado por Jordan.;A;dificeis
 Michael Jordan;O talento vence jogos, mas o trabalho em equipe e a inteligência ganham campeonatos.;I Can’t Accept Not Trying (1994);;A;lideranca
 Jesse Owens;Descobrimos que não podemos correr sozinhos. É preciso um time inteiro.;Blackthink (1970);;A;amizade
-Serena Williams;A pressão é um privilégio. Ela só vem para quem merece.;Entrevistas registradas — a própria Serena credita a frase a Billie Jean King em diversas ocasiões documentadas;;A;motivacao
-Vince Lombardi;Não é se você foi derrubado, é se você se levanta.;Registrado por jogadores e biógrafos;;A;dificeis
-Vince Lombardi;A perfeição não é alcançável, mas se perseguirmos a perfeição podemos alcançar a excelência.;Discurso registrado a jogadores;;A;motivacao
+Vince Lombardi;A perfeição não é alcançável, mas se perseguirmos a perfeição podemos alcançar a excelência.;Primeira reunião com os Green Bay Packers (1959), segundo Bart Starr;Registro de memória: Bart Starr relembra a fala em Distant Replay (1985), de Jerry Kramer.;A;motivacao
 Muhammad Ali;Flutue como uma borboleta, ferroe como uma abelha.;Slogan criado por Drew Bundini Brown e adotado por Ali, 1964;;A;empoderamento
 Francisco de Assis;Onde há ódio, que eu leve o amor.;Oração de São Francisco, texto do século XX de autoria anônima, não do santo;;A-;fe
-Thich Nhat Hanh;O milagre não é andar sobre as águas. O milagre é andar sobre a terra verde no momento presente.;O Milagre da Atenção Plena (1975);;A;conforto
+Thich Nhat Hanh;O milagre não é andar sobre as águas. O milagre é andar sobre a terra verde no momento presente.;Touching Peace (1992);;A;conforto
 Profeta Muhammad;A busca do conhecimento é obrigatória para todo muçulmano.;Hadith registrado por Ibn Majah;;A;educacao
 Dalai Lama;"A compaixão não é religiosa; é assunto humano. Não é luxo, é essencial.";Uma Ética para o Novo Milênio (1999);;A;fe
 Santo Agostinho;Ama e faze o que quiseres.;Homilias sobre a Primeira Carta de João (407), homilia VII, 8;;A;amor
-Abraham Maslow;Se a única ferramenta que você tem é um martelo, é tentador tratar tudo como se fosse um prego.;A Psicologia da Ciência (1966), capítulo 2;;A;reflexao
+Abraham Maslow;É tentador, se a única ferramenta que você tem é um martelo, tratar tudo como se fosse um prego.;A Psicologia da Ciência (1966), capítulo 2;;A;reflexao
 Carol Dweck;A visão que você adota sobre si mesmo afeta profundamente a maneira como você conduz sua vida.;Mindset: A Nova Psicologia do Sucesso (2006), capítulo 1;;A;autorreconhecimento
 Carol Dweck;O ainda é uma palavra poderosa: não consigo fazer isso ainda.;Palestra registrada sobre o poder do ainda;;A;educacao
-Angela Duckworth;A garra é paixão e perseverança por objetivos de longo prazo.;Garra (2016), capítulo 1;;A;motivacao
-Angela Duckworth;"O talento conta uma vez; o esforço conta duas.";Garra (2016), capítulo 3;;A;motivacao
+Angela Duckworth;A garra é paixão e perseverança por objetivos de longo prazo.;Palestra TED “Garra: o poder da paixão e da perseverança” (2013);;A;motivacao
+Angela Duckworth;O esforço conta duas vezes.;Garra (2016), título do capítulo 3;;A;motivacao
 Daniel Goleman;A inteligência emocional é a capacidade de reconhecer nossos sentimentos e os dos outros.;Inteligência Emocional (1995), capítulo 3;;A;autorreconhecimento
 Daniel Goleman;Em qualquer situação, o modo como as pessoas se sentem afeta diretamente o desempenho.;Inteligência Emocional (1995);;A;lideranca
 John Bowlby;A capacidade de formar vínculos afetivos é uma característica principal do funcionamento eficaz da personalidade.;Apego e Perda (1969), volume I;;A;familia
-Donald Winnicott;Não existe isso de um bebê. Onde há um bebê, há também alguém cuidando dele.;Comunicação à Sociedade Britânica de Psicanálise, 1940;;A;familia
+Donald Winnicott;Não existe isso de um bebê.;“Anxiety Associated with Insecurity” (1952), em Through Paediatrics to Psycho-Analysis (1958);Winnicott conta que fez a observação numa reunião da Sociedade Britânica de Psicanálise por volta de 1940: quem descreve um bebê descreve sempre um bebê e alguém.;A;familia
 Donald Winnicott;A mãe suficientemente boa não é perfeita, e é justamente por isso que serve.;A Família e o Desenvolvimento Individual (1965);;A;familia
 Jean Piaget;O objetivo principal da educação é criar pessoas capazes de fazer coisas novas, e não simplesmente repetir o que outras gerações fizeram.;Entrevista publicada em 1972;;A;educacao
 Maria Montessori;A maior mostra de sucesso de um professor é poder dizer: as crianças estão trabalhando como se eu não existisse.;A Mente Absorvente (1949);;A;educacao
 Maria Montessori;Nunca ajude uma criança numa tarefa em que ela sente que pode ter sucesso.;A Descoberta da Criança (1948);;A;educacao
-Elisabeth Kübler-Ross;As pessoas mais belas que conhecemos são aquelas que conheceram a derrota, o sofrimento e a luta.;Morte: O Estágio Final da Evolução (1975);;A;dificeis
 Elisabeth Kübler-Ross;A morte é apenas uma passagem para outra forma de vida.;Sobre a Morte e o Morrer (1969);;A;conforto
 Nise da Silveira;Não sou a favor de sofrimento nenhum. Sou a favor da vida.;Entrevista registrada;;A;vida
-John Bogle;No investimento, você recebe aquilo pelo que não paga.;O Livrinho do Investimento de Bom Senso (2007);;A;financas
+John Bogle;Como grupo, os investidores não só não recebem aquilo pelo que pagam: recebem exatamente aquilo pelo que não pagam. Se não pagamos nada, recebemos tudo.;O Livrinho do Investimento de Bom Senso (2007);;A;financas
 Ray Dalio;A dor mais a reflexão é igual a progresso.;Princípios (2017);;A;dificeis
 Ray Dalio;Ter uma mente aberta e radical transparência é o caminho para o aprendizado rápido.;Princípios (2017);;A;negocios
-Howard Marks;Você não pode prever, mas pode se preparar.;O Mais Importante para o Investidor (2011);;A;financas
+Howard Marks;Você não pode prever, mas pode se preparar.;Memorando aos clientes da Oaktree, “You Can’t Predict. You Can Prepare.”, 20 de novembro de 2001;;A;financas
 Milton Friedman;Não existe almoço grátis.;There’s No Such Thing as a Free Lunch (1975), título do livro;;A;financas
 John Maynard Keynes;No longo prazo, estaremos todos mortos.;Um Tratado sobre a Reforma Monetária (1923), capítulo 3;;A;financas
 John Maynard Keynes;A dificuldade não está nas ideias novas, mas em escapar das antigas.;Teoria Geral do Emprego, do Juro e da Moeda (1936), prefácio;;A;reflexao
-Amartya Sen;Nenhuma fome jamais ocorreu em um país democrático com imprensa livre.;Desenvolvimento como Liberdade (1999), capítulo 6;;A;politica
+Amartya Sen;Nenhuma fome ocorreu, na história do mundo, numa democracia em funcionamento.;Desenvolvimento como Liberdade (1999), capítulo 1;;A;politica
 John D. Rockefeller;A boa administração consiste em mostrar a pessoas comuns como fazer o trabalho de pessoas excepcionais.;Random Reminiscences of Men and Events (1909);;A;lideranca
 Andrew Carnegie;O homem que morre rico morre desonrado.;O Evangelho da Riqueza (1889), artigo na North American Review;;A;financas
-Jack Ma;Hoje é difícil, amanhã será pior, mas depois de amanhã será lindo.;Palestra registrada;;A;dificeis
-Howard Schultz;"Não estamos no negócio de café servindo pessoas; estamos no negócio de pessoas servindo café.";Dedique-se de Coração (1997);;A;negocios
 Luiza Trajano;O varejo é detalhe. Quem cuida do detalhe ganha.;Entrevista registrada;;A;negocios
-Melinda French Gates;Uma mulher com voz é, por definição, uma mulher forte.;O Momento de Voar (2019);;A;empoderamento
-Oprah Winfrey;Transforme suas feridas em sabedoria.;Entrevista registrada;;A;dificeis
+Melinda French Gates;Uma mulher com voz é, por definição, uma mulher forte.;Discurso no Powerful Voices Luncheon (2003);;A;empoderamento
+Oprah Winfrey;Transforme suas feridas em sabedoria.;Oprah’s SuperSoul Conversations (podcast);;A;dificeis
 Booker T. Washington;O sucesso deve ser medido não pela posição que a pessoa alcançou, mas pelos obstáculos que superou.;Da Escravidão à Liberdade (1901), capítulo II;;A;dificeis
 Abílio Diniz;O maior risco é não correr risco nenhum.;Entrevista registrada;;A;negocios
 Luís de Camões;As armas e os barões assinalados que da Ocidental praia Lusitana por mares nunca de antes navegados passaram ainda além da Taprobana.;Os Lusíadas (1572), canto I, estrofe 1;;A;reflexao
 Luís de Camões;Cessem do sábio Grego e do Troiano as navegações grandes que fizeram.;Os Lusíadas (1572), canto I, estrofe 3;;A;reflexao
 Luís de Camões;Ó glória de mandar! Ó vã cobiça desta vaidade a quem chamamos Fama!;Os Lusíadas (1572), canto IV, estrofe 95, fala do Velho do Restelo;;A;reflexao
 Luís de Camões;Mudam-se os tempos, mudam-se as vontades, muda-se o ser, muda-se a confiança.;Soneto Mudam-se os Tempos, em Rimas (1595);;A;vida
-Johann Wolfgang von Goethe;Toda teoria é cinzenta, meu caro amigo, e verde é a árvore dourada da vida.;Fausto, parte I (1808), cena do Estudante;;A;vida
+Johann Wolfgang von Goethe;Toda teoria é cinzenta, meu caro amigo, e verde é a árvore dourada da vida.;Fausto, parte I (1808), cena Quarto de Estudo (fala de Mefistófeles ao estudante);;A;vida
 Johann Wolfgang von Goethe;Sou parte daquela força que sempre quer o mal e sempre produz o bem.;Fausto, parte I (1808), fala de Mefistófeles;;A;reflexao
-Johann Wolfgang von Goethe;Nada é mais terrível que a ignorância em ação.;Máximas e Reflexões (1833), n. 231;;A;educacao
+Johann Wolfgang von Goethe;Nada é mais terrível que a ignorância em ação.;Máximas e Reflexões, n. 367 (publicada em Kunst und Altertum, 1826);;A;educacao
 Johann Wolfgang von Goethe;Trate as pessoas como se elas fossem o que deveriam ser, e você as ajudará a se tornarem o que são capazes de ser.;Os Anos de Aprendizado de Wilhelm Meister (1796), livro VIII;;A;lideranca
 Liev Tolstói;Não existe grandeza onde não há simplicidade, bondade e verdade.;Guerra e Paz (1869), livro IV;;A;reflexao
 Liev Tolstói;Tudo o que sei, sei porque amo.;Guerra e Paz (1869), livro IV;;A;amor
@@ -2515,13 +2478,13 @@ Voltaire;O trabalho afasta de nós três grandes males: o tédio, o vício e a n
 Jean-Paul Sartre;A existência precede a essência.;O Existencialismo é um Humanismo (1946);;A;filosofos
 Jean-Paul Sartre;Estamos sós, sem desculpas.;O Existencialismo é um Humanismo (1946);;A;reflexao
 Friedrich Nietzsche;E se você olhar longamente para um abismo, o abismo também olha para dentro de você.;Além do Bem e do Mal (1886), aforismo 146;;A;reflexao
-Friedrich Nietzsche;Torna-te quem tu és.;A Gaia Ciência (1882), aforismo 270;;A;autorreconhecimento
+Friedrich Nietzsche;Torna-te quem tu és.;Assim Falou Zaratustra, parte IV (1885), “A Oferenda do Mel”;;A;autorreconhecimento
 John Locke;Nenhum conhecimento humano pode ir além de sua experiência.;Ensaio sobre o Entendimento Humano (1689), livro II, capítulo 1;;A;educacao
 John Locke;Todo homem tem uma propriedade em sua própria pessoa.;Segundo Tratado sobre o Governo Civil (1689), capítulo 5;;A;politica
 John Locke;O que preocupa os homens não são as coisas, mas as opiniões que eles têm delas.;Ensaio sobre o Entendimento Humano (1689);;A;reflexao
 Karl Marx;A história de todas as sociedades até hoje existentes é a história da luta de classes.;Manifesto do Partido Comunista (1848), capítulo 1;;A;politica
 Karl Marx;De cada um segundo sua capacidade, a cada um segundo sua necessidade.;Crítica do Programa de Gotha (1875);;A;politica
-Michel Foucault;A alma é a prisão do corpo.;Vigiar e Punir (1975), parte I, capítulo 2;;A;reflexao
+Michel Foucault;A alma é a prisão do corpo.;Vigiar e Punir (1975), parte I, capítulo 1;;A;reflexao
 Heráclito;A guerra é o pai de todas as coisas.;Fragmento 53, transmitido por Hipólito;;A;politica
 Aristóteles;Todos os homens, por natureza, desejam conhecer.;Metafísica, livro I, 980a, primeira linha;;A;educacao
 Sêneca;Não é que temos pouco tempo, é que perdemos muito dele.;Sobre a Brevidade da Vida (49), capítulo 1;;A;vida
@@ -2532,11 +2495,9 @@ Marco Aurélio;"Logo terás esquecido tudo; logo todos te terão esquecido.";Med
 Albert Einstein;Tudo deveria ser feito o mais simples possível, mas não mais simples que isso.;Formulação derivada de conferência de Einstein em Oxford (1933), popularizada em versão condensada;;A-;educacao
 Marie Curie;Na vida, nada deve ser temido, tudo deve ser compreendido.;Registrado por Ève Curie em Madame Curie (1937);;A;educacao
 Carl Sagan;Se você quiser fazer uma torta de maçã do zero, primeiro precisa inventar o universo.;Cosmos (1980), episódio 9;;A;educacao
-Isaac Newton;Não sei o que pareço ao mundo, mas para mim sou apenas um menino brincando na praia.;Registrado por Joseph Spence em Anecdotes (1820);;A;autorreconhecimento
+Isaac Newton;Não sei o que pareço ao mundo, mas para mim sou apenas um menino brincando na praia.;Registrado por Joseph Spence em Anecdotes (1820);"Relato publicado postumamente por Joseph Spence, que o atribui a uma conversa de Newton pouco antes de morrer; não está nos escritos do próprio Newton.";A;autorreconhecimento
 Vincent van Gogh;Eu coloco meu coração e minha alma no meu trabalho, e perdi a razão no processo.;Carta a Theo van Gogh, 1889;;A;reflexao
 Leonardo da Vinci;Aprender é a única coisa de que a mente nunca se cansa, nunca tem medo e nunca se arrepende.;Anotação nos cadernos de Leonardo;;A;educacao
-Coco Chanel;A simplicidade é a chave de toda a verdadeira elegância.;Entrevista registrada;;A;reflexao
-J.K. Rowling;A felicidade pode ser encontrada mesmo nas horas mais sombrias, se a pessoa se lembrar de acender a luz.;Harry Potter e o Prisioneiro de Azkaban (1999), capítulo 22;;A;conforto
 Ariano Suassuna;O otimista é um tolo, o pessimista é um chato. Bom mesmo é ser um realista esperançoso.;Aula-espetáculo registrada;;A;conforto
 Cecília Meireles;A vida só é possível reinventada.;Poema Reinvenção, em Vaga Música (1942);;A;vida
 Graciliano Ramos;Viviam como bichos, mas eram gente.;Vidas Secas (1938);;A;reflexao
@@ -2548,31 +2509,23 @@ Darcy Ribeiro;Fracassei em tudo o que tentei na vida. Mas o fracasso foram sempr
 Conceição Evaristo;Combatemos a escravidão de ontem e a de hoje com a escrita.;Palestras e conferências registradas da autora;;A;empoderamento
 Paulo Freire;Se a educação sozinha não transforma a sociedade, sem ela tampouco a sociedade muda.;Pedagogia da Indignação (2000);;A;educacao
 Paulo Freire;Não há saber mais nem saber menos: há saberes diferentes.;Pedagogia do Oprimido (1968);;A;educacao
-Bertrand Russell;A boa vida é inspirada pelo amor e guiada pelo conhecimento.;O Que Eu Acredito (1925), capítulo 2;;A;vida
+Bertrand Russell;A boa vida é inspirada pelo amor e guiada pelo conhecimento.;O Que Eu Acredito (1925), capítulo 2, “A boa vida”;;A;vida
 Carl Gustav Jung;Tudo o que nos irrita nos outros pode nos levar a um entendimento de nós mesmos.;Memórias, Sonhos, Reflexões (1962);;A;autorreconhecimento
 Sigmund Freud;O ego não é senhor em sua própria casa.;Uma Dificuldade da Psicanálise (1917);;A;autorreconhecimento
-Erich Fromm;A tarefa principal do homem na vida é dar à luz a si mesmo.;O Homem para Si Mesmo (1947);;A;autorreconhecimento
 Viktor Frankl;A última das liberdades humanas é escolher a atitude diante de qualquer circunstância.;Em Busca de Sentido (1946), primeira parte;;A;reflexao
 Peter Drucker;A melhor maneira de prever o futuro é criá-lo — atribuição disputada, origem provável em Alan Kay.;Ver o veredito registrado neste acervo;;A-;negocios
-Peter Drucker;"Eficiência é fazer as coisas direito; eficácia é fazer as coisas certas.";O Gerente Eficaz (1967);;A;negocios
+Peter Drucker;É fundamentalmente a confusão entre eficácia e eficiência que se interpõe entre fazer as coisas certas e fazer as coisas direito.;“Managing for Business Effectiveness”, Harvard Business Review (1963);;A;negocios
 Peter Drucker;O que não se pode medir, não se pode melhorar — atribuição refutada, ver nota.;Ver o veredito registrado neste acervo;;A-;negocios
-John C. Maxwell;Um líder é alguém que conhece o caminho, percorre o caminho e mostra o caminho.;As 21 Irrefutáveis Leis da Liderança (1998);;A;lideranca
 John C. Maxwell;As pessoas não se importam com o quanto você sabe até saberem o quanto você se importa.;As 21 Irrefutáveis Leis da Liderança (1998), lei do vínculo;;A;lideranca
 Seth Godin;Pessoas como nós fazem coisas como esta.;Isto é Marketing (2018);;A;negocios
-Seth Godin;"Não encontre clientes para seus produtos; encontre produtos para seus clientes.";Isto é Marketing (2018);;A;negocios
+Seth Godin;"Não encontre clientes para seus produtos; encontre produtos para seus clientes.";Blog de Seth Godin (seths.blog);;A;negocios
 Peter Thiel;"Todas as empresas felizes são diferentes; todas as empresas fracassadas são iguais.";De Zero a Um (2014), capítulo 3;;A;negocios
-Guy Kawasaki;As ideias são fáceis. A implementação é difícil.;A Arte do Começo (2004);;A;empreendedorismo
-Mihaly Csikszentmihalyi;Os melhores momentos ocorrem quando o corpo ou a mente são levados ao limite num esforço voluntário.;Fluxo (1990), capítulo 1;;A;vida
+Mihaly Csikszentmihalyi;Os melhores momentos ocorrem quando o corpo ou a mente são levados ao limite num esforço voluntário.;Fluxo (1990);;A;vida
 Robert Kiyosaki;Os ricos compram ativos. Os pobres compram passivos achando que são ativos.;Pai Rico, Pai Pobre (1997), lição 2;;A;financas
-Warren Buffett;Leva vinte anos para construir uma reputação e cinco minutos para arruiná-la.;Fala a estudantes registrada em vídeo;;A;negocios
-Warren Buffett;Só quando a maré baixa é que se descobre quem estava nadando pelado.;Carta aos acionistas da Berkshire Hathaway, 2001;;A;financas
-Charlie Munger;Inverta, sempre inverta.;Poor Charlie’s Almanack (2005);;A;reflexao
+Warren Buffett;Afinal, só se descobre quem está nadando pelado quando a maré baixa.;Carta aos acionistas da Berkshire Hathaway, 2001;"Buffett repetiu a imagem em várias cartas (1992–2007); a frase já fora usada por Robert L. Clarke, controlador da moeda dos EUA, em 1988.";A;financas
+Charlie Munger;Inverta, sempre inverta.;Poor Charlie’s Almanack (2005);Máxima que Munger atribui ao matemático Carl Gustav Jacobi.;A;reflexao
 Maya Angelou;Tente ser um arco-íris na nuvem de alguém.;Carta à Minha Filha (2008);;A;amor
-Maya Angelou;Você pode enfrentar muitas derrotas, mas não pode ser derrotado.;Carta à Minha Filha (2008), prefácio;;A;dificeis
-Marguerite Yourcenar;A amizade é, antes de tudo, certeza — e é isso que a distingue do amor.;Memórias de Adriano (1951), seção Varius Multiplex Multiformis;;A;amizade
 Agatha Christie;Não há nada mais fascinante do que ter um filho que é seu e, ao mesmo tempo, um estranho.;Uma Autobiografia (1977);;A;familia
-Agatha Christie;A melhor hora para planejar um livro é enquanto se lava a louça.;Uma Autobiografia (1977);;A;reflexao
-Max Planck;"Para o crente, Deus está no princípio; para o cientista, no fim de toda reflexão.";Religião e Ciência Natural (1937), conferência;;A;reflexao
 Max Planck;Uma verdade nova não triunfa convencendo seus opositores, mas porque eles morrem e uma nova geração cresce familiarizada com ela.;Autobiografia Científica (1948);;A;educacao
 Rubem Alves;Ensinar é um exercício de imortalidade. De alguma forma continuamos a viver naqueles cujos olhos aprenderam a ver o mundo pela magia da nossa palavra.;A Alegria de Ensinar (1994);;A;educacao
 Rubem Alves;"O cientista estuda o que já existe; o poeta cria o que não existe.";Entre a Ciência e a Sapiência (1999);;A;educacao
@@ -2581,7 +2534,7 @@ Hannah Arendt;A verdade factual, como toda verdade, exige ser reconhecida peremp
 Søren Kierkegaard;"Arriscar causa ansiedade; não arriscar é perder a si mesmo.";O Conceito de Angústia (1844);;A;reflexao
 Søren Kierkegaard;O maior perigo, o de perder a si mesmo, pode acontecer no mundo de forma silenciosa, como se não fosse nada.;O Desespero Humano (1849), primeira parte;;A;autorreconhecimento
 Arthur Schopenhauer;A saúde não é tudo, mas sem ela tudo o mais é nada.;Aforismos para a Sabedoria de Vida (1851), capítulo 2;;A;vida
-Arthur Schopenhauer;Cada um toma os limites do próprio campo de visão pelos limites do mundo.;Parerga e Paralipomena (1851), volume II;;A;reflexao
+Arthur Schopenhauer;Cada um toma os limites do próprio campo de visão pelos limites do mundo.;Parerga e Paralipomena (1851), volume II, capítulo 26, § 338;;A;reflexao
 John Stuart Mill;A única liberdade que merece o nome é a de buscar o nosso próprio bem à nossa própria maneira.;Sobre a Liberdade (1859), capítulo 1;;A;politica
 John Stuart Mill;Quem só conhece o próprio lado da questão conhece pouco dela.;Sobre a Liberdade (1859), capítulo 2;;A;educacao
 Francis Bacon;"A leitura torna o homem completo; a conversa, ágil; a escrita, exato.";Ensaios (1625), Dos Estudos;;A;educacao
@@ -2589,310 +2542,218 @@ Francis Bacon;O que é mais buscado nos homens não é o entendimento, mas a mem
 William James;O hábito é o enorme volante da sociedade, seu agente conservador mais precioso.;Princípios de Psicologia (1890), capítulo 4;;A;reflexao
 Carl Gustav Jung;O encontro de duas personalidades é como o contato entre duas substâncias químicas: se há alguma reação, ambas se transformam.;Psicologia Moderna (1933), capítulo sobre problemas da psicoterapia;;A;reflexao
 Paulo Freire;Ninguém liberta ninguém, ninguém se liberta sozinho: os homens se libertam em comunhão.;Pedagogia do Oprimido (1968), capítulo 2;;A;educacao
-Bertrand Russell;"A ciência é o que sabemos; a filosofia é o que não sabemos.";Conferência O Valor da Filosofia, reproduzida em Ensaios Impopulares (1950);;A;filosofos
+Bertrand Russell;A ciência é o que sabemos, e a filosofia é o que não sabemos.;Bertrand Russell Speaks His Mind (1960), p. 11;;A;filosofos
 Eleanor Roosevelt;Faça uma coisa todo dia que te dê medo.;Você Aprende Vivendo (1960);;A;reflexao
 Machado de Assis;O menino é o pai do homem.;Dom Casmurro (1899), capítulo 2;;A;familia
 Fernando Pessoa;Tudo vale a pena quando a alma não é pequena.;Mensagem (1934), poema Mar Português;;A;reflexao
-Dalai Lama;Amor e compaixão são necessidades, não luxos. Sem eles, a humanidade não sobrevive.;Uma Ética para o Novo Milênio (1999);;A;amor
 Dalai Lama;Nossa principal finalidade nesta vida é ajudar os outros. E se você não pode ajudá-los, ao menos não os machuque.;Palestras e conferências registradas do Dalai Lama;;A;amor
-Dinah Maria Craik;A amizade é o conforto indescritível de nos sentirmos seguros com uma pessoa, sem ter de pesar pensamentos nem medir palavras.;A Life for a Life (1859), capítulo 16;Circula em massa atribuída a George Eliot. É de Dinah Maria Mulock Craik, romancista inglesa contemporânea dela.;A;amizade
+Dinah Maria Craik;Ah, o conforto — o inexprimível conforto de sentir-se seguro com uma pessoa —, sem precisar pesar os pensamentos nem medir as palavras.;A Life for a Life (1859), capítulo 16;Circula em massa atribuída a George Eliot. É de Dinah Maria Mulock Craik, romancista inglesa contemporânea dela.;A;amizade
 Simon Sinek;"As pessoas não compram o que você faz; elas compram por que você faz.";Comece pelo Porquê;;A;lideranca
 Simon Sinek;Há líderes e há aqueles que lideram. Os líderes ocupam uma posição de poder ou de autoridade, mas aqueles que lideram nos inspiram.;Comece pelo Porquê;;A;lideranca
-Simon Sinek;"Os grandes líderes não são responsáveis pelo trabalho; são responsáveis pelas pessoas que fazem o trabalho.";Líderes se Servem por Último;;A;lideranca
-Michael Porter;A intensidade da concorrência em um setor não é questão de coincidência nem de má sorte: ela tem raízes na estrutura econômica do próprio setor.;Estratégia Competitiva;;A;negocios
-Michael Porter;A vantagem competitiva nasce do valor que uma empresa consegue criar para seus compradores e que excede o custo de criá-lo.;Vantagem Competitiva;;A;negocios
+Michael Porter;A intensidade da concorrência em um setor não é questão de coincidência nem de má sorte: ela tem raízes na estrutura econômica do próprio setor.;Estratégia Competitiva (1980), capítulo 1;;A;negocios
+Michael Porter;A vantagem competitiva nasce do valor que uma empresa consegue criar para seus compradores e que excede o custo de criá-lo.;Vantagem Competitiva (1985), capítulo 1;;A;negocios
 Jonathan Haidt;"As intuições vêm primeiro; o raciocínio estratégico vem depois.";A Mente Moralista;;A;reflexao
-Jonathan Haidt;A mente moral é como uma língua com seis receptores de sabor.;A Mente Moralista;;A;reflexao
-Jonathan Haidt;Substituímos a infância baseada em brincadeiras por uma infância baseada em telefones.;A Geração Ansiosa;;A;educacao
-Albert Bandura;Felizmente, a maior parte do comportamento humano é aprendida pela observação, por meio da modelação.;Teoria da Aprendizagem Social;;A;educacao
-Albert Bandura;As teorias que explicam o comportamento humano como produto de forças unilaterais, internas ou externas, não resistem ao exame.;Teoria da Aprendizagem Social;;A;reflexao
-José Ortega y Gasset;A civilização não é dada, não se sustenta a si mesma. É artificial: quem quiser conservá-la precisa cuidar dela.;A Rebelião das Massas;;A;reflexao
-José Ortega y Gasset;A característica do momento é que a alma medíocre, sabendo-se medíocre, tem o atrevimento de afirmar o direito da mediocridade e o impõe onde quer.;A Rebelião das Massas;;A;politica
-Amartya Sen;O que nos move não é a percepção de que o mundo não é inteiramente justo, e sim a de que existem à nossa volta injustiças claramente remediáveis.;A Ideia de Justiça;;A;politica
+Jonathan Haidt;A mente moral é como uma língua com seis receptores de sabor.;A Mente Moralista (2012), capítulo 6;;A;reflexao
+Albert Bandura;Felizmente, a maior parte do comportamento humano é aprendida pela observação, por meio da modelação.;Teoria da Aprendizagem Social (1977), p. 22;;A;educacao
+José Ortega y Gasset;O característico do momento é que a alma vulgar, sabendo-se vulgar, tem o atrevimento de afirmar o direito da vulgaridade e o impõe onde quer que seja.;A Rebelião das Massas (1930), capítulo I;;A;politica
+Amartya Sen;O que nos move, com razão, não é perceber que o mundo está longe de ser completamente justo — o que poucos de nós esperam —, mas que há à nossa volta injustiças claramente remediáveis que queremos eliminar.;A Ideia de Justiça (2009), introdução;;A;politica
 Erving Goffman;O normal e o estigmatizado não são pessoas, mas perspectivas.;Estigma;;A;reflexao
-Erving Goffman;A sociedade é organizada sobre o princípio de que todo indivíduo que possui certas características sociais tem o direito moral de esperar que os outros o valorizem e o tratem de modo apropriado.;A Representação do Eu na Vida Cotidiana;;A;reflexao
-Theodore Levitt;Toda indústria já foi, um dia, uma indústria em crescimento.;Miopia em Marketing;;A;negocios
-Theodore Levitt;"As ferrovias não pararam de crescer porque a necessidade de transporte diminuiu; ela cresceu. Elas entraram em dificuldade porque deixaram que outros atendessem a essa necessidade.";Miopia em Marketing;;A;negocios
-Jack Welch;Nos negócios, a falta de franqueza bloqueia as ideias inteligentes, a ação rápida e a contribuição integral das boas pessoas.;Paixão por Vencer;;A;lideranca
-Jack Welch;Antes de ser líder, crescer significa crescer você mesmo. Quando você se torna líder, crescer passa a significar fazer os outros crescerem.;Jack: Definitivo;;A;lideranca
-Friedrich Hayek;Quem controla toda a atividade econômica controla os meios para todos os nossos fins.;O Caminho da Servidão;;A;politica
-Friedrich Hayek;O problema econômico da sociedade é sobretudo um problema de adaptação rápida a mudanças nas circunstâncias particulares de tempo e lugar.;O Uso do Conhecimento na Sociedade;;A;financas
+Erving Goffman;A sociedade é organizada sobre o princípio de que todo indivíduo que possui certas características sociais tem o direito moral de esperar que os outros o valorizem e o tratem de modo apropriado.;A Representação do Eu na Vida Cotidiana (1959), p. 13;;A;reflexao
+Theodore Levitt;Toda indústria já foi, um dia, uma indústria em crescimento.;“Miopia em Marketing”, Harvard Business Review (1960);;A;negocios
+Theodore Levitt;As ferrovias não pararam de crescer porque a necessidade de transporte de passageiros e de carga diminuiu. Essa necessidade cresceu.;“Miopia em Marketing”, Harvard Business Review (1960);;A;negocios
+Jack Welch;A falta de franqueza basicamente bloqueia as ideias inteligentes, a ação rápida e a contribuição integral das boas pessoas.;Paixão por Vencer (2005);;A;lideranca
+Jack Welch;Antes de ser líder, crescer significa crescer você mesmo. Quando você se torna líder, crescer passa a significar fazer os outros crescerem.;Paixão por Vencer (2005);;A;lideranca
+Friedrich Hayek;Quem controla toda a atividade econômica controla os meios para todos os nossos fins.;O Caminho da Servidão (1944), capítulo 7;;A;politica
+Friedrich Hayek;O problema econômico da sociedade é sobretudo um problema de adaptação rápida a mudanças nas circunstâncias particulares de tempo e lugar.;O Uso do Conhecimento na Sociedade (1945), American Economic Review;;A;financas
 Thomas Hobbes;Durante o tempo em que os homens vivem sem um poder comum capaz de os manter a todos em respeito, eles se encontram naquela condição a que se chama guerra: uma guerra de todos contra todos.;Leviatã;;A;politica
 Thomas Hobbes;A vida do homem, nessa condição, é solitária, pobre, sórdida, embrutecida e curta.;Leviatã (1651), capítulo XIII;;A;reflexao
 Nassim Nicholas Taleb;Algumas coisas se beneficiam de choques: prosperam e crescem quando expostas à volatilidade, ao acaso, à desordem e ao estresse.;Antifrágil;;A;reflexao
-Nassim Nicholas Taleb;"Não me diga o que você pensa; diga-me o que você tem na sua carteira.";Arriscando a Própria Pele;;A;financas
-Milton Friedman;Uma sociedade que coloca a igualdade de resultado à frente da liberdade terminará sem uma nem outra.;Livre para Escolher;;A;politica
-Milton Friedman;Existe uma e só uma responsabilidade social da empresa: usar seus recursos e engajar-se em atividades destinadas a aumentar seus lucros, dentro das regras do jogo.;Capitalismo e Liberdade;;A;negocios
+Nassim Nicholas Taleb;"Não me diga o que você pensa; diga-me o que você tem na sua carteira.";Arriscando a Própria Pele (2018);;A;financas
+Milton Friedman;Uma sociedade que põe a igualdade — no sentido de igualdade de resultados — à frente da liberdade terminará sem igualdade e sem liberdade.;Livre para Escolher (1980), capítulo 5;;A;politica
+Milton Friedman;Existe uma e só uma responsabilidade social da empresa: usar seus recursos e engajar-se em atividades destinadas a aumentar seus lucros, dentro das regras do jogo.;Capitalismo e Liberdade (1962), capítulo 8;;A;negocios
 Adam Smith;Por mais egoísta que se suponha o homem, existem evidentemente em sua natureza princípios que o fazem interessar-se pela sorte dos outros.;Teoria dos Sentimentos Morais;;A;reflexao
 Adam Smith;Cada indivíduo, ao buscar apenas seu próprio ganho, é conduzido por uma mão invisível a promover um fim que não fazia parte de sua intenção.;A Riqueza das Nações (1776), livro IV, capítulo II;;A;financas
-David Hume;O homem sábio ajusta sua crença à evidência.;Investigação sobre o Entendimento Humano;;A;reflexao
+David Hume;O homem sábio ajusta sua crença à evidência.;Investigação sobre o Entendimento Humano (1748), seção X, “Dos Milagres”;;A;reflexao
 David Hume;Não é contrário à razão preferir a destruição do mundo inteiro a um arranhão no meu dedo.;Tratado da Natureza Humana (1739–40), livro II, parte III, seção III;;A;filosofos
 Jim Collins;O bom é inimigo do ótimo.;Empresas Feitas para Vencer;;A;negocios
 Jim Collins;As pessoas não são o seu ativo mais importante. As pessoas certas são.;Empresas Feitas para Vencer;;A;lideranca
 Jim Collins;Construa o relógio, em vez de dar a hora.;Feitas para Durar;;A;empreendedorismo
-Max Weber;A política consiste em furar tábuas duras, devagar e com firmeza.;Ciência e Política: Duas Vocações;;A;politica
-Max Weber;"O puritano quis ser um profissional; nós somos obrigados a sê-lo.";A Ética Protestante e o Espírito do Capitalismo;;A;reflexao
-Martin Seligman;O desamparo aprendido é a desistência que se segue à crença de que nada que você faça importa.;Felicidade Autêntica;;A;dificeis
-Martin Seligman;O bem-estar tem cinco elementos mensuráveis: emoção positiva, engajamento, sentido, realização e relacionamentos.;Florescer;;A;felicidade
-Norberto Bobbio;O problema grave de nosso tempo, quanto aos direitos do homem, não é mais o de fundamentá-los, e sim o de protegê-los.;A Era dos Direitos;;A;politica
-Pierre Bourdieu;O gosto une e separa.;A Distinção: Crítica Social do Julgamento;;A;reflexao
-Edward Bernays;Se compreendemos o mecanismo e os motivos da mente coletiva, é possível controlar e arregimentar as massas conforme nossa vontade, sem que elas o saibam.;Propaganda;;A;manipulacao
-J. R. R. Tolkien;É preciso ter coragem para sair pela porta de casa.;O Senhor dos Anéis;;A;motivacao
+Max Weber;A política significa perfurar tábuas duras, de modo forte e lento, com paixão e senso de proporção ao mesmo tempo.;A Política como Vocação (1919);;A;politica
+Max Weber;"O puritano quis ser um profissional; nós somos obrigados a sê-lo.";A Ética Protestante e o Espírito do Capitalismo (1904–1905), capítulo final;;A;reflexao
+Martin Seligman;O desamparo aprendido é a desistência que se segue à crença de que nada que você faça importa.;Aprenda a Ser Otimista (1990), capítulo 1;;A;dificeis
+Norberto Bobbio;O problema fundamental em relação aos direitos do homem, hoje, não é tanto o de justificá-los, mas o de protegê-los.;“Sobre o fundamento dos direitos do homem” (1964), em A Era dos Direitos (1990);;A;politica
+Edward Bernays;Se compreendemos o mecanismo e os motivos da mente grupal, não seria possível controlar e arregimentar as massas segundo a nossa vontade, sem que elas o saibam?;Propaganda (1928), capítulo IV;;A;manipulacao
+J. R. R. Tolkien;É perigoso, Frodo, sair pela porta de casa.;A Sociedade do Anel (1954), livro I, capítulo 3;Frodo recorda o que Bilbo costumava dizer.;A;motivacao
 Henry David Thoreau;Se um homem não acompanha o passo de seus companheiros, talvez seja porque ouve um tambor diferente.;Walden (1854), “Conclusão”;;A;autorreconhecimento
-Erich Fromm;A tarefa mais importante da vida humana é dar à luz a si mesmo, tornar-se aquilo que se é potencialmente.;A Arte de Amar;;A;autorreconhecimento
-Dale Carnegie;Quando lidamos com pessoas, lembremos que não estamos lidando com criaturas de lógica, mas com criaturas de emoção.;Como Fazer Amigos e Influenciar Pessoas;;A;reflexao
-Jean-Jacques Rousseau;Renunciar à liberdade é renunciar à condição de homem.;O Contrato Social;;A;politica
-Benjamin Graham;O principal problema do investidor — e seu pior inimigo — é ele mesmo.;O Investidor Inteligente;;A;financas
-Carl Sagan;Em algum lugar, algo incrível está esperando para ser conhecido.;Cosmos;;A;reflexao
-Antoine de Saint-Exupéry;A terra nos ensina mais sobre nós mesmos do que todos os livros, porque nos oferece resistência.;Terra dos Homens;;A;reflexao
-Aldous Huxley;Um amor pela servidão não se estabelece a não ser como resultado de uma revolução profunda e pessoal nas mentes e nos corpos humanos.;Admirável Mundo Novo;;A;politica
+Erich Fromm;A tarefa mais importante da vida humana é dar à luz a si mesmo, tornar-se aquilo que se é potencialmente.;O Homem para Si Mesmo (1947);;A;autorreconhecimento
+Dale Carnegie;Quando lidamos com pessoas, lembremos que não estamos lidando com criaturas de lógica, mas com criaturas de emoção.;Como Fazer Amigos e Influenciar Pessoas (1936), parte 1, capítulo 1;;A;reflexao
+Jean-Jacques Rousseau;Renunciar à liberdade é renunciar à condição de homem.;O Contrato Social (1762), livro I, capítulo 4;;A;politica
+Benjamin Graham;O principal problema do investidor — e até seu pior inimigo — provavelmente é ele mesmo.;O Investidor Inteligente (1949), capítulo 8;;A;financas
+Antoine de Saint-Exupéry;A terra nos ensina mais sobre nós mesmos do que todos os livros, porque nos oferece resistência.;Terra dos Homens (1939), início;;A;reflexao
 Aldous Huxley;Cada um de nós é potencialmente Mente Ampla. Mas, na medida em que somos animais, nosso negócio é sobreviver a todo custo.;As Portas da Percepção;;A;reflexao
-Alexandre Dumas;Um por todos, todos por um.;Os Três Mosqueteiros;;A;amizade
-Alice Walker;Acho que incomoda Deus quando passamos pela cor púrpura num campo e não notamos.;A Cor Púrpura;;A;gratidao
+Alexandre Dumas;Um por todos, todos por um.;Os Três Mosqueteiros (1844), capítulo IX;;A;amizade
+Alice Walker;Acho que incomoda Deus quando passamos pela cor púrpura num campo e não notamos.;A Cor Púrpura;Fala de Shug Avery.;A;gratidao
 Ambrose Bierce;Amizade: um navio grande o bastante para levar dois em tempo bom, mas apenas um em tempo ruim.;O Dicionário do Diabo;;A;amizade
 Ambrose Bierce;Otimista: o defensor da doutrina de que o preto é branco.;O Dicionário do Diabo;;A;reflexao
-Andrew Carnegie;O dever do homem rico é dar o exemplo de uma vida modesta e administrar seus excedentes como fundos confiados a ele em benefício da comunidade.;O Evangelho da Riqueza;;A;financas
+Andrew Carnegie;"Este, então, é tido como o dever do homem rico: primeiro, dar o exemplo de uma vida modesta e sem ostentação, evitando o luxo e a extravagância; […] e, feito isso, considerar todos os rendimentos excedentes que lhe chegam simplesmente como fundos confiados, que ele tem o dever de administrar.";"O Evangelho da Riqueza (1889; publicado como “Wealth”, North American Review, jun. 1889)";;A;financas
 Andy Grove;O sucesso gera complacência. A complacência gera fracasso. Só os paranoicos sobrevivem.;Só os Paranoicos Sobrevivem;;A;negocios
-Andy Grove;A produção de um gerente é a produção das unidades organizacionais sob sua supervisão ou influência.;Administração de Alta Performance;;A;lideranca
-Ayn Rand;Contradições não existem. Quando achar que encontrou uma, verifique suas premissas: descobrirá que uma delas está errada.;A Revolta de Atlas;;A;reflexao
-Brené Brown;A vulnerabilidade é o berço da inovação, da criatividade e da mudança.;A Coragem de Ser Imperfeito;;A;empoderamento
-Brené Brown;A vergonha é o medo da desconexão.;A Coragem de Ser Imperfeito;;A;dificeis
-Emily Dickinson;A esperança é a coisa com penas que se aninha na alma e canta a melodia sem palavras, e nunca para.;Poemas completos;;A;conforto
-Emily Dickinson;Porque eu não podia parar para a Morte, ela gentilmente parou para mim.;Poemas completos;;A;reflexao
+Andy Grove;A produção de um gerente = a produção da sua organização + a produção das organizações vizinhas sob sua influência.;Administração de Alta Performance (1983), capítulo 3;;A;lideranca
+Ayn Rand;Contradições não existem. Quando achar que encontrou uma, verifique suas premissas: descobrirá que uma delas está errada.;A Revolta de Atlas (1957);Fala de Francisco d’Anconia.;A;reflexao
+Brené Brown;A vulnerabilidade é o berço da inovação, da criatividade e da mudança.;Palestra TED “Escutando a vergonha” (2012);;A;empoderamento
+Emily Dickinson;A esperança é a coisa com penas que se aninha na alma e canta a melodia sem palavras, e nunca para.;Poems, Second Series (1891), “Hope”;;A;conforto
+Emily Dickinson;Porque eu não podia parar para a Morte, ela gentilmente parou para mim.;Poems (1890), “The Chariot”;;A;reflexao
 Ernest Hemingway;O homem pode ser destruído, mas não derrotado.;O Velho e o Mar;;A;dificeis
-Esopo;Devagar e sempre se vence a corrida.;Fábulas;;A;motivacao
-Esopo;Nenhum ato de bondade, por pequeno que seja, é desperdiçado.;Fábulas;;A;gratidao
-Eurípides;De todas as criaturas que respiram e se movem sobre a terra, nada nasce mais desamparado que a mulher.;Medeia;;A;empoderamento
-Eurípides;Não é sabedoria ser sábio em excesso.;As Bacantes;;A;filosofos
-Frederick Douglass;O que é, para o escravo americano, o Quatro de Julho? Um dia que lhe revela, mais do que todos os outros do ano, a injustiça e a crueldade grosseiras de que é vítima constante.;O que é o 4 de Julho para o escravo?;;A;politica
-Galileu Galilei;"Não se pode ensinar nada a um homem; só se pode ajudá-lo a descobrir por si mesmo.";Diálogo sobre os Dois Máximos Sistemas do Mundo;;A;educacao
-Galileu Galilei;Descobri quatro planetas nunca vistos desde o princípio do mundo até nossos dias.;O Mensageiro das Estrelas;;A;reflexao
+Esopo;Devagar e sempre se vence a corrida.;Fábulas de Esopo, “A Lebre e a Tartaruga” (moral na tradução inglesa de V. S. Vernon Jones, 1912);"Moral da fábula; a redação varia entre traduções.";A;motivacao
+Esopo;Uma gentileza nunca é desperdiçada.;Fábulas de Esopo, “O Leão e o Rato” (moral em The Aesop for Children, 1919);"Moral da fábula; a redação varia entre traduções.";A;gratidao
+Eurípides;De todas as coisas que têm vida e sentido, nós, mulheres, somos as criaturas mais infelizes.;Medeia (431 a.C.), versos 230–231;Fala de Medeia.;A;empoderamento
+Eurípides;A esperteza não é sabedoria, nem o é pensar em coisas impróprias aos mortais.;As Bacantes (405 a.C.), verso 395;Canto do coro.;A;filosofos
+Frederick Douglass;O que é, para o escravo americano, o Quatro de Julho? Um dia que lhe revela, mais do que todos os outros do ano, a injustiça e a crueldade grosseiras de que é vítima constante.;Discurso “O que é, para o escravo, o Quatro de Julho?”, Rochester, 5 de julho de 1852 (reproduzido em My Bondage and My Freedom, 1855);;A;politica
 George Bernard Shaw;A diferença entre uma dama e uma florista não está em como ela se comporta, mas em como é tratada.;Pigmaleão (1913), ato V;Fala de Eliza Doolittle a Higgins.;A;reflexao
 George Eliot;"O bem que cresce no mundo depende em parte de atos não históricos; e que as coisas não sejam piores para você e para mim se deve, em parte, ao número de vidas fielmente vividas e escondidas.";Middlemarch;;A;vida
 Gustave Flaubert;A linguagem humana é como um caldeirão rachado em que batemos melodias para ursos dançarem, quando aspirávamos comover as estrelas.;Madame Bovary (1857), parte II, capítulo 12;;A;reflexao
-Hipócrates;Antes de tudo, não causar dano.;Corpus Hippocraticum;;A;reflexao
+Hipócrates;Nas doenças, ter em vista duas coisas: ajudar, ou não causar dano.;Epidemias, livro I, capítulo 11;Passagem de onde deriva a máxima latina “primum non nocere”, que é posterior.;A;reflexao
 Isaiah Berlin;Sou livre na medida em que nenhum homem interfere na minha atividade.;Dois Conceitos de Liberdade;;A;politica
 James M. Barrie;Basta pensar pensamentos lindos e maravilhosos, e eles levantam você no ar.;Peter Pan e Wendy (1911), capítulo III;;A;felicidade
-Jean Piaget;A inteligência organiza o mundo organizando-se a si mesma.;O Nascimento da Inteligência na Criança;;A;educacao
-John Maynard Keynes;Não há meio mais sutil nem mais seguro de destruir a base existente de uma sociedade do que corromper sua moeda.;As Consequências Econômicas da Paz;;A;financas
+John Maynard Keynes;Não há meio mais sutil nem mais seguro de destruir a base existente de uma sociedade do que corromper sua moeda.;As Consequências Econômicas da Paz (1919), capítulo VI;;A;financas
 Lev Vygotsky;O pensamento não se expressa simplesmente em palavras: é nelas que ele passa a existir.;Pensamento e Linguagem;;A;educacao
 Lev Vygotsky;O que a criança consegue fazer hoje com ajuda, amanhã conseguirá fazer sozinha.;A Formação Social da Mente;;A;educacao
-Charles de Gaulle;Toda a minha vida tive de mim mesmo uma certa ideia da França.;Memórias de Guerra;;A;politica
-Dwight D. Eisenhower;Vocês estão prestes a embarcar na grande cruzada rumo à qual nos empenhamos por tantos meses.;Cruzada na Europa;;A;lideranca
-Douglas MacArthur;Dever, honra, pátria: essas três palavras sagradas ditam reverentemente o que vocês devem ser, o que podem ser, o que serão.;Discurso de Despedida em West Point;;A;lideranca
-David Ogilvy;Se não vende, não é criativo.;Ogilvy on Advertising;;A;negocios
-Desmond Tutu;"Sem perdão não há futuro; mas sem confissão não pode haver perdão.";Não Há Futuro sem Perdão;;A;fe
-Alan Turing;Proponho considerar a seguinte pergunta: podem as máquinas pensar?;Máquinas de Computação e Inteligência;;A;reflexao
-Ernest Renan;Uma nação é uma alma, um princípio espiritual.;O Que é uma Nação?;;A;politica
-Georg Simmel;O habitante da metrópole reage com a cabeça, e não com o coração.;As Grandes Cidades e a Vida do Espírito;;A;reflexao
+Charles de Gaulle;Toda a minha vida, formei para mim uma certa ideia da França.;Memórias de Guerra, volume I, O Apelo (1954), frase de abertura;;A;politica
+Dwight D. Eisenhower;Vocês estão prestes a embarcar na grande cruzada rumo à qual nos empenhamos por tantos meses.;Ordem do Dia de 6 de junho de 1944 (Dia D);;A;lideranca
+Douglas MacArthur;Dever, honra, pátria: essas três palavras sagradas ditam reverentemente o que vocês devem ser, o que podem ser, o que serão.;Discurso de despedida em West Point, 12 de maio de 1962;;A;lideranca
+Alan Turing;Proponho considerar a seguinte pergunta: podem as máquinas pensar?;Máquinas de Computação e Inteligência (1950), frase de abertura;;A;reflexao
+Ernest Renan;Uma nação é uma alma, um princípio espiritual.;O Que é uma Nação? (1882), conferência na Sorbonne, 11 de março de 1882;;A;politica
 Herbert Simon;A capacidade da mente humana para formular e resolver problemas complexos é muito pequena diante do tamanho dos problemas cuja solução o comportamento racional exigiria.;Comportamento Administrativo;;A;reflexao
 Lord Byron;A verdade é sempre mais estranha que a ficção.;Dom Juan (1819–1824), canto XIV;;A;reflexao
-Lord Byron;Amo não menos o homem, mas mais a Natureza.;A Peregrinação de Childe Harold;;A;reflexao
-Ludwig van Beethoven;Foi somente a minha arte que me impediu de dar cabo da minha vida.;Testamento de Heiligenstadt;;A;dificeis
-Ludwig van Beethoven;Ó vós, homens que me julgais hostil, teimoso ou misantropo, como me injuriais: não conheceis a causa secreta do que assim vos parece.;Testamento de Heiligenstadt;;A;conforto
-Malcolm X;Será o voto ou a bala.;O Voto ou a Bala;;A;politica
-Marguerite Yourcenar;Fundar bibliotecas é como construir celeiros públicos: amontoar reservas contra um inverno do espírito.;Memórias de Adriano;;A;educacao
-Michael Jordan;"Posso aceitar o fracasso; todo mundo fracassa em algo. Mas não posso aceitar não tentar.";Eu Não Posso Aceitar Não Tentar;;A;motivacao
-Mihaly Csikszentmihalyi;A felicidade não é algo que simplesmente acontece: não é resultado de boa sorte nem de acaso, é algo que se prepara.;Fluxo;;A;felicidade
-Noam Chomsky;Os meios de comunicação servem para mobilizar apoio aos interesses especiais que dominam o Estado e a atividade privada.;Manufaturando Consenso (com Edward Herman);;A;manipulacao
-Noam Chomsky;É responsabilidade dos intelectuais dizer a verdade e desmascarar mentiras.;A Responsabilidade dos Intelectuais;;A;politica
-Peter Thiel;Que verdade importante muito pouca gente concorda com você?;De Zero a Um;;A;empreendedorismo
-Peter Thiel;Cada momento nos negócios acontece apenas uma vez. O próximo Bill Gates não vai criar um sistema operacional.;De Zero a Um;;A;empreendedorismo
-Publílio Siro;Ninguém sabe do que é capaz até ter tentado.;Sentenças;;A;motivacao
-Reid Hoffman;Toda pessoa é uma empresa em estágio inicial, e sua carreira é o produto.;O Startup de Você;;A;empreendedorismo
-Robert Louis Stevenson;O homem não é verdadeiramente um, e sim dois.;O Médico e o Monstro;;A;autorreconhecimento
-Rosa Luxemburgo;A liberdade apenas para os partidários do governo, apenas para os membros de um partido, não é liberdade.;Obra e cartas de Rosa Luxemburgo;;A;politica
+Lord Byron;Amo não menos o homem, mas mais a Natureza.;A Peregrinação de Childe Harold, canto IV (1818), estrofe 178;;A;reflexao
+Ludwig van Beethoven;"Pouco faltou para que eu mesmo pusesse fim à minha vida; só ela, a arte, me reteve.";Testamento de Heiligenstadt (1802);;A;dificeis
+Ludwig van Beethoven;Ó vós, homens que me julgais hostil, teimoso ou misantropo, como me injuriais: não conheceis a causa secreta do que assim vos parece.;Testamento de Heiligenstadt (1802);;A;conforto
+Malcolm X;É o voto ou a bala.;“O Voto ou a Bala”, discurso em Cleveland (03/04/1964);;A;politica
+Marguerite Yourcenar;Fundar bibliotecas é como construir celeiros públicos: amontoar reservas contra um inverno do espírito.;Memórias de Adriano (1951);;A;educacao
+Michael Jordan;"Posso aceitar o fracasso; todo mundo fracassa em algo. Mas não posso aceitar não tentar.";Eu Não Posso Aceitar Não Tentar (1994);;A;motivacao
+Mihaly Csikszentmihalyi;A felicidade não é algo que simplesmente acontece. Não é resultado da boa sorte nem do acaso.;Fluxo (1990);;A;felicidade
+Noam Chomsky;É responsabilidade dos intelectuais dizer a verdade e desmascarar mentiras.;“A Responsabilidade dos Intelectuais”, New York Review of Books (1967);;A;politica
+Peter Thiel;Que verdade importante muito pouca gente concorda com você?;De Zero a Um (2014), capítulo 1;;A;empreendedorismo
+Peter Thiel;Cada momento nos negócios acontece apenas uma vez. O próximo Bill Gates não vai criar um sistema operacional.;De Zero a Um (2014), prefácio;;A;empreendedorismo
+Robert Louis Stevenson;O homem não é verdadeiramente um, e sim dois.;O Médico e o Monstro (1886), capítulo “Henry Jekyll’s Full Statement of the Case”;;A;autorreconhecimento
+Rosa Luxemburgo;A liberdade apenas para os partidários do governo, apenas para os membros de um partido, não é liberdade.;"A Revolução Russa (1918; publicada em 1922), nota manuscrita";;A;politica
 Stanley Milgram;Pessoas comuns, apenas fazendo seu trabalho e sem nenhuma hostilidade particular, podem tornar-se agentes de um processo terrível de destruição.;Obediência à Autoridade;;A;manipulacao
-Stephen Covey;Comece com o fim em mente.;Os 7 Hábitos das Pessoas Altamente Eficazes;;A;motivacao
-Thomas Sowell;A economia é o estudo do uso de recursos escassos que têm usos alternativos.;Economia Básica;;A;financas
-Tom Peters;Uma inclinação para a ação: fazer, corrigir, tentar.;Em Busca da Excelência;;A;negocios
-Will Durant;A educação é a descoberta progressiva de nossa própria ignorância.;A História da Filosofia;;A;educacao
-Will Durant;Uma grande civilização não é conquistada de fora antes de ter se destruído por dentro.;A História da Civilização;;A;politica
+Stephen Covey;Comece com o fim em mente.;Os 7 Hábitos das Pessoas Altamente Eficazes (1989), hábito 2;;A;motivacao
+Thomas Sowell;A economia é o estudo do uso de recursos escassos que têm usos alternativos.;Economia Básica (2000), capítulo 1;;A;financas
+Tom Peters;Uma inclinação para a ação: fazer, corrigir, tentar.;Vencendo a Crise (In Search of Excellence, 1982), capítulo 5;;A;negocios
+Will Durant;A educação é a descoberta progressiva de nossa própria ignorância.;Citada em “The Great Gadfly”, Time (1965);;A-;educacao
+Will Durant;Uma grande civilização não é conquistada de fora antes de ter se destruído por dentro.;César e Cristo (1944), epílogo;;A;politica
 Yuval Noah Harari;Não há deuses no universo, nem nações, nem dinheiro, nem direitos humanos, nem leis, nem justiça, fora da imaginação coletiva dos seres humanos.;Sapiens;;A;reflexao
 Yuval Noah Harari;A história começou quando os humanos inventaram os deuses, e terminará quando os humanos se tornarem deuses.;Homo Deus;;A;reflexao
-Woodrow Wilson;Deve ser formada uma associação geral de nações, com o propósito de garantir independência política e integridade territorial a Estados grandes e pequenos igualmente.;Os Quatorze Pontos;;A;politica
-Oliver Wendell Holmes;A grande coisa neste mundo não é tanto onde estamos, mas em que direção nos movemos.;O Autocrata da Mesa do Café da Manhã;;A;motivacao
-Melinda French Gates;Quando você levanta as mulheres, você levanta a humanidade.;O Momento de Voar;;A;empoderamento
-Sheryl Sandberg;O que você faria se não tivesse medo?;Faça Acontecer;;A;empoderamento
-Sheryl Sandberg;A resiliência não é um traço fixo: é um músculo que se constrói.;Plano B;;A;dificeis
-Wangari Maathai;Quando plantamos árvores, plantamos as sementes da paz e da esperança.;Unbowed;;A;empoderamento
-Sophie Scholl;Nada é tão indigno de um povo civilizado quanto deixar-se governar, sem resistência, por uma camarilha irresponsável e movida por instintos obscuros.;Panfletos da Rosa Branca;;A;politica
-Albert Schweitzer;A ética é a reverência infinitamente ampliada por toda forma de vida.;Filosofia da Civilização;;A;fe
-Amos Tversky;As pessoas recorrem a um número limitado de heurísticas que reduzem a tarefa complexa de avaliar probabilidades a operações de julgamento mais simples.;Julgamento sob Incerteza: Heurísticas e Vieses;;A;reflexao
-Amos Tversky;As perdas pesam mais do que os ganhos de mesma magnitude.;Teoria do Prospecto;;A;financas
+Woodrow Wilson;Deve ser formada uma associação geral de nações, com o propósito de garantir independência política e integridade territorial a Estados grandes e pequenos igualmente.;Os Quatorze Pontos (discurso ao Congresso, 8 de janeiro de 1918), ponto XIV;;A;politica
+Oliver Wendell Holmes;A grande coisa neste mundo não é tanto onde estamos, mas em que direção nos movemos.;O Autocrata da Mesa do Café da Manhã (1858), capítulo IV;;A;motivacao
+Melinda French Gates;Quando você levanta as mulheres, você levanta a humanidade.;O Momento de Voar (2019);;A;empoderamento
+Sheryl Sandberg;O que você faria se não tivesse medo?;Faça Acontecer (2013);;A;empoderamento
+Sheryl Sandberg;A resiliência não é um traço fixo de personalidade. É um projeto para a vida inteira.;Plano B (2017, com Adam Grant);;A;dificeis
+Albert Schweitzer;A ética é a responsabilidade, ampliada ao infinito, por tudo o que vive.;Filosofia da Civilização;;A;fe
+Amos Tversky;As pessoas recorrem a um número limitado de princípios heurísticos, que reduzem as tarefas complexas de avaliar probabilidades e prever valores a operações de julgamento mais simples.;Julgamento sob Incerteza: Heurísticas e Vieses (1974, com Daniel Kahneman), Science 185;;A;reflexao
+Amos Tversky;As perdas pesam mais do que os ganhos de mesma magnitude.;Teoria do Prospecto (1979, com Daniel Kahneman), Econometrica 47;;A;financas
 Angela Davis;A prisão funciona ideologicamente como um espaço abstrato onde se depositam os indesejáveis, aliviando-nos da responsabilidade de pensar sobre as verdadeiras questões.;Estarão as Prisões Obsoletas?;;A;politica
-Augusto;Com dezenove anos de idade, por iniciativa própria e com meus próprios recursos, reuni um exército com o qual devolvi a liberdade à república oprimida.;Res Gestae Divi Augusti;;A;politica
-B. R. Ambedkar;A religião que estabelece preceitos diferentes para classes diferentes não é religião: é apenas uma ordem de punições.;A Aniquilação das Castas;;A;politica
-Benjamin Constant;"A liberdade dos antigos consistia na participação ativa e constante no poder coletivo; a dos modernos consiste na garantia tranquila dos gozos privados.";Da Liberdade dos Antigos Comparada à dos Modernos;;A;politica
+Augusto;Com dezenove anos de idade, por iniciativa própria e com meus próprios recursos, reuni um exército com o qual devolvi a liberdade à república oprimida.;Res Gestae Divi Augusti, capítulo 1;;A;politica
 Cleantes;Nada acontece na terra sem ti, ó Deus, nem na esfera divina do céu, nem no mar.;Hino a Zeus;;A;filosofos
-Elbert Hubbard;O mundo concede seus grandes prêmios, tanto em dinheiro quanto em honras, por uma só coisa: iniciativa.;Uma Mensagem a Garcia;;A;negocios
 Francisco de Assis;Louvado sejas, meu Senhor, com todas as tuas criaturas, especialmente o senhor irmão sol, que é o dia e por quem nos dás a luz.;Cântico das Criaturas;;A;gratidao
-Francisco de Assis;Os frades não se apropriem de nada: nem casa, nem lugar, nem coisa alguma.;Regra dos Frades Menores;;A;fe
-George Lakoff;A metáfora não é apenas questão de linguagem: nosso sistema conceitual cotidiano é em grande parte metafórico.;Metáforas da Vida Cotidiana;;A;reflexao
-George Lakoff;Enquadrar é escolher a linguagem que se ajusta à sua visão de mundo, e não à do adversário.;Não Pense em um Elefante;;A;manipulacao
-Guy Kawasaki;Faça sentido, não faça dinheiro. As melhores empresas nascem porque os fundadores querem mudar o mundo, não ficar ricos.;A Arte do Começo;;A;empreendedorismo
-Guy Kawasaki;Não se preocupe em ser péssimo: lançar um produto imperfeito é melhor do que não lançar nenhum.;A Arte do Começo;;A;empreendedorismo
-Haemin Sunim;Quando sua mente descansa, o mundo também descansa.;As Coisas Que Você Só Vê Quando Desacelera;;A;conforto
-Harry Markowitz;A diversificação é ao mesmo tempo observada na prática e sensata: uma regra de comportamento que não implique a superioridade da diversificação deve ser rejeitada.;Seleção de Carteiras;;A;financas
-Henry Chesbrough;As empresas devem usar tanto ideias externas quanto internas, e tanto caminhos internos quanto externos para chegar ao mercado.;Open Innovation;;A;empreendedorismo
-Jacques Maritain;A pessoa humana transcende a sociedade por aquilo que nela há de mais profundo, e lhe pertence por aquilo que nela há de material.;Humanismo Integral;;A;filosofos
-Jaron Lanier;Você não é o cliente das empresas de redes sociais: você é o produto.;Dez Argumentos para Você Deletar Agora Suas Redes Sociais;;A;manipulacao
-Jean de La Fontaine;Ajuda-te, e o céu te ajudará.;Fábulas;;A;motivacao
-John Galbraith;A riqueza é implacável inimiga da compreensão.;A Sociedade Afluente;;A;financas
-John Galbraith;Nas coisas do dinheiro, nada é mais notável do que a brevidade da memória.;A Crise Econômica de 1929;;A;financas
-José Martí;As trincheiras de ideias valem mais do que as trincheiras de pedra.;Nossa América;;A;educacao
-Karl Jaspers;Existe uma culpa política que consiste em que todo cidadão responde pela maneira como é governado.;A Questão da Culpa Alemã;;A;politica
-Karl Jaspers;Compreender não é explicar.;Psicopatologia Geral;;A;reflexao
-Lee Iacocca;Aplique-se. Busque toda a educação que puder e depois, por Deus, faça alguma coisa. Nada de grande foi conquistado sem entusiasmo.;Iacocca: Uma Autobiografia;;A;motivacao
-Martinho Lutero;Nosso Senhor e Mestre Jesus Cristo, ao dizer arrepende-te, quis que toda a vida dos fiéis fosse arrependimento.;95 Teses;;A;fe
-Al Ries e Jack Trout;É melhor ser o primeiro do que ser o melhor.;As 22 Consagradas Leis do Marketing;;A;negocios
-Estée Lauder;Não cheguei até aqui sonhando nem pensando: cheguei até aqui trabalhando.;Estée: Uma História de Sucesso;;A;empreendedorismo
-Georg Simmel;O dinheiro é o exemplo mais puro de um meio que se converteu em fim absoluto.;Filosofia do Dinheiro;;A;financas
+Francisco de Assis;Os frades não se apropriem de nada: nem casa, nem lugar, nem coisa alguma.;Regra dos Frades Menores (Regula bullata, 1223), capítulo 6;;A;fe
+George Lakoff;Nosso sistema conceitual cotidiano, em termos do qual pensamos e agimos, é fundamentalmente metafórico por natureza.;Metáforas da Vida Cotidiana (1980, com Mark Johnson), capítulo 1, p. 3;;A;reflexao
+Guy Kawasaki;Não se preocupe: pode ser tosco.;A Arte do Começo;;A;empreendedorismo
+Haemin Sunim;Quando nossa mente está agitada, o mundo também está. E quando nossa mente está em paz, o mundo também está.;As Coisas Que Você Só Vê Quando Desacelera;;A;conforto
+Harry Markowitz;A diversificação é ao mesmo tempo observada na prática e sensata: uma regra de comportamento que não implique a superioridade da diversificação deve ser rejeitada.;Seleção de Carteiras, Journal of Finance (1952);;A;financas
+Henry Chesbrough;As empresas podem e devem usar ideias externas tanto quanto internas, e caminhos internos e externos para o mercado, ao buscar avançar sua tecnologia.;Open Innovation (2003), introdução, p. xxiv;;A;empreendedorismo
+Jean de La Fontaine;Ajuda-te, e o céu te ajudará.;Fábulas (1668), livro VI, fábula 18, “O Carroceiro Atolado”;;A;motivacao
+John Galbraith;Mas, sem dúvida, a riqueza é implacável inimiga da compreensão.;A Sociedade Afluente (1958), capítulo 1;;A;financas
+José Martí;As trincheiras de ideias valem mais do que as trincheiras de pedra.;Nossa América (1891);;A;educacao
+Lee Iacocca;Aplique-se. Busque toda a educação que puder e depois, por Deus, faça alguma coisa.;Iacocca: Uma Autobiografia (1984);;A;motivacao
+Martinho Lutero;Nosso Senhor e Mestre Jesus Cristo, ao dizer arrepende-te, quis que toda a vida dos fiéis fosse arrependimento.;95 Teses (1517), tese 1;;A;fe
+Al Ries e Jack Trout;É melhor ser o primeiro do que ser o melhor.;As 22 Consagradas Leis do Marketing (1993), lei 1, “A Lei da Liderança”;;A;negocios
+Estée Lauder;Não cheguei lá desejando, sonhando ou esperando. Cheguei lá trabalhando.;Declaração ao lançar Estée: A Success Story (1985), registrada pela Associated Press;;A;empreendedorismo
 Adélia Prado;Quando nasci, um anjo esbelto, desses que tocam trombeta, anunciou: vai carregar bandeira.;Bagagem;;A;autorreconhecimento
 Abraham Maslow;O que um homem pode ser, ele precisa ser.;Motivação e Personalidade;;A;autorreconhecimento
 Abraham Maslow;É bem verdade que o homem vive só de pão — quando não há pão.;Motivação e Personalidade;;A;vida
 Booker T. Washington;Eu não permitiria que homem algum, fosse qual fosse a sua cor, estreitasse e degradasse a minha alma fazendo-me odiá-lo.;Da Escravidão à Liberdade (1901), capítulo XI;;A;empoderamento
 Booker T. Washington;Lancem seu balde onde vocês estão.;Discurso da Exposição de Atlanta (1895), reproduzido em Da Escravidão à Liberdade (1901), capítulo XIV;;A;motivacao
-Sojourner Truth;Eu arei, plantei e enchi celeiros, e nenhum homem podia me superar. E não sou eu uma mulher?;Não Sou Eu uma Mulher?;;A;empoderamento
-Sojourner Truth;Se a primeira mulher que Deus fez foi forte o bastante para virar o mundo de cabeça para baixo sozinha, estas mulheres juntas deveriam ser capazes de virá-lo de volta.;Não Sou Eu uma Mulher?;;A;empoderamento
-Max Planck;A ciência não consegue resolver o mistério último da natureza, porque nós mesmos somos parte do enigma que tentamos resolver.;Autobiografia Científica;;A;reflexao
-Meister Eckhart;Se a única oração que você fizer em toda a vida for obrigado, já será suficiente.;Sermões Alemães;;A;gratidao
-Meister Eckhart;Deus está mais perto de mim do que eu estou de mim mesmo.;Sermões Alemães;;A;fe
+Sojourner Truth;Eu arei, plantei e enchi celeiros, e nenhum homem podia me superar. E não sou eu uma mulher?;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
+Sojourner Truth;Se a primeira mulher que Deus fez foi forte o bastante para virar o mundo de cabeça para baixo sozinha, estas mulheres juntas deveriam ser capazes de virá-lo de volta.;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
+Max Planck;A ciência não consegue resolver o mistério último da natureza. E isso porque, em última análise, nós mesmos somos parte da natureza e, portanto, parte do mistério que tentamos resolver.;Para Onde Vai a Ciência? (1932);;A;reflexao
 Darcy Ribeiro;"Ninguém vale mais do que o outro; todos somos filhos da mesma tragédia e da mesma esperança.";O Povo Brasileiro;;A;vida
 Anísio Teixeira;Só existe democracia onde a educação é um direito de todos e não o privilégio de alguns.;Educação Não é Privilégio;;A;educacao
-John Bowlby;A criança precisa de uma base segura a partir da qual possa explorar o mundo e à qual possa retornar.;Apego;;A;familia
-John Bowlby;O que para o psicanalista é a perda da mãe, para o etólogo é a perda da proteção contra o perigo.;Apego;;A;familia
-Oprah Winfrey;A gratidão é o caminho mais rápido para transformar o que você tem no bastante.;O Que Eu Sei com Certeza;;A;gratidao
 Oliver Goldsmith;Escolhi minha esposa como ela escolheu o vestido de noiva: não pelo brilho da superfície, mas por qualidades que durassem bem.;O Vigário de Wakefield (1766), capítulo 1;;A;amor
-Norman Schwarzkopf;A liderança é uma combinação poderosa de estratégia e caráter. Mas, se você tiver de ficar sem um dos dois, fique sem a estratégia.;It Doesn’t Take a Hero;;A;lideranca
-Nora Ephron;Se eu contar a história, controlo a versão. Se eu contar a história, posso fazer você rir — e prefiro que você ria de mim a sentir pena de mim.;Heartburn;;A;dificeis
-Reinhold Niebuhr;Os grupos sociais são menos capazes de autocrítica e de justiça do que os indivíduos que os compõem.;Moral Man and Immoral Society;;A;politica
-Walt Disney;A todos que vêm a este lugar feliz: bem-vindos. Aqui a idade revive boas lembranças do passado, e a juventude saboreia o desafio e a promessa do futuro.;Disneylândia;;A;felicidade
-Plutarco;"Não escrevo histórias, e sim vidas; e nem sempre é nas ações mais gloriosas que se revela a virtude ou o vício.";Vidas Paralelas;;A;reflexao
+Nora Ephron;Se eu contar a história, controlo a versão. Se eu contar a história, posso fazer você rir — e prefiro que você ria de mim a sentir pena de mim.;A Difícil Arte de Amar (Heartburn, 1983);Fala da narradora, Rachel Samstat.;A;dificeis
+Walt Disney;A todos que vêm a este lugar feliz: bem-vindos. Aqui a idade revive boas lembranças do passado, e a juventude saboreia o desafio e a promessa do futuro.;Discurso de inauguração da Disneylândia (17/07/1955);;A;felicidade
+Plutarco;"Não escrevo histórias, e sim vidas; e nem sempre é nas ações mais gloriosas que se revela a virtude ou o vício.";Vidas Paralelas, Vida de Alexandre, 1.2;;A;reflexao
 Robert Kiyosaki;Os pobres e a classe média trabalham por dinheiro. Os ricos fazem o dinheiro trabalhar para eles.;Pai Rico, Pai Pobre;;A;financas
-Oliver Wendell Holmes;O jovem conhece as regras, mas o velho conhece as exceções.;O Autocrata da Mesa do Café da Manhã;;A;reflexao
-Neil Postman;A infância é uma invenção social, e não uma categoria biológica.;O Desaparecimento da Infância;;A;educacao
+Oliver Wendell Holmes;O jovem conhece as regras, mas o velho conhece as exceções.;“The Young Practitioner”, em Medical Essays (1883);;A;reflexao
+Neil Postman;A infância é uma invenção social, e não uma categoria biológica.;O Desaparecimento da Infância (1982), introdução;;A;educacao
 Nikola Tesla;Nossas virtudes e nossos defeitos são inseparáveis, como a força e a matéria: quando se separam, o homem deixa de existir.;Minhas Invenções;;A;autorreconhecimento
-Mihaly Csikszentmihalyi;Chamo de fluxo o estado em que a pessoa está tão envolvida numa atividade que nada mais parece importar.;Fluxo;;A;felicidade
-Miguel de Cervantes;A pena é a língua da alma.;Dom Quixote;;A;reflexao
-Stephen Covey;Ser proativo é mais do que tomar iniciativa: é reconhecer que somos responsáveis pelas nossas próprias escolhas.;Os 7 Hábitos das Pessoas Altamente Eficazes;;A;empoderamento
+Mihaly Csikszentmihalyi;Fluxo: o estado em que as pessoas estão tão envolvidas numa atividade que nada mais parece importar.;Fluxo (1990);;A;felicidade
+Miguel de Cervantes;A pena é a língua da alma.;Dom Quixote, parte II (1615), capítulo 16;Fala de Dom Quixote.;A;reflexao
+Stephen Covey;Ser proativo é mais do que tomar iniciativa: significa que, como seres humanos, somos responsáveis por nossa própria vida.;Os 7 Hábitos das Pessoas Altamente Eficazes (1989), hábito 1;;A;empoderamento
 T. S. Eliot;Medi minha vida em colheres de café.;A Canção de Amor de J. Alfred Prufrock;;A;reflexao
 Paul Tillich;A coragem é a autoafirmação do ser apesar do fato do não-ser.;A Coragem de Ser;;A;fe
-Rosa Parks;Aprendi ao longo dos anos que, quando a pessoa já tomou sua decisão, isso diminui o medo.;Rosa Parks: Minha História;;A;dificeis
-Sophie Scholl;Cada indivíduo consciente da responsabilidade que carrega deve defender-se nesta última hora.;Panfletos da Rosa Branca;;A;politica
-Stanley Milgram;A obediência é o elemento psicológico que liga o indivíduo ao sistema de autoridade.;Obediência à Autoridade;;A;manipulacao
-Reid Hoffman;Nenhuma carreira é garantida: todos estamos em beta permanente.;O Startup de Você;;A;empreendedorismo
+Stanley Milgram;A obediência é o mecanismo psicológico que liga a ação individual ao propósito político.;Obediência à Autoridade;;A;manipulacao
 Robert K. Greenleaf;O teste é este: aqueles a quem se serve crescem como pessoas? Tornam-se mais saudáveis, mais sábios, mais livres, mais autônomos?;O Servidor como Líder;;A;lideranca
-Pelé;O sucesso não é acidente: é trabalho duro, perseverança, estudo, sacrifício e, acima de tudo, amor pelo que se está fazendo.;Pelé: A Autobiografia;;A;motivacao
-Angela Duckworth;Talento vezes esforço resulta em habilidade. Habilidade vezes esforço resulta em realização.;Garra;;A;motivacao
-Ayn Rand;A realização do próprio bem-estar e da própria felicidade é o mais alto propósito moral do ser humano.;A Virtude do Egoísmo;;A;autorreconhecimento
+Angela Duckworth;Talento vezes esforço resulta em habilidade. Habilidade vezes esforço resulta em realização.;Garra (2016), capítulo 3;;A;motivacao
+Ayn Rand;Alcançar a própria felicidade é o mais alto propósito moral do homem.;A Virtude do Egoísmo (1964), ensaio “A Ética Objetivista”;;A;autorreconhecimento
 Ernest Hemingway;O mundo é um bom lugar e vale a pena lutar por ele.;Por Quem os Sinos Dobram;;A;vida
-Ernest Hemingway;Como você foi à falência? De duas maneiras: gradualmente, e depois de repente.;O Sol Também Se Levanta;;A;financas
-J.K. Rowling;Não adianta viver de sonhos e esquecer de viver.;Harry Potter e a Pedra Filosofal;;A;vida
-Harriet Tubman;Fui condutora da Ferrovia Subterrânea por oito anos, e posso dizer o que a maioria dos condutores não pode: nunca descarrilei meu trem e nunca perdi um passageiro.;Rotas da Ferrovia Subterrânea;;A;empoderamento
-Hans Kelsen;A ciência jurídica deve descrever o direito tal como ele é, e não como deveria ser.;Teoria Pura do Direito;;A;politica
-Howard Schultz;É na adversidade e na mudança que descobrimos quem realmente somos e o que defendemos.;Dedique-se de Coração;;A;dificeis
-Jean Piaget;Conhecer um objeto é agir sobre ele e transformá-lo.;A Epistemologia Genética;;A;educacao
-Jane Goodall;Você não atravessa um único dia sem causar algum efeito no mundo à sua volta. O que você faz importa, e cabe a você decidir que tipo de diferença quer fazer.;Razão para Esperança;;A;empoderamento
-Jaron Lanier;As pessoas se rebaixam para tornar as máquinas mais impressionantes.;Você Não É Um Aplicativo;;A;manipulacao
-Ada Lovelace;A Máquina Analítica não tem nenhuma pretensão de originar coisa alguma: ela pode fazer o que quer que saibamos ordenar-lhe que execute.;Notas sobre a Máquina Analítica;;A;reflexao
-Angela Davis;As mulheres negras eram iguais a seus companheiros na opressão que sofriam e resistiam à escravidão com uma paixão igual à deles.;Mulheres, Raça e Classe;;A;empoderamento
-Arthur Ashe;O verdadeiro heroísmo é notavelmente sóbrio e nada dramático: não é o impulso de superar os outros a qualquer custo, mas de servi-los a qualquer custo.;Days of Grace;;A;lideranca
+Ernest Hemingway;Como você foi à falência? De duas maneiras: gradualmente, e depois de repente.;O Sol Também Se Levanta (1926), capítulo 13;Diálogo entre Bill e Mike Campbell.;A;financas
+J.K. Rowling;Não adianta viver de sonhos e esquecer de viver.;Harry Potter e a Pedra Filosofal (1997), capítulo 12;Fala de Dumbledore.;A;vida
+Harriet Tubman;Fui condutora da Ferrovia Subterrânea por oito anos, e posso dizer o que a maioria dos condutores não pode: nunca descarrilei meu trem e nunca perdi um passageiro.;Fala atribuída a Tubman numa reunião sufragista em 1896 (registrada em The Columbia Book of Quotations by Women, 1996);;A;empoderamento
+Ada Lovelace;A Máquina Analítica não tem nenhuma pretensão de originar coisa alguma: ela pode fazer o que quer que saibamos ordenar-lhe que execute.;Notas sobre a Máquina Analítica (1843), nota G;;A;reflexao
+Angela Davis;"As mulheres negras eram iguais a seus companheiros na opressão que sofriam; eram socialmente iguais a eles dentro da comunidade escrava; e resistiam à escravidão com uma paixão igual à deles.";Mulheres, Raça e Classe (1981), capítulo 1;;A;empoderamento
+Arthur Ashe;O verdadeiro heroísmo é notavelmente sóbrio e nada dramático: não é o impulso de superar os outros a qualquer custo, mas de servi-los a qualquer custo.;Discurso de formatura na Ohio Wesleyan University, 12 de maio de 1991;;A;lideranca
 Brian Tracy;Seu sapo é a maior e mais importante tarefa do dia — justamente aquela que você tem mais chance de adiar.;Engula Aquele Sapo;;A;motivacao
 Conceição Evaristo;A nossa escrevivência não pode ser lida como história para ninar os da casa-grande, e sim para incomodá-los em seus sonos injustos.;Escrevivência;;A;empoderamento
-Donald Winnicott;É no brincar, e somente no brincar, que a criança ou o adulto é inteiramente ele mesmo.;O Brincar e a Realidade;;A;felicidade
-Elisabeth Kübler-Ross;Se você proteger os cânions das tempestades, nunca verá a beleza de suas formas esculpidas.;Sobre a Morte e o Morrer;;A;dificeis
-Elisabeth Kübler-Ross;Os que morrem podem nos ensinar muito, se tivermos a paciência de escutá-los.;Sobre a Morte e o Morrer;;A;conforto
-Esopo;Não conte os pintinhos antes de chocarem os ovos.;Fábulas;;A;reflexao
-Esopo;Aparências enganam.;Fábulas;;A;reflexao
+Donald Winnicott;É no brincar, e somente no brincar, que a criança ou o adulto pode ser criativo e usar a personalidade inteira.;O Brincar e a Realidade;;A;felicidade
+Esopo;Aparências enganam.;Fábulas de Esopo, “O Lobo em Pele de Cordeiro” (moral na tradução inglesa do Project Gutenberg #28);"Moral da fábula; a redação varia entre traduções.";A;reflexao
 Elbert Hubbard;A civilização é uma longa e ansiosa busca por pessoas assim.;Uma Mensagem a Garcia;;A;lideranca
-Joseph Joubert;É melhor debater uma questão sem resolvê-la do que resolvê-la sem debatê-la.;Pensamentos;;A;reflexao
+Joseph Joubert;É melhor revolver uma questão sem decidi-la do que decidi-la sem revolvê-la.;Pensamentos (1838);;A;reflexao
 Joseph Joubert;As crianças precisam mais de modelos do que de críticos.;Pensamentos;;A;educacao
-Gottfried Wilhelm Leibniz;Nada há no intelecto que não tenha estado antes nos sentidos — exceto o próprio intelecto.;Novos Ensaios sobre o Entendimento Humano;;A;filosofos
-Dag Hammarskjöld;Não busques a morte: ela te encontrará. Busca o caminho que faz da morte uma realização.;Marcos no Caminho;;A;vida
+Gottfried Wilhelm Leibniz;Nada há no intelecto que não tenha estado antes nos sentidos — exceto o próprio intelecto.;Novos Ensaios sobre o Entendimento Humano (escritos em 1704, publicados em 1765), livro II, capítulo 1, § 2;;A;filosofos
 Desmond Tutu;A alegria é muito maior que a felicidade: a felicidade depende de circunstâncias externas, a alegria não.;O Livro da Alegria (com o Dalai Lama);;A;felicidade
-Al Ries e Jack Trout;Marketing não é uma batalha de produtos: é uma batalha de percepções.;As 22 Consagradas Leis do Marketing;;A;negocios
-Andy Grove;Deixe o caos reinar e, depois, contenha o caos.;Administração de Alta Performance;;A;lideranca
-Rosa Luxemburgo;Ser humano é o principal de tudo, e isso significa ser firme, claro e alegre — sim, alegre apesar de tudo.;Cartas da Prisão;;A;dificeis
-Wangari Maathai;Não se protege o meio ambiente sem fortalecer as pessoas e ajudá-las a entender que esses recursos são delas.;Movimento Cinturão Verde;;A;politica
-Coco Chanel;A elegância não consiste em vestir um vestido novo.;Vestido preto simples;;A;autorreconhecimento
-Jacques Maritain;A finalidade da educação não é adaptar o jovem às condições da vida social, mas despertar nele a liberdade interior.;Humanismo Integral;;A;educacao
-Haemin Sunim;Quando você se aceita como é, o mundo também passa a aceitá-lo.;As Coisas Que Você Só Vê Quando Desacelera;;A;autorreconhecimento
-Cleantes;Conduz-me, ó Zeus, e tu, Destino, para onde quer que tenhais decretado que eu vá: seguirei sem hesitar.;Hino a Zeus;;A;filosofos
-Harry Markowitz;A carteira com o maior retorno esperado não é necessariamente a que tem o menor risco.;Seleção de Carteiras;;A;financas
-Estée Lauder;Telefone, telégrafo, conte a uma mulher.;Estée: Uma História de Sucesso;;A;negocios
+Al Ries e Jack Trout;Marketing não é uma batalha de produtos: é uma batalha de percepções.;As 22 Consagradas Leis do Marketing (1993), lei 4, “A Lei da Percepção”;;A;negocios
+Andy Grove;Deixe o caos reinar e, depois, contenha o caos.;Só os Paranoicos Sobrevivem (1996), capítulo “Deixe o caos reinar”;;A;lideranca
+Rosa Luxemburgo;Ser humano é o principal de tudo, e isso significa ser firme, claro e alegre — sim, alegre apesar de tudo.;Carta a Mathilde Wurm (28/12/1916);;A;dificeis
+Cleantes;Conduz-me, ó Zeus, e tu, Destino, para onde quer que tenhais decretado que eu vá: seguirei sem hesitar.;Versos citados por Epicteto, Manual (Encheirídion), capítulo 53;;A;filosofos
+Estée Lauder;Telefone, telégrafo, conte a uma mulher.;Lema de Estée Lauder (Estée Lauder Companies, “Our Founder”);;A;negocios
 James M. Barrie;Todas as crianças crescem — menos uma.;Peter Pan e Wendy (1911), capítulo I;;A;familia
 Anaïs Nin;Cada amigo representa um mundo dentro de nós, um mundo que talvez só nasça quando ele chega.;Diário de Anaïs Nin;;A;amizade
-Alexandre Dumas;Só quem já esteve na miséria mais profunda é capaz de sentir a felicidade mais alta.;O Conde de Monte Cristo;;A;conforto
-Ayn Rand;Toda obra criadora nasce de um indivíduo que pensa sozinho, e não de um coletivo que aprova.;A Nascente;;A;empreendedorismo
-Angela Davis;Numa sociedade racista, não basta não ser racista: é preciso ser antirracista.;A Liberdade é uma Luta Constante;;A;politica
+Alexandre Dumas;Só quem já esteve na miséria mais profunda é capaz de sentir a felicidade mais alta.;O Conde de Monte Cristo (1844–1846), último capítulo, carta de Monte Cristo a Morrel;;A;conforto
+Ayn Rand;Todo trabalho criador se realiza sob a orientação de um único pensamento individual.;A Nascente (1943), discurso de Howard Roark no tribunal;Fala de Howard Roark.;A;empreendedorismo
 Conceição Evaristo;Combinamos de não morrer.;Olhos d'Água;;A;empoderamento
-Pierre-Joseph Proudhon;Se me perguntassem o que é a escravidão, eu responderia num instante: é o assassinato.;O Que é a Propriedade?;;A;politica
-Quintiliano;Ensina mais quem faz aprender.;Institutio Oratoria;;A;educacao
-Salvador Dalí;Aos seis anos eu queria ser cozinheiro. Aos sete, queria ser Napoleão. Minha ambição não parou de crescer desde então.;A Vida Secreta de Salvador Dalí;;A;autorreconhecimento
-Michelangelo;O melhor artista não tem conceito algum que um só mármore não encerre em si, com seu excesso.;Rime;;A;reflexao
-Alice Walker;A maneira mais comum de as pessoas abrirem mão do seu poder é achando que não têm nenhum.;Em Busca dos Jardins de Nossas Mães;;A;empoderamento
-Louisa May Alcott;Ela gosta demais de livros, e isso lhe virou a cabeça.;Mulherzinhas;;A;educacao
-Madame de Staël;A glória é o luto brilhante da felicidade.;Corinne;;A;reflexao
-Benjamin Constant;A liberdade dos modernos exige que as instituições garantam ao indivíduo o direito de não ser perturbado em sua vida privada.;Da Liberdade dos Antigos Comparada à dos Modernos;;A;politica
-Hans Kelsen;A validade de uma norma jurídica não depende de seu conteúdo, mas do modo como ela foi produzida.;Teoria Pura do Direito;;A;politica
-Henry Chesbrough;Nem toda ideia precisa nascer aqui para gerar valor aqui.;Open Innovation;;A;empreendedorismo
-Howard Schultz;Quando você se preocupa com as pessoas que trabalham com você, elas se preocupam com o cliente.;Dedique-se de Coração;;A;lideranca
-John Ruskin;A qualidade nunca é acidente: é sempre resultado de esforço inteligente.;As Pedras de Veneza;;A;negocios
-David Aaker;Construir marca é construir memória: o que as pessoas lembram vale mais do que o que você diz.;Managing Brand Equity;;A;negocios
-Brian Tracy;A clareza é o fator mais importante do sucesso pessoal: saber exatamente o que se quer.;Metas;;A;motivacao
-Charles Kuralt;A estrada secundária mostra o país que a rodovia esconde.;On the Road with Charles Kuralt;;A;vida
+Pierre-Joseph Proudhon;Se eu tivesse de responder à pergunta “o que é a escravidão?” e respondesse numa só palavra: “é o assassinato”, meu pensamento seria logo compreendido.;O Que é a Propriedade? (1840), capítulo 1;;A;politica
+Salvador Dalí;Aos seis anos eu queria ser cozinheiro. Aos sete, queria ser Napoleão. Minha ambição não parou de crescer desde então.;A Vida Secreta de Salvador Dalí (1942), prólogo;;A;autorreconhecimento
+Michelangelo;O melhor artista não tem conceito algum que um só mármore não encerre em si, com seu excesso.;Rimas, soneto 151;;A;reflexao
+Louisa May Alcott;Ela gosta demais de livros, e isso lhe virou a cabeça.;Trabalho: Uma História de Experiência (1873), capítulo 2;Fala da Sra. Stuart sobre a protagonista Christie.;A;educacao
+Madame de Staël;A própria glória não pode ser, para uma mulher, senão o luto resplandecente da felicidade.;Da Alemanha (1813), parte III, capítulo XIX;;A;reflexao
 Ernest Renan;O esquecimento, e eu diria até o erro histórico, é um fator essencial na criação de uma nação.;O Que é uma Nação?;;A;politica
-Arthur Ashe;O sucesso é uma viagem, não um destino: fazer é muitas vezes mais importante do que chegar.;Days of Grace;;A;motivacao
-Gertrude Stein;Não há resposta. Não haverá resposta. Nunca houve resposta. Essa é a resposta.;A Autobiografia de Alice B. Toklas;;A;filosofos
 Abul Kalam Azad;A unidade da Índia não é um acidente da história: é o resultado de séculos de convivência entre povos diferentes.;India Wins Freedom;;A;politica
 Harriet Beecher Stowe;As lágrimas mais amargas derramadas sobre túmulos são por palavras não ditas e atos não feitos.;Little Foxes (1866);;A;familia
 Benjamin Disraeli;A vida é curta demais para ser pequena.;Coningsby, or The New Generation (1844);;A;vida
 Nelson Rodrigues;O dinheiro compra até amor sincero.;Flor de Obsessão;;A;financas
 Samuel Butler;"Qualquer tolo pode dizer a verdade; é preciso algum juízo para mentir bem.";Cadernos de Notas;;A;reflexao
-Pablo Picasso;Eu não procuro: eu encontro.;Declarações e conversas registradas;;A;reflexao
-Pablo Picasso;Um quadro não é pensado e fixado de antemão: enquanto é feito, ele muda com o pensamento de quem o faz.;Declarações e conversas registradas;;A;reflexao
-Barbara McClintock;É preciso ter um sentimento pelo organismo.;Declarações sobre método científico;;A;reflexao
-Ada Lovelace;A ciência das operações, derivada da matemática, é uma ciência em si mesma, com sua própria verdade abstrata e seu próprio valor.;Notas sobre a Máquina Analítica;;A;reflexao
-Alain de Botton;Nossa posição na vida não é determinada pelo que temos, mas por como nos comparamos com aqueles que consideramos nossos iguais.;Desejo de Status;;A;reflexao
-David Aaker;Uma marca forte é um ativo, e precisa ser gerida como qualquer outro ativo da empresa.;Building Strong Brands;;A;negocios
-Henri Matisse;Quem quiser dedicar-se à pintura deve começar por cortar a própria língua.;Jazz;;A;reflexao
-Herbert Spencer;A sociedade é um organismo: cresce, diferencia-se e torna-se mais interdependente à medida que se desenvolve.;Princípios de Sociologia;;A;politica
-Madame de Staël;O entusiasmo é o que há de melhor no ser humano: é a alma da poesia, do amor e da religião.;Da Alemanha;;A;motivacao
-Max De Pree;Não podemos tornar-nos aquilo que precisamos ser permanecendo aquilo que somos.;Liderança é uma Arte;;A;empoderamento
-Melody Beattie;Cuidar de si mesmo não é egoísmo: é autopreservação.;Codependência Nunca Mais;;A;autorreconhecimento
-Michael J. Fox;Aceitar não é resignar-se: é entender que algo é o que é e que há de haver um jeito de atravessá-lo.;Lucky Man;;A;dificeis
+Pablo Picasso;Eu não procuro: eu encontro.;Declaração registrada por Florent Fels (anos 1920);;A;reflexao
+Pablo Picasso;Um quadro não é pensado e fixado de antemão: enquanto é feito, ele muda com o pensamento de quem o faz.;Conversa com Christian Zervos, Cahiers d’Art (1935);;A;reflexao
+Ada Lovelace;A ciência das operações, derivada da matemática, é uma ciência em si mesma, com sua própria verdade abstrata e seu próprio valor.;Notas sobre a Máquina Analítica (1843), nota A;;A;reflexao
+Max De Pree;Não podemos tornar-nos aquilo que precisamos ser permanecendo aquilo que somos.;Liderança é uma Arte (1987);;A;empoderamento
 Miguel Reale;O direito é fato, valor e norma: os três elementos são inseparáveis na experiência jurídica.;Filosofia do Direito;;A;politica
 Nathaniel Hawthorne;Sê verdadeiro! Mostra livremente ao mundo, se não o teu pior, ao menos algum traço pelo qual o pior possa ser inferido.;A Letra Escarlate (1850), capítulo XXIV;;A;autorreconhecimento
-P. T. Barnum;O engano consiste em cobrir com aparências falsas aquilo que se quer mostrar, para despertar a atenção do público.;As Fraudes do Mundo;;A;manipulacao
+P. T. Barnum;O “humbug” consiste em exibir aparências brilhantes — fachada, expedientes novos — com que prender de repente a atenção do público e atrair os olhos e os ouvidos de todos.;As Fraudes do Mundo (1865);;A;manipulacao
 Padre Antônio Vieira;O pregador há de pregar como quem semeia, e não como quem ladrilha.;Sermão da Sexagésima;;A;educacao
-Robert M. Hutchins;"A educação implica ensino; o ensino implica conhecimento; conhecimento é verdade — e a verdade é a mesma em toda parte.";The Higher Learning in America;;A;educacao
-Stendhal;A política numa obra literária é um tiro de pistola no meio de um concerto.;O Vermelho e o Negro;;A;politica
-Théophile Gautier;Tudo passa. Só a arte robusta tem eternidade.;Esmaltes e Camafeus;;A;reflexao
-Woodrow Wilson;Acordos de paz abertos, abertamente alcançados, após os quais não haverá entendimentos internacionais privados de espécie alguma.;Os Quatorze Pontos;;A;politica
-Émile-Auguste Chartier;É preciso querer ser feliz e fazer por isso.;Sobre Felicidade;;A;felicidade
-Leon C. Megginson;Não é a espécie mais intelectual que sobrevive, nem a mais forte: é a que melhor consegue ajustar-se e adaptar-se ao ambiente em que se encontra.;Lições da História para a Administração;;A;dificeis
+Robert M. Hutchins;"A educação implica ensino; o ensino implica conhecimento; conhecimento é verdade — e a verdade é a mesma em toda parte.";The Higher Learning in America (1936);;A;educacao
+Stendhal;A política em meio aos interesses da imaginação é um tiro de pistola no meio de um concerto.;O Vermelho e o Negro (1830), livro II, capítulo 22;;A;politica
+Théophile Gautier;Tudo passa. Só a arte robusta tem eternidade.;“A Arte”, em Esmaltes e Camafeus (1858);;A;reflexao
+Woodrow Wilson;Acordos de paz abertos, abertamente alcançados, após os quais não haverá entendimentos internacionais privados de espécie alguma.;Os Quatorze Pontos (discurso ao Congresso, 8 de janeiro de 1918), ponto I;;A;politica
+Émile-Auguste Chartier;É preciso querer ser feliz e fazer por isso.;Sobre a Felicidade (1925);;A;felicidade
+Leon C. Megginson;Não é a espécie mais intelectual que sobrevive, nem a mais forte: é a que melhor consegue ajustar-se e adaptar-se ao ambiente em que se encontra.;“Lessons from Europe for American Business”, Southwestern Social Science Quarterly (1963);"Megginson resumia Darwin com palavras próprias; a frase costuma ser atribuída, por engano, ao próprio Darwin.";A;dificeis
 São Jerônimo;Ignorar as Escrituras é ignorar a Cristo.;Comentário ao Livro de Isaías;;A;fe
-Leo Buscaglia;Ninguém dá o que não tem: por isso é preciso primeiro aprender a amar a si mesmo.;Amor;;A;amor
-Norman Schwarzkopf;Quando estiver no comando, comande.;It Doesn’t Take a Hero;;A;lideranca
-Phil Jackson;Liderar não é impor a própria vontade aos outros: é dominar a arte de soltar.;Onze Anéis;;A;lideranca
-Shoshana Zuboff;A era digital começou com a promessa de democratizar o conhecimento e terminou numa concentração de conhecimento sem precedentes.;A Era do Capitalismo de Vigilância;;A;manipulacao
-Serena Williams;Um campeão não se define pelas vitórias, e sim pela forma como se recupera quando cai.;Rainha da Quadra;;A;dificeis
-Thomas J. Stanley;Ninguém enriquece em uma geração vivendo ao lado de quem gasta sem parar.;O Milionário Mora ao Lado;;A;financas
-Robert Collier;Comece de onde está, com o que tem: você descobrirá que já era suficiente.;The Robert Collier Letter Book;;A;motivacao
-Santo Isidoro de Sevilha;A gramática é a origem e o fundamento das artes liberais.;Etimologias;;A;educacao
-Rosalind Franklin;A ciência, para mim, dá uma explicação parcial da vida: até onde vai, apoia-se em fato, experiência e experimento.;Cartas a John Franklin;;A;reflexao
-Maria Callas;Uma ópera começa muito antes de a cortina subir e termina muito depois de ela descer.;Aulas na Juilliard;;A;reflexao
-Maria Callas;Nasce-se com uma voz, mas é preciso aprender o que se está dizendo e por quê.;Aulas na Juilliard;;A;educacao
-Jesse Owens;Hitler não me esnobou: foi o meu próprio presidente que não me mandou sequer um telegrama.;Jesse: O Homem que Correu Mais que Hitler;;A;politica
-Jesse Owens;Todos temos sonhos. Mas, para transformar sonhos em realidade, é preciso muitíssima determinação, dedicação, autodisciplina e esforço.;Jesse: O Homem que Correu Mais que Hitler;;A;motivacao
+Norman Schwarzkopf;Quando estiver no comando, comande.;Entrevista à Academy of Achievement (“regra 13”);;A;lideranca
+Serena Williams;Um campeão não se define pelas vitórias, e sim pela forma como se recupera quando cai.;Entrevista coletiva após a final do US Open (2013);;A;dificeis
+Thomas J. Stanley;A maioria das pessoas nunca ficará rica em uma geração se for casada com alguém perdulário.;O Milionário Mora ao Lado (1996);;A;financas
+Santo Isidoro de Sevilha;A gramática é a ciência de falar corretamente, e a origem e o fundamento das artes liberais.;Etimologias, livro I, capítulo 5;;A;educacao
+Rosalind Franklin;A ciência, para mim, dá uma explicação parcial da vida: até onde vai, apoia-se em fato, experiência e experimento.;Carta ao pai, Ellis Franklin (c. 1940);;A;reflexao
 Tarsila do Amaral;Amo o mato, amo o branco, amo o caboclo: quero pintar tudo isso.;Cartas de Paris;;A;autorreconhecimento
-Wolfgang Amadeus Mozart;Não presto atenção aos elogios nem às censuras: sigo apenas o meu próprio sentimento.;Cartas;;A;autorreconhecimento
-Henry Stanley Haskins;As palavras são o trocado do pensamento.;Meditações em Wall Street;;A;reflexao
-Laurel Thatcher Ulrich;A história não é o passado: é a história que contamos sobre o passado.;Mulheres Bem-Comportadas Raramente Fazem História;;A;reflexao
-Ring Lardner;Não sou o tipo de sujeito que se queixa — mas você devia ver o que eles fizeram comigo.;You Know Me Al;;A;reflexao
-São Jerônimo;O que não se conhece não se ama.;Comentário ao Livro de Isaías;;A;educacao
-Louis Armstrong;Nunca quis ser uma grande estrela. Só queria tocar o meu instrumento.;Satchmo: Minha Vida em Nova Orleans;;A;motivacao
 Érico Veríssimo;Não sou um escritor engajado, mas sou um homem engajado.;Solo de Clarineta;;A;autorreconhecimento
 Coelho Neto;O chão, em volta dos jasmineiros, era uma alcatifa aromal mosqueada de abelhas.;"Rei Negro (1914), capítulo I; edição digital da Fundação Darcy Ribeiro, p. 3";;A;reflexao
 Padre Antônio Vieira;Vós, diz Cristo, Senhor nosso, falando com os pregadores, sois o sal da terra: e chama-lhes sal da terra, porque quer que façam na terra o que faz o sal.;Sermão de Santo Antônio aos Peixes (1654), exórdio;;A;reflexao

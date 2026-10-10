@@ -9,4 +9,4 @@ Arquivos de trabalho, não lidos pelo site. Cada linha de um `.jsonl` é a decis
 Quando a fase é aplicada em `assets/js/memotiva.js`, o conteúdo vai para `notaInterna`
 (exportado em `notas-internas.csv`) e para o registro de remoções (`remocoes-curadoria.csv`).
 
-- `fase119-orig-decisoes.jsonl` — verificação do campo `orig` (580 pendentes da Fase 117). Em andamento.
+- `fase119-orig-decisoes.jsonl` — verificação do campo `orig` (580 pendentes da Fase 117). Concluída e aplicada (Fase 119, 10/10/2026).
