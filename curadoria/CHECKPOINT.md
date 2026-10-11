@@ -1960,3 +1960,61 @@ Autorização do proprietário (09/10): auditar as frases A− e remover as que 
   - nenhuma frase ativa igual a texto do registro;
   - nenhuma variante removida ainda ativa;
   - `qid` sem duplicidade.
+
+## Fase 122 — verificações editoriais pendentes (11/10/2026)
+
+Itens que estavam abertos no plano (A8) ou que apareceram nas fases anteriores. Decisões em `curadoria/trabalho/fase122-editorial-decisoes.jsonl`.
+
+**1. Motivos de remoção "não reconsultados": reconsultados.** A nota com a evidência foi acrescentada ao motivo no registro, com a marca "[reconsultado em 11/10/2026]". As 9 remoções se confirmam:
+- **Pessoa, "Navegar é preciso":** o lema é de Pompeu, em Plutarco, *Pompeu* 50.1 ("πλεῖν ἀνάγκη, ζῆν οὐκ ἀνάγκη", grego lido no Perseus). Pessoa o cita como "frase gloriosa" dos navegadores antigos.
+- **Epicteto, "duas orelhas e uma boca":** é de Zenão de Cítio, em Diógenes Laércio VII, 23 (grego lido).
+- **Chaplin, "um dia sem rir":** é de Chamfort (*Mercure Français*, 1795), segundo o Quote Investigator. A atribuição a Chaplin vem do filme *Shining Through* (1992).
+- **Levitt, a broca e o furo:** Levitt credita a máxima a Leo McGivena (Quote Investigator, 2019).
+- **Oprah/Angelou:** a fala vem de um programa de Oprah em 1995 e não tem texto de Angelou (Quote Investigator, 2022).
+- **Mao:** a frase é do Tao Te Ching, 64 (conferido em Legge).
+- **Epicteto e Epicuro, a riqueza:** a *Carta a Meneceu* foi lida no grego e não contém a frase.
+- **Confúcio, a amizade:** os Analectos foram relidos e não contêm a frase.
+
+**2. Duplicatas e uma atribuição errada:**
+- **Megginson:** sai a versão popular condensada.
+- **Sojourner Truth:** o refrão isolado é absorvido pela passagem inteira.
+- **Enquirídio 8 e 13:** fica a tradução fiel, agora com o grego. A versão de VIII que mandava "suportar bem" deturpava o texto.
+- **Meditações VI, 6:** havia **três** traduções; fica uma, com o grego.
+- **"Tabacaria":** o verso isolado é absorvido pelo trecho inicial.
+- **Roosevelt, "arena":** sai a versão encurtada com fonte genérica.
+- **Jobs:** as duas frases são consecutivas do discurso de Stanford (2005) e ficam numa entrada só. A fonte era "Entrevista registrada".
+- **Drummond:** o trecho que pulava versos de "No meio do caminho" passa aos versos 5–6 contínuos.
+- **Atribuição errada:** "Quando algo externo te perturba…" não é do Enquirídio de Epicteto. É das *Meditações* de Marco Aurélio, VIII, 47 (grego lido) e foi reatribuída.
+- **Enquirídio 5, segunda parte:** tradução corrigida (o original manda "nunca culpar outro").
+
+**3. As 6 frases com status B, escrituras que ficaram fora da Fase 120.** O campo de autor trazia a referência do verso ou "Tradição…", e por isso não entraram na seleção.
+- **Corrigidas:**
+  - Katha Upanishad 2.3.14, completada e com o sânscrito;
+  - Pirkei Avot 1:18, de Rabban Shimon ben Gamliel, no texto de Pires;
+  - Ben Sirá 6:14, com fonte corrigida e o grego da Septuaginta.
+- **Saem:**
+  - a Mundaka 3.1.6 duplicada;
+  - uma paráfrase da Mundaka 1.1.3;
+  - uma definição de compaixão atribuída à "Tradição budista".
+- Status B = 0.
+
+**4. Rótulos que o site tratava como pessoa:** "1 Samuel 16:7", "Levítico 19:18", "Miqueias 6:8", "Primeira Carta de Pedro 5:7", "Torá", "Bíblia Sagrada", "Rig Veda" e "Provérbio Chinês".
+- Esses nomes não casavam com o filtro de escrituras do código (`SCRIPTURE_RE`). Por isso ganhavam página de autor, entravam na contagem de autores e apareciam no cartão como link de pessoa.
+- Passam ao nome do livro ou da tradição: Livro de Samuel, Livro de Levítico, Livro de Miqueias, Carta de Pedro, Livro de Deuteronômio, Carta aos Hebreus, Tradição védica e Ditado Popular. A referência exata continua na fonte.
+- Os demais rótulos com versículo, como "Provérbios 24:16", já eram reconhecidos pelo filtro e ficaram como estão. Isso não é padronização das edições, que continuam as conferidas.
+
+**5. Frankl, "Entre o estímulo e a resposta existe um espaço…" (status A): sai.** O Quote Investigator (2018) e o Instituto Viktor Frankl a dão como não localizada na obra dele. Foi popularizada por Covey.
+
+**Achado que pede uma nova etapa (ver PLANO):** a varredura de duplicatas mostrou frases com status **A** sem nenhuma verificação registrada.
+- O caso de Frankl acima é um exemplo. Outro: duas frases de Jobs com fonte "Entrevista registrada".
+- São **994** frases A sem `notaInterna` e fora das escrituras já conferidas:
+  - 210 com fonte genérica ("Entrevista registrada", "Discurso registrado", "Correspondência registrada", "Palestra registrada"), herança da Fase 25, que afirmou registros orais como fonte;
+  - 355 só com o título da obra;
+  - 429 com localização.
+- O status A delas não garante que a frase esteja na obra.
+
+**Estado (Chromium real, 390×844 e 1440×900):**
+- Números: frases **2.349** (−13) · autores **521** (−8, os rótulos falsos) · obras 1.245 · lacunas **163** · registros 2.573 · frases com `orig` 802.
+- Lacunas novas: Rabban Shimon ben Gamliel, 1, e Sojourner Truth, 2.
+- Status: A 1.963 · X 386 · **A− 0 · B 0**.
+- Testes: 0 exceções JS; favoritos, busca e rolagem OK; nenhuma frase ativa no registro de remoções; `qid` sem duplicidade.

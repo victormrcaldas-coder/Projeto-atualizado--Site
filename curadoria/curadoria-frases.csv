@@ -30,9 +30,9 @@ Martin Luther King Jr.;Se um homem não descobriu nada pelo qual morreria, não 
 Aristóteles;A educação tem raízes amargas, mas os seus frutos são doces.;Diógenes Laércio, Vidas e Doutrinas dos Filósofos Ilustres, V, 18;;A;educacao
 Confúcio;"Por natureza, os homens são próximos; pelo hábito, tornam-se distantes.";Analectos, XVII, 2;;A;educacao
 Jean-Jacques Rousseau;A educação do homem começa no momento do seu nascimento.;Emílio, ou Da Educação;;A;educacao
-Bíblia Sagrada;Nenhuma disciplina parece ser motivo de alegria no momento, mas sim de tristeza. Mais tarde, porém, produz fruto de justiça e paz para aqueles que por ela foram exercitados.;Hebreus 12:11 · Nova Versão Internacional;;A;fe
+Carta aos Hebreus;Nenhuma disciplina parece ser motivo de alegria no momento, mas sim de tristeza. Mais tarde, porém, produz fruto de justiça e paz para aqueles que por ela foram exercitados.;Hebreus 12:11 · Nova Versão Internacional;;A;fe
 Bill Gates;A primeira regra de qualquer tecnologia usada em um negócio é que a automação aplicada a uma operação eficiente aumentará a eficiência.;Entrevista registrada;;A;negocios
-Provérbio Chinês;Se quiser derrubar uma árvore na metade do tempo, passe o dobro do tempo amolando o machado.;;;X;negocios
+Ditado Popular;Se quiser derrubar uma árvore na metade do tempo, passe o dobro do tempo amolando o machado.;;;X;negocios
 Bill Gates;O tamanho trabalha contra a excelência.;Entrevista registrada;;A;negocios
 Sêneca;Quem acolhe um benefício com gratidão, paga a primeira prestação da sua dívida.;Sobre os Benefícios, II;;A;gratidao
 Nicolau Maquiavel;"Os homens têm menos escrúpulo em ofender quem se faz amar do que quem se faz temer; porque o amor é mantido por um vínculo de obrigação que, sendo os homens maus, se rompe a cada ocasião de proveito próprio; mas o temor é mantido pelo medo do castigo, que nunca te abandona.";O Príncipe, XVII;;A;manipulacao
@@ -111,7 +111,6 @@ David Hume;O hábito é o grande guia da vida humana.;Investigação sobre o Ent
 Francis Bacon;O conhecimento é poder.;Meditationes Sacrae;;A;filosofos
 José Ortega y Gasset;Eu sou eu e minha circunstância.;Meditações do Quixote;;A;filosofos
 Theodore Roosevelt;Acredite que você pode, e você já está no meio do caminho.;Discurso registrado;;A;motivacao
-Theodore Roosevelt;O crédito pertence ao homem que está realmente na arena.;Discurso registrado;;A;motivacao
 Napoleon Hill;A oportunidade muitas vezes chega disfarçada de infortúnio ou de derrota temporária.;Pense e Enriqueça (1937), capítulo 1;;A;motivacao
 Jim Rohn;A disciplina é a ponte entre objetivos e realizações.;Palestra registrada;;A;motivacao
 Jim Rohn;A motivação é o que faz você começar. O hábito é o que faz você continuar.;Palestra registrada;;A;motivacao
@@ -248,7 +247,6 @@ Aristóteles;O todo é maior que a soma das partes.;Metafísica, VIII;;A;filosof
 Aristóteles;A virtude está no meio.;Ética a Nicômaco, II;;A;filosofos
 Sêneca;A vida é muito curta, mas fazemos com que seja ainda menor desperdiçando tempo.;Sobre a Brevidade da Vida, I–III;;A;filosofos
 Sêneca;A dificuldade fortalece a mente, assim como o trabalho fortalece o corpo.;Sobre a Providência;;A;dificeis
-Marco Aurélio;A melhor vingança é não ser como aquele que causou o dano.;Meditações, VI, 6;;A;filosofos
 Friedrich Nietzsche;O que não me mata me fortalece.;Crepúsculo dos Ídolos, Máximas e Flechas, 8;;A;filosofos
 Friedrich Nietzsche;A vida sem música seria um erro.;Crepúsculo dos Ídolos, Máximas e Flechas, 33;;A;filosofos
 Lao Tsé;A jornada de mil li começa com um passo.;Tao Te Ching, 64;O li é uma antiga medida chinesa de distância.;A;fe
@@ -291,7 +289,7 @@ Livro de Provérbios;"A sabedoria é a coisa principal; adquire, pois, a sabedor
 Livro dos Salmos;"Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.";Salmos 37:5 · Almeida Revisada Imprensa Bíblica;;A;fe
 Livro dos Salmos;Aquietai-vos e sabei que eu sou Deus.;Salmos 46:10 · Almeida Corrigida Fiel;;A;fe
 Provérbios 24:16;pois ainda que o justo caia sete vezes, tornará a erguer-se, mas os ímpios são arrastados pela calamidade.;Provérbios 24:16 · Nova Versão Internacional;;A;fe
-Miqueias 6:8;Ele mostrou a você, ó homem, o que é bom e o que o Senhor exige: Pratique a justiça, ame a fidelidade e ande humildemente com o seu Deus.;Miquéias 6:8 · Nova Versão Internacional;;A;fe
+Livro de Miqueias;Ele mostrou a você, ó homem, o que é bom e o que o Senhor exige: Pratique a justiça, ame a fidelidade e ande humildemente com o seu Deus.;Miquéias 6:8 · Nova Versão Internacional;;A;fe
 Profeta Muhammad;"Facilitai as coisas e não as dificulteis; dai boas notícias e não afasteis as pessoas.";Sahih al-Bukhari 69;;A;fe
 Profeta Muhammad;"O forte não é quem vence os outros pela força; o forte é quem se domina na hora da ira.";Sahih al-Bukhari 6114;;A;fe
 Ben Zoma;Quem é sábio? Aquele que aprende de todo ser humano.;Pirkei Avot 4:1 · trad. Saymon Pires da Silva (Sefaria);;A;fe
@@ -494,7 +492,6 @@ Adam Smith;Nenhuma sociedade pode ser seguramente próspera e feliz se a maior p
 Benjamin Franklin;Lembra-te de que tempo é dinheiro.;Conselhos a um jovem comerciante (1748);;A;financas
 Benjamin Franklin;Se quiseres ser rico, pensa em poupar tanto quanto em ganhar.;Poor Richard’s Almanack, 1758 (“The Way to Wealth”);;A;financas
 Warren Buffett;O risco vem de não saber o que você está fazendo.;Palestra na Columbia Business School (1993);;A;negocios
-Steve Jobs;A única maneira de fazer um excelente trabalho é amar o que você faz.;Entrevista registrada;;A;negocios
 Steve Jobs;Fique com fome. Fique tolo.;Entrevista registrada;;A;negocios
 Jeff Bezos;Se você dobrar o número de experimentos que faz por ano, dobrará sua capacidade de inovação.;Entrevista registrada;;A;negocios
 W. Edwards Deming;O lucro nos negócios vem de clientes que voltam a comprar, clientes que se gabam do seu produto e do seu serviço e que trazem amigos com eles.;Out of the Crisis (1986);;A;negocios
@@ -644,7 +641,6 @@ Michel de Montaigne;A maior coisa do mundo é saber pertencer a si mesmo.;Ensaio
 Michel de Montaigne;Aquele que ensina os homens a morrer ensina-os a viver.;"Ensaios, I, 20 (""Filosofar é aprender a morrer"")";;A;filosofos
 Michel de Montaigne;A minha profissão e minha arte é viver.;"Ensaios, III, 13 (""Da Experiência"")";;A;filosofos
 Marco Aurélio;Faça cada coisa como se fosse a última coisa que você faria na vida.;Meditações, II, 5;;A;filosofos
-Marco Aurélio;A melhor maneira de se defender contra os inimigos é não se tornar semelhante a eles.;Meditações, VI, 6;;A;filosofos
 Sêneca;Enquanto você adiar, a vida passa.;Cartas a Lucílio, I;;A;filosofos
 Confúcio;"Quando sabes uma coisa, reconhecer que a sabes; quando não sabes, reconhecer que não sabes: isso é saber.";Analectos, II, 17;;A;filosofos
 Confúcio;A virtude não fica isolada: sempre tem vizinhos.;Analectos, IV, 25;;A;filosofos
@@ -667,7 +663,6 @@ William Shakespeare;Não há escuridão senão a ignorância.;Noite de Reis, IV,
 Jane Austen;Pessoas iradas nem sempre são sábias.;Orgulho e Preconceito (1813), capítulo XLV;;A;filosofos
 Jane Austen;Metade do mundo não pode compreender os prazeres da outra metade.;Emma (1815), capítulo IX;Fala de Emma.;A;filosofos
 Ralph Waldo Emerson;Nada externo a ti tem poder sobre ti.;"Ensaios: Primeira Série, ""Autoconfiança""";;A;filosofos
-Epicteto;"Não procures que nada aconteça; procura suportar bem o que acontece.";Enquirídio, VIII;;A;filosofos
 Aristóteles;A excelência moral é uma disposição de escolher por deliberação.;Ética a Nicômaco, II;;A;filosofos
 Aristóteles;A coragem é o meio-termo em relação ao medo e à confiança.;Ética a Nicômaco, III;;A;filosofos
 Aristóteles;A educação do corpo e a do caráter devem seguir juntas.;Política, VII–VIII;;A;filosofos
@@ -681,7 +676,7 @@ Michel de Montaigne;É o costume que nos guia em quase tudo.;"Ensaios, I, 23 (""
 Charles Dickens;Era a época da crença, era a época da incredulidade.;Um Conto de Duas Cidades (1859), livro I, capítulo 1;;A;filosofos
 William Shakespeare;A consciência nos torna covardes a todos.;Hamlet, III, 1;;A;filosofos
 Epicteto;A condição do filósofo é olhar para si mesmo em busca de toda ajuda ou dano.;Enquirídio, XLVIII;;A;filosofos
-Epicteto;Quando encontrares um obstáculo, acusa a ti mesmo antes de culpar o externo.;Enquirídio, V;;A;filosofos
+Epicteto;Quando formos impedidos, perturbados ou afligidos, nunca culpemos outro, mas a nós mesmos, isto é, os nossos próprios julgamentos.;Enquirídio, V;;A;filosofos
 Kahlil Gibran;A necessidade muda, mas o amor não.;"O Profeta, ""Do Amor""";;A;filosofos
 Marco Aurélio;O universo é transformação: a vida é opinião.;Meditações, IV, 3;;A;filosofos
 Michel de Montaigne;Não há desejo mais natural que o desejo de conhecimento.;"Ensaios, III, 13 (""Da Experiência"")";;A;filosofos
@@ -737,14 +732,13 @@ Viktor Frankl;"Cada homem é questionado pela vida; e ele só pode responder à 
 Sêneca;Não é o homem que tem pouco, mas o homem que anseia por mais, que é pobre.;Cartas a Lucílio, II;;A;dificeis
 Epicteto;"Não procure que as coisas aconteçam como você deseja; deseje que elas aconteçam como acontecem, e você terá uma vida tranquila.";Enquirídio, VIII;;A;dificeis
 Epicteto;A doença é um impedimento para o corpo, mas não para a vontade, a menos que ela própria permita.;Enquirídio, IX;;A;dificeis
-Epicteto;Se você deseja melhorar, contente-se em parecer insensato ou ignorante em assuntos externos.;Enquirídio, XIII;;A;dificeis
 Marco Aurélio;A perda nada mais é do que uma mudança, e a mudança é a natureza da existência.;Meditações, IX, 35;;A;dificeis
 Rainer Maria Rilke;A vida é difícil, mas não devemos fugir dela.;Correspondência registrada;;A;dificeis
 Rainer Maria Rilke;Viva as perguntas agora. Talvez você gradualmente, sem perceber, viva até o dia distante da resposta.;Correspondência registrada;;A;dificeis
 Kahlil Gibran;A dor é também um processo de transformação.;"O Profeta, ""Da Dor""";;A;dificeis
 Sêneca;Nenhum homem é mais infeliz do que aquele que nunca enfrentou uma dificuldade.;Sobre a Providência, IV;;A;dificeis
 Autor não identificado;A vida não é esperar a tempestade passar, mas aprender a dançar na chuva.;;;X;dificeis
-Epicteto;Quando algo externo te perturba, não é a coisa que te aflige, mas o teu julgamento sobre ela.;Enquirídio, V;;A;dificeis
+Marco Aurélio;Quando algo externo te perturba, não é a coisa que te aflige, mas o teu julgamento sobre ela.;Meditações, VIII, 47;;A;dificeis
 Kahlil Gibran;Quanto mais profundamente a tristeza escava em seu ser, mais alegria você pode conter.;"O Profeta, ""Da Alegria e da Tristeza""";;A;dificeis
 Kahlil Gibran;Quando estiver triste, olhe novamente para o seu coração.;"O Profeta, ""Da Alegria e da Tristeza""";;A;dificeis
 Marco Aurélio;Aceite o que vem tecido no padrão de seu destino.;Meditações, IV, 34;;A;dificeis
@@ -912,7 +906,7 @@ Livro de Provérbios 15:1;A resposta branda desvia o furor, mas a palavra dura s
 Livro dos Salmos 90:12;Ensina-nos a contar os nossos dias, de tal maneira que alcancemos corações sábios.;Salmos 90:12 · Almeida Corrigida Fiel;;A;fe
 Livro de Naum 1:7;O Senhor é bom, uma fortaleza no dia da angústia.;Naum 1:7 · Almeida Revisada Imprensa Bíblica;;A;fe
 Livro dos Salmos 91:1;Aquele que habita no esconderijo do Altíssimo, à sombra do Onipotente descansará.;Salmos 91:1 · Almeida Corrigida Fiel;;A;fe
-Primeira Carta de Pedro 5:7;Lançando sobre ele toda a vossa ansiedade, porque ele tem cuidado de vós.;1 Pedro 5:7 · Almeida Corrigida Fiel;;A;fe
+Carta de Pedro;Lançando sobre ele toda a vossa ansiedade, porque ele tem cuidado de vós.;1 Pedro 5:7 · Almeida Corrigida Fiel;;A;fe
 Carta de Tiago 1:27;A religião pura e imaculada para com Deus e Pai, é esta: Visitar os órfãos e as viúvas nas suas tribulações, e guardar-se da corrupção do mundo.;Tiago 1:27 · Almeida Corrigida Fiel;;A;fe
 Livro dos Salmos 27:1;"O SENHOR é a minha luz e a minha salvação; a quem temerei? O SENHOR é a força da minha vida; de quem me recearei?";Salmos 27:1 · Almeida Corrigida Fiel;;A;fe
 Apóstolo Paulo;"Não andeis ansiosos por coisa alguma; antes, em tudo sejam os vossos pedidos conhecidos diante de Deus.";Filipenses 4:6 · Almeida Revisada Imprensa Bíblica;;A;fe
@@ -929,7 +923,7 @@ Jesus Cristo;Seja feita a tua vontade, assim na terra como no céu.;Mateus 6:10 
 Lao Tsé;Por isso, a satisfação de quem sabe contentar-se é uma satisfação que dura sempre.;Tao Te Ching, 46;;A;fe
 Lao Tsé;"Quem vence os outros tem força; quem vence a si mesmo é forte.";Tao Te Ching, 33;;A;fe
 Livro dos Provérbios 9:10;O temor do Senhor é o princípio da sabedoria, e o conhecimento do Santo a prudência.;Provérbios 9:10 · Almeida Corrigida Fiel;;A;fe
-Levítico 19:18;"Não te vingarás nem guardarás ira contra os filhos do teu povo; mas amarás o teu próximo como a ti mesmo. Eu sou o Senhor.";Levítico 19:18 · Almeida Corrigida Fiel;;A;fe
+Livro de Levítico;"Não te vingarás nem guardarás ira contra os filhos do teu povo; mas amarás o teu próximo como a ti mesmo. Eu sou o Senhor.";Levítico 19:18 · Almeida Corrigida Fiel;;A;fe
 Krishna;"Assim como as águas entram no oceano, que se enche e permanece imóvel, alcança a paz aquele em quem todos os desejos entram dessa maneira; não quem anseia pelos desejos.";Bhagavad Gita, 2.70;;A;fe
 Alcorão;E de Allah é o Levante e o Poente. E, para onde quer que vos volteis, lá está a face de Allah.;Alcorão 2:115 · trad. Helmi Nasr;;A;fe
 Jesus Cristo;Não ajunteis tesouros na terra, onde a traça e a ferrugem tudo consomem.;Mateus 6:19-21 · Almeida Corrigida Fiel;;A;fe
@@ -947,7 +941,7 @@ Krishna;"Realiza a ação que te cabe, pois a ação é superior à inação; se
 Alcorão;Não há compulsão na religião!;Alcorão 2:256 · trad. Helmi Nasr;;A;fe
 Alcorão;E Ele é convosco, onde quer que estejais.;Alcorão 57:4 · trad. Helmi Nasr;;A;fe
 Alcorão;E não sejais como aqueles que se esqueceram de Deus e, por isso mesmo, Ele os fez esquecerem-se de si próprios.;Alcorão 59:19 · trad. Samir El Hayek;;A;fe
-Torá;Por isso amareis o estrangeiro, pois fostes estrangeiros na terra do Egito.;Deuteronômio 10:19 · Almeida Corrigida Fiel;;A;fe
+Livro de Deuteronômio;Por isso amareis o estrangeiro, pois fostes estrangeiros na terra do Egito.;Deuteronômio 10:19 · Almeida Corrigida Fiel;;A;fe
 Ben Azzai;A recompensa por um mandamento é outro mandamento, e a recompensa por um pecado é outro pecado.;Pirkei Avot 4:2 · trad. Bruno Albano (Ética dos Pais, Sefaria);;A;fe
 Buda;"A mente precede todas as coisas; a mente é o principal, tudo é feito pela mente.";Dhammapada, verso 1;;A;fe
 Buda;"Neste mundo, o ódio nunca se apazigua pelo ódio; apazigua-se pelo não ódio. Esta é uma lei eterna.";Dhammapada, verso 5;;A;fe
@@ -976,7 +970,7 @@ Krishna;Os sábios não lamentam nem pelos vivos nem pelos mortos.;Bhagavad Gita
 Krishna;"Quem vê a inação na ação e a ação na inação é sábio entre os homens; é um iogue, que realiza toda ação.";Bhagavad Gita, 4.18;;A;fe
 Krishna;Por isso, ó guerreiro de braços fortes, tem a sabedoria firme aquele cujos sentidos estão inteiramente retirados dos objetos dos sentidos.;Bhagavad Gita, 2.68;;A;fe
 Upanishads;Quem vê todos os seres no Eu e o Eu em todos os seres não se afasta dele.;Isha Upanishad, 6;;A;fe
-Rig Veda;"O ser é um só; os sábios o chamam por muitos nomes.";Rig Veda, 1.164.46;;A;fe
+Tradição védica;"O ser é um só; os sábios o chamam por muitos nomes.";Rig Veda, 1.164.46;;A;fe
 Alcorão;E não te conduzas com jactância na terra, porque jamais poderás fendê-la, nem te igualar, em altura, às montanhas.;Alcorão 17:37 · trad. Samir El Hayek;;A;fe
 Alcorão;E comei e bebei, e não vos entregueis a excessos. Por certo, Ele não ama os entregues a excessos.;Alcorão 7:31 · trad. Helmi Nasr;;A;fe
 Alcorão;E quem confia em Allah, Ele lhe bastará.;Alcorão 65:3 · trad. Helmi Nasr;;A;fe
@@ -1021,8 +1015,6 @@ Buda;"A vitória gera inimizade; o derrotado dorme em sofrimento. Quem está em 
 Krishna;"Ele não nasce nem morre jamais; não veio a ser nem deixará de ser. Não nascido, eterno, perene, antigo, não é morto quando o corpo é morto.";Bhagavad Gita, 2.20;;A;fe
 Krishna;Assim como o homem deixa as roupas gastas e veste outras novas, assim o ser encarnado deixa os corpos gastos e entra em outros novos.;Bhagavad Gita, 2.22;;A;fe
 Krishna;"Tendo dominado todos os sentidos, que se sente disciplinado, voltado para Mim; pois tem a sabedoria firme aquele cujos sentidos estão sob controle.";Bhagavad Gita, 2.61;;A;fe
-Mundaka Upanishad;Conhece aquele pelo qual todas as coisas são conhecidas.;"Mundaka Upanishad · Tradução a partir do sânscrito; versão em português consolidada";;B;fe
-Mundaka Upanishad 3.1.6;A verdade triunfa, não a falsidade.;"Mundaka Upanishad 3.1.6 · Tradução a partir do sânscrito; versão em português consolidada";;B;fe
 Lao Tsé;Por isso o sábio se ocupa das coisas sem agir e ensina sem palavras.;Tao Te Ching, 2;;A;fe
 Lao Tsé;"Quem muito ama muito gasta; quem muito acumula muito perde.";Tao Te Ching, 44;;A;fe
 Lao Tsé;"Por isso o duro e o forte são companheiros da morte; o macio e o fraco, companheiros da vida.";Tao Te Ching, 76;;A;fe
@@ -1035,7 +1027,7 @@ Alcorão;E Minha misericórdia abrange todas as cousas.;Alcorão 7:156 · trad. 
 Provérbios 17:9;Aquele que cobre uma ofensa promove amor, mas quem a lança em rosto separa bons amigos.;Provérbios 17:9 · Nova Versão Internacional;;A;fe
 Provérbios 25:11;Como maçãs de ouro em salvas de prata, assim é a palavra dita a seu tempo.;Provérbios 25:11 · Almeida Corrigida Fiel;;A;fe
 Provérbios 16:16;Quão melhor é adquirir a sabedoria do que o ouro! e quão mais excelente é adquirir a prudência do que a prata!;Provérbios 16:16 · Almeida Corrigida Fiel;;A;fe
-1 Samuel 16:7;porque o Senhor não vê como vê o homem, pois o homem vê o que está diante dos olhos, porém o Senhor olha para o coração.;1 Samuel 16:7 · Almeida Corrigida Fiel;;A;fe
+Livro de Samuel;porque o Senhor não vê como vê o homem, pois o homem vê o que está diante dos olhos, porém o Senhor olha para o coração.;1 Samuel 16:7 · Almeida Corrigida Fiel;;A;fe
 Deuteronômio 16:20;A justiça, somente a justiça seguirás.;Deuteronômio 16:20 · Almeida Corrigida Fiel;;A;fe
 Provérbios 17:22;O coração alegre serve de bom remédio, mas o espírito abatido seca os ossos.;Provérbios 17:22 · Almeida Revisada Imprensa Bíblica;;A;fe
 Eclesiastes 7:8;"Melhor é o fim duma coisa do que o princípio; melhor é o paciente do que o arrogante.";Eclesiastes 7:8 · Almeida Revisada Imprensa Bíblica;;A;fe
@@ -1091,15 +1083,14 @@ Provérbios 31:10;Álefe. Mulher virtuosa, quem a pode achar? Pois o seu valor m
 Provérbios 19:11;"A sabedoria do homem lhe dá paciência; sua glória é ignorar as ofensas.";Provérbios 19:11 · Nova Versão Internacional;;A;fe
 Eclesiastes 7:10;"Não diga: ""Por que os dias do passado foram melhores que os de hoje? "" Pois não é sábio fazer tais perguntas.";Eclesiastes 7:10 · Nova Versão Internacional;;A;fe
 Provérbios 22:1;"Vale mais ter um bom nome do que muitas riquezas; e o ser estimado é melhor do que a riqueza e o ouro.";Provérbios 22:1 · Almeida Corrigida Fiel;;A;fe
-Tradição rabínica;O mundo se sustenta sobre três coisas: justiça, verdade e paz.;Tradição rabínica · Tradição rabínica — Pirkei Avot e Talmude, tradução a partir do hebraico;;B;fe
+Rabban Shimon ben Gamliel;Sobre três coisas o mundo se sustenta: sobre o julgamento, sobre a verdade e sobre a paz.;Pirkei Avot 1:18 · trad. Saymon Pires da Silva (Sefaria);;A;fe
 Mishná;O Santo, bendito seja, não encontrou recipiente que contivesse a bênção para Israel senão a paz.;Mishná, Uktzin 3:12;"Dito de Rabi Shimon ben Halafta; é a frase que encerra a Mishná.";A;fe
 Krishna;"Para quem venceu a si mesmo, o eu é amigo de si mesmo; mas, para quem não se venceu, o próprio eu age como inimigo.";Bhagavad Gita, 6.6;;A;fe
 Krishna;Assim como o fogo aceso reduz a lenha a cinzas, ó Arjuna, o fogo do conhecimento reduz a cinzas todas as ações.;Bhagavad Gita, 4.37;;A;fe
 Krishna;"Quem tem fé, dedicado a ele e com os sentidos dominados, alcança o conhecimento; e, alcançado o conhecimento, chega logo à paz suprema.";Bhagavad Gita, 4.39;;A;fe
 Krishna;"Aquele cujo eu não se apega aos contatos externos encontra no Eu a felicidade; unido a Brahman pelo yoga, desfruta de uma felicidade imperecível.";Bhagavad Gita, 5.21;;A;fe
 Upanishads;"Só a verdade vence, não a mentira; pela verdade se estende o caminho divino.";Mundaka Upanishad, 3.1.6;;A;fe
-Katha Upanishad 2:3:14;Quando todos os desejos que habitam o coração desaparecem, o mortal torna-se imortal.;"Katha Upanishad 2:3:14 · Tradução a partir do sânscrito; versão em português consolidada";;B;fe
-Tradição budista;A compaixão é o desejo de aliviar o sofrimento dos outros.;"Tradição budista · Tradução a partir do original; versão em português consolidada";;B;fe
+Upanishads;Quando cessam todos os desejos que habitam o coração, o mortal se torna imortal e alcança aqui o Brahman.;Katha Upanishad, 2.3.14;;A;fe
 Lao Tsé;"Quem sabe contentar-se não sofre desonra; quem sabe parar não corre perigo; assim pode durar muito.";Tao Te Ching, 44;;A;fe
 Apóstolo Paulo;e a esperança não desaponta, porquanto o amor de Deus está derramado em nossos corações pelo Espírito Santo que nos foi dado.;Romanos 5:5 · Almeida Revisada Imprensa Bíblica;;A;fe
 Salmos 29:11;"O Senhor dará força ao seu povo; o Senhor abençoará o seu povo com paz.";Salmos 29:11 · Almeida Corrigida Fiel;;A;fe
@@ -1109,8 +1100,8 @@ Kahlil Gibran;A alma caminha por todos os caminhos.;"O Profeta, ""Do Autoconheci
 Kahlil Gibran;"A alma não caminha numa linha; ela floresce como uma flor de inumeráveis pétalas.";"O Profeta, ""Do Autoconhecimento""";;A;autorreconhecimento
 Kahlil Gibran;Confia nos sonhos, pois neles está escondida a porta para a eternidade.;"O Profeta (1923), ""Da Morte""";;A;motivacao
 Kahlil Gibran;A vida e a morte são uma só coisa, como o rio e o mar.;"O Profeta (1923), ""Da Morte""";;A;vida
-Ben Sirá;"Um amigo fiel é uma defesa poderosa; quem o encontrou encontrou um tesouro.";Ben Sirá · Tradição rabínica — Pirkei Avot e Talmude, tradução a partir do hebraico;;B;fe
-Steve Jobs;Seu trabalho vai preencher uma grande parte da sua vida, e a única maneira de ficar realmente satisfeito é fazer aquilo que você acredita ser um ótimo trabalho.;Entrevista registrada;;A;empreendedorismo
+Ben Sirá;"Um amigo fiel é uma defesa poderosa; quem o encontrou encontrou um tesouro.";Eclesiástico (Sirácida) 6:14;;A;fe
+Steve Jobs;Seu trabalho vai preencher uma grande parte da sua vida, e a única maneira de ficar realmente satisfeito é fazer aquilo que você acredita ser um ótimo trabalho. E a única maneira de fazer um ótimo trabalho é amar o que você faz.;Discurso de formatura na Universidade Stanford (12/06/2005);;A;empreendedorismo
 Steve Jobs;"Grandes coisas nos negócios nunca são feitas por uma única pessoa; são feitas por uma equipe.";Entrevista registrada;;A;empreendedorismo
 Steve Jobs;A inovação vem de pessoas que encontram novas maneiras de resolver problemas.;Entrevista registrada;;A;empreendedorismo
 Peter Drucker;O objetivo do marketing é conhecer e entender o cliente tão bem que o produto ou serviço se venda sozinho.;The Practice of Management;;A;empreendedorismo
@@ -1481,12 +1472,11 @@ Blaise Pascal;Toda a infelicidade dos homens vem de uma só coisa: não saberem 
 Henry David Thoreau;Fui para os bosques porque queria viver deliberadamente, enfrentar apenas os fatos essenciais da vida.;Walden;;A;reflexao
 Sócrates;Uma vida não examinada não merece ser vivida.;Platão, Apologia de Sócrates, 38a;;A;reflexao
 Heráclito;Nenhum homem entra duas vezes no mesmo rio, pois não é o mesmo rio e ele não é o mesmo homem.;Fragmentos (Diels-Kranz B49a);;A;reflexao
-Fernando Pessoa;Não sou nada. Nunca serei nada. Não posso querer ser nada. À parte isso, tenho em mim todos os sonhos do mundo.;Tabacaria (Álvaro de Campos);;A;reflexao
+Fernando Pessoa;Não sou nada. Nunca serei nada. Não posso querer ser nada. À parte isso, tenho em mim todos os sonhos do mundo.;"“Tabacaria” (1928), de Álvaro de Campos, heterônimo de Fernando Pessoa; publicado em Presença, 1933";Abertura de “Tabacaria” (1928), de Álvaro de Campos, heterônimo de Fernando Pessoa.;A;reflexao
 Clarice Lispector;Estou tão cansada. Cansada não do que faço, mas do que sou.;A Descoberta do Mundo;;A;reflexao
 Rainer Maria Rilke;Tenha paciência com tudo que está por resolver em seu coração e tente amar as próprias perguntas.;Cartas a um Jovem Poeta, IV;;A;reflexao
 Albert Camus;É preciso imaginar Sísifo feliz.;O Mito de Sísifo;;A;reflexao
 Simone Weil;A atenção é a forma mais rara e mais pura de generosidade.;Carta a Joë Bousquet, 1942;;A;reflexao
-Viktor Frankl;"Entre o estímulo e a resposta existe um espaço; nesse espaço está nosso poder de escolher a resposta.";Em Busca de Sentido;;A;reflexao
 Confúcio;"Quando vires um homem de valor, procura igualar-te a ele; quando vires um homem sem valor, examina-te por dentro.";Analectos, IV, 17;;A;reflexao
 Hannah Arendt;Ninguém tem o direito de obedecer.;Entrevista, 1964;;A;reflexao
 Machado de Assis;Ao vencedor, as batatas.;Quincas Borba;;A;reflexao
@@ -1600,7 +1590,6 @@ Dalai Lama;A felicidade não é algo pronto: ela vem das suas próprias ações.
 Sêneca;Ninguém é feliz senão quem julga que é.;Cartas a Lucílio, IX;;A;felicidade
 Mário Quintana;A vida é uma sucessão de dias parecidos, e às vezes acontece um milagre.;Caderno H;;A;felicidade
 Sêneca;Aprender a viver leva a vida inteira e, o que talvez te espante, leva a vida inteira aprender a morrer.;Sobre a Brevidade da Vida, VII;;A;vida
-Leon C. Megginson;Não é o mais forte que sobrevive, nem o mais inteligente, mas o que melhor se adapta às mudanças.;Southwestern Social Science Quarterly, 1963 — paráfrase de A Origem das Espécies, não texto de Darwin;;A;vida
 Guimarães Rosa;O mais importante e bonito, do mundo, é isto: que as pessoas não estão sempre iguais, ainda não foram terminadas.;Grande Sertão: Veredas;;A;vida
 Theodore Roosevelt;O crédito pertence a quem está na arena, com o rosto sujo de poeira, suor e sangue.;"Discurso ""Citizenship in a Republic"", Sorbonne, 1910";;A;motivacao
 Ayrton Senna;Se você quer se tornar um campeão, não pode aceitar ser o segundo.;Entrevista registrada;;A;motivacao
@@ -1884,7 +1873,7 @@ Carlos Drummond de Andrade;No meio do caminho tinha uma pedra, tinha uma pedra n
 Carlos Drummond de Andrade;E agora, José? A festa acabou, a luz apagou, o povo sumiu, a noite esfriou.;José, em Poesias (1942);;A;dificeis
 Carlos Drummond de Andrade;Mundo mundo vasto mundo, se eu me chamasse Raimundo seria uma rima, não seria uma solução.;Poema de Sete Faces, em Alguma Poesia (1930);;A;reflexao
 Carlos Drummond de Andrade;Lutar com palavras é a luta mais vã.;O Lutador, em José (1942);;A;reflexao
-Carlos Drummond de Andrade;Tinha uma pedra no meio do caminho. Nunca me esquecerei desse acontecimento na vida de minhas retinas tão fatigadas.;No Meio do Caminho, em Alguma Poesia (1930);;A;reflexao
+Carlos Drummond de Andrade;Nunca me esquecerei desse acontecimento na vida de minhas retinas tão fatigadas.;No Meio do Caminho, em Alguma Poesia (1930);;A;reflexao
 Graciliano Ramos;Fabiano, você é um homem.;Vidas Secas (1938), capítulo Fabiano;;A;autorreconhecimento
 Graciliano Ramos;Chegariam a uma terra desconhecida e civilizada, ficariam presos nela. E o sertão continuaria a mandar gente para lá.;Vidas Secas (1938), capítulo final Fuga;;A;reflexao
 Graciliano Ramos;Um dia eu ainda hei de escrever aquilo que sinto sem me preocupar com o que os outros vão dizer.;São Bernardo (1934);;A;reflexao
@@ -1909,7 +1898,6 @@ Machado de Assis;Suprimi a genealogia, para não dar ao leitor o trabalho de a s
 Clarice Lispector;Liberdade é pouco. O que eu desejo ainda não tem nome.;Perto do Coração Selvagem (1943);;A;reflexao
 Clarice Lispector;Sim, ela era feliz porque ninguém lhe dizia que não.;A Hora da Estrela (1977);;A;felicidade
 Fernando Pessoa;Ó mar salgado, quanto do teu sal são lágrimas de Portugal!;Mensagem (1934), poema Mar Português;;A;reflexao
-Fernando Pessoa;Tenho em mim todos os sonhos do mundo.;"“Tabacaria” (1928), de Álvaro de Campos, heterônimo de Fernando Pessoa; publicado em Presença, 1933";Verso de “Tabacaria” (1928), de Álvaro de Campos, heterônimo de Fernando Pessoa.;A;reflexao
 José Saramago;Somos a memória que temos e a responsabilidade que assumimos.;Discurso de recepção do Prêmio Nobel, 7 de dezembro de 1998;;A;reflexao
 Baruch Spinoza;A paz não é a ausência de guerra, mas uma virtude que nasce da força de alma.;Tratado Político (1677), capítulo 5, §4;;A;politica
 Baruch Spinoza;O homem livre em nada pensa menos do que na morte, e sua sabedoria é uma meditação da vida, não da morte.;Ética (1677), parte IV, proposição 67;;A;vida
@@ -1959,7 +1947,6 @@ Primo Levi;Aconteceu, portanto pode acontecer de novo.;Os Afogados e os Sobreviv
 Nelson Mandela;Ninguém nasce odiando outra pessoa pela cor de sua pele.;Longo Caminho para a Liberdade (1994);;A;politica
 Martin Luther King Jr.;Eu tenho um sonho: que meus quatro filhos um dia vivam numa nação onde não serão julgados pela cor da pele, mas pelo conteúdo de seu caráter.;Discurso na Marcha sobre Washington, 28 de agosto de 1963;;A;politica
 Rosa Parks;As pessoas sempre dizem que não cedi o lugar porque estava cansada, mas isso não é verdade. […] Não: a única coisa de que eu estava cansada era de ceder.;Rosa Parks: Minha História (1992);;A;empoderamento
-Sojourner Truth;E eu não sou uma mulher?;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
 Frederick Douglass;O poder não concede nada sem uma exigência. Nunca concedeu e nunca concederá.;Discurso sobre a emancipação nas Índias Ocidentais, 3 de agosto de 1857;;A;politica
 Frederick Douglass;Uma vez que você aprende a ler, será para sempre livre.;Narrativa da Vida de Frederick Douglass (1845);;A;educacao
 Malcolm X;Sou a favor da verdade, não importa quem a diga.;Autobiografia de Malcolm X (1965);;A;reflexao
@@ -2252,7 +2239,7 @@ Abraham Maslow;O que um homem pode ser, ele precisa ser.;Motivação e Personali
 Abraham Maslow;É bem verdade que o homem vive só de pão — quando não há pão.;Motivação e Personalidade;;A;vida
 Booker T. Washington;Eu não permitiria que homem algum, fosse qual fosse a sua cor, estreitasse e degradasse a minha alma fazendo-me odiá-lo.;Da Escravidão à Liberdade (1901), capítulo XI;;A;empoderamento
 Booker T. Washington;Lancem seu balde onde vocês estão.;Discurso da Exposição de Atlanta (1895), reproduzido em Da Escravidão à Liberdade (1901), capítulo XIV;;A;motivacao
-Sojourner Truth;Eu arei, plantei e enchi celeiros, e nenhum homem podia me superar. E não sou eu uma mulher?;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
+Sojourner Truth;Eu arei, plantei e enchi celeiros, e nenhum homem podia me superar. E eu não sou uma mulher?;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
 Sojourner Truth;Se a primeira mulher que Deus fez foi forte o bastante para virar o mundo de cabeça para baixo sozinha, estas mulheres juntas deveriam ser capazes de virá-lo de volta.;Discurso em Akron (1851), na versão de Frances Gage (1863);"Texto da versão publicada por Frances Gage em 1863; o relato de 1851 no Anti-Slavery Bugle não traz o refrão “Ain’t I a woman?”.";A;empoderamento
 Max Planck;A ciência não consegue resolver o mistério último da natureza. E isso porque, em última análise, nós mesmos somos parte da natureza e, portanto, parte do mistério que tentamos resolver.;Para Onde Vai a Ciência? (1932);;A;reflexao
 Darcy Ribeiro;"Ninguém vale mais do que o outro; todos somos filhos da mesma tragédia e da mesma esperança.";O Povo Brasileiro;;A;vida

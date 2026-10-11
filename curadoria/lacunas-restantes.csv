@@ -45,6 +45,7 @@ Karl Jaspers;1;2;sim;obra textual disponível — expansão possível, exige loc
 Laurel Thatcher Ulrich;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A História de uma Parteira | Mulheres Bem-Comportadas Raramente Fazem História
 Leandro Karnal;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Dilema do Porco-Espinho
 Lee Iacocca;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Iacocca: Uma Autobiografia
+Leon C. Megginson;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Lições da História para a Administração
 Madre Teresa de Calcutá;1;5;sim;obra textual disponível — expansão possível, exige localizar a passagem;Missionárias da Caridade | Venha, Seja Minha Luz | Vem, Seja Minha Luz | Nobel da Paz | A Simple Path e discursos registrados
 Marguerite Yourcenar;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Memórias de Adriano | A Obra em Negro
 Maria Callas;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Norma (Bellini) | Tosca (Puccini) | Aulas na Juilliard
@@ -61,6 +62,7 @@ Oprah Winfrey;1;2;sim;obra textual disponível — expansão possível, exige lo
 Oswaldo Cruz;1;1;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Campanha sanitária no Rio de Janeiro
 Pelé;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Pelé: A Autobiografia
 Plutarco;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Vidas Paralelas | Moralia
+Rabban Shimon ben Gamliel;1;0;sem_obra;sem obra catalogada;
 Reed Hastings;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Regra é Não Ter Regras
 Reid Hoffman;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Startup de Você | Blitzscaling
 Ring Lardner;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;You Know Me Al | Os Jovens Imigrantes
@@ -124,7 +126,6 @@ John Ruskin;2;2;sim;obra textual disponível — expansão possível, exige loca
 Jorge Amado;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Capitães da Areia | Gabriela, Cravo e Canela | Dona Flor e Seus Dois Maridos
 José Ortega y Gasset;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Rebelião das Massas | Meditações do Quixote
 Júlio César;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Comentários sobre a Guerra das Gálias | Comentários sobre a Guerra Civil
-Leon C. Megginson;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Lições da História para a Administração
 Lima Barreto;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Triste Fim de Policarpo Quaresma | Recordações do Escrivão Isaías Caminha | Diário do Hospício
 Madame de Staël;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Da Alemanha | Corinne
 Malala Yousafzai;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Eu Sou Malala
@@ -151,6 +152,7 @@ Salvador Dalí;2;5;sim;obra textual disponível — expansão possível, exige l
 Santo Isidoro de Sevilha;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Etimologias
 Simon Sinek;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Comece pelo Porquê | Líderes se Servem por Último | O Jogo Infinito
 Simone Weil;2;4;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Gravidade e a Graça | O Enraizamento | A Condição Operária | Reflexões sobre as Causas da Liberdade e da Opressão Social
+Sojourner Truth;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Não Sou Eu uma Mulher? | Narrativa de Sojourner Truth
 Stephen Hawking;2;3;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Uma Breve História do Tempo | O Universo numa Casca de Noz | Breves Respostas para Grandes Questões
 Stephen R. Covey;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Os 7 Hábitos das Pessoas Altamente Eficazes | O 8º Hábito | Primeiro o Mais Importante
 Tarsila do Amaral;2;4;sim;obra textual disponível — expansão possível, exige localizar a passagem;Abaporu | Operários | A Negra | Cartas de Paris
