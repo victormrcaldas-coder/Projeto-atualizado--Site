@@ -1856,3 +1856,107 @@ Autorização do proprietário (09/10): conferir as escrituras não bíblicas co
   - nenhuma frase ativa igual a texto do registro;
   - nenhuma variante removida ainda ativa;
   - `qid` sem duplicidade.
+
+## Fase 121 — auditoria das 542 frases A− (10–11/10/2026)
+
+Autorização do proprietário (09/10): auditar as frases A− e remover as que não tiverem obra ou local conferível. "Não manter frase só por quantidade."
+
+**O que era A−.** Eram 542 frases com uma obra provável no campo `src`, mas texto nunca conferido. Em 445 a fonte era só o título da obra.
+
+**Método:**
+- **Divisão:** as frases foram separadas em 8 lotes por afinidade de autor. Cada lote foi conferido frase a frase com as mesmas regras escritas, registradas em `curadoria/trabalho/fase121-regras.md`.
+- **Revisão final:** todas as decisões passaram por revisão. Uma regra foi acrescentada no meio do trabalho: um texto só pode ser trocado por outro do mesmo livro quando a frase do catálogo **deriva daquela passagem** (mesma imagem ou estrutura). Resumo genérico da tese do livro sai, em vez de ganhar outra frase no lugar.
+- **Obras em domínio público, conferidas no texto integral:**
+  - Franklin, nos almanaques *Poor Richard* da edição *The Papers of Benjamin Franklin*;
+  - Wollstonecraft, Burke, Emerson, Lippmann, Ford, Clason, Austen e Gibran;
+  - Le Bon, La Rochefoucauld e Montesquieu, livro I, no francês;
+  - Maquiavel no italiano, Sêneca e Cícero no latim;
+  - Diógenes Laércio e Plutarco no grego;
+  - Sun Tzu no chinês com Giles; Clausewitz na tradução de Graham; Schopenhauer no alemão.
+- **Obras protegidas:** documento primário ou fonte confiável que reproduz o trecho com a obra, por exemplo:
+  - cartas da Berkshire Hathaway de 1977 a 2020 em texto integral;
+  - transcrições de palestras de Munger;
+  - base de citações do Deming Institute;
+  - Quote Investigator, Wikiquote com página, editoras e imprensa;
+  - em último caso, destaques da edição publicada somados a uma segunda fonte independente.
+
+**Resultado (545 decisões: as 542 A− e mais 3 duplicatas status A achadas no caminho):**
+- **81 confirmadas** e **124 corrigidas**. Todas passam a A, com a evidência em `notaInterna`.
+  - 104 traduções trocadas (registradas como `substituida`).
+  - 176 originais acrescentados ou corrigidos.
+  - 203 fontes ganharam obra certa e localização (ano da carta, capítulo, máxima, tese, livro/capítulo).
+- **322 removidas e 18 duplicatas.** Os motivos:
+  - paráfrase ou resumo da ideia do livro apresentado como citação (a maior parte);
+  - redação que só circula em sites de frases;
+  - atribuição errada.
+
+**Exemplos:**
+- **Atribuição errada:**
+  - As três frases de Henry Ford não estão em *My Life and Work*: "Quer você pense que consegue…" aparece pela primeira vez em 1947, a do avião em 1955 e a dos obstáculos em 1941, anônima.
+  - "Formamos nossas ferramentas…" é de John Culkin, não de McLuhan.
+  - "A vida pode ser muito mais ampla…" é de Steve Jobs, não de Frankl.
+  - "Aqueles que têm uma razão para viver…" é Nietzsche, citado por Frankl.
+  - "In God we trust…" não é de Deming.
+  - "A amizade e a lealdade…", atribuída a Epicuro, é de Gandhi.
+  - "Perseverar no erro…", atribuída a Zenão, é de Cícero.
+  - Kostolany: a frase genérica "O dinheiro não dorme, mas…" não tem fonte nele; "money never sleeps" é bordão do filme *Wall Street* (1987).
+- **Obra corrigida:**
+  - "Tempo é dinheiro" vem de "Advice to a Young Tradesman" (1748), não do almanaque.
+  - Lynch: três regras são de *Beating the Street*, não de *One Up on Wall Street*.
+  - Gibran: três frases são de *O Profeta*, não de *Areia e Espuma*.
+  - Emerson: "Circles", "Self-Reliance", "Civilization" e "Education", não as obras que estavam indicadas.
+  - Montesquieu: a liberdade como segurança está em XII, 2, não no livro XI.
+  - Bennis: "Gestores fazem as coisas direito…" é de *Leaders* (1985).
+  - Covey: "liderança é uma escolha" vem do prefácio a *Turn the Ship Around!*.
+  - Kotler: "o custo de não fazer" é de *Marketing de A a Z*.
+  - Buffett: frases de entrevistas e depoimentos (Fortune 1986 e 1999, Congresso 1991, Columbia 1993, BusinessWeek 1999) deixaram de constar como cartas.
+- **Tradução que mudava o sentido:**
+  - Buffett, "período favorito é para sempre": a frase só vale para negócios e gestões excepcionais.
+  - Buffett: "dos ativos para os pacientes", não "dos impacientes".
+  - Wollstonecraft: "a liberdade é a mãe da virtude".
+  - Deming: "o direito ao orgulho pelo trabalho".
+  - Kouzes e Posner: "queiram lutar".
+  - Mandela: "colina", não "montanha".
+- **Escolhas registradas:**
+  - Einstein: a forma popular "o mais simples possível, mas não mais simples" foi trocada pela passagem real da Conferência Herbert Spencer (1933).
+  - Disney ("parar de falar e começar a fazer") saiu: a redação literal da entrevista de 1957 não pôde ser lida.
+  - Debord, tese 3: as transcrições francesas divergem entre "se représente" (a maioria, inclusive a da edição Gallimard) e "se présente". Ficou "se représente", com a divergência anotada.
+
+**Duplicatas resolvidas aqui:**
+- Michelle Obama ("Quando eles descem, nós subimos" fica);
+- Sêneca, carta 2 (×2) e carta 71;
+- Sun Tzu III, 2 (×2), Frankl, Munger, Dalio (×2), Housel (×2), Montgomery, Walton, Ries, Cialdini, Rosenberg, Lynch.
+
+**Limites desta fase:**
+- **Sem texto integral:** nos livros contemporâneos protegidos, a confirmação se apoia em documento primário quando existe (cartas, discursos, artigos) e, nos demais casos, em fontes secundárias confiáveis. Tocqueville, Gracián e Clausewitz foram conferidos em tradução inglesa e ficaram sem `orig`.
+- **Remoções conservadoras, que podem voltar com a fonte certa:**
+  - quatro frases do "Credo político" de Rui Barbosa: reais, mas sem data nem ocasião localizadas e fora da *Oração aos Moços*;
+  - a frase de Beauvoir de *A Força da Idade*, só conferida no início;
+  - um lema real de Scott Belsky que não está no livro.
+
+**Interação com o código:**
+- Nenhuma frase confirmada ou corrigida é apagada depois pelo portão de duplicatas (Fase 75) ou pela Fase 78. Isso foi conferido na reexportação.
+- O aviso "Fase 78 · não localizadas: Lao Tsé…" continua o mesmo da Fase 120.
+
+**Achado para a etapa de números (Task 7):**
+- 98 autores têm obra catalogada e **nenhuma** frase ativa. Antes desta fase eram 87; os 11 novos incluem Ford, Napoleão, Tomás de Aquino, Friedan, Kroc, Fisher, Kostolany e Zimbardo.
+- Eles entram na contagem de "autores" (529), porque o índice inclui quem tem obra, mas **não** aparecem em `LACUNAS()`, que só conta quem tem 1 ou 2 frases.
+- Precisa de decisão na recontagem.
+
+**Arquivos:**
+- Bloco Fase 121 em `assets/js/memotiva.js`.
+- Decisões completas, com evidência e motivo de cada frase, em `curadoria/trabalho/fase121-aminus-decisoes.jsonl`.
+- Regras usadas em `curadoria/trabalho/fase121-regras.md`.
+- CSVs reexportados no Chromium.
+
+**Estado (Chromium real, 390×844 e 1440×900):**
+- Números: frases **2.362** (−340) · autores 529 · obras 1.245 · lacunas **161** (+19, efeito das remoções) · registros 2.554 · frases com `orig` 794.
+- Status: **A 1.970 · A− 0** · X 386 · B 6.
+- Testes:
+  - 0 exceções JS;
+  - favoritos por `qid` OK, incluindo remoção, embaralhamento e legado;
+  - busca OK;
+  - sem rolagem horizontal;
+  - nenhuma frase ativa igual a texto do registro;
+  - nenhuma variante removida ainda ativa;
+  - `qid` sem duplicidade.

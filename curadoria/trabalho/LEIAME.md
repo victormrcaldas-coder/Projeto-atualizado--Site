@@ -12,3 +12,4 @@ Quando a fase é aplicada em `assets/js/memotiva.js`, o conteúdo vai para `nota
 
 - `fase119-orig-decisoes.jsonl` — verificação do campo `orig` (580 pendentes da Fase 117). Concluída e aplicada (Fase 119, 10/10/2026).
 - `fase120-escrituras-decisoes.jsonl` — escrituras não bíblicas (240 frases: Alcorão, hadith, tradição judaica, Tao, Buda, Gita, Analectos, Upanishads/Veda). Concluída e aplicada (Fase 120, 10/10/2026).
+- `fase121-aminus-decisoes.jsonl` — auditoria das 542 frases A− (8 lotes por autor, revisão integral). Regras usadas em `fase121-regras.md`. Concluída e aplicada (Fase 121, 11/10/2026).
