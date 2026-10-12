@@ -2094,3 +2094,57 @@ Itens que estavam abertos no plano (A8) ou que apareceram nas fases anteriores. 
 - **Autores com obra e nenhuma frase: 134.**
 - Status: **A 1.624** · X 386 · A− 0 · B 0. Toda frase A agora tem verificação registrada ou é escritura já conferida.
 - Testes: 0 exceções JS; favoritos, busca e rolagem OK; nenhuma frase ativa no registro de remoções; `qid` sem duplicidade.
+
+## Fase 124 — conferência dos fatos nas descrições e páginas das obras (12/10/2026)
+
+**Por quê.** É o item 7 do PLANO. As 1.245 obras tinham descrição curta (`d`) e página (`sobre`, `contexto`, `momento`, `importancia`, `curiosidade`), além de `tipo` e `ano`, nunca conferidos contra fontes.
+
+**Método.** As obras foram divididas em 12 lotes por autor e conferidas com regras escritas (`curadoria/trabalho/fase124-regras.md`):
+- **Só fatos:** datas, nomes, lugares, números, atribuições, primeira edição, prêmios, adaptações, circunstâncias. O texto do site **não foi reescrito**; onde havia erro, troca-se só o trecho errado (menor mudança possível).
+- **Afirmação não confirmada e não essencial** (anedota, "curiosidade" sem fonte): retirada do campo, mantendo o restante.
+- **Fontes:** Britannica, Wikipedia com fonte, Stanford Encyclopedia of Philosophy, editoras, catálogos de bibliotecas, artigos acadêmicos, imprensa de referência e o texto integral quando disponível (Gutenberg).
+- **Obra inexistente, de outra pessoa ou com título trocado:** sinalizada pelo lote e decidida por mim.
+- **Revisão:** cada lote foi conferido ao terminar, só o resultado da última sessão.
+
+**Resultado (1.245 decisões):**
+- **850 sem erro.**
+- **380 obras corrigidas**, 538 campos: `curiosidade` 143, `momento` 121, `d` 101, `contexto` 77, `importancia` 38, `sobre` 33, `ano` 21, `tipo` 4. Em 9 obras a `curiosidade` ficou vazia (a anedota não se confirmou e era o único conteúdo do campo); a página simplesmente não mostra a seção. Quando `d` muda, o texto antigo fica em `dAntiga`.
+- **15 obras retiradas do catálogo:**
+  - **título inexistente:** Abílio Diniz, *Caminho Sereno* e *Novo Caminho*; John Wooden, *A Pirâmide do Sucesso*; Luiza Trajano, *Magazine Luiza: a trajetória*; Rubem Alves, *A História do Pássaro Que Vivia no Ar*; Clóvis de Barros Filho, *Ética e Vida Feliz*; Leon C. Megginson, *Lições da História para a Administração* (o texto real é "Lessons from Europe for American Business", 1963, que já é a fonte da frase);
+  - **título trocado:** Rubem Alves, *Teologia da Libertação* (a tese de 1968 é *A Theology of Human Hope*); Rosalind Franklin, *Cartas a John Franklin* (a carta é ao pai, Ellis Franklin); Brené Brown, *A Coragem de Ser Vulnerável* (sem edição localizada; o conteúdo de *Daring Greatly*, 2012, passou para a entrada *A Coragem de Ser Imperfeito*, que é o título brasileiro);
+  - **obra de outra pessoa:** Jack Ma, *Alibaba: A Casa que Jack Ma Construiu* (Duncan Clark); Elon Musk, biografia por Walter Isaacson; Wernher von Braun, *A Conquista do Espaço* (Willy Ley e Chesley Bonestell); Conceição Evaristo, *Escrevivência* (coletânea organizada por Constância Lima Duarte e Isabella Rosado Nunes);
+  - **atribuição errada:** Dom Pedro II, *Lei Áurea* (sancionada pela princesa Isabel como regente).
+  
+  Nenhuma dessas obras era fonte de frase ativa (as frases desses autores citam outras fontes, já conferidas nas Fases 121–123).
+
+**Exemplos de correção:**
+- *A Hora da Estrela*: Clarice morreu em dezembro de 1977, no ano da publicação, não no seguinte.
+- *A Riqueza das Nações*: saiu em Londres, não na Escócia; em 1776 Smith já não era professor.
+- *História dos Povos de Língua Inglesa*: os volumes são de 1956–1958, depois do Nobel de 1953; não podem tê-lo sustentado.
+- *A Casa das Sete Torres*: Poe morreu em 1849 e não pode ter sido influenciado pelo romance de 1851.
+- *Cosmos*: o livro é só de Sagan; Ann Druyan e Steven Soter foram coautores da série.
+- *Evangelii Gaudium*: a imagem do "hospital de campanha" é da entrevista a Antonio Spadaro (2013), não da exortação.
+- *Vidas Secas*: de 1932 a 1938 são seis anos, não quatro.
+- *Os Girassóis*: na carta a Theo a comparação é com Jeannin e Quost, não com Monet.
+- *Sobre a Morte e o Morrer*: o livro não fundou os cuidados paliativos (Cicely Saunders, 1967).
+- *Água Viva*: Cazuza, "o cantor".
+- Anos de primeira edição que estavam vazios: Drucker (1954, 1967, 1985), Maxwell (1998), Montgomery (1958).
+
+**Obras duplicadas (item 12 do PLANO).** Conforme a decisão do proprietário, **não foram unificadas**. As duas entradas de cada par foram conferidas, e o erro achado numa foi corrigido também na outra. Houve correção em pares de Gandhi, Drucker, Deming, Munger, Rubem Alves, Pessoa e Hugo, e também em duplicatas que não estavam na lista: Bennis, Powell, Edison, Woolf (*Ao Farol*/*Rumo ao Farol*) e Napoleão (*Código Civil*, cujo `tipo` passou a "documento"). `curadoria/obras-duplicadas.csv` registra a decisão.
+
+**Interação com o código.** O bloco da Fase 124 roda no fim da cadeia `__fase5Boot`. As obras retiradas saem de `OBRAS`, `OBRA_PAGINA` e `OBRA_POR_ID`, sem renumerar os `oid` das demais (os endereços das outras obras não mudam). O console registra "380 obras corrigidas (538 campos), 15 retiradas"; `window.FASE124_CORRECOES` e `window.FASE124_REMOVIDAS` guardam o detalhe.
+
+**Pendências para a etapa de estabilização:**
+- **Luiza Trajano, Abílio Diniz e Clóvis de Barros Filho** ficaram sem obra e sem frase (continuam entre os 521 autores, só com biografia). Decidir se saem do índice.
+- **Jack Ma, Elon Musk e Leon C. Megginson** ficaram sem obra no catálogo, mas mantêm frases com fonte própria (entrevista, discurso, artigo).
+- **Rosalind Franklin** tem duas frases com fontes quase iguais ("Carta a Ellis Franklin, verão de 1940" e "Carta ao pai, Ellis Franklin (c. 1940)"). Conferir na varredura final de duplicatas.
+
+**Estado (Chromium real, 390×844 e 1440×900):**
+- Números: frases 2.010 · autores 521 · obras **1.230** (−15) · lacunas 177 · registros 3.148 · frases com `orig` 1.327.
+- **Autores com obra e nenhuma frase: 131.**
+- Status: A 1.624 · X 386 · A− 0 · B 0.
+- Testes:
+  - 0 exceções JS; favoritos, busca e rolagem OK; nenhuma frase ativa no registro de remoções; `qid` sem duplicidade;
+  - as 1.230 páginas de obra abertas uma a uma, sem erro e sem página vazia;
+  - as páginas dos 13 autores afetados abrem normalmente;
+  - os 538 campos e as 15 retiradas conferidos contra o catálogo exportado.
