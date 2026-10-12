@@ -2148,3 +2148,67 @@ Itens que estavam abertos no plano (A8) ou que apareceram nas fases anteriores. 
   - as 1.230 páginas de obra abertas uma a uma, sem erro e sem página vazia;
   - as páginas dos 13 autores afetados abrem normalmente;
   - os 538 campos e as 15 retiradas conferidos contra o catálogo exportado.
+
+## Fase 125 — estabilização do catálogo e decisão sobre os Ditados Populares (12/10/2026)
+
+### Decisão do proprietário: Ditados Populares fora de qualquer auditoria
+
+A verificação das **384 frases "Ditado Popular"** (status `X`) foi **cancelada definitivamente** por decisão do proprietário. A categoria tem finalidade editorial própria no MeMotiva: reunir ditados populares, provérbios, expressões tradicionais e frases de efeito, sem fonte bibliográfica e sem atribuição a autor.
+
+Consequências:
+- Esses registros não são buscados, verificados nem auditados individualmente.
+- Não contam como lacuna nem como pendência; a contagem de lacunas já os excluía.
+- Os registros e o funcionamento da categoria no site ficam como estão.
+- A tarefa **não deve ser retomada**; está registrada como item 14 do PLANO e na decisão C6.
+- **A exceção vale só para essa categoria.** Toda frase atribuída a autor continua sujeita aos critérios de autoria, fidelidade textual e fonte.
+
+A auditoria chegou a começar antes da decisão: lotes `a27`, cerca de 160 decisões parciais. **Nada foi aplicado.** As decisões ficaram só no espaço de trabalho e não vão para o repositório.
+
+As duas frases com autor "Autor não identificado" (status `X`) também não foram tocadas.
+
+### Varredura final de duplicatas
+
+Todas as frases ativas foram comparadas:
+- **Mesmo autor:** semelhança por bigramas e por palavras-chave. Os pares achados são passagens diferentes da mesma obra, como os títulos de seção de *Pedagogia da Autonomia*, os capítulos do *Tao Te Ching*, as bem-aventuranças e os versos do Gita, e ficam.
+- **Autores diferentes:** semelhança e texto contido em outro.
+
+Resultado:
+- **Esopo, "Aparências enganam" — removida.** A fábula "O Lobo em Pele de Cordeiro" não está nas coleções antigas de Esopo: a versão mais antiga é do retórico bizantino Nicéforo Basilakes, do século XII. A moral "Appearances are deceptive" foi acrescentada pela tradução inglesa moderna (Project Gutenberg #28). A forma "As aparências enganam" continua no site como ditado popular.
+- **Primo Levi, "Se isto é um homem." — removida como duplicata.** É o título do livro e o fecho da primeira estrofe de "Shemà", já presente na frase com os cinco primeiros versos.
+- **Rosalind Franklin — fontes uniformizadas.** As duas frases vêm da mesma carta ao pai e passam a ter a mesma fonte: "Carta ao pai, Ellis Franklin (c. verão de 1940)".
+- **Ditado Popular × autor com fonte.** Seis ditados coincidem com frases de autor que têm fonte:
+  - Shakespeare, "reluz";
+  - Provérbios 16:18;
+  - Cervantes, "porta";
+  - Virgílio, "audazes";
+  - Lincoln, "casa dividida";
+  - de Gaulle, "batalha".
+  
+  Pela decisão acima, os ditados **ficam**. As frases de autor também ficam, porque têm fonte própria conferida.
+
+### Lacunas recalculadas
+
+- **179 pessoas com 1–2 frases.** Antes eram 177; Esopo e Primo Levi passaram a ter 2 frases.
+  - 159 têm obra textual catalogada;
+  - 8 têm só obra não textual (quadro, música, invento, feito);
+  - 12 não têm obra catalogada.
+- Lista em `curadoria/lacunas-restantes.csv`. Os Ditados Populares, as escrituras e "Autor não identificado" não entram.
+- À parte, fora do critério de lacuna: **131 autores** têm obra catalogada e nenhuma frase.
+- Três autores, Luiza Trajano, Abílio Diniz e Clóvis de Barros Filho, ficaram sem obra e sem frase depois da Fase 124. Continuam no índice porque têm história biográfica (seção Histórias).
+
+### Pendência registrada: biografias e histórias
+
+O CHECKPOINT de 04/10 já listava "biografias individualmente" como não feito. Uma amostra confirmou que há erros: na cronologia de Mill, a emenda pelo voto feminino é de 1867, não de 1865.
+
+O trabalho está preparado, com regras e lotes, mas **não começou**: o proprietário mandou iniciar as lacunas. Fica como item 15 do PLANO, para ele decidir a ordem.
+
+### Estado (Chromium real, 390×844 e 1440×900)
+
+- Números:
+  - frases **2.008**: A 1.622 · X 386 (384 ditados + 2 sem autor identificado);
+  - autores 521 · obras 1.230 · lacunas **179** · registros 3.150 · com `orig` 1.325.
+- Testes:
+  - 0 exceções JS;
+  - favoritos, busca e rolagem sem problema nas duas resoluções;
+  - nenhuma frase ativa no registro de remoções;
+  - `qid` sem duplicidade.

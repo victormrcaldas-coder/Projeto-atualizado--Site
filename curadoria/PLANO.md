@@ -1,4 +1,4 @@
-# MeMotiva — plano de trabalho (atualizado em 10/10/2026)
+# MeMotiva — plano de trabalho (atualizado em 12/10/2026)
 
 Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.** Sem "não foi possível confirmar" no site. Traduções fiéis de original conferido são aceitas (o site avisa que busca a maior proximidade).
 
@@ -19,10 +19,13 @@ Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.
 | 10 | Testes finais: responsividade (7 resoluções), Firefox/Safari | **por último**; Firefox/Safari indisponíveis aqui | navegador real do proprietário |
 | 11 | Fotos de autores | **adiado a pedido** | 338 sem entrada |
 | 12 | Obras duplicadas no catálogo (10) | **não unificar (decisão)**; fatos das duas entradas conferidos na Fase 124 | — |
+| 13 | Estabilização do catálogo: varredura final de duplicatas (mesmo autor e autores diferentes) | **feito (Fase 125)**: 1 atribuição removida (Esopo), 1 duplicata removida (Primo Levi), 2 fontes uniformizadas (Rosalind Franklin) | — |
+| 14 | Ditados Populares (384 frases, status X, sem autor) | **fora do escopo de auditoria — decisão do proprietário (12/10/2026)**. Categoria editorial própria (ditados, provérbios, expressões tradicionais e frases de efeito, sem fonte bibliográfica nem autor). Não verificar, não contar como lacuna nem como pendência. **Não retomar.** | — |
+| 15 | Biografias e histórias: conferir fatos (perfis de 519 autores, 235 histórias, citações dentro dos textos) | não iniciado. Registrado em 12/10: o CHECKPOINT antigo listava "biografias individualmente" como não feito, e uma amostra mostrou erro (Mill: a emenda do voto feminino é de 1867, não de 1865). O proprietário mandou iniciar as lacunas; a ordem deste item fica para decisão dele | lotes e regras prontos (`a29`, Fase 126) |
 
-## B. Lacunas — 177 pessoas com 1–2 frases após a Fase 124 (mais 131 autores com obra e nenhuma frase, ver CHECKPOINT) (plano, não iniciado; recalcular ao fim das etapas editoriais)
+## B. Lacunas — 179 pessoas com 1–2 frases após a Fase 125 (resolução iniciada em 12/10/2026, por decisão do proprietário). Os Ditados Populares não entram na contagem. À parte, e fora do critério de lacuna: 131 autores com obra e nenhuma frase (ver CHECKPOINT).
 
-A meta de 3 por autor é só referência (decisão de 09/10: não é obrigação; entra o que for comprovado, priorizando qualidade). **Só começa depois das etapas editoriais da seção A (itens 5–8) e da estabilização dos números.** Não usar 102 como alvo fixo.
+A meta de 3 por autor é só referência (decisão de 09/10: não é obrigação; entra o que for comprovado, priorizando qualidade). Etapas editoriais da seção A (itens 4–8 e 13) concluídas e números estabilizados em 12/10. A lista de trabalho é `curadoria/lacunas-restantes.csv`. Não usar número antigo como alvo fixo.
 
 **Grupo 1 — texto em domínio público provavelmente acessível (≈ 27), trabalhar primeiro**
 - Textos já clonados ou localizados: Harriet Beecher Stowe (*A Cabana do Pai Tomás*), Flaubert (*Madame Bovary*), Ring Lardner (*You Know Me Al*, GITenberg), Théophile Gautier (*Mademoiselle de Maupin*, GITenberg), Júlio César (*Guerra das Gálias*), Plutarco (outros volumes das *Vidas* e *Moralia*), Dinah Craik, Santos Dumont (parte II e *Dans l'air*).
@@ -40,3 +43,6 @@ A meta de 3 por autor é só referência (decisão de 09/10: não é obrigação
 2. Versículos: não padronizar em uma edição; manter a edição conferida.
 3. Processos 4, 5 e 6 autorizados (podem remover frases; não manter frase só por quantidade).
 4. GitHub: trabalhar no repositório oficial em branch própria, commits coerentes; **sem merge/publicação em `main` sem autorização**.
+5. Obras duplicadas no catálogo: não unificar (item 12).
+6. (12/10/2026) **Ditados Populares fora de qualquer auditoria**, definitivamente. A exceção vale só para essa categoria; toda frase atribuída a autor continua sujeita aos critérios de autoria, fidelidade textual e fonte.
+7. (12/10/2026) Lacunas: depois de recalcular, iniciar a resolução de **todas** (não só do Grupo 1).

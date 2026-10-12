@@ -42324,4 +42324,60 @@ window.CURADORIA_EXPORT_CSV = function(download){
  window.__fase5Boot = function(){ if(typeof prev==='function') prev(); aplicar(); };
 })();
 
+(function(){
+ /* Fase 125 — estabilização do catálogo (12/10/2026). Varredura final de
+    duplicatas entre todas as frases ativas (mesmo autor e autores
+    diferentes): sai a "moral" de Esopo que não é de Esopo, sai o título
+    "Se isto é um homem" (já contido no trecho do poema de Primo Levi) e as
+    duas frases da mesma carta de Rosalind Franklin passam a ter a mesma
+    fonte. Os Ditados Populares ficam fora desta e de qualquer auditoria,
+    por decisão do proprietário (categoria editorial própria).
+    Resultado: 2 corrigidas, 1 removidas, 1 duplicatas removidas.
+    Registro em curadoria/trabalho/fase125-estabilizacao-decisoes.jsonl. */
+ var OPS = [{"qid": "f282age2lz4", "op": "k", "src": "Carta ao pai, Ellis Franklin (c. verão de 1940)", "ev": "Carta a Ellis Franklin (c. verão de 1940), reproduzida em Brenda Maddox, Rosalind Franklin (2002); Quote Investigator (2021).", "mot": "Fonte uniformizada com a da outra frase da mesma carta."}, {"qid": "f82gmski6n", "op": "k", "src": "Carta ao pai, Ellis Franklin (c. verão de 1940)", "ev": "Carta a Ellis Franklin (c. verão de 1940), reproduzida em Brenda Maddox, Rosalind Franklin (2002); Quote Investigator (2021).", "mot": "Fonte uniformizada com a da outra frase da mesma carta."}, {"qid": "f7914cqkgn", "op": "r", "mot": "Atribuição sem base: a fábula \"O Lobo em Pele de Cordeiro\" não está nas coleções antigas de Esopo (a versão mais antiga conhecida é do retórico bizantino Nicéforo Basilakes, século XII), e a moral \"Appearances are deceptive\" foi acrescentada na tradução inglesa moderna (Project Gutenberg #28). A forma \"As aparências enganam\" continua no site como ditado popular.", "fon": "Aesop's Fables, Project Gutenberg #28 (moral ao fim da fábula); Wikipedia, \"Wolf in sheep's clothing\" (origem medieval, Basilakes, Progymnasmata)."}, {"qid": "f282i4lyhfi", "op": "d", "mot": "\"Se isto é um homem\" é o título do livro e o fecho da primeira estrofe do poema \"Shemà\", já presente na frase com os cinco primeiros versos (\"…considerem se isto é um homem\").", "cp": "q1mju27vhhuai2"}];
+ var RECONSULTA = [];
+ function aplicar(){
+  var nk=0, nr=0, nd=0, nt=0, nrec=0, ausentes=[], semReg=[];
+  var LOTE='Fase 125 — estabilização (duplicatas)';
+  function nota(q, t){ q.notaInterna = (q.notaInterna ? q.notaInterna+' ' : '') + t; }
+  function fim(t){ t=String(t||'').replace(/\s+$/,''); return /[.!?…]["”»)]?$/.test(t) ? t : t+'.'; }
+  function porQid(id){ return QUOTES.filter(function(x){ return x.qid===id; })[0]; }
+  OPS.forEach(function(o){
+   var q = porQid(o.qid);
+   if(!q){ ausentes.push(o.qid); return; }
+   if(o.op==='r' || o.op==='d'){
+    var cp = o.cp ? porQid(o.cp) : null;
+    window.CURADORIA_REMOVIDAS.push({ data:'2026-10-12', lote:LOTE, commit_base:'', commit_remocao:'', autor:q.author, texto:q.text, tipo:(o.op==='d'?'variante-removida':'removida'), motivo:o.mot, fontes:o.fon||'', qid:q.qid, fonte_anterior:q.src, status_anterior:q.st, categoria_anterior:q.cat, contraparte:(cp?cp.text:''), similaridade:'', origem:'decisão desta sessão' });
+    if(typeof removerFrase==='function') removerFrase(q.qid, o.mot);
+    if(o.op==='d') nd++; else nr++;
+    return;
+   }
+   if(o.text && o.text!==q.text){
+    window.CURADORIA_REMOVIDAS.push({ data:'2026-10-12', lote:LOTE, commit_base:'', commit_remocao:'', autor:q.author, texto:q.text, tipo:'substituida', motivo:o.mot, fontes:o.ev||'', qid:q.qid, fonte_anterior:q.src, status_anterior:q.st, categoria_anterior:q.cat, contraparte:o.text, similaridade:'', origem:'decisão desta sessão' });
+    q.text = o.text; nt++;
+   }
+   if(o.autor) q.author = o.autor;
+   if(o.orig) q.orig = o.orig;
+   if(o.src) q.src = o.src;
+   if(o.nota) q.notaAutoria = o.nota;
+   q.st = o.st || 'A';
+   nota(q, 'Fase 125 (12/10/2026): '+fim(o.mot)+' Evidência: '+fim(o.ev)+(o.obs?' Observação: '+fim(o.obs):''));
+   nk++;
+  });
+  RECONSULTA.forEach(function(r){
+   var reg = window.CURADORIA_REMOVIDAS.filter(function(x){ return x.autor===r[0] && x.tipo===r[2] && String(x.texto||'').indexOf(r[1])===0; });
+   if(!reg.length){ semReg.push(r[0]+' :: '+r[1]); return; }
+   reg.forEach(function(x){ x.motivo = String(x.motivo||'').replace(/\s+$/,'') + ' [reconsultado em 12/10/2026] ' + r[3]; });
+   nrec++;
+  });
+  if(ausentes.length) console.warn('MeMotiva · Fase 125: qid não encontrado — '+ausentes.join(', '));
+  if(semReg.length) console.warn('MeMotiva · Fase 125: registro não localizado para reconsulta — '+semReg.join(' | '));
+  console.log('MeMotiva · Fase 125: '+nk+' corrigidas ('+nt+' textos trocados); '+nr+' removidas; '+nd+' duplicatas removidas; '+nrec+' motivos reconsultados.');
+  if(typeof reindexarQuotes==='function') reindexarQuotes();
+  if(typeof reconstruirIndices==='function') reconstruirIndices();
+ }
+ var prev = window.__fase5Boot;
+ window.__fase5Boot = function(){ if(typeof prev==='function') prev(); aplicar(); };
+})();
+
 init().then(()=>{ if(window.__fase5Boot) window.__fase5Boot(); });
