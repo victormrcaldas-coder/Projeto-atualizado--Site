@@ -14,3 +14,4 @@ Quando a fase é aplicada em `assets/js/memotiva.js`, o conteúdo vai para `nota
 - `fase120-escrituras-decisoes.jsonl` — escrituras não bíblicas (240 frases: Alcorão, hadith, tradição judaica, Tao, Buda, Gita, Analectos, Upanishads/Veda). Concluída e aplicada (Fase 120, 10/10/2026).
 - `fase121-aminus-decisoes.jsonl` — auditoria das 542 frases A− (8 lotes por autor, revisão integral). Regras usadas em `fase121-regras.md`. Concluída e aplicada (Fase 121, 11/10/2026).
 - `fase122-editorial-decisoes.jsonl` — verificações editoriais pendentes (reconsultas, duplicatas, escrituras B, rótulos de autor). Linhas com `acao: reconsulta` acrescentam a evidência ao motivo de uma remoção já registrada. Concluída e aplicada (Fase 122, 11/10/2026).
+- `fase123-averif-decisoes.jsonl` — auditoria das 977 frases A sem verificação registrada (12 lotes por autor). Regras em `fase123-regras.md`. Concluída e aplicada (Fase 123, 12/10/2026).

@@ -14,13 +14,13 @@ Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.
 | 6 | Frases com status A− e fonte genérica | **feito (Fase 121)**: as 542 decididas em 10–11/10 — 81 confirmadas, 124 corrigidas, 322 removidas, 18 duplicatas; A− = 0 (ver CHECKPOINT) | — |
 | 7 | Descrições das obras: conferir fatos contra fontes (não reescrever) | não iniciado | amostragem por tipo + obras mais citadas |
 | 8 | Motivos de remoção ainda "não reconsultados" + duplicatas achadas | **feito (Fase 122)**: 9 motivos reconsultados, duplicatas resolvidas, 6 escrituras B conferidas, rótulos de autor corrigidos (ver CHECKPOINT) | — |
-| 8b | **Frases A sem verificação registrada** (994: 210 com fonte genérica "…registrada", 355 só com o título da obra, 429 com localização) | achado na Fase 122 | auditar no mesmo padrão da Fase 121 antes das lacunas |
+| 8b | Frases A sem verificação registrada | **feito (Fase 123)**: 977 auditadas em 11–12/10 — 318 confirmadas, 321 corrigidas, 317 removidas, 22 duplicatas (ver CHECKPOINT) | — |
 | 9 | Auditoria de código (funções duplicadas, listeners, desempenho) | parcial | só correções reais |
 | 10 | Testes finais: responsividade (7 resoluções), Firefox/Safari | **por último**; Firefox/Safari indisponíveis aqui | navegador real do proprietário |
 | 11 | Fotos de autores | **adiado a pedido** | 338 sem entrada |
 | 12 | Obras duplicadas no catálogo (10) | **não unificar (decisão)** | — |
 
-## B. Lacunas — 163 pessoas com 1–2 frases após a Fase 122 (mais 98 autores com obra e nenhuma frase, ver CHECKPOINT) (plano, não iniciado; recalcular ao fim das etapas editoriais)
+## B. Lacunas — 177 pessoas com 1–2 frases após a Fase 123 (mais 134 autores com obra e nenhuma frase) (mais 98 autores com obra e nenhuma frase, ver CHECKPOINT) (plano, não iniciado; recalcular ao fim das etapas editoriais)
 
 A meta de 3 por autor é só referência (decisão de 09/10: não é obrigação; entra o que for comprovado, priorizando qualidade). **Só começa depois das etapas editoriais da seção A (itens 5–8) e da estabilização dos números.** Não usar 102 como alvo fixo.
 

@@ -2018,3 +2018,79 @@ Itens que estavam abertos no plano (A8) ou que apareceram nas fases anteriores. 
 - Lacunas novas: Rabban Shimon ben Gamliel, 1, e Sojourner Truth, 2.
 - Status: A 1.963 · X 386 · **A− 0 · B 0**.
 - Testes: 0 exceções JS; favoritos, busca e rolagem OK; nenhuma frase ativa no registro de remoções; `qid` sem duplicidade.
+
+## Fase 123 — auditoria das frases A sem verificação registrada (11–12/10/2026)
+
+**Por quê.** A varredura da Fase 122 mostrou que o status A não garantia conferência. Um exemplo é "Entre o estímulo e a resposta…", que não é de Frankl. Foram auditadas **977 frases A** sem `notaInterna` e fora das escrituras já conferidas:
+- **210** com fonte genérica ("Entrevista registrada", "Discurso registrado", "Correspondência registrada"…), herança da Fase 25;
+- **767** só com o título da obra ou com localização nunca conferida.
+
+**Método.** É o mesmo da Fase 121. As frases foram divididas em 12 lotes por autor e conferidas com regras escritas (`curadoria/trabalho/fase123-regras.md`):
+- **Autores de língua portuguesa:** a redação tem de ser **literal**.
+- **Fonte genérica:** nunca basta; ou se acha a ocasião real, ou a frase sai.
+- **Texto integral lido sempre que possível:**
+  - Aristóteles, Platão, Marco Aurélio, Epicteto e Diógenes Laércio no grego (Perseus);
+  - Sêneca e Cícero no latim;
+  - Montaigne, Rousseau e Pascal no francês;
+  - Nietzsche e Rilke no alemão;
+  - Tolstói no russo;
+  - Shakespeare nas obras completas e no Primeiro Fólio;
+  - Machado e Pessoa (Arquivo Pessoa); Gibran, Emerson e Thoreau no Gutenberg.
+- **Discursos e cartas:** arquivos institucionais (JFK Library, American Presidency Project, Margaret Thatcher Foundation, King Institute, Stanford News, cartas da Amazon/Berkshire), Quote Investigator e imprensa de referência.
+- **Revisão:** cada lote foi conferido ao terminar, só o resultado da última sessão, conforme orientação do proprietário (12/10).
+
+**Resultado (978 decisões: as 977 e mais 1 duplicata achada no caminho):**
+- **318 confirmadas** e **321 corrigidas**. Todas ficam A, com a evidência em `notaInterna`:
+  - 236 textos trocados;
+  - 526 com original;
+  - 524 com fonte e localização.
+- **317 removidas e 22 duplicatas.**
+- Das 210 com fonte genérica, só 90 ficaram, todas com a ocasião real; 116 saíram.
+
+**Exemplos:**
+- **Atribuição errada:**
+  - "O voto é uma máquina de votar…" e "o mercado está aí para servir você" são de Buffett, não de Graham.
+  - "Competition is for losers" é título do Wall Street Journal, não fala de Thiel.
+  - Uma frase de Lincoln é de Emerson; uma de Locke é de Epicteto; uma de Montaigne é de Hume.
+  - A "Oração" atribuída a Rumi é de *A Course in Miracles*; uma de Maya Angelou é de Zora Neale Hurston.
+  - A frase de Montessori é verso de Wordsworth.
+  - "O Brasil espera que cada um…" é o sinal de Barroso em Riachuelo, não de Vargas.
+  - "Faça uma coisa todo dia que te dê medo" é de Mary Schmich, não de Eleanor Roosevelt.
+  - "Façamos a revolução…" é de Antônio Carlos de Andrada.
+  - "A felicidade depende de nós mesmos" é glosa de um tradutor de Aristóteles (1955).
+- **Ocasião real no lugar da fonte genérica:**
+  - MLK: Birmingham, "I Have a Dream", Spelman 1960, Oberlin 1964;
+  - Kennedy, Thatcher, Jobs (Stanford 2005, Wired 1996), Bezos (cartas), Annan (discursos da ONU), Ginsburg (Radcliffe 2015).
+- **Obra ou localização corrigida:**
+  - "O menino é pai do homem" é o título do capítulo 11 de *Brás Cubas*, citando Wordsworth.
+  - "O homem é o lobo do homem" está em *Do Cidadão*, não no *Leviatã*.
+  - Sêneca: cartas 119, 101 e 106; *Consolação a Hélvia*.
+  - Platão: *Sétima Carta*.
+  - Gibran: capítulos de *O Profeta*.
+  - Montaigne: II, 3 e II, 6.
+- **Inversão corrigida:** "Não aprendemos para a escola, mas para a vida" inverte Sêneca ("non vitae sed scholae discimus", carta 106); fica com nota pública.
+- **Decisão editorial:** "A morte é o remédio de todos os males" (Montaigne, II, 3) sai. É real, mas no ensaio é argumento a favor da morte voluntária e estava na categoria de momentos difíceis.
+
+**Interação com o código:**
+- **Passagens distintas que o portão da Fase 75 juntaria:** dois pares foram acrescentados à lista `PRESERVAR` das três versões do portão (Ética a Nicômaco I, 7 e X, 7–8; dois livros de Thich Nhat Hanh).
+- **Registros antigos reclassificados:** em duas frases a correção restabeleceu a redação literal que um registro antigo dava como "fundida-duplicata" (Vinicius, "Samba da Bênção"; Pessoa, "Mar Português"). Esses registros passam a `restabelecida`, com nota.
+- **Avisos da Fase 78:** o portão agora remove antes a duplicata de base de Meditações V, 20, que antes saía pela Fase 78. O resultado é o mesmo, e o aviso "Fase 78 · não localizadas" passa a citar também essa frase.
+
+**Pode voltar com a fonte certa (removido por cautela):**
+- "Toda unanimidade é burra" (Nelson Rodrigues, crônica não localizada);
+- "Credo político" de Rui Barbosa (Fase 121);
+- frases de Graciliano (*Vidas Secas*, PDF da edição de 1938 não aberto);
+- Krenak (PDF da Unicamp);
+- William James (carta a Helen Keller, 1908);
+- Bowlby (*A Secure Base*); Kierkegaard; Edison (Snopes considera autêntica, sem ocasião).
+
+**Limites:**
+- Parte das confirmações de livros contemporâneos se apoia em fonte secundária confiável (destaques da edição publicada somados a resenha ou resumo).
+- Originais alemão e francês de Vygotsky, Foucault, Bourdieu, Anne Frank e Jung não foram vistos; `orig` ficou vazio.
+- O Pequeno Príncipe mantém a redação consagrada da tradução brasileira, por ser uma frase isolada e célebre.
+
+**Estado (Chromium real, 390×844 e 1440×900):**
+- Números: frases **2.010** (−339) · autores 521 · obras 1.245 · lacunas **177** (+46 novas, efeito das remoções; outras saíram) · registros 3.148 · frases com `orig` 1.327.
+- **Autores com obra e nenhuma frase: 134.**
+- Status: **A 1.624** · X 386 · A− 0 · B 0. Toda frase A agora tem verificação registrada ou é escritura já conferida.
+- Testes: 0 exceções JS; favoritos, busca e rolagem OK; nenhuma frase ativa no registro de remoções; `qid` sem duplicidade.
