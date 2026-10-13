@@ -2323,3 +2323,91 @@ O trabalho está preparado, com regras e lotes, mas **não começou**: o proprie
   - nenhuma frase ativa no registro;
   - `qid` sem duplicidade;
   - as 206 frases novas passaram pelo portão de duplicatas.
+
+## Fase 126 — conferência dos fatos nas biografias e histórias (13/10/2026)
+
+**Por quê.** Item 15 do PLANO, na ordem decidida pelo proprietário (C8). O CHECKPOINT de 04/10 registrava "biografias individualmente" como não feito, e uma amostra confirmou erros: na cronologia de Mill, a emenda pelo voto feminino é de 1867, não de 1865.
+
+**Escopo.** Os 521 autores do índice, cada um com:
+- `papel` (descrição com datas);
+- `feitos`;
+- panorama: `titulo`, `resumo`, `curta`, `bio`, `contexto`, `contribuicoes`, `cronologia`, `nota`;
+- as 235 histórias (`title`, `role`, `excerpt`, `text`).
+
+**Método.** 16 lotes por ordem alfabética, com as regras em `curadoria/trabalho/fase126-regras.md`:
+- **O que se conferiu:** datas, lugares, nomes, cargos, prêmios, cronologia e acontecimentos, contra obras de referência, biografias publicadas, fontes institucionais e imprensa de referência.
+- **Menor mudança possível:** o estilo não foi reescrito.
+- **Falas entre aspas** sem documentação foram retiradas.
+- **Superlativos falsos** ("o primeiro", "o único", "o mais") foram corrigidos ou retirados.
+- **Fato novo** só entrou se conferido numa fonte. Mortes recentes acrescentadas foram conferidas uma a uma:
+  - Jane Goodall (1º/10/2025);
+  - Lou Gerstner (27/12/2025);
+  - Edith Eger (27/4/2026);
+  - Howard Stevenson (setembro de 2026).
+
+**Resultado: 521 autores, 232 sem erro, 289 corrigidos (492 campos).**
+
+Campos alterados:
+
+| Campo | Correções |
+|---|---|
+| `bio` | 174 |
+| histórias | 92 |
+| `cronologia` | 82 |
+| `contribuicoes` | 54 |
+| `papel` | 25 |
+| `resumo` | 18 |
+| `feitos` | 9 |
+| `curta`, `contexto` | 8 cada |
+| `nota` | 3 |
+| `titulo` | 2 |
+
+**Exemplos de correção:**
+- **Datas:**
+  - Mill: voto feminino em 1867;
+  - Chaplin: exílio de 20 anos, não 12;
+  - Ariano Suassuna: o Auto estreou em 1956, eleição para a ABL em 1989;
+  - Magalhães Pinto: morreu em 6/3/1996;
+  - Lutero: excomungado antes da Dieta de Worms.
+- **Lugares:**
+  - Darcy Ribeiro morreu em Brasília;
+  - Clarice chegou primeiro a Maceió;
+  - Ulysses Guimarães: a queda foi no litoral do Rio;
+  - Bezos: a garagem ficava em Bellevue;
+  - Colin Powell morreu em Maryland.
+- **Atribuições:**
+  - Lei do Ventre Livre: sancionada pela princesa Isabel, não por Pedro II;
+  - Swatch: não foi criado por Hayek;
+  - multiplicador keynesiano: é de Kahn;
+  - frase de Amelia Earhart: é de Ayn Rand;
+  - máxima da furadeira: Levitt a atribuiu a Leo McGivena.
+- **Livros inexistentes, trocados ou retirados:**
+  - "Os Caçadores de Elefantes" (Groucho Marx);
+  - "Um Sonho Possível" (Blanchard);
+  - "Ninguém É uma Ilha" (Buscaglia);
+  - "Estou Louca Para Comer Você" (Ephron);
+  - "Cartas do Coração Sem Porto" (Caio F. Abreu);
+  - títulos de Brené Brown.
+- **Mitos retirados:**
+  - Lincoln "perdeu quase todas as eleições";
+  - cabeça de Tubman "posta a prêmio";
+  - Rowling e o apartamento sem aquecimento;
+  - o "nada a declarar exceto meu gênio" de Wilde;
+  - Tesla rasgando o contrato;
+  - Luz Long orientando Jesse Owens.
+- **Papéis genéricos** ("Autor do acervo MeMotiva", nome de categoria) trocados por descrição com datas: Lavoisier, Kafka, Dante, Winnicott, Bowlby, Homero, Meister Eckhart e outros.
+- **Roberto Shinyashiki:** foi o único caso sinalizado. Data e local de nascimento, faculdade, números de venda e pioneirismo não se confirmam em fonte de referência, e por isso foram retirados. Ficou o que se confirma: psiquiatra; MBA e doutorado pela FEA-USP; *A Carícia Essencial* (1985); mais de vinte livros.
+
+**Mantidos por divergência entre fontes**, como estavam:
+- local de nascimento de Angela Duckworth;
+- ano da mudança de Azad para Calcutá;
+- datas de publicação de *Persuasão* (dez. 1817, folha de rosto 1818);
+- aposentadoria de Schwarzkopf (1991/1992);
+- local da morte de Bennis.
+
+**Estado (Chromium real, 390×844 e 1440×900).**
+- Números: frases 2.413 · autores 521 · obras 1.230 · lacunas 96 · registros 3.150.
+- Testes:
+  - 0 exceções JS; favoritos, busca e rolagem sem problema;
+  - **as 521 páginas de autor abertas uma a uma**, sem erro e sem texto "undefined"/"null";
+  - as 492 alterações conferidas campo a campo contra o catálogo carregado.
