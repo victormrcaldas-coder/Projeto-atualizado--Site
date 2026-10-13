@@ -1,0 +1,197 @@
+[
+ {
+  "arquivo": "nucleo/01-utilitarios-e-categorias.js",
+  "descricao": "Utilitários (armazenamento local, escape, slug, toast, hash), categorias e cores.",
+  "marcador": null
+ },
+ {
+  "arquivo": "nucleo/02-autores-perfis-origens.js",
+  "descricao": "Normalização de nomes de autor (aliases), perfis de atuação, origens e metadados das biografias.",
+  "marcador": "FASE 2 — NORMALIZAÇÃO DE AUTORES"
+ },
+ {
+  "arquivo": "dados/03-historias-iniciais.js",
+  "descricao": "Histórias (biografias narrativas) acrescentadas na Fase 2.",
+  "marcador": "NOVAS BIOGRAFIAS (§6)"
+ },
+ {
+  "arquivo": "dados/04-frases-fase3.js",
+  "descricao": "Frases verificadas acrescentadas na Fase 3 (NEW_QUOTES).",
+  "marcador": "FASE 3 — EXPANSÃO DA CURADORIA"
+ },
+ {
+  "arquivo": "dados/05-historias-lotes-a-d.js",
+  "descricao": "Histórias dos lotes A–D (Fases 3 e 4).",
+  "marcador": "FASE 3 — NOVAS BIOGRAFIAS (lote A)"
+ },
+ {
+  "arquivo": "dados/06-revisao-documental.js",
+  "descricao": "Mapas da revisão documental: passagens canônicas, correções de autoria, elevação A−→A, traduções sagradas.",
+  "marcador": "REVISÃO DOCUMENTAL — MAPA DE PASSAGENS CANÔNICAS"
+ },
+ {
+  "arquivo": "dados/07-frases-base.js",
+  "descricao": "Acervo-base de frases (QUOTES). As fases de curadoria posteriores corrigem, removem e acrescentam sobre este array.",
+  "marcador": "const QUOTES = ["
+ },
+ {
+  "arquivo": "dados/08-historias-e-estilos.js",
+  "descricao": "Histórias-base (STORIES), filtro de palavras e estilos do compositor.",
+  "marcador": "const STORIES = ["
+ },
+ {
+  "arquivo": "app/09-estado-navegacao-cartoes-explorar.js",
+  "descricao": "Estado da aplicação, tema, navegação, cartão de frase, home (hero, frase do dia, gerador), categorias e Explorar.",
+  "marcador": "ESTADO DA APLICAÇÃO"
+ },
+ {
+  "arquivo": "app/10-historias-comunidade-perfil-login.js",
+  "descricao": "Histórias com narração, compositor, comunidade, minhas frases, favoritos, perfil, autenticação local, menu e tema.",
+  "marcador": "HISTÓRIAS — cartões com narração por voz sob demanda"
+ },
+ {
+  "arquivo": "app/11-fotos-consolidacao-revisao.js",
+  "descricao": "Fotos de autores (Commons), consolidação do banco (aliases, índices) e aplicação da revisão documental.",
+  "marcador": "FASE 2 — CURADORIA FOTOGRÁFICA (§8)"
+ },
+ {
+  "arquivo": "app/12-modais-descubra-biografias.js",
+  "descricao": "Modais, Explorar por atuação, Descubra, Biografias e navegação da Fase 3.",
+  "marcador": "MODAIS DE EXPANSÃO (§10)"
+ },
+ {
+  "arquivo": "app/13-fotos-tradicoes-home.js",
+  "descricao": "Fotos das novas pessoas, origens, tradições religiosas, cartões de tema da home e expansão do cartão.",
+  "marcador": "FASE 3 — FOTOGRAFIAS DAS NOVAS PESSOAS (§11: obrigatórias)"
+ },
+ {
+  "arquivo": "app/14-fotos-procedencia-variantes.js",
+  "descricao": "Busca de fotos (Wikipédia/Commons), exibição da procedência e agrupamento de variantes.",
+  "marcador": "FASE 4 — FOTOGRAFIAS"
+ },
+ {
+  "arquivo": "app/15-inicializacao.js",
+  "descricao": "init(): primeira renderização. É chamada no último arquivo, depois de todas as fases.",
+  "marcador": "INICIALIZAÇÃO"
+ },
+ {
+  "arquivo": "dados/16-obras-feitos-papeis.js",
+  "descricao": "Catálogo-base de obras (OBRAS_CURADAS), feitos e papéis (descrição curta das pessoas).",
+  "marcador": "FASE 5 — DADOS: OBRAS, FEITOS E PAPÉIS"
+ },
+ {
+  "arquivo": "app/17-fundos-trilhas.js",
+  "descricao": "Galeria de fundos e trilhas sonoras.",
+  "marcador": "FASE 5 — GALERIA DE FUNDOS"
+ },
+ {
+  "arquivo": "app/18-autores-obras-panorama.js",
+  "descricao": "Índice de obras e autores (OBRAS, OBRA_POR_ID, AUTOR_INDEX), telas Autores & Obras e Panorama do autor.",
+  "marcador": "FASE 5 — AUTORES & OBRAS · ESCREVER · COMUNIDADE · PERFIL"
+ },
+ {
+  "arquivo": "app/19-obra-musica-escrever-editor.js",
+  "descricao": "Tela da obra, motor de áudio, tela Escrever e editor de foto/vídeo, envio de relatos.",
+  "marcador": "TELA DA OBRA"
+ },
+ {
+  "arquivo": "app/20-relatos-comunidade-perfil-narracao.js",
+  "descricao": "Relatos (comunidade e pessoais), perfil, cartão expandido, narração e carga da Fase 5 (window.__fase5Boot).",
+  "marcador": "RENDERIZAÇÃO DOS RELATOS (comunidade e pessoais)"
+ },
+ {
+  "arquivo": "dados/21-perfis-profundos.js",
+  "descricao": "Panoramas biográficos (PERFIS_PROFUNDOS) e biografias curtas das Histórias.",
+  "marcador": "FASE 6 — CURADORIA APROFUNDADA DE AUTORES"
+ },
+ {
+  "arquivo": "dados/22-biblioteca-paginas-de-obra.js",
+  "descricao": "Obras extras, descrições novas e páginas únicas das obras (OBRA_PAGINA).",
+  "marcador": "FASE 6 — BIBLIOTECA EXPANDIDA E DESCRIÇÕES NOVAS"
+ },
+ {
+  "arquivo": "curadoria/23-fase06-frases-pendentes.js",
+  "descricao": "Fase 6 — curadoria das frases pendentes (CURADORIA_FINAL).",
+  "marcador": "FASE 6 — CURADORIA DAS FRASES PENDENTES"
+ },
+ {
+  "arquivo": "app/24-busca-biografia-seo-musica.js",
+  "descricao": "Fase 6 — busca inteligente, biografia em tela cheia, páginas de obra/pessoa, SEO e música.",
+  "marcador": "FASE 6 — BUSCA INTELIGENTE, CURADORIA, BIOGRAFIAS EXPANDIDAS,"
+ },
+ {
+  "arquivo": "curadoria/25-fase07-procedencia-ids.js",
+  "descricao": "Fase 7 — auditoria de procedência, qid estável, removerFrase/reindexarQuotes.",
+  "marcador": "FASE 7 — AUDITORIA DE PROCEDÊNCIA, IDs ESTÁVEIS E CURADORIA"
+ },
+ {
+  "arquivo": "curadoria/26-fase08-curadoria-massiva.js",
+  "descricao": "Fase 8 — curadoria massiva.",
+  "marcador": "FASE 8 — CURADORIA MASSIVA"
+ },
+ {
+  "arquivo": "curadoria/27-fases09-19-fila.js",
+  "descricao": "Fases 9–19 — continuação da fila de curadoria por autor (panoramas, obras, frases).",
+  "marcador": "FASE 9 — CONTINUAÇÃO DA FILA DE CURADORIA"
+ },
+ {
+  "arquivo": "curadoria/28-fases20-29-procedencia-reposicao.js",
+  "descricao": "Fases 20–29 — procedência honesta, atribuições populares, reposição com fonte exata.",
+  "marcador": "FASE 20 — PROCEDÊNCIA HONESTA DAS 1.184 FONTES GENÉRICAS"
+ },
+ {
+  "arquivo": "curadoria/29-fases30-36-paginas-de-obra.js",
+  "descricao": "Fases 30–36 — compatibilidade, páginas de obra, contadores e diagnóstico.",
+  "marcador": "FASE 30 — COMPATIBILIDADE MULTIPLATAFORMA"
+ },
+ {
+  "arquivo": "curadoria/30-fases37-46-paginas-de-obra.js",
+  "descricao": "Fases 37–46 — páginas de obra (lotes 1–11).",
+  "marcador": "FASE 37 — PÁGINAS DE OBRA (lote 1)"
+ },
+ {
+  "arquivo": "curadoria/31-fases47-54-paginas-de-obra.js",
+  "descricao": "Fases 47–54 — páginas de obra (lotes 12–19).",
+  "marcador": "/* ===== FASE 47a — páginas de obra (lote 12/A) ===== */"
+ },
+ {
+  "arquivo": "curadoria/32-fases55-56-limpeza-descricoes.js",
+  "descricao": "Fases 55–56 — limpeza do catálogo e descrições editoriais.",
+  "marcador": "/* ===== FASE 55 — limpeza final do catálogo e completude das páginas ===== */"
+ },
+ {
+  "arquivo": "curadoria/33-fase57-panoramas.js",
+  "descricao": "Fase 57 — panoramas (lotes 1–6).",
+  "marcador": "/* ===== FASE 57a — panoramas (lote 1) ===== */"
+ },
+ {
+  "arquivo": "curadoria/34-fases58-61-descricoes-obras.js",
+  "descricao": "Fases 58–61 — descrições de obra ao padrão e obras verificáveis dos panoramas órfãos.",
+  "marcador": "/* ===== FASE 58a — descrições de obra ao padrão de 2–3 linhas (lote 1) ===== */"
+ },
+ {
+  "arquivo": "curadoria/35-fases62-75-remocoes-desduplicacao.js",
+  "descricao": "Fases 62–75 — remoções sem obra, reposição, desduplicação e portão final (Fase 75).",
+  "marcador": "/* Fase 62 — remoção das frases sem obra confirmada."
+ },
+ {
+  "arquivo": "curadoria/36-fases76-99-conferencias.js",
+  "descricao": "Fases 76–99 — duplicatas finas, conferência original×tradução, exportação CSV (Fase 87), cadeia de boot (Fase 89), curadoria de precisão.",
+  "marcador": "/* Fase 76 — oito duplicatas que ficaram logo abaixo do limiar do portão."
+ },
+ {
+  "arquivo": "curadoria/37-fases100-118-registro-lacunas.js",
+  "descricao": "Fases 100–118 — registro permanente de remoções, histórico, lacunas, auditorias de atribuição e versículos.",
+  "marcador": "/* Fase 100 — registro permanente de remoções e decisões \"não inserir\""
+ },
+ {
+  "arquivo": "curadoria/38-fases119-128-auditorias-finais.js",
+  "descricao": "Fases 119–128 — verificação de originais, escrituras, A−, A sem verificação, obras, estabilização, lacunas, autores sem frase, biografias.",
+  "marcador": "/* Fase 119 — verificação do campo `orig` das 580 frases pendentes da Fase 117"
+ },
+ {
+  "arquivo": "app/99-iniciar.js",
+  "descricao": "Dispara init() e, em seguida, a cadeia de fases (window.__fase5Boot). Tem de ser o último arquivo carregado.",
+  "marcador": "init().then(()=>{ if(window.__fase5Boot) window.__fase5Boot(); });"
+ }
+]

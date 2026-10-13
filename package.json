@@ -1,0 +1,21 @@
+{
+  "name": "memotiva",
+  "private": true,
+  "description": "MeMotiva — site estático de frases curadas, biografias e obras (ver ARCHITECTURE.md).",
+  "type": "module",
+  "scripts": {
+    "servir": "python3 -m http.server 8000",
+    "teste": "node ferramentas/codigo/analise-carga.mjs && node ferramentas/testes/e2e.mjs && node ferramentas/testes/paginas.mjs",
+    "estado:base": "node ferramentas/testes/estado.mjs --salvar base",
+    "estado:comparar": "node ferramentas/testes/estado.mjs --comparar base",
+    "exportar": "node ferramentas/exportar/exportar-csv.mjs",
+    "codigo-morto": "node ferramentas/codigo/codigo-morto.mjs",
+    "formatar": "prettier --write \"assets/**/*.{js,css}\" \"ferramentas/**/*.mjs\""
+  },
+  "devDependencies": {
+    "acorn": "^8.14.0",
+    "acorn-walk": "^8.3.4",
+    "playwright": "^1.49.0",
+    "prettier": "^3.8.1"
+  }
+}
