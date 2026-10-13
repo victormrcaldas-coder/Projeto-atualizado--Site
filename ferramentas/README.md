@@ -43,6 +43,9 @@ Numa mudança de conteúdo (fase de curadoria), o passo 3 deve mostrar diferenç
 | | `juntar_decisoes.py` | Junta as decisões dos lotes e aplica a revisão humana (overrides). |
 | | `validar_insercoes.py` | Confere as inserções antes de gerar o bloco (campos, categoria, semelhança com frases atuais ou removidas). |
 | | `nova_fase.py` | Instala o bloco como `assets/js/curadoria/NN-faseXXX-nome.js` e o registra em `index.html` antes de `app/99-iniciar.js`. |
+| `auditoria/` | `editorial.py` | 25 checagens editoriais sobre o estado capturado (duplicatas, variantes, campos, Bíblia, registro, obras, datas, ligação frase → obra). `npm run auditoria`. |
+| | `biblia.py` | Confere cada versículo contra o texto aberto da edição do rótulo (ACF, AA, NVI; baixar para `.trabalho/biblia/`, ver cabeçalho). |
+| | `tecnico.mjs` | Carga, CLS, console, rede, listeners ao navegar e sondas de XSS pelo armazenamento compartilhado. `npm run auditoria:tecnica`. |
 | `textos/` | `gutenberg.py` | Baixa textos integrais do Gutenberg pelo espelho GITenberg. |
 
 ## Fluxo de uma nova fase de curadoria

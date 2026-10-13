@@ -993,6 +993,9 @@ function renderObra() {
   const citacoes = i.frases
     .filter((idx) => {
       const q = QUOTES[idx];
+      /* q.obra liga a frase à obra pelo título exato do catálogo quando a fonte usa
+         outra forma do título ("Carta aos acionistas…" × "Cartas aos Acionistas…") */
+      if (q.obra) return q.obra === o.t;
       return q.src && bNorm(q.src).startsWith(bNorm(o.t).slice(0, 12));
     })
     .slice(0, 8);
@@ -1386,6 +1389,9 @@ async function spotifyEntrar() {
   }
   const verifier = _b64url(crypto.getRandomValues(new Uint8Array(48)));
   sessionStorage.setItem('mm_sp_verifier', verifier);
+  /* state aleatório: a volta do Spotify só é aceita se trouxer o mesmo valor (proteção contra CSRF no login) */
+  const estado = _b64url(crypto.getRandomValues(new Uint8Array(16)));
+  sessionStorage.setItem('mm_sp_state', estado);
   const challenge = _b64url(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier)));
   const url =
     'https://accounts.spotify.com/authorize?response_type=code' +
@@ -1393,6 +1399,8 @@ async function spotifyEntrar() {
     encodeURIComponent(cfg.clientId) +
     '&scope=' +
     encodeURIComponent(cfg.escopo || '') +
+    '&state=' +
+    estado +
     '&code_challenge_method=S256&code_challenge=' +
     challenge +
     '&redirect_uri=' +
@@ -1407,7 +1415,10 @@ async function spotifyToken() {
   const cfg = window.MEMOTIVA_MUSICA.spotify;
   const code = new URLSearchParams(location.search).get('code');
   const verifier = sessionStorage.getItem('mm_sp_verifier');
+  const estado = new URLSearchParams(location.search).get('state');
   if (!code || !verifier || !cfg.clientId) return null;
+  if (!estado || estado !== sessionStorage.getItem('mm_sp_state')) return null;
+  sessionStorage.removeItem('mm_sp_state');
   try {
     const body = new URLSearchParams({
       grant_type: 'authorization_code',
@@ -1634,7 +1645,7 @@ function renderResultadosMusica() {
         .map(
           (m) => `
         <button class="mus-linha" data-mus="${escapeHtml(m.id)}">
-          <span class="mus-capa" style="${m.capa ? `background-image:url('${escapeHtml(m.capa)}')` : ''}">
+          <span class="mus-capa" style="${urlCssSegura(m.capa) ? `background-image:url('${urlCssSegura(m.capa)}')` : ''}">
             ${m.capa ? '' : f5svg('nota', 18)}
           </span>
           <span class="mus-info">
@@ -1686,7 +1697,7 @@ function renderEditorTrecho() {
   ed.innerHTML = `
     <div class="mus-ed-topo">
       <button class="btn-icon" id="musVoltar" aria-label="Voltar aos resultados">${f5svg('voltar', 18)}</button>
-      <span class="mus-capa grande" style="${m.capa ? `background-image:url('${escapeHtml(m.capa)}')` : ''}">${m.capa ? '' : f5svg('nota', 22)}</span>
+      <span class="mus-capa grande" style="${urlCssSegura(m.capa) ? `background-image:url('${urlCssSegura(m.capa)}')` : ''}">${m.capa ? '' : f5svg('nota', 22)}</span>
       <span class="mus-info">
         <b>${escapeHtml(m.nome)}</b>
         <small>${escapeHtml(m.artista)}</small>
@@ -1829,9 +1840,10 @@ function renderPainelMusica() {
 function volumeHTML(p) {
   if (!p.musica) return '';
   const m = p.musica;
-  return `<button class="post-vol" data-vol="${p.id}" aria-label="Ativar som do relato" title="Tocar a música deste relato">${f5svg('mudo', 18)}</button>
+  const capa = urlCssSegura(m.capa);
+  return `<button class="post-vol" data-vol="${escapeHtml(p.id)}" aria-label="Ativar som do relato" title="Tocar a música deste relato">${f5svg('mudo', 18)}</button>
     <span class="post-music-name">
-      ${m.capa ? `<i class="pmn-capa" style="background-image:url('${escapeHtml(m.capa)}')"></i>` : f5svg('nota', 12)}
+      ${capa ? `<i class="pmn-capa" style="background-image:url('${capa}')"></i>` : f5svg('nota', 12)}
       ${escapeHtml(m.nome)}${m.artista ? ' · ' + escapeHtml(m.artista) : ''}
     </span>`;
 }

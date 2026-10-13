@@ -7,4 +7,6 @@ Site de frases curadas em português, com páginas de autores, obras, histórias
 - **Histórico e pendências:** [`curadoria/CHECKPOINT.md`](curadoria/CHECKPOINT.md) e [`curadoria/PLANO.md`](curadoria/PLANO.md).
 - **Ferramentas e testes:** [`ferramentas/README.md`](ferramentas/README.md). Atalhos: `npm run teste`, `npm run estado:base`, `npm run estado:comparar`, `npm run exportar`.
 
-Estado em 13/10/2026: 2.413 frases · 521 autores · 1.230 obras · 235 histórias. Trabalho na branch `claude/modest-edison-so8ay4`; `main` só recebe merge com autorização do proprietário.
+- **Auditoria mais recente:** [`curadoria/AUDITORIA-2026-10-13.md`](curadoria/AUDITORIA-2026-10-13.md) (editorial, técnica e de segurança). Para o Claude Code: [`CLAUDE.md`](CLAUDE.md).
+
+Estado em 13/10/2026 (depois da Fase 129): 2.412 frases · 521 autores · 1.230 obras · 235 histórias. A `main` tem o estado completo e testado; o backup do estado anterior está nas branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13`.

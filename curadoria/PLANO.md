@@ -1,4 +1,4 @@
-# MeMotiva — plano de trabalho (atualizado em 12/10/2026)
+# MeMotiva — plano de trabalho (atualizado em 13/10/2026)
 
 Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.** Sem "não foi possível confirmar" no site. Traduções fiéis de original conferido são aceitas (o site avisa que busca a maior proximidade).
 
@@ -21,9 +21,10 @@ Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.
 | 12 | Obras duplicadas no catálogo (10) | **não unificar (decisão)**; fatos das duas entradas conferidos na Fase 124 | — |
 | 13 | Estabilização do catálogo: varredura final de duplicatas (mesmo autor e autores diferentes) | **feito (Fase 125)**: 1 atribuição removida (Esopo), 1 duplicata removida (Primo Levi), 2 fontes uniformizadas (Rosalind Franklin) | — |
 | 14 | Ditados Populares (384 frases, status X, sem autor) | **fora do escopo de auditoria — decisão do proprietário (12/10/2026)**. Categoria editorial própria (ditados, provérbios, expressões tradicionais e frases de efeito, sem fonte bibliográfica nem autor). Não verificar, não contar como lacuna nem como pendência. **Não retomar.** | — |
+| 16 | Auditoria sistemática (editorial, técnica e de segurança) do estado real | **feito (Fase 129, 13/10/2026)**: relatório em `curadoria/AUDITORIA-2026-10-13.md`. Edison corrigido, Mt 6:34, Reale, Godin removida, Newton e Blanchard, evidência de 92 versículos, 33 frases ligadas à página da obra; XSS da comunidade fechado, carga de ~17 s para ~4,5 s | dúvidas listadas no relatório (§1.3); autenticação real depende de back-end |
 | 15 | Biografias e histórias: conferir fatos (perfis de 521 autores, 235 histórias, citações dentro dos textos) | **feito (Fase 126, 13/10/2026)**: 232 sem erro, 289 corrigidos (492 campos; 92 histórias), falas sem fonte retiradas, papéis genéricos substituídos (ver CHECKPOINT) | — |
 
-## B. Lacunas — 96 pessoas com 1–2 frases após a Fase 128 (13/10/2026): 44 que restaram da Fase 127 (documentadas sem texto verificável) + 52 dos 131 autores que passaram de 0 para 1–2 frases. 35 autores continuam sem frase (documentados). Os Ditados Populares não entram na contagem. Biografias e histórias concluídas (Fase 126).
+## B. Lacunas — 97 pessoas com 1–2 frases após a Fase 129 (13/10/2026): 44 que restaram da Fase 127 (documentadas sem texto verificável) + 52 dos 131 autores que passaram de 0 para 1–2 frases + Seth Godin (frase sem fonte primária removida na Fase 129). 35 autores continuam sem frase (documentados). Os Ditados Populares não entram na contagem. Biografias e histórias concluídas (Fase 126).
 
 A meta de 3 por autor é só referência (decisão de 09/10: não é obrigação; entra o que for comprovado, priorizando qualidade). Etapas editoriais da seção A (itens 4–8 e 13) concluídas e números estabilizados em 12/10. A lista de trabalho é `curadoria/lacunas-restantes.csv`. Não usar número antigo como alvo fixo.
 

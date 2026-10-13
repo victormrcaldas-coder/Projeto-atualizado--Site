@@ -51,11 +51,50 @@ async function dbSet(key, value, shared = false) {
 function uid(prefix = 'id') {
   return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
+/* Memoriza uma função pura de um texto (normalização, bigramas). As passagens de
+   desduplicação comparam cada frase com várias outras do mesmo autor; sem cache,
+   o mesmo texto era normalizado milhares de vezes a cada carga da página.
+   O resultado devolvido é compartilhado: quem chama não deve alterá-lo. */
+function memoTexto(fn) {
+  const cache = new Map();
+  return function (s) {
+    const k = String(s);
+    let v = cache.get(k);
+    if (v === undefined) {
+      v = fn(k);
+      cache.set(k, v);
+    }
+    return v;
+  };
+}
 function escapeHtml(str) {
   return String(str).replace(
     /[&<>"']/g,
     (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]
   );
+}
+/* Valores vindos do armazenamento compartilhado (posts e mídias da comunidade)
+   podem ser gravados por qualquer visitante: antes de entrar em HTML, cada campo
+   passa por uma destas checagens. */
+function urlMidiaSegura(src) {
+  const s = String(src == null ? '' : src).trim();
+  return /^(https:\/\/|blob:|data:(image|video|audio)\/[a-z0-9.+-]+;base64,)/i.test(s) ? escapeHtml(s) : '';
+}
+/* para url('…') dentro de style="": só URLs aceitas por urlMidiaSegura, com aspas e parênteses codificados */
+function urlCssSegura(src) {
+  if (!urlMidiaSegura(src)) return '';
+  return escapeHtml(
+    String(src)
+      .trim()
+      .replace(/['()\\]/g, (x) => '%' + x.charCodeAt(0).toString(16))
+  );
+}
+function filtroSeguro(f) {
+  const s = String(f == null ? '' : f).trim();
+  return /^(none|([a-z-]+\(-?[0-9.]+(%|deg|px)?\)\s*)+)$/i.test(s) ? s : 'none';
+}
+function idSeguro(id) {
+  return /^[A-Za-z0-9_-]{1,80}$/.test(String(id)) ? String(id) : '';
 }
 function slugify(str) {
   return str

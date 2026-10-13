@@ -6,8 +6,8 @@ A revisão (overrides) é um JSONL com linhas que casam pelo autor + início do 
 O motivo da revisão é anexado à evidência ("Revisão: ...").
 
 Uso:
-  python3 ferramentas/curadoria/juntar_decisoes.py --lotes ".trabalho/fase129/dec_*.jsonl" \
-      --revisao .trabalho/fase129/revisao.jsonl --saida .trabalho/fase129/decisoes.jsonl
+  python3 ferramentas/curadoria/juntar_decisoes.py --lotes ".trabalho/fase130/dec_*.jsonl" \
+      --revisao .trabalho/fase130/revisao.jsonl --saida .trabalho/fase130/decisoes.jsonl
 """
 import argparse, glob, json, collections
 

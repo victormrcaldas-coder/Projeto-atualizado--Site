@@ -17,14 +17,19 @@ function relatoTinta(p) {
   if (p.color === 'paper') return 'var(--paper-text)';
   return state.theme === 'dark' ? '#F3ECE3' : '#1B1817';
 }
+/* <img>/<video> de uma mídia guardada; src e filtro passam pelas checagens de nucleo/01 */
+function midiaTag(m) {
+  const src = urlMidiaSegura(m && m.src);
+  if (!src) return '';
+  const filtro = filtroSeguro(m.filtro);
+  return m.tipo === 'video'
+    ? `<video src="${src}" muted loop playsinline autoplay style="filter:${filtro}"></video>`
+    : `<img src="${src}" alt="" style="filter:${filtro}">`;
+}
 function midiaHTML(p, compartilhado) {
   if (p.midiaSessao) {
     const m = p.midiaSessao;
-    return `<div class="post-media">${
-      m.tipo === 'video'
-        ? `<video src="${m.src}" muted loop playsinline autoplay style="filter:${m.filtro || 'none'}"></video>`
-        : `<img src="${m.src}" alt="" style="filter:${m.filtro || 'none'}">`
-    }</div><div class="post-media-scrim"></div>`;
+    return `<div class="post-media">${midiaTag(m)}</div><div class="post-media-scrim"></div>`;
   }
   if (p.midia)
     return `<div class="post-media" data-midia="${escapeHtml(p.midia)}" data-shared="${compartilhado ? 1 : 0}"></div><div class="post-media-scrim"></div>`;
@@ -36,10 +41,7 @@ async function hidratarMidias(scope) {
     el.dataset.carregada = '1';
     const m = await carregarMidia(el.dataset.midia, el.dataset.shared === '1');
     if (!m) continue;
-    el.innerHTML =
-      m.tipo === 'video'
-        ? `<video src="${m.src}" muted loop playsinline autoplay style="filter:${m.filtro || 'none'}"></video>`
-        : `<img src="${m.src}" alt="" style="filter:${m.filtro || 'none'}">`;
+    el.innerHTML = midiaTag(m);
   }
 }
 function quoteRefHTML(p) {

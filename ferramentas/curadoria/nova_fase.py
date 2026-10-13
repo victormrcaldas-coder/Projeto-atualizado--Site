@@ -2,16 +2,16 @@
 imediatamente antes de app/99-iniciar.js (que tem de continuar sendo o último script).
 
 Uso:
-  python3 ferramentas/curadoria/nova_fase.py --bloco .trabalho/fase129/bloco.js \
-      --nome 39-fase129-lacunas.js --descricao "Fase 129 — lacunas, lote X."
-Depois: node ferramentas/codigo/analise-carga.mjs && node ferramentas/testes/e2e.mjs fase129
+  python3 ferramentas/curadoria/nova_fase.py --bloco .trabalho/fase130/bloco.js \
+      --nome 40-fase130-lacunas.js --descricao "Fase 130 — lacunas, lote X."
+Depois: node ferramentas/codigo/analise-carga.mjs && node ferramentas/testes/e2e.mjs fase130
 """
 import argparse, os, re, subprocess
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ap = argparse.ArgumentParser()
 ap.add_argument('--bloco', required=True)
-ap.add_argument('--nome', required=True, help='ex.: 39-fase129-lacunas.js (número seguinte ao último arquivo de curadoria/)')
+ap.add_argument('--nome', required=True, help='ex.: 40-fase130-lacunas.js (número seguinte ao último arquivo de curadoria/)')
 ap.add_argument('--descricao', required=True)
 a = ap.parse_args()
 assert re.match(r'^\d{2}-[a-z0-9-]+\.js$', a.nome), 'nome deve ser NN-descricao-em-minusculas.js'

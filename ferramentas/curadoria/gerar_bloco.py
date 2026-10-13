@@ -17,9 +17,9 @@ Quatro tipos, os mesmos usados nas Fases 119–128:
                       contribuicoes,cronologia,nota,"historia:<id>":{title,role,excerpt,text}}}
 
 Uso:
-  python3 ferramentas/curadoria/gerar_bloco.py insercao --fase 129 --data 20/10/2026 \
-      --entrada .trabalho/fase129/decisoes.jsonl --saida .trabalho/fase129/bloco.js \
-      --resumo "lacunas, lote X" --registro curadoria/trabalho/fase129-decisoes.jsonl
+  python3 ferramentas/curadoria/gerar_bloco.py insercao --fase 130 --data 20/10/2026 \
+      --entrada .trabalho/fase130/decisoes.jsonl --saida .trabalho/fase130/bloco.js \
+      --resumo "lacunas, lote X" --registro curadoria/trabalho/fase130-decisoes.jsonl
 Depois: python3 ferramentas/curadoria/nova_fase.py (instala o bloco como arquivo novo).
 """
 import argparse, json, collections, sys
@@ -70,6 +70,8 @@ def insercao(D, a):
    var q = {{ author:r[0], text:r[1], src:r[5], st:'A', cat: cats.indexOf(r[4])>=0 ? r[4] : 'reflexao', qid:id, notaInterna:r[7] }};
    if(r[6]) q.notaAutoria = r[6];
    if(r[2]) q.orig = r[2];
+   /* liga a frase à página da obra mesmo quando a fonte usa outra forma do título */
+   if(r[3] && OBRAS[r[0]] && OBRAS[r[0]].some(function(o){{ return o.t===r[3]; }})) q.obra = r[3];
    QUOTES.push(q); nQ++;
   }});
   if(typeof reindexarQuotes==='function') reindexarQuotes();

@@ -2502,3 +2502,60 @@ Por status são A 2.027 e X 386: 384 ditados populares e 2 de autor não identif
 - **Parâmetros de uma letra.** Os de callbacks (`q => q.text`), dezenas de milhares, ficaram como estão; são idiomáticos.
 - **Nomes em inglês.** Os herdados do protótipo (`quoteCardHTML`, `state`…) não foram renomeados em massa.
 - **Consolidação das fases.** As fases antigas não foram "consolidadas" (gerar os dados finais e aposentá-las). É a principal melhoria de desempenho possível, mas é decisão de arquitetura do proprietário. Ver `ARCHITECTURE.md`, §9.
+
+## Fase 129 — auditoria sistemática editorial, técnica e de segurança (13/10/2026)
+
+**Pedido do proprietário.** Fazer o backup de tudo, levar o trabalho completo para a `main`, testar e depois auditar o estado real do site: primeiro diagnosticar, depois corrigir só o que ficasse comprovado, separando os achados confirmados das dúvidas e classificando-os por gravidade, evidência, impacto e dependências. O relatório completo está em **`curadoria/AUDITORIA-2026-10-13.md`**.
+
+**Backup e `main`.** O estado anterior da `main` ficou em `backup/main-original-2026-10-13`, e o trabalho completo em `backup/trabalho-completo-2026-10-13`. A `main` recebeu o trabalho por fast-forward. Num clone limpo, o estado deu idêntico, o e2e e as páginas passaram e os CSVs regenerados saíram iguais aos do repositório.
+
+**Método.** O estado final capturado no Chromium foi verificado com três ferramentas novas em `ferramentas/auditoria/`:
+- `editorial.py`: 25 checagens;
+- `biblia.py`: versículo contra a edição rotulada, em texto aberto;
+- `tecnico.mjs`: carga, CLS, console, listeners e sondas de XSS.
+
+Mais leitura do código e perfil de CPU.
+
+**Correções de conteúdo (bloco `assets/js/curadoria/39-fase129-auditoria.js`; decisões em `trabalho/fase129-auditoria-decisoes.jsonl`):**
+- **Edison** (`q1434h1gu2wigb`). "Dez mil maneiras que não funcionam" estava como A sem fonte, e a nota citava uma biografia que não traz essa redação. Passa à fala documentada no capítulo XXIV de Dyer e Martin (1910), no relato de W. S. Mallory, conferida no Gutenberg #820: "Resultados! Ora, homem, obtive muitos resultados! Conheço vários milhares de coisas que não funcionam." Tem `orig`, e a nota pública diz que a forma popular é paráfrase. O texto antigo foi para o registro como `substituida`.
+- **Mateus 6:34** (NVI). Saiu a aspa solta do fim; ela fecha o Sermão do Monte e não pertence ao versículo.
+- **Miguel Reale**. A fonte passa de *Filosofia do Direito*, ligação não confirmada, a *Teoria Tridimensional do Direito* (1968), onde artigos acadêmicos localizam a fórmula. Não se acrescentou página.
+- **Seth Godin**, "Não encontre clientes para seus produtos…". **Removida**: só aparece em sites de citações; o post do blog não foi localizado. Godin fica com 2 frases e entra nas lacunas.
+- **Isaac Newton**. A cronologia passa ao calendário gregoriano no nascimento, 4/1/1643, com o juliano entre parênteses, coerente com a data da morte e com o papel.
+- **Ken Blanchard**. Cronologia reordenada.
+- **92 versículos** sem evidência registrada. Recebem nota interna com a conferência; os **99** versículos do site são idênticos à edição do rótulo (ACF 52, NVI 25, AA 22). Nenhum rótulo foi padronizado.
+- **33 frases ligadas à página da obra** pelo campo novo `obra`, o título exato do catálogo. Antes não apareciam lá porque a fonte usa outra forma do título: "Carta aos acionistas…" × "Cartas aos Acionistas…", título original × edição brasileira, "Fragmento 53" × "Fragmentos". O gerador de inserções passou a gravar `obra`, que antes recebia e descartava.
+
+**Sem alteração (falsos positivos ou dúvidas; ver §1.3 do relatório):**
+- 7 pares de "variantes" que são passagens distintas;
+- 9 fontes "genéricas" que nomeiam discurso com data ou livro;
+- 17 `orig` iguais ao texto, de autores lusófonos;
+- 19 marcações de datas de biografia que são outro evento do mesmo ano;
+- Guimarães Rosa, Bogle, Schwarzkopf, Matsushita, Osho e Buffett, com evidência dentro do padrão mas sem página ou sem o original;
+- o ditado em `negocios`, mantido por decisão do proprietário.
+
+**Correções técnicas e de segurança:**
+- **XSS armazenado na comunidade (alta).** O armazenamento compartilhado aceita JSON de qualquer visitante, e `id`, `src` e `filtro` de posts e mídias entravam crus no HTML. A sonda executou script 50 vezes. Agora `sanearPost`, `midiaTag`, `urlMidiaSegura`, `urlCssSegura`, `filtroSeguro` e `idSeguro` fecham o caminho, e `midiaSessao` não vai mais para o feed. A sonda executa 0 vezes.
+- **Carga (média).** A cadeia levava cerca de 17 s de CPU: a desduplicação recalculava normalização e bigramas em pares, e `removerFrase` reindexava tudo a cada remoção. `memoTexto`, cosseno com norma pré-calculada e reindexação parcial baixaram para **cerca de 4,5 s**. Só com as otimizações, `estado:comparar` deu idêntico.
+- **OAuth do Spotify** ganhou `state`. O **nome de usuário** só aceita `[A-Za-z0-9._]` (3–24). A **capa de música** em `url()` é codificada.
+- **Sem achado:**
+  - segredos expostos (varredura de padrões);
+  - `target=_blank` inseguro;
+  - `eval`;
+  - vazamento de listeners (contagem estável em 3 voltas pelas telas);
+  - exceções JS.
+  
+  CLS de 0,003 a 0,005.
+- **Pendente por depender de back-end (alta).** A autenticação é toda no cliente: hash de senha no armazenamento compartilhado, sessão forjável, feed sem controle de autoria. Está documentado em ARCHITECTURE §9, sem migração.
+
+**Testes:**
+- análise de carga: 40 arquivos, 0 problemas;
+- e2e em 390×844 e 1440×900: 0 exceções, 2.412 frases, 97 lacunas;
+- 1.230 páginas de obra e 521 de autor sem erro;
+- auditoria técnica: XSS 0;
+- `biblia.py`: 99 de 99;
+- CSVs regenerados.
+
+**Documentação.** `CLAUDE.md` novo, para o Claude Code: regras, comandos e notas para o redesign. Atualizados `ARCHITECTURE.md` (campo `obra`, §4.6 Segurança e desempenho, números, `main`), `README.md`, `PLANO.md` (item 16), `trabalho/LEIAME.md` e `ferramentas/README.md`.
+
+**Estado:** frases **2.412** (A 2.026 · X 386) · autores 521 · obras 1.230 · histórias 235 · lacunas 97 · registros 3.153 · com `orig` 1.651.

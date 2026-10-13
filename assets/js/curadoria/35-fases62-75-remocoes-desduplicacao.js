@@ -1023,7 +1023,7 @@
     /* Fonte fraca: vazia, atribuição sem registro primário, ou o rótulo genérico
      isolado. "Obra X ou declaração pública registrada" NÃO é fraca — nomeia a obra. */
     var FRACA = /^\s*$|^Atribu[íi]do\b.*sem (localiza|registro)|sem localiza[çc][ãa]o em sua obra|^Ver o veredito|^Formula[çc][ãa]o difundida|^(Entrevista|Palestra|Discurso|Declara[çc][ãa]o p[úu]blica) registrada$/i;
-    function norm(s) {
+    var norm = memoTexto(function (s) {
       return String(s)
         .toLowerCase()
         .normalize('NFD')
@@ -1031,8 +1031,8 @@
         .replace(/[^a-z0-9 ]/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
-    }
-    function toks(s) {
+    });
+    var toks = memoTexto(function (s) {
       var a = norm(s)
         .split(' ')
         .filter(function (w) {
@@ -1043,7 +1043,7 @@
         m[w] = 1;
       });
       return Object.keys(m);
-    }
+    });
     function simUniao(a, b) {
       var A = toks(a),
         B = toks(b),
@@ -1147,14 +1147,14 @@
     /* Fonte fraca: vazia, atribuição sem registro primário, ou o rótulo genérico
      isolado. "Obra X ou declaração pública registrada" NÃO é fraca — nomeia a obra. */
     var FRACA = /^\s*$|^Atribu[íi]do\b.*sem (localiza|registro)|sem localiza[çc][ãa]o em sua obra|^Ver o veredito|^Formula[çc][ãa]o difundida|^(Entrevista|Palestra|Discurso|Declara[çc][ãa]o p[úu]blica) registrada$/i;
-    function norm(s) {
+    var norm = memoTexto(function (s) {
       return String(s)
         .toLowerCase()
         .normalize('NFD')
         .replace(/[̀-ͯ]/g, '')
         .replace(/[^a-z0-9]/g, '');
-    }
-    function bigramas(s) {
+    });
+    var bigramas = memoTexto(function (s) {
       var t = norm(s),
         m = {};
       for (var i = 0; i < t.length - 1; i++) {
@@ -1162,7 +1162,7 @@
         m[g] = (m[g] || 0) + 1;
       }
       return m;
-    }
+    });
     function cosseno(a, b) {
       var A = bigramas(a),
         B = bigramas(b),
@@ -1282,7 +1282,7 @@
     /* Fonte fraca: vazia, atribuição sem registro primário, ou o rótulo genérico
       isolado. "Obra X ou declaração pública registrada" NÃO é fraca — nomeia a obra. */
     var FRACA = /^\s*$|^Atribu[íi]do\b.*sem (localiza|registro)|sem localiza[çc][ãa]o em sua obra|^Ver o veredito|^Formula[çc][ãa]o difundida|^(Entrevista|Palestra|Discurso|Declara[çc][ãa]o p[úu]blica) registrada$/i;
-    function norm(s) {
+    var norm = memoTexto(function (s) {
       return String(s)
         .toLowerCase()
         .normalize('NFD')
@@ -1290,28 +1290,36 @@
         .replace(/[^a-z0-9 ]/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
-    }
-    function cosseno(a, b) {
-      function bg(s) {
-        var t = norm(s).replace(/ /g, ''),
-          m = {};
-        for (var i = 0; i < t.length - 1; i++) {
-          var g = t.substr(i, 2);
-          m[g] = (m[g] || 0) + 1;
-        }
-        return m;
+    });
+    /* bigramas de caracteres de um texto, com a soma dos quadrados já calculada */
+    var bg = memoTexto(function (s) {
+      var t = norm(s).replace(/ /g, ''),
+        m = new Map();
+      for (var i = 0; i < t.length - 1; i++) {
+        var g = t.substr(i, 2);
+        m.set(g, (m.get(g) || 0) + 1);
       }
+      var q = 0;
+      m.forEach(function (v) {
+        q += v * v;
+      });
+      return { m: m, q: q };
+    });
+    function cosseno(a, b) {
       var A = bg(a),
         B = bg(b),
-        n = 0,
-        na = 0,
-        nb = 0;
-      for (var g in A) {
-        na += A[g] * A[g];
-        if (B[g]) n += A[g] * B[g];
+        n = 0;
+      if (!A.q || !B.q) return 0;
+      if (A.m.size > B.m.size) {
+        var t = A;
+        A = B;
+        B = t;
       }
-      for (var h in B) nb += B[h] * B[h];
-      return na && nb ? n / Math.sqrt(na * nb) : 0;
+      A.m.forEach(function (v, g) {
+        var w = B.m.get(g);
+        if (w) n += v * w;
+      });
+      return n / Math.sqrt(A.q * B.q);
     }
     function ordem(a, b) {
       var A = norm(a).split(' '),
@@ -1911,7 +1919,7 @@
     /* Fonte fraca: vazia, atribuição sem registro primário, ou o rótulo genérico
       isolado. "Obra X ou declaração pública registrada" NÃO é fraca — nomeia a obra. */
     var FRACA = /^\s*$|^Atribu[íi]do\b.*sem (localiza|registro)|sem localiza[çc][ãa]o em sua obra|^Ver o veredito|^Formula[çc][ãa]o difundida|^(Entrevista|Palestra|Discurso|Declara[çc][ãa]o p[úu]blica) registrada$/i;
-    function norm(s) {
+    var norm = memoTexto(function (s) {
       return String(s)
         .toLowerCase()
         .normalize('NFD')
@@ -1919,28 +1927,36 @@
         .replace(/[^a-z0-9 ]/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
-    }
-    function cosseno(a, b) {
-      function bg(s) {
-        var t = norm(s).replace(/ /g, ''),
-          m = {};
-        for (var i = 0; i < t.length - 1; i++) {
-          var g = t.substr(i, 2);
-          m[g] = (m[g] || 0) + 1;
-        }
-        return m;
+    });
+    /* bigramas de caracteres de um texto, com a soma dos quadrados já calculada */
+    var bg = memoTexto(function (s) {
+      var t = norm(s).replace(/ /g, ''),
+        m = new Map();
+      for (var i = 0; i < t.length - 1; i++) {
+        var g = t.substr(i, 2);
+        m.set(g, (m.get(g) || 0) + 1);
       }
+      var q = 0;
+      m.forEach(function (v) {
+        q += v * v;
+      });
+      return { m: m, q: q };
+    });
+    function cosseno(a, b) {
       var A = bg(a),
         B = bg(b),
-        n = 0,
-        na = 0,
-        nb = 0;
-      for (var g in A) {
-        na += A[g] * A[g];
-        if (B[g]) n += A[g] * B[g];
+        n = 0;
+      if (!A.q || !B.q) return 0;
+      if (A.m.size > B.m.size) {
+        var t = A;
+        A = B;
+        B = t;
       }
-      for (var h in B) nb += B[h] * B[h];
-      return na && nb ? n / Math.sqrt(na * nb) : 0;
+      A.m.forEach(function (v, g) {
+        var w = B.m.get(g);
+        if (w) n += v * w;
+      });
+      return n / Math.sqrt(A.q * B.q);
     }
     function ordem(a, b) {
       var A = norm(a).split(' '),

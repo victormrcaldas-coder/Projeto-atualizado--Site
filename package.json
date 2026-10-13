@@ -10,6 +10,8 @@
     "estado:comparar": "node ferramentas/testes/estado.mjs --comparar base",
     "exportar": "node ferramentas/exportar/exportar-csv.mjs",
     "codigo-morto": "node ferramentas/codigo/codigo-morto.mjs",
+    "auditoria": "node ferramentas/testes/estado.mjs --salvar auditoria && python3 ferramentas/auditoria/editorial.py && python3 ferramentas/auditoria/biblia.py",
+    "auditoria:tecnica": "node ferramentas/auditoria/tecnico.mjs",
     "formatar": "prettier --write \"assets/**/*.{js,css}\" \"ferramentas/**/*.mjs\""
   },
   "devDependencies": {

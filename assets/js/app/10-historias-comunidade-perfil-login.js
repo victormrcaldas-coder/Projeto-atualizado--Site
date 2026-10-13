@@ -33,11 +33,66 @@ function playIconSVG() {
 
 /* ---------------- publicar na comunidade ---------------- */
 async function saveCommunityPosts() {
-  await dbSet('feed:posts', state.communityPosts, true);
+  /* a mídia que só vive nesta sessão (midiaSessao) não vai para o feed compartilhado */
+  const posts = state.communityPosts.map((p) =>
+    p.midiaSessao ? Object.assign({}, p, { midiaSessao: null }) : p
+  );
+  await dbSet('feed:posts', posts, true);
+}
+/* O feed compartilhado pode ser gravado por qualquer visitante: cada post lido dele
+   é refeito só com campos esperados, nos tipos esperados. Posts sem id válido saem. */
+function sanearPost(p) {
+  if (!p || typeof p !== 'object' || !idSeguro(p.id)) return null;
+  const txt = (v, n) => (typeof v === 'string' ? v.slice(0, n) : '');
+  const num = (v) => (Number.isFinite(v) ? v : 0);
+  const strs = (a) => (Array.isArray(a) ? a.filter((x) => typeof x === 'string') : []);
+  const m = p.musica && typeof p.musica === 'object' ? p.musica : null;
+  return {
+    id: p.id,
+    text: txt(p.text, 4000),
+    font: txt(p.font, 40),
+    color: txt(p.color, 40),
+    fundo: p.fundo && typeof p.fundo === 'object' ? { cat: txt(p.fundo.cat, 40), i: num(p.fundo.i) } : null,
+    midia: /^midia:[A-Za-z0-9_-]{1,80}$/.test(p.midia) ? p.midia : null,
+    midiaSessao: null,
+    musica: m
+      ? {
+          tipo: txt(m.tipo, 20),
+          id: txt(String(m.id == null ? '' : m.id), 120),
+          nome: txt(m.nome, 200),
+          artista: txt(m.artista, 200),
+          capa: urlMidiaSegura(m.capa) ? m.capa : '',
+          de: num(m.de),
+          ate: num(m.ate),
+          dur: num(m.dur),
+          src: urlMidiaSegura(m.src) ? m.src : null
+        }
+      : null,
+    quote:
+      p.quote && typeof p.quote === 'object'
+        ? { text: txt(p.quote.text, 2000), author: txt(p.quote.author, 200), idx: num(p.quote.idx) }
+        : null,
+    createdAt: num(p.createdAt),
+    authorEmail: txt(p.authorEmail, 200),
+    authorUsername: txt(p.authorUsername, 40),
+    likes: strs(p.likes),
+    comments: (Array.isArray(p.comments) ? p.comments : [])
+      .filter((c) => c && typeof c === 'object' && idSeguro(c.id))
+      .map((c) => ({
+        id: c.id,
+        username: txt(c.username, 40),
+        text: txt(c.text, 1000),
+        createdAt: num(c.createdAt)
+      })),
+    reports: strs(p.reports),
+    hidden: p.hidden === true,
+    arq: p.arq === true,
+    del: p.del === true
+  };
 }
 async function loadCommunityPosts() {
   const posts = await dbGet('feed:posts', true);
-  state.communityPosts = posts || [];
+  state.communityPosts = Array.isArray(posts) ? posts.map(sanearPost).filter(Boolean) : [];
   if (!posts) {
     await seedCommunityIfNeeded();
   }
@@ -369,6 +424,10 @@ async function handleRegister(username, email, password, password2) {
   email = email.trim().toLowerCase();
   if (username.length < 3) {
     errEl.textContent = 'Escolha um nome de usuário com pelo menos 3 caracteres.';
+    return;
+  }
+  if (!/^[A-Za-z0-9._]{3,24}$/.test(username)) {
+    errEl.textContent = 'Use só letras sem acento, números, ponto ou sublinhado (até 24 caracteres).';
     return;
   }
   if (!isValidEmail(email)) {

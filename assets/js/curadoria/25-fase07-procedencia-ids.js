@@ -147,7 +147,10 @@ function removerFrase(qid, motivo) {
   if (state && Array.isArray(state.favorites)) {
     state.favorites = state.favorites.filter((f) => !(f.type === 'quote' && f.qid === qid));
   }
-  reindexarQuotes();
+  /* Só as posições depois de i mudam: reindexar a partir dali evita refazer o
+     índice inteiro a cada uma das centenas de remoções feitas durante a carga. */
+  delete QUOTE_POR_QID[qid];
+  for (let j = i; j < QUOTES.length; j++) QUOTE_POR_QID[QUOTES[j].qid] = j;
   if (typeof reconstruirIndices === 'function') reconstruirIndices();
   REMOVIDAS_F7.push({ qid, autor: removida.author, texto: removida.text, motivo: motivo || 'sem comprovação suficiente' });
   return { ok: true, removida };

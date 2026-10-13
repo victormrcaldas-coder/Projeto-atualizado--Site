@@ -48,13 +48,13 @@
       fontes: 'Plutarco, Vida de César, cap. 10 (confirmada em 02/10/2026); decisão do proprietário'
     }
   ];
-  var norm = function (s) {
+  var norm = memoTexto(function (s) {
     return String(s)
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]/g, '');
-  };
+  });
   /* Registro permanente de tudo o que saiu (ou foi recusado) do acervo.
      Cada entrada: data, lote, autor, texto, tipo (removida, variante-removida,
      substituida, nao-inserir, historico-*…), motivo, fontes. É exportado em
@@ -2332,13 +2332,13 @@
       origem: 'decisão desta sessão; qid preenchido na remoção quando a frase estava ativa'
     });
   });
-  var norm = function (s) {
+  var norm = memoTexto(function (s) {
     return String(s)
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9]/g, '');
-  };
+  });
   function bigr(s) {
     var n = norm(s),
       m = {},

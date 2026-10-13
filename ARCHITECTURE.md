@@ -2,7 +2,7 @@
 
 > **Para quem chega agora**, seja uma pessoa ou outra instância do Claude: leia este arquivo inteiro antes de mexer em qualquer coisa. Ele basta para continuar o trabalho.
 > O histórico detalhado de cada decisão está em `curadoria/CHECKPOINT.md`. O que falta fazer está em `curadoria/PLANO.md`.
-> Estado descrito aqui: **13/10/2026**, branch `claude/modest-edison-so8ay4`.
+> Estado descrito aqui: **13/10/2026, depois da Fase 129** (auditoria sistemática: `curadoria/AUDITORIA-2026-10-13.md`), branch `main`.
 
 ---
 
@@ -16,13 +16,13 @@ Números atuais, conferidos no Chromium em 13/10/2026:
 
 | Item | Quantidade |
 |---|---|
-| Frases ativas | **2.413** — status A: 2.027; status X: 386 (384 Ditados Populares e 2 de "Autor não identificado") |
+| Frases ativas | **2.412** — status A: 2.026; status X: 386 (384 Ditados Populares e 2 de "Autor não identificado") |
 | Autores no índice | 521 |
 | Obras no catálogo | 1.230 |
 | Histórias | 235 |
 | Panoramas biográficos | 529 |
-| Registros de remoção ou decisão | 3.150 |
-| Lacunas (pessoas com 1 ou 2 frases) | 96 |
+| Registros de remoção ou decisão | 3.153 |
+| Lacunas (pessoas com 1 ou 2 frases) | 97 |
 | Autores com obra e nenhuma frase | 35 (mantidos por decisão do proprietário) |
 
 ---
@@ -44,22 +44,24 @@ Números atuais, conferidos no Chromium em 13/10/2026:
 ## 3. Estrutura do repositório
 
 ```
-index.html                 página única; carrega o CSS e os 39 scripts NA ORDEM (ver §4)
+index.html                 página única; carrega o CSS e os 40 scripts NA ORDEM (ver §4)
 assets/
   css/memotiva.css         todo o estilo (responsivo; 725 regras)
   js/
     nucleo/                01–02  utilitários, categorias, aliases de autor, perfis, origens
     dados/                 03–08, 16, 21–22  acervo-base: frases, histórias, obras, papéis, panoramas, páginas de obra
     app/                   09–20, 24, 99  interface: estado, telas, cartões, busca, navegação, áudio, SEO, init
-    curadoria/             23, 25–38  fases de curadoria 6 → 128 (corrigem, removem e acrescentam dados)
+    curadoria/             23, 25–39  fases de curadoria 6 → 129 (corrigem, removem e acrescentam dados)
 curadoria/
   CHECKPOINT.md            diário completo de todas as fases e decisões (longo; consulte por "## Fase N")
+  AUDITORIA-2026-10-13.md  auditoria editorial, técnica e de segurança (achados por gravidade, dúvidas abertas)
   PLANO.md                 trabalhos feitos e pendentes + decisões do proprietário (seção C)
   *.csv                    exportações do estado real (ver §7)
-  trabalho/                decisões JSONL e regras de cada fase recente (119–128) + LEIAME.md
-ferramentas/               testes, exportação, análise de código e geradores de fase (README próprio)
+  trabalho/                decisões JSONL e regras de cada fase recente (119–129) + LEIAME.md
+ferramentas/               testes, auditoria, exportação, análise de código e geradores de fase (README próprio)
 arquivo/                   material histórico (capturas, bundles git, builds antigos, scripts antigos). Não é usado.
-package.json               comandos (npm run teste, estado:base, estado:comparar, exportar, formatar)
+package.json               comandos (npm run teste, estado:base, estado:comparar, auditoria, exportar, formatar)
+CLAUDE.md                  instruções curtas para o Claude Code (regras, comandos, o que não tocar)
 .prettierrc.json           formatação (código 110 colunas; dados/curadoria 400, um registro por linha)
 .trabalho/                 (fora do git) saídas locais de testes, exportações e lotes em andamento
 ```
@@ -70,11 +72,11 @@ package.json               comandos (npm run teste, estado:base, estado:comparar
 
 ### 4.1 Ordem de carga e escopo global
 
-`index.html` carrega **39 scripts clássicos** (sem `type="module"`), nesta ordem:
+`index.html` carrega **40 scripts clássicos** (sem `type="module"`), nesta ordem:
 
 ```
 nucleo/01, nucleo/02, dados/03…08, app/09…15, dados/16, app/17…20, dados/21, dados/22,
-curadoria/23, app/24, curadoria/25…38, app/99-iniciar.js   ← sempre o último
+curadoria/23, app/24, curadoria/25…39, app/99-iniciar.js   ← sempre o último
 ```
 
 - **Escopo compartilhado.** Todos os arquivos dividem o mesmo escopo global: `const`, `let` e `function` de topo de um arquivo são visíveis nos outros. Isso é intencional e herdado: até 13/10/2026 tudo era um único arquivo, `memotiva.js`, de 42,5 mil linhas, que foi dividido sem mudar o comportamento.
@@ -88,7 +90,7 @@ curadoria/23, app/24, curadoria/25…38, app/99-iniciar.js   ← sempre o últim
    - Os de `app/` definem as funções da interface.
    - Os de `curadoria/` executam correções imediatas e **registram-se na cadeia de fases**.
 2. **`init()`** (`app/15`): carrega sessão e favoritos e renderiza a home.
-3. **`window.__fase5Boot()`** (disparada por `app/99`): executa a cadeia de fases, da Fase 5 até a última (hoje 128/126, no fim de `curadoria/38`). Cada fase altera os dados e, quando precisa, chama `reindexarQuotes()` e `reconstruirIndices()`.
+3. **`window.__fase5Boot()`** (disparada por `app/99`): executa a cadeia de fases, da Fase 5 até a última (hoje a 129, em `curadoria/39`). Cada fase altera os dados e, quando precisa, chama `reindexarQuotes()` e `reconstruirIndices()`.
 4. **Fase 89 (portão de duplicatas).** Garante que o portão final de desduplicação (Fase 75) rode dentro da cadeia. As Fases 75 e 78 ainda têm um `setTimeout(…, 0)` redundante.
 
 ### 4.3 O padrão "fase de curadoria"
@@ -129,6 +131,7 @@ Consequências práticas:
 | `qid` | Identificador estável, derivado do conteúdo. Frases novas usam o prefixo `f<fase>…` |
 | `notaAutoria` | Nota **pública** e factual, como "Fala de Eliza Doolittle a Higgins." |
 | `notaInterna` | Processo de curadoria e evidência (não aparece ao leitor; exportado em `notas-internas.csv`) |
+| `obra` | (opcional) Título **exato** da obra no catálogo. Liga a frase à página da obra quando a fonte usa outra forma do título ("Carta aos acionistas…" × "Cartas aos Acionistas…"). Sem ele, a página da obra lista as frases cuja fonte começa pelos 12 primeiros caracteres do título. O gerador de inserções grava `obra` sozinho. |
 | Outros | `proc`, `procTexto`, `procOriginal`, `themes`, `vg`/`vn`/`vdup` (variantes), `srcBruto` e `textoAnterior` são campos auxiliares de fases antigas |
 
 #### Índices e estruturas de autor, obra e histórias
@@ -152,7 +155,7 @@ Consequências práticas:
 | `window.CURADORIA_REMOVIDAS` | **Registro permanente** de tudo o que saiu, foi substituído ou foi recusado. Exportado em `remocoes-curadoria.csv`. |
 | `CURADORIA_BLOQUEADA(texto)` | Impede que texto já removido volte. |
 | `CURADORIA_CHECAR(texto, autor, orig)` | Checagem obrigatória antes de inserir: texto exato, bloqueado ou variante (Dice ≥ 0,70). |
-| `removerFrase(qid, motivo)` | Remove uma frase, ajusta favoritos e reindexa. |
+| `removerFrase(qid, motivo)` | Remove uma frase, ajusta favoritos e reindexa da posição removida em diante. |
 | `LACUNAS()` | Pessoas com 1–2 frases e o motivo. Escrituras e ditados não contam. |
 | `CURADORIA_EXPORT_CSV()` | Gera os CSVs editoriais. |
 
@@ -163,6 +166,13 @@ Consequências práticas:
 - **Cartão de frase.** `quoteCardHTML` / `attachQuoteCardEvents` / `openQuoteModal`. A procedência aparece por `procedenciaHTML`.
 - **SEO.** Título, descrição, `canonical` e JSON-LD são ajustados por tela (`app/24`, seção 11).
 - **Favoritos.** São gravados por `qid` (`{ type: 'quote', qid }`). Entradas antigas gravadas por índice são descartadas por `normalizarFavoritos`.
+
+### 4.6 Segurança e desempenho (regras desde a Fase 129)
+
+- **Conteúdo de usuário nunca entra cru em HTML.** Texto vai por `escapeHtml`. URL de mídia vai por `urlMidiaSegura`, só `https:`, `blob:` e `data:` de imagem, vídeo ou áudio. URL dentro de `url('…')` vai por `urlCssSegura`. Filtro CSS vai por `filtroSeguro`. Id em atributo vai por `idSeguro`. Todos ficam em `nucleo/01`.
+- **O armazenamento compartilhado é não confiável.** Qualquer visitante pode gravar nele JSON arbitrário. Todo post lido de `feed:posts` passa por `sanearPost` (`app/10`), que refaz o objeto só com os campos esperados. Mídias passam por `midiaTag` (`app/20`). `midiaSessao`, a mídia que só existe na sessão, não é gravada no feed.
+- **Funções puras de texto usadas em comparação de pares** (normalização, bigramas) passam por `memoTexto` (`nucleo/01`). Sem isso, a desduplicação da cadeia levava cerca de 10 s por carga. O valor memorizado é compartilhado e não deve ser alterado por quem chama.
+- **Auditoria técnica** repetível: `npm run auditoria:tecnica` (XSS, listeners, CLS, tempo de carga).
 
 ---
 
@@ -202,7 +212,7 @@ Valem para **toda frase atribuída a autor**. As versões completas, usadas pelo
 
 Estão na seção C do `PLANO.md`:
 
-- **Branch e `main`.** Trabalhar em branch própria, com commits coerentes. **Nunca fazer merge nem publicar em `main` sem autorização.**
+- **Branch e `main`.** Trabalhar em branch própria, com commits coerentes. A `main` recebeu todo o trabalho em 13/10/2026, por autorização expressa do proprietário, com backup nas branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13`. **Novos merges na `main` só com autorização.**
 - **Versículos bíblicos.** Não padronizar numa edição só: cada versículo fica na edição efetivamente conferida (ACF, NVI, AA…), rotulada.
 - **Ditados Populares (st `X`, categoria `ditados`).** Categoria editorial própria, **fora de qualquer auditoria**, em definitivo: não verificar, não contar como lacuna nem como pendência. A exceção vale **só** para essa categoria.
 - **Obras duplicadas no catálogo.** Não unificar (`curadoria/obras-duplicadas.csv`).
@@ -216,6 +226,7 @@ Estão na seção C do `PLANO.md`:
 | Arquivo | Conteúdo |
 |---|---|
 | `CHECKPOINT.md` | Diário de todas as fases: o que foi feito, como, exemplos, limites e números. **Fonte da verdade do histórico.** |
+| `AUDITORIA-2026-10-13.md` | Auditoria sistemática: achados editoriais e técnicos por gravidade, evidência, impacto e dependências; dúvidas que ainda pedem pesquisa |
 | `PLANO.md` | Itens A (processos editoriais: feito ou pendente), B (lacunas) e C (decisões do proprietário) |
 | `curadoria-frases.csv` | Todas as frases ativas (estado final) |
 | `catalogo-obras.csv` | Todas as obras |
@@ -223,7 +234,7 @@ Estão na seção C do `PLANO.md`:
 | `notas-internas.csv` | Evidência de cada frase |
 | `remocoes-curadoria.csv` | Registro de remoções e decisões |
 | `obras-duplicadas.csv`, `atribuicoes-fracas-resolucao.csv`, `fotos-sem-entrada.csv`, `verificacao-orig-pendente.csv` | Listas de apoio de fases anteriores |
-| `trabalho/faseNNN-*-decisoes.jsonl` | Cada decisão individual das Fases 119–128, com evidência |
+| `trabalho/faseNNN-*-decisoes.jsonl` | Cada decisão individual das Fases 119–129, com evidência |
 | `trabalho/faseNNN-regras.md` | Regras de cada fase |
 
 Os CSVs são **gerados** a partir do estado real, com `npm run exportar` ou com o e2e. Não os edite à mão.
@@ -235,7 +246,7 @@ Os CSVs são **gerados** a partir do estado real, com `npm run exportar` ou com 
 ### 8.1 Preparar o ambiente
 
 ```bash
-git clone <repo> && cd <repo> && git checkout claude/modest-edison-so8ay4
+git clone <repo> && cd <repo>                       # main tem o estado completo
 npm install && npx playwright install chromium     # na nuvem do Claude Code o Playwright já existe em /opt/node-tools
 python3 -m http.server 8000                         # abrir http://localhost:8000
 npm run estado:base                                 # captura o estado atual (referência para comparações)
@@ -259,7 +270,7 @@ O fluxo é o das Fases 119–128 e está detalhado em `ferramentas/README.md`.
    - `python3 ferramentas/curadoria/juntar_decisoes.py --lotes ".trabalho/faseNNN/dec_*.jsonl" --revisao … --saida …`;
    - `validar_insercoes.py`, se for inserção.
 5. **Bloco.** Gere com `python3 ferramentas/curadoria/gerar_bloco.py <insercao|frases|obras|biografias> --fase NNN --data DD/MM/AAAA --entrada … --saida bloco.js`.
-6. **Instalação.** `python3 ferramentas/curadoria/nova_fase.py --bloco bloco.js --nome 39-faseNNN-descricao.js --descricao "…"`.
+6. **Instalação.** `python3 ferramentas/curadoria/nova_fase.py --bloco bloco.js --nome 40-faseNNN-descricao.js --descricao "…"`.
 7. **Testes.** `npm run teste`, e confira com `npm run estado:comparar` que a diferença está só onde a fase mexe.
 8. **CSVs.** `npm run exportar` e copie os CSVs de `.trabalho/exportacao/` para `curadoria/`.
 9. **Registro.**
@@ -286,12 +297,12 @@ Valem para o Claude Code na nuvem.
 
 | Tema | Situação | Sugestão |
 |---|---|---|
-| **Persistência** | `window.storage` só existe nos *artifacts* do Claude.ai. Em hospedagem comum, login, favoritos e comunidade ficam só em memória. | Trocar `dbGet`/`dbSet` (`nucleo/01`) por um back-end real (Supabase, Firebase etc.) com autenticação. As senhas hoje usam `sha256` no cliente, o que **não é seguro** para produção. |
-| **Peso da carga** | Cerca de 7,9 MB de JS, com todas as fases rodando a cada carga. | "Consolidar": gerar `dados/` a partir do estado final (`estado.mjs` já captura tudo) e aposentar as fases antigas, mantendo o registro. É uma decisão de arquitetura: combinar com o proprietário. Testar com `estado:comparar`. |
+| **Persistência e autenticação** (gravidade alta, ver AUDITORIA S2) | `window.storage` só existe nos *artifacts* do Claude.ai. Em hospedagem comum, login, favoritos e comunidade ficam só em memória. A autenticação é toda no cliente: o hash de senha (SHA-256 sem sal por usuário) fica no armazenamento **compartilhado**, a sessão pode ser forjada e qualquer um pode reescrever o feed. | Trocar `dbGet`/`dbSet` (`nucleo/01`) por um back-end real (Supabase, Firebase etc.), com autenticação no servidor, regras de acesso por autor e hash de senha no servidor. Até lá, contas e comunidade servem só para demonstração. |
+| **Peso da carga** | Cerca de 8,1 MB de JS, com todas as fases rodando a cada carga. Desde a Fase 129 a cadeia leva cerca de 4,5 s no Chromium local; antes eram 17 s. | "Consolidar": gerar `dados/` a partir do estado final (`estado.mjs` já captura tudo) e aposentar as fases antigas, mantendo o registro. É uma decisão de arquitetura: combinar com o proprietário. Testar com `estado:comparar`. |
 | **Fotos** | 338 autores sem foto curada; o site busca na Wikipédia em tempo de execução. | Ver `curadoria/fotos-sem-entrada.csv` (item 11 do PLANO, adiado a pedido). |
 | **Testes** | Só Chromium. Firefox, Safari e toque físico nunca foram testados (item 10 do PLANO). | Rodar no navegador do proprietário. |
 | **`setTimeout` das Fases 75/78** | Redundante desde a Fase 89; mantido para não mudar comportamento. | Pode sair numa consolidação. |
-| **Lacunas** | 96 pessoas com 1–2 frases; 35 autores sem frase. Todos documentados como sem fonte acessível. | Só com fonte nova (§6). |
+| **Lacunas** | 97 pessoas com 1–2 frases; 35 autores sem frase. Todos documentados como sem fonte acessível. | Só com fonte nova (§6). |
 | **Nomes herdados** | Funções em inglês do protótipo e parâmetros de uma letra em callbacks. | Manter; renomear só ao reescrever um trecho. |
 
 ---
@@ -305,3 +316,4 @@ Valem para o Claude Code na nuvem.
 - **Fases 119–125.** Auditoria completa: originais, escrituras, A−, A sem verificação, fatos das obras, estabilização.
 - **Fases 126–128** (13/10/2026). Fatos das biografias e histórias, 199 frases para lacunas e 206 frases para autores sem frase.
 - **13/10/2026.** Código dividido em 39 módulos, código morto removido, ferramentas trazidas para o repositório, este documento.
+- **Fase 129** (13/10/2026). Auditoria sistemática: correções editoriais comprovadas, XSS da comunidade fechado, carga de cerca de 17 s para 4,5 s, ligação frase → página da obra. A `main` passa a ter todo o trabalho.

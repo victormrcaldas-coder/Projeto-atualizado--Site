@@ -5,8 +5,8 @@ autor da lista, pontuação final, obra do catálogo e semelhança com frases at
 As listas dos lotes são JSONL com {"autor","frases_atuais":[{text,orig}],"obras_catalogo":[{t}],
 "removidas_registro":[{texto}]} — o formato que as Fases 127/128 deram aos agentes.
 
-Uso: python3 ferramentas/curadoria/validar_insercoes.py --listas ".trabalho/fase129/lista_*.jsonl" \
-        --decisoes ".trabalho/fase129/dec_*.jsonl"
+Uso: python3 ferramentas/curadoria/validar_insercoes.py --listas ".trabalho/fase130/lista_*.jsonl" \
+        --decisoes ".trabalho/fase130/dec_*.jsonl"
 """
 import json, os, sys, glob, re, unicodedata, collections, argparse
 ap = argparse.ArgumentParser(); ap.add_argument('--listas', required=True); ap.add_argument('--decisoes', required=True)
