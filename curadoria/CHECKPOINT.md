@@ -2450,3 +2450,55 @@ O mesmo número aparece:
 - no contador da página inicial, que é calculado ao vivo.
 
 Por status são A 2.027 e X 386: 384 ditados populares e 2 de autor não identificado. O total parou em 2.413 desde a Fase 128 porque as etapas seguintes, a Fase 126 e a reorganização do código, não inserem nem removem frases.
+
+## Reorganização do código e documentação de arquitetura (13/10/2026)
+
+**Pedido do proprietário.** Organizar o código em pastas lógicas, limpar nomes ruins, comentar a lógica complexa, remover código morto, padronizar a formatação e escrever `ARCHITECTURE.md`, para que um novo chat consiga continuar o projeto só com o repositório.
+
+**O que mudou:**
+- **Divisão do código.** `assets/js/memotiva.js` (42,5 mil linhas, um arquivo) virou **39 arquivos**:
+  - `nucleo/` — utilitários, categorias, autores;
+  - `dados/` — acervo-base;
+  - `app/` — interface;
+  - `curadoria/` — Fases 6–128.
+  
+  Os arquivos são carregados por `index.html` na mesma ordem do arquivo original. Continuam scripts clássicos com escopo global compartilhado.
+- **Código morto removido.**
+  - 45 cópias de funções declaradas mais de uma vez. Num script único só a última valia, então as anteriores nunca rodavam.
+  - 16 funções e variáveis sem nenhuma referência.
+- **Nomes.** `F8`, `F20`…`F34` passaram a `RELATORIO_FASE8`… O nome antigo continua em `window.F8` etc. para o console.
+- **Comentários** nos pontos complexos:
+  - cadeia de fases e ordem de boot;
+  - `OBRAS`/`oid` e `AUTOR_INDEX`;
+  - registro de remoções e `CURADORIA_CHECAR`;
+  - persistência (`window.storage`).
+- **Formatação.** Prettier (`.prettierrc.json`): código a 110 colunas; dados e curadoria a 400 colunas, um registro por linha. CSS formatado. Foram acrescentados `.editorconfig`, `.gitignore` e `package.json`.
+- **Ferramentas.** Saíram do espaço de trabalho da sessão para **`ferramentas/`**, com caminhos relativos e README:
+  - testes;
+  - exportação CSV;
+  - análise de código;
+  - geradores genéricos de fase;
+  - instalador de nova fase;
+  - junção e validação de decisões;
+  - download do Gutenberg.
+  
+  Os testes antigos de `curadoria/tools/` foram para `ferramentas/testes/legado/`.
+- **Material histórico.** O que estava na raiz (capturas, dados intermediários, bundles git, histórico fornecido, scripts antigos, `LEIAME_PACOTE.md`, `MANIFESTO.txt`) foi para **`arquivo/`**.
+- **Documentação nova.** `ARCHITECTURE.md` e `README.md`.
+
+**Como foi garantido que nada mudou para o leitor.**
+- **Captura antes e depois** (`ferramentas/testes/estado.mjs`) do estado final completo no Chromium:
+  - `QUOTES`, `OBRAS`, `OBRA_PAGINA`, `PERFIS_PROFUNDOS`, `STORIES`, `PAPEIS`, `FEITOS`, `CATEGORIES`;
+  - registro de remoções, `AUTOR_INDEX`, `LACUNAS()`, contador da home;
+  - variáveis globais e logs das fases.
+  
+  Resultado: **idêntico**, com 0 exceções. A única diferença é a esperada: as funções mortas não existem mais.
+- **Análise estática** (`ferramentas/codigo/analise-carga.mjs`): nenhum código executado na carga depende de função declarada num arquivo posterior, e nenhuma função ficou declarada duas vezes.
+- **e2e** em 390×844 e 1440×900: mesmas checagens e mesmos números de antes. As 1.230 páginas de obra e as 521 de autor abrem sem erro.
+- **Fluxo de nova fase** testado numa cópia do repositório: gerar, instalar, carregar, 0 exceções.
+- **Ferramentas de curadoria:** a junção de decisões reproduz exatamente o arquivo da Fase 127.
+
+**Não feito, de propósito:**
+- **Parâmetros de uma letra.** Os de callbacks (`q => q.text`), dezenas de milhares, ficaram como estão; são idiomáticos.
+- **Nomes em inglês.** Os herdados do protótipo (`quoteCardHTML`, `state`…) não foram renomeados em massa.
+- **Consolidação das fases.** As fases antigas não foram "consolidadas" (gerar os dados finais e aposentá-las). É a principal melhoria de desempenho possível, mas é decisão de arquitetura do proprietário. Ver `ARCHITECTURE.md`, §9.

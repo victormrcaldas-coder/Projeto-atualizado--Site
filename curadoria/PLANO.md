@@ -15,7 +15,7 @@ Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.
 | 7 | Descrições das obras: conferir fatos contra fontes (não reescrever) | **feito (Fase 124)**: as 1.245 conferidas em 12/10 — 850 sem erro, 380 corrigidas (538 campos), 15 retiradas (título inexistente, obra de outra pessoa ou atribuição errada); obras 1.230 (ver CHECKPOINT) | — |
 | 8 | Motivos de remoção ainda "não reconsultados" + duplicatas achadas | **feito (Fase 122)**: 9 motivos reconsultados, duplicatas resolvidas, 6 escrituras B conferidas, rótulos de autor corrigidos (ver CHECKPOINT) | — |
 | 8b | Frases A sem verificação registrada | **feito (Fase 123)**: 977 auditadas em 11–12/10 — 318 confirmadas, 321 corrigidas, 317 removidas, 22 duplicatas (ver CHECKPOINT) | — |
-| 9 | Auditoria de código (funções duplicadas, listeners, desempenho) | parcial | só correções reais |
+| 9 | Auditoria de código (funções duplicadas, listeners, desempenho) | **feito em 13/10/2026**: código dividido em 39 módulos (`assets/js/nucleo|dados|app|curadoria`), 45 duplicatas e 16 declarações mortas removidas, formatação padronizada, ferramentas em `ferramentas/`, `ARCHITECTURE.md`; estado final idêntico (ver CHECKPOINT) | pendente opcional: consolidar as fases antigas (ARCHITECTURE.md §9), só com decisão do proprietário |
 | 10 | Testes finais: responsividade (7 resoluções), Firefox/Safari | **por último**; Firefox/Safari indisponíveis aqui | navegador real do proprietário |
 | 11 | Fotos de autores | **adiado a pedido** | 338 sem entrada |
 | 12 | Obras duplicadas no catálogo (10) | **não unificar (decisão)**; fatos das duas entradas conferidos na Fase 124 | — |

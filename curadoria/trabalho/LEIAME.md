@@ -7,7 +7,7 @@ Arquivos de trabalho, não lidos pelo site. Cada linha de um `.jsonl` é a decis
 - `remove` — sai do catálogo ativo; `motivo` e `fontes` registram por quê.
 - `duplicata` — mesma passagem de outra entrada (`contraparte`) em outra tradução; sai como `variante-removida`.
 
-Quando a fase é aplicada em `assets/js/memotiva.js`, o conteúdo vai para `notaInterna`
+Quando a fase é aplicada (desde 13/10/2026, como arquivo em `assets/js/curadoria/`, gerado por `ferramentas/curadoria/gerar_bloco.py` e instalado por `nova_fase.py`), o conteúdo vai para `notaInterna`
 (exportado em `notas-internas.csv`) e para o registro de remoções (`remocoes-curadoria.csv`).
 
 - `fase119-orig-decisoes.jsonl` — verificação do campo `orig` (580 pendentes da Fase 117). Concluída e aplicada (Fase 119, 10/10/2026).
