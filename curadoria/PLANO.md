@@ -23,7 +23,7 @@ Critério do projeto: **quem pesquisar a frase e o autor deve encontrar o mesmo.
 | 14 | Ditados Populares (384 frases, status X, sem autor) | **fora do escopo de auditoria — decisão do proprietário (12/10/2026)**. Categoria editorial própria (ditados, provérbios, expressões tradicionais e frases de efeito, sem fonte bibliográfica nem autor). Não verificar, não contar como lacuna nem como pendência. **Não retomar.** | — |
 | 15 | Biografias e histórias: conferir fatos (perfis de 519 autores, 235 histórias, citações dentro dos textos) | não iniciado. Registrado em 12/10: o CHECKPOINT antigo listava "biografias individualmente" como não feito, e uma amostra mostrou erro (Mill: a emenda do voto feminino é de 1867, não de 1865). Ordem decidida pelo proprietário em 13/10 (C8): depois das lacunas e dos 131 autores sem frase | lotes e regras prontos (`a29`, Fase 126) |
 
-## B. Lacunas — 179 pessoas com 1–2 frases após a Fase 125 (resolução iniciada em 12/10/2026, por decisão do proprietário). Os Ditados Populares não entram na contagem. À parte, e fora do critério de lacuna: 131 autores com obra e nenhuma frase (ver CHECKPOINT).
+## B. Lacunas — Fase 127 aplicada (13/10/2026): 199 frases novas, 179 → **44** pessoas com 1–2 frases (as 44 restantes ficam documentadas como sem texto verificável acessível; ver CHECKPOINT). Os Ditados Populares não entram na contagem. Etapa seguinte (C8): 131 autores com obra e nenhuma frase (Fase 128).
 
 A meta de 3 por autor é só referência (decisão de 09/10: não é obrigação; entra o que for comprovado, priorizando qualidade). Etapas editoriais da seção A (itens 4–8 e 13) concluídas e números estabilizados em 12/10. A lista de trabalho é `curadoria/lacunas-restantes.csv`. Não usar número antigo como alvo fixo.
 

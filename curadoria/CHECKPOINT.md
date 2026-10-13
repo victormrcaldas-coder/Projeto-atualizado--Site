@@ -2212,3 +2212,63 @@ O trabalho está preparado, com regras e lotes, mas **não começou**: o proprie
   - favoritos, busca e rolagem sem problema nas duas resoluções;
   - nenhuma frase ativa no registro de remoções;
   - `qid` sem duplicidade.
+
+## Fase 127 — resolução das lacunas (12–13/10/2026)
+
+**Escopo.** As **179 pessoas com 1–2 frases**, recalculadas na Fase 125, conforme decisões C7 e C8. As pessoas foram divididas em 12 lotes, com regras escritas em `curadoria/trabalho/fase127-regras.md`:
+- **Fonte:** cada frase nova tem obra, ano e localização, ou ocasião documentada (discurso, carta, entrevista).
+- **Original:** `orig` exato quando o original foi lido.
+- **Tradução:** própria e fiel.
+- **Autores de língua portuguesa:** texto literal da edição.
+- **Obra protegida:** só trecho curto (até 2 frases ou 4 versos).
+- **Livro contemporâneo:** duas fontes independentes com a mesma redação.
+- **Sem repetição:** nenhuma frase atual nem do registro de remoções.
+- **Na dúvida:** não entra.
+
+**Revisão antes da aplicação.** As evidências mais fracas de cada lote foram revistas uma a uma:
+- **Fontes enxugadas:** capítulos e páginas deduzidos sem evidência foram retirados. Exemplos: Hastings, Krenak, Voss, Michelle Obama, Greenleaf, Yourcenar, Tracy, Hutchins e o número do soneto de Quintana.
+- **Recorte contínuo restabelecido:** Schwarzkopf.
+- **Retiradas:**
+  - Eleanor Roosevelt: o recorte cortava a enumeração de direitos;
+  - Quintana, "distâncias astronômicas": uma só citação indireta.
+- **Esopo:** a moral de "O Vento Norte e o Sol" foi traduzida do grego da edição Chambry (fábula 73), não da tradução vitoriana resumida.
+
+**Resultado:**
+- **199 frases novas para 153 pessoas.** 160 têm o original; 168 têm nota pública de contexto.
+- **135 das 179 pessoas** têm agora 3 frases ou mais.
+- **Lacunas: 179 → 44.**
+- O portão de duplicatas (Fase 75) e o `CURADORIA_CHECAR` não barraram nenhuma.
+
+**Como as frases foram conferidas:**
+- **Texto integral lido:** Gutenberg, Perseus, Latin Library, Standard Ebooks e corpora no GitHub. Exemplos:
+  - Lutero (95 Teses, latim), Leibniz (Monadologia, francês), Sófocles (grego), Hipócrates;
+  - Schopenhauer (alemão), São Jerônimo e Santo Isidoro (latim), Van Gogh (cartas em francês);
+  - Twain, Hawthorne, Publílio Siro, César, Lima Barreto, Coelho Neto, Santos Dumont.
+- **Documento primário:** Kissinger (FRUS), Ambedkar (Suprema Corte da Índia), Tutu e McClintock (conferências Nobel), Vargas (carta-testamento), Ginsburg (voto em *U.S. v. Virginia*).
+
+**As 44 que continuam lacuna.** Ficaram por falta de texto verificável, documentadas uma a uma em `fase127-lacunas-decisoes.jsonl` (linhas `sem_frase`).
+- **Com 1 frase:**
+  - Abul Kalam Azad, Alex Haley, Arthur Ashe, Bernard Montgomery, Eleanor Roosevelt, Grace Hopper, Haemin Sunim;
+  - James Kouzes e Barry Posner, Jim Rohn, Juscelino Kubitschek, Laurel Thatcher Ulrich, Lee Iacocca, Leon C. Megginson;
+  - Miguel Reale, Rabban Shimon ben Gamliel, Reid Hoffman, Robert Emmons, Tom Peters, Vince Lombardi.
+- **Com 2 frases:**
+  - Albert Bandura, Alice Walker, Anaïs Nin, Anísio Teixeira, Barbara McClintock, Cora Coralina, Dag Hammarskjöld;
+  - Émile-Auguste Chartier, Estée Lauder, Georg Simmel, Gertrude Stein, Guy Kawasaki, Harry Markowitz, Henri Matisse;
+  - Jaron Lanier, Jean Piaget, Mário Quintana, Padre Antônio Vieira, Ring Lardner, Rosa Parks, Serena Williams;
+  - Shoshana Zuboff, Solomon Asch, Tarsila do Amaral, Walt Disney.
+- **Motivos típicos:**
+  - obra protegida sem trecho acessível;
+  - frases que só existem em sites de frases ou com redação divergente;
+  - autor conhecido por uma única passagem (Megginson);
+  - atribuições falsas: "Find the good and praise it" (Haley tirou de um adesivo), frases de Lombardi e Rohn (Quote Investigator).
+
+**Observação para conferência futura.** A frase atual de Alex Haley ("fome, funda até a medula…") também aparece em "What Roots Means to Me" (Reader's Digest, maio de 1977), antes da conferência de 1980 citada como fonte. A fonte de 1980 foi conferida na Fase 123, então não é erro, mas há registro anterior.
+
+**Estado (Chromium real, 390×844 e 1440×900).**
+- Frases **2.207** (A 1.821 · X 386) · autores 521 · obras 1.230 · **lacunas 44** · registros 3.150 · com `orig` 1.485.
+- Testes:
+  - 0 exceções JS;
+  - favoritos, busca e rolagem sem problema;
+  - nenhuma frase ativa no registro;
+  - `qid` sem duplicidade;
+  - 1.230 páginas de obra abertas sem erro.
