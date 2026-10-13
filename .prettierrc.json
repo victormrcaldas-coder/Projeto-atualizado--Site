@@ -1,0 +1,9 @@
+{
+  "printWidth": 110,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "endOfLine": "lf",
+  "overrides": [
+    { "files": ["assets/js/dados/**/*.js", "assets/js/curadoria/**/*.js"], "options": { "printWidth": 400 } }
+  ]
+}

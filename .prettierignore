@@ -1,0 +1,5 @@
+# Material histórico e dados gerados: não formatar
+arquivo/
+curadoria/*.csv
+curadoria/trabalho/
+.trabalho/
