@@ -1,45 +1,97 @@
 ﻿pessoa;frases;obras_catalogadas;tem_obra_textual;motivo;obras
 Abul Kalam Azad;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;India Wins Freedom
+Akio Morita;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Made in Japan | Walkman
 Alex Haley;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Autobiografia de Malcolm X | Raízes
 Arthur Ashe;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Days of Grace | A Hard Road to Glory
+Ayrton Senna;1;1;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Instituto Ayrton Senna
 Bernard Montgomery;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Memórias do Marechal Montgomery
+Brian Chesky;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Airbnb | Carta aos funcionários sobre a redução de equipe
+Charles Kuralt;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;On the Road with Charles Kuralt
+Daniel Goleman;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Inteligência Emocional | Foco
+Darcy Ribeiro;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Povo Brasileiro | Maíra | Universidade de Brasília
+Djamila Ribeiro;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Lugar de Fala | Pequeno Manual Antirracista | Quem Tem Medo do Feminismo Negro?
+Dom Pedro II;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Diário do Imperador
 Eleanor Roosevelt;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Declaração Universal dos Direitos Humanos | Você Aprende Vivendo
+Elisabeth Kübler-Ross;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Sobre a Morte e o Morrer | A Roda da Vida
+Érico Veríssimo;1;4;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Tempo e o Vento | Incidente em Antares | Olhai os Lírios do Campo | Solo de Clarineta
+Gerda Lerner;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Criação do Patriarcado | A Criação da Consciência Feminista
 Grace Hopper;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Compilador A-0 | COBOL | Declarações e palestras registradas
 Haemin Sunim;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;As Coisas Que Você Só Vê Quando Desacelera
+Hans Kelsen;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Teoria Pura do Direito
+Howard Stevenson;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Uma Perspectiva sobre o Empreendedorismo | O Suficiente
 James Kouzes e Barry Posner;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Desafio da Liderança
+Jesse Owens;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Quatro ouros em Berlim 1936 | Jesse: O Homem que Correu Mais que Hitler
 Jim Rohn;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Sete Estratégias para Alcançar Riqueza e Felicidade
+John Bowlby;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Apego | Cuidados Maternos e Saúde Mental
+John Templeton;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Templeton Growth Fund | O Humilde Caminho para a Verdade | Fundação John Templeton
+Jorge Amado;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Capitães da Areia | Gabriela, Cravo e Canela | Dona Flor e Seus Dois Maridos
 Juscelino Kubitschek;1;0;sem_obra;sem obra catalogada;
+Karl Jaspers;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Psicopatologia Geral | A Questão da Culpa Alemã
+Konosuke Matsushita;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Não Vivemos Só de Pão | Instituto PHP
 Laurel Thatcher Ulrich;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A História de uma Parteira | Mulheres Bem-Comportadas Raramente Fazem História
 Lee Iacocca;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Iacocca: Uma Autobiografia
 Leon C. Megginson;1;0;sem_obra;sem obra catalogada;
+Lou Gerstner;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Quem Disse que os Elefantes Não Dançam?
+Malcolm Forbes;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Os Ditos do Presidente Malcolm | Direção editorial da revista Forbes | Mais do que Sonhei
+Maria Callas;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Norma (Bellini) | Tosca (Puccini) | Aulas na Juilliard
+Melody Beattie;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Codependência Nunca Mais
 Miguel Reale;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Filosofia do Direito | Lições Preliminares de Direito | Código Civil brasileiro
+Nicolas Hayek;1;3;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Swatch | Consolidação do Swatch Group | Projeto do carro urbano Smart
+Philip Fisher;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Ações Comuns, Lucros Extraordinários | Caminhos Conservadores para o Investimento
+Philip Zimbardo;1;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Efeito Lúcifer | Experimento da Prisão de Stanford | O Paradoxo do Tempo
 Rabban Shimon ben Gamliel;1;0;sem_obra;sem obra catalogada;
+Ray Kroc;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Grinding It Out
 Reid Hoffman;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Startup de Você | Blitzscaling
+Richard Bach;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Fernão Capelo Gaivota | Ilusões
 Robert Emmons;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Obrigado! Como a Gratidão Pode Fazer Você Feliz | Gratitude Works!
 Tom Peters;1;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Em Busca da Excelência
 Vince Lombardi;1;0;sem_obra;sem obra catalogada;
+Walter Winchell;1;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Coluna On Broadway | Narração de Os Intocáveis
+Wernher von Braun;1;1;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Foguete Saturno V
+Alain de Botton;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;As Consolações da Filosofia | Desejo de Status
 Albert Bandura;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Teoria da Aprendizagem Social
 Alice Walker;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Cor Púrpura | Em Busca dos Jardins de Nossas Mães
 Anaïs Nin;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Diário de Anaïs Nin | Delta de Vênus
 Anísio Teixeira;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Educação Não é Privilégio | Escola Parque
 Barbara McClintock;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Trabalhos sobre elementos genéticos móveis | Declarações sobre método científico
+Chien-Shiung Wu;2;1;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Experimento de Wu
+Christopher McCandless;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Diário e anotações de Christopher McCandless
+Clayton Christensen;2;4;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Dilema da Inovação | Como Você Vai Medir Sua Vida? | O Crescimento pela Inovação | Muito Além da Sorte
+Coco Chanel;2;2;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Vestido preto simples | Chanel Nº 5
 Cora Coralina;2;4;sim;obra textual disponível — expansão possível, exige localizar a passagem;Poemas dos Becos de Goiás e Estórias Mais | Vintém de Cobre | Meu Livro de Cordel | Estórias da Casa Velha da Ponte
 Dag Hammarskjöld;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Marcos no Caminho
+David Aaker;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Managing Brand Equity | Building Strong Brands
 Émile-Auguste Chartier;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Sobre Felicidade
 Estée Lauder;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Estée: Uma História de Sucesso
 Georg Simmel;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Filosofia do Dinheiro | As Grandes Cidades e a Vida do Espírito | Sociologia
+George Washington Carver;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Como Cultivar o Amendoim e 105 Maneiras de Prepará-lo para o Consumo Humano | Pesquisas sobre rotação de culturas no sul dos Estados Unidos
 Gertrude Stein;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Autobiografia de Alice B. Toklas | Tender Buttons
+Gloria Steinem;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Uma Ação Ultrajante e Rebeldias Cotidianas | Minha Vida na Estrada | Revista Ms.
+Groucho Marx;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Groucho e Eu | Uma Noite na Ópera | Memórias de um Amante Ardente
 Guy Kawasaki;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Arte do Começo
 Harry Markowitz;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Seleção de Carteiras
 Henri Matisse;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Dança | Jazz | Capela do Rosário de Vence
+Hubert H. Humphrey;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Discurso sobre direitos civis na Convenção Democrata de 1948 | Lei dos Direitos Civis de 1964 | A Educação de um Homem Público
+Indra Nooyi;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Uma Vida Plena
+Jacques Maritain;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Humanismo Integral
 Jaron Lanier;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Você Não É Um Aplicativo | Dez Argumentos para Você Deletar Agora Suas Redes Sociais
 Jean Piaget;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Epistemologia Genética | O Nascimento da Inteligência na Criança
+Katherine Johnson;2;1;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Cálculos de trajetória orbital da NASA
+Ken Blanchard;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;O Gerente-Minuto
+Lady Gaga;2;4;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;The Fame | Born This Way | Nasce uma Estrela | Fundação Born This Way
+Louis Armstrong;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Gravações dos Hot Five e Hot Seven | Satchmo: Minha Vida em Nova Orleans
+Madre Teresa de Calcutá;2;5;sim;obra textual disponível — expansão possível, exige localizar a passagem;Missionárias da Caridade | Venha, Seja Minha Luz | Vem, Seja Minha Luz | Nobel da Paz | A Simple Path e discursos registrados
 Mário Quintana;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Rua dos Cataventos | Caderno H | Nova Antologia Poética
+Marshall Rosenberg;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Comunicação Não Violenta | Vivendo a Comunicação Não Violenta | Center for Nonviolent Communication
+Mikhail Gorbachev;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Perestroika: Novas Ideias para o Meu País e o Mundo
 Padre Antônio Vieira;2;3;sim;obra textual disponível — expansão possível, exige localizar a passagem;Sermão de Santo Antônio aos Peixes | Sermão da Sexagésima | História do Futuro
+Protágoras;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;Sobre a Verdade | Sobre os Deuses
+Ralph Nader;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Perigoso em Qualquer Velocidade
 Ring Lardner;2;2;sim;obra textual disponível — expansão possível, exige localizar a passagem;You Know Me Al | Os Jovens Imigrantes
 Rosa Parks;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Rosa Parks: Minha História
 Serena Williams;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Rainha da Quadra
 Shoshana Zuboff;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;A Era do Capitalismo de Vigilância
 Solomon Asch;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Estudos sobre conformidade
+Sophie Scholl;2;1;sim;obra textual disponível — expansão possível, exige localizar a passagem;Panfletos da Rosa Branca
 Tarsila do Amaral;2;4;sim;obra textual disponível — expansão possível, exige localizar a passagem;Abaporu | Operários | A Negra | Cartas de Paris
 Walt Disney;2;2;nao;obra não textual (quadro, música, invento ou feito) — só entra com declaração registrada;Branca de Neve e os Sete Anões | Disneylândia

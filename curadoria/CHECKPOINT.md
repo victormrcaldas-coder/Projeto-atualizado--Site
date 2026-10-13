@@ -2272,3 +2272,54 @@ O trabalho está preparado, com regras e lotes, mas **não começou**: o proprie
   - nenhuma frase ativa no registro;
   - `qid` sem duplicidade;
   - 1.230 páginas de obra abertas sem erro.
+
+## Fase 128 — autores com obra no catálogo e nenhuma frase (13/10/2026)
+
+**Decisão do proprietário (C8).** Os 131 autores com obra e nenhuma frase são relevantes e ficam na curadoria. Para todos, buscaram-se frases verificáveis, com a mesma regra rígida de veracidade. Muitas frases que circulam em nome deles são só atribuições; essas não entram. Nada foi inventado.
+
+**Método.** Igual ao da Fase 127: 10 lotes, com as regras em `curadoria/trabalho/fase128-regras.md`.
+- **Livro contemporâneo:** duas fontes independentes com a mesma redação; destaque de leitor ou guia de estudo sozinho não basta.
+- **Fonte no formato dos cartões do site:** obra, ano e localização, ou ocasião documentada.
+- **Sem junção:** nunca juntar trechos confirmados separadamente.
+- **Revisão antes da aplicação.** Saíram 7 frases:
+  - **Pouca fonte:** Kübler-Ross, "esperança" (um só guia de estudo); Schultz (só destaques de leitores).
+  - **Texto literal não confirmado por inteiro:**
+    - Portinari: trechos de uma carta confirmados só separadamente;
+    - Suassuna: o meio da fala nunca foi visto;
+    - Pelé: versões divergentes da dedicatória do milésimo gol.
+  - **Não é frase do autor:**
+    - Fisher: uma pergunta de roteiro;
+    - Buscaglia: a redação só existe na sinopse do livro.
+  
+  Capítulos deduzidos também foram retirados (Maritain; *Cem Anos de Solidão*).
+
+**Resultado:**
+- **206 frases novas para 96 dos 131 autores:** 44 chegaram a 3 frases e 52 têm 1–2.
+- **Texto integral lido em boa parte das frases.** Alguns exemplos:
+  - Pitágoras e Tales (Diógenes Laércio, grego); Homero (Perseus, grego); Tomás de Aquino (latim); Abelardo (latim); Dante (italiano); Rumi (persa);
+  - Balzac (francês); Kafka (alemão); Lavoisier; E. M. Forster; Maugham; Samuel Johnson; Henry Ford; Ingersoll; Mary Parker Follett;
+  - encíclicas do Papa Francisco (latim oficial); atas da ONU (Ban Ki-moon, Bachelet); discurso de Ulysses Guimarães (transcrição oficial da Câmara).
+- **35 autores continuam sem frase:**
+  - André Kostolany, Ann Landers, Ariano Suassuna, Aristóteles Onassis, Audrey Hepburn, Augusto Cury, Candido Portinari, Chico Xavier, Donald McGannon;
+  - Elizabeth Stone, François Mauriac, George Burns, Hipátia, Howard Schultz, James Dean, Karl Menninger, Leandro Karnal, Leo Buscaglia, Lise Meitner;
+  - Magalhães Pinto, Michael J. Fox, Millôr Fernandes, Nise da Silveira, Nísia Floresta, Oswaldo Cruz, Pat Riley, Pelé, Phil Jackson, Richard Branson;
+  - Roberto Shinyashiki, Rosalynn Carter, Scott Belsky, Viviane Mosé, William Arthur Lewis, Zumbi dos Palmares.
+- **Motivos:**
+  - sem escrito conhecido (Hipátia, Zumbi);
+  - frases correntes são de outras pessoas (Ann Landers e Winchell divulgavam ditos alheios; a frase de Rosalynn Carter é de um colega citado por ela);
+  - obra coletiva (Magalhães Pinto, Manifesto dos Mineiros);
+  - obra protegida sem trecho acessível;
+  - frases só em sites de frases.
+  
+  Cada caso está registrado em `fase128-autores-decisoes.jsonl` (linhas `sem_frase`).
+
+**Efeito nas lacunas.** Os 52 autores que passaram de 0 para 1–2 frases entram na contagem de lacunas (critério do projeto: 1–2 frases). **Lacunas: 44 → 96.** A conta vem de 44 da Fase 127 + 52 daqui. O total de autores sem nenhuma frase caiu de 131 para 35.
+
+**Estado (Chromium real, 390×844 e 1440×900).**
+- Frases **2.413** (A 2.027 · X 386) · autores 521 · obras 1.230 · lacunas 96 · registros 3.150 · com `orig` 1.651.
+- **Testes:**
+  - 0 exceções JS;
+  - favoritos, busca e rolagem funcionando;
+  - nenhuma frase ativa no registro;
+  - `qid` sem duplicidade;
+  - as 206 frases novas passaram pelo portão de duplicatas.
