@@ -2411,3 +2411,42 @@ Campos alterados:
   - 0 exceções JS; favoritos, busca e rolagem sem problema;
   - **as 521 páginas de autor abertas uma a uma**, sem erro e sem texto "undefined"/"null";
   - as 492 alterações conferidas campo a campo contra o catálogo carregado.
+
+## Decisão do proprietário sobre os autores sem fonte confiável (13/10/2026)
+
+**Situação.** Depois das Fases 127 e 128 ficaram dois grupos:
+- **44 pessoas com 1–2 frases** (lacunas da Fase 127).
+- **35 autores com obra no catálogo e nenhuma frase** (Fase 128).
+
+Para nenhuma delas foi possível achar nova frase com fonte confiável dentro do padrão do projeto. Os motivos estão registrados, pessoa por pessoa, nas linhas `sem_frase` de `trabalho/fase127-lacunas-decisoes.jsonl` e `trabalho/fase128-autores-decisoes.jsonl`. Os principais:
+- obra protegida sem trecho acessível;
+- frases só em sites de frases;
+- autor sem escritos conhecidos (Hipátia, Zumbi dos Palmares);
+- frases correntes que são de outras pessoas (Ann Landers, Rosalynn Carter, Vince Lombardi, Jim Rohn);
+- obra coletiva (Magalhães Pinto).
+
+O proprietário não tem links ou edições para eles.
+
+**Decisão: nenhum desses autores é removido.**
+- As páginas continuam no site, com biografia, histórias e obras, e com as frases verificadas que já têm.
+- **Não se acrescenta frase sem fonte** para completar a contagem.
+- Os 35 autores sem frase aparecem com página de autor e obras, sem frase. É o comportamento atual, e foi testado nas 521 páginas de autor.
+
+**Para retomar no futuro:**
+- Só com fonte nova: edição, link de instituição ou transcrição oficial.
+- Mesmo padrão das Fases 127 e 128: texto literal para autor de língua portuguesa, duas fontes independentes para livro contemporâneo, sem juntar trechos.
+- A lista viva é `curadoria/lacunas-restantes.csv`, que traz as 1–2 frases. Os 35 sem frase estão na seção da Fase 128.
+
+**Contagem conferida (13/10/2026).** São **2.413 frases ativas**. O número foi reconciliado assim:
+- 2.008 após a Fase 125;
+- \+ 199 da Fase 127;
+- \+ 206 da Fase 128;
+- a Fase 126 só alterou biografias, não frases.
+
+O mesmo número aparece:
+- no `QUOTES` carregado no Chromium;
+- no CSV exportado (`curadoria-frases.csv`, 2.413 linhas);
+- na contagem de `qid` únicos, sem duplicidade;
+- no contador da página inicial, que é calculado ao vivo.
+
+Por status são A 2.027 e X 386: 384 ditados populares e 2 de autor não identificado. O total parou em 2.413 desde a Fase 128 porque as etapas seguintes, a Fase 126 e a reorganização do código, não inserem nem removem frases.
