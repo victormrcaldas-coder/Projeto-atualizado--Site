@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Layout MeMotiva</title>
+<meta name="robots" content="noindex">
+<!-- Layout da direção aprovada (Etapa 3 do redesign), no formato dos protótipos do Portão 1:
+     abertura da home, cartões de frase e frase ampliada. Fora do site.
+     Usa os arquivos reais do sistema (assets/css) e frases reais (amostra.js). -->
+<link rel="preload" href="../../assets/fonts/literata/literata-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/00-fontes.css">
+<link rel="stylesheet" href="../../assets/css/01-tokens.css">
+<link rel="stylesheet" href="../../assets/css/02-base.css">
+<link rel="stylesheet" href="../../assets/css/03-componentes.css">
+<link rel="stylesheet" href="../../assets/css/telas/navegacao.css">
+<style>
+  /* Só a diagramação desta página; cores, letras e peças vêm do sistema. */
+  .proto-barra { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: center; padding: var(--space-2) var(--space-4); background: var(--surface); font-size: var(--fs-meta); color: var(--text-meta); }
+  html.limpo .proto-barra { display: none; }
+  main { padding-bottom: var(--space-8); }
+
+  /* abertura: margem com a data, a frase, a assinatura com a nota da fonte, e a prancha do retrato */
+  .abertura { display: grid; gap: var(--space-6); padding-block: var(--space-8) var(--space-7); }
+  @media (min-width: 1024px) {
+    .abertura { grid-template-columns: 150px minmax(0, 1fr) 280px; gap: var(--space-7); align-items: start; padding-block: var(--space-9) var(--space-8); }
+  }
+  .margem { display: flex; gap: var(--space-3); align-items: baseline; flex-wrap: wrap; }
+  @media (min-width: 1024px) { .margem { display: grid; gap: var(--space-1); padding-top: var(--space-3); } }
+  .margem .eyebrow { margin: 0; }
+  .margem time { font-family: var(--font-serif); font-style: italic; font-size: var(--fs-body); color: var(--text-secondary); }
+  .corpo-abertura { display: grid; gap: var(--space-6); min-width: 0; }
+  .assinatura { display: flex; gap: var(--space-4); align-items: center; }
+  .assinatura .nome { font-family: var(--font-serif); font-size: 1.375rem; font-weight: var(--weight-medium); color: var(--brand); }
+  .assinatura .papel { font-size: var(--fs-small); color: var(--text-meta); }
+  .nota-fonte { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); max-width: 46ch; padding-top: var(--space-4); border-top: var(--hairline) solid var(--border); font-size: var(--fs-small); }
+  .nota-fonte .n { font-family: var(--font-serif); color: var(--accent-text); }
+  .nota-fonte .obra { font-family: var(--font-serif); font-style: italic; color: var(--text); }
+  .acoes { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: center; }
+  .retrato-mini { width: 64px; flex: none; margin: 0 0 8px 8px; box-shadow: -8px 8px 0 0 var(--mass); border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 3 / 4; background: var(--surface); position: relative; }
+  .retrato-mini img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; }
+  .abertura > .prancha { display: none; }
+  @media (min-width: 1024px) { .abertura > .prancha { display: block; } .assinatura .retrato-mini { display: none; } }
+
+  /* temas logo abaixo: uma linha de leitura, não uma fileira de botões */
+  .sumario { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); padding-block: var(--space-4); border-block: var(--hairline) solid var(--border); font-size: var(--fs-small); }
+  .sumario span { color: var(--text-meta); }
+
+  .secao { display: grid; gap: var(--space-6); padding-block: var(--space-8) 0; }
+  .secao-head { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: baseline; justify-content: space-between; }
+
+  #foto-ampliada { position: fixed; inset: 0; z-index: var(--z-modal); display: grid; place-items: center; padding: var(--space-4); background: var(--overlay); }
+  #foto-ampliada[hidden] { display: none; }
+  #foto-ampliada [data-corpo] { position: relative; max-width: min(900px, 100%); max-height: calc(100dvh - 32px); overflow: auto; background: var(--surface-page); border-radius: var(--radius-md); padding: var(--space-4); }
+  .foto-grande { margin: 0; display: grid; gap: var(--space-3); }
+  .foto-grande img { max-height: 72dvh; width: auto; margin-inline: auto; }
+  .foto-grande figcaption { font-size: var(--fs-small); color: var(--text-secondary); }
+  .proto-bn { display: grid; }
+  @media (min-width: 1100px) { .proto-bn { display: none; } }
+  body { padding-bottom: 0; }
+  @media (max-width: 1099px) { body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); } }
+</style>
+</head>
+<body>
+<div class="proto-barra">Layout da direção aprovada · protótipo fora do site · conteúdo real do acervo <button class="btn-text" type="button" data-alternar-tema>Trocar tema</button></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#topo" aria-label="MeMotiva, ir para o início"><span class="logo-dot"></span>MeMotiva</a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="nav-link active" href="#topo" aria-current="page">Início</a>
+      <a class="nav-link" href="#cartoes">Explorar</a>
+      <a class="nav-link" href="#cartoes">Autores &amp; Obras</a>
+      <a class="nav-link" href="#cartoes">Descubra</a>
+      <a class="nav-link" href="#cartoes">Histórias</a>
+      <a class="nav-link" href="#cartoes">Escrever</a>
+      <a class="nav-link" href="#cartoes">Comunidade</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-icon" type="button" data-alternar-tema aria-label="Usar o tema escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      </button>
+      <button class="btn btn-coral" type="button">Entrar</button>
+      <button class="btn-icon hamburger-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+  <div class="wrap">
+    <section class="abertura" id="abertura" aria-label="Frase de hoje"></section>
+    <nav class="sumario" aria-label="Temas"><span>Temas</span><a href="#cartoes">Reflexão</a><a href="#cartoes">Educação</a><a href="#cartoes">Família</a><a href="#cartoes">Filosofia e Sabedoria</a><a href="#cartoes">Identidade e Autoconhecimento</a><a href="#cartoes">Vida</a></nav>
+
+    <section class="secao" aria-labelledby="t-cartoes">
+      <div class="secao-head">
+        <h2 id="t-cartoes">Frases do acervo</h2>
+        <button class="btn-text" type="button">Ver todas as frases</button>
+      </div>
+      <div class="quote-grid" id="cartoes"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="footer-brand"><span class="logo-dot"></span>MeMotiva</span>
+    <p class="footer-note">Frases e biografias reunidas de fontes verificadas, com atribuição correta a cada autor. Feito para acompanhar você nos dias difíceis e nos dias de agir.</p>
+    <p class="footer-note">Frases de outros idiomas aparecem em tradução que busca a maior fidelidade possível ao texto e ao sentido original, com as pequenas adaptações que o português exige.</p>
+  </div>
+</footer>
+
+<nav class="bottom-nav proto-bn" aria-label="Navegação inferior">
+  <a class="bn-item active" href="#topo" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>Início</a>
+  <a class="bn-item" href="#cartoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Explorar</a>
+  <a class="bn-item" href="#cartoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Autores</a>
+  <a class="bn-item" href="#cartoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Escrever</a>
+  <a class="bn-item" href="#cartoes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Mais</a>
+</nav>
+
+<div id="frase-ampliada" class="expand-overlay show" role="dialog" aria-modal="true" aria-label="Frase ampliada" hidden><div class="expand-quote" data-corpo></div></div>
+<div id="foto-ampliada" role="dialog" aria-modal="true" aria-label="Fotografia ampliada" hidden><div data-corpo></div></div>
+
+<script src="amostra.js"></script>
+<script src="comum.js"></script>
+<script src="sistema.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { A, FRASES, esc, comAspas, autor, imagem, credito } = window.Proto;
+  const { comprimento, quadro } = window.Sistema;
+  const f = FRASES.f24aiu8x; // Machado de Assis, dedicatória das Memórias Póstumas
+  const a = autor(f.autor);
+  document.getElementById('abertura').innerHTML = `
+    <div class="margem"><p class="eyebrow">Frase de hoje</p><time data-hoje></time></div>
+    <div class="corpo-abertura">
+      <p class="quote-hero-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
+      <div class="assinatura">
+        <div class="retrato-mini" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${quadro(a, 128)}</div>
+        <div><p class="nome">${esc(a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
+      </div>
+      <p class="nota-fonte"><span class="n">1</span><span><span class="obra">${esc(f.fonte)}</span>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}</span></p>
+      <div class="acoes"><button class="btn btn-coral" type="button" data-abrir="${esc(f.qid)}">Abrir a frase</button><button class="btn-text" type="button">Conhecer ${esc(a.nome)}</button></div>
+    </div>
+    <figure class="prancha">
+      <div class="prancha-foto" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${quadro(a, 560)}</div>
+      <figcaption>${esc(credito(a))}</figcaption>
+    </figure>`;
+  const QIDS = ['ql0t0xvhg9dsn', 'f28asxuhfb', 'qmavfjkqarqzo', 'q1gsfz1k16xaa3h', 'f28tdbfmcs', 'q1v8oi7oe6cqdv', 'qmgk9qk9rw7ez', 'f2652b1y5', 'q4nnaf81ajlbj5'];
+  document.getElementById('cartoes').innerHTML = QIDS.map((q) => window.DIRECAO.cartaoHTML(FRASES[q], autor(FRASES[q].autor))).join('');
+  document.addEventListener('keydown', (e) => {
+    const alvo = e.target.closest && e.target.closest('[role="button"][data-abrir],[role="button"][data-ampliar-foto]');
+    if (alvo && (e.key === 'Enter' || e.key === ' ') && e.target === alvo) { e.preventDefault(); alvo.click(); }
+  });
+  window.Proto.iniciar();
+})();
+</script>
+</body>
+</html>

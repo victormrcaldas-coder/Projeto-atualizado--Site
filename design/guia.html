@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="../assets/css/01-tokens.css">
 <link rel="stylesheet" href="../assets/css/02-base.css">
 <link rel="stylesheet" href="../assets/css/03-componentes.css">
+<link rel="stylesheet" href="../assets/css/telas/navegacao.css">
 <style>
   /* Só a diagramação do guia. Cores, letras e componentes vêm dos arquivos reais. */
   .g-main { padding-bottom: calc(var(--space-9) + 58px); }
@@ -115,8 +116,9 @@
       <h1 id="t-guia">Guia do MeMotiva</h1>
       <p>Cores, letras e componentes que o site passa a usar a partir da Etapa 3. Esta página carrega os arquivos reais (<code>assets/css/00</code> a <code>03</code> e as fontes de <code>assets/fonts/</code>) e frases reais do acervo. Troque o tema no botão do topo.</p>
       <ul class="g-mudou" aria-label="O que mudou depois do Portão 1">
-        <li>Paleta café: linho, algodão e espresso. O laranja ficou só nos detalhes.</li>
-        <li>O roxo saiu das superfícies; aparece só no anel de foco do teclado.</li>
+        <li>O café (linho, algodão, espresso) segura o fundo e o texto e equilibra as cores da marca.</li>
+        <li>O roxo é a identidade: títulos, frases, botão principal e a faixa do rodapé.</li>
+        <li>O laranja aparece em detalhes e numa única massa pequena por tela, atrás do retrato.</li>
         <li>Toda frase do acervo tem a mesma letra, o mesmo estilo e a mesma cor, em qualquer tela.</li>
       </ul>
       <nav class="g-sumario" aria-label="Neste guia">
@@ -128,8 +130,8 @@
     <section class="g-secao" id="paleta" aria-labelledby="t-paleta">
       <header>
         <p class="eyebrow">1 · Cores</p>
-        <h2 id="t-paleta">Um fundo, uma tinta, um detalhe</h2>
-        <p>Cada tela usa o linho como fundo, o espresso como tinta e o laranja só em pontos pequenos: o marcador da categoria, o traço do item ativo, o sublinhado dos links. Os valores abaixo são lidos dos tokens no tema atual.</p>
+        <h2 id="t-paleta">Café para equilibrar, roxo e laranja para marcar</h2>
+        <p>O linho e o espresso seguram a tela inteira. O roxo marca o que é da casa: títulos, frases, o botão principal e o rodapé. O laranja aparece em pontos pequenos (o marcador da categoria, o traço do item ativo, o sublinhado dos links) e numa única massa por tela, a prancha atrás do retrato. No escuro, a massa vira roxa e a frase ampliada abre numa página roxa. Os valores abaixo são lidos dos tokens no tema atual.</p>
       </header>
       <div class="g-cores" id="g-cores"></div>
       <div class="g-sub">
@@ -143,15 +145,15 @@
           <thead><tr><th>Cor</th><th>Papel</th><th>Por quê</th></tr></thead>
           <tbody>
             <tr><td class="num"><i class="sw" style="background:#FAF3E1"></i>Sustainable Linen <code>#FAF3E1</code></td><td>Escolhida: fundo</td><td>Claro e quente sem amarelar; o espresso passa de 15 : 1 sobre ele.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#F5E7C6"></i>Recycled Cotton <code>#F5E7C6</code></td><td>Escolhida: superfície</td><td>Separa áreas sem caixa nem sombra; no escuro, o papel dela passa ao espresso.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#2B1811"></i>Dark Espresso <code>#2B1811</code></td><td>Escolhida: tinta</td><td>O café da marca: texto, frases, botão principal; fundo das superfícies no escuro.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#F5E7C6"></i>Recycled Cotton <code>#F5E7C6</code></td><td>Escolhida: superfície</td><td>Separa áreas sem caixa nem sombra.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#2B1811"></i>Dark Espresso <code>#2B1811</code></td><td>Escolhida: texto</td><td>O café que equilibra: texto corrido e metadados; fundo do tema escuro.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#9F886F"></i>Natural <code>#9F886F</code></td><td>Apoio: fios</td><td>Só fio e contorno (3,1 : 1). Para texto, a versão escurecida <code>#7A6450</code> (5,0 : 1).</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Burnt Orange <code>#E06F2D</code></td><td>Apoio: detalhe</td><td>Pedido do proprietário: chamativo só em pontos pequenos. Como texto, a versão <code>#9A4614</code>.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Burnt Orange <code>#E06F2D</code></td><td>Escolhida: detalhe e massa</td><td>Pontos pequenos e uma única massa por tela (a prancha do retrato). Nunca fundo de seção nem botão. Como texto, a versão <code>#9A4614</code>.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#D78B30"></i>Apricot <code>#D78B30</code></td><td>Apoio: detalhe no escuro</td><td>O laranja do tema escuro: mais macio sobre o espresso (6,7 : 1).</td></tr>
             <tr><td class="num"><i class="sw" style="background:#3F422E"></i>Organic <code>#3F422E</code></td><td>Apoio: segunda tinta</td><td>Rara; combina com o café e dá um contraponto verde sem gritar.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#F1E59B"></i>Light Gold <code>#F1E59B</code></td><td>Apoio: marca-texto</td><td>Só seleção e termo encontrado na busca.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#E5D17A"></i>Muted Ochre <code>#E5D17A</code></td><td>Apoio: marca-texto forte</td><td>Mesmo uso, um tom acima; nunca como fundo de seção.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#401D47"></i>Deep Purple <code>#401D47</code></td><td>Apoio: só o foco</td><td>Pedido do proprietário: sem a combinação forte com o laranja. Fica no anel de foco, onde precisa contrastar.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#401D47"></i>Deep Purple <code>#401D47</code></td><td>Escolhida: marca</td><td>Títulos, frases, botão principal, rodapé e o anel de foco. Nunca encostado em área grande de laranja.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#FFF4D6"></i>Light Parchment <code>#FFF4D6</code></td><td>Descartada</td><td>Quase igual ao Linen, um pouco mais amarela.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#F5E6C5"></i>Ivory <code>#F5E6C5</code></td><td>Descartada</td><td>Igual ao Recycled Cotton.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#FF6D1F"></i>Electric Tangerine <code>#FF6D1F</code></td><td>Descartada</td><td>Neon demais para um projeto sóbrio.</td></tr>
@@ -211,7 +213,7 @@
       <header>
         <p class="eyebrow">4 · Componentes</p>
         <h2 id="t-comp">Botões, campos, filtros e avaliação</h2>
-        <p>O botão principal é espresso cheio (no escuro, linho). Nenhum botão é laranja: o laranja aparece só no sublinhado dos botões de texto e no traço do filtro ativo. Erro se marca com a tinta e um contorno mais forte, não com cor.</p>
+        <p>O botão principal é roxo cheio (no escuro, linho com texto roxo). Nenhum botão é laranja: o laranja aparece só no sublinhado dos botões de texto e no traço do filtro ativo. Erro se marca com a tinta e um contorno mais forte, não com cor.</p>
       </header>
       <div class="g-sub">
         <h3>Botões e links</h3>
@@ -261,7 +263,7 @@
       <header>
         <p class="eyebrow">5 · Navegação</p>
         <h2 id="t-nav">Cabeçalho, barra inferior e rodapé</h2>
-        <p>O item ativo leva um traço laranja curto. Descubra ganhou ícone próprio (bússola), diferente do Perfil. O cabeçalho encolhe ao rolar (a animação entra na Etapa 3). A barra inferior mostra aqui os 5 itens de hoje; a proposta de redução vem na Etapa 3.</p>
+        <p>O rodapé é a faixa roxa da marca. O item ativo leva um traço laranja curto. Descubra ganhou ícone próprio (bússola), diferente do Perfil. O cabeçalho encolhe ao rolar (a animação entra na Etapa 3). A barra inferior mostra aqui os 5 itens de hoje; a proposta de redução vem na Etapa 3.</p>
       </header>
       <div class="g-sub">
         <h3>Cabeçalho, normal e compacto</h3>
@@ -362,77 +364,15 @@
 
 <script src="prototipos/amostra.js"></script>
 <script src="prototipos/comum.js"></script>
+<script src="prototipos/sistema.js"></script>
 <script>
 (function () {
   'use strict';
-  const { A, FRASES, esc, comAspas, autor, imagem, credito, linguaDoOriginal, montarContraste } = window.Proto;
-  const LONGA = 140;
-  const comprimento = (t) => (t.length > LONGA ? ' data-comprimento="longa"' : '');
-  const ehDitado = (f) => f.autor === 'Ditado Popular';
-  const PARTICULAS = new Set(['de', 'da', 'do', 'das', 'dos', 'e', 'van', 'von']);
-  const iniciais = (nome) => {
-    const p = nome.split(/\s+/).filter((x) => !PARTICULAS.has(x.toLowerCase()));
-    return ((p[0] || '')[0] + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase();
-  };
-  const coracao = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21s-7.5-4.7-10.2-9.1C.2 9 1 5.4 4.2 4.1 6.7 3 9.3 4 12 7c2.7-3 5.3-4 7.8-2.9 3.2 1.3 4 4.9 2.4 7.8C19.5 16.3 12 21 12 21Z"/></svg>';
-  const balao = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4Z"/></svg>';
-  const retrato = (a, classe, largura) =>
-    a.foto
-      ? imagem(a, { largura, larguras: [largura, largura * 2], tamanhos: largura + 'px' })
-      : '';
-  // as iniciais ficam sempre por baixo: enquanto a foto carrega (ou se falhar), o quadro nunca fica vazio
-  const quadro = (a, largura) => `<span class="avatar-fallback" style="display:grid" aria-hidden="true">${esc(iniciais(a.nome))}</span>${retrato(a, '', largura)}`;
-
-  /* ---- modelos: a mesma marcação que o site usa (quoteCardHTML e openQuoteModal), sem travessão ---- */
-  window.DIRECAO = {
-    cartaoHTML(f, a) {
-      const nome = ehDitado(f) ? 'Ditado popular' : a.nome;
-      return `<article class="quote-card" data-abrir="${esc(f.qid)}" role="button" tabindex="0" aria-label="Ampliar frase de ${esc(nome)}">
-        <span class="quote-card-cat">${esc(f.categoria)}</span>
-        <p class="quote-card-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
-        ${f.fonte ? `<p class="quote-card-src">${esc(f.fonte)}</p>` : ''}
-        <div class="quote-card-foot">
-          <div class="quote-author">
-            ${ehDitado(f) ? '' : `<div class="avatar-frame">${quadro(a, 80)}</div>`}
-            <span class="author-name">${esc(nome)}</span>
-          </div>
-          <button class="heart-btn" type="button" data-salvar aria-pressed="false" aria-label="Salvar frase nos favoritos">${coracao}</button>
-        </div>
-      </article>`;
-    },
-    modalHTML(f, a) {
-      const lingua = f.original ? linguaDoOriginal(f.original) : '';
-      const nome = ehDitado(f) ? 'Ditado popular' : a.nome;
-      return `<button class="expand-close" type="button" data-fechar aria-label="Fechar frase ampliada">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-        <div class="expand-inner">
-          <span class="expand-cat">${esc(f.categoria)}</span>
-          <p class="expand-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
-          <div class="expand-foot">
-            ${ehDitado(f) ? '<span></span>' : a.foto
-              ? `<div class="expand-avatar" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${quadro(a, 264)}</div>`
-              : `<div class="expand-avatar">${quadro(a, 264)}</div>`}
-            <div class="expand-ident-wrap">
-              <div class="expand-ident"><span class="expand-author">${esc(nome)}</span>${a.papel && !ehDitado(f) ? `<span class="expand-src">${esc(a.papel)}</span>` : ''}</div>
-              <dl class="quote-label">
-                ${f.fonte ? `<dt>Obra</dt><dd><span class="obra">${esc(f.fonte)}</span>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}</dd>` : ''}
-                ${f.original ? `<dt>Original</dt><dd><p class="quote-original"${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</p></dd>` : ''}
-                ${a.foto ? `<dt>Imagem</dt><dd class="expand-src" style="font-style:normal">${esc(credito(a).replace(/^Imagem: /, ''))}</dd>` : ''}
-              </dl>
-              ${ehDitado(f) ? '' : `<div class="expand-links"><button class="expand-know" type="button">Saiba mais</button><button class="expand-know" type="button">Conhecer ${esc(a.nome)}</button></div>`}
-            </div>
-            <div class="expand-acts">
-              <button class="expand-act" type="button" data-salvar aria-pressed="false" aria-label="Salvar frase nos favoritos">${coracao}</button>
-              <button class="expand-act" type="button" aria-label="Escrever a partir desta frase">${balao}</button>
-            </div>
-          </div>
-        </div>`;
-    }
-  };
-
+  const { A, FRASES, esc, comAspas, autor, linguaDoOriginal, montarContraste } = window.Proto;
   /* ---- cores: valores lidos dos tokens do tema atual ---- */
   const CORES = [
-    ['--bg', 'Fundo'], ['--surface', 'Superfície'], ['--surface-muted', 'Superfície discreta'], ['--text', 'Tinta'],
+    ['--bg', 'Fundo'], ['--surface', 'Superfície'], ['--surface-muted', 'Superfície discreta'], ['--brand', 'Marca: títulos e frases'],
+    ['--brand-surface', 'Faixa da marca'], ['--mass', 'Massa (prancha)'], ['--surface-page', 'Página da frase ampliada'], ['--text', 'Texto'],
     ['--text-secondary', 'Texto secundário'], ['--text-meta', 'Metadados'], ['--border-strong', 'Fio'],
     ['--accent', 'Detalhe'], ['--accent-text', 'Detalhe como texto'], ['--ink-2', 'Segunda tinta'],
     ['--highlight', 'Marca-texto'], ['--focus-ring', 'Foco']
@@ -446,7 +386,9 @@
   desenharCores();
   document.addEventListener('proto:tema', desenharCores);
   montarContraste(document.getElementById('g-contraste'), [
-    ['--text', '--bg', 'frases, títulos e texto'], ['--text', '--surface', 'texto nas superfícies'],
+    ['--brand', '--bg', 'títulos e frases'], ['--text', '--bg', 'texto corrido'], ['--text', '--surface', 'texto nas superfícies'],
+    ['--on-brand', '--brand-surface', 'texto no rodapé roxo'], ['--on-brand-meta', '--brand-surface', 'texto secundário no rodapé'],
+    ['--text', '--surface-page', 'texto na frase ampliada'], ['--accent-text', '--surface-page', 'laranja como texto na frase ampliada'],
     ['--text-secondary', '--bg', 'texto secundário'], ['--text-meta', '--bg', 'metadados e rótulos'],
     ['--text-meta', '--surface', 'metadados nas superfícies'], ['--accent-text', '--bg', 'laranja como texto: "fonte conferida", alertas'],
     ['--accent-text', '--surface', 'laranja como texto nas superfícies'], ['--ink-2', '--bg', 'segunda tinta'],
