@@ -48,6 +48,8 @@ Numa mudança de conteúdo (fase de curadoria), o passo 3 deve mostrar diferenç
 | | `tecnico.mjs` | Carga, CLS, console, rede, listeners ao navegar e sondas de XSS pelo armazenamento compartilhado. `npm run auditoria:tecnica`. |
 | `textos/` | `gutenberg.py` | Baixa textos integrais do Gutenberg pelo espelho GITenberg. |
 | `design/` | `capturas.mjs` | Prints de cada tela (16, inclusive modais e telas com sessão) por largura e tema, com a rolagem horizontal medida e uma folha de contato. Base dos portões do redesign. Ex.: `node ferramentas/design/capturas.mjs --etapa 03-navegacao --larguras 390,768,1440`. Saída em `.trabalho/design/<etapa>/`. |
+| | `amostra.mjs` | Copia do site carregado, por `qid`, as frases usadas nos protótipos de `design/prototipos/` (texto, fonte, original, papel, foto curada) e lê na API do Commons o autor e a licença de cada foto. Gera `design/prototipos/amostra.js`. Rodar com `NODE_USE_ENV_PROXY=1` na nuvem. |
+| | `capturas-prototipos.mjs` | Prints dos protótipos (abertura, cartões, frase ampliada, paleta, tipografia) por largura e tema; mede a rolagem lateral, confere Esc e foco e audita o contraste de cada texto contra o fundo real. |
 
 ## Fluxo de uma nova fase de curadoria
 
