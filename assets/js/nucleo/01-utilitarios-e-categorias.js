@@ -113,16 +113,8 @@ function initials(name) {
     .join('')
     .toUpperCase();
 }
-const AVATAR_PALETTE = [
-  '#C2540A',
-  '#0B8A6E',
-  '#FFB627',
-  '#7C3AED',
-  '#2563EB',
-  '#DB2777',
-  '#059669',
-  '#EA580C'
-];
+// Iniciais de quem não tem foto: tons da paleta (roxo, espresso, oliva, laranja escuro), todos com texto branco legível.
+const AVATAR_PALETTE = ['#401D47', '#5C4A3D', '#3F422E', '#9A4614', '#6E5B49', '#2B1811'];
 function colorForName(name) {
   let h = 0;
   for (let i = 0; i < name.length; i++) {

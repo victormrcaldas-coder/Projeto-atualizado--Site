@@ -43,7 +43,7 @@ h4 {
   font-family: var(--font-serif);
   font-weight: var(--weight-medium);
   line-height: var(--lh-heading);
-  color: var(--text);
+  color: var(--brand);
   text-wrap: balance;
 }
 h1 {

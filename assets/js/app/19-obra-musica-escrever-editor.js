@@ -531,8 +531,8 @@ const edState = {
   arquivo: null
 };
 const ED_FONTES = [
-  { id: 'display', label: 'Serifada', css: "600 {S}px 'Fraunces', Georgia, serif" },
-  { id: 'body', label: 'Padrão', css: "800 {S}px 'Manrope', sans-serif" },
+  { id: 'display', label: 'Serifada', css: "600 {S}px 'Literata', Georgia, serif" },
+  { id: 'body', label: 'Padrão', css: "800 {S}px 'Ysabeau Office', sans-serif" },
   { id: 'hand', label: 'Manuscrita', css: "700 {S}px 'Caveat', cursive" },
   { id: 'mono', label: 'Máquina', css: "700 {S}px ui-monospace, 'Courier New', monospace" }
 ];

@@ -2130,3 +2130,29 @@ window.__fase5Boot = function () {
     console.error('Fase 6:', e);
   }
 };
+
+/* ================================================================
+   CABEÇALHO QUE ENCOLHE AO ROLAR (Etapa 3 do redesign)
+   Só troca a classe .compact; o tamanho e a transição ficam no CSS
+   (assets/css/telas/navegacao.css), e somem com movimento reduzido.
+   ================================================================ */
+(function cabecalhoCompacto() {
+  const cab = document.querySelector('.site-header');
+  if (!cab) return;
+  let pendente = false;
+  const atualizar = () => {
+    pendente = false;
+    cab.classList.toggle('compact', window.scrollY > 24);
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!pendente) {
+        pendente = true;
+        requestAnimationFrame(atualizar);
+      }
+    },
+    { passive: true }
+  );
+  atualizar();
+})();

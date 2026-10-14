@@ -1,0 +1,115 @@
+/* ============================================================
+   MEMOTIVA — PONTE DO CSS ANTIGO PARA O SISTEMA NOVO (Etapa 3 do redesign)
+   Carregado depois de memotiva.css e de 01-tokens.css.
+   1. Os nomes antigos (--coral, --jade, --paper-*, --font-display…) passam a
+      apontar para a paleta e as fontes novas, nos dois temas.
+   2. Saem os excessos de cor que envelheciam o site: brilhos e manchas
+      desfocadas, botões em pílula com sombra colorida, degradês vivos.
+   Cada etapa seguinte redesenha uma tela e apaga daqui o que deixar de ser usado.
+   ============================================================ */
+
+/* ---- 1. nomes antigos -> tokens novos ---- */
+:root,
+html[data-theme='dark'] {
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  --bg-alt: var(--surface-muted);
+  --surface-2: var(--surface);
+  --text-soft: var(--text-secondary);
+  --text-faint: var(--text-meta);
+  --shadow: rgba(43, 24, 17, 0.1);
+  --shadow-strong: rgba(43, 24, 17, 0.2);
+
+  /* o "papel envelhecido" vira o algodão da paleta */
+  --paper-1: var(--surface-muted);
+  --paper-2: var(--surface);
+  --paper-edge: var(--border-strong);
+  --paper-text: var(--text);
+  --paper-text-soft: var(--text-secondary);
+
+  /* acentos vivos -> laranja escuro como texto, roxo da marca, oliva e ocre */
+  --coral: var(--accent-text);
+  --coral-ink: var(--text-on-strong);
+  --jade: var(--ink-2);
+  --jade-ink: var(--bg);
+  --marigold: var(--highlight-strong);
+  --marigold-ink: var(--text);
+  --plum: var(--brand);
+  --plum-ink: var(--on-brand);
+
+  --radius-lg: 8px;
+}
+html[data-theme='dark'] {
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+}
+
+/* ---- 2. excessos de cor ---- */
+
+/* manchas desfocadas atrás da abertura */
+.hero-glow,
+.hero-glow-2 {
+  display: none;
+}
+
+/* botões: retângulo discreto, sem sombra colorida nem pulo no hover */
+.btn {
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  letter-spacing: 0.01em;
+}
+.btn:active {
+  transform: none;
+}
+.btn-coral,
+.btn-jade {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+  box-shadow: none;
+}
+.btn-coral:hover,
+.btn-jade:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  box-shadow: none;
+  transform: none;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.btn-ghost:hover {
+  background: var(--surface);
+}
+.btn-outline:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+/* filtros: sem pílula */
+.chip {
+  border-radius: var(--radius-sm);
+  border-width: 1px;
+}
+
+/* gerador de frase aleatória: faixa roxa da marca, sem degradê roxo-laranja */
+.generator,
+html[data-theme='dark'] .generator {
+  background: var(--brand-surface);
+  color: var(--on-brand);
+  border: 0;
+}
+.generator .btn-coral {
+  background: var(--bg);
+  border-color: var(--bg);
+  color: var(--brand);
+  box-shadow: none;
+}
+html[data-theme='dark'] .generator .btn-coral {
+  background: var(--on-brand);
+  color: var(--brand-surface);
+}
