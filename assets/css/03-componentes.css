@@ -1,0 +1,966 @@
+/* ============================================================
+   MEMOTIVA — COMPONENTES BASE (Etapa 2 do redesign)
+   Usam as classes que o site e o JS já usam (.quote-card, .expand-*, .bottom-nav, .chip…),
+   para as próximas etapas só ligarem este arquivo, sem trocar a marcação.
+   Classes novas, que ainda não existem no site, estão marcadas com "(nova)".
+   Só tokens de 01-tokens.css; nenhum hex aqui.
+   ============================================================ */
+
+/* =========================================================
+   1. A FRASE — um estilo só para todas as frases do acervo
+   ========================================================= */
+.quote-text, /* (nova) uso genérico: autor, obra, Descubra, Histórias */
+.quote-card-text,
+.expand-text,
+.quote-hero-text /* (nova) abertura da home */ {
+  margin: 0;
+  font-family: var(--quote-font);
+  font-weight: var(--quote-weight);
+  font-style: var(--quote-style);
+  color: var(--quote-color);
+  line-height: var(--quote-leading);
+  letter-spacing: var(--quote-tracking);
+  font-optical-sizing: auto;
+  text-wrap: pretty;
+  hanging-punctuation: first; /* Safari: a aspa de abertura fica para fora da margem */
+}
+.quote-text,
+.quote-card-text {
+  font-size: var(--quote-card);
+}
+.expand-text {
+  font-size: var(--quote-modal);
+  max-width: var(--measure-quote);
+}
+.quote-hero-text {
+  font-size: var(--quote-hero);
+  max-width: var(--measure-quote);
+}
+/* um único degrau menor para frase longa: o JS marca data-comprimento="longa" (mais de 140 caracteres) */
+.quote-text[data-comprimento='longa'],
+.quote-card-text[data-comprimento='longa'] {
+  font-size: var(--quote-card-long);
+}
+.expand-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 40ch;
+}
+.quote-hero-text[data-comprimento='longa'] {
+  font-size: var(--quote-hero-long);
+  max-width: 36ch;
+}
+/* aspa pendurada nos outros navegadores: a aspa de abertura vem num span próprio (nova) */
+.aspa-abre {
+  margin-left: -0.42em;
+}
+
+/* o original, quando existe: mesma família, itálico pequeno, no idioma certo (lang no elemento) */
+.quote-original /* (nova) */ {
+  margin: 0;
+  font-family: var(--font-serif), var(--font-original-extra);
+  font-style: italic;
+  font-size: var(--quote-original);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* =========================================================
+   2. BOTÕES E LINKS
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--text);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* principal: espresso cheio (no escuro, linho). O nome antigo continua valendo. */
+.btn-primary, /* (nova) */
+.btn-coral {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.btn-primary:hover,
+.btn-coral:hover {
+  background: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+/* secundário: contorno */
+.btn-ghost:hover {
+  background: var(--surface);
+}
+/* texto: só a palavra, sublinhado laranja fino */
+.btn-text /* (nova) */ {
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+.btn-text:hover {
+  color: var(--accent-text);
+}
+.btn-sm {
+  min-height: 36px;
+  padding: 0 var(--space-4);
+}
+.btn-lg {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-size: var(--fs-body);
+}
+/* botão só com ícone: 44 × 44, sem caixa */
+.btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+}
+.btn-icon:hover {
+  background: var(--surface);
+}
+.btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================================================
+   3. CAMPOS
+   ========================================================= */
+.form-field {
+  display: grid;
+  gap: var(--space-2);
+}
+.form-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+.form-hint /* (nova) */ {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+.form-input,
+.search-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+}
+.form-input::placeholder,
+.search-input::placeholder {
+  color: var(--text-meta);
+  opacity: 1;
+}
+.form-input:focus-visible,
+.search-input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+.form-input[aria-invalid='true'] {
+  border-color: var(--accent-text);
+}
+.form-error {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--accent-text);
+}
+textarea.form-input {
+  min-height: 120px;
+  line-height: var(--lh-body);
+  resize: vertical;
+}
+
+/* =========================================================
+   4. CHIPS E FILTROS
+   ========================================================= */
+.chip-row,
+.filter-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: var(--space-1);
+}
+.chip-row::-webkit-scrollbar,
+.filter-row::-webkit-scrollbar {
+  display: none;
+}
+.chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+}
+.chip:hover {
+  background: var(--surface);
+}
+.chip.active,
+.chip[aria-pressed='true'] {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.chip-count /* (nova) número dentro do chip */ {
+  color: inherit;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+.chip-arrow {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+.chip-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.filter-label {
+  flex: none;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+
+/* =========================================================
+   5. CARTÃO DE FRASE (Explorar e listas)
+   Sem rotação, sem fita: todos iguais, a frase manda.
+   ========================================================= */
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+.quote-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  transform: none !important; /* desliga a rotação que o template antigo põe inline */
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+.quote-card:hover {
+  border-color: var(--border-strong);
+}
+.quote-card-tape {
+  display: none;
+}
+.quote-card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* o laranja como detalhe: um ponto pequeno antes da categoria */
+.quote-card-cat::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.quote-card-src /* (nova) a obra no cartão */ {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+.quote-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: var(--hairline) solid var(--border);
+}
+.quote-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.avatar-frame {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.avatar-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sem foto: iniciais em serifa, no tom do papel (o template antigo põe uma cor viva inline) */
+.avatar-fallback {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  background: var(--surface) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+}
+.author-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+.heart-btn,
+.expand-act {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-meta);
+}
+.heart-btn:hover,
+.expand-act:hover {
+  color: var(--text);
+}
+.heart-btn.active,
+.expand-act.liked,
+.heart-btn[aria-pressed='true'],
+.expand-act[aria-pressed='true'] {
+  color: var(--accent-text);
+}
+.heart-btn[aria-pressed='true'] svg,
+.expand-act[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+.heart-btn svg,
+.expand-act svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================================================
+   6. FRASE AMPLIADA (janela)
+   ========================================================= */
+.expand-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: none;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--overlay);
+}
+.expand-overlay.show {
+  display: grid;
+}
+.expand-quote {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  overflow: auto;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+}
+.expand-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+}
+.expand-close svg {
+  width: 20px;
+  height: 20px;
+}
+.expand-inner {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+@media (min-width: 768px) {
+  .expand-inner {
+    padding: var(--space-8) var(--space-8) var(--space-6);
+  }
+}
+.expand-cat {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.expand-foot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4) var(--space-5);
+  align-items: start;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+.expand-avatar {
+  position: relative;
+  width: 96px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  cursor: zoom-in;
+}
+.expand-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .expand-avatar {
+    width: 132px;
+  }
+}
+/* no celular, retrato pequeno em cima e a etiqueta com a largura toda */
+@media (max-width: 639px) {
+  .expand-foot {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .expand-avatar {
+    width: 88px;
+  }
+  .quote-label {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 0;
+  }
+  .quote-label dd + dt {
+    margin-top: var(--space-3);
+  }
+}
+.expand-ident-wrap {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.expand-ident {
+  display: grid;
+  gap: var(--space-1);
+}
+.expand-author {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: var(--weight-medium);
+  color: var(--text);
+}
+.expand-src {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.expand-src.src-alerta {
+  font-family: var(--font-sans);
+  font-style: normal;
+  color: var(--accent-text);
+}
+.expand-src.src-nota {
+  font-family: var(--font-sans);
+  font-style: normal;
+  color: var(--text-meta);
+}
+.expand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+.expand-know {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.3em;
+}
+.expand-know:hover {
+  color: var(--accent-text);
+}
+.expand-acts {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid var(--border);
+}
+
+/* etiqueta da fonte, herdada da direção C: Obra · Autor · Original (nova) */
+.quote-label {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  font-size: var(--fs-small);
+}
+.quote-label dt {
+  padding-top: 0.2em;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.quote-label dd {
+  margin: 0;
+  color: var(--text);
+}
+.quote-label .obra {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.conferida /* (nova) nota discreta das frases com status A */ {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-meta);
+  color: var(--accent-text);
+}
+
+/* =========================================================
+   7. CABEÇALHO
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: var(--z-header);
+  background: var(--bg);
+  border-bottom: var(--hairline) solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  max-width: var(--maxw);
+  min-height: 68px;
+  margin-inline: auto;
+  padding-left: max(var(--space-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4), env(safe-area-inset-right, 0px));
+  transition: min-height var(--dur-2) var(--ease-out);
+}
+.site-header.compact .header-inner /* (nova) ao rolar, Etapa 3 */ {
+  min-height: 52px;
+}
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+/* a marca leva o laranja num ponto final, e só */
+.logo-dot {
+  order: 2;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.main-nav {
+  display: none;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+.nav-link {
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-3) calc(100% - 8px);
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-size var(--dur-2) var(--ease-out);
+}
+.nav-link:hover {
+  color: var(--text);
+}
+.nav-link.active,
+.nav-link[aria-current='page'] {
+  color: var(--text);
+  background-size: calc(100% - 2 * var(--space-3)) 2px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+@media (min-width: 1024px) {
+  .main-nav {
+    display: flex;
+  }
+  .header-actions {
+    margin-left: var(--space-4);
+  }
+  .hamburger-btn {
+    display: none;
+  }
+}
+
+/* =========================================================
+   8. BARRA INFERIOR (celular e tablet)
+   ========================================================= */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-bottom-nav);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  background: var(--bg);
+  border-top: var(--hairline) solid var(--border);
+}
+.bn-item {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 3px;
+  min-height: 58px;
+  padding: var(--space-2) var(--space-1);
+  border: 0;
+  background: none;
+  color: var(--text-meta);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.02em;
+}
+.bn-item svg {
+  width: 22px;
+  height: 22px;
+}
+.bn-item.active,
+.bn-item[aria-current='page'] {
+  color: var(--text);
+}
+/* item ativo: um traço laranja curto no topo */
+.bn-item.active::before,
+.bn-item[aria-current='page']::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 24px;
+  height: 2px;
+  margin-left: -12px;
+  background: var(--accent);
+}
+@media (min-width: 1024px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* =========================================================
+   9. RODAPÉ
+   ========================================================= */
+.site-footer {
+  margin-top: var(--space-9);
+  padding-block: var(--space-7) calc(var(--space-9) + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-top: var(--hairline) solid var(--border);
+}
+@media (min-width: 1024px) {
+  .site-footer {
+    padding-bottom: var(--space-7);
+  }
+}
+.footer-inner {
+  display: grid;
+  gap: var(--space-4);
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: var(--weight-medium);
+  color: var(--text);
+}
+.footer-brand .logo-dot {
+  order: 2;
+}
+.footer-note {
+  max-width: var(--measure);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+/* =========================================================
+   10. ESTADOS: vazio, carregando, erro, aviso
+   ========================================================= */
+.empty-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 44ch;
+  padding: var(--space-7) 0;
+  border-top: var(--hairline) solid var(--border);
+}
+.empty-state svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: var(--space-2);
+  color: var(--text-meta);
+}
+.empty-state h3 {
+  font-size: 1.375rem;
+}
+.empty-state p {
+  color: var(--text-secondary);
+}
+
+.state-loading /* (nova) */ {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 320px;
+  padding: var(--space-7) 0;
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+}
+.state-loading::after {
+  content: '';
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 30%, var(--border) 30% 100%);
+  background-size: 200% 100%;
+  animation: carregando 1.4s var(--ease-in-out) infinite;
+}
+@keyframes carregando {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .state-loading::after {
+    animation: none;
+  }
+}
+
+.state-error /* (nova) */ {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 52ch;
+  padding: var(--space-4) var(--space-5);
+  border-left: 2px solid var(--accent-text);
+  background: var(--surface-muted);
+}
+.state-error strong {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: var(--weight-medium);
+}
+.state-error p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  max-width: min(420px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (min-width: 1024px) {
+  .toast {
+    bottom: var(--space-6);
+  }
+}
+
+/* =========================================================
+   11. AVALIAÇÃO (só no guia por enquanto) (nova)
+   ========================================================= */
+.rating {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.rating legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.rating-scale {
+  display: flex;
+  gap: var(--space-1);
+}
+.rating input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.rating label {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  cursor: pointer;
+}
+.rating label:hover {
+  background: var(--surface);
+}
+.rating input:checked + label {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.rating input:focus-visible + label {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.rating-ends {
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(5 * var(--tap) + 4 * var(--space-1));
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
