@@ -42,6 +42,32 @@ Nada entra na `main` sem o proprietário dizer "pode juntar". As branches `backu
 
 As fontes OFL não têm essas restrições. Podem ficar no repositório público com o arquivo `OFL.txt`, podem ser reduzidas para carregar mais rápido e podem ser usadas no Escrever.
 
-## Portão 1
+## Portão 1: direção visual (14/10/2026)
 
-A preencher quando o proprietário escolher a direção visual.
+**Resposta do proprietário:** gostou do esquema de cores, mas pediu outra disposição:
+- usar mais o café e as cores em hex do briefing;
+- o laranja chamativo só como detalhe, sem aparecer muito;
+- um projeto maduro, com tons que combinam e mais sutis, no lugar da combinação forte de laranja com roxo;
+- adequar as fontes e manter um padrão: todas as frases com a mesma tipografia, para não ficar cada frase num estilo.
+
+**O que ficou decidido (aplicado na Etapa 2):**
+
+| Tema | Decisão |
+|---|---|
+| Base | Direção A (Marginália): a frase como página, a fonte como nota, Literata. Da C, a etiqueta da fonte (Obra · Original · Imagem). A cor da B foi recusada. |
+| Paleta | "Café": fundo Linen `#FAF3E1`, superfície Cotton `#F5E7C6`, tinta Espresso `#2B1811`, fios Natural `#9F886F`, segunda tinta rara Organic `#3F422E`, marca-texto Light Gold `#F1E59B` e Muted Ochre `#E5D17A`. |
+| Laranja | Só detalhe: ponto da categoria e da marca, traço do item ativo, sublinhado de link, "fonte conferida". Nunca fundo nem botão cheio. Como texto, `#9A4614`. No escuro, Apricot `#D78B30` / `#E3A15A`. |
+| Roxo | Fora das superfícies. Só no anel de foco do teclado (tema claro). |
+| Botão principal | Espresso cheio com texto Linen (no escuro, o inverso). |
+| Tema escuro | Espresso profundo `#1A120E`, superfícies Espresso, texto Linen, detalhe Apricot. |
+| Fontes | Literata (frases, títulos, leitura) e Ysabeau Office (interface). Caveat só na opção "Manuscrita" do Escrever. Fraunces, Manrope e Playwrite BR saem. |
+| A frase | Um estilo só em todo o site: Literata regular, sem itálico, cor `--text`, mesma entrelinha. Muda só o tamanho, fixo por lugar (`--quote-card`, `--quote-modal`, `--quote-hero`), com um degrau menor para frase de mais de 140 caracteres (`data-comprimento="longa"`). Sai a escala contínua de `quoteFontSize`, a rotação e a "fita" dos cartões. |
+
+A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrastes medidos ficam em `design/guia.html`.
+
+## Etapa 2: sistema de design
+
+- **Arquivos:** `assets/css/00-fontes.css` (gerado), `01-tokens.css`, `02-base.css`, `03-componentes.css` e `assets/fonts/` (com `OFL.txt` e `LEIA-ME.md`). Ainda **não** são carregados pelo `index.html`: o site entra no sistema a partir da Etapa 3, tela por tela.
+- **Componentes** usam as classes reais do site (`.quote-card`, `.expand-*`, `.chip`, `.bottom-nav`, `.site-header`, `.empty-state`, `.toast`…). Classes que ainda não existem estão marcadas "(nova)" no CSS.
+- **Para a Etapa 3:** o mapa dos tokens antigos (`--coral`, `--jade`, `--marigold`, `--plum`, `--paper-*`, `--font-*`) para os novos está no fim do guia. `STYLE_COLORS` e `STYLE_FONTS` ficam em `assets/js/dados/` sem mudança; a troca será por CSS ou JS de fora.
+- **Fontes de reserva** com métricas calculadas (`ferramentas/design/metricas-fallback.py`), para o texto não pular quando a fonte chega.

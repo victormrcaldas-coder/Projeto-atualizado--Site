@@ -7,6 +7,10 @@
 //        [--paginas a-marginalia,b-florada,c-galeria] [--larguras 390,1440] [--temas claro,escuro]
 //        [--abrir <qid da frase ampliada>]
 //   -> .trabalho/design/<etapa>/prototipos/<página>-<largura>-<tema>-<parte>.jpg e relatorio.json
+// Para outra página de design/ (o guia da Etapa 2):
+//      node ferramentas/design/capturas-prototipos.mjs --etapa 02-sistema --arquivo design/guia.html \
+//        --secoes paleta,tipografia,frase,componentes,navegacao,estados --inteira
+//   -> .trabalho/design/02-sistema/guia/guia-<largura>-<tema>-<parte>.jpg (--inteira salva a página toda)
 import fs from 'fs';
 import path from 'path';
 import { chromium, servir, TRABALHO } from '../lib/navegador.mjs';
@@ -21,11 +25,16 @@ const lista = (s) =>
     .map((x) => x.trim())
     .filter(Boolean);
 const etapa = arg('--etapa', '01-direcao');
-const paginas = lista(arg('--paginas', 'a-marginalia,b-florada,c-galeria'));
+const arquivo = arg('--arquivo', ''); // caminho a partir da raiz; substitui --paginas
+const paginas = arquivo
+  ? [path.basename(arquivo, '.html')]
+  : lista(arg('--paginas', 'a-marginalia,b-florada,c-galeria'));
+const secoes = lista(arg('--secoes', 'cartoes,paleta,tipografia'));
+const inteira = process.argv.includes('--inteira');
 const larguras = lista(arg('--larguras', '390,1440')).map(Number);
 const temas = lista(arg('--temas', 'claro,escuro'));
 const abrir = arg('--abrir', 'ql0t0xvhg9dsn'); // Blaise Pascal: foto, fonte e original em francês
-const DIR = path.join(TRABALHO, 'design', etapa, 'prototipos');
+const DIR = path.join(TRABALHO, 'design', etapa, arquivo ? paginas[0] : 'prototipos');
 fs.mkdirSync(DIR, { recursive: true });
 
 const site = await servir();
@@ -114,7 +123,8 @@ for (const pagina of paginas) {
         relatorio.erros.push(`${pagina} ${w} ${tema}: ${String(e.message).slice(0, 160)}`)
       );
       const nome = (parte) => path.join(DIR, `${pagina}-${w}-${tema}-${parte}.jpg`);
-      await page.goto(`${base}/design/prototipos/${pagina}.html?limpo=1&tema=${tema}`, { waitUntil: 'load' });
+      const endereco = arquivo ? `${base}/${arquivo}` : `${base}/design/prototipos/${pagina}.html`;
+      await page.goto(`${endereco}?limpo=1&tema=${tema}`, { waitUntil: 'load' });
       await page.waitForLoadState('networkidle', { timeout: 20000 }).catch(() => {});
       await page.evaluate(() => document.fonts.ready);
       await page.waitForTimeout(900); // a frase da abertura "chega" em 450 ms
@@ -122,13 +132,27 @@ for (const pagina of paginas) {
       r.overflow.abertura = await overflow(page);
       r.contraste = await page.evaluate(auditarContraste);
       await page.screenshot({ path: nome('abertura'), type: 'jpeg', quality: 80 });
-      for (const secao of ['cartoes', 'paleta', 'tipografia']) {
+      // cabeçalho fixo não cobre os prints de seção nem aparece no meio do print inteiro
+      const solto = await page.addStyleTag({ content: '.site-header{position:relative!important}' });
+      if (inteira) {
+        await page.evaluate(async () => {
+          for (let y = 0; y < document.body.scrollHeight; y += 600) {
+            window.scrollTo(0, y);
+            await new Promise((ok) => setTimeout(ok, 30));
+          }
+          window.scrollTo(0, 0);
+        });
+        await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+        await page.screenshot({ path: nome('inteira'), type: 'jpeg', quality: 70, fullPage: true });
+      }
+      for (const secao of secoes) {
         const el = page.locator('#' + secao);
         if ((await el.count()) === 0) continue;
         await el.scrollIntoViewIfNeeded();
         await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
         await el.screenshot({ path: nome(secao), type: 'jpeg', quality: 74, scale: 'css' });
       }
+      await solto.evaluate((el) => el.remove());
       await page.evaluate(() => window.scrollTo(0, 0));
       await page.evaluate((q) => Proto.abrirFrase(q), abrir);
       await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});

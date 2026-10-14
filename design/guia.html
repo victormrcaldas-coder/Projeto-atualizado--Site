@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia MeMotiva</title>
+<meta name="robots" content="noindex">
+<!-- Guia do sistema de design (Etapa 2 do redesign). Fora do site: index.html não aponta para cá.
+     Carrega os arquivos reais de assets/css e frases reais do acervo (design/prototipos/amostra.js). -->
+<link rel="preload" href="../assets/fonts/literata/literata-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/ysabeau-office/ysabeau-office-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/00-fontes.css">
+<link rel="stylesheet" href="../assets/css/01-tokens.css">
+<link rel="stylesheet" href="../assets/css/02-base.css">
+<link rel="stylesheet" href="../assets/css/03-componentes.css">
+<style>
+  /* Só a diagramação do guia. Cores, letras e componentes vêm dos arquivos reais. */
+  .g-main { padding-bottom: calc(var(--space-9) + 58px); }
+  .g-intro { display: grid; gap: var(--space-4); padding-block: var(--space-8) var(--space-7); border-bottom: var(--hairline) solid var(--border); }
+  .g-intro h1 { font-size: var(--fs-display); line-height: var(--lh-tight); max-width: 14ch; }
+  .g-intro p { max-width: var(--measure); color: var(--text-secondary); }
+  .g-mudou { display: grid; gap: var(--space-2); margin: 0; padding: 0 0 0 var(--space-4); border-left: 2px solid var(--accent); max-width: var(--measure); list-style: none; }
+  .g-mudou li { color: var(--text); }
+  .g-sumario { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); font-size: var(--fs-small); }
+  .g-secao { display: grid; gap: var(--space-6); padding-block: var(--space-8); border-bottom: var(--hairline) solid var(--border); }
+  .g-secao > header { display: grid; gap: var(--space-2); }
+  .g-secao > header p { max-width: var(--measure); color: var(--text-secondary); }
+  .g-sub { display: grid; gap: var(--space-4); }
+  .g-sub > h3 { font-size: 1.25rem; }
+  .g-nota { max-width: var(--measure); font-size: var(--fs-small); color: var(--text-meta); }
+
+  /* paleta */
+  .g-cores { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: var(--space-4); }
+  .g-cor { display: grid; gap: var(--space-2); min-width: 0; }
+  .g-cor i { display: block; height: 72px; border-radius: var(--radius-sm); border: var(--hairline) solid var(--border); }
+  .g-cor b { font-weight: var(--weight-semibold); font-size: var(--fs-small); }
+  .g-cor code, .g-cor span { font-size: var(--fs-meta); color: var(--text-meta); }
+  .g-tabela { overflow-x: auto; border: var(--hairline) solid var(--border); border-radius: var(--radius-sm); }
+  .g-tabela table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: var(--fs-small); }
+  .g-tabela th, .g-tabela td { padding: var(--space-3) var(--space-4); text-align: left; vertical-align: top; border-bottom: var(--hairline) solid var(--border); }
+  .g-tabela tr:last-child td { border-bottom: 0; }
+  .g-tabela th { font-size: var(--fs-meta); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-meta); font-weight: var(--weight-semibold); }
+  .g-tabela .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .g-tabela .uso { color: var(--text-meta); }
+  .g-tabela .sw { display: inline-block; width: 14px; height: 14px; border-radius: 2px; vertical-align: -2px; margin-right: var(--space-2); border: var(--hairline) solid var(--border-strong); }
+  .amostra-par { display: inline-grid; place-items: center; width: 44px; height: 32px; border: var(--hairline) solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-serif); }
+
+  /* tipografia */
+  .g-familias { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--space-6); }
+  .g-familia { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-4); border-top: var(--hairline) solid var(--border); }
+  .g-familia .g-aa { font-size: 3.5rem; line-height: 1; }
+  .g-familia p { color: var(--text-secondary); font-size: var(--fs-small); }
+  .g-escala { display: grid; gap: var(--space-4); }
+  .g-escala > div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: var(--space-4); align-items: baseline; padding-bottom: var(--space-4); border-bottom: var(--hairline) solid var(--border); }
+  .g-escala span { font-size: var(--fs-meta); color: var(--text-meta); }
+  @media (max-width: 639px) { .g-escala > div { grid-template-columns: 1fr; gap: var(--space-1); } }
+  .g-originais { display: grid; gap: var(--space-3); }
+  .g-originais > div { display: grid; gap: var(--space-1); }
+
+  /* a frase em três lugares */
+  .g-tres { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 1024px) { .g-tres { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); } .g-tres .g-hero-demo { grid-column: 1 / -1; } }
+  .g-rotulo { font-size: var(--fs-meta); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-meta); font-weight: var(--weight-semibold); margin-bottom: var(--space-3); }
+  .g-estatico.expand-quote { position: relative; width: 100%; max-height: none; box-shadow: none; border: var(--hairline) solid var(--border); }
+  .g-hero-demo { display: grid; gap: var(--space-4); padding: var(--space-7) 0; border-top: var(--hairline) solid var(--border); border-bottom: var(--hairline) solid var(--border); }
+  .g-hero-assina { font-family: var(--font-sans); font-size: var(--fs-small); color: var(--text-secondary); }
+  .g-hero-assina b { color: var(--text); font-weight: var(--weight-semibold); }
+
+  /* componentes */
+  .g-linha { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); align-items: center; }
+  .g-campos { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .g-quadro { border: var(--hairline) solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .g-quadro .site-header, .g-quadro .bottom-nav, .g-quadro .toast { position: static; }
+  .g-quadro .bottom-nav { display: grid; }
+  .g-quadro .toast { transform: none; opacity: 1; margin: var(--space-4); max-width: none; display: inline-block; }
+  .g-quadro .site-footer { margin-top: 0; padding-bottom: var(--space-7); }
+  .g-celular { max-width: 390px; }
+
+  /* foto ampliada (usa a mesma pilha de janelas da frase) */
+  #foto-ampliada { position: fixed; inset: 0; z-index: var(--z-modal); display: grid; place-items: center; padding: var(--space-4); background: var(--overlay); }
+  #foto-ampliada[hidden] { display: none; }
+  #foto-ampliada [data-corpo] { position: relative; max-width: min(900px, 100%); max-height: calc(100dvh - 32px); overflow: auto; background: var(--bg); border-radius: var(--radius-md); padding: var(--space-4); }
+  .foto-grande { margin: 0; display: grid; gap: var(--space-3); }
+  .foto-grande img { max-height: 72dvh; width: auto; margin-inline: auto; }
+  .foto-grande figcaption { font-size: var(--fs-small); color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#topo" aria-label="MeMotiva, ir para o início do guia"><span class="logo-dot"></span>MeMotiva</a>
+    <nav class="main-nav" aria-label="Seções do guia">
+      <a class="nav-link" href="#paleta">Cores</a>
+      <a class="nav-link" href="#tipografia">Letras</a>
+      <a class="nav-link active" href="#frase" aria-current="page">A frase</a>
+      <a class="nav-link" href="#componentes">Componentes</a>
+      <a class="nav-link" href="#navegacao">Navegação</a>
+      <a class="nav-link" href="#estados">Estados</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-icon" type="button" data-alternar-tema aria-label="Usar o tema escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="g-main" id="topo">
+  <div class="wrap">
+
+    <section class="g-intro" aria-labelledby="t-guia">
+      <p class="eyebrow">Etapa 2 · sistema de design</p>
+      <h1 id="t-guia">Guia do MeMotiva</h1>
+      <p>Cores, letras e componentes que o site passa a usar a partir da Etapa 3. Esta página carrega os arquivos reais (<code>assets/css/00</code> a <code>03</code> e as fontes de <code>assets/fonts/</code>) e frases reais do acervo. Troque o tema no botão do topo.</p>
+      <ul class="g-mudou" aria-label="O que mudou depois do Portão 1">
+        <li>Paleta café: linho, algodão e espresso. O laranja ficou só nos detalhes.</li>
+        <li>O roxo saiu das superfícies; aparece só no anel de foco do teclado.</li>
+        <li>Toda frase do acervo tem a mesma letra, o mesmo estilo e a mesma cor, em qualquer tela.</li>
+      </ul>
+      <nav class="g-sumario" aria-label="Neste guia">
+        <a href="#paleta">Cores</a><a href="#tipografia">Letras</a><a href="#frase">A frase</a><a href="#componentes">Componentes</a><a href="#navegacao">Navegação</a><a href="#estados">Estados</a><a href="#mapa">Tokens antigos</a>
+      </nav>
+    </section>
+
+    <!-- ===================== CORES ===================== -->
+    <section class="g-secao" id="paleta" aria-labelledby="t-paleta">
+      <header>
+        <p class="eyebrow">1 · Cores</p>
+        <h2 id="t-paleta">Um fundo, uma tinta, um detalhe</h2>
+        <p>Cada tela usa o linho como fundo, o espresso como tinta e o laranja só em pontos pequenos: o marcador da categoria, o traço do item ativo, o sublinhado dos links. Os valores abaixo são lidos dos tokens no tema atual.</p>
+      </header>
+      <div class="g-cores" id="g-cores"></div>
+      <div class="g-sub">
+        <h3>Contraste medido no tema atual</h3>
+        <div class="g-tabela"><table><thead><tr><th>Amostra</th><th>Par</th><th>Contraste</th><th>Uso</th></tr></thead><tbody id="g-contraste"></tbody></table></div>
+        <p class="g-nota">AA pede 4,5 : 1 para texto comum e 3 : 1 para texto grande. O laranja puro e o Natural ficam fora do texto: são só forma e fio.</p>
+      </div>
+      <div class="g-sub">
+        <h3>As 17 cores do briefing: escolhida, apoio ou descartada</h3>
+        <div class="g-tabela"><table>
+          <thead><tr><th>Cor</th><th>Papel</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td class="num"><i class="sw" style="background:#FAF3E1"></i>Sustainable Linen <code>#FAF3E1</code></td><td>Escolhida: fundo</td><td>Claro e quente sem amarelar; o espresso passa de 15 : 1 sobre ele.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#F5E7C6"></i>Recycled Cotton <code>#F5E7C6</code></td><td>Escolhida: superfície</td><td>Separa áreas sem caixa nem sombra; no escuro, o papel dela passa ao espresso.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#2B1811"></i>Dark Espresso <code>#2B1811</code></td><td>Escolhida: tinta</td><td>O café da marca: texto, frases, botão principal; fundo das superfícies no escuro.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#9F886F"></i>Natural <code>#9F886F</code></td><td>Apoio: fios</td><td>Só fio e contorno (3,1 : 1). Para texto, a versão escurecida <code>#7A6450</code> (5,0 : 1).</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Burnt Orange <code>#E06F2D</code></td><td>Apoio: detalhe</td><td>Pedido do proprietário: chamativo só em pontos pequenos. Como texto, a versão <code>#9A4614</code>.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#D78B30"></i>Apricot <code>#D78B30</code></td><td>Apoio: detalhe no escuro</td><td>O laranja do tema escuro: mais macio sobre o espresso (6,7 : 1).</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#3F422E"></i>Organic <code>#3F422E</code></td><td>Apoio: segunda tinta</td><td>Rara; combina com o café e dá um contraponto verde sem gritar.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#F1E59B"></i>Light Gold <code>#F1E59B</code></td><td>Apoio: marca-texto</td><td>Só seleção e termo encontrado na busca.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#E5D17A"></i>Muted Ochre <code>#E5D17A</code></td><td>Apoio: marca-texto forte</td><td>Mesmo uso, um tom acima; nunca como fundo de seção.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#401D47"></i>Deep Purple <code>#401D47</code></td><td>Apoio: só o foco</td><td>Pedido do proprietário: sem a combinação forte com o laranja. Fica no anel de foco, onde precisa contrastar.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#FFF4D6"></i>Light Parchment <code>#FFF4D6</code></td><td>Descartada</td><td>Quase igual ao Linen, um pouco mais amarela.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#F5E6C5"></i>Ivory <code>#F5E6C5</code></td><td>Descartada</td><td>Igual ao Recycled Cotton.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#FF6D1F"></i>Electric Tangerine <code>#FF6D1F</code></td><td>Descartada</td><td>Neon demais para um projeto sóbrio.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#222222"></i>Black Hole <code>#222222</code></td><td>Descartada</td><td>Cinza frio; o espresso faz o mesmo papel com calor.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#B1A082"></i>Areia do "bloom" <code>≈ #B1A082</code></td><td>Descartada</td><td>Amostra aproximada de foto; o Natural cobre o mesmo tom.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#3C1C44"></i>Roxo do "bloom" <code>≈ #3C1C44</code></td><td>Descartada</td><td>Quase o Deep Purple.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Laranja do "bloom" <code>≈ #E06F2D</code></td><td>Descartada</td><td>Igual ao Burnt Orange.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="g-nota">Derivadas (versões mais claras ou escuras das cores acima, só para passar no AA): espresso profundo <code>#1A120E</code> (fundo escuro), <code>#5C4A3D</code> e <code>#D9CDB4</code> (texto secundário), <code>#7A6450</code> e <code>#BFAE95</code> (metadados), <code>#9A4614</code> e <code>#E3A15A</code> (laranja como texto), <code>#C8C4A4</code> (Organic no escuro).</p>
+      </div>
+    </section>
+
+    <!-- ===================== LETRAS ===================== -->
+    <section class="g-secao" id="tipografia" aria-labelledby="t-tipo">
+      <header>
+        <p class="eyebrow">2 · Letras</p>
+        <h2 id="t-tipo">Duas famílias, e uma terceira só para quem escreve</h2>
+        <p>Todas com licença SIL OFL, guardadas no repositório em <code>assets/fonts/</code> com o arquivo da licença. O navegador baixa só o pedaço de cada fonte que a página usa.</p>
+      </header>
+      <div class="g-familias">
+        <div class="g-familia"><span class="g-aa" style="font-family:var(--font-serif)">Aa</span><b>Literata</b><p>Todas as frases, títulos e textos longos. Serifa de livro, com tamanho ótico: fica fina no título e robusta no corpo. Cobre o grego e o russo dos originais.</p></div>
+        <div class="g-familia"><span class="g-aa" style="font-family:var(--font-sans)">Aa</span><b>Ysabeau Office</b><p>Interface: menus, botões, rótulos, metadados. Humanista, conversa com a Literata sem competir com a frase.</p></div>
+        <div class="g-familia"><span class="g-aa" style="font-family:var(--font-hand)">Aa</span><b>Caveat</b><p>Só a opção "Manuscrita" do Escrever, escolhida por quem escreve o relato. Nunca nas frases do acervo.</p></div>
+      </div>
+      <div class="g-sub">
+        <h3>Escala (6 tamanhos)</h3>
+        <div class="g-escala" id="g-escala"></div>
+      </div>
+      <div class="g-sub">
+        <h3>Originais em outras escritas</h3>
+        <div class="g-originais" id="g-originais"></div>
+      </div>
+    </section>
+
+    <!-- ===================== A FRASE ===================== -->
+    <section class="g-secao" id="frase" aria-labelledby="t-frase">
+      <header>
+        <p class="eyebrow">3 · A frase</p>
+        <h2 id="t-frase">Um estilo só, em todo lugar</h2>
+        <p>A mesma frase no cartão, na frase ampliada e na abertura da home: mesma letra, mesmo peso, sem itálico, mesma cor e mesma entrelinha. Muda só o tamanho, que é fixo por lugar, com um degrau menor para frase longa (mais de 140 caracteres). A aspa de abertura fica pendurada na margem.</p>
+      </header>
+      <div class="g-tres">
+        <div><p class="g-rotulo">No cartão</p><div id="g-cartao-demo"></div></div>
+        <div><p class="g-rotulo">Na frase ampliada</p><div class="expand-quote g-estatico" id="g-modal-demo"></div></div>
+        <div class="g-hero-demo" id="g-hero-demo"></div>
+      </div>
+      <div class="g-sub">
+        <h3>Todas as frases da amostra, lado a lado</h3>
+        <p class="g-nota">Curta, longa, traduzida, com e sem foto, ditado popular: o estilo não muda. Clique num cartão para abrir a frase ampliada (Esc fecha e o foco volta ao cartão).</p>
+        <div class="quote-grid" id="cartoes"></div>
+      </div>
+    </section>
+
+    <!-- ===================== COMPONENTES ===================== -->
+    <section class="g-secao" id="componentes" aria-labelledby="t-comp">
+      <header>
+        <p class="eyebrow">4 · Componentes</p>
+        <h2 id="t-comp">Botões, campos, filtros e avaliação</h2>
+        <p>O botão principal é espresso cheio (no escuro, linho). Nenhum botão é laranja: o laranja aparece só no sublinhado dos botões de texto.</p>
+      </header>
+      <div class="g-sub">
+        <h3>Botões e links</h3>
+        <div class="g-linha">
+          <button class="btn btn-coral" type="button">Entrar</button>
+          <button class="btn btn-ghost" type="button">Criar conta</button>
+          <button class="btn-text" type="button">Conhecer o autor</button>
+          <button class="btn btn-coral btn-sm" type="button">Publicar</button>
+          <button class="btn btn-ghost btn-lg" type="button">Ver todas as frases</button>
+          <button class="btn btn-ghost" type="button" disabled>Indisponível</button>
+          <button class="btn-icon" type="button" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
+        </div>
+        <p style="max-width:var(--measure)">Link no meio do texto: a frase de Pascal está nos <a href="#frase">Pensamentos, 277</a>, e o sublinhado laranja é o único detalhe de cor.</p>
+      </div>
+      <div class="g-sub">
+        <h3>Campos</h3>
+        <div class="g-campos">
+          <div class="form-field"><label class="form-label" for="g-nome">Nome</label><input class="form-input" id="g-nome" type="text" placeholder="Como quer ser chamado"><span class="form-hint">Aparece nos seus relatos.</span></div>
+          <div class="form-field"><label class="form-label" for="g-email">E-mail</label><input class="form-input" id="g-email" type="email" value="ana@exemplo" aria-invalid="true" aria-describedby="g-email-erro"><span class="form-error" id="g-email-erro">Confira o e-mail: falta o domínio, como em ana@exemplo.com.</span></div>
+          <div class="form-field"><label class="form-label" for="g-busca">Buscar no acervo</label><input class="search-input" id="g-busca" type="search" placeholder="Autor, obra ou palavra"></div>
+          <div class="form-field"><label class="form-label" for="g-texto">Seu relato</label><textarea class="form-input" id="g-texto" placeholder="O que esta frase lembrou a você?"></textarea></div>
+        </div>
+      </div>
+      <div class="g-sub">
+        <h3>Filtros</h3>
+        <div class="filter-bar"><span class="filter-label">Tema</span><div class="chip-row" id="g-chips"></div></div>
+      </div>
+      <div class="g-sub">
+        <h3>Avaliação</h3>
+        <fieldset class="rating">
+          <legend>Como você avalia esta leitura?</legend>
+          <div class="rating-scale">
+            <input type="radio" name="g-nota" id="g-n1" value="1"><label for="g-n1">1</label>
+            <input type="radio" name="g-nota" id="g-n2" value="2"><label for="g-n2">2</label>
+            <input type="radio" name="g-nota" id="g-n3" value="3"><label for="g-n3">3</label>
+            <input type="radio" name="g-nota" id="g-n4" value="4" checked><label for="g-n4">4</label>
+            <input type="radio" name="g-nota" id="g-n5" value="5"><label for="g-n5">5</label>
+          </div>
+          <div class="rating-ends" aria-hidden="true"><span>pouco</span><span>muito</span></div>
+        </fieldset>
+        <p class="g-nota">Componente pedido pelo briefing; ainda não existe no site e só aparece aqui.</p>
+      </div>
+    </section>
+
+    <!-- ===================== NAVEGAÇÃO ===================== -->
+    <section class="g-secao" id="navegacao" aria-labelledby="t-nav">
+      <header>
+        <p class="eyebrow">5 · Navegação</p>
+        <h2 id="t-nav">Cabeçalho, barra inferior e rodapé</h2>
+        <p>O item ativo leva um traço laranja curto. O cabeçalho encolhe ao rolar (a animação entra na Etapa 3). A barra inferior mostra aqui os 5 itens de hoje; a proposta de redução vem na Etapa 3.</p>
+      </header>
+      <div class="g-sub">
+        <h3>Cabeçalho, normal e compacto</h3>
+        <div class="g-quadro">
+          <header class="site-header"><div class="header-inner">
+            <span class="logo"><span class="logo-dot"></span>MeMotiva</span>
+            <nav class="main-nav" aria-label="Exemplo de navegação principal"><span class="nav-link">Início</span><span class="nav-link active">Explorar</span><span class="nav-link">Descubra</span><span class="nav-link">Histórias</span><span class="nav-link">Comunidade</span><span class="nav-link">Perfil</span></nav>
+            <div class="header-actions"><button class="btn btn-coral btn-sm" type="button">Entrar</button><button class="btn-icon hamburger-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+          </div></header>
+        </div>
+        <div class="g-quadro">
+          <header class="site-header compact"><div class="header-inner">
+            <span class="logo"><span class="logo-dot"></span>MeMotiva</span>
+            <nav class="main-nav" aria-label="Exemplo de navegação compacta"><span class="nav-link">Início</span><span class="nav-link active">Explorar</span><span class="nav-link">Descubra</span><span class="nav-link">Histórias</span><span class="nav-link">Comunidade</span><span class="nav-link">Perfil</span></nav>
+            <div class="header-actions"><button class="btn btn-coral btn-sm" type="button">Entrar</button><button class="btn-icon hamburger-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+          </div></header>
+        </div>
+      </div>
+      <div class="g-sub">
+        <h3>Barra inferior (celular)</h3>
+        <div class="g-quadro g-celular">
+          <nav class="bottom-nav" aria-label="Exemplo de barra inferior">
+            <span class="bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>Início</span>
+            <span class="bn-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Explorar</span>
+            <span class="bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c.6-3.6 3-5.6 6.5-5.6s5.9 2 6.5 5.6"/></svg>Descubra</span>
+            <span class="bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Histórias</span>
+            <span class="bn-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>Perfil</span>
+          </nav>
+        </div>
+      </div>
+      <div class="g-sub">
+        <h3>Rodapé</h3>
+        <div class="g-quadro">
+          <footer class="site-footer"><div class="wrap footer-inner">
+            <span class="footer-brand"><span class="logo-dot"></span>MeMotiva</span>
+            <p class="footer-note">Frases e biografias reunidas de fontes verificadas, com atribuição correta a cada autor. Feito para acompanhar você nos dias difíceis e nos dias de agir.</p>
+            <p class="footer-note">Frases de outros idiomas aparecem em tradução que busca a maior fidelidade possível ao texto e ao sentido original, com as pequenas adaptações que o português exige.</p>
+          </div></footer>
+        </div>
+        <p class="g-nota">Texto atual do rodapé do site, sem mudança.</p>
+      </div>
+    </section>
+
+    <!-- ===================== ESTADOS ===================== -->
+    <section class="g-secao" id="estados" aria-labelledby="t-estados">
+      <header>
+        <p class="eyebrow">6 · Estados</p>
+        <h2 id="t-estados">Vazio, carregando, erro e aviso</h2>
+      </header>
+      <div class="g-campos">
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <h3>Nada por aqui ainda</h3>
+          <p>Tente buscar outro nome ou escolher outro tema.</p>
+        </div>
+        <div class="state-loading" role="status">Carregando as frases do acervo…</div>
+        <div class="state-error" role="alert">
+          <strong>Não foi possível carregar as frases</strong>
+          <p>Confira a conexão e tente de novo. O que você salvou continua guardado.</p>
+          <button class="btn-text" type="button">Tentar de novo</button>
+        </div>
+        <div class="g-quadro"><div class="toast" role="status">Frase salva nos favoritos</div></div>
+      </div>
+      <p class="g-nota">O texto do estado vazio é o que o Explorar usa hoje.</p>
+    </section>
+
+    <!-- ===================== MAPA ===================== -->
+    <section class="g-secao" id="mapa" aria-labelledby="t-mapa">
+      <header>
+        <p class="eyebrow">7 · Para a Etapa 3</p>
+        <h2 id="t-mapa">Tokens antigos e os novos</h2>
+        <p>Os nomes de hoje em <code>memotiva.css</code> passam para os novos quando cada tela for redesenhada.</p>
+      </header>
+      <div class="g-tabela"><table>
+        <thead><tr><th>Hoje</th><th>Passa a ser</th><th>Observação</th></tr></thead>
+        <tbody>
+          <tr><td><code>--bg</code>, <code>--bg-alt</code></td><td><code>--bg</code>, <code>--surface-muted</code></td><td>Mesmo nome, valor novo.</td></tr>
+          <tr><td><code>--surface</code>, <code>--surface-2</code></td><td><code>--surface-muted</code>, <code>--surface</code></td><td>O branco puro sai.</td></tr>
+          <tr><td><code>--text</code>, <code>--text-soft</code>, <code>--text-faint</code></td><td><code>--text</code>, <code>--text-secondary</code>, <code>--text-meta</code></td><td><code>--text-faint</code> reprova no AA hoje; o novo passa.</td></tr>
+          <tr><td><code>--border</code>, <code>--border-strong</code></td><td><code>--border</code>, <code>--border-strong</code></td><td>Natural no lugar do cinza.</td></tr>
+          <tr><td><code>--shadow</code>, <code>--shadow-strong</code></td><td><code>--shadow-float</code></td><td>Uma sombra só, para janelas.</td></tr>
+          <tr><td><code>--paper-1</code>, <code>--paper-2</code>, <code>--paper-edge</code>, <code>--paper-text</code></td><td><code>--surface-muted</code>, <code>--surface</code>, <code>--border</code>, <code>--text</code></td><td>O "papel envelhecido" com fita e rotação sai do cartão.</td></tr>
+          <tr><td><code>--coral</code></td><td><code>--surface-strong</code> (botão) ou <code>--accent-text</code> (texto)</td><td>Botão principal vira espresso.</td></tr>
+          <tr><td><code>--jade</code>, <code>--plum</code></td><td><code>--ink-2</code> ou <code>--text</code></td><td>Verde e roxo vivos saem.</td></tr>
+          <tr><td><code>--marigold</code></td><td><code>--highlight</code></td><td>Só marca-texto.</td></tr>
+          <tr><td><code>--font-display</code>, <code>--font-body</code>, <code>--font-hand</code></td><td><code>--font-serif</code>, <code>--font-sans</code>, <code>--font-hand</code></td><td>Fraunces e Manrope saem; Caveat fica.</td></tr>
+          <tr><td><code>quoteFontSize()</code> (5 tamanhos)</td><td><code>--quote-*</code> + <code>data-comprimento="longa"</code></td><td>Um tamanho por lugar e um degrau para frase longa.</td></tr>
+          <tr><td><code>STYLE_COLORS</code>, <code>STYLE_FONTS</code> (Escrever)</td><td>mesmos ids, valores novos</td><td>Os dados ficam em <code>assets/js/dados/</code> sem mudar; a troca é feita por CSS ou JS de fora (Etapa 8).</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+  </div>
+</main>
+
+<div id="frase-ampliada" class="expand-overlay show" role="dialog" aria-modal="true" aria-label="Frase ampliada" hidden><div class="expand-quote" data-corpo></div></div>
+<div id="foto-ampliada" role="dialog" aria-modal="true" aria-label="Fotografia ampliada" hidden><div data-corpo></div></div>
+
+<script src="prototipos/amostra.js"></script>
+<script src="prototipos/comum.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { A, FRASES, esc, comAspas, autor, imagem, credito, linguaDoOriginal, montarContraste } = window.Proto;
+  const LONGA = 140;
+  const comprimento = (t) => (t.length > LONGA ? ' data-comprimento="longa"' : '');
+  const ehDitado = (f) => f.autor === 'Ditado Popular';
+  const PARTICULAS = new Set(['de', 'da', 'do', 'das', 'dos', 'e', 'van', 'von']);
+  const iniciais = (nome) => {
+    const p = nome.split(/\s+/).filter((x) => !PARTICULAS.has(x.toLowerCase()));
+    return ((p[0] || '')[0] + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase();
+  };
+  const coracao = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21s-7.5-4.7-10.2-9.1C.2 9 1 5.4 4.2 4.1 6.7 3 9.3 4 12 7c2.7-3 5.3-4 7.8-2.9 3.2 1.3 4 4.9 2.4 7.8C19.5 16.3 12 21 12 21Z"/></svg>';
+  const balao = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4Z"/></svg>';
+  const retrato = (a, classe, largura) =>
+    a.foto
+      ? imagem(a, { largura, larguras: [largura, largura * 2], tamanhos: largura + 'px' })
+      : `<span class="avatar-fallback" style="display:grid">${esc(iniciais(a.nome))}</span>`;
+
+  /* ---- modelos: a mesma marcação que o site usa (quoteCardHTML e openQuoteModal), sem travessão ---- */
+  window.DIRECAO = {
+    cartaoHTML(f, a) {
+      const nome = ehDitado(f) ? 'Ditado popular' : a.nome;
+      return `<article class="quote-card" data-abrir="${esc(f.qid)}" role="button" tabindex="0" aria-label="Ampliar frase de ${esc(nome)}">
+        <span class="quote-card-cat">${esc(f.categoria)}</span>
+        <p class="quote-card-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
+        ${f.fonte ? `<p class="quote-card-src">${esc(f.fonte)}</p>` : ''}
+        <div class="quote-card-foot">
+          <div class="quote-author">
+            ${ehDitado(f) ? '' : `<div class="avatar-frame">${retrato(a, '', 80)}</div>`}
+            <span class="author-name">${esc(nome)}</span>
+          </div>
+          <button class="heart-btn" type="button" data-salvar aria-pressed="false" aria-label="Salvar frase nos favoritos">${coracao}</button>
+        </div>
+      </article>`;
+    },
+    modalHTML(f, a) {
+      const lingua = f.original ? linguaDoOriginal(f.original) : '';
+      const nome = ehDitado(f) ? 'Ditado popular' : a.nome;
+      return `<button class="expand-close" type="button" data-fechar aria-label="Fechar frase ampliada">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <div class="expand-inner">
+          <span class="expand-cat">${esc(f.categoria)}</span>
+          <p class="expand-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
+          <div class="expand-foot">
+            ${ehDitado(f) ? '<span></span>' : a.foto
+              ? `<div class="expand-avatar" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${retrato(a, '', 264)}</div>`
+              : `<div class="expand-avatar">${retrato(a, '', 264)}</div>`}
+            <div class="expand-ident-wrap">
+              <div class="expand-ident"><span class="expand-author">${esc(nome)}</span>${a.papel && !ehDitado(f) ? `<span class="expand-src">${esc(a.papel)}</span>` : ''}</div>
+              <dl class="quote-label">
+                ${f.fonte ? `<dt>Obra</dt><dd><span class="obra">${esc(f.fonte)}</span>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}</dd>` : ''}
+                ${f.original ? `<dt>Original</dt><dd><p class="quote-original"${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</p></dd>` : ''}
+                ${a.foto ? `<dt>Imagem</dt><dd class="expand-src" style="font-style:normal">${esc(credito(a).replace(/^Imagem: /, ''))}</dd>` : ''}
+              </dl>
+              ${ehDitado(f) ? '' : `<div class="expand-links"><button class="expand-know" type="button">Saiba mais</button><button class="expand-know" type="button">Conhecer ${esc(a.nome)}</button></div>`}
+            </div>
+            <div class="expand-acts">
+              <button class="expand-act" type="button" data-salvar aria-pressed="false" aria-label="Salvar frase nos favoritos">${coracao}</button>
+              <button class="expand-act" type="button" aria-label="Escrever a partir desta frase">${balao}</button>
+            </div>
+          </div>
+        </div>`;
+    }
+  };
+
+  /* ---- cores: valores lidos dos tokens do tema atual ---- */
+  const CORES = [
+    ['--bg', 'Fundo'], ['--surface', 'Superfície'], ['--surface-muted', 'Superfície discreta'], ['--text', 'Tinta'],
+    ['--text-secondary', 'Texto secundário'], ['--text-meta', 'Metadados'], ['--border-strong', 'Fio'],
+    ['--accent', 'Detalhe'], ['--accent-text', 'Detalhe como texto'], ['--ink-2', 'Segunda tinta'],
+    ['--highlight', 'Marca-texto'], ['--focus-ring', 'Foco']
+  ];
+  const raiz = document.documentElement;
+  const valor = (t) => getComputedStyle(raiz).getPropertyValue(t).trim();
+  function desenharCores() {
+    document.getElementById('g-cores').innerHTML = CORES.map(([t, nome]) =>
+      `<div class="g-cor"><i style="background:var(${t})"></i><b>${esc(nome)}</b><code>${t}</code><span>${esc(valor(t).toUpperCase())}</span></div>`).join('');
+  }
+  desenharCores();
+  document.addEventListener('proto:tema', desenharCores);
+  montarContraste(document.getElementById('g-contraste'), [
+    ['--text', '--bg', 'frases, títulos e texto'], ['--text', '--surface', 'texto nas superfícies'],
+    ['--text-secondary', '--bg', 'texto secundário'], ['--text-meta', '--bg', 'metadados e rótulos'],
+    ['--text-meta', '--surface', 'metadados nas superfícies'], ['--accent-text', '--bg', 'laranja como texto: "fonte conferida", alertas'],
+    ['--accent-text', '--surface', 'laranja como texto nas superfícies'], ['--ink-2', '--bg', 'segunda tinta'],
+    ['--text-on-strong', '--surface-strong', 'botão principal'], ['--focus-ring', '--bg', 'anel de foco'],
+    ['--text', '--highlight', 'texto marcado'], ['--accent', '--bg', 'laranja puro: só forma e ponto'],
+    ['--border-strong', '--bg', 'fio e contorno']
+  ]);
+
+  /* ---- escala ---- */
+  const longa = FRASES.f28asxuhfb; // Guimarães Rosa, 153 caracteres
+  const curta = FRASES.qmavfjkqarqzo; // Machado de Assis, 24 caracteres
+  const pascal = FRASES.ql0t0xvhg9dsn; // "razões", com õ
+  const ESCALA = [
+    ['Display', '--fs-display', 'Frases do acervo', 'serif'],
+    ['Título 1', '--fs-h1', 'Autores e obras', 'serif'],
+    ['Título 2', '--fs-h2', 'Machado de Assis', 'serif'],
+    ['Corpo', '--fs-body', `${longa.autor}, ${autor(longa.autor).papel}. ${longa.fonte}. Quem pesquisar a frase e o autor deve encontrar o mesmo; por isso a fonte vem junto com a frase.`, 'serif'],
+    ['Pequeno', '--fs-small', 'Pensamentos, 277 · Blaise Pascal', 'sans'],
+    ['Meta', '--fs-meta', 'FILOSOFIA E SABEDORIA', 'sans']
+  ];
+  document.getElementById('g-escala').innerHTML = ESCALA.map(([nome, t, texto, fam]) =>
+    `<div><span>${nome} · <code>${t}</code></span><p style="font-size:var(${t});font-family:var(--font-${fam});line-height:${t === '--fs-body' ? 1.6 : 1.2}${t === '--fs-meta' ? ';letter-spacing:var(--tracking-label);font-weight:600' : ''}">${esc(texto)}</p></div>`).join('');
+  document.getElementById('g-originais').innerHTML = ['q1v8oi7oe6cqdv', 'q1gsfz1k16xaa3h', 'ql0t0xvhg9dsn'].map((q) => {
+    const f = FRASES[q];
+    const l = linguaDoOriginal(f.original);
+    return `<div><span class="eyebrow">${esc(f.autor)}</span><p class="quote-original"${l ? ` lang="${l}"` : ''}>${esc(f.original)}</p></div>`;
+  }).join('');
+
+  /* ---- a mesma frase em três lugares ---- */
+  document.getElementById('g-cartao-demo').innerHTML = window.DIRECAO.cartaoHTML(pascal, autor(pascal.autor));
+  document.getElementById('g-modal-demo').innerHTML = window.DIRECAO.modalHTML(pascal, autor(pascal.autor)).replace(/<button class="expand-close"[\s\S]*?<\/button>/, '');
+  document.getElementById('g-hero-demo').innerHTML = `<p class="g-rotulo">Na abertura da home</p>
+    <p class="quote-hero-text">${comAspas(pascal.texto)}</p>
+    <p class="g-hero-assina"><b>${esc(pascal.autor)}</b> · <span class="quote-card-src">${esc(pascal.fonte)}</span></p>
+    <p class="g-rotulo" style="margin-top:var(--space-5)">Frase longa na abertura (um degrau menor)</p>
+    <p class="quote-hero-text" data-comprimento="longa">${comAspas(longa.texto)}</p>
+    <p class="g-hero-assina"><b>${esc(longa.autor)}</b> · <span class="quote-card-src">${esc(longa.fonte)}</span></p>`;
+
+  /* ---- grade com todas as frases e chips ---- */
+  document.getElementById('cartoes').innerHTML = A.frases.map((f) => window.DIRECAO.cartaoHTML(f, autor(f.autor))).join('');
+  const temas = [...new Set(A.frases.map((f) => f.categoria))];
+  document.getElementById('g-chips').innerHTML = ['Todos os temas', ...temas].map((t, i) =>
+    `<button class="chip${i === 0 ? ' active' : ''}" type="button" aria-pressed="${i === 0}">${esc(t)}</button>`).join('');
+  document.getElementById('g-chips').addEventListener('click', (e) => {
+    const c = e.target.closest('.chip');
+    if (!c) return;
+    document.querySelectorAll('#g-chips .chip').forEach((x) => { x.classList.toggle('active', x === c); x.setAttribute('aria-pressed', String(x === c)); });
+  });
+
+  /* ---- teclado: Enter e espaço abrem o que é role="button" ---- */
+  document.addEventListener('keydown', (e) => {
+    const alvo = e.target.closest && e.target.closest('[role="button"][data-abrir],[role="button"][data-ampliar-foto]');
+    if (alvo && (e.key === 'Enter' || e.key === ' ') && e.target === alvo) { e.preventDefault(); alvo.click(); }
+  });
+  /* rótulo do botão de tema acompanha o tema */
+  window.Proto.iniciar();
+})();
+</script>
+</body>
+</html>
