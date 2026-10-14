@@ -71,6 +71,7 @@
       .join(', ');
   }
   // Crédito curto para legenda. O texto completo do Commons fica a um clique (link "Ver no Commons").
+  // "Imagem", e não "Foto": no acervo há fotografia, pintura e busto, e o Commons não diz qual é qual.
   function credito(a) {
     if (!a.foto) return '';
     let quem = (a.foto.autor || '')
@@ -80,7 +81,7 @@
       .trim();
     if (/^unknown\b/i.test(quem) || /não informado/.test(quem)) quem = 'autor desconhecido';
     const licenca = /public domain/i.test(a.foto.licenca) ? 'domínio público' : a.foto.licenca;
-    return `Foto: ${quem} · ${licenca} · Wikimedia Commons`;
+    return `Imagem: ${quem} · ${licenca} · Wikimedia Commons`;
   }
   // <img> pronta: dimensões declaradas (sem salto de layout), enquadramento curado e srcset.
   function imagem(

@@ -22,6 +22,8 @@
     --marca-texto: #f1e59b; /* Light Gold: marca-texto do leitor */
     --superficie-forte: #401d47;
     --sobre-forte: #faf3e1;
+    --folha: #faf3e1; /* página da frase ampliada */
+    --massa: #e06f2d; /* a única massa de cor da tela: o fundo da prancha */
     --fio: rgba(122, 100, 80, 0.32);
     --fio-forte: rgba(64, 29, 71, 0.55);
     --veu: rgba(43, 24, 17, 0.55);
@@ -47,21 +49,24 @@
     color-scheme: light;
   }
   :root[data-theme='dark'] {
-    --papel: #1a120e; /* derivado do Espresso */
-    --papel-2: #2b1811;
+    /* irmão, não inversão: o papel vira Espresso e as páginas abertas viram roxo */
+    --papel: #2b1811; /* Dark Espresso */
+    --papel-2: #401d47;
     --tinta: #faf3e1;
-    --tinta-2: #d9cdb4;
-    --meta: #bfae95;
+    --tinta-2: #d9cdb4; /* 10,8 : 1 no Espresso, 9,0 : 1 no roxo */
+    --meta: #bfae95; /* 7,8 : 1 no Espresso, 6,5 : 1 no roxo */
     --titulo: #faf3e1;
-    --destaque: #d78b30; /* Apricot como acento do escuro */
+    --destaque: #e3a15a; /* Apricot clareado: 7,7 : 1 no Espresso, 6,4 : 1 no roxo */
     --marca: #e06f2d;
     --marca-texto: rgba(241, 229, 155, 0.2);
     --superficie-forte: #401d47;
     --sobre-forte: #faf3e1;
-    --fio: rgba(191, 174, 149, 0.26);
+    --folha: #401d47; /* a frase ampliada abre numa página roxa */
+    --massa: #401d47; /* à noite a massa da prancha é roxa */
+    --fio: rgba(217, 205, 180, 0.24);
     --fio-forte: rgba(250, 243, 225, 0.5);
-    --veu: rgba(0, 0, 0, 0.62);
-    --foco: #d78b30;
+    --veu: rgba(10, 5, 4, 0.66);
+    --foco: #e3a15a;
     color-scheme: dark;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -119,12 +124,11 @@
     display: grid; grid-template-columns: minmax(140px, 1.6fr) minmax(0, 7.4fr) minmax(220px, 3fr); column-gap: clamp(24px, 4vw, 64px); row-gap: 40px; align-items: start; }
   .margem { padding-top: 0.6rem; font-family: var(--sans); }
   .rubrica { font: 600 var(--t-meta) / 1.3 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--meta); margin: 0; }
-  .anotacao { font: 400 1rem/1.5 var(--mao); color: var(--tinta-2); margin: 10px 0 0; transform: rotate(-2deg); transform-origin: left; display: inline-block; }
+  .anotacao { font: italic 400 1.15rem/1.4 var(--serifa); color: var(--tinta-2); margin: 6px 0 0; }
   .texto { min-width: 0; }
   /* o traço do leitor: uma marca a lápis na margem, ao lado da passagem */
   .frase-abertura { position: relative; }
   .frase-abertura::before { content: ''; position: absolute; left: calc(-0.44em - 20px); top: 0.18em; bottom: 0.12em; width: 2px; border-radius: 2px; background: var(--fio-forte); }
-  .cabeco { font: 500 var(--t-meta) / 1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--meta); margin: 0 0 clamp(18px, 3vw, 30px); }
   .frase-abertura { margin: 0; font-weight: 380; line-height: 1.07; letter-spacing: -0.018em; color: var(--titulo); text-wrap: pretty;
     opacity: 0; transform: translateY(10px); transition: opacity 600ms var(--curva), transform 600ms var(--curva); }
   html.chegou .frase-abertura { opacity: 1; transform: none; }
@@ -135,15 +139,19 @@
   .assinatura .papel { font: 400 var(--t-peq) / 1.4 var(--sans); color: var(--tinta-2); margin: 4px 0 0; }
   .nota { margin: clamp(30px, 5vw, 56px) 0 0; padding-top: 14px; border-top: 1px solid var(--fio); max-width: 34rem; font: 400 var(--t-peq) / 1.5 var(--sans); color: var(--tinta-2); display: grid; grid-template-columns: auto 1fr; gap: 0 10px; }
   .nota .n { color: var(--destaque); font-weight: 650; }
-  .conferida { display: inline-flex; align-items: baseline; gap: 6px; font: 650 var(--t-meta) / 1.4 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--destaque); }
-  .conferida::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--marca); transform: translateY(-1px); }
+  /* a obra tem presença: título em itálico, no corpo do texto, com link para a página da obra */
+  .obra-cita { font: italic 400 1.0625rem/1.45 var(--serifa); color: var(--tinta-2); text-decoration: none; }
+  a.obra-cita, a.autor-link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--fio-forte); }
+  a.obra-cita:hover, a.autor-link:hover { color: var(--destaque); text-decoration-color: currentColor; }
+  .autor-link { color: inherit; }
+  .conferida { font: italic 400 var(--t-peq) / 1.4 var(--serifa); color: var(--destaque); }
   .prancha { margin: 0; min-width: 0; }
-  .prancha-foto { display: block; width: 100%; padding: 0; border: 0; background: var(--papel-2); cursor: zoom-in; position: relative; }
+  /* a prancha: retrato montado sobre a única massa de cor da tela (laranja de dia, roxo à noite) */
+  .prancha-foto { display: block; width: calc(100% - 22px); margin-left: 22px; padding: 0; border: 0; background: var(--papel-2); cursor: zoom-in; position: relative; box-shadow: -22px 22px 0 0 var(--massa); }
   .prancha-foto img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; filter: none; }
-  .prancha-foto::after { content: ''; position: absolute; inset: 0; outline: 1px solid var(--fio); outline-offset: 6px; pointer-events: none; }
-  .prancha figcaption { margin-top: 18px; font: 400 var(--t-meta) / 1.45 var(--sans); color: var(--meta); }
-  .prancha figcaption em { display: block; font: italic 400 var(--t-peq) / 1.4 var(--serifa); color: var(--tinta-2); margin-bottom: 2px; }
-  .prancha-tipo { aspect-ratio: 3 / 4; border: 1px solid var(--fio); display: grid; align-content: end; padding: 18px; }
+  .prancha figcaption { margin-top: 36px; font: 400 var(--t-meta) / 1.45 var(--sans); color: var(--meta); }
+  .prancha-tipo { aspect-ratio: 3 / 4; width: calc(100% - 22px); margin-left: 22px; background: var(--papel); border: 1px solid var(--fio); box-shadow: -22px 22px 0 0 var(--massa); display: grid; align-content: end; padding: 18px; }
+  .retrato-mini { display: none; }
   .prancha-tipo .sobrenome { font: italic 400 clamp(2rem, 1.4rem + 2vw, 3.2rem) / 0.95 var(--serifa); color: var(--titulo); margin: 0; overflow-wrap: anywhere; }
   .prancha-tipo .datas { font: 500 var(--t-meta) / 1.4 var(--sans); color: var(--meta); margin: 10px 0 0; }
   .sumario { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--fio); margin: clamp(8px, 2vw, 24px) 0 0; padding: 0; list-style: none; }
@@ -170,7 +178,8 @@
   .miniatura { width: 36px; height: 48px; flex: none; object-fit: cover; background: var(--papel-2); }
   .verbete-autor .nome { font: italic 500 1.05rem/1.25 var(--serifa); display: block; }
   .verbete-autor .papel { font: 400 var(--t-meta) / 1.35 var(--sans); color: var(--meta); display: block; }
-  .verbete-fonte { margin: 10px 0 0; font: 400 var(--t-meta) / 1.45 var(--sans); color: var(--tinta-2); }
+  .verbete-fonte { margin: 10px 0 0; }
+  .verbete-fonte .obra-cita { font-size: 0.98rem; }
   .salvar { position: relative; z-index: 1; width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; color: var(--meta); margin-right: -10px; }
   .salvar svg { width: 18px; height: 18px; }
   .salvar[aria-pressed='true'] { color: var(--destaque); }
@@ -179,11 +188,13 @@
   /* ---------- frase ampliada (página) ---------- */
   .janela { position: fixed; inset: 0; z-index: 50; background: var(--veu); display: grid; place-items: center; padding: 24px; opacity: 0; transition: opacity var(--dur) var(--curva); }
   .janela.aberta { opacity: 1; }
-  .folha { position: relative; background: var(--papel); color: var(--tinta); width: min(1080px, 100%); max-height: calc(100dvh - 48px); overflow: auto; border-radius: 2px;
+  .folha { position: relative; background: var(--folha); color: var(--tinta); width: min(1080px, 100%); max-height: calc(100dvh - 48px); overflow: auto; border-radius: 2px;
     box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.6); transform: translateY(12px); transition: transform var(--dur) var(--curva); }
+  :root[data-theme='dark'] .folha { --massa: #2b1811; } /* na página roxa, a massa da prancha volta a ser Espresso */
   .janela.aberta .folha { transform: none; }
-  .folha-topo { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px clamp(20px, 4vw, 48px); background: var(--papel); border-bottom: 1px solid var(--fio); }
-  .fechar { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; background: none; border: 1px solid var(--fio-forte); border-radius: 2px; cursor: pointer; font: 600 var(--t-peq) / 1 var(--sans); }
+  .folha-topo { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px clamp(20px, 4vw, 48px); background: var(--folha); border-bottom: 1px solid var(--fio); }
+  .fechar { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 4px 0 14px; background: none; border: 0; cursor: pointer; font: 600 var(--t-peq) / 1 var(--sans); }
+  .fechar:hover { color: var(--destaque); }
   .fechar svg { width: 16px; height: 16px; }
   .pagina { display: grid; grid-template-columns: minmax(0, 7fr) minmax(220px, 4fr); gap: clamp(28px, 5vw, 64px); padding: clamp(28px, 5vw, 56px) clamp(20px, 4vw, 48px) clamp(28px, 4vw, 48px); }
   .pagina .frase { margin: 0; font-weight: 400; line-height: 1.12; letter-spacing: -0.015em; color: var(--titulo); text-wrap: pretty; }
@@ -240,10 +251,15 @@
     .sumario li:nth-child(3) a { padding-left: 0; }
     .menu { display: none; }
     .topo-acoes { margin-left: auto; }
+    .so-celular { display: inline-flex; }
   }
+  @media (min-width: 1024px) { .so-celular { display: none; } }
   @media (max-width: 699px) {
     .abertura { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
-    .prancha { width: 72%; margin-left: auto; }
+    .abertura > .prancha { display: none; } /* no celular o retrato vai para junto do nome */
+    .retrato-mini { display: block; width: 72px; flex: none; box-shadow: -10px 10px 0 0 var(--massa); margin-left: 10px; }
+    .retrato-mini img { display: block; width: 72px; height: 96px; object-fit: cover; }
+    .assinatura.com-retrato { display: flex; gap: 18px; align-items: center; }
     .frase-abertura::before { display: none; }
     .aspa-abre { margin-left: -0.3em; }
     .pagina { grid-template-columns: minmax(0, 1fr); }
@@ -279,6 +295,7 @@
     <a href="#cartoes">Explorar</a><a href="#cartoes">Autores</a><a href="#cartoes">Histórias</a><a href="#cartoes">Descubra</a><a href="#cartoes">Comunidade</a>
   </nav>
   <div class="topo-acoes">
+    <button class="botao-texto so-celular" type="button" aria-label="Abrir o menu">Menu</button>
     <button class="botao-texto" type="button">Entrar</button>
     <button class="botao-icone" type="button" data-alternar-tema aria-pressed="false" aria-label="Usar o tema escuro">
       <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
@@ -290,10 +307,9 @@
 <main>
   <section id="abertura" class="abertura" aria-label="Abertura"></section>
 
-  <div class="proto-nota">Cartões de frase, como no Explorar · clique para abrir a frase ampliada</div>
+  <div class="proto-nota">Cartões de frase, como no Explorar · oito verbetes reais: frase longa e curta, com e sem foto, traduzida com original, ditado popular · clique para abrir a frase ampliada</div>
   <section id="cartoes" class="secao" aria-labelledby="t-cartoes">
-    <h2 class="secao-titulo" id="t-cartoes">Frases do acervo</h2>
-    <p class="secao-sub">Oito verbetes reais: frase longa e curta, com e sem foto, traduzida com original, ditado popular.</p>
+    <h2 class="secao-titulo" id="t-cartoes" style="margin-bottom:28px">Frases do acervo</h2>
     <div class="verbetes" data-cartoes="f28asxuhfb,ql0t0xvhg9dsn,f2652b1y5,qmgk9qk9rw7ez,q4nnaf81ajlbj5,f241fhtl3,q1v8oi7oe6cqdv,qmavfjkqarqzo"></div>
   </section>
 
@@ -312,7 +328,7 @@
     <div class="familias">
       <div class="familia"><p class="nome-fonte" style="font-family:var(--serifa)">Literata</p><p>Frase, títulos e leitura longa. Serifa feita para livros, com tamanho ótico (o desenho muda do corpo 7 ao 72). Cobre grego e russo dos originais. Licença OFL.</p></div>
       <div class="familia"><p class="nome-fonte" style="font-family:var(--sans)">Ysabeau Office</p><p>Navegação, rótulos e metadados. Sans humanista com o desenho de uma Garamond. Licença OFL.</p></div>
-      <div class="familia"><p class="nome-fonte" style="font-family:var(--mao)">Playwrite BR</p><p>Opção "Manuscrita" do Escrever e as notas de margem. Caligrafia escolar brasileira. Licença OFL.</p></div>
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--mao)">Playwrite BR</p><p>Candidata à opção "Manuscrita" do Escrever: caligrafia escolar brasileira. A Caveat de hoje continua valendo. Licença OFL.</p></div>
     </div>
     <div id="especime"></div>
   </section>
@@ -336,7 +352,6 @@
     // escala da frase de abertura conforme o comprimento: frase curta enorme, frase longa ainda grande
     const ESCALA_ABERTURA = [[45, 'clamp(2.6rem, 1.2rem + 5vw, 5.6rem)'], [80, 'clamp(2.3rem, 1.1rem + 4vw, 4.6rem)'], [120, 'clamp(2.05rem, 1rem + 3.1vw, 3.75rem)'], [Infinity, 'clamp(1.85rem, 0.95rem + 2.5vw, 3.1rem)']];
     const ehDitado = (f) => f.status === 'X';
-    const obraDe = (fonte) => fonte.split(/ \(|, /)[0];
     const sobrenome = (nome) => nome.split(' ').filter((p) => p.length > 2).slice(-1)[0] || nome;
 
     function prancha(a, f, { prioridade = false, tamanhos = '30vw' } = {}) {
@@ -344,7 +359,7 @@
         return `<figure class="prancha">
           <button class="prancha-foto" type="button" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">
             ${imagem(a, { largura: 800, tamanhos, prioridade })}</button>
-          <figcaption><em>${esc(a.nome)}</em>${esc(credito(a))}</figcaption></figure>`;
+          <figcaption>${esc(credito(a))}</figcaption></figure>`;
       }
       const datas = (a.papel.match(/\(([^)]+)\)\s*$/) || [])[1] || (ehDitado(f) ? 'Tradição oral' : '');
       return `<figure class="prancha"><div class="prancha-tipo" aria-hidden="true">
@@ -361,7 +376,7 @@
           <p class="verbete-frase" style="font-size:${tam}"><button class="abrir" type="button" data-abrir="${f.qid}">${comAspas(f.texto)}</button></p>
           <p class="verbete-autor">${a.foto ? imagem(a, { largura: 120, larguras: [120, 240], tamanhos: '36px', classe: 'miniatura' }).replace('alt="Fotografia de', 'alt="Retrato de') : ''}
             <span><span class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</span><span class="papel">${esc(a.papel)}</span></span></p>
-          ${f.fonte ? `<p class="verbete-fonte">${esc(f.fonte)}</p>` : ''}
+          ${f.fonte ? `<p class="verbete-fonte"><cite class="obra-cita">${esc(f.fonte)}</cite></p>` : ''}
         </article>`;
       },
       modalHTML(f, a) {
@@ -372,16 +387,14 @@
           <div class="pagina">
             <div>
               <p class="frase" style="font-size:${tam}">${comAspas(f.texto)}</p>
-              <div class="assinatura"><p class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
-              ${f.fonte ? `<p class="nota"><span class="n">Fonte</span><span>${esc(f.fonte)}<br>${f.status === 'A' ? '<span class="conferida">Fonte conferida</span>' : ''}</span></p>` : ''}
+              <div class="assinatura"><p class="nome">${ehDitado(f) ? 'Ditado popular' : `<a class="autor-link" href="#cartoes" title="Conhecer ${esc(a.nome)}">${esc(a.nome)}</a>`}</p><p class="papel">${esc(a.papel)}</p></div>
+              ${f.fonte ? `<p class="nota"><span class="n">Fonte</span><span><a class="obra-cita" href="#cartoes" title="Ver a obra">${esc(f.fonte)}</a>${f.status === 'A' ? '<br><span class="conferida">fonte conferida</span>' : ''}</span></p>` : ''}
               ${f.original && f.original !== f.texto ? `<div class="original"><span class="rubrica">Texto original</span><p${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</p></div>` : ''}
             </div>
             ${prancha(a, f, { tamanhos: '(max-width: 699px) 64vw, 340px' })}
             <ul class="acoes">
               <li><button type="button" data-salvar aria-pressed="false">${ICONE_SALVAR}<span data-rotulo>Salvar</span></button></li>
               <li><button type="button">Escrever sobre esta frase</button></li>
-              ${f.fonte ? `<li><a href="#cartoes">Ver a obra</a></li>` : ''}
-              ${ehDitado(f) ? '' : `<li><a href="#cartoes">Conhecer ${esc(a.nome)}</a></li>`}
             </ul>
           </div>`;
       }
@@ -396,10 +409,11 @@
         <p class="anotacao" data-hoje></p>
       </aside>
       <div class="texto">
-        <p class="cabeco">${esc(obraDe(f.fonte))}</p>
         <p class="frase-abertura" style="font-size:${tamanhoFrase(f.texto, ESCALA_ABERTURA)}">${comAspas(f.texto)}<a class="chamada" href="#nota-abertura" aria-label="Ver a fonte">1</a></p>
-        <div class="assinatura"><p class="nome">${esc(a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
-        <p class="nota" id="nota-abertura"><span class="n">1</span><span>${esc(f.fonte)}<br><span class="conferida">Fonte conferida</span></span></p>
+        <div class="assinatura com-retrato">
+          ${a.foto ? `<button class="retrato-mini prancha-foto" type="button" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}" style="margin-left:10px;width:72px;box-shadow:-10px 10px 0 0 var(--massa)">${imagem(a, { largura: 160, larguras: [160, 320], tamanhos: '72px' })}</button>` : ''}
+          <div><p class="nome"><a class="autor-link" href="#cartoes" title="Conhecer ${esc(a.nome)}">${esc(a.nome)}</a></p><p class="papel">${esc(a.papel)}</p></div></div>
+        <p class="nota" id="nota-abertura"><span class="n">1</span><span><a class="obra-cita" href="#cartoes" title="Ver a obra">${esc(f.fonte)}</a><br><span class="conferida">fonte conferida</span></span></p>
         <p><button class="botao-texto" type="button" data-abrir="${f.qid}" style="padding-left:0">Abrir a frase</button></p>
       </div>
       ${prancha(a, f, { prioridade: true, tamanhos: '(max-width: 699px) 72vw, (max-width: 1023px) 34vw, 320px' })}
@@ -412,16 +426,15 @@
 
     /* paleta */
     const CORES = [
-      ['#FAF3E1', 'Sustainable Linen', 'fundo'], ['#F5E7C6', 'Recycled Cotton', 'prancha, superfície'], ['#2B1811', 'Dark Espresso', 'texto'],
-      ['#401D47', 'Deep Purple', 'frase e títulos'], ['#E06F2D', 'Burnt Orange', 'só forma: selo'], ['#A9501A', 'Laranja para texto', 'derivado, links'],
-      ['#7A6450', 'Natural para texto', 'derivado, metadados'], ['#F1E59B', 'Light Gold', 'marca-texto'], ['#1A120E', 'Espresso profundo', 'fundo escuro, derivado'],
-      ['#D78B30', 'Apricot', 'acento do escuro']
+      ['#FAF3E1', 'Sustainable Linen', 'fundo'], ['#F5E7C6', 'Recycled Cotton', 'fundo da foto'], ['#2B1811', 'Dark Espresso', 'texto; fundo no escuro'],
+      ['#401D47', 'Deep Purple', 'frase e títulos; página no escuro'], ['#E06F2D', 'Burnt Orange', 'uma massa por tela: a prancha'], ['#A9501A', 'Laranja para texto', 'derivado, links'],
+      ['#7A6450', 'Natural para texto', 'derivado, metadados'], ['#E3A15A', 'Apricot clareado', 'acento do escuro, derivado'], ['#D9CDB4', 'Linho apagado', 'texto secundário no escuro, derivado']
     ];
     document.getElementById('amostras').innerHTML = CORES.map(([h, n, u]) => `<div class="amostra"><i style="background:${h}"></i><b>${n}</b><code>${h}</code><br>${u}</div>`).join('');
     Proto.montarContraste(document.getElementById('contraste'), [
       ['--tinta', '--papel', 'texto corrido'], ['--titulo', '--papel', 'frase e títulos'], ['--tinta-2', '--papel', 'texto secundário'],
-      ['--meta', '--papel', 'metadados e rótulos'], ['--destaque', '--papel', 'links, "Fonte conferida"'], ['--meta', '--papel-2', 'legenda sobre a prancha'],
-      ['--sobre-forte', '--superficie-forte', 'texto sobre roxo']
+      ['--meta', '--papel', 'metadados e rótulos'], ['--destaque', '--papel', 'links, "fonte conferida"'], ['--tinta-2', '--folha', 'texto da frase ampliada'],
+      ['--destaque', '--folha', 'links na frase ampliada'], ['--meta', '--folha', 'rótulos na frase ampliada'], ['--sobre-forte', '--superficie-forte', 'texto sobre roxo']
     ]);
 
     /* espécime */
@@ -429,7 +442,7 @@
     document.getElementById('especime').innerHTML = `
       <div class="espec"><span>Display</span><p style="font-size:var(--t-display);line-height:1.07;color:var(--titulo);font-weight:380;letter-spacing:-0.018em">${comAspas(curta.texto)}</p></div>
       <div class="espec"><span>Título 1</span><p style="font-size:var(--t-1);line-height:1.15;color:var(--titulo)">${comAspas(longa.texto)}</p></div>
-      <div class="espec"><span>Corpo · 17 px</span><p style="max-width:var(--medida)">${esc(longa.autor)}, ${esc(autor(longa.autor).papel)}. ${esc(longa.fonte)}. Quem pesquisar a frase e o autor deve encontrar o mesmo: cada passagem foi conferida na obra.</p></div>
+      <div class="espec"><span>Corpo · 17 px</span><p style="max-width:var(--medida)">${esc(longa.autor)}, ${esc(autor(longa.autor).papel)}. ${esc(longa.fonte)}. Quem pesquisar a frase e o autor deve encontrar o mesmo; por isso a fonte vem junto com a frase.</p></div>
       <div class="espec"><span>Meta</span><p style="font:600 var(--t-meta)/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--meta)">${esc(longa.categoria)} · ${esc(curta.fonte)}</p></div>
       <div class="espec"><span>Acentos</span><p style="font-size:var(--t-2)">ç ã õ á é í ó ú â ê ô à ü · Ç Ã Õ É Ê · “ ” ‘ ’ « » – … · 0123456789</p></div>
       <div class="espec"><span>Grego</span><p lang="grc" style="font-size:var(--t-2);font-style:italic">${esc(grego.original)}</p></div>

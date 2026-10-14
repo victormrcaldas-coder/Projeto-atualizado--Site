@@ -30,7 +30,7 @@ python3 -m http.server 8000
 - **Fontes.** Só fontes **SIL OFL** (decisão 7 em `design/DECISOES.md`), carregadas do Google Fonts nos protótipos. As escolhidas serão guardadas em `assets/fonts/` na Etapa 2.
 - **Conteúdo.**
   - Nenhuma frase, fonte ou número foi digitado: tudo vem de `amostra.js`.
-  - O selo "Fonte conferida" aparece só em frases com status `A`, a verificação registrada.
+  - A nota "fonte conferida", em letra pequena ao lado da fonte (não um selo), aparece só em frases com status `A`, a verificação registrada.
   - Ditados populares aparecem sem fonte.
 - **Fotos.**
   - Os arquivos e o enquadramento são os da curadoria do site (`PHOTOS`).

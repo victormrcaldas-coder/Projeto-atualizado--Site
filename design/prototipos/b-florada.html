@@ -34,7 +34,7 @@
     --foco: #401d47;
 
     --sans: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
-    --original: 'Noto Sans', 'Archivo', system-ui, sans-serif; /* grego e russo dos originais */
+    --original: 'Archivo', 'Noto Sans', system-ui, sans-serif; /* a Noto Sans entra só nos glifos que a Archivo não tem: grego, russo */
     --mao: 'Caveat', 'Segoe Script', cursive;
 
     --t-display: clamp(3rem, 1.2rem + 6vw, 7.6rem);
@@ -108,8 +108,7 @@
   .menu a { text-decoration: none; padding: 12px 0; text-underline-offset: 6px; text-decoration-thickness: 2px; }
   .menu a:hover { text-decoration-line: underline; }
   .topo-acoes { display: flex; align-items: center; gap: 10px; }
-  .botao-cheio { font: 650 var(--t-peq) / 1 var(--sans); font-variation-settings: 'wdth' 106; background: var(--roxo); color: var(--sobre-roxo); border: 0; min-height: 44px; padding: 0 18px; cursor: pointer; }
-  :root[data-theme='dark'] .topo .botao-cheio { background: var(--laranja); color: var(--sobre-laranja); }
+  .botao-link { font: 650 var(--t-peq) / 1 var(--sans); font-variation-settings: 'wdth' 106; background: none; border: 0; min-height: 44px; padding: 0 8px; cursor: pointer; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
   .botao-redondo { width: 44px; height: 44px; border-radius: 50%; display: inline-grid; place-items: center; background: none; border: 2px solid currentColor; cursor: pointer; }
   .botao-redondo svg { width: 18px; height: 18px; }
   .icone-lua { display: none; }
@@ -121,9 +120,6 @@
   .cartaz { position: relative; max-width: var(--largura); margin: 0 auto; padding: clamp(28px, 5vw, 72px) var(--margem) 0; min-height: min(760px, 92vh);
     display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); column-gap: clamp(20px, 3vw, 48px); align-items: end; }
   .disco { position: absolute; z-index: -1; width: min(60vw, 820px); aspect-ratio: 1; border-radius: 50%; background: var(--disco); right: -9vw; top: -14%; }
-  .meio-disco { position: absolute; z-index: -1; left: var(--margem); bottom: 104px; width: clamp(120px, 14vw, 210px); aspect-ratio: 2 / 1; border-radius: 999px 999px 0 0; background: var(--forma); }
-  .ponto { position: absolute; z-index: -1; width: clamp(22px, 2.4vw, 36px); aspect-ratio: 1; border-radius: 50%; background: var(--roxo); left: 47%; top: 12%; }
-  :root[data-theme='dark'] .ponto { background: var(--laranja); }
   .rotulo { font: 650 var(--t-meta) / 1.2 var(--sans); font-variation-settings: 'wdth' 125; letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
   .lado-frase { align-self: center; padding-bottom: clamp(24px, 4vw, 56px); }
   .frase-abertura { margin: 18px 0 0; font-weight: 820; font-variation-settings: 'wdth' 78; line-height: 0.93; letter-spacing: -0.025em; color: var(--frase); text-wrap: balance;
@@ -137,17 +133,18 @@
   .arco { display: block; width: min(100%, 380px); padding: 0; border: 0; background: var(--areia); border-radius: 999px 999px 0 0; overflow: hidden; cursor: zoom-in; }
   .arco img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
   .arco-tipo { width: min(100%, 380px); aspect-ratio: 3 / 4; border-radius: 999px 999px 0 0; background: var(--roxo); color: var(--laranja); display: grid; place-items: center; font: 900 clamp(8rem, 18vw, 16rem) / 1 var(--sans); font-variation-settings: 'wdth' 62; }
-  .faixa { grid-column: 1 / -1; position: relative; margin: 0 calc(-1 * var(--margem)); padding: 16px var(--margem) 18px; background: var(--faixa); color: var(--faixa-texto);
+  .faixa { grid-column: 1 / -1; position: relative; margin: 0 calc(-1 * var(--margem)) clamp(32px, 5vw, 64px); padding: 16px var(--margem) 18px; background: var(--faixa); color: var(--faixa-texto);
     display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; }
   .faixa::before { content: ''; position: absolute; left: 0; right: 0; top: -22px; height: 14px; background: repeating-linear-gradient(to bottom, var(--faixa) 0 3px, transparent 3px 7px); }
   .faixa .conferida { color: var(--faixa-destaque); }
-  .faixa .botao-cheio { margin-left: auto; background: var(--faixa-botao); color: var(--faixa-botao-texto); }
+  .faixa .botao-link { margin-left: auto; color: var(--faixa-texto); }
   .faixa .fonte { font: 450 var(--t-peq) / 1.45 var(--sans); max-width: 60rem; }
   .faixa .fonte b { font-weight: 700; }
-  .conferida { font: 700 var(--t-meta) / 1.2 var(--sans); font-variation-settings: 'wdth' 125; letter-spacing: 0.1em; text-transform: uppercase; color: var(--laranja); white-space: nowrap; }
-  .atalhos { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 0; padding: 22px 0 32px; list-style: none; }
-  .atalhos a { display: inline-block; padding: 10px 0; font: 700 1.05rem/1 var(--sans); font-variation-settings: 'wdth' 118; text-transform: lowercase; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
-  .atalhos a:hover { color: var(--link); }
+  .conferida { font: italic 500 var(--t-peq) / 1.3 var(--sans); color: var(--link); white-space: nowrap; }
+  /* a obra tem presença: título em itálico, com link para a página da obra */
+  .obra-cita { font: italic 450 1rem/1.4 var(--sans); font-style: italic; }
+  a.obra-cita, a.autor-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a.obra-cita:hover, a.autor-link:hover { text-decoration-thickness: 2px; }
 
   /* ---------- cartazes (cartões de frase) ---------- */
   .secao { max-width: var(--largura); margin: 0 auto; padding: 0 var(--margem); }
@@ -161,6 +158,7 @@
   .cartazete-topo { display: flex; justify-content: space-between; align-items: center; margin: -8px -8px 0 0; }
   .cartazete .rotulo { opacity: 0.9; }
   .cartazete-frase { margin: 0; font-weight: 720; font-variation-settings: 'wdth' 84; line-height: 1.02; letter-spacing: -0.018em; color: var(--frase); }
+  .cartazete-frase.longa, .campo .frase.longa { font-weight: 600; font-variation-settings: 'wdth' 96; line-height: 1.12; letter-spacing: -0.006em; }
   .cartazete.laranja .cartazete-frase, .cartazete.roxo .cartazete-frase { color: inherit; }
   :root[data-theme='dark'] .cartazete:not(.laranja):not(.roxo) .cartazete-frase { color: var(--frase); }
   .abrir { all: unset; cursor: pointer; }
@@ -169,10 +167,11 @@
   .abrir:focus-visible::after { outline: 3px solid var(--foco); outline-offset: 3px; }
   .cartazete:hover .cartazete-frase { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.12em; }
   .cartazete-pe { margin-top: auto; display: flex; align-items: center; gap: 12px; }
-  .bola { width: 44px; height: 44px; flex: none; border-radius: 50%; object-fit: cover; background: var(--areia); }
+  .retrato-quadrado { width: 44px; height: 56px; flex: none; object-fit: cover; background: var(--areia); }
   .cartazete-pe .nome { display: block; font: 720 1rem/1.2 var(--sans); }
   .cartazete-pe .papel, .cartazete-pe .fonte { display: block; font: 450 var(--t-meta) / 1.35 var(--sans); opacity: 0.92; }
-  .salvar { position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: none; border: 2px solid currentColor; cursor: pointer; }
+  .salvar { position: relative; z-index: 1; width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; opacity: 0.85; }
+  .salvar:hover, .salvar:focus-visible { opacity: 1; }
   .salvar svg { width: 18px; height: 18px; }
   .salvar[aria-pressed='true'] path { fill: currentColor; }
 
@@ -188,20 +187,21 @@
   .campo .rotulo { color: var(--sobre-laranja); } /* letra pequena: o roxo sobre laranja (4,4 : 1) não passa */
   .ficha { padding: clamp(24px, 3.5vw, 48px); display: flex; flex-direction: column; gap: 22px; }
   .ficha-topo { display: flex; justify-content: flex-end; }
-  .ficha .arco { width: min(100%, 260px); }
-  .ficha .arco-tipo { width: min(100%, 260px); font-size: clamp(6rem, 12vw, 10rem); }
+  .campo .arco { width: min(70%, 260px); margin-top: auto; align-self: flex-end; }
+  .campo .arco-tipo { width: min(70%, 260px); margin-top: auto; align-self: flex-end; font-size: clamp(6rem, 12vw, 10rem); }
+  .campo .credito { color: var(--sobre-laranja); margin: -16px 0 0; align-self: flex-end; text-align: right; max-width: 260px; }
   .credito { font: 450 var(--t-meta) / 1.4 var(--sans); color: var(--meta); margin: -10px 0 0; }
   .ficha .nome { font: 780 var(--t-2) / 1.1 var(--sans); margin: 0; }
   .ficha .papel { font: 450 var(--t-peq) / 1.4 var(--sans); color: var(--meta); margin: 4px 0 0; }
   .ficha-fonte { border-top: 3px solid var(--roxo); padding-top: 12px; margin: 0; font: 450 var(--t-peq) / 1.45 var(--sans); }
   :root[data-theme='dark'] .ficha-fonte { border-color: var(--laranja); }
-  .ficha-fonte .conferida { display: block; margin-top: 8px; color: var(--link); }
+  .ficha-fonte .conferida { display: block; margin-top: 6px; }
   .original { margin: 0; }
   .original p { margin: 6px 0 0; font: italic 400 1.05rem/1.5 var(--original); color: var(--tinta); }
   .acoes { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
-  .acoes button, .acoes a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 2px solid currentColor; background: none; cursor: pointer; font: 650 var(--t-peq) / 1 var(--sans); text-decoration: none; }
-  .acoes li:first-child button { background: var(--roxo); color: var(--sobre-roxo); border-color: var(--roxo); }
-  :root[data-theme='dark'] .acoes li:first-child button { background: var(--laranja); color: var(--sobre-laranja); border-color: var(--laranja); }
+  .acoes { gap: 0 24px; border-top: 3px solid var(--roxo); padding-top: 6px; }
+  :root[data-theme='dark'] .acoes { border-color: var(--laranja); }
+  .acoes button, .acoes a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; font: 650 var(--t-peq) / 1 var(--sans); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
   .acoes svg { width: 18px; height: 18px; }
   .acoes [aria-pressed='true'] path { fill: currentColor; }
   .fechar { position: sticky; top: 0; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--chao); border: 2px solid var(--tinta); cursor: pointer; }
@@ -241,17 +241,17 @@
   .rodape-proto { max-width: var(--largura); margin: 64px auto 0; padding: 24px var(--margem) 48px; border-top: 2px solid var(--fio); font: 450 var(--t-meta) / 1.5 var(--sans); color: var(--meta); }
 
   /* ---------- tablet e celular ---------- */
+  .so-celular { display: none; }
   @media (max-width: 1023px) {
     .menu { display: none; }
     .topo-acoes { margin-left: auto; }
+    .so-celular { display: inline-flex; align-items: center; }
   }
   @media (max-width: 759px) {
     .cartaz { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: 12px; }
     .disco { width: 104vw; right: -40vw; top: -30vw; }
-    .meio-disco { display: none; }
-    .ponto { left: auto; right: 14vw; top: 62vw; }
     .lado-retrato { order: -1; justify-items: end; margin-bottom: 12px; }
-    .arco, .arco-tipo { width: 58vw; }
+    .lado-retrato .arco, .lado-retrato .arco-tipo { width: 44vw; }
     .lado-frase { padding-bottom: 28px; }
     .cartazete.longo { grid-column: auto; }
     .janela { padding: 0; place-items: stretch; }
@@ -278,7 +278,8 @@
     <a href="#cartoes">Explorar</a><a href="#cartoes">Autores</a><a href="#cartoes">Histórias</a><a href="#cartoes">Descubra</a><a href="#cartoes">Comunidade</a>
   </nav>
   <div class="topo-acoes">
-    <button class="botao-cheio" type="button">Entrar</button>
+    <button class="botao-link so-celular" type="button" aria-label="Abrir o menu">Menu</button>
+    <button class="botao-link" type="button">Entrar</button>
     <button class="botao-redondo" type="button" data-alternar-tema aria-pressed="false" aria-label="Usar o tema escuro">
       <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
       <svg class="icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
@@ -289,10 +290,9 @@
 <main>
   <section id="abertura" class="abertura" aria-label="Abertura"></section>
 
-  <div class="proto-nota">Cartões de frase, como no Explorar · clique para abrir a frase ampliada</div>
+  <div class="proto-nota">Cartões de frase, como no Explorar · oito cartazes reais: frase longa e curta, com e sem foto, traduzida, ditado popular · a cor segue um ritmo fixo · clique para abrir a frase ampliada</div>
   <section id="cartoes" class="secao" aria-labelledby="t-cartoes">
-    <h2 class="secao-titulo" id="t-cartoes">frases do acervo</h2>
-    <p class="secao-sub">Oito cartazes reais: frase longa e curta, com e sem foto, traduzida com original, ditado popular. A cor do cartaz segue um ritmo fixo, sem arco-íris.</p>
+    <h2 class="secao-titulo" id="t-cartoes" style="margin-bottom:28px">frases do acervo</h2>
     <div class="cartazes" data-cartoes="f28asxuhfb,ql0t0xvhg9dsn,f2652b1y5,qmgk9qk9rw7ez,q4nnaf81ajlbj5,f241fhtl3,q1v8oi7oe6cqdv,qmavfjkqarqzo"></div>
   </section>
 
@@ -310,7 +310,7 @@
     <h2 class="secao-titulo" id="t-tipo">tipografia</h2>
     <div class="familias">
       <div class="familia"><p class="nome-fonte" style="font-weight:800;font-variation-settings:'wdth' 80">Archivo</p><p>Uma família só, com larguras: estreita e pesada na frase, larga nos rótulos, normal no texto. Feita pela Omnibus-Type, de Buenos Aires. Licença OFL.</p></div>
-      <div class="familia"><p class="nome-fonte" style="font-family:var(--original)">Noto Sans</p><p>Só nos originais em grego, russo e outras escritas que a Archivo não tem. Licença OFL.</p></div>
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--original)">Noto Sans</p><p>Entra sozinha, letra por letra, só onde a Archivo não tem o caractere: os originais em grego e russo. Licença OFL.</p></div>
       <div class="familia"><p class="nome-fonte" style="font-family:var(--mao)">Caveat</p><p>Opção "Manuscrita" do Escrever (a mesma de hoje). Licença OFL.</p></div>
     </div>
     <div id="especime"></div>
@@ -330,10 +330,10 @@
 <script>
   (function () {
     const { esc, comAspas, tamanhoFrase, linguaDoOriginal, autor, imagem, credito, FRASES } = Proto;
-    const ICONE_SALVAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5s-7.3-4.4-9.3-8.6C1.2 8.7 3 4.7 6.8 4.7c2.2 0 3.6 1.3 5.2 3.2 1.6-1.9 3-3.2 5.2-3.2 3.8 0 5.6 4 4.1 7.2-2 4.2-9.3 8.6-9.3 8.6Z"/></svg>';
+    const ICONE_SALVAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/></svg>';
     const ICONE_FECHAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>';
     const ehDitado = (f) => f.status === 'X';
-    const RITMO = ['', 'laranja', '', 'roxo', '', '', 'laranja', 'roxo']; // cor de cada posição: sem sorteio, sem arco-íris
+    const RITMO = ['', '', 'laranja', '', '', '', 'roxo', '']; // uma massa laranja e uma roxa a cada oito: ritmo fixo, sem bento colorido
     let posicao = 0;
 
     function arco(a, { prioridade = false, tamanhos = '30vw', grande = false } = {}) {
@@ -352,27 +352,25 @@
         return `<article class="cartazete ${cor} ${longo ? 'longo' : ''}">
           <div class="cartazete-topo"><span class="rotulo">${esc(f.categoria)}</span>
             <button class="salvar" type="button" data-salvar aria-pressed="false" aria-label="Salvar a frase de ${esc(a.nome)}">${ICONE_SALVAR}</button></div>
-          <p class="cartazete-frase" style="font-size:${tam}"><button class="abrir" type="button" data-abrir="${f.qid}">${comAspas(f.texto)}</button></p>
-          <div class="cartazete-pe">${a.foto ? imagem(a, { largura: 120, larguras: [120, 240], tamanhos: '44px', classe: 'bola' }).replace('alt="Fotografia de', 'alt="Retrato de') : ''}
-            <span><span class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</span>${f.fonte ? `<span class="fonte">${esc(f.fonte)}</span>` : `<span class="papel">${esc(a.papel)}</span>`}</span></div>
+          <p class="cartazete-frase ${f.texto.length > 80 ? 'longa' : ''}" style="font-size:${tam}"><button class="abrir" type="button" data-abrir="${f.qid}">${comAspas(f.texto)}</button></p>
+          <div class="cartazete-pe">${a.foto ? imagem(a, { largura: 120, larguras: [120, 240], tamanhos: '44px', classe: 'retrato-quadrado' }).replace('alt="Fotografia de', 'alt="Retrato de') : ''}
+            <span><span class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</span>${f.fonte ? `<cite class="fonte obra-cita">${esc(f.fonte)}</cite>` : `<span class="papel">${esc(a.papel)}</span>`}</span></div>
         </article>`;
       },
       modalHTML(f, a) {
         const tam = tamanhoFrase(f.texto, [[45, 'clamp(2.6rem, 1.4rem + 4.4vw, 5.4rem)'], [90, 'clamp(2.2rem, 1.3rem + 3.2vw, 4.2rem)'], [130, 'clamp(1.9rem, 1.2rem + 2.4vw, 3.3rem)'], [Infinity, 'clamp(1.75rem, 1.1rem + 2vw, 2.8rem)']]);
         const lingua = linguaDoOriginal(f.original);
-        return `<div class="campo"><span class="rotulo">${esc(f.categoria)}</span><p class="frase" style="font-size:${tam}">${comAspas(f.texto)}</p></div>
+        return `<div class="campo"><span class="rotulo">${esc(f.categoria)}</span><p class="frase ${f.texto.length > 80 ? 'longa' : ''}" style="font-size:${tam}">${comAspas(f.texto)}</p>
+            ${arco(a, { tamanhos: '(max-width: 759px) 58vw, 260px' })}
+            ${a.foto ? `<p class="credito">${esc(credito(a))}</p>` : ''}</div>
           <div class="ficha">
             <div class="ficha-topo"><button class="fechar" type="button" data-fechar aria-label="Fechar a frase">${ICONE_FECHAR}</button></div>
-            ${arco(a, { tamanhos: '(max-width: 759px) 58vw, 300px' })}
-            ${a.foto ? `<p class="credito">${esc(credito(a))}</p>` : ''}
-            <div><p class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
-            ${f.fonte ? `<p class="ficha-fonte">${esc(f.fonte)}${f.status === 'A' ? '<span class="conferida">Fonte conferida</span>' : ''}</p>` : ''}
+            <div><p class="nome">${ehDitado(f) ? 'Ditado popular' : `<a class="autor-link" href="#cartoes" title="Conhecer ${esc(a.nome)}">${esc(a.nome)}</a>`}</p><p class="papel">${esc(a.papel)}</p></div>
+            ${f.fonte ? `<p class="ficha-fonte"><a class="obra-cita" href="#cartoes" title="Ver a obra">${esc(f.fonte)}</a>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}</p>` : ''}
             ${f.original && f.original !== f.texto ? `<div class="original"><span class="rotulo">Texto original</span><p${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</p></div>` : ''}
             <ul class="acoes">
               <li><button type="button" data-salvar aria-pressed="false">${ICONE_SALVAR}<span data-rotulo>Salvar</span></button></li>
               <li><button type="button">Escrever sobre ela</button></li>
-              ${f.fonte ? `<li><a href="#cartoes">Ver a obra</a></li>` : ''}
-              ${ehDitado(f) ? '' : `<li><a href="#cartoes">Conhecer ${esc(a.nome)}</a></li>`}
             </ul>
           </div>`;
       }
@@ -384,22 +382,21 @@
     const ESCALA = [[45, 'clamp(3.2rem, 1.2rem + 7vw, 8.4rem)'], [80, 'clamp(2.9rem, 1.1rem + 5.6vw, 7rem)'], [120, 'clamp(2.5rem, 1rem + 4.4vw, 5.6rem)'], [Infinity, 'clamp(2.2rem, 1rem + 3.4vw, 4.6rem)']];
     document.getElementById('abertura').innerHTML = `
       <div class="cartaz">
-        <span class="disco" aria-hidden="true"></span><span class="meio-disco" aria-hidden="true"></span><span class="ponto" aria-hidden="true"></span>
+        <span class="disco" aria-hidden="true"></span>
         <div class="lado-frase">
           <p class="rotulo">Frase de hoje · <span data-hoje></span></p>
           <p class="frase-abertura" style="font-size:${tamanhoFrase(f.texto, ESCALA)}">${comAspas(f.texto)}</p>
-          <div class="assinatura"><p class="nome">${esc(a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
+          <div class="assinatura"><p class="nome"><a class="autor-link" href="#cartoes" title="Conhecer ${esc(a.nome)}">${esc(a.nome)}</a></p><p class="papel">${esc(a.papel)}</p></div>
         </div>
         <div class="lado-retrato">${arco(a, { prioridade: true, tamanhos: '(max-width: 759px) 58vw, 380px' })}</div>
-        <p class="faixa"><span class="fonte"><b>Fonte</b> ${esc(f.fonte)}</span><span class="conferida">Fonte conferida</span>
-          <button class="botao-cheio" type="button" data-abrir="${f.qid}">Abrir a frase</button></p>
-        <ul class="atalhos" aria-label="Atalhos"><li><a href="#cartoes">explorar</a></li><li><a href="#cartoes">autores</a></li><li><a href="#cartoes">histórias</a></li><li><a href="#cartoes">descubra</a></li></ul>
+        <p class="faixa"><span class="fonte"><b>Fonte</b> <a class="obra-cita" href="#cartoes" title="Ver a obra">${esc(f.fonte)}</a></span><span class="conferida">fonte conferida</span>
+          <button class="botao-link" type="button" data-abrir="${f.qid}">Abrir a frase</button></p>
       </div>`;
 
     /* paleta */
     const CORES = [
       ['#F5E7C6', 'Recycled Cotton', 'chão'], ['#FAF3E1', 'Sustainable Linen', 'cartões'], ['#B1A082', 'Areia do bloom', 'formas'], ['#E06F2D', 'Burnt Orange', 'massa de cor', 1],
-      ['#401D47', 'Deep Purple', 'tinta, faixa'], ['#2B1811', 'Dark Espresso', 'texto'], ['#9A4614', 'Laranja para texto', 'derivado'], ['#6E5946', 'Natural para texto', 'derivado, metadados'],
+      ['#401D47', 'Deep Purple', 'tinta, faixa; disco à noite'], ['#2B1811', 'Dark Espresso', 'texto'], ['#9A4614', 'Laranja para texto', 'derivado'], ['#6E5946', 'Natural para texto', 'derivado, metadados'],
       ['#1C0D20', 'Noite roxa', 'chão escuro, derivado'], ['#FF6D1F', 'Electric Tangerine', 'detalhe no escuro'], ['#C9B6CF', 'Lilás claro', 'metadados no escuro, derivado']
     ];
     document.getElementById('amostras').innerHTML = CORES.map(([h, n, u, r]) => `<div class="amostra"><i class="${r ? 'redonda' : ''}" style="background:${h}"></i><b>${n}</b><code>${h}</code><br>${u}</div>`).join('');
@@ -413,7 +410,7 @@
     document.getElementById('especime').innerHTML = `
       <div class="espec"><span>Display · larg. 78</span><p style="font-size:var(--t-display);line-height:.93;font-weight:820;font-variation-settings:'wdth' 78;letter-spacing:-.025em;color:var(--frase)">${comAspas(curta.texto)}</p></div>
       <div class="espec"><span>Título · larg. 84</span><p style="font-size:var(--t-1);line-height:1.02;font-weight:720;font-variation-settings:'wdth' 84;color:var(--frase)">${comAspas(longa.texto)}</p></div>
-      <div class="espec"><span>Corpo · 17 px</span><p style="max-width:38rem">${esc(longa.autor)}, ${esc(autor(longa.autor).papel)}. ${esc(longa.fonte)}. Quem pesquisar a frase e o autor deve encontrar o mesmo: cada passagem foi conferida na obra.</p></div>
+      <div class="espec"><span>Corpo · 17 px</span><p style="max-width:38rem">${esc(longa.autor)}, ${esc(autor(longa.autor).papel)}. ${esc(longa.fonte)}. Quem pesquisar a frase e o autor deve encontrar o mesmo; por isso a fonte vem junto com a frase.</p></div>
       <div class="espec"><span>Rótulo · larg. 125</span><p class="rotulo">${esc(longa.categoria)} · ${esc(curta.fonte)}</p></div>
       <div class="espec"><span>Acentos</span><p style="font-size:var(--t-2);font-weight:600">ç ã õ á é í ó ú â ê ô à ü · Ç Ã Õ É Ê · “ ” ‘ ’ « » – … · 0123456789</p></div>
       <div class="espec"><span>Grego</span><p lang="grc" style="font:italic 400 var(--t-2)/1.4 var(--original)">${esc(grego.original)}</p></div>
