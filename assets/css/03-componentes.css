@@ -642,7 +642,7 @@ textarea.form-input {
   z-index: -1;
   top: -9%;
   left: -14%;
-  width: 62%;
+  width: 76%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--mass);
@@ -702,6 +702,36 @@ textarea.form-input {
   margin-left: auto;
   color: var(--on-brand);
   text-decoration-color: var(--on-brand-meta);
+}
+
+/* faixas de cor (novas): café e ocre, para dar peso a uma seção sem caixa nem sombra */
+.faixa-cafe,
+.faixa-ocre {
+  padding-block: var(--space-7);
+}
+.faixa-cafe {
+  background: var(--cafe-surface);
+  color: var(--on-cafe);
+}
+.faixa-cafe :is(h2, h3, .quote-text) {
+  color: var(--on-cafe);
+}
+.faixa-cafe .eyebrow {
+  color: var(--on-cafe-meta);
+}
+.faixa-cafe .btn-coral,
+.faixa-cafe .btn-primary {
+  background: var(--on-cafe);
+  border-color: var(--on-cafe);
+  color: var(--cafe-surface);
+}
+.faixa-ocre {
+  background: var(--ochre-surface);
+  color: var(--on-ochre);
+}
+.faixa-ocre a,
+.faixa-ocre .eyebrow {
+  color: var(--on-ochre);
 }
 
 /* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */

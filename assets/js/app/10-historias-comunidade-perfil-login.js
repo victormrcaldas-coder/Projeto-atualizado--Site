@@ -546,6 +546,9 @@ function closeMobileMenu() {
   }
 }
 document.getElementById('hamburgerBtn').addEventListener('click', openMobileMenu);
+// "Mais" da barra inferior abre o mesmo menu (Descubra, Histórias, Comunidade, Perfil)
+const bnMais = document.getElementById('bnMais');
+if (bnMais) bnMais.addEventListener('click', openMobileMenu);
 document.getElementById('closeMobileMenu').addEventListener('click', closeMobileMenu);
 document.getElementById('scrim').addEventListener('click', () => {
   closeMobileMenu();

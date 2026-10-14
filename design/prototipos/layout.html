@@ -26,7 +26,7 @@
   @media (min-width: 1024px) {
     .abertura { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: var(--space-8); align-items: center; padding-block: var(--space-8); }
   }
-  .abertura .prancha::before { left: auto; right: -9%; top: -6%; width: 46%; }
+  .abertura .prancha::before { left: auto; right: -12%; top: -8%; width: 64%; }
   .parede { display: grid; gap: var(--space-5); min-width: 0; }
   .parede .eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); margin: 0; }
   .parede .eyebrow::before { content: ''; width: 7px; height: 7px; background: var(--pin); }
@@ -37,6 +37,15 @@
   /* temas logo abaixo: uma linha de leitura, não uma fileira de botões */
   .sumario { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); padding-block: var(--space-4); border-block: var(--hairline) solid var(--border); font-size: var(--fs-small); }
   .sumario span { color: var(--text-meta); }
+  .faixa-temas { padding-block: 0; margin-top: var(--space-6); }
+  .faixa-temas .sumario { border: 0; padding-block: var(--space-4); }
+  .faixa-temas .sumario span { color: var(--on-ochre); font-weight: var(--weight-semibold); }
+  .convite { margin-top: var(--space-8); }
+  .convite .wrap { display: grid; gap: var(--space-4); justify-items: start; }
+  .convite h2 { font-size: var(--fs-h1); font-style: italic; }
+  .convite-texto { max-width: 52ch; color: var(--on-cafe-meta); }
+  main:has(.convite) { padding-bottom: 0; }
+  main:has(.convite) + .site-footer { margin-top: 0; }
 
   .secao { display: grid; gap: var(--space-6); padding-block: var(--space-8) 0; }
   .secao-head { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: baseline; justify-content: space-between; }
@@ -82,7 +91,11 @@
   <div class="wrap">
     <section class="abertura" id="abertura" aria-label="Frase de hoje"></section>
     <p class="faixa-fonte" id="faixa"></p>
-    <nav class="sumario" aria-label="Temas"><span>Temas</span><a href="#cartoes">Reflexão</a><a href="#cartoes">Educação</a><a href="#cartoes">Família</a><a href="#cartoes">Filosofia e Sabedoria</a><a href="#cartoes">Identidade e Autoconhecimento</a><a href="#cartoes">Vida</a></nav>
+  </div>
+  <div class="faixa-ocre faixa-temas">
+    <div class="wrap"><nav class="sumario" aria-label="Temas"><span>Temas</span><a href="#cartoes">Reflexão</a><a href="#cartoes">Educação</a><a href="#cartoes">Família</a><a href="#cartoes">Filosofia e Sabedoria</a><a href="#cartoes">Identidade e Autoconhecimento</a><a href="#cartoes">Vida</a></nav></div>
+  </div>
+  <div class="wrap">
 
     <section class="secao" aria-labelledby="t-cartoes">
       <div class="secao-head">
@@ -92,6 +105,14 @@
       <div class="quote-grid" id="cartoes"></div>
     </section>
   </div>
+  <section class="faixa-cafe convite" aria-labelledby="t-convite">
+    <div class="wrap">
+      <p class="eyebrow">Escrever</p>
+      <h2 id="t-convite">Uma frase te acompanhou hoje?</h2>
+      <p class="convite-texto">Escreva o que ela lembrou a você. Fica guardado só para você, ou vai para a comunidade, se quiser.</p>
+      <button class="btn btn-coral" type="button">Escrever</button>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">

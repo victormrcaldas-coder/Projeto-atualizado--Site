@@ -52,6 +52,7 @@ Numa mudança de conteúdo (fase de curadoria), o passo 3 deve mostrar diferenç
 | | `capturas-prototipos.mjs` | Prints dos protótipos (abertura, cartões, frase ampliada, paleta, tipografia) por largura e tema; mede a rolagem lateral, confere Esc e foco e audita o contraste de cada texto contra o fundo real. Com `--arquivo design/guia.html --secoes … --inteira`, faz o mesmo no guia da Etapa 2. |
 | | `baixar-fontes.mjs` | Baixa do Google Fonts os `.woff2` das fontes do sistema (Literata, Ysabeau Office, Caveat, todas OFL) para `assets/fonts/`, com o `OFL.txt` de cada uma, e gera `assets/css/00-fontes.css`. Rodar com `NODE_USE_ENV_PROXY=1` na nuvem. |
 | | `metricas-fallback.py` | Calcula `size-adjust` e os `*-override` das fontes de reserva (para o texto não pular quando a fonte chega). Precisa de `pip install fonttools brotli`; rodar antes de `baixar-fontes.mjs`. |
+| | `pagina-autocontida.py` | Gera a versão autocontida de uma página de `design/` (guia, layout, protótipos) para prints e para Artifact: CSS e scripts embutidos, fontes em data URI e fotos locais. `--artifact` tira o esqueleto HTML. |
 
 ## Fluxo de uma nova fase de curadoria
 

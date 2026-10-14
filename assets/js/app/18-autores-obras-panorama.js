@@ -475,11 +475,13 @@ function f5InjectViews() {
       b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${F5_ICONS[ico]}</svg>${label}`;
       return b;
     };
-    bn.insertBefore(mk('autores', 'Autores', 'livro'), bn.querySelector('[data-nav="descubra"]'));
-    bn.insertBefore(mk('escrever', 'Escrever', 'lapis'), bn.querySelector('[data-nav="perfil"]'));
-    if (!bn.querySelector('[data-nav="comunidade"]')) {
-      bn.insertBefore(mk('comunidade', 'Comunidade', 'pessoas'), bn.querySelector('[data-nav="perfil"]'));
-    }
+    // Barra de 5 itens (Etapa 3 do redesign): Início, Explorar, Autores, Escrever e "Mais".
+    // Autores e Escrever já vêm no index.html; só entram aqui se faltarem. Descubra, Histórias,
+    // Comunidade e Perfil ficam no menu lateral, aberto pelo "Mais".
+    const mais = document.getElementById('bnMais');
+    if (!bn.querySelector('[data-nav="autores"]')) bn.insertBefore(mk('autores', 'Autores', 'livro'), mais);
+    if (!bn.querySelector('[data-nav="escrever"]'))
+      bn.insertBefore(mk('escrever', 'Escrever', 'lapis'), mais);
   }
 
   /* liga os novos botões (os antigos já foram ligados no carregamento) */

@@ -1,8 +1,9 @@
 /* ============================================================
    MEMOTIVA — TOKENS DO SISTEMA DE DESIGN
-   Paleta da Galeria: parede de linho, tinta quase preta, oliva nos acentos de texto,
-   apricot como ponto. Da Florada, só no claro: um disco laranja pequeno atrás do retrato
-   da abertura e a faixa roxa da fonte (e o rodapé). No escuro, a "sala escura", sem laranja grande.
+   Paleta da Galeria com mais cor: parede de linho, tinta café, oliva nos acentos de texto,
+   apricot como ponto; faixas em café e em ocre; roxo no botão principal, na faixa da fonte e
+   no rodapé. Da Florada, só no claro: o arco laranja atrás do retrato da abertura.
+   No escuro, a "sala escura", sem laranja grande.
    Uma fonte por papel; todas as frases do acervo no mesmo estilo.
    Componentes usam só estes tokens: nada de hex solto fora daqui.
    Decisões e contrastes medidos: design/DECISOES.md e design/guia.html.
@@ -15,32 +16,37 @@
   --surface-muted: #fdf9f0;
   --frame: #f5e7c6; /* Recycled Cotton: só o quadro do retrato sem foto */
   --surface-page: #faf3e1; /* a frase ampliada */
-  --surface-strong: #222222; /* Black Hole: botão principal */
-  --text-on-strong: #faf3e1; /* 14,4 : 1 */
+  --surface-strong: #401d47; /* Deep Purple: botão principal */
+  --text-on-strong: #faf3e1; /* 12,8 : 1 */
 
   /* ---- cor: tinta ---- */
-  --brand: #222222; /* títulos, nomes e frases (Black Hole, 14,4 : 1) */
-  --text: #222222;
-  --text-secondary: #3a3732; /* 10,7 : 1 */
-  --text-meta: #5e5a52; /* 6,2 : 1 */
+  --brand: #2b1811; /* Dark Espresso: títulos, nomes e frases (15,3 : 1) */
+  --text: #2b1811;
+  --text-secondary: #5c4a3d; /* espresso clareado (derivado): 7,6 : 1 */
+  --text-meta: #6b5847; /* derivado: 6,1 : 1 */
   --ink-2: #3f422e; /* Organic */
 
   /* ---- cor: toques da Florada (só no claro) ---- */
   --brand-surface: #401d47; /* Deep Purple: faixa da fonte na abertura e rodapé */
   --on-brand: #faf3e1; /* 12,8 : 1 */
   --on-brand-meta: #d9cdb4; /* 9,0 : 1 */
-  --mass: #e06f2d; /* Burnt Orange: o disco atrás do retrato da abertura */
+  --mass: #e06f2d; /* Burnt Orange: o arco atrás do retrato da abertura */
+  --cafe-surface: #2b1811; /* Dark Espresso: faixas de destaque (convite, seções escuras) */
+  --on-cafe: #faf3e1; /* 15,3 : 1 */
+  --on-cafe-meta: #d9cdb4; /* 10,8 : 1 */
+  --ochre-surface: #e5d17a; /* Muted Ochre: a faixa amarela (temas, destaques curtos) */
+  --on-ochre: #2b1811; /* 11,1 : 1 */
   --mass-on-page: transparent; /* na frase ampliada não há massa de cor */
 
   /* ---- cor: linhas ---- */
-  --border: rgba(34, 34, 34, 0.16);
-  --border-strong: rgba(34, 34, 34, 0.55);
+  --border: rgba(43, 24, 17, 0.16);
+  --border-strong: rgba(43, 24, 17, 0.55);
 
   /* ---- cor: detalhe ---- */
   --accent: #e06f2d; /* traço curto do item ativo */
   --pin: #d78b30; /* Apricot: o ponto da categoria e da etiqueta (só forma) */
   --accent-text: #3f422e; /* Organic como acento de texto: "fonte conferida", hover de link (9,4 : 1) */
-  --accent-ink: #222222;
+  --accent-ink: #2b1811;
 
   /* ---- cor: marca-texto, foco e véu ---- */
   --highlight: #f1e59b; /* Light Gold: seleção e termo encontrado na busca */
@@ -163,6 +169,11 @@ html[data-theme='dark'] {
   --on-brand: #f5e6c5;
   --on-brand-meta: #a79f92;
   --mass: transparent; /* sem disco laranja no escuro */
+  --cafe-surface: #2b1811; /* o café vira uma sala mais quente que o fundo */
+  --on-cafe: #f5e6c5; /* 13,7 : 1 */
+  --on-cafe-meta: #d9cdb4;
+  --ochre-surface: #2e2818; /* ocre apagado (derivado) */
+  --on-ochre: #f5e6c5; /* 11,9 : 1 */
   --mass-on-page: transparent;
 
   --border: rgba(245, 230, 197, 0.16);

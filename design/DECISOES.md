@@ -94,3 +94,14 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 - **Escuro:** a sala escura da Galeria (`#151311`, tinta Ivory), sem disco, sem faixa roxa, laranja só em texto pequeno.
 - **Fontes por papel:** Noto Serif Display (todas as frases em itálico, nomes condensados, títulos), Hanken Grotesk (interface), Literata (leitura longa), Caveat (só "Manuscrita"). A Ysabeau Office sai.
 - **Site real:** sem a textura de papel, a fita amarela, a sombra e a rotação dos cartões; frase ampliada atual com fundo liso.
+
+## Portão 3: aprovado (14/10/2026)
+
+**Resposta do proprietário:** aprovou o modelo da Galeria com toques da Florada e a barra inferior com 5 itens. Pediu para explorar as cores maiores, porque estava ficando "creme e preto": usar café, o amarelo mais escuro do briefing, aumentar o arco laranja e colocar coisas em roxo, sem nada mirabolante. Os movimentos e as transições ficam para a Etapa 9.
+
+**Aplicado:**
+- **Tinta café** (Dark Espresso `#2B1811`) no lugar do preto, para títulos, frases e texto.
+- **Roxo** `#401D47` no botão principal, na faixa da fonte e no rodapé.
+- **Faixas novas:** `.faixa-cafe` (espresso com texto linho, por exemplo o convite para escrever) e `.faixa-ocre` (Muted Ochre `#E5D17A` com texto café, por exemplo a faixa de temas).
+- **Arco laranja** atrás do retrato maior (cerca de 2/3 da largura da foto), só no claro.
+- **Barra inferior com 5 itens:** Início, Explorar, Autores, Escrever e Mais. O "Mais" abre o menu lateral com Descubra, Histórias, Comunidade e Perfil (`index.html`, `app/10`, `app/18`).
