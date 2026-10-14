@@ -71,3 +71,14 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 - **Componentes** usam as classes reais do site (`.quote-card`, `.expand-*`, `.chip`, `.bottom-nav`, `.site-header`, `.empty-state`, `.toast`…). Classes que ainda não existem estão marcadas "(nova)" no CSS.
 - **Para a Etapa 3:** o mapa dos tokens antigos (`--coral`, `--jade`, `--marigold`, `--plum`, `--paper-*`, `--font-*`) para os novos está no fim do guia. `STYLE_COLORS` e `STYLE_FONTS` ficam em `assets/js/dados/` sem mudança; a troca será por CSS ou JS de fora.
 - **Fontes de reserva** com métricas calculadas (`ferramentas/design/metricas-fallback.py`), para o texto não pular quando a fonte chega.
+
+## Portão 2: correção da paleta (14/10/2026)
+
+**Resposta do proprietário:** não pediu para trocar tudo por café. O café entra de forma equilibrada, para compensar onde a tela ficaria laranja demais. Nos prints de navegação real, tirar os excessos de cor que deixam o site ultrapassado. Trazer o layout novo no formato do Portão 1 para aprovar. Etapa 3 aprovada para seguir.
+
+**Aplicado na Etapa 3:**
+- **Café** (linho, algodão, espresso) no fundo, nas superfícies e no texto corrido.
+- **Roxo** `#401D47` como marca: títulos, frases, botão principal, rodapé, foco. No escuro, a frase ampliada abre numa página roxa.
+- **Laranja** `#E06F2D` em detalhes (ponto da marca e da categoria, traço do item ativo, sublinhado de link) e numa única massa pequena por tela, a "prancha" atrás do retrato. No escuro, a massa vira roxa e o detalhe vira Apricot.
+- **Site real:** fontes locais; tokens novos e `04-ponte.css` mapeando os nomes antigos; sem manchas desfocadas, pílulas com sombra colorida, degradê roxo-laranja e iniciais em cores vivas; cabeçalho, menu, barra inferior e rodapé redesenhados (`assets/css/telas/navegacao.css`).
+- **Proposta pendente:** barra inferior com 5 itens (Início, Explorar, Autores, Escrever, Mais). Ainda não aplicada no site.
