@@ -47,6 +47,7 @@ Numa mudança de conteúdo (fase de curadoria), o passo 3 deve mostrar diferenç
 | | `biblia.py` | Confere cada versículo contra o texto aberto da edição do rótulo (ACF, AA, NVI; baixar para `.trabalho/biblia/`, ver cabeçalho). |
 | | `tecnico.mjs` | Carga, CLS, console, rede, listeners ao navegar e sondas de XSS pelo armazenamento compartilhado. `npm run auditoria:tecnica`. |
 | `textos/` | `gutenberg.py` | Baixa textos integrais do Gutenberg pelo espelho GITenberg. |
+| `design/` | `capturas.mjs` | Prints de cada tela (16, inclusive modais e telas com sessão) por largura e tema, com a rolagem horizontal medida e uma folha de contato. Base dos portões do redesign. Ex.: `node ferramentas/design/capturas.mjs --etapa 03-navegacao --larguras 390,768,1440`. Saída em `.trabalho/design/<etapa>/`. |
 
 ## Fluxo de uma nova fase de curadoria
 
