@@ -154,12 +154,11 @@ hr {
 }
 
 /* rótulo pequeno em caixa alta (seções, categorias, metadados) */
+/* rótulo pequeno de seção; caixa alta espaçada fica só para a categoria da frase */
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: var(--fs-meta);
+  font-size: var(--fs-small);
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
   color: var(--text-meta);
 }
 

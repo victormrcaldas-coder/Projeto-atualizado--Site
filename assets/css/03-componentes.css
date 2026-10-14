@@ -22,7 +22,6 @@
   letter-spacing: var(--quote-tracking);
   font-optical-sizing: auto;
   text-wrap: pretty;
-  hanging-punctuation: first; /* Safari: a aspa de abertura fica para fora da margem */
 }
 .quote-text,
 .quote-card-text {
@@ -127,7 +126,7 @@
   color: var(--accent-text);
 }
 .btn-sm {
-  min-height: 36px;
+  min-height: var(--tap);
   padding: 0 var(--space-4);
 }
 .btn-lg {
@@ -160,6 +159,7 @@
    ========================================================= */
 .form-field {
   display: grid;
+  align-content: start;
   gap: var(--space-2);
 }
 .form-label {
@@ -197,12 +197,13 @@
   outline-offset: 1px;
 }
 .form-input[aria-invalid='true'] {
-  border-color: var(--accent-text);
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--text);
 }
 .form-error {
   font-size: var(--fs-small);
   font-weight: var(--weight-semibold);
-  color: var(--accent-text);
+  color: var(--text);
 }
 textarea.form-input {
   min-height: 120px;
@@ -230,25 +231,32 @@ textarea.form-input {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 40px;
-  padding: 0 var(--space-4);
-  border: var(--hairline) solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--text);
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: var(--fs-small);
   font-weight: var(--weight-medium);
   white-space: nowrap;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-size var(--dur-2) var(--ease-out);
 }
 .chip:hover {
-  background: var(--surface);
+  color: var(--text);
 }
+/* ativo: texto na tinta e o traço laranja curto, como no menu */
 .chip.active,
 .chip[aria-pressed='true'] {
-  background: var(--surface-strong);
-  border-color: var(--surface-strong);
-  color: var(--text-on-strong);
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
 }
 .chip-count /* (nova) número dentro do chip */ {
   color: inherit;
@@ -277,10 +285,8 @@ textarea.form-input {
 }
 .filter-label {
   flex: none;
-  font-size: var(--fs-meta);
+  font-size: var(--fs-small);
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
   color: var(--text-meta);
 }
 
@@ -291,23 +297,23 @@ textarea.form-input {
 .quote-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  gap: var(--space-5);
+  gap: var(--space-7) var(--space-6);
   align-items: start;
 }
+/* sem caixa nem fundo: um fio no topo, como verbete de livro */
 .quote-card {
   position: relative;
   display: grid;
   gap: var(--space-4);
-  padding: var(--space-5);
-  border: var(--hairline) solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface-muted);
+  padding: var(--space-4) 0 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  background: none;
   transform: none !important; /* desliga a rotação que o template antigo põe inline */
   cursor: pointer;
   transition: border-color var(--dur-1) var(--ease-out);
 }
 .quote-card:hover {
-  border-color: var(--border-strong);
+  border-top-color: var(--text);
 }
 .quote-card-tape {
   display: none;
@@ -342,8 +348,6 @@ textarea.form-input {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  padding-top: var(--space-3);
-  border-top: var(--hairline) solid var(--border);
 }
 .quote-author {
   display: flex;
@@ -360,7 +364,10 @@ textarea.form-input {
   border-radius: var(--radius-sm);
   background: var(--surface);
 }
-.avatar-frame img {
+.avatar-frame img,
+.expand-avatar img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -506,10 +513,11 @@ textarea.form-input {
 /* no celular, retrato pequeno em cima e a etiqueta com a largura toda */
 @media (max-width: 639px) {
   .expand-foot {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: var(--space-4);
   }
   .expand-avatar {
-    width: 88px;
+    width: 64px;
   }
   .quote-label {
     grid-template-columns: minmax(0, 1fr);
@@ -591,11 +599,8 @@ textarea.form-input {
   font-size: var(--fs-small);
 }
 .quote-label dt {
-  padding-top: 0.2em;
-  font-size: var(--fs-meta);
+  font-size: var(--fs-small);
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
   color: var(--text-meta);
 }
 .quote-label dd {
@@ -666,6 +671,8 @@ textarea.form-input {
   margin-left: auto;
 }
 .nav-link {
+  display: inline-flex;
+  align-items: center;
   min-height: var(--tap);
   padding: 0 var(--space-3);
   border: 0;
@@ -864,9 +871,9 @@ textarea.form-input {
   justify-items: start;
   gap: var(--space-2);
   max-width: 52ch;
-  padding: var(--space-4) var(--space-5);
-  border-left: 2px solid var(--accent-text);
-  background: var(--surface-muted);
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
 }
 .state-error strong {
   font-family: var(--font-serif);
@@ -885,9 +892,11 @@ textarea.form-input {
   z-index: var(--z-toast);
   max-width: min(420px, calc(100vw - 2 * var(--space-4)));
   padding: var(--space-3) var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
   border-radius: var(--radius-sm);
-  background: var(--surface-strong);
-  color: var(--text-on-strong);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
   font-size: var(--fs-small);
   font-weight: var(--weight-medium);
   transform: translate(-50%, 16px);
