@@ -82,3 +82,15 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 - **Laranja** `#E06F2D` em detalhes (ponto da marca e da categoria, traço do item ativo, sublinhado de link) e numa única massa pequena por tela, a "prancha" atrás do retrato. No escuro, a massa vira roxa e o detalhe vira Apricot.
 - **Site real:** fontes locais; tokens novos e `04-ponte.css` mapeando os nomes antigos; sem manchas desfocadas, pílulas com sombra colorida, degradê roxo-laranja e iniciais em cores vivas; cabeçalho, menu, barra inferior e rodapé redesenhados (`assets/css/telas/navegacao.css`).
 - **Proposta pendente:** barra inferior com 5 itens (Início, Explorar, Autores, Escrever, Mais). Ainda não aplicada no site.
+
+## Portão 3: volta à Galeria, com toques da Florada (14/10/2026)
+
+**Resposta do proprietário:** o modo claro ficou "creme/dourado" (linho no fundo e algodão em cartões e painéis), e esse tom não combina. As aberturas da Galeria (C) no claro e no escuro e a da Florada (B) no claro estavam lindas. Funcionava o laranja só num detalhe perto da foto e o roxo só embaixo. Não funcionava a letra ou a faixa laranja sobre fundo roxo ou preto, nem o painel inteiro laranja. Fontes: explorar e escolher onde cada uma combina mais, sem uma frase em cada fonte.
+
+**Escolhas (perguntas respondidas):** fundo claro = linho da Galeria, sem dourado; abertura = Galeria com toque da Florada.
+
+**Aplicado:**
+- **Claro:** parede de linho em tudo; cartões e painéis sem fundo próprio (fio fino); tinta Black Hole `#222222`; oliva `#3F422E` nos acentos de texto; apricot só como ponto. Da Florada: disco laranja atrás do retrato da abertura e faixa roxa da fonte (e rodapé roxo).
+- **Escuro:** a sala escura da Galeria (`#151311`, tinta Ivory), sem disco, sem faixa roxa, laranja só em texto pequeno.
+- **Fontes por papel:** Noto Serif Display (todas as frases em itálico, nomes condensados, títulos), Hanken Grotesk (interface), Literata (leitura longa), Caveat (só "Manuscrita"). A Ysabeau Office sai.
+- **Site real:** sem a textura de papel, a fita amarela, a sombra e a rotação dos cartões; frase ampliada atual com fundo liso.

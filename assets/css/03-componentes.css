@@ -57,7 +57,7 @@
 /* o original, quando existe: mesma família, itálico pequeno, no idioma certo (lang no elemento) */
 .quote-original /* (nova) */ {
   margin: 0;
-  font-family: var(--font-serif), var(--font-original-extra);
+  font-family: var(--font-title), var(--font-original-extra);
   font-style: italic;
   font-size: var(--quote-original);
   line-height: 1.5;
@@ -120,7 +120,7 @@
   font-weight: var(--weight-semibold);
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--border-strong);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.3em;
 }
@@ -333,17 +333,15 @@ textarea.form-input {
 /* o laranja como detalhe: um ponto pequeno antes da categoria */
 .quote-card-cat::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
 }
 .quote-card-src /* (nova) a obra no cartão */ {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
   font-size: var(--fs-small);
   line-height: 1.45;
-  color: var(--text-secondary);
+  color: var(--text-meta);
 }
 .quote-card-foot {
   display: flex;
@@ -364,7 +362,7 @@ textarea.form-input {
   height: 48px;
   overflow: hidden;
   border-radius: var(--radius-sm);
-  background: var(--surface);
+  background: var(--frame);
 }
 .avatar-frame img,
 .expand-avatar img,
@@ -380,19 +378,19 @@ textarea.form-input {
   position: absolute;
   inset: 0;
   place-items: center;
-  background: var(--surface) !important;
+  background: var(--frame) !important;
   color: var(--text-secondary);
-  font-family: var(--font-serif);
+  font-family: var(--font-title);
   font-size: 0.95rem;
 }
 .author-name {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: var(--font-sans);
-  font-size: var(--fs-small);
-  font-weight: var(--weight-semibold);
-  color: var(--text);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-regular);
+  color: var(--brand);
 }
 .heart-btn,
 .expand-act {
@@ -443,92 +441,122 @@ textarea.form-input {
 }
 .expand-quote {
   position: relative;
-  width: min(980px, 100%);
+  width: min(1120px, 100%);
   max-height: calc(100dvh - 2 * var(--space-4));
   overflow: auto;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   background: var(--surface-page);
   color: var(--text);
   box-shadow: var(--shadow-float);
-  --mass: var(--mass-on-page);
 }
 .expand-close {
   position: absolute;
   top: var(--space-3);
   right: var(--space-3);
-  z-index: 1;
+  z-index: 2;
   display: inline-grid;
   place-items: center;
   width: var(--tap);
   height: var(--tap);
-  border: 0;
+  border: var(--hairline) solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: var(--surface-page);
   color: var(--text);
 }
 .expand-close svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
+
+/* a "sala" da Galeria: no computador, o retrato ocupa a coluna da esquerda e o texto de parede a da direita.
+   .expand-foot e .expand-ident-wrap viram "transparentes" para o retrato subir para a primeira coluna
+   sem mudar a marcação. */
 .expand-inner {
   display: grid;
   gap: var(--space-5);
   padding: var(--space-7) var(--space-5) var(--space-5);
 }
-@media (min-width: 768px) {
+.expand-foot {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--space-4) var(--space-4);
+  align-items: start;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+@media (min-width: 900px) {
   .expand-inner {
-    padding: var(--space-8) var(--space-8) var(--space-6);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-auto-flow: dense;
+    gap: var(--space-4) var(--space-7);
+    padding: 0 var(--space-7) 0 0;
+  }
+  .expand-inner > * {
+    grid-column: 2;
+  }
+  .expand-inner > .expand-cat {
+    padding-top: var(--space-8);
+  }
+  .expand-foot {
+    display: contents;
+  }
+  .expand-foot > * {
+    grid-column: 2;
+  }
+  .expand-foot > .expand-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    align-self: stretch;
+    width: 100%;
+    min-height: 520px;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .expand-ident-wrap {
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+  }
+  .expand-foot > .expand-acts {
+    grid-column: 2;
+    padding-bottom: var(--space-5);
   }
 }
 .expand-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
   font-size: var(--fs-meta);
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--text-meta);
 }
-.expand-foot {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--space-4) var(--space-5);
-  align-items: start;
-  padding-top: var(--space-5);
-  border-top: var(--hairline) solid var(--border);
+.expand-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
 }
 .expand-avatar {
   position: relative;
-  width: 96px;
+  width: 72px;
   aspect-ratio: 3 / 4;
-  margin: 0 0 12px 12px;
+  overflow: hidden;
   border-radius: var(--radius-sm);
-  background: var(--surface);
-  box-shadow: -12px 12px 0 0 var(--mass); /* a prancha: a massa de laranja da tela */
+  background: var(--frame);
   cursor: zoom-in;
-}
-.expand-avatar img {
-  border-radius: var(--radius-sm);
 }
 .expand-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-@media (min-width: 768px) {
-  .expand-avatar {
-    width: 132px;
-  }
+.expand-avatar .avatar-fallback {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
 }
-/* no celular, retrato pequeno em cima e a etiqueta com a largura toda */
 @media (max-width: 639px) {
-  .expand-foot {
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: var(--space-4);
-  }
-  .expand-avatar {
-    width: 64px;
-    margin: 0 0 8px 8px;
-    box-shadow: -8px 8px 0 0 var(--mass);
-  }
   .quote-label {
     grid-template-columns: minmax(0, 1fr);
     gap: 0 0;
@@ -539,33 +567,32 @@ textarea.form-input {
 }
 .expand-ident-wrap {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-4);
   min-width: 0;
 }
 .expand-ident {
   display: grid;
   gap: var(--space-1);
 }
+/* o nome do autor: Noto Serif Display condensada, como os nomes da Galeria */
 .expand-author {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: var(--weight-medium);
+  font-family: var(--font-title);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  letter-spacing: -0.01em;
   color: var(--brand);
 }
 .expand-src {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
   font-size: var(--fs-small);
   color: var(--text-secondary);
 }
 .expand-src.src-alerta {
-  font-family: var(--font-sans);
-  font-style: normal;
   color: var(--accent-text);
 }
 .expand-src.src-nota {
-  font-family: var(--font-sans);
-  font-style: normal;
   color: var(--text-meta);
 }
 .expand-links {
@@ -583,14 +610,17 @@ textarea.form-input {
   background: none;
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: var(--fs-small);
+  font-size: var(--fs-meta);
   font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
   text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 0.3em;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.4em;
 }
 .expand-know:hover {
   color: var(--accent-text);
+  text-decoration-color: currentColor;
 }
 .expand-acts {
   grid-column: 1 / -1;
@@ -600,45 +630,95 @@ textarea.form-input {
   border-top: var(--hairline) solid var(--border);
 }
 
-/* prancha (nova): o retrato montado sobre a única massa de cor da tela (abertura, autor) */
+/* prancha (nova): o retrato da abertura, com o disco laranja da Florada atrás (só no claro) */
 .prancha {
-  margin: 0 0 22px 22px;
+  position: relative;
+  margin: 0;
+  isolation: isolate;
+}
+.prancha::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -9%;
+  left: -14%;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mass);
 }
 .prancha-foto {
   display: block;
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
   padding: 0;
   border: 0;
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  box-shadow: -22px 22px 0 0 var(--mass);
+  background: var(--frame);
   cursor: zoom-in;
 }
 .prancha-foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-sm);
 }
 .prancha figcaption {
-  margin-top: var(--space-6);
+  margin-top: var(--space-3);
   font-size: var(--fs-meta);
   color: var(--text-meta);
 }
 
-/* etiqueta da fonte, herdada da direção C: Obra · Autor · Original (nova) */
+/* faixa da fonte (nova), herdada da Florada: roxo com texto linho, só no claro.
+   No escuro vira o quadro escuro da Galeria. */
+.faixa-fonte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--brand-surface);
+  color: var(--on-brand);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+}
+.faixa-fonte b {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--on-brand-meta);
+}
+.faixa-fonte .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+.faixa-fonte .conferida {
+  color: var(--on-brand-meta);
+}
+.faixa-fonte a,
+.faixa-fonte .btn-text {
+  margin-left: auto;
+  color: var(--on-brand);
+  text-decoration-color: var(--on-brand-meta);
+}
+
+/* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */
 .quote-label {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-3) var(--space-5);
   margin: 0;
   font-size: var(--fs-small);
 }
 .quote-label dt {
-  font-size: var(--fs-small);
+  padding-top: 0.25em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
   font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
   color: var(--text-meta);
 }
 .quote-label dd {
@@ -646,14 +726,15 @@ textarea.form-input {
   color: var(--text);
 }
 .quote-label .obra {
-  font-family: var(--font-serif);
+  font-family: var(--font-title);
   font-style: italic;
+  font-size: 1.0625rem;
 }
 .conferida /* (nova) nota discreta das frases com status A */ {
   display: block;
-  font-family: var(--font-serif);
+  font-family: var(--font-title);
   font-style: italic;
-  font-size: var(--fs-meta);
+  font-size: var(--fs-small);
   color: var(--accent-text);
 }
 
@@ -720,7 +801,7 @@ textarea.form-input {
   border-radius: var(--radius-sm);
 }
 .state-error strong {
-  font-family: var(--font-serif);
+  font-family: var(--font-title);
   font-size: 1.125rem;
   font-weight: var(--weight-medium);
 }
@@ -792,8 +873,8 @@ textarea.form-input {
   height: var(--tap);
   border: var(--hairline) solid var(--border-strong);
   border-radius: var(--radius-sm);
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
+  font-family: var(--font-title);
+  font-size: 1.125rem;
   font-variant-numeric: tabular-nums;
   color: var(--text);
   cursor: pointer;

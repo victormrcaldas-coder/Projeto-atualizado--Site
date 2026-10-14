@@ -7,8 +7,10 @@
 <meta name="robots" content="noindex">
 <!-- Guia do sistema de design (Etapa 2 do redesign). Fora do site: index.html não aponta para cá.
      Carrega os arquivos reais de assets/css e frases reais do acervo (design/prototipos/amostra.js). -->
-<link rel="preload" href="../assets/fonts/literata/literata-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/ysabeau-office/ysabeau-office-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/noto-serif-display/noto-serif-display-italico-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/hanken-grotesk/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- só para a comparação da seção "Fontes por papel": as fontes testadas e descartadas -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Ysabeau+Office:wght@400..700&display=swap">
 <link rel="stylesheet" href="../assets/css/00-fontes.css">
 <link rel="stylesheet" href="../assets/css/01-tokens.css">
 <link rel="stylesheet" href="../assets/css/02-base.css">
@@ -57,6 +59,15 @@
   .g-escala span { font-size: var(--fs-meta); color: var(--text-meta); }
   @media (max-width: 639px) { .g-escala > div { grid-template-columns: 1fr; gap: var(--space-1); } }
   .g-originais { display: grid; gap: var(--space-3); }
+  .g-papeis { display: grid; gap: var(--space-7); }
+  .g-papel { display: grid; gap: var(--space-4); }
+  .g-papel > header { display: grid; gap: var(--space-1); }
+  .g-papel > header p { max-width: var(--measure); color: var(--text-secondary); font-size: var(--fs-small); }
+  .g-testes { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .g-teste { display: grid; gap: var(--space-3); align-content: start; padding-top: var(--space-3); border-top: var(--hairline) solid var(--border); min-width: 0; }
+  .g-teste.escolhida { border-top: 2px solid var(--text); }
+  .g-teste > span { font-size: var(--fs-meta); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-meta); font-weight: var(--weight-semibold); }
+  .g-teste.escolhida > span { color: var(--text); }
   .g-originais > div { display: grid; gap: var(--space-1); }
 
   /* a frase em três lugares */
@@ -112,17 +123,17 @@
   <div class="wrap">
 
     <section class="g-intro" aria-labelledby="t-guia">
-      <p class="eyebrow">Etapa 2 · sistema de design</p>
+      <p class="eyebrow">Etapa 3 · sistema de design revisado</p>
       <h1 id="t-guia">Guia do MeMotiva</h1>
       <p>Cores, letras e componentes que o site passa a usar a partir da Etapa 3. Esta página carrega os arquivos reais (<code>assets/css/00</code> a <code>03</code> e as fontes de <code>assets/fonts/</code>) e frases reais do acervo. Troque o tema no botão do topo.</p>
-      <ul class="g-mudou" aria-label="O que mudou depois do Portão 1">
-        <li>O café (linho, algodão, espresso) segura o fundo e o texto e equilibra as cores da marca.</li>
-        <li>O roxo é a identidade: títulos, frases, botão principal e a faixa do rodapé.</li>
-        <li>O laranja aparece em detalhes e numa única massa pequena por tela, atrás do retrato.</li>
-        <li>Toda frase do acervo tem a mesma letra, o mesmo estilo e a mesma cor, em qualquer tela.</li>
+      <ul class="g-mudou" aria-label="O que mudou no Portão 3">
+        <li>A paleta da Galeria: parede de linho, tinta quase preta, oliva nos acentos de texto, apricot como ponto. Nada de dourado.</li>
+        <li>Da Florada, só no claro: o disco laranja atrás do retrato da abertura e a faixa roxa da fonte (e o rodapé).</li>
+        <li>No escuro, a "sala escura" da Galeria: fotos no centro, tinta marfim, laranja só em texto pequeno.</li>
+        <li>Uma fonte por papel; toda frase do acervo em Noto Serif Display itálica, em qualquer tela.</li>
       </ul>
       <nav class="g-sumario" aria-label="Neste guia">
-        <a href="#paleta">Cores</a><a href="#tipografia">Letras</a><a href="#frase">A frase</a><a href="#componentes">Componentes</a><a href="#navegacao">Navegação</a><a href="#estados">Estados</a><a href="#mapa">Tokens antigos</a>
+        <a href="#paleta">Cores</a><a href="#tipografia">Fontes por papel</a><a href="#frase">A frase</a><a href="#componentes">Componentes</a><a href="#navegacao">Navegação</a><a href="#estados">Estados</a><a href="#mapa">Tokens antigos</a>
       </nav>
     </section>
 
@@ -130,61 +141,57 @@
     <section class="g-secao" id="paleta" aria-labelledby="t-paleta">
       <header>
         <p class="eyebrow">1 · Cores</p>
-        <h2 id="t-paleta">Café para equilibrar, roxo e laranja para marcar</h2>
-        <p>O linho e o espresso seguram a tela inteira. O roxo marca o que é da casa: títulos, frases, o botão principal e o rodapé. O laranja aparece em pontos pequenos (o marcador da categoria, o traço do item ativo, o sublinhado dos links) e numa única massa por tela, a prancha atrás do retrato. No escuro, a massa vira roxa e a frase ampliada abre numa página roxa. Os valores abaixo são lidos dos tokens no tema atual.</p>
+        <h2 id="t-paleta">A parede da Galeria, com dois toques da Florada</h2>
+        <p>Linho na parede inteira e tinta quase preta, como na Galeria. Cartões e painéis não têm fundo próprio: um fio fino separa. O oliva faz os acentos de texto e o apricot é só o ponto da etiqueta. No claro, a Florada entra em dois lugares: o disco laranja atrás do retrato da abertura e a faixa roxa da fonte (e o rodapé). No escuro, a sala apaga a luz: sem disco, sem faixa roxa, laranja só em texto pequeno. Os valores abaixo são lidos dos tokens no tema atual.</p>
       </header>
       <div class="g-cores" id="g-cores"></div>
       <div class="g-sub">
         <h3>Contraste medido no tema atual</h3>
         <div class="g-tabela"><table><thead><tr><th>Amostra</th><th>Par</th><th>Contraste</th><th>Uso</th></tr></thead><tbody id="g-contraste"></tbody></table></div>
-        <p class="g-nota">AA pede 4,5 : 1 para texto comum e 3 : 1 para texto grande. O laranja puro e o Natural ficam fora do texto: são só forma e fio.</p>
+        <p class="g-nota">AA pede 4,5 : 1 para texto comum e 3 : 1 para texto grande. O laranja do disco e o apricot do ponto são só forma.</p>
       </div>
       <div class="g-sub">
         <h3>As 17 cores do briefing: escolhida, apoio ou descartada</h3>
         <div class="g-tabela"><table>
           <thead><tr><th>Cor</th><th>Papel</th><th>Por quê</th></tr></thead>
           <tbody>
-            <tr><td class="num"><i class="sw" style="background:#FAF3E1"></i>Sustainable Linen <code>#FAF3E1</code></td><td>Escolhida: fundo</td><td>Claro e quente sem amarelar; o espresso passa de 15 : 1 sobre ele.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#F5E7C6"></i>Recycled Cotton <code>#F5E7C6</code></td><td>Escolhida: superfície</td><td>Separa áreas sem caixa nem sombra.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#2B1811"></i>Dark Espresso <code>#2B1811</code></td><td>Escolhida: texto</td><td>O café que equilibra: texto corrido e metadados; fundo do tema escuro.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#9F886F"></i>Natural <code>#9F886F</code></td><td>Apoio: fios</td><td>Só fio e contorno (3,1 : 1). Para texto, a versão escurecida <code>#7A6450</code> (5,0 : 1).</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Burnt Orange <code>#E06F2D</code></td><td>Escolhida: detalhe e massa</td><td>Pontos pequenos e uma única massa por tela (a prancha do retrato). Nunca fundo de seção nem botão. Como texto, a versão <code>#9A4614</code>.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#D78B30"></i>Apricot <code>#D78B30</code></td><td>Apoio: detalhe no escuro</td><td>O laranja do tema escuro: mais macio sobre o espresso (6,7 : 1).</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#3F422E"></i>Organic <code>#3F422E</code></td><td>Apoio: segunda tinta</td><td>Rara; combina com o café e dá um contraponto verde sem gritar.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#FAF3E1"></i>Sustainable Linen <code>#FAF3E1</code></td><td>Escolhida: parede</td><td>O fundo da Galeria, em tudo. Sozinho, sem painéis de outra cor, não fica dourado.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#222222"></i>Black Hole <code>#222222</code></td><td>Escolhida: tinta</td><td>Frases, nomes, títulos, texto e botão principal (14,4 : 1). É o que dá o ar de museu.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#3F422E"></i>Organic <code>#3F422E</code></td><td>Escolhida: acento de texto</td><td>"fonte conferida", rótulos de destaque, hover de link e foco (9,4 : 1).</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#D78B30"></i>Apricot <code>#D78B30</code></td><td>Escolhida: ponto</td><td>O quadradinho da etiqueta e da categoria, só forma; no escuro, o traço do item ativo.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Burnt Orange <code>#E06F2D</code></td><td>Apoio: disco e traço (claro)</td><td>O disco atrás do retrato da abertura e o traço do item ativo. Nunca letra nem fundo de seção.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#401D47"></i>Deep Purple <code>#401D47</code></td><td>Apoio: faixa (claro)</td><td>A faixa da fonte na abertura e o rodapé, com texto linho (12,8 : 1). Nunca com laranja por cima.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#F5E7C6"></i>Recycled Cotton <code>#F5E7C6</code></td><td>Apoio: quadro sem foto</td><td>Só o quadro do retrato tipográfico, quando o autor não tem foto.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#F5E6C5"></i>Ivory <code>#F5E6C5</code></td><td>Apoio: tinta do escuro</td><td>Texto, nomes e frases na sala escura (15,0 : 1).</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#FF6D1F"></i>Electric Tangerine <code>#FF6D1F</code></td><td>Apoio: detalhe do escuro</td><td>Só texto pequeno ("fonte conferida") e o anel de foco no escuro (6,6 : 1).</td></tr>
             <tr><td class="num"><i class="sw" style="background:#F1E59B"></i>Light Gold <code>#F1E59B</code></td><td>Apoio: marca-texto</td><td>Só seleção e termo encontrado na busca.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#E5D17A"></i>Muted Ochre <code>#E5D17A</code></td><td>Apoio: marca-texto forte</td><td>Mesmo uso, um tom acima; nunca como fundo de seção.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#401D47"></i>Deep Purple <code>#401D47</code></td><td>Escolhida: marca</td><td>Títulos, frases, botão principal, rodapé e o anel de foco. Nunca encostado em área grande de laranja.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#FFF4D6"></i>Light Parchment <code>#FFF4D6</code></td><td>Descartada</td><td>Quase igual ao Linen, um pouco mais amarela.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#F5E6C5"></i>Ivory <code>#F5E6C5</code></td><td>Descartada</td><td>Igual ao Recycled Cotton.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#FF6D1F"></i>Electric Tangerine <code>#FF6D1F</code></td><td>Descartada</td><td>Neon demais para um projeto sóbrio.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#222222"></i>Black Hole <code>#222222</code></td><td>Descartada</td><td>Cinza frio; o espresso faz o mesmo papel com calor.</td></tr>
-            <tr><td class="num"><i class="sw" style="background:#B1A082"></i>Areia do "bloom" <code>≈ #B1A082</code></td><td>Descartada</td><td>Amostra aproximada de foto; o Natural cobre o mesmo tom.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#E5D17A"></i>Muted Ochre <code>#E5D17A</code></td><td>Apoio: marca-texto forte</td><td>Mesmo uso, um tom acima.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#2B1811"></i>Dark Espresso <code>#2B1811</code></td><td>Descartada</td><td>Ao lado do linho e do algodão, levava o site para o "creme/dourado". O Black Hole faz o papel de tinta.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#9F886F"></i>Natural <code>#9F886F</code></td><td>Descartada</td><td>Reprova como texto (3,1 : 1); os fios agora são tinta translúcida.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#FFF4D6"></i>Light Parchment <code>#FFF4D6</code></td><td>Descartada</td><td>Quase igual ao Linen, mais amarela.</td></tr>
+            <tr><td class="num"><i class="sw" style="background:#B1A082"></i>Areia do "bloom" <code>≈ #B1A082</code></td><td>Descartada</td><td>Amostra aproximada de foto.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#3C1C44"></i>Roxo do "bloom" <code>≈ #3C1C44</code></td><td>Descartada</td><td>Quase o Deep Purple.</td></tr>
             <tr><td class="num"><i class="sw" style="background:#E06F2D"></i>Laranja do "bloom" <code>≈ #E06F2D</code></td><td>Descartada</td><td>Igual ao Burnt Orange.</td></tr>
           </tbody>
         </table></div>
-        <p class="g-nota">Derivadas (versões mais claras ou escuras das cores acima, só para passar no AA): espresso profundo <code>#1A120E</code> (fundo escuro), <code>#5C4A3D</code> e <code>#D9CDB4</code> (texto secundário), <code>#7A6450</code> e <code>#BFAE95</code> (metadados), <code>#9A4614</code> e <code>#E3A15A</code> (laranja como texto), <code>#C8C4A4</code> (Organic no escuro).</p>
+        <p class="g-nota">Derivadas (só para passar no AA ou separar camadas): linho clareado <code>#FDF9F0</code> (campos), <code>#3A3732</code> e <code>#5E5A52</code> (texto secundário e metadados), sala escura <code>#151311</code> e quadro <code>#1F1C19</code>, <code>#DDD2BC</code> e <code>#A79F92</code> (texto no escuro).</p>
       </div>
     </section>
 
-    <!-- ===================== LETRAS ===================== -->
+    <!-- ===================== FONTES ===================== -->
     <section class="g-secao" id="tipografia" aria-labelledby="t-tipo">
       <header>
-        <p class="eyebrow">2 · Letras</p>
-        <h2 id="t-tipo">Duas famílias, e uma terceira só para quem escreve</h2>
-        <p>Todas com licença SIL OFL, guardadas no repositório em <code>assets/fonts/</code> com o arquivo da licença. O navegador baixa só o pedaço de cada fonte que a página usa.</p>
+        <p class="eyebrow">2 · Fontes por papel</p>
+        <h2 id="t-tipo">Uma fonte para cada papel, sempre a mesma</h2>
+        <p>Testei as fontes das três direções na mesma frase real e escolhi, para cada papel, a que combina mais. Todas têm licença SIL OFL e ficam no repositório em <code>assets/fonts/</code>, com o arquivo da licença.</p>
       </header>
-      <div class="g-familias">
-        <div class="g-familia"><span class="g-aa" style="font-family:var(--font-serif)">Aa</span><b>Literata</b><p>Todas as frases, títulos e textos longos. Serifa de livro, com tamanho ótico: fica fina no título e robusta no corpo. Cobre o grego e o russo dos originais.</p></div>
-        <div class="g-familia"><span class="g-aa" style="font-family:var(--font-sans)">Aa</span><b>Ysabeau Office</b><p>Interface: menus, botões, rótulos, metadados. Humanista, conversa com a Literata sem competir com a frase.</p></div>
-        <div class="g-familia"><span class="g-aa" style="font-family:var(--font-hand)">Aa</span><b>Caveat</b><p>Só a opção "Manuscrita" do Escrever, escolhida por quem escreve o relato. Nunca nas frases do acervo.</p></div>
-      </div>
+      <div class="g-papeis" id="g-papeis"></div>
       <div class="g-sub">
         <h3>Escala (6 tamanhos)</h3>
         <div class="g-escala" id="g-escala"></div>
       </div>
       <div class="g-sub">
-        <h3>Originais em outras escritas</h3>
+        <h3>Originais em outras escritas (na mesma fonte das frases)</h3>
         <div class="g-originais" id="g-originais"></div>
       </div>
     </section>
@@ -194,7 +201,7 @@
       <header>
         <p class="eyebrow">3 · A frase</p>
         <h2 id="t-frase">Um estilo só, em todo lugar</h2>
-        <p>A mesma frase no cartão, na frase ampliada e na abertura da home: mesma letra, mesmo peso, sem itálico, mesma cor e mesma entrelinha. Muda só o tamanho, que é fixo por lugar, com um degrau menor para frase longa (mais de 140 caracteres). A aspa de abertura fica pendurada na margem.</p>
+        <p>A mesma frase no cartão, na frase ampliada e na abertura da home: mesma letra (Noto Serif Display itálica), mesmo peso, mesma cor e mesma entrelinha. Muda só o tamanho, que é fixo por lugar, com um degrau menor para frase longa (mais de 140 caracteres). A aspa de abertura fica pendurada na margem.</p>
       </header>
       <div class="g-tres">
         <div><p class="g-rotulo">No cartão</p><div id="g-cartao-demo"></div></div>
@@ -213,7 +220,7 @@
       <header>
         <p class="eyebrow">4 · Componentes</p>
         <h2 id="t-comp">Botões, campos, filtros e avaliação</h2>
-        <p>O botão principal é roxo cheio (no escuro, linho com texto roxo). Nenhum botão é laranja: o laranja aparece só no sublinhado dos botões de texto e no traço do filtro ativo. Erro se marca com a tinta e um contorno mais forte, não com cor.</p>
+        <p>O botão principal é a tinta quase preta (no escuro, marfim). Nenhum botão é laranja ou roxo: o laranja aparece só no traço do filtro e do item ativo. Erro se marca com a tinta e um contorno mais forte, não com cor.</p>
       </header>
       <div class="g-sub">
         <h3>Botões e links</h3>
@@ -263,7 +270,7 @@
       <header>
         <p class="eyebrow">5 · Navegação</p>
         <h2 id="t-nav">Cabeçalho, barra inferior e rodapé</h2>
-        <p>O rodapé é a faixa roxa da marca. O item ativo leva um traço laranja curto. Descubra ganhou ícone próprio (bússola), diferente do Perfil. O cabeçalho encolhe ao rolar (a animação entra na Etapa 3). A barra inferior mostra aqui os 5 itens de hoje; a proposta de redução vem na Etapa 3.</p>
+        <p>A marca vem em caixa alta espaçada, como na Galeria. O rodapé é roxo no claro e o quadro escuro no escuro. O item ativo leva um traço laranja curto. Descubra ganhou ícone próprio (bússola), diferente do Perfil. O cabeçalho encolhe ao rolar (a animação entra na Etapa 3). A barra inferior mostra aqui os 5 itens de hoje; a proposta de redução vem na Etapa 3.</p>
       </header>
       <div class="g-sub">
         <h3>Cabeçalho, normal e compacto</h3>
@@ -349,7 +356,7 @@
           <tr><td><code>--coral</code></td><td><code>--surface-strong</code> (botão) ou <code>--accent-text</code> (texto)</td><td>Botão principal vira espresso.</td></tr>
           <tr><td><code>--jade</code>, <code>--plum</code></td><td><code>--ink-2</code> ou <code>--text</code></td><td>Verde e roxo vivos saem.</td></tr>
           <tr><td><code>--marigold</code></td><td><code>--highlight</code></td><td>Só marca-texto.</td></tr>
-          <tr><td><code>--font-display</code>, <code>--font-body</code>, <code>--font-hand</code></td><td><code>--font-serif</code>, <code>--font-sans</code>, <code>--font-hand</code></td><td>Fraunces e Manrope saem; Caveat fica.</td></tr>
+          <tr><td><code>--font-display</code>, <code>--font-body</code>, <code>--font-hand</code></td><td><code>--font-title</code>, <code>--font-sans</code>, <code>--font-hand</code> (e <code>--font-serif</code> para leitura longa)</td><td>Fraunces e Manrope saem: Noto Serif Display, Hanken Grotesk e Literata; Caveat fica.</td></tr>
           <tr><td><code>quoteFontSize()</code> (5 tamanhos)</td><td><code>--quote-*</code> + <code>data-comprimento="longa"</code></td><td>Um tamanho por lugar e um degrau para frase longa.</td></tr>
           <tr><td><code>STYLE_COLORS</code>, <code>STYLE_FONTS</code> (Escrever)</td><td>mesmos ids, valores novos</td><td>Os dados ficam em <code>assets/js/dados/</code> sem mudar; a troca é feita por CSS ou JS de fora (Etapa 8).</td></tr>
         </tbody>
@@ -371,11 +378,9 @@
   const { A, FRASES, esc, comAspas, autor, linguaDoOriginal, montarContraste } = window.Proto;
   /* ---- cores: valores lidos dos tokens do tema atual ---- */
   const CORES = [
-    ['--bg', 'Fundo'], ['--surface', 'Superfície'], ['--surface-muted', 'Superfície discreta'], ['--brand', 'Marca: títulos e frases'],
-    ['--brand-surface', 'Faixa da marca'], ['--mass', 'Massa (prancha)'], ['--surface-page', 'Página da frase ampliada'], ['--text', 'Texto'],
-    ['--text-secondary', 'Texto secundário'], ['--text-meta', 'Metadados'], ['--border-strong', 'Fio'],
-    ['--accent', 'Detalhe'], ['--accent-text', 'Detalhe como texto'], ['--ink-2', 'Segunda tinta'],
-    ['--highlight', 'Marca-texto'], ['--focus-ring', 'Foco']
+    ['--bg', 'Parede'], ['--brand', 'Tinta: frases, nomes, títulos'], ['--text-meta', 'Metadados'], ['--accent-text', 'Acento de texto'],
+    ['--pin', 'Ponto da etiqueta'], ['--mass', 'Disco da abertura (só claro)'], ['--brand-surface', 'Faixa e rodapé'], ['--frame', 'Quadro sem foto'],
+    ['--surface', 'Campos'], ['--border-strong', 'Fio forte'], ['--highlight', 'Marca-texto'], ['--focus-ring', 'Foco']
   ];
   const raiz = document.documentElement;
   const valor = (t) => getComputedStyle(raiz).getPropertyValue(t).trim();
@@ -386,31 +391,53 @@
   desenharCores();
   document.addEventListener('proto:tema', desenharCores);
   montarContraste(document.getElementById('g-contraste'), [
-    ['--brand', '--bg', 'títulos e frases'], ['--text', '--bg', 'texto corrido'], ['--text', '--surface', 'texto nas superfícies'],
-    ['--on-brand', '--brand-surface', 'texto no rodapé roxo'], ['--on-brand-meta', '--brand-surface', 'texto secundário no rodapé'],
-    ['--text', '--surface-page', 'texto na frase ampliada'], ['--accent-text', '--surface-page', 'laranja como texto na frase ampliada'],
-    ['--text-secondary', '--bg', 'texto secundário'], ['--text-meta', '--bg', 'metadados e rótulos'],
-    ['--text-meta', '--surface', 'metadados nas superfícies'], ['--accent-text', '--bg', 'laranja como texto: "fonte conferida", alertas'],
-    ['--accent-text', '--surface', 'laranja como texto nas superfícies'], ['--ink-2', '--bg', 'segunda tinta'],
+    ['--brand', '--bg', 'frases, nomes e títulos'], ['--text-secondary', '--bg', 'texto secundário'], ['--text-meta', '--bg', 'metadados e rótulos'],
+    ['--text-meta', '--surface', 'metadados nos campos'], ['--accent-text', '--bg', '"fonte conferida", acentos de texto'],
+    ['--on-brand', '--brand-surface', 'texto na faixa e no rodapé'], ['--on-brand-meta', '--brand-surface', 'texto secundário na faixa'],
+    ['--text', '--surface-page', 'texto na frase ampliada'], ['--accent-text', '--surface-page', 'acento na frase ampliada'],
     ['--text-on-strong', '--surface-strong', 'botão principal'], ['--focus-ring', '--bg', 'anel de foco'],
-    ['--text', '--highlight', 'texto marcado'], ['--accent', '--bg', 'laranja puro: só forma e ponto'],
-    ['--border-strong', '--bg', 'fio e contorno']
+    ['--text', '--highlight', 'texto marcado'], ['--border-strong', '--bg', 'fio forte e contorno']
   ]);
 
-  /* ---- escala ---- */
+  /* ---- fontes por papel: a escolhida ao lado das testadas, com a mesma frase real ---- */
   const longa = FRASES.f28asxuhfb; // Guimarães Rosa, 153 caracteres
-  const curta = FRASES.qmavfjkqarqzo; // Machado de Assis, 24 caracteres
   const pascal = FRASES.ql0t0xvhg9dsn; // "razões", com õ
+  const tolstoi = FRASES.q1gsfz1k16xaa3h;
+  const bio = `${longa.autor}, ${autor(longa.autor).papel}. ${longa.fonte}. Quem pesquisar a frase e o autor deve encontrar o mesmo; por isso a fonte vem junto com a frase.`;
+  const PAPEIS = [
+    { titulo: 'Frases (todas) e nomes de autor', porque: 'A frase em itálico de alto contraste da Galeria, que você achou a mais bonita. Os nomes usam a mesma família em largura condensada. Cobre grego e russo dos originais.',
+      testes: [
+        ['Noto Serif Display itálico · escolhida', true, `font:italic 400 1.75rem/1.24 var(--font-title)`, comAspas(pascal.texto)],
+        ['Literata (Etapa 2)', false, `font:400 1.6rem/1.34 var(--font-serif)`, comAspas(pascal.texto)],
+        ['Archivo condensada (Florada)', false, `font:800 1.75rem/1.05 'Archivo', sans-serif;font-stretch:72%;letter-spacing:-0.02em`, comAspas(pascal.texto)]
+      ] },
+    { titulo: 'Interface: menu, rótulos, botões, metadados', porque: 'Grotesca neutra, boa em caixa alta espaçada (as etiquetas de museu da Galeria) e em tamanho pequeno. Não compete com a frase.',
+      testes: [
+        ['Hanken Grotesk · escolhida', true, `font:600 0.8125rem/1.5 var(--font-sans);letter-spacing:0.14em;text-transform:uppercase`, `Obra · ${esc(tolstoi.fonte)}`],
+        ['Ysabeau Office (Etapa 2)', false, `font:600 0.8125rem/1.5 'Ysabeau Office', sans-serif;letter-spacing:0.14em;text-transform:uppercase`, `Obra · ${esc(tolstoi.fonte)}`],
+        ['Archivo (Florada)', false, `font:600 0.8125rem/1.5 'Archivo', sans-serif;letter-spacing:0.14em;text-transform:uppercase`, `Obra · ${esc(tolstoi.fonte)}`]
+      ] },
+    { titulo: 'Leitura longa: biografias, histórias, descrições de obras', porque: 'A Display é feita para tamanho grande e cansa em parágrafos. A Literata foi desenhada para ler na tela por muito tempo e combina com a Display.',
+      testes: [
+        ['Literata · escolhida', true, `font:400 1.0625rem/1.7 var(--font-serif)`, esc(bio)],
+        ['Noto Serif Display', false, `font:400 1.0625rem/1.7 var(--font-title)`, esc(bio)],
+        ['Hanken Grotesk', false, `font:400 1.0625rem/1.7 var(--font-sans)`, esc(bio)]
+      ] }
+  ];
+  document.getElementById('g-papeis').innerHTML = PAPEIS.map((p) => `<div class="g-papel"><header><h3>${esc(p.titulo)}</h3><p>${esc(p.porque)}</p></header>
+    <div class="g-testes">${p.testes.map(([nome, ok, estilo, texto]) => `<div class="g-teste${ok ? ' escolhida' : ''}"><span>${esc(nome)}</span><p style="${estilo};color:var(--text)">${texto}</p></div>`).join('')}</div></div>`).join('')
+    + `<p class="g-nota">A Caveat continua só na opção "Manuscrita" do Escrever, escolhida por quem escreve o relato. Nunca nas frases do acervo.</p>`;
+
   const ESCALA = [
-    ['Display', '--fs-display', 'Frases do acervo', 'serif'],
-    ['Título 1', '--fs-h1', 'Autores e obras', 'serif'],
-    ['Título 2', '--fs-h2', 'Machado de Assis', 'serif'],
-    ['Corpo', '--fs-body', `${longa.autor}, ${autor(longa.autor).papel}. ${longa.fonte}. Quem pesquisar a frase e o autor deve encontrar o mesmo; por isso a fonte vem junto com a frase.`, 'serif'],
+    ['Display', '--fs-display', 'Frases do acervo', 'title'],
+    ['Título 1', '--fs-h1', 'Autores e obras', 'title'],
+    ['Título 2', '--fs-h2', 'Machado de Assis', 'title'],
+    ['Corpo (leitura)', '--fs-body', bio, 'serif'],
     ['Pequeno', '--fs-small', 'Pensamentos, 277 · Blaise Pascal', 'sans'],
     ['Meta', '--fs-meta', 'FILOSOFIA E SABEDORIA', 'sans']
   ];
   document.getElementById('g-escala').innerHTML = ESCALA.map(([nome, t, texto, fam]) =>
-    `<div><span>${nome} · <code>${t}</code></span><p style="font-size:var(${t});font-family:var(--font-${fam});line-height:${t === '--fs-body' ? 1.6 : 1.2}${t === '--fs-meta' ? ';letter-spacing:var(--tracking-label);font-weight:600' : ''}">${esc(texto)}</p></div>`).join('');
+    `<div><span>${nome} · <code>${t}</code></span><p style="font-size:var(${t});font-family:var(--font-${fam});line-height:${t === '--fs-body' ? 1.7 : 1.15}${t === '--fs-meta' ? ';letter-spacing:var(--tracking-label);font-weight:600' : ''}">${esc(texto)}</p></div>`).join('');
   document.getElementById('g-originais').innerHTML = ['q1v8oi7oe6cqdv', 'q1gsfz1k16xaa3h', 'ql0t0xvhg9dsn'].map((q) => {
     const f = FRASES[q];
     const l = linguaDoOriginal(f.original);

@@ -1,57 +1,65 @@
 /* ============================================================
-   MEMOTIVA — TOKENS DO SISTEMA DE DESIGN (Etapa 2 do redesign)
-   Paleta equilibrada: o café (linho, algodão, espresso) segura a tela; o roxo dá a
-   identidade (títulos, frases, botão, rodapé); o laranja é detalhe e uma única massa pequena.
-   Uma tipografia única para todas as frases do acervo.
+   MEMOTIVA — TOKENS DO SISTEMA DE DESIGN
+   Paleta da Galeria: parede de linho, tinta quase preta, oliva nos acentos de texto,
+   apricot como ponto. Da Florada, só no claro: um disco laranja pequeno atrás do retrato
+   da abertura e a faixa roxa da fonte (e o rodapé). No escuro, a "sala escura", sem laranja grande.
+   Uma fonte por papel; todas as frases do acervo no mesmo estilo.
    Componentes usam só estes tokens: nada de hex solto fora daqui.
    Decisões e contrastes medidos: design/DECISOES.md e design/guia.html.
    ============================================================ */
 
 :root {
-  /* ---- cor: superfícies (o café segura a tela) ---- */
-  --bg: #faf3e1; /* Sustainable Linen */
-  --surface: #f5e7c6; /* Recycled Cotton */
-  --surface-muted: #f8edd3; /* entre Linen e Cotton (derivado) */
-  --surface-page: #faf3e1; /* a página da frase ampliada */
-  --surface-strong: #401d47; /* Deep Purple: botão principal */
-  --text-on-strong: #faf3e1; /* Linen sobre o roxo: 12,8 : 1 */
+  /* ---- cor: superfícies (linho em tudo; nada de dourado) ---- */
+  --bg: #faf3e1; /* Sustainable Linen: a parede */
+  --surface: #fdf9f0; /* linho clareado (derivado): campos e hover, quase invisível */
+  --surface-muted: #fdf9f0;
+  --frame: #f5e7c6; /* Recycled Cotton: só o quadro do retrato sem foto */
+  --surface-page: #faf3e1; /* a frase ampliada */
+  --surface-strong: #222222; /* Black Hole: botão principal */
+  --text-on-strong: #faf3e1; /* 14,4 : 1 */
 
-  /* ---- cor: marca (o roxo dá identidade: títulos, frases, rodapé) ---- */
-  --brand: #401d47; /* Deep Purple: títulos e frases (12,8 : 1 no Linen) */
-  --brand-surface: #401d47; /* faixa de destaque e rodapé */
-  --on-brand: #faf3e1; /* texto sobre o roxo */
-  --on-brand-meta: #d9cdb4; /* texto secundário sobre o roxo: 9,0 : 1 */
+  /* ---- cor: tinta ---- */
+  --brand: #222222; /* títulos, nomes e frases (Black Hole, 14,4 : 1) */
+  --text: #222222;
+  --text-secondary: #3a3732; /* 10,7 : 1 */
+  --text-meta: #5e5a52; /* 6,2 : 1 */
+  --ink-2: #3f422e; /* Organic */
 
-  /* ---- cor: texto ---- */
-  --text: #2b1811; /* Dark Espresso: 15,3 : 1 no Linen */
-  --text-secondary: #5c4a3d; /* Espresso clareado (derivado): 7,6 : 1 */
-  --text-meta: #7a6450; /* Natural escurecido (derivado): 5,0 : 1 no Linen, 4,6 : 1 no Cotton */
-  --ink-2: #3f422e; /* Organic: segunda tinta, rara (9,4 : 1) */
+  /* ---- cor: toques da Florada (só no claro) ---- */
+  --brand-surface: #401d47; /* Deep Purple: faixa da fonte na abertura e rodapé */
+  --on-brand: #faf3e1; /* 12,8 : 1 */
+  --on-brand-meta: #d9cdb4; /* 9,0 : 1 */
+  --mass: #e06f2d; /* Burnt Orange: o disco atrás do retrato da abertura */
+  --mass-on-page: transparent; /* na frase ampliada não há massa de cor */
 
   /* ---- cor: linhas ---- */
-  --border: rgba(159, 136, 111, 0.34); /* Natural translúcido: fios e divisões */
-  --border-strong: #9f886f; /* Natural: só fio e contorno, nunca texto pequeno */
+  --border: rgba(34, 34, 34, 0.16);
+  --border-strong: rgba(34, 34, 34, 0.55);
 
-  /* ---- cor: laranja (detalhe, e uma única massa pequena por tela) ---- */
-  --mass: #e06f2d; /* Burnt Orange: o bloco atrás do retrato (a "prancha") */
-  --mass-on-page: #e06f2d; /* a mesma massa dentro da frase ampliada */
-  --accent: #e06f2d; /* marcador, traço do item ativo, sublinhado de link */
-  --accent-text: #9a4614; /* laranja escurecido para texto: 5,8 : 1 no Linen, 5,3 : 1 no Cotton */
-  --accent-ink: #2b1811; /* texto sobre o laranja: 5,2 : 1 */
+  /* ---- cor: detalhe ---- */
+  --accent: #e06f2d; /* traço curto do item ativo */
+  --pin: #d78b30; /* Apricot: o ponto da categoria e da etiqueta (só forma) */
+  --accent-text: #3f422e; /* Organic como acento de texto: "fonte conferida", hover de link (9,4 : 1) */
+  --accent-ink: #222222;
 
   /* ---- cor: marca-texto, foco e véu ---- */
   --highlight: #f1e59b; /* Light Gold: seleção e termo encontrado na busca */
   --highlight-strong: #e5d17a; /* Muted Ochre */
-  --focus-ring: #401d47; /* Deep Purple (12,8 : 1) */
-  --overlay: rgba(43, 24, 17, 0.56);
+  --focus-ring: #3f422e; /* Organic */
+  --overlay: rgba(21, 19, 17, 0.62);
 
-  /* ---- tipografia: famílias ---- */
+  /* ---- tipografia: uma fonte por papel ---- */
+  /* frases (todas, em itálico), nomes de autor e títulos */
+  --font-title: 'Noto Serif Display', 'Noto Serif Display Fallback', Didot, 'Bodoni 72', Georgia, serif;
+  /* interface: navegação, rótulos, botões, metadados */
+  --font-sans: 'Hanken Grotesk', 'Hanken Grotesk Fallback', 'Helvetica Neue', Arial, sans-serif;
+  /* leitura longa: biografias, histórias, descrições de obras */
   --font-serif: 'Literata', 'Literata Fallback', 'Times New Roman', serif;
-  --font-sans: 'Ysabeau Office', 'Ysabeau Office Fallback', Arial, Helvetica, sans-serif;
   --font-hand: 'Caveat', 'Caveat Fallback', cursive; /* só a opção "Manuscrita" do Escrever */
-  /* escritas que a Literata não cobre (originais em chinês, devanágari, hebraico e árabe) */
+  /* escritas que a Noto Serif Display não cobre (originais em chinês, devanágari, hebraico e árabe) */
   --font-original-extra:
     'Noto Serif', 'Noto Serif SC', 'Noto Serif Devanagari', 'Noto Serif Hebrew', 'Noto Naskh Arabic', serif;
+  --name-wdth: 62.5; /* nomes monumentais em largura condensada, como na Galeria */
 
   /* ---- tipografia: escala fluida (6 tamanhos) ---- */
   --fs-display: clamp(2.5rem, 1.6rem + 3.8vw, 4.75rem);
@@ -61,33 +69,34 @@
   --fs-small: 0.9375rem; /* 15 px */
   --fs-meta: 0.8125rem; /* 13 px, rótulos em caixa alta espaçada */
 
-  --lh-tight: 1.12;
-  --lh-heading: 1.2;
+  --lh-tight: 1.05;
+  --lh-heading: 1.12;
   --lh-body: 1.6;
-  --tracking-label: 0.12em;
-  --tracking-display: -0.02em;
+  --tracking-label: 0.14em;
+  --tracking-display: -0.015em;
 
+  --weight-light: 300;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
 
   /* ---- a frase: um estilo só, em todo lugar ----
-     Mesma família, peso, estilo, cor e entrelinha no cartão, na frase ampliada, na abertura,
+     Noto Serif Display em itálico, mesma cor e entrelinha no cartão, na frase ampliada, na abertura,
      no autor, na obra, no Descubra e nas Histórias. Muda só o tamanho, por contexto,
      com um único degrau menor para frase longa (mais de 140 caracteres; a maior do acervo tem 200). */
-  --quote-font: var(--font-serif);
+  --quote-font: var(--font-title);
   --quote-weight: 400;
-  --quote-style: normal;
-  --quote-color: var(--brand); /* a frase na tinta da marca */
-  --quote-leading: 1.34;
-  --quote-tracking: -0.005em;
-  --quote-card: clamp(1.25rem, 1.12rem + 0.5vw, 1.5rem);
-  --quote-card-long: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
-  --quote-modal: clamp(1.625rem, 1.2rem + 1.6vw, 2.375rem);
-  --quote-modal-long: clamp(1.3125rem, 1.1rem + 0.9vw, 1.75rem);
-  --quote-hero: clamp(1.875rem, 1.3rem + 2.2vw, 3rem);
-  --quote-hero-long: clamp(1.5rem, 1.2rem + 1.4vw, 2.375rem);
-  --quote-original: 1rem; /* o original vem em itálico pequeno, abaixo da tradução */
+  --quote-style: italic;
+  --quote-color: var(--brand);
+  --quote-leading: 1.24;
+  --quote-tracking: 0;
+  --quote-card: clamp(1.375rem, 1.22rem + 0.5vw, 1.625rem);
+  --quote-card-long: clamp(1.1875rem, 1.1rem + 0.3vw, 1.375rem);
+  --quote-modal: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  --quote-modal-long: clamp(1.4375rem, 1.2rem + 0.9vw, 1.875rem);
+  --quote-hero: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
+  --quote-hero-long: clamp(1.625rem, 1.3rem + 1.4vw, 2.5rem);
+  --quote-original: 1.0625rem; /* o original vem em itálico menor, na etiqueta */
 
   /* ---- espaço ---- */
   --space-1: 4px;
@@ -134,39 +143,40 @@
   color-scheme: light;
 }
 
-/* Tema escuro: irmão do claro, não inversão. Espresso profundo, texto linho, detalhe apricot. */
+/* Tema escuro: a "sala escura" da Galeria. Fotos no centro, tinta marfim, sem laranja grande. */
 html[data-theme='dark'] {
-  /* irmão, não inversão: o papel vira espresso, a página aberta vira roxo, o laranja vira apricot */
-  --bg: #2b1811; /* Dark Espresso */
-  --surface: #36211a; /* espresso clareado (derivado) */
-  --surface-muted: #311d16; /* derivado */
-  --surface-page: #401d47; /* a frase ampliada abre numa página roxa */
-  --surface-strong: #faf3e1; /* botão principal em linho */
-  --text-on-strong: #401d47;
+  --bg: #151311; /* derivado do Black Hole e do Espresso */
+  --surface: #1f1c19;
+  --surface-muted: #1f1c19;
+  --frame: #1f1c19;
+  --surface-page: #1a1815; /* a sala da frase ampliada */
+  --surface-strong: #f5e6c5; /* botão principal em marfim */
+  --text-on-strong: #151311;
 
-  --brand: #faf3e1; /* títulos e frases em linho */
-  --brand-surface: #401d47;
-  --on-brand: #faf3e1;
-  --on-brand-meta: #d9cdb4;
-
-  --text: #faf3e1; /* Linen: 15,3 : 1 */
-  --text-secondary: #d9cdb4; /* 10,8 : 1 no espresso, 9,0 : 1 no roxo */
-  --text-meta: #bfae95; /* Natural clareado (derivado): 7,8 : 1 no espresso, 6,5 : 1 no roxo */
+  --brand: #f5e6c5; /* Ivory: títulos, nomes e frases (15,0 : 1) */
+  --text: #f5e6c5;
+  --text-secondary: #ddd2bc; /* 12,4 : 1 */
+  --text-meta: #a79f92; /* 7,1 : 1 */
   --ink-2: #c8c4a4; /* Organic clareado (derivado) */
 
-  --border: rgba(217, 205, 180, 0.2);
-  --border-strong: #7a6450;
+  --brand-surface: #1f1c19; /* rodapé no quadro escuro, sem faixa roxa */
+  --on-brand: #f5e6c5;
+  --on-brand-meta: #a79f92;
+  --mass: transparent; /* sem disco laranja no escuro */
+  --mass-on-page: transparent;
 
-  --mass: #401d47; /* à noite a massa é roxa */
-  --mass-on-page: #2b1811; /* na página roxa da frase ampliada, a massa volta ao espresso */
-  --accent: #d78b30; /* Apricot */
-  --accent-text: #e3a15a; /* Apricot clareado: 7,7 : 1 no espresso, 6,4 : 1 no roxo */
-  --accent-ink: #2b1811;
+  --border: rgba(245, 230, 197, 0.16);
+  --border-strong: rgba(245, 230, 197, 0.55);
 
-  --highlight: #5c4b2a; /* ocre apagado */
-  --highlight-strong: #6b5830;
-  --focus-ring: #faf3e1;
-  --overlay: rgba(14, 8, 6, 0.68);
+  --accent: #d78b30; /* Apricot: traço do item ativo */
+  --pin: #d78b30;
+  --accent-text: #ff6d1f; /* Tangerine só em texto pequeno ("fonte conferida"): 6,3 : 1 */
+  --accent-ink: #151311;
+
+  --highlight: #4a3f24; /* ocre apagado */
+  --highlight-strong: #5c4b2a;
+  --focus-ring: #ff6d1f;
+  --overlay: rgba(0, 0, 0, 0.72);
   --shadow-float: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
 
   color-scheme: dark;

@@ -20,20 +20,28 @@ const UA =
 
 const FAMILIAS = [
   {
+    nome: 'Noto Serif Display',
+    pasta: 'noto-serif-display',
+    ofl: 'ofl/notoserifdisplay/OFL.txt',
+    consulta: 'Noto+Serif+Display:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900',
+    papel: 'todas as frases (itálico, um estilo só), nomes de autor e títulos',
+    subconjuntos: ['latin', 'latin-ext', 'greek', 'greek-ext', 'cyrillic', 'cyrillic-ext']
+  },
+  {
+    nome: 'Hanken Grotesk',
+    pasta: 'hanken-grotesk',
+    ofl: 'ofl/hankengrotesk/OFL.txt',
+    consulta: 'Hanken+Grotesk:ital,wght@0,100..900;1,100..900',
+    papel: 'interface: navegação, rótulos, botões e metadados',
+    subconjuntos: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext']
+  },
+  {
     nome: 'Literata',
     pasta: 'literata',
     ofl: 'ofl/literata/OFL.txt',
     consulta: 'Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900',
-    papel: 'frases (todas no mesmo estilo), títulos e textos longos',
+    papel: 'leitura longa: biografias, histórias e descrições de obras',
     subconjuntos: ['latin', 'latin-ext', 'greek', 'greek-ext', 'cyrillic', 'cyrillic-ext']
-  },
-  {
-    nome: 'Ysabeau Office',
-    pasta: 'ysabeau-office',
-    ofl: 'ofl/ysabeauoffice/OFL.txt',
-    consulta: 'Ysabeau+Office:wght@1..1000',
-    papel: 'interface: navegação, rótulos, botões e metadados',
-    subconjuntos: ['latin', 'latin-ext', 'greek', 'cyrillic', 'cyrillic-ext']
   },
   {
     nome: 'Caveat',

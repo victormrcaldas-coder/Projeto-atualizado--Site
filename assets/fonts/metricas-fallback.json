@@ -1,5 +1,28 @@
 [
   {
+    "nome": "Noto Serif Display Fallback",
+    "locais": [
+      "Times New Roman Italic",
+      "Liberation Serif Italic"
+    ],
+    "sizeAdjust": "113.32%",
+    "ascent": "94.33%",
+    "descent": "25.85%",
+    "lineGap": "0.00%"
+  },
+  {
+    "nome": "Hanken Grotesk Fallback",
+    "locais": [
+      "Arial",
+      "Liberation Sans",
+      "Helvetica"
+    ],
+    "sizeAdjust": "100.11%",
+    "ascent": "99.89%",
+    "descent": "30.27%",
+    "lineGap": "0.00%"
+  },
+  {
     "nome": "Literata Fallback",
     "locais": [
       "Times New Roman",
@@ -8,18 +31,6 @@
     "sizeAdjust": "117.83%",
     "ascent": "99.89%",
     "descent": "26.14%",
-    "lineGap": "0.00%"
-  },
-  {
-    "nome": "Ysabeau Office Fallback",
-    "locais": [
-      "Arial",
-      "Liberation Sans",
-      "Helvetica"
-    ],
-    "sizeAdjust": "92.85%",
-    "ascent": "113.52%",
-    "descent": "31.13%",
     "lineGap": "0.00%"
   },
   {

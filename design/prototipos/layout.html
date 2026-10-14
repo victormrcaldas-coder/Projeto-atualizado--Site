@@ -20,28 +20,20 @@
   html.limpo .proto-barra { display: none; }
   main { padding-bottom: var(--space-8); }
 
-  /* abertura: margem com a data, a frase, a assinatura com a nota da fonte, e a prancha do retrato */
-  .abertura { display: grid; gap: var(--space-6); padding-block: var(--space-8) var(--space-7); }
+  /* abertura da Galeria: retrato grande à esquerda (com o disco laranja da Florada atrás, só no claro),
+     nome, frase em itálico e etiqueta à direita; embaixo, a faixa roxa da fonte */
+  .abertura { display: grid; gap: var(--space-6); padding-block: var(--space-6) var(--space-7); overflow-x: clip; }
   @media (min-width: 1024px) {
-    .abertura { grid-template-columns: 150px minmax(0, 1fr) 280px; gap: var(--space-7); align-items: start; padding-block: var(--space-9) var(--space-8); }
+    .abertura { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: var(--space-8); align-items: center; padding-block: var(--space-8); }
   }
-  .margem { display: flex; gap: var(--space-3); align-items: baseline; flex-wrap: wrap; }
-  @media (min-width: 1024px) { .margem { display: grid; gap: var(--space-1); padding-top: var(--space-3); } }
-  .margem .eyebrow { margin: 0; }
-  .margem time { font-family: var(--font-serif); font-style: italic; font-size: var(--fs-body); color: var(--text-secondary); }
-  .corpo-abertura { display: grid; gap: var(--space-6); min-width: 0; }
-  .assinatura { display: flex; gap: var(--space-4); align-items: center; }
-  .assinatura .nome { font-family: var(--font-serif); font-size: 1.375rem; font-weight: var(--weight-medium); color: var(--brand); }
-  .assinatura .papel { font-size: var(--fs-small); color: var(--text-meta); }
-  .nota-fonte { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); max-width: 46ch; padding-top: var(--space-4); border-top: var(--hairline) solid var(--border); font-size: var(--fs-small); }
-  .nota-fonte .n { font-family: var(--font-serif); color: var(--accent-text); }
-  .nota-fonte .obra { font-family: var(--font-serif); font-style: italic; color: var(--text); }
-  .acoes { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: center; }
-  .retrato-mini { width: 64px; flex: none; margin: 0 0 8px 8px; box-shadow: -8px 8px 0 0 var(--mass); border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 3 / 4; background: var(--surface); position: relative; }
-  .retrato-mini img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; }
-  .abertura > .prancha { display: none; }
-  @media (min-width: 1024px) { .abertura > .prancha { display: block; } .assinatura .retrato-mini { display: none; } }
-
+  .abertura .prancha::before { left: auto; right: -9%; top: -6%; width: 46%; }
+  .parede { display: grid; gap: var(--space-5); min-width: 0; }
+  .parede .eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); margin: 0; }
+  .parede .eyebrow::before { content: ''; width: 7px; height: 7px; background: var(--pin); }
+  .nome-autor { margin: 0; font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: clamp(2.4rem, 1.6rem + 2.4vw, 4rem); line-height: 0.95; letter-spacing: -0.015em; color: var(--brand); }
+  .nome-autor a { color: inherit; text-decoration-color: var(--border-strong); text-underline-offset: 0.12em; text-decoration-thickness: 1px; }
+  .parede .quote-label { padding-top: var(--space-4); border-top: var(--hairline) solid var(--border); }
+  .faixa-fonte { margin-bottom: var(--space-2); }
   /* temas logo abaixo: uma linha de leitura, não uma fileira de botões */
   .sumario { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); padding-block: var(--space-4); border-block: var(--hairline) solid var(--border); font-size: var(--fs-small); }
   .sumario span { color: var(--text-meta); }
@@ -89,6 +81,7 @@
 <main id="topo">
   <div class="wrap">
     <section class="abertura" id="abertura" aria-label="Frase de hoje"></section>
+    <p class="faixa-fonte" id="faixa"></p>
     <nav class="sumario" aria-label="Temas"><span>Temas</span><a href="#cartoes">Reflexão</a><a href="#cartoes">Educação</a><a href="#cartoes">Família</a><a href="#cartoes">Filosofia e Sabedoria</a><a href="#cartoes">Identidade e Autoconhecimento</a><a href="#cartoes">Vida</a></nav>
 
     <section class="secao" aria-labelledby="t-cartoes">
@@ -128,23 +121,25 @@
   'use strict';
   const { A, FRASES, esc, comAspas, autor, imagem, credito } = window.Proto;
   const { comprimento, quadro } = window.Sistema;
-  const f = FRASES.f24aiu8x; // Machado de Assis, dedicatória das Memórias Póstumas
+  const f = FRASES.q1gsfz1k16xaa3h; // Liev Tolstói, Anna Kariênina: foto grande, fonte conferida e original em russo
   const a = autor(f.autor);
+  const lingua = window.Proto.linguaDoOriginal(f.original);
   document.getElementById('abertura').innerHTML = `
-    <div class="margem"><p class="eyebrow">Frase de hoje</p><time data-hoje></time></div>
-    <div class="corpo-abertura">
-      <p class="quote-hero-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
-      <div class="assinatura">
-        <div class="retrato-mini" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${quadro(a, 128)}</div>
-        <div><p class="nome">${esc(a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
-      </div>
-      <p class="nota-fonte"><span class="n">1</span><span><span class="obra">${esc(f.fonte)}</span>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}</span></p>
-      <div class="acoes"><button class="btn btn-coral" type="button" data-abrir="${esc(f.qid)}">Abrir a frase</button><button class="btn-text" type="button">Conhecer ${esc(a.nome)}</button></div>
-    </div>
     <figure class="prancha">
-      <div class="prancha-foto" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${quadro(a, 560)}</div>
+      <div class="prancha-foto" role="button" tabindex="0" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${quadro(a, 900)}</div>
       <figcaption>${esc(credito(a))}</figcaption>
-    </figure>`;
+    </figure>
+    <div class="parede">
+      <p class="eyebrow">Frase de hoje · <time data-hoje></time></p>
+      <h1 class="nome-autor"><a href="#cartoes">${esc(a.nome)}</a></h1>
+      <p class="quote-hero-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p>
+      <dl class="quote-label">
+        <dt>Obra</dt><dd><span class="obra">${esc(f.fonte)}</span>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}</dd>
+        <dt>Autor</dt><dd>${esc(a.papel)}</dd>
+        ${f.original ? `<dt>Original</dt><dd><p class="quote-original"${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</p></dd>` : ''}
+      </dl>
+    </div>`;
+  document.getElementById('faixa').innerHTML = `<b>Fonte</b><span class="obra">${esc(f.fonte)}</span>${f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : ''}<button class="btn-text" type="button" data-abrir="${esc(f.qid)}">Abrir a frase</button>`;
   const QIDS = ['ql0t0xvhg9dsn', 'f28asxuhfb', 'qmavfjkqarqzo', 'q1gsfz1k16xaa3h', 'f28tdbfmcs', 'q1v8oi7oe6cqdv', 'qmgk9qk9rw7ez', 'f2652b1y5', 'q4nnaf81ajlbj5'];
   document.getElementById('cartoes').innerHTML = QIDS.map((q) => window.DIRECAO.cartaoHTML(FRASES[q], autor(FRASES[q].autor))).join('');
   document.addEventListener('keydown', (e) => {

@@ -11,31 +11,31 @@
 /* ---- 1. nomes antigos -> tokens novos ---- */
 :root,
 html[data-theme='dark'] {
-  --font-display: var(--font-serif);
+  --font-display: var(--font-title);
   --font-body: var(--font-sans);
 
-  --bg-alt: var(--surface-muted);
+  --bg-alt: var(--bg);
   --surface-2: var(--surface);
   --text-soft: var(--text-secondary);
   --text-faint: var(--text-meta);
   --shadow: rgba(43, 24, 17, 0.1);
   --shadow-strong: rgba(43, 24, 17, 0.2);
 
-  /* o "papel envelhecido" vira o algodão da paleta */
-  --paper-1: var(--surface-muted);
+  /* o "papel envelhecido" vira a própria parede de linho, sem dourado */
+  --paper-1: var(--bg);
   --paper-2: var(--surface);
-  --paper-edge: var(--border-strong);
+  --paper-edge: var(--border);
   --paper-text: var(--text);
   --paper-text-soft: var(--text-secondary);
 
-  /* acentos vivos -> laranja escuro como texto, roxo da marca, oliva e ocre */
+  /* acentos vivos -> oliva como acento de texto, roxo da marca, ocre */
   --coral: var(--accent-text);
   --coral-ink: var(--text-on-strong);
   --jade: var(--ink-2);
   --jade-ink: var(--bg);
   --marigold: var(--highlight-strong);
   --marigold-ink: var(--text);
-  --plum: var(--brand);
+  --plum: var(--brand-surface);
   --plum-ink: var(--on-brand);
 
   --radius-lg: 8px;
@@ -112,4 +112,24 @@ html[data-theme='dark'] .generator {
 html[data-theme='dark'] .generator .btn-coral {
   background: var(--on-brand);
   color: var(--brand-surface);
+}
+
+/* cartões de frase: sem textura de papel, sem fita amarela, sem sombra e sem rotação
+   (o desenho novo do cartão entra na Etapa 5; aqui só sai o envelhecido) */
+.quote-card::before {
+  display: none;
+}
+.quote-card-tape {
+  display: none;
+}
+.quote-card {
+  background: var(--bg);
+  border-color: var(--border);
+  box-shadow: none;
+  transform: none !important;
+}
+/* frase ampliada atual: fundo liso da sala, sem o brilho de papel */
+.expand-quote {
+  background: var(--surface-page);
+  border-color: var(--border);
 }

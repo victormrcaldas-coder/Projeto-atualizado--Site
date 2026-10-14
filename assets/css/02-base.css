@@ -40,8 +40,8 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-family: var(--font-serif);
-  font-weight: var(--weight-medium);
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
   line-height: var(--lh-heading);
   color: var(--brand);
   text-wrap: balance;
@@ -90,7 +90,7 @@ a {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--border-strong);
   transition: color var(--dur-1) var(--ease-out);
 }
 a:hover {
@@ -153,12 +153,13 @@ hr {
   }
 }
 
-/* rótulo pequeno em caixa alta (seções, categorias, metadados) */
-/* rótulo pequeno de seção; caixa alta espaçada fica só para a categoria da frase */
+/* rótulo pequeno em caixa alta espaçada, como as etiquetas de museu da Galeria */
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: var(--fs-small);
+  font-size: var(--fs-meta);
   font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
   color: var(--text-meta);
 }
 

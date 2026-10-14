@@ -18,8 +18,9 @@ AMOSTRA = ('O correr da vida embrulha tudo, a vida é assim: esquenta e esfria, 
            'Ensinar não é transferir conhecimento, mas criar as possibilidades para a sua produção.')
 
 PARES = [
+    ('Noto Serif Display Fallback', 'noto-serif-display/noto-serif-display-italico-latin.woff2', 'LiberationSerif-Italic.ttf', ['Times New Roman Italic', 'Liberation Serif Italic']),
+    ('Hanken Grotesk Fallback', 'hanken-grotesk/hanken-grotesk-normal-latin.woff2', 'LiberationSans-Regular.ttf', ['Arial', 'Liberation Sans', 'Helvetica']),
     ('Literata Fallback', 'literata/literata-normal-latin.woff2', 'LiberationSerif-Regular.ttf', ['Times New Roman', 'Liberation Serif']),
-    ('Ysabeau Office Fallback', 'ysabeau-office/ysabeau-office-normal-latin.woff2', 'LiberationSans-Regular.ttf', ['Arial', 'Liberation Sans', 'Helvetica']),
     ('Caveat Fallback', 'caveat/caveat-normal-latin.woff2', 'LiberationSans-Regular.ttf', ['Arial', 'Liberation Sans', 'Helvetica']),
 ]
 
