@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galeria · MeMotiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..600&family=Hanken+Grotesk:ital,wght@0,300..800;1,400&family=Noto+Serif+Display:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap">
+<style>
+  /* Direção C · Galeria — retratos em escala de museu; a frase é o texto de parede e a obra, a legenda.
+     Composição: retrato grande de um lado, nome monumental e etiqueta do outro; sem foto, o nome vira o retrato. */
+  :root {
+    --parede: #faf3e1; /* Sustainable Linen */
+    --moldura: #f5e7c6; /* Recycled Cotton: fundo do retrato tipográfico */
+    --tinta: #222222; /* Black Hole */
+    --tinta-2: #3a3732;
+    --meta: #5e5a52; /* derivado, 6,2 : 1 */
+    --acento: #3f422e; /* Organic */
+    --pino: #d78b30; /* Apricot: só forma (o ponto da etiqueta) */
+    --fio: rgba(34, 34, 34, 0.18);
+    --fio-forte: rgba(34, 34, 34, 0.6);
+    --veu: rgba(21, 19, 17, 0.62);
+    --foco: #3f422e;
+
+    --display: 'Noto Serif Display', 'Didot', 'Bodoni 72', Georgia, serif;
+    --sans: 'Hanken Grotesk', 'Helvetica Neue', system-ui, sans-serif;
+    --mao: 'Caveat', 'Segoe Script', cursive;
+
+    --t-nome: clamp(3.4rem, 1.6rem + 6.4vw, 9.6rem);
+    --t-1: clamp(1.9rem, 1.2rem + 2.4vw, 3.4rem);
+    --t-2: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
+    --t-corpo: 1.0625rem;
+    --t-peq: 0.9375rem;
+    --t-meta: 0.78rem;
+
+    --largura: 1440px;
+    --margem: clamp(20px, 4vw, 56px);
+    --dur: 420ms;
+    --curva: cubic-bezier(0.25, 0.6, 0.2, 1);
+    color-scheme: light;
+  }
+  :root[data-theme='dark'] {
+    --parede: #151311; /* sala escura, derivada do Black Hole e do Espresso */
+    --moldura: #1f1c19;
+    --tinta: #f5e6c5; /* Ivory */
+    --tinta-2: #ddd2bc;
+    --meta: #a79f92; /* 7,1 : 1 */
+    --acento: #ff6d1f; /* Electric Tangerine, só em detalhe */
+    --pino: #d78b30;
+    --fio: rgba(245, 230, 197, 0.16);
+    --fio-forte: rgba(245, 230, 197, 0.55);
+    --veu: rgba(0, 0, 0, 0.72);
+    --foco: #ff6d1f;
+    color-scheme: dark;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { --dur: 0ms; }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--parede); color: var(--tinta); font: 400 var(--t-corpo) / 1.6 var(--sans); }
+  html.com-janela body { overflow: hidden; }
+  button { font: inherit; color: inherit; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--foco); outline-offset: 3px; }
+
+  /* ---------- moldura do protótipo (não faz parte do design) ---------- */
+  .proto-barra, .proto-nota { font: 500 13px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif; color: #3d3a35; }
+  .proto-barra { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; padding: 8px var(--margem); background: #e7e4dd; border-bottom: 1px solid #cfcac0; }
+  .proto-barra strong { font-weight: 650; }
+  .proto-barra a { color: #1f3f7a; }
+  .proto-barra .empurra { margin-left: auto; }
+  .proto-barra button { border: 1px solid #b9b3a7; background: #f6f4ef; border-radius: 4px; padding: 6px 10px; min-height: 32px; cursor: pointer; }
+  .proto-nota { max-width: var(--largura); margin: clamp(56px, 8vw, 104px) auto 24px; padding: 10px var(--margem) 0; border-top: 1px dashed #b9b3a7; letter-spacing: 0.04em; text-transform: uppercase; }
+  :root[data-theme='dark'] .proto-barra { background: #2a2622; color: #e6e1d8; border-color: #3b3631; }
+  :root[data-theme='dark'] .proto-barra a { color: #a9c1f0; }
+  :root[data-theme='dark'] .proto-barra button { background: #34302b; border-color: #4a443d; color: #e6e1d8; }
+  :root[data-theme='dark'] .proto-nota { color: #c9c2b6; border-color: #4a443d; }
+  html.limpo .proto-barra, html.limpo .proto-nota { display: none; }
+
+  /* ---------- topo ---------- */
+  .topo { max-width: var(--largura); margin: 0 auto; padding: 14px var(--margem); display: flex; align-items: center; gap: 32px; border-bottom: 1px solid var(--fio); }
+  .marca-nome { font: 650 0.95rem/1 var(--sans); letter-spacing: 0.34em; text-transform: uppercase; text-decoration: none; padding: 12px 0; }
+  .menu { display: flex; gap: 26px; margin-left: auto; font: 550 var(--t-meta) / 1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; }
+  .menu a { text-decoration: none; padding: 14px 0; border-bottom: 1px solid transparent; }
+  .menu a:hover { border-color: currentColor; }
+  .topo-acoes { display: flex; align-items: center; gap: 8px; }
+  .botao-texto { font: 600 var(--t-meta) / 1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; background: none; border: 0; padding: 14px 8px; cursor: pointer; }
+  .botao-quadrado { width: 44px; height: 44px; display: inline-grid; place-items: center; background: none; border: 1px solid var(--fio-forte); cursor: pointer; }
+  .botao-quadrado svg { width: 18px; height: 18px; }
+  .icone-lua { display: none; }
+  :root[data-theme='dark'] .icone-sol { display: none; }
+  :root[data-theme='dark'] .icone-lua { display: block; }
+
+  /* ---------- abertura: a sala ---------- */
+  .abertura { max-width: var(--largura); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: min(820px, calc(100vh - 73px)); }
+  .retrato { position: relative; margin: 0; min-height: 100%; background: var(--moldura); }
+  .retrato-foto { position: absolute; inset: 0; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .retrato-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .etiqueta-foto { position: absolute; right: 0; bottom: 0; max-width: 78%; background: var(--parede); color: var(--meta); padding: 10px 14px; font: 400 var(--t-meta) / 1.4 var(--sans); }
+  .texto-parede { padding: clamp(28px, 4vw, 64px) var(--margem) clamp(28px, 3vw, 44px) clamp(28px, 4vw, 72px); display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 32px); min-width: 0; }
+  .sobrelinha { display: flex; align-items: center; gap: 10px; font: 600 var(--t-meta) / 1.3 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--meta); margin: 0; }
+  .sobrelinha::before { content: ''; width: 10px; height: 10px; background: var(--pino); flex: none; }
+  .nome-monumental { margin: 0; font-family: var(--display); font-weight: 300; font-variation-settings: 'wdth' 62.5; font-size: var(--t-nome); line-height: 0.84; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  .frase-parede { margin: 0; font: italic 400 var(--t-2) / 1.28 var(--display); max-width: 30ch; text-wrap: pretty;
+    opacity: 0; transform: translateY(8px); transition: opacity 700ms var(--curva), transform 700ms var(--curva); }
+  html.chegou .frase-parede { opacity: 1; transform: none; }
+  .aspa-abre { margin-left: -0.38em; }
+  .etiqueta { margin: 0; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 8px 16px; padding-top: 16px; border-top: 1px solid var(--fio-forte); font: 400 var(--t-peq) / 1.45 var(--sans); max-width: 36rem; }
+  .etiqueta dt { font: 600 var(--t-meta) / 1.6 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--meta); }
+  .etiqueta dd { margin: 0; }
+  .etiqueta .original { font: italic 400 1rem/1.45 var(--display); color: var(--tinta-2); }
+  .conferida { display: inline-flex; align-items: center; gap: 8px; font: 650 var(--t-meta) / 1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento); }
+  .conferida::before { content: ''; width: 8px; height: 8px; background: var(--pino); }
+  .salas { margin: auto 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; border-top: 1px solid var(--fio); }
+  .salas a { display: block; padding: 16px 22px 4px 0; min-height: 44px; font: 600 var(--t-meta) / 1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; }
+  .salas a:hover { color: var(--acento); }
+  .botao-linha { align-self: flex-start; font: 650 var(--t-meta) / 1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; background: none; border: 1px solid var(--fio-forte); min-height: 44px; padding: 0 18px; cursor: pointer; }
+  .botao-linha:hover { background: var(--tinta); color: var(--parede); }
+
+  /* ---------- etiquetas (cartões de frase) ---------- */
+  .secao { max-width: var(--largura); margin: 0 auto; padding: 0 var(--margem); }
+  .secao-titulo { font: 300 var(--t-1) / 1 var(--display); font-variation-settings: 'wdth' 62.5; letter-spacing: -0.01em; margin: 0 0 10px; font-size: clamp(2.6rem, 1.6rem + 3vw, 4.6rem); }
+  .secao-sub { font: 400 var(--t-peq) / 1.5 var(--sans); color: var(--meta); margin: 0 0 32px; max-width: 42rem; }
+  .parede { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: clamp(28px, 3vw, 44px) clamp(18px, 2vw, 28px); align-items: start; }
+  .obra { position: relative; margin: 0; display: grid; gap: 14px; }
+  .quadro { position: relative; aspect-ratio: 4 / 5; background: var(--moldura); overflow: hidden; }
+  .quadro img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 600ms var(--curva); }
+  .obra:hover .quadro img { transform: scale(1.025); }
+  .quadro-tipo { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 14px 14px 10px; }
+  .quadro-tipo span { font-family: var(--display); font-weight: 300; font-variation-settings: 'wdth' 62.5; line-height: 0.84; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  .obra .sobrelinha { font-size: 0.7rem; }
+  .obra-nome { margin: 0; font: 400 1.5rem/1.05 var(--display); font-variation-settings: 'wdth' 70; }
+  .obra-frase { margin: 0; font: italic 400 1.12rem/1.35 var(--display); }
+  .abrir { all: unset; cursor: pointer; }
+  .abrir::after { content: ''; position: absolute; inset: 0; }
+  .abrir:focus-visible { outline: none; }
+  .abrir:focus-visible::after { outline: 2px solid var(--foco); outline-offset: 6px; }
+  .obra-fonte { margin: 0; font: 400 var(--t-meta) / 1.45 var(--sans); color: var(--meta); }
+  .salvar { position: absolute; z-index: 1; top: 10px; right: 10px; width: 44px; height: 44px; display: grid; place-items: center; background: var(--parede); border: 1px solid var(--fio-forte); cursor: pointer; }
+  .salvar svg { width: 18px; height: 18px; }
+  .salvar[aria-pressed='true'] { color: var(--acento); }
+  .salvar[aria-pressed='true'] path { fill: currentColor; }
+
+  /* ---------- frase ampliada (uma sala) ---------- */
+  .janela { position: fixed; inset: 0; z-index: 50; background: var(--veu); display: grid; place-items: center; padding: 24px; opacity: 0; transition: opacity var(--dur) var(--curva); }
+  .janela.aberta { opacity: 1; }
+  .sala { position: relative; width: min(1200px, 100%); max-height: calc(100dvh - 48px); overflow: auto; background: var(--parede); color: var(--tinta); display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); }
+  .sala .retrato { min-height: 560px; }
+  .sala .texto-parede { padding-top: 64px; }
+  .sala .nome-monumental { font-size: clamp(3rem, 1.6rem + 4.4vw, 6.4rem); }
+  .sala .frase-parede { opacity: 1; transform: none; max-width: 32ch; }
+  .fechar { position: absolute; top: 12px; right: 12px; z-index: 3; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; background: var(--parede); border: 1px solid var(--fio-forte); cursor: pointer; font: 650 var(--t-meta) / 1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; }
+  .fechar svg { width: 16px; height: 16px; }
+  .acoes { display: flex; flex-wrap: wrap; gap: 0 22px; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--fio); }
+  .acoes button, .acoes a { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; background: none; border: 0; padding: 0; cursor: pointer; font: 650 var(--t-meta) / 1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; }
+  .acoes button:hover, .acoes a:hover { color: var(--acento); }
+  .acoes svg { width: 16px; height: 16px; }
+  .acoes [aria-pressed='true'] { color: var(--acento); }
+  .acoes [aria-pressed='true'] path { fill: currentColor; }
+
+  .janela-foto { background: rgba(8, 7, 6, 0.94); }
+  .janela-foto > .fechar { background: rgba(8, 7, 6, 0.6); color: #f5e6c5; border-color: rgba(245, 230, 197, 0.6); top: 16px; right: 16px; }
+  .foto-grande { margin: 0; max-width: min(900px, 100%); display: grid; gap: 12px; }
+  .foto-grande img { max-height: calc(100dvh - 140px); width: auto; max-width: 100%; height: auto; margin: 0 auto; object-fit: contain; }
+  .foto-grande figcaption { color: #ddd2bc; font: 400 var(--t-meta) / 1.4 var(--sans); text-align: center; letter-spacing: 0.04em; }
+  .foto-grande figcaption strong { display: block; font: 400 1.4rem/1.2 var(--display); color: #f5e6c5; letter-spacing: 0; }
+  .foto-grande a { color: #f5e6c5; }
+
+  /* ---------- paleta e tipografia ---------- */
+  .amostras { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px; }
+  .amostra { font: 400 var(--t-meta) / 1.4 var(--sans); }
+  .amostra i { display: block; aspect-ratio: 4 / 5; margin-bottom: 8px; border: 1px solid var(--fio); }
+  .amostra b { display: block; font-weight: 650; }
+  .amostra code { font-size: 0.75rem; }
+  .tabela-wrap { overflow-x: auto; }
+  .tabela-contraste { width: 100%; border-collapse: collapse; margin-top: 28px; font: 400 var(--t-meta) / 1.4 var(--sans); }
+  .tabela-contraste td { border-top: 1px solid var(--fio); padding: 10px 8px 10px 0; vertical-align: middle; }
+  .tabela-contraste code { font-size: 0.75rem; }
+  .tabela-contraste .uso { color: var(--meta); }
+  .tabela-contraste .num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 650; }
+  .amostra-par { display: inline-grid; place-items: center; width: 44px; height: 32px; font: 400 1.1rem/1 var(--display); border: 1px solid var(--fio); }
+  .fora { font: 400 var(--t-peq) / 1.6 var(--sans); color: var(--meta); max-width: 46rem; }
+  .familias { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 40px; }
+  .familia { border-top: 1px solid var(--fio-forte); padding-top: 12px; }
+  .familia .nome-fonte { font-size: 1.7rem; line-height: 1.2; margin: 0; }
+  .familia p { margin: 6px 0 0; font: 400 var(--t-meta) / 1.45 var(--sans); color: var(--meta); }
+  .espec { border-top: 1px solid var(--fio); padding: 20px 0; display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .espec > span { font: 600 var(--t-meta) / 1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--meta); }
+  .espec p { margin: 0; overflow-wrap: anywhere; }
+  .rodape-proto { max-width: var(--largura); margin: 64px auto 0; padding: 24px var(--margem) 48px; border-top: 1px solid var(--fio); font: 400 var(--t-meta) / 1.5 var(--sans); color: var(--meta); }
+
+  /* ---------- tablet e celular ---------- */
+  @media (max-width: 1023px) {
+    .menu { display: none; }
+    .topo-acoes { margin-left: auto; }
+  }
+  @media (max-width: 759px) {
+    .abertura { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .retrato { aspect-ratio: 4 / 5; min-height: 0; }
+    .texto-parede { padding: 24px var(--margem) 32px; }
+    .etiqueta { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .etiqueta dd + dt { margin-top: 10px; }
+    .janela { padding: 0; place-items: stretch; }
+    .sala { display: block; max-height: 100dvh; height: 100dvh; }
+    .sala .retrato { min-height: 0; aspect-ratio: 4 / 5; max-height: 62vh; }
+    .sala .texto-parede { padding-top: 24px; }
+    .fechar span { display: none; }
+    .fechar { width: 44px; padding: 0; justify-content: center; }
+    .espec { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="proto-barra" role="navigation" aria-label="Protótipo">
+  <span><strong>Protótipo · Direção C · Galeria</strong></span>
+  <a href="a-marginalia.html">A · Marginália</a>
+  <a href="b-florada.html">B · Florada</a>
+  <a href="index.html">Comparar as três</a>
+  <span class="empurra"></span>
+  <button type="button" data-alternar-tema aria-pressed="false">Alternar tema</button>
+</div>
+
+<header class="topo">
+  <a class="marca-nome" href="#abertura">MeMotiva</a>
+  <nav class="menu" aria-label="Principal">
+    <a href="#cartoes">Explorar</a><a href="#cartoes">Autores</a><a href="#cartoes">Histórias</a><a href="#cartoes">Descubra</a><a href="#cartoes">Comunidade</a>
+  </nav>
+  <div class="topo-acoes">
+    <button class="botao-texto" type="button">Entrar</button>
+    <button class="botao-quadrado" type="button" data-alternar-tema aria-pressed="false" aria-label="Usar o tema escuro">
+      <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      <svg class="icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="abertura" class="abertura" aria-label="Abertura"></section>
+
+  <div class="proto-nota">Cartões de frase, como no Explorar · clique para abrir a frase ampliada</div>
+  <section id="cartoes" class="secao" aria-labelledby="t-cartoes">
+    <h2 class="secao-titulo" id="t-cartoes">Frases do acervo</h2>
+    <p class="secao-sub">Oito obras reais na parede. Quem tem foto boa (900 px ou mais) aparece em retrato; quem não tem, ou tem foto pequena, aparece pelo nome.</p>
+    <div class="parede" data-cartoes="f28asxuhfb,ql0t0xvhg9dsn,f2652b1y5,qmgk9qk9rw7ez,q4nnaf81ajlbj5,f241fhtl3,q1v8oi7oe6cqdv,qmavfjkqarqzo"></div>
+  </section>
+
+  <div class="proto-nota">Paleta e contraste medido no tema atual</div>
+  <section id="paleta" class="secao" aria-labelledby="t-paleta">
+    <h2 class="secao-titulo" id="t-paleta">Paleta</h2>
+    <p class="secao-sub">Uma parede de linho, tinta quase preta, o verde orgânico nas etiquetas e o apricot só no ponto que marca a peça. No escuro, a sala apaga a luz e as fotos ficam no centro.</p>
+    <div class="amostras" id="amostras"></div>
+    <div class="tabela-wrap"><table class="tabela-contraste"><tbody id="contraste"></tbody></table></div>
+    <p class="fora"><b>Fora da paleta ativa:</b> Deep Purple e Burnt Orange (esta direção testa o lado terroso da paleta), Light Parchment (igual ao Linen), Light Gold e Muted Ochre (amarelam as fotos), Dark Espresso (o Black Hole é mais neutro para fotografia).</p>
+  </section>
+
+  <div class="proto-nota">Tipografia com frases reais</div>
+  <section id="tipografia" class="secao" aria-labelledby="t-tipo">
+    <h2 class="secao-titulo" id="t-tipo">Tipografia</h2>
+    <div class="familias">
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--display);font-weight:300;font-variation-settings:'wdth' 62.5">Noto Serif Display</p><p>Nomes monumentais (larg. 62,5) e frases em itálico. Alto contraste, cobre grego e russo. Licença OFL.</p></div>
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--sans)">Hanken Grotesk</p><p>Etiquetas, navegação e texto de apoio, como legenda de museu. Licença OFL.</p></div>
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--mao)">Caveat</p><p>Opção "Manuscrita" do Escrever (a mesma de hoje). Licença OFL.</p></div>
+    </div>
+    <div id="especime"></div>
+  </section>
+</main>
+
+<p class="rodape-proto">Protótipo de direção visual, Etapa 1 do redesign. Frases, fontes, papéis e fotos vêm do acervo real (amostra.js). Não é o site.</p>
+
+<div id="frase-ampliada" class="janela" role="dialog" aria-modal="true" hidden><div class="sala" data-corpo></div></div>
+<div id="foto-ampliada" class="janela janela-foto" role="dialog" aria-modal="true" hidden>
+  <button class="fechar" type="button" data-fechar><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Fechar</span></button>
+  <div data-corpo></div>
+</div>
+
+<script src="amostra.js"></script>
+<script src="comum.js"></script>
+<script>
+  (function () {
+    const { esc, comAspas, tamanhoFrase, linguaDoOriginal, autor, imagem, credito, fotoGrande, FRASES } = Proto;
+    const ICONE_SALVAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/></svg>';
+    const ICONE_FECHAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+    const ehDitado = (f) => f.status === 'X';
+    const nomeExibido = (f, a) => (ehDitado(f) ? 'Ditado popular' : a.nome);
+    // tamanho do nome que ocupa o quadro: quanto mais longo, menor
+    const tamanhoNome = (nome) => (nome.length <= 8 ? '5.4rem' : nome.length <= 13 ? '4.4rem' : nome.length <= 16 ? '3.6rem' : '3rem');
+
+    function quadro(a, f, { tamanhos = '25vw', prioridade = false } = {}) {
+      if (fotoGrande(a)) {
+        return `<div class="quadro">${imagem(a, { largura: 600, larguras: [400, 600, 900], tamanhos, prioridade })}</div>`;
+      }
+      const nome = nomeExibido(f, a);
+      return `<div class="quadro"><div class="quadro-tipo" aria-hidden="true"><span style="font-size:${tamanhoNome(nome)}">${esc(nome)}</span></div></div>`;
+    }
+
+    function etiqueta(f, a) {
+      const lingua = linguaDoOriginal(f.original);
+      return `<dl class="etiqueta">
+          ${f.fonte ? `<dt>Obra</dt><dd>${esc(f.fonte)}${f.status === 'A' ? '<br><span class="conferida">Fonte conferida</span>' : ''}</dd>` : ''}
+          <dt>${ehDitado(f) ? 'Origem' : 'Autor'}</dt><dd>${esc(a.papel)}</dd>
+          ${f.original && f.original !== f.texto ? `<dt>Original</dt><dd class="original"${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</dd>` : ''}
+        </dl>`;
+    }
+
+    window.DIRECAO = {
+      cartaoHTML(f, a) {
+        return `<figure class="obra">
+          ${quadro(a, f, { tamanhos: '(max-width: 600px) 90vw, 300px' })}
+          <button class="salvar" type="button" data-salvar aria-pressed="false" aria-label="Salvar a frase de ${esc(a.nome)}">${ICONE_SALVAR}</button>
+          <figcaption style="display:grid;gap:10px">
+            <span class="sobrelinha">${esc(f.categoria)}</span>
+            ${fotoGrande(a) ? `<p class="obra-nome">${esc(nomeExibido(f, a))}</p>` : ''}
+            <p class="obra-frase"><button class="abrir" type="button" data-abrir="${f.qid}">${comAspas(f.texto)}</button></p>
+            ${f.fonte ? `<p class="obra-fonte">${esc(f.fonte)}</p>` : `<p class="obra-fonte">${esc(a.papel)}</p>`}
+          </figcaption>
+        </figure>`;
+      },
+      modalHTML(f, a) {
+        const tam = tamanhoFrase(f.texto, [[45, 'clamp(1.8rem, 1.2rem + 2vw, 2.8rem)'], [90, 'clamp(1.6rem, 1.15rem + 1.5vw, 2.3rem)'], [Infinity, 'clamp(1.4rem, 1.05rem + 1.1vw, 1.9rem)']]);
+        const nome = nomeExibido(f, a);
+        const retrato = fotoGrande(a)
+          ? `<figure class="retrato"><button class="retrato-foto" type="button" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${imagem(a, { largura: 900, larguras: [600, 900, 1200], tamanhos: '(max-width: 759px) 100vw, 560px', largo: false })}</button>
+              <figcaption class="etiqueta-foto">${esc(credito(a))}</figcaption></figure>`
+          : `<div class="retrato">${quadro(a, f).replace('class="quadro"', 'class="quadro" style="aspect-ratio:auto;height:100%"')}</div>`;
+        return `<button class="fechar" type="button" data-fechar aria-label="Fechar a frase">${ICONE_FECHAR}<span>Fechar</span></button>
+          ${retrato}
+          <div class="texto-parede">
+            <p class="sobrelinha">${esc(f.categoria)}</p>
+            ${fotoGrande(a) ? `<p class="nome-monumental">${esc(nome)}</p>` : ''}
+            <p class="frase-parede" style="font-size:${tam}">${comAspas(f.texto)}</p>
+            ${etiqueta(f, a)}
+            <ul class="acoes">
+              <li><button type="button" data-salvar aria-pressed="false">${ICONE_SALVAR}<span data-rotulo>Salvar</span></button></li>
+              <li><button type="button">Escrever sobre ela</button></li>
+              ${f.fonte ? `<li><a href="#cartoes">Ver a obra</a></li>` : ''}
+              ${ehDitado(f) ? '' : `<li><a href="#cartoes">Conhecer ${esc(a.nome)}</a></li>`}
+            </ul>
+          </div>`;
+      }
+    };
+
+    /* abertura: Liev Tolstói na foto colorida de Prokudin-Gorskii */
+    const f = FRASES.q1gsfz1k16xaa3h;
+    const a = autor(f.autor);
+    document.getElementById('abertura').innerHTML = `
+      <figure class="retrato">
+        <button class="retrato-foto" type="button" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${imagem(a, { largura: 900, larguras: [600, 900, 1400], tamanhos: '(max-width: 759px) 100vw, 50vw', prioridade: true })}</button>
+        <figcaption class="etiqueta-foto">${esc(credito(a))}</figcaption>
+      </figure>
+      <div class="texto-parede">
+        <p class="sobrelinha">Frase de hoje · <span data-hoje></span></p>
+        <h1 class="nome-monumental">${esc(a.nome)}</h1>
+        <p class="frase-parede">${comAspas(f.texto)}</p>
+        ${etiqueta(f, a)}
+        <button class="botao-linha" type="button" data-abrir="${f.qid}">Abrir a frase</button>
+        <ul class="salas" aria-label="Atalhos"><li><a href="#cartoes">Explorar</a></li><li><a href="#cartoes">Autores</a></li><li><a href="#cartoes">Histórias</a></li><li><a href="#cartoes">Descubra</a></li></ul>
+      </div>`;
+
+    /* paleta */
+    const CORES = [
+      ['#FAF3E1', 'Sustainable Linen', 'parede'], ['#F5E7C6', 'Recycled Cotton', 'quadro sem foto'], ['#222222', 'Black Hole', 'tinta'], ['#3F422E', 'Organic', 'acento, etiquetas'],
+      ['#5E5A52', 'Cinza quente', 'metadados, derivado'], ['#9F886F', 'Natural', 'fios'], ['#D78B30', 'Apricot', 'ponto da etiqueta'], ['#151311', 'Sala escura', 'parede no escuro, derivada'],
+      ['#F5E6C5', 'Ivory', 'texto no escuro'], ['#FF6D1F', 'Electric Tangerine', 'detalhe no escuro']
+    ];
+    document.getElementById('amostras').innerHTML = CORES.map(([h, n, u]) => `<div class="amostra"><i style="background:${h}"></i><b>${n}</b><code>${h}</code><br>${u}</div>`).join('');
+    Proto.montarContraste(document.getElementById('contraste'), [
+      ['--tinta', '--parede', 'texto e nomes'], ['--tinta-2', '--parede', 'original e apoio'], ['--meta', '--parede', 'etiquetas e legendas'],
+      ['--acento', '--parede', '"Fonte conferida", links'], ['--tinta', '--moldura', 'nome no quadro sem foto'], ['--meta', '--moldura', 'legenda sobre o quadro']
+    ]);
+
+    /* espécime */
+    const longa = FRASES.f28asxuhfb, curta = FRASES.f28tdbfmcs, grego = FRASES.q1v8oi7oe6cqdv, russo = FRASES.q1gsfz1k16xaa3h, mao = FRASES.f283ibiw7kr;
+    document.getElementById('especime').innerHTML = `
+      <div class="espec"><span>Nome · larg. 62,5</span><p style="font:300 var(--t-nome)/.84 var(--display);font-variation-settings:'wdth' 62.5;letter-spacing:-.02em">Clarice Lispector</p></div>
+      <div class="espec"><span>Frase · itálico</span><p style="font:italic 400 var(--t-1)/1.2 var(--display);max-width:30ch">${comAspas(curta.texto)}</p></div>
+      <div class="espec"><span>Frase longa</span><p style="font:italic 400 var(--t-2)/1.3 var(--display);max-width:34ch">${comAspas(longa.texto)}</p></div>
+      <div class="espec"><span>Corpo · 17 px</span><p style="max-width:38rem">${esc(longa.autor)}, ${esc(autor(longa.autor).papel)}. ${esc(longa.fonte)}. Quem pesquisar a frase e o autor deve encontrar o mesmo: cada passagem foi conferida na obra.</p></div>
+      <div class="espec"><span>Etiqueta</span><p class="sobrelinha">${esc(longa.categoria)} · ${esc(curta.fonte)}</p></div>
+      <div class="espec"><span>Acentos</span><p style="font:italic 400 var(--t-2)/1.4 var(--display)">ç ã õ á é í ó ú â ê ô à ü · Ç Ã Õ É Ê · “ ” ‘ ’ « » – … · 0123456789</p></div>
+      <div class="espec"><span>Grego</span><p lang="grc" style="font:italic 400 var(--t-2)/1.4 var(--display)">${esc(grego.original)}</p></div>
+      <div class="espec"><span>Russo</span><p lang="ru" style="font:italic 400 var(--t-2)/1.4 var(--display)">${esc(russo.original)}</p></div>
+      <div class="espec"><span>Manuscrita</span><p style="font:500 1.6rem/1.4 var(--mao)">${esc(mao.texto)}</p></div>`;
+
+    Proto.iniciar();
+  })();
+</script>
+</body>
+</html>

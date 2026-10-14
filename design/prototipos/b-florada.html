@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Florada · MeMotiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Caveat:wght@400..600&family=Noto+Sans:ital,wght@0,400;1,400&display=swap">
+<style>
+  /* Direção B · Florada — um cartaz vivo: o laranja é massa de cor, o roxo é tinta, a frase tem escala de pôster.
+     Composição: campo de cor com disco, retrato em arco e a fonte numa faixa, como o crédito de um cartaz. */
+  :root {
+    --chao: #f5e7c6; /* Recycled Cotton */
+    --chao-2: #faf3e1; /* Sustainable Linen */
+    --areia: #b1a082; /* areia do pôster bloom (P 15-2 C, aproximada) */
+    --laranja: #e06f2d; /* Burnt Orange: massa */
+    --disco: #e06f2d;
+    --roxo: #401d47; /* Deep Purple: tinta */
+    --tinta: #2b1811; /* Dark Espresso */
+    --meta: #6e5946; /* derivado do Natural, 5,4 : 1 sobre o Cotton */
+    --link: #9a4614; /* laranja escurecido, 5,3 : 1 sobre o Cotton */
+    --frase: #401d47;
+    --sobre-laranja: #2b1811;
+    --sobre-roxo: #faf3e1;
+    --forma: #b1a082;
+    --faixa: #401d47; /* a faixa da fonte, como o crédito de um cartaz */
+    --faixa-texto: #faf3e1;
+    --faixa-destaque: #ff6d1f; /* Tangerine sobre o roxo: 5,0 : 1 */
+    --faixa-botao: #e06f2d;
+    --faixa-botao-texto: #2b1811;
+    --fio: rgba(64, 29, 71, 0.22);
+    --veu: rgba(28, 13, 32, 0.6);
+    --foco: #401d47;
+
+    --sans: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+    --original: 'Noto Sans', 'Archivo', system-ui, sans-serif; /* grego e russo dos originais */
+    --mao: 'Caveat', 'Segoe Script', cursive;
+
+    --t-display: clamp(3rem, 1.2rem + 6vw, 7.6rem);
+    --t-1: clamp(2rem, 1.3rem + 2.4vw, 3.4rem);
+    --t-2: clamp(1.3rem, 1.1rem + 0.8vw, 1.75rem);
+    --t-corpo: 1.0625rem;
+    --t-peq: 0.9375rem;
+    --t-meta: 0.8125rem;
+
+    --largura: 1440px;
+    --margem: clamp(20px, 4.5vw, 64px);
+    --dur: 360ms;
+    --curva: cubic-bezier(0.2, 0.7, 0.2, 1);
+    color-scheme: light;
+  }
+  :root[data-theme='dark'] {
+    --chao: #1c0d20; /* noite roxa, derivada do Deep Purple */
+    --chao-2: #26122b;
+    --areia: #3a2440;
+    --laranja: #e06f2d;
+    --disco: #401d47; /* à noite o disco fecha em roxo e o laranja passa para a letra (4,4 : 1, letra grande) */
+    --roxo: #401d47;
+    --tinta: #faf3e1;
+    --meta: #c9b6cf; /* lilás claro derivado, 9,8 : 1 */
+    --link: #ff6d1f; /* Electric Tangerine, só em detalhe */
+    --frase: #e06f2d; /* no escuro, a frase vira laranja: 5,8 : 1 */
+    --sobre-laranja: #1c0d20;
+    --sobre-roxo: #faf3e1;
+    --forma: #3a2440;
+    --faixa: #e06f2d; /* à noite a faixa vira laranja */
+    --faixa-texto: #1c0d20;
+    --faixa-destaque: #1c0d20;
+    --faixa-botao: #1c0d20;
+    --faixa-botao-texto: #faf3e1;
+    --fio: rgba(250, 243, 225, 0.2);
+    --veu: rgba(8, 3, 10, 0.7);
+    --foco: #ff6d1f;
+    color-scheme: dark;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { --dur: 0ms; }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--chao); color: var(--tinta); font: 400 var(--t-corpo) / 1.55 var(--sans); font-variation-settings: 'wdth' 100; }
+  html.com-janela body { overflow: hidden; }
+  button { font: inherit; color: inherit; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; }
+
+  /* ---------- moldura do protótipo (não faz parte do design) ---------- */
+  .proto-barra, .proto-nota { font: 500 13px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif; color: #3d3a35; font-variation-settings: normal; }
+  .proto-barra { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; padding: 8px var(--margem); background: #e7e4dd; border-bottom: 1px solid #cfcac0; }
+  .proto-barra strong { font-weight: 650; }
+  .proto-barra a { color: #1f3f7a; }
+  .proto-barra .empurra { margin-left: auto; }
+  .proto-barra button { border: 1px solid #b9b3a7; background: #f6f4ef; border-radius: 4px; padding: 6px 10px; min-height: 32px; cursor: pointer; }
+  .proto-nota { max-width: var(--largura); margin: clamp(56px, 8vw, 104px) auto 24px; padding: 10px var(--margem) 0; border-top: 1px dashed #b9b3a7; letter-spacing: 0.04em; text-transform: uppercase; }
+  :root[data-theme='dark'] .proto-barra { background: #2a2622; color: #e6e1d8; border-color: #3b3631; }
+  :root[data-theme='dark'] .proto-barra a { color: #a9c1f0; }
+  :root[data-theme='dark'] .proto-barra button { background: #34302b; border-color: #4a443d; color: #e6e1d8; }
+  :root[data-theme='dark'] .proto-nota { color: #c9c2b6; border-color: #4a443d; }
+  html.limpo .proto-barra, html.limpo .proto-nota { display: none; }
+
+  /* ---------- topo ---------- */
+  .topo { position: relative; z-index: 3; max-width: var(--largura); margin: 0 auto; padding: 16px var(--margem); display: flex; align-items: center; gap: 28px; }
+  .marca-nome { font: italic 820 1.65rem/1 var(--sans); font-variation-settings: 'wdth' 112; letter-spacing: -0.02em; color: var(--roxo); text-decoration: none; }
+  :root[data-theme='dark'] .marca-nome { color: var(--laranja); }
+  .menu { display: flex; gap: 24px; margin-left: auto; font: 560 var(--t-peq) / 1 var(--sans); }
+  .menu a { text-decoration: none; padding: 12px 0; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+  .menu a:hover { text-decoration-line: underline; }
+  .topo-acoes { display: flex; align-items: center; gap: 10px; }
+  .botao-cheio { font: 650 var(--t-peq) / 1 var(--sans); font-variation-settings: 'wdth' 106; background: var(--roxo); color: var(--sobre-roxo); border: 0; min-height: 44px; padding: 0 18px; cursor: pointer; }
+  :root[data-theme='dark'] .topo .botao-cheio { background: var(--laranja); color: var(--sobre-laranja); }
+  .botao-redondo { width: 44px; height: 44px; border-radius: 50%; display: inline-grid; place-items: center; background: none; border: 2px solid currentColor; cursor: pointer; }
+  .botao-redondo svg { width: 18px; height: 18px; }
+  .icone-lua { display: none; }
+  :root[data-theme='dark'] .icone-sol { display: none; }
+  :root[data-theme='dark'] .icone-lua { display: block; }
+
+  /* ---------- abertura: o cartaz ---------- */
+  .abertura { position: relative; overflow: hidden; isolation: isolate; margin-top: -76px; padding-top: 76px; }
+  .cartaz { position: relative; max-width: var(--largura); margin: 0 auto; padding: clamp(28px, 5vw, 72px) var(--margem) 0; min-height: min(760px, 92vh);
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); column-gap: clamp(20px, 3vw, 48px); align-items: end; }
+  .disco { position: absolute; z-index: -1; width: min(60vw, 820px); aspect-ratio: 1; border-radius: 50%; background: var(--disco); right: -9vw; top: -14%; }
+  .meio-disco { position: absolute; z-index: -1; left: var(--margem); bottom: 104px; width: clamp(120px, 14vw, 210px); aspect-ratio: 2 / 1; border-radius: 999px 999px 0 0; background: var(--forma); }
+  .ponto { position: absolute; z-index: -1; width: clamp(22px, 2.4vw, 36px); aspect-ratio: 1; border-radius: 50%; background: var(--roxo); left: 47%; top: 12%; }
+  :root[data-theme='dark'] .ponto { background: var(--laranja); }
+  .rotulo { font: 650 var(--t-meta) / 1.2 var(--sans); font-variation-settings: 'wdth' 125; letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
+  .lado-frase { align-self: center; padding-bottom: clamp(24px, 4vw, 56px); }
+  .frase-abertura { margin: 18px 0 0; font-weight: 820; font-variation-settings: 'wdth' 78; line-height: 0.93; letter-spacing: -0.025em; color: var(--frase); text-wrap: balance;
+    opacity: 0; transform: translateY(14px); transition: opacity 650ms var(--curva), transform 650ms var(--curva); }
+  html.chegou .frase-abertura { opacity: 1; transform: none; }
+  .aspa-abre { margin-left: -0.3em; }
+  .assinatura { margin: clamp(22px, 3vw, 36px) 0 0; }
+  .assinatura .nome { font: 760 var(--t-2) / 1.1 var(--sans); font-variation-settings: 'wdth' 100; margin: 0; }
+  .assinatura .papel { font: 450 var(--t-peq) / 1.4 var(--sans); color: var(--meta); margin: 4px 0 0; }
+  .lado-retrato { position: relative; display: grid; justify-items: center; align-self: end; }
+  .arco { display: block; width: min(100%, 380px); padding: 0; border: 0; background: var(--areia); border-radius: 999px 999px 0 0; overflow: hidden; cursor: zoom-in; }
+  .arco img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+  .arco-tipo { width: min(100%, 380px); aspect-ratio: 3 / 4; border-radius: 999px 999px 0 0; background: var(--roxo); color: var(--laranja); display: grid; place-items: center; font: 900 clamp(8rem, 18vw, 16rem) / 1 var(--sans); font-variation-settings: 'wdth' 62; }
+  .faixa { grid-column: 1 / -1; position: relative; margin: 0 calc(-1 * var(--margem)); padding: 16px var(--margem) 18px; background: var(--faixa); color: var(--faixa-texto);
+    display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; }
+  .faixa::before { content: ''; position: absolute; left: 0; right: 0; top: -22px; height: 14px; background: repeating-linear-gradient(to bottom, var(--faixa) 0 3px, transparent 3px 7px); }
+  .faixa .conferida { color: var(--faixa-destaque); }
+  .faixa .botao-cheio { margin-left: auto; background: var(--faixa-botao); color: var(--faixa-botao-texto); }
+  .faixa .fonte { font: 450 var(--t-peq) / 1.45 var(--sans); max-width: 60rem; }
+  .faixa .fonte b { font-weight: 700; }
+  .conferida { font: 700 var(--t-meta) / 1.2 var(--sans); font-variation-settings: 'wdth' 125; letter-spacing: 0.1em; text-transform: uppercase; color: var(--laranja); white-space: nowrap; }
+  .atalhos { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 0; padding: 22px 0 32px; list-style: none; }
+  .atalhos a { display: inline-block; padding: 10px 0; font: 700 1.05rem/1 var(--sans); font-variation-settings: 'wdth' 118; text-transform: lowercase; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+  .atalhos a:hover { color: var(--link); }
+
+  /* ---------- cartazes (cartões de frase) ---------- */
+  .secao { max-width: var(--largura); margin: 0 auto; padding: 0 var(--margem); }
+  .secao-titulo { font: 820 var(--t-1) / 1 var(--sans); font-variation-settings: 'wdth' 80; letter-spacing: -0.02em; color: var(--frase); margin: 0 0 8px; }
+  .secao-sub { font: 450 var(--t-peq) / 1.5 var(--sans); color: var(--meta); margin: 0 0 32px; max-width: 42rem; }
+  .cartazes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; grid-auto-flow: dense; }
+  .cartazete { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 20px 20px 22px; background: var(--chao-2); color: var(--tinta); min-height: 260px; }
+  .cartazete.longo { grid-column: span 2; }
+  .cartazete.laranja { background: var(--laranja); color: var(--sobre-laranja); }
+  .cartazete.roxo { background: var(--roxo); color: var(--sobre-roxo); }
+  .cartazete-topo { display: flex; justify-content: space-between; align-items: center; margin: -8px -8px 0 0; }
+  .cartazete .rotulo { opacity: 0.9; }
+  .cartazete-frase { margin: 0; font-weight: 720; font-variation-settings: 'wdth' 84; line-height: 1.02; letter-spacing: -0.018em; color: var(--frase); }
+  .cartazete.laranja .cartazete-frase, .cartazete.roxo .cartazete-frase { color: inherit; }
+  :root[data-theme='dark'] .cartazete:not(.laranja):not(.roxo) .cartazete-frase { color: var(--frase); }
+  .abrir { all: unset; cursor: pointer; }
+  .abrir::after { content: ''; position: absolute; inset: 0; }
+  .abrir:focus-visible { outline: none; }
+  .abrir:focus-visible::after { outline: 3px solid var(--foco); outline-offset: 3px; }
+  .cartazete:hover .cartazete-frase { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.12em; }
+  .cartazete-pe { margin-top: auto; display: flex; align-items: center; gap: 12px; }
+  .bola { width: 44px; height: 44px; flex: none; border-radius: 50%; object-fit: cover; background: var(--areia); }
+  .cartazete-pe .nome { display: block; font: 720 1rem/1.2 var(--sans); }
+  .cartazete-pe .papel, .cartazete-pe .fonte { display: block; font: 450 var(--t-meta) / 1.35 var(--sans); opacity: 0.92; }
+  .salvar { position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: none; border: 2px solid currentColor; cursor: pointer; }
+  .salvar svg { width: 18px; height: 18px; }
+  .salvar[aria-pressed='true'] path { fill: currentColor; }
+
+  /* ---------- frase ampliada (cartaz inteiro) ---------- */
+  .janela { position: fixed; inset: 0; z-index: 50; background: var(--veu); display: grid; place-items: center; padding: 24px; opacity: 0; transition: opacity var(--dur) var(--curva); }
+  .janela.aberta { opacity: 1; }
+  .painel { position: relative; width: min(1180px, 100%); max-height: calc(100dvh - 48px); overflow: auto; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); background: var(--chao);
+    transform: scale(0.985); transition: transform var(--dur) var(--curva); }
+  .janela.aberta .painel { transform: none; }
+  .campo { background: var(--laranja); color: var(--roxo); padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px); min-height: 100%; }
+  :root[data-theme='dark'] .campo { color: var(--sobre-laranja); }
+  .campo .frase { margin: 0; font-weight: 820; font-variation-settings: 'wdth' 80; line-height: 0.98; letter-spacing: -0.022em; text-wrap: balance; }
+  .campo .rotulo { color: var(--sobre-laranja); } /* letra pequena: o roxo sobre laranja (4,4 : 1) não passa */
+  .ficha { padding: clamp(24px, 3.5vw, 48px); display: flex; flex-direction: column; gap: 22px; }
+  .ficha-topo { display: flex; justify-content: flex-end; }
+  .ficha .arco { width: min(100%, 260px); }
+  .ficha .arco-tipo { width: min(100%, 260px); font-size: clamp(6rem, 12vw, 10rem); }
+  .credito { font: 450 var(--t-meta) / 1.4 var(--sans); color: var(--meta); margin: -10px 0 0; }
+  .ficha .nome { font: 780 var(--t-2) / 1.1 var(--sans); margin: 0; }
+  .ficha .papel { font: 450 var(--t-peq) / 1.4 var(--sans); color: var(--meta); margin: 4px 0 0; }
+  .ficha-fonte { border-top: 3px solid var(--roxo); padding-top: 12px; margin: 0; font: 450 var(--t-peq) / 1.45 var(--sans); }
+  :root[data-theme='dark'] .ficha-fonte { border-color: var(--laranja); }
+  .ficha-fonte .conferida { display: block; margin-top: 8px; color: var(--link); }
+  .original { margin: 0; }
+  .original p { margin: 6px 0 0; font: italic 400 1.05rem/1.5 var(--original); color: var(--tinta); }
+  .acoes { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+  .acoes button, .acoes a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 2px solid currentColor; background: none; cursor: pointer; font: 650 var(--t-peq) / 1 var(--sans); text-decoration: none; }
+  .acoes li:first-child button { background: var(--roxo); color: var(--sobre-roxo); border-color: var(--roxo); }
+  :root[data-theme='dark'] .acoes li:first-child button { background: var(--laranja); color: var(--sobre-laranja); border-color: var(--laranja); }
+  .acoes svg { width: 18px; height: 18px; }
+  .acoes [aria-pressed='true'] path { fill: currentColor; }
+  .fechar { position: sticky; top: 0; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--chao); border: 2px solid var(--tinta); cursor: pointer; }
+  .fechar svg { width: 18px; height: 18px; }
+
+  .janela-foto { background: rgba(14, 6, 16, 0.92); }
+  .janela-foto > .fechar { position: absolute; top: 16px; right: 16px; background: rgba(28, 13, 32, 0.7); border-color: #faf3e1; color: #faf3e1; }
+  .foto-grande { margin: 0; max-width: min(900px, 100%); display: grid; gap: 12px; }
+  .foto-grande img { max-height: calc(100dvh - 140px); width: auto; max-width: 100%; height: auto; margin: 0 auto; object-fit: contain; }
+  .foto-grande figcaption { color: #e9dfc9; font: 450 var(--t-meta) / 1.4 var(--sans); text-align: center; }
+  .foto-grande figcaption strong { display: block; font: 760 1.1rem/1.3 var(--sans); color: #faf3e1; }
+  .foto-grande a { color: #faf3e1; }
+
+  /* ---------- paleta e tipografia ---------- */
+  .amostras { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .amostra { font: 450 var(--t-meta) / 1.4 var(--sans); }
+  .amostra i { display: block; height: 72px; margin-bottom: 8px; border-radius: 0; }
+  .amostra i.redonda { border-radius: 50%; width: 72px; }
+  .amostra b { display: block; font-weight: 720; }
+  .amostra code { font-size: 0.75rem; }
+  .tabela-wrap { overflow-x: auto; }
+  .tabela-contraste { width: 100%; border-collapse: collapse; margin-top: 28px; font: 450 var(--t-meta) / 1.4 var(--sans); }
+  .tabela-contraste td { border-top: 2px solid var(--fio); padding: 10px 8px 10px 0; vertical-align: middle; }
+  .tabela-contraste code { font-size: 0.75rem; }
+  .tabela-contraste .uso { color: var(--meta); }
+  .tabela-contraste .num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 720; }
+  .amostra-par { display: inline-grid; place-items: center; width: 44px; height: 32px; font: 800 1rem/1 var(--sans); }
+  .fora { font: 450 var(--t-peq) / 1.6 var(--sans); color: var(--meta); max-width: 46rem; }
+  .familias { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 40px; }
+  .familia { border-top: 3px solid var(--roxo); padding-top: 12px; }
+  :root[data-theme='dark'] .familia { border-color: var(--laranja); }
+  .familia .nome-fonte { font-size: 1.6rem; line-height: 1.2; margin: 0; }
+  .familia p { margin: 6px 0 0; font: 450 var(--t-meta) / 1.45 var(--sans); color: var(--meta); }
+  .espec { border-top: 2px solid var(--fio); padding: 20px 0; display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
+  .espec > span { font: 650 var(--t-meta) / 1.3 var(--sans); font-variation-settings: 'wdth' 125; letter-spacing: 0.08em; text-transform: uppercase; color: var(--meta); }
+  .espec p { margin: 0; overflow-wrap: anywhere; }
+  .rodape-proto { max-width: var(--largura); margin: 64px auto 0; padding: 24px var(--margem) 48px; border-top: 2px solid var(--fio); font: 450 var(--t-meta) / 1.5 var(--sans); color: var(--meta); }
+
+  /* ---------- tablet e celular ---------- */
+  @media (max-width: 1023px) {
+    .menu { display: none; }
+    .topo-acoes { margin-left: auto; }
+  }
+  @media (max-width: 759px) {
+    .cartaz { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-top: 12px; }
+    .disco { width: 104vw; right: -40vw; top: -30vw; }
+    .meio-disco { display: none; }
+    .ponto { left: auto; right: 14vw; top: 62vw; }
+    .lado-retrato { order: -1; justify-items: end; margin-bottom: 12px; }
+    .arco, .arco-tipo { width: 58vw; }
+    .lado-frase { padding-bottom: 28px; }
+    .cartazete.longo { grid-column: auto; }
+    .janela { padding: 0; place-items: stretch; }
+    .painel { grid-template-columns: minmax(0, 1fr); max-height: 100dvh; height: 100dvh; }
+    .campo { min-height: auto; }
+    .ficha-topo { position: absolute; top: 12px; right: 12px; z-index: 2; }
+    .espec { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="proto-barra" role="navigation" aria-label="Protótipo">
+  <span><strong>Protótipo · Direção B · Florada</strong></span>
+  <a href="a-marginalia.html">A · Marginália</a>
+  <a href="c-galeria.html">C · Galeria</a>
+  <a href="index.html">Comparar as três</a>
+  <span class="empurra"></span>
+  <button type="button" data-alternar-tema aria-pressed="false">Alternar tema</button>
+</div>
+
+<header class="topo">
+  <a class="marca-nome" href="#abertura">memotiva</a>
+  <nav class="menu" aria-label="Principal">
+    <a href="#cartoes">Explorar</a><a href="#cartoes">Autores</a><a href="#cartoes">Histórias</a><a href="#cartoes">Descubra</a><a href="#cartoes">Comunidade</a>
+  </nav>
+  <div class="topo-acoes">
+    <button class="botao-cheio" type="button">Entrar</button>
+    <button class="botao-redondo" type="button" data-alternar-tema aria-pressed="false" aria-label="Usar o tema escuro">
+      <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      <svg class="icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="abertura" class="abertura" aria-label="Abertura"></section>
+
+  <div class="proto-nota">Cartões de frase, como no Explorar · clique para abrir a frase ampliada</div>
+  <section id="cartoes" class="secao" aria-labelledby="t-cartoes">
+    <h2 class="secao-titulo" id="t-cartoes">frases do acervo</h2>
+    <p class="secao-sub">Oito cartazes reais: frase longa e curta, com e sem foto, traduzida com original, ditado popular. A cor do cartaz segue um ritmo fixo, sem arco-íris.</p>
+    <div class="cartazes" data-cartoes="f28asxuhfb,ql0t0xvhg9dsn,f2652b1y5,qmgk9qk9rw7ez,q4nnaf81ajlbj5,f241fhtl3,q1v8oi7oe6cqdv,qmavfjkqarqzo"></div>
+  </section>
+
+  <div class="proto-nota">Paleta e contraste medido no tema atual</div>
+  <section id="paleta" class="secao" aria-labelledby="t-paleta">
+    <h2 class="secao-titulo" id="t-paleta">paleta</h2>
+    <p class="secao-sub">O pôster "bloom" virou regra: chão de algodão e areia, laranja como massa, roxo como tinta. No escuro, o chão vira noite roxa e a frase passa a ser laranja.</p>
+    <div class="amostras" id="amostras"></div>
+    <div class="tabela-wrap"><table class="tabela-contraste"><tbody id="contraste"></tbody></table></div>
+    <p class="fora"><b>Fora da paleta ativa:</b> Light Parchment e Ivory (iguais ao Linen e ao Cotton), Black Hole e Organic (apagam o laranja), Natural (a areia do pôster faz o papel dele), Light Gold, Muted Ochre e Apricot (disputam com o laranja).</p>
+  </section>
+
+  <div class="proto-nota">Tipografia com frases reais</div>
+  <section id="tipografia" class="secao" aria-labelledby="t-tipo">
+    <h2 class="secao-titulo" id="t-tipo">tipografia</h2>
+    <div class="familias">
+      <div class="familia"><p class="nome-fonte" style="font-weight:800;font-variation-settings:'wdth' 80">Archivo</p><p>Uma família só, com larguras: estreita e pesada na frase, larga nos rótulos, normal no texto. Feita pela Omnibus-Type, de Buenos Aires. Licença OFL.</p></div>
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--original)">Noto Sans</p><p>Só nos originais em grego, russo e outras escritas que a Archivo não tem. Licença OFL.</p></div>
+      <div class="familia"><p class="nome-fonte" style="font-family:var(--mao)">Caveat</p><p>Opção "Manuscrita" do Escrever (a mesma de hoje). Licença OFL.</p></div>
+    </div>
+    <div id="especime"></div>
+  </section>
+</main>
+
+<p class="rodape-proto">Protótipo de direção visual, Etapa 1 do redesign. Frases, fontes, papéis e fotos vêm do acervo real (amostra.js). Não é o site.</p>
+
+<div id="frase-ampliada" class="janela" role="dialog" aria-modal="true" hidden><div class="painel" data-corpo></div></div>
+<div id="foto-ampliada" class="janela janela-foto" role="dialog" aria-modal="true" hidden>
+  <button class="fechar" type="button" data-fechar aria-label="Fechar a fotografia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div data-corpo></div>
+</div>
+
+<script src="amostra.js"></script>
+<script src="comum.js"></script>
+<script>
+  (function () {
+    const { esc, comAspas, tamanhoFrase, linguaDoOriginal, autor, imagem, credito, FRASES } = Proto;
+    const ICONE_SALVAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5s-7.3-4.4-9.3-8.6C1.2 8.7 3 4.7 6.8 4.7c2.2 0 3.6 1.3 5.2 3.2 1.6-1.9 3-3.2 5.2-3.2 3.8 0 5.6 4 4.1 7.2-2 4.2-9.3 8.6-9.3 8.6Z"/></svg>';
+    const ICONE_FECHAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+    const ehDitado = (f) => f.status === 'X';
+    const RITMO = ['', 'laranja', '', 'roxo', '', '', 'laranja', 'roxo']; // cor de cada posição: sem sorteio, sem arco-íris
+    let posicao = 0;
+
+    function arco(a, { prioridade = false, tamanhos = '30vw', grande = false } = {}) {
+      if (a.foto) {
+        return `<button class="arco" type="button" data-ampliar-foto="${esc(a.nome)}" aria-label="Ampliar a fotografia de ${esc(a.nome)}">${imagem(a, { largura: 800, tamanhos, prioridade })}</button>`;
+      }
+      // sem foto: o arco vira tipografia, com a aspa como figura
+      return `<div class="arco-tipo" aria-hidden="true">“</div>`;
+    }
+
+    window.DIRECAO = {
+      cartaoHTML(f, a) {
+        const cor = RITMO[posicao++ % RITMO.length];
+        const longo = f.texto.length > 120;
+        const tam = tamanhoFrase(f.texto, [[45, '2.3rem'], [90, '1.85rem'], [130, '1.6rem'], [Infinity, '1.5rem']]);
+        return `<article class="cartazete ${cor} ${longo ? 'longo' : ''}">
+          <div class="cartazete-topo"><span class="rotulo">${esc(f.categoria)}</span>
+            <button class="salvar" type="button" data-salvar aria-pressed="false" aria-label="Salvar a frase de ${esc(a.nome)}">${ICONE_SALVAR}</button></div>
+          <p class="cartazete-frase" style="font-size:${tam}"><button class="abrir" type="button" data-abrir="${f.qid}">${comAspas(f.texto)}</button></p>
+          <div class="cartazete-pe">${a.foto ? imagem(a, { largura: 120, larguras: [120, 240], tamanhos: '44px', classe: 'bola' }).replace('alt="Fotografia de', 'alt="Retrato de') : ''}
+            <span><span class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</span>${f.fonte ? `<span class="fonte">${esc(f.fonte)}</span>` : `<span class="papel">${esc(a.papel)}</span>`}</span></div>
+        </article>`;
+      },
+      modalHTML(f, a) {
+        const tam = tamanhoFrase(f.texto, [[45, 'clamp(2.6rem, 1.4rem + 4.4vw, 5.4rem)'], [90, 'clamp(2.2rem, 1.3rem + 3.2vw, 4.2rem)'], [130, 'clamp(1.9rem, 1.2rem + 2.4vw, 3.3rem)'], [Infinity, 'clamp(1.75rem, 1.1rem + 2vw, 2.8rem)']]);
+        const lingua = linguaDoOriginal(f.original);
+        return `<div class="campo"><span class="rotulo">${esc(f.categoria)}</span><p class="frase" style="font-size:${tam}">${comAspas(f.texto)}</p></div>
+          <div class="ficha">
+            <div class="ficha-topo"><button class="fechar" type="button" data-fechar aria-label="Fechar a frase">${ICONE_FECHAR}</button></div>
+            ${arco(a, { tamanhos: '(max-width: 759px) 58vw, 300px' })}
+            ${a.foto ? `<p class="credito">${esc(credito(a))}</p>` : ''}
+            <div><p class="nome">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
+            ${f.fonte ? `<p class="ficha-fonte">${esc(f.fonte)}${f.status === 'A' ? '<span class="conferida">Fonte conferida</span>' : ''}</p>` : ''}
+            ${f.original && f.original !== f.texto ? `<div class="original"><span class="rotulo">Texto original</span><p${lingua ? ` lang="${lingua}"` : ''}>${esc(f.original)}</p></div>` : ''}
+            <ul class="acoes">
+              <li><button type="button" data-salvar aria-pressed="false">${ICONE_SALVAR}<span data-rotulo>Salvar</span></button></li>
+              <li><button type="button">Escrever sobre ela</button></li>
+              ${f.fonte ? `<li><a href="#cartoes">Ver a obra</a></li>` : ''}
+              ${ehDitado(f) ? '' : `<li><a href="#cartoes">Conhecer ${esc(a.nome)}</a></li>`}
+            </ul>
+          </div>`;
+      }
+    };
+
+    /* abertura: Frida Kahlo, o retrato em arco sobre o disco laranja */
+    const f = FRASES.f283ibiw7kr;
+    const a = autor(f.autor);
+    const ESCALA = [[45, 'clamp(3.2rem, 1.2rem + 7vw, 8.4rem)'], [80, 'clamp(2.9rem, 1.1rem + 5.6vw, 7rem)'], [120, 'clamp(2.5rem, 1rem + 4.4vw, 5.6rem)'], [Infinity, 'clamp(2.2rem, 1rem + 3.4vw, 4.6rem)']];
+    document.getElementById('abertura').innerHTML = `
+      <div class="cartaz">
+        <span class="disco" aria-hidden="true"></span><span class="meio-disco" aria-hidden="true"></span><span class="ponto" aria-hidden="true"></span>
+        <div class="lado-frase">
+          <p class="rotulo">Frase de hoje · <span data-hoje></span></p>
+          <p class="frase-abertura" style="font-size:${tamanhoFrase(f.texto, ESCALA)}">${comAspas(f.texto)}</p>
+          <div class="assinatura"><p class="nome">${esc(a.nome)}</p><p class="papel">${esc(a.papel)}</p></div>
+        </div>
+        <div class="lado-retrato">${arco(a, { prioridade: true, tamanhos: '(max-width: 759px) 58vw, 380px' })}</div>
+        <p class="faixa"><span class="fonte"><b>Fonte</b> ${esc(f.fonte)}</span><span class="conferida">Fonte conferida</span>
+          <button class="botao-cheio" type="button" data-abrir="${f.qid}">Abrir a frase</button></p>
+        <ul class="atalhos" aria-label="Atalhos"><li><a href="#cartoes">explorar</a></li><li><a href="#cartoes">autores</a></li><li><a href="#cartoes">histórias</a></li><li><a href="#cartoes">descubra</a></li></ul>
+      </div>`;
+
+    /* paleta */
+    const CORES = [
+      ['#F5E7C6', 'Recycled Cotton', 'chão'], ['#FAF3E1', 'Sustainable Linen', 'cartões'], ['#B1A082', 'Areia do bloom', 'formas'], ['#E06F2D', 'Burnt Orange', 'massa de cor', 1],
+      ['#401D47', 'Deep Purple', 'tinta, faixa'], ['#2B1811', 'Dark Espresso', 'texto'], ['#9A4614', 'Laranja para texto', 'derivado'], ['#6E5946', 'Natural para texto', 'derivado, metadados'],
+      ['#1C0D20', 'Noite roxa', 'chão escuro, derivado'], ['#FF6D1F', 'Electric Tangerine', 'detalhe no escuro'], ['#C9B6CF', 'Lilás claro', 'metadados no escuro, derivado']
+    ];
+    document.getElementById('amostras').innerHTML = CORES.map(([h, n, u, r]) => `<div class="amostra"><i class="${r ? 'redonda' : ''}" style="background:${h}"></i><b>${n}</b><code>${h}</code><br>${u}</div>`).join('');
+    Proto.montarContraste(document.getElementById('contraste'), [
+      ['--tinta', '--chao', 'texto corrido'], ['--frase', '--chao', 'frase e títulos'], ['--meta', '--chao', 'metadados'], ['--link', '--chao', 'links e detalhes'],
+      ['--roxo', '--laranja', 'roxo sobre laranja: só letra grande'], ['--sobre-laranja', '--laranja', 'texto sobre o laranja'], ['--sobre-roxo', '--roxo', 'texto na faixa roxa']
+    ]);
+
+    /* espécime */
+    const longa = FRASES.f28asxuhfb, curta = FRASES.f28tdbfmcs, grego = FRASES.q1v8oi7oe6cqdv, russo = FRASES.q1gsfz1k16xaa3h, mao = FRASES.f283ibiw7kr;
+    document.getElementById('especime').innerHTML = `
+      <div class="espec"><span>Display · larg. 78</span><p style="font-size:var(--t-display);line-height:.93;font-weight:820;font-variation-settings:'wdth' 78;letter-spacing:-.025em;color:var(--frase)">${comAspas(curta.texto)}</p></div>
+      <div class="espec"><span>Título · larg. 84</span><p style="font-size:var(--t-1);line-height:1.02;font-weight:720;font-variation-settings:'wdth' 84;color:var(--frase)">${comAspas(longa.texto)}</p></div>
+      <div class="espec"><span>Corpo · 17 px</span><p style="max-width:38rem">${esc(longa.autor)}, ${esc(autor(longa.autor).papel)}. ${esc(longa.fonte)}. Quem pesquisar a frase e o autor deve encontrar o mesmo: cada passagem foi conferida na obra.</p></div>
+      <div class="espec"><span>Rótulo · larg. 125</span><p class="rotulo">${esc(longa.categoria)} · ${esc(curta.fonte)}</p></div>
+      <div class="espec"><span>Acentos</span><p style="font-size:var(--t-2);font-weight:600">ç ã õ á é í ó ú â ê ô à ü · Ç Ã Õ É Ê · “ ” ‘ ’ « » – … · 0123456789</p></div>
+      <div class="espec"><span>Grego</span><p lang="grc" style="font:italic 400 var(--t-2)/1.4 var(--original)">${esc(grego.original)}</p></div>
+      <div class="espec"><span>Russo</span><p lang="ru" style="font:italic 400 var(--t-2)/1.4 var(--original)">${esc(russo.original)}</p></div>
+      <div class="espec"><span>Manuscrita</span><p style="font:500 1.6rem/1.4 var(--mao)">${esc(mao.texto)}</p></div>`;
+
+    Proto.iniciar();
+  })();
+</script>
+</body>
+</html>

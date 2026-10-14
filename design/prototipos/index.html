@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direções visuais · MeMotiva</title>
+<style>
+  /* Página de comparação dos protótipos (fora do site). Neutra de propósito, para não puxar para nenhuma direção. */
+  :root { --fundo: #f3f2ee; --tinta: #1f1d1a; --apoio: #5d5952; --fio: #d8d5cd; --link: #34497a; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --fundo: #141413; --tinta: #ecebe7; --apoio: #a9a59d; --fio: #35332f; --link: #a8b8e2; color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fundo); color: var(--tinta); font: 400 16px/1.55 system-ui, -apple-system, 'Segoe UI', sans-serif; padding: 32px 20px 64px; }
+  .pagina { max-width: 1320px; margin: 0 auto; }
+  h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .lede { color: var(--apoio); max-width: 62ch; margin: 0 0 32px; }
+  .direcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 28px; }
+  .direcao { border-top: 2px solid var(--tinta); padding-top: 14px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+  .direcao h2 { margin: 0; font-size: 1.35rem; }
+  .direcao p { margin: 0; }
+  .direcao .apoio { color: var(--apoio); font-size: 0.95rem; }
+  .tela { width: 390px; max-width: 100%; height: 720px; border: 1px solid var(--fio); background: #fff; }
+  a { color: var(--link); }
+  ul { margin: 0; padding-left: 1.1em; }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <h1>MeMotiva · três direções visuais</h1>
+  <p class="lede">Etapa 1 do redesign. Cada protótipo mostra a abertura da home, os cartões de frase, a frase ampliada, a paleta com contraste medido e a tipografia com frases reais do acervo. Para ver no tamanho do celular, as janelas abaixo têm 390 px; os links abrem a página inteira.</p>
+  <div class="direcoes">
+    <section class="direcao">
+      <h2>A · Marginália</h2>
+      <p>Uma biblioteca impressa: a frase é a página, e a fonte aparece como nota de leitor.</p>
+      <p class="apoio">Literata + Ysabeau Office + Playwrite BR · Linen, Espresso, Deep Purple; o laranja só marca.</p>
+      <p><a href="a-marginalia.html">Abrir o protótipo A</a></p>
+      <iframe class="tela" src="a-marginalia.html?limpo=1" title="Protótipo A no tamanho de celular" loading="lazy"></iframe>
+    </section>
+    <section class="direcao">
+      <h2>B · Florada</h2>
+      <p>Um cartaz vivo: laranja como massa, roxo como tinta e a frase em escala de pôster.</p>
+      <p class="apoio">Archivo (com larguras) + Noto Sans nos originais + Caveat · Cotton, areia, Burnt Orange, Deep Purple.</p>
+      <p><a href="b-florada.html">Abrir o protótipo B</a></p>
+      <iframe class="tela" src="b-florada.html?limpo=1" title="Protótipo B no tamanho de celular" loading="lazy"></iframe>
+    </section>
+    <section class="direcao">
+      <h2>C · Galeria</h2>
+      <p>Retratos em escala de museu; a frase é o texto de parede, e a obra, a legenda.</p>
+      <p class="apoio">Noto Serif Display + Hanken Grotesk + Caveat · Linen, Black Hole, Organic; Apricot só no ponto da etiqueta.</p>
+      <p><a href="c-galeria.html">Abrir o protótipo C</a></p>
+      <iframe class="tela" src="c-galeria.html?limpo=1" title="Protótipo C no tamanho de celular" loading="lazy"></iframe>
+    </section>
+  </div>
+</div>
+</body>
+</html>
