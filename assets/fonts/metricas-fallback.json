@@ -1,0 +1,37 @@
+[
+  {
+    "nome": "Literata Fallback",
+    "locais": [
+      "Times New Roman",
+      "Liberation Serif"
+    ],
+    "sizeAdjust": "117.83%",
+    "ascent": "99.89%",
+    "descent": "26.14%",
+    "lineGap": "0.00%"
+  },
+  {
+    "nome": "Ysabeau Office Fallback",
+    "locais": [
+      "Arial",
+      "Liberation Sans",
+      "Helvetica"
+    ],
+    "sizeAdjust": "92.85%",
+    "ascent": "113.52%",
+    "descent": "31.13%",
+    "lineGap": "0.00%"
+  },
+  {
+    "nome": "Caveat Fallback",
+    "locais": [
+      "Arial",
+      "Liberation Sans",
+      "Helvetica"
+    ],
+    "sizeAdjust": "74.59%",
+    "ascent": "128.70%",
+    "descent": "40.22%",
+    "lineGap": "0.00%"
+  }
+]
