@@ -18,8 +18,17 @@
       (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]
     );
   // Aspas tipográficas; a de abertura fica numa caixa própria para "pendurar" na margem.
+  // Tipografia da linha, só na exibição (o texto do acervo não muda): palavra de uma letra e número
+  // não ficam sozinhos no fim da linha ("se a / alma", "1.230 / obras", "capítulo / 1").
+  const amarrar = (html) =>
+    String(html)
+      .replace(/(?<=^|[\s(“"])(\p{L})\s(?=\S)/gu, '$1\u00A0')
+      .replace(/(\d)\s(?=\p{L})/gu, '$1\u00A0')
+      .replace(/(\p{L})\s(?=\d)/gu, '$1\u00A0');
+  // Datas entre parênteses ("(1920–1977)") não se partem no traço.
+  const semQuebrarDatas = (html) => String(html).replace(/\((c\.\s)?\d[^()]*\)/g, '<span class="sem-quebra">$&</span>');
   const comAspas = (texto) =>
-    `<span class="aspa-abre" aria-hidden="true">“</span>${esc(texto)}<span aria-hidden="true">”</span>`;
+    `<span class="aspa-abre" aria-hidden="true">“</span>${amarrar(esc(texto))}<span aria-hidden="true">”</span>`;
   // Tamanho da frase conforme o comprimento (mesma ideia de quoteFontSize, em app/13), com a escala de cada direção.
   function tamanhoFrase(texto, escala) {
     const n = texto.length;
@@ -80,6 +89,14 @@
       .replace(/[\s.]+$/, '')
       .trim();
     if (/^unknown\b/i.test(quem) || /não informado/.test(quem)) quem = 'autor desconhecido';
+    // os nomes vêm do Commons, em inglês: só as fórmulas mais comuns passam para o português
+    quem = quem
+      .replace(/^formerly attributed to\s+/i, 'antes atribuído a ')
+      .replace(/^attributed to\s+/i, 'atribuído a ')
+      .replace(/^copy of\s+/i, 'cópia de ')
+      .replace(/^after\s+/i, 'segundo ')
+      .replace(/^anonymous$/i, 'anônimo')
+      .replace(/^photographer not identified$/i, 'fotógrafo não identificado');
     const licenca = /public domain/i.test(a.foto.licenca) ? 'domínio público' : a.foto.licenca;
     return `Imagem: ${quem} · ${licenca} · Wikimedia Commons`;
   }
@@ -279,6 +296,8 @@
     A,
     FRASES,
     esc,
+    amarrar,
+    semQuebrarDatas,
     comAspas,
     tamanhoFrase,
     linguaDoOriginal,

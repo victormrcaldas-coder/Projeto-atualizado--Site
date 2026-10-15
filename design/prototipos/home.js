@@ -5,19 +5,24 @@
    Depende de comum.js (window.Proto) e sistema.js (window.Sistema). */
 (function () {
   'use strict';
-  const { A, FRASES, esc, comAspas, autor, imagem, credito, linguaDoOriginal } = window.Proto;
+  const { A, FRASES, esc, amarrar, semQuebrarDatas, comAspas, autor, imagem, credito, linguaDoOriginal } =
+    window.Proto;
   const { comprimento, quadro, ehDitado } = window.Sistema;
   const H = A.home;
   const $ = (id) => document.getElementById(id);
   const num = (n) => n.toLocaleString('pt-BR');
-  const plural = (n, um, varios) => `${num(n)} ${n === 1 ? um : varios}`;
+  const plural = (n, um, varios) => `${num(n)} ${n === 1 ? um : varios}`;
+  const texto = (s) => amarrar(esc(s)); // texto de interface ou do acervo, escapado e sem palavra solta no fim da linha
+  const papel = (s) => semQuebrarDatas(texto(s));
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const conferida = (f) => (f.status === 'A' ? '<span class="conferida">fonte conferida</span>' : '');
   const ICONE = {
-    pausa: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" rx="0.6"/><rect x="13.9" y="5" width="3.6" height="14" rx="0.6"/></svg>',
-    tocar: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6a.6.6 0 0 0 .9.5l10.6-6.8a.6.6 0 0 0 0-1L8.9 4.7a.6.6 0 0 0-.9.5Z"/></svg>',
-    mais: '<svg class="historia-sinal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
-    ouvir: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5H4Z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.6 6a8.6 8.6 0 0 1 0 12"/></svg>'
+    pausa:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" rx="0.6"/><rect x="13.9" y="5" width="3.6" height="14" rx="0.6"/></svg>',
+    tocar:
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6a.6.6 0 0 0 .9.5l10.6-6.8a.6.6 0 0 0 0-1L8.9 4.7a.6.6 0 0 0-.9.5Z"/></svg>',
+    ouvir:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5H4Z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.6 6a8.6 8.6 0 0 1 0 12"/></svg>'
   };
 
   /* ---------- A. abertura: a frase de hoje ---------- */
@@ -34,19 +39,22 @@
       <h1 class="nome-autor nome-condensado"><a href="#autores">${esc(ah.nome)}</a></h1>
       <p class="quote-hero-text"${comprimento(hoje.texto)}>${comAspas(hoje.texto)}</p>
       <dl class="quote-label">
-        <dt>Obra</dt><dd><span class="obra">${esc(hoje.fonte)}</span>${conferida(hoje)}</dd>
-        <dt>Autor</dt><dd>${esc(ah.papel)}</dd>
+        <dt>Obra</dt><dd><span class="obra">${texto(hoje.fonte)}</span>${conferida(hoje)}</dd>
+        <dt>Autor</dt><dd>${papel(ah.papel)}</dd>
         ${hoje.original ? `<dt>Original</dt><dd><p class="quote-original"${lingua ? ` lang="${lingua}"` : ''}>${esc(hoje.original)}</p></dd>` : ''}
       </dl>
     </div>`;
-  $('faixa').innerHTML = `<b>Fonte</b><span class="obra">${esc(hoje.fonte)}</span>${conferida(hoje)}<button class="btn-text" type="button" data-abrir="${esc(hoje.qid)}">Abrir a frase</button>`;
+  $('faixa').innerHTML = `<b>Fonte</b><span class="obra">${texto(hoje.fonte)}</span>${conferida(hoje)}<button class="btn-text" type="button" data-abrir="${esc(hoje.qid)}">Abrir a frase</button>`;
 
   /* ---------- C. explorar: os números do acervo e os temas ---------- */
   const c = H.contagens;
-  $('t-explorar').innerHTML = `<b>${num(c.frases)}</b> frases de <b>${num(c.autores)}</b> autores, em <b>${num(c.temas)}</b> temas.`;
-  $('acervoNota').textContent = `${num(c.verificadas)} com a fonte conferida e ${num(c.obras)} obras catalogadas.`;
+  $('t-explorar').innerHTML = `<b>${num(c.frases)}</b> frases de <b>${num(c.autores)}</b> autores, em <b>${num(c.temas)}</b> temas.`;
+  $('acervoNota').innerHTML = texto(`${num(c.verificadas)} com a fonte conferida e ${num(c.obras)} obras catalogadas.`);
   const temas = [...H.temas].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR'));
-  $('indiceTemas').innerHTML = temas
+  const indice = $('indiceTemas');
+  // duas colunas de leitura (de cima para baixo), com as linhas alinhadas entre as colunas
+  indice.style.setProperty('--linhas', Math.ceil(temas.length / 2));
+  indice.innerHTML = temas
     .map(
       (t) => `<li><a href="#explorar" data-tema="${esc(t.id)}"><span class="tema-nome">${esc(t.nome)}</span>
         <span class="tema-n">${num(t.n)}<span class="sr-only"> ${t.n === 1 ? 'frase' : 'frases'}</span></span></a></li>`
@@ -76,7 +84,7 @@
       <blockquote><p class="quote-poster-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p></blockquote>
       <figcaption class="acaso-autor">
         <span class="nome-condensado">${esc(ehDitado(f) ? 'Ditado popular' : a.nome)}</span>
-        ${f.fonte ? `<cite>${esc(f.fonte)}</cite>` : ''}${conferida(f)}
+        ${f.fonte ? `<cite>${texto(f.fonte)}</cite>` : ''}${conferida(f)}
         <button class="btn-text" type="button" data-abrir="${esc(f.qid)}">Ampliar a frase</button>
       </figcaption>`;
   }
@@ -84,85 +92,6 @@
   $('outraFrase').addEventListener('click', () => {
     const outras = ACASO.filter((q) => q !== acasoAtual);
     mostrarAcaso(outras[Math.floor(Math.random() * outras.length)]);
-  });
-
-  /* ---------- D. autores: galeria ---------- */
-  // ordem pensada para alternar retrato e versão tipográfica; tamanhos em ritmo, não em grade
-  const ORDEM = [
-    'Machado de Assis',
-    'Clarice Lispector',
-    'Virginia Woolf',
-    'Frida Kahlo',
-    'Cora Coralina',
-    'Fiódor Dostoiévski',
-    'Maya Angelou',
-    'Guimarães Rosa',
-    'Sêneca',
-    'Marie Curie',
-    'Carlos Drummond de Andrade',
-    'Jane Austen'
-  ];
-  const TAMANHOS = ['g', 'p', 'm', 'g', 'm', 'p'];
-  const galeria = ORDEM.map((n) => H.galeria.find((g) => g.nome === n)).filter(Boolean);
-  $('galeria').innerHTML = galeria
-    .map((g, i) => {
-      const a = autor(g.nome);
-      const tam = TAMANHOS[i % TAMANHOS.length];
-      const largura = tam === 'g' ? 340 : tam === 'm' ? 272 : 216;
-      const retrato = a.foto
-        ? `<span class="quadro">${imagem(a, { largura: largura * 2, larguras: [largura, largura * 2], tamanhos: `(min-width: 640px) ${largura}px, 50vw` })}</span>`
-        : `<span class="quadro tipografico"><span class="nome-condensado" aria-hidden="true">${esc(g.nome)}</span></span>`;
-      return `<li class="retrato tam-${tam}"><a href="#autores">
-        <span class="moldura">${retrato}</span>
-        <span class="legenda">
-          <span class="nome-condensado">${esc(g.nome)}</span>
-          <span>${esc(a.papel)}</span>
-          <span class="contagem">${plural(g.frases, 'frase', 'frases')} · ${plural(g.obras, 'obra', 'obras')}</span>
-        </span></a></li>`;
-    })
-    .join('');
-  $('todosAutores').textContent = `Ver os ${num(c.autores)} autores`;
-  $('creditosGaleria').innerHTML = galeria
-    .map((g) => autor(g.nome))
-    .filter((a) => a.foto)
-    .map((a) => `<li>${esc(a.nome)}: ${esc(credito(a).replace(/^Imagem: /, ''))}</li>`)
-    .join('');
-  const trilho = $('galeria');
-  const [setaAntes, setaDepois] = document.querySelectorAll('[data-galeria]');
-  const setas = () => {
-    setaAntes.disabled = trilho.scrollLeft <= 2;
-    setaDepois.disabled = trilho.scrollLeft >= trilho.scrollWidth - trilho.clientWidth - 2;
-  };
-  document.querySelectorAll('[data-galeria]').forEach((b) =>
-    b.addEventListener('click', () =>
-      trilho.scrollBy({ left: trilho.clientWidth * 0.8 * Number(b.dataset.galeria), behavior: reduz ? 'auto' : 'smooth' })
-    )
-  );
-  trilho.addEventListener('scroll', () => requestAnimationFrame(setas), { passive: true });
-  addEventListener('resize', setas);
-  setas();
-  // arrastar com o mouse (no toque, a rolagem do próprio navegador já arrasta)
-  let arraste = null;
-  trilho.addEventListener('pointerdown', (e) => {
-    if (e.pointerType !== 'mouse' || e.button !== 0) return;
-    arraste = { x: e.clientX, inicio: trilho.scrollLeft, moveu: false };
-  });
-  addEventListener('pointermove', (e) => {
-    if (!arraste) return;
-    const dx = e.clientX - arraste.x;
-    if (Math.abs(dx) > 5) arraste.moveu = true;
-    if (arraste.moveu) {
-      trilho.scrollLeft = arraste.inicio - dx;
-      trilho.classList.add('arrastando');
-    }
-  });
-  addEventListener('pointerup', () => {
-    if (!arraste) return;
-    const moveu = arraste.moveu;
-    arraste = null;
-    trilho.classList.remove('arrastando');
-    // depois de arrastar, o clique que vem junto não abre o autor
-    if (moveu) trilho.addEventListener('click', (e) => e.preventDefault(), { capture: true, once: true });
   });
 
   /* ---------- E. descubra: um autor por vez ---------- */
@@ -184,16 +113,18 @@
     slide.innerHTML = `
       <div class="descubra-cabeca"><h2 class="eyebrow rotulo" id="t-descubra">Descubra</h2><span class="eyebrow">${n + 1} de ${D.length}</span></div>
       <h3 class="descubra-nome nome-condensado">${esc(d.nome)}</h3>
-      <p class="descubra-papel">${esc(a.papel)}</p>
-      <p class="descubra-resumo">${esc(d.resumo)}</p>
+      <p class="descubra-papel">${papel(a.papel)}</p>
+      <p class="descubra-resumo">${texto(d.resumo)}</p>
       ${
         f
           ? `<figure class="descubra-frase"><blockquote><p class="quote-text"${comprimento(f.texto)}>${comAspas(f.texto)}</p></blockquote>
-              <figcaption><cite>${esc(f.fonte)}</cite>${conferida(f)}</figcaption></figure>`
-          : ''
+              <figcaption><cite>${texto(f.fonte)}</cite>${conferida(f)}</figcaption></figure>`
+          : d.historia
+            ? `<p class="descubra-historia"><span class="eyebrow">História</span> ${texto(d.historia.titulo)}</p>`
+            : ''
       }
       <div class="secao-acoes">
-        ${d.historia ? `<a class="btn btn-primary" href="#historias">Ler a história${f ? '' : `: ${esc(d.historia.titulo)}`}</a>` : ''}
+        ${d.historia ? '<a class="btn-text" href="#historias">Ler a história</a>' : ''}
         <a class="btn-text" href="#autores">Conhecer ${esc(d.nome)}</a>
       </div>`;
     retratoD.innerHTML = a.foto
@@ -234,15 +165,17 @@
     botaoPausa.setAttribute('aria-label', parado ? 'Retomar a troca automática' : 'Pausar a troca automática');
   }
   progresso.addEventListener('animationend', () => irPara(atual + 1, false));
-  document.querySelectorAll('[data-descubra]').forEach((b) =>
-    b.addEventListener('click', () => irPara(atual + Number(b.dataset.descubra), true))
-  );
+  document
+    .querySelectorAll('[data-descubra]')
+    .forEach((b) => b.addEventListener('click', () => irPara(atual + Number(b.dataset.descubra), true)));
   botaoPausa.addEventListener('click', () => pausa('pessoa', !motivos.has('pessoa')));
   secaoD.addEventListener('pointerenter', (e) => e.pointerType === 'mouse' && pausa('mouse', true));
   secaoD.addEventListener('pointerleave', (e) => e.pointerType === 'mouse' && pausa('mouse', false));
   secaoD.addEventListener('focusin', () => pausa('foco', true));
   secaoD.addEventListener('focusout', (e) => !secaoD.contains(e.relatedTarget) && pausa('foco', false));
-  secaoD.addEventListener('touchstart', (e) => !e.target.closest('#descubraPausa') && pausa('pessoa', true), { passive: true });
+  secaoD.addEventListener('touchstart', (e) => !e.target.closest('#descubraPausa') && pausa('pessoa', true), {
+    passive: true
+  });
   document.addEventListener('selectionchange', () => {
     const s = getSelection();
     pausa('leitura', !!(s && !s.isCollapsed && secaoD.contains(s.anchorNode)));
@@ -253,23 +186,106 @@
   // com movimento reduzido não há troca automática, e o botão de pausa não tem o que pausar
   if (reduz) botaoPausa.hidden = true;
 
+  /* ---------- D. autores: galeria ---------- */
+  // ordem pensada para alternar retrato e versão tipográfica; tamanhos em ritmo, não em grade
+  const ORDEM = [
+    'Machado de Assis',
+    'Clarice Lispector',
+    'Virginia Woolf',
+    'Frida Kahlo',
+    'Cora Coralina',
+    'Fiódor Dostoiévski',
+    'Maya Angelou',
+    'Guimarães Rosa',
+    'Sêneca',
+    'Marie Curie',
+    'Carlos Drummond de Andrade',
+    'Jane Austen'
+  ];
+  const TAMANHOS = ['g', 'p', 'm', 'g', 'm', 'p'];
+  const galeria = ORDEM.map((n) => H.galeria.find((g) => g.nome === n)).filter(Boolean);
+  $('galeria').innerHTML = galeria
+    .map((g, i) => {
+      const a = autor(g.nome);
+      const tam = TAMANHOS[i % TAMANHOS.length];
+      const largura = tam === 'g' ? 340 : tam === 'm' ? 272 : 216;
+      const retrato = a.foto
+        ? `<span class="quadro">${imagem(a, { largura: largura * 2, larguras: [largura, largura * 2], tamanhos: `(min-width: 640px) ${largura}px, 50vw` })}</span>`
+        : `<span class="quadro tipografico"><span class="nome-condensado" aria-hidden="true">${esc(g.nome)}</span></span>`;
+      return `<li class="retrato tam-${tam}"><a href="#autores">
+        <span class="moldura">${retrato}</span>
+        <span class="legenda">
+          <span class="nome-condensado">${esc(g.nome)}</span>
+          <span>${papel(a.papel)}</span>
+          <span class="contagem">${plural(g.frases, 'frase', 'frases')} · ${plural(g.obras, 'obra', 'obras')}</span>
+        </span></a></li>`;
+    })
+    .join('');
+  $('todosAutores').innerHTML = texto(`Ver os ${num(c.autores)} autores`);
+  $('creditosGaleria').innerHTML = galeria
+    .map((g) => autor(g.nome))
+    .filter((a) => a.foto)
+    .map((a) => `<li>${esc(a.nome)}: ${esc(credito(a).replace(/^Imagem: /, ''))}</li>`)
+    .join('');
+  const trilho = $('galeria');
+  const [setaAntes, setaDepois] = document.querySelectorAll('[data-galeria]');
+  const setas = () => {
+    setaAntes.disabled = trilho.scrollLeft <= 2;
+    setaDepois.disabled = trilho.scrollLeft >= trilho.scrollWidth - trilho.clientWidth - 2;
+  };
+  document.querySelectorAll('[data-galeria]').forEach((b) =>
+    b.addEventListener('click', () =>
+      trilho.scrollBy({
+        left: trilho.clientWidth * 0.8 * Number(b.dataset.galeria),
+        behavior: reduz ? 'auto' : 'smooth'
+      })
+    )
+  );
+  trilho.addEventListener('scroll', () => requestAnimationFrame(setas), { passive: true });
+  addEventListener('resize', setas);
+  setas();
+  // arrastar com o mouse (no toque, a rolagem do próprio navegador já arrasta)
+  let arraste = null;
+  trilho.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    arraste = { x: e.clientX, inicio: trilho.scrollLeft, moveu: false };
+  });
+  addEventListener('pointermove', (e) => {
+    if (!arraste) return;
+    const dx = e.clientX - arraste.x;
+    if (Math.abs(dx) > 5) arraste.moveu = true;
+    if (arraste.moveu) {
+      trilho.scrollLeft = arraste.inicio - dx;
+      trilho.classList.add('arrastando');
+    }
+  });
+  addEventListener('pointerup', () => {
+    if (!arraste) return;
+    const moveu = arraste.moveu;
+    arraste = null;
+    trilho.classList.remove('arrastando');
+    // depois de arrastar, o clique que vem junto não abre o autor
+    if (moveu) trilho.addEventListener('click', (e) => e.preventDefault(), { capture: true, once: true });
+  });
+
   /* ---------- F. histórias: uma aberta por vez ---------- */
-  $('todasHistorias').textContent = `Ver as ${num(c.historias)} histórias`;
+  $('todasHistorias').innerHTML = texto(`Ver as ${num(c.historias)} histórias`);
   $('historiasLista').innerHTML = H.historias
     .map((h, i) => {
       const a = autor(h.autor);
       const aberta = i === 0;
       return `<li class="historia">
         <h3><button class="historia-botao" type="button" id="hb-${esc(h.id)}" aria-expanded="${aberta}" aria-controls="h-${esc(h.id)}">
-          <span class="historia-titulo">${esc(h.titulo)}</span>
-          <span class="historia-quem">${esc(h.autor)}</span>${ICONE.mais}
+          <span class="historia-miniatura quadro" aria-hidden="true">${a.foto ? imagem(a, { largura: 120, larguras: [60, 120], tamanhos: '60px' }).replace(/alt="[^"]*"/, 'alt=""') : ''}</span>
+          <span class="historia-titulo">${texto(h.titulo)}</span>
+          <span class="historia-quem nome-condensado">${esc(h.autor)}</span>
         </button></h3>
         <div class="historia-corpo" id="h-${esc(h.id)}" role="region" aria-labelledby="hb-${esc(h.id)}"${aberta ? '' : ' hidden'}>
           <div class="quadro">${a.foto ? imagem(a, { largura: 800, larguras: [420, 800], tamanhos: '(min-width: 768px) 416px, 100vw' }) : ''}</div>
           <div class="historia-texto">
             ${h.tema ? `<p class="eyebrow">${esc(h.tema)}</p>` : ''}
             <p class="historia-nome nome-condensado">${esc(h.autor)}</p>
-            <p class="historia-resumo">${esc(h.resumo)}</p>
+            <p class="historia-resumo">${texto(h.resumo)}</p>
             <div class="secao-acoes">
               <a class="btn btn-primary" href="#historias">Ler a história</a>
               <button class="btn-text" type="button" aria-label="Ouvir a história de ${esc(h.autor)}">${ICONE.ouvir} Ouvir</button>
@@ -296,15 +312,23 @@
     }
   });
 
+  /* ---------- H. comunidade: o convite parte da frase de hoje ---------- */
+  $('conviteFrase').innerHTML = `
+    <p class="eyebrow">Frase de hoje</p>
+    <blockquote><p class="quote-text"${comprimento(hoje.texto)}>${comAspas(hoje.texto)}</p></blockquote>
+    <figcaption><span class="nome-condensado">${esc(ah.nome)}</span></figcaption>
+    <a class="btn btn-primary" href="#comunidade">Escrever sobre esta frase</a>`;
+
   /* ---------- I. encerramento ---------- */
   const fim = FRASES.f2475ln3; // Voltaire, Cândido, capítulo 30
   $('encerramentoFrase').innerHTML = `
     <blockquote><p class="quote-poster-text"${comprimento(fim.texto)}>${comAspas(fim.texto)}</p></blockquote>
-    <figcaption class="acaso-autor"><span class="nome-condensado">${esc(fim.autor)}</span><cite>${esc(fim.fonte)}</cite>${conferida(fim)}</figcaption>`;
+    <figcaption class="acaso-autor"><span class="nome-condensado">${esc(fim.autor)}</span><cite>${texto(fim.fonte)}</cite>${conferida(fim)}</figcaption>`;
 
   /* ---------- teclado: Enter e espaço nos elementos com role="button" ---------- */
   document.addEventListener('keydown', (e) => {
-    const alvo = e.target.closest && e.target.closest('[role="button"][data-abrir],[role="button"][data-ampliar-foto]');
+    const alvo =
+      e.target.closest && e.target.closest('[role="button"][data-abrir],[role="button"][data-ampliar-foto]');
     if (alvo && (e.key === 'Enter' || e.key === ' ') && e.target === alvo) {
       e.preventDefault();
       alvo.click();

@@ -285,6 +285,7 @@
   display: none;
 }
 .bottom-nav .bn-item {
+  text-decoration: none;
   position: relative;
   display: grid;
   justify-items: center;

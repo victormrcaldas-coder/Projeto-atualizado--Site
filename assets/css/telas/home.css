@@ -112,7 +112,7 @@
 }
 .abertura .prancha::before {
   left: auto;
-  right: -12%;
+  right: -8%;
   top: -8%;
   width: 64%;
 }
@@ -182,12 +182,16 @@
   margin-top: var(--space-2);
 }
 /* índice dos temas, como sumário de revista: nome e número de frases */
+/* duas colunas lidas de cima para baixo, com as linhas alinhadas entre elas (--linhas vem do JS) */
 .indice-temas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--linhas, 11), auto);
+  grid-auto-flow: column;
+  column-gap: var(--space-5);
   margin: 0;
   padding: 0;
   list-style: none;
-  columns: 2;
-  column-gap: var(--space-5);
   border-top: var(--hairline) solid var(--border-strong);
 }
 @media (min-width: 640px) {
@@ -198,20 +202,26 @@
 /* abaixo de 380 px, duas colunas não cabem "Autoconhecimento" inteiro: uma coluna só */
 @media (max-width: 379px) {
   .indice-temas {
-    columns: 1;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-flow: row;
   }
 }
 .indice-temas li {
-  break-inside: avoid;
+  display: flex;
   border-bottom: var(--hairline) solid var(--border);
 }
+/* no celular, o número vem logo depois do nome, na mesma linha quando cabe */
 .indice-temas a {
-  display: grid;
-  gap: 2px;
+  display: block;
+  width: 100%;
   min-height: var(--tap);
   padding-block: var(--space-3);
   color: var(--text);
   text-decoration: none;
+}
+.indice-temas a .tema-n {
+  margin-left: 0.4em;
 }
 /* do tablet em diante, o número vai à direita do nome, como num sumário */
 @media (min-width: 640px) {
@@ -220,6 +230,9 @@
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-3);
+  }
+  .indice-temas a .tema-n {
+    margin-left: 0;
   }
 }
 .tema-nome {
@@ -275,7 +288,7 @@
   margin: 0;
   /* reserva a altura de três linhas: trocar a frase não empurra a página */
   min-height: calc(var(--quote-poster) * 1.24 * 3);
-  align-content: start;
+  align-content: center;
 }
 .acaso-autor {
   display: grid;
@@ -382,6 +395,7 @@
 .retrato .legenda .nome-condensado {
   font-size: 1.5rem;
   line-height: 1.05;
+  color: var(--brand);
 }
 .retrato .legenda span {
   font-size: var(--fs-meta);
@@ -438,18 +452,25 @@
   font-variant-numeric: tabular-nums;
 }
 .descubra-nome {
-  font-size: var(--fs-display);
-  line-height: 0.95;
+  font-size: var(--fs-h1);
+  line-height: 1;
 }
 .descubra-papel {
   font-size: var(--fs-small);
   color: var(--text-meta);
 }
 .descubra-resumo {
-  max-width: 42ch;
+  max-width: 46ch;
   font-family: var(--font-serif);
-  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
-  line-height: 1.55;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+.descubra-historia {
+  display: grid;
+  gap: var(--space-1);
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  line-height: 1.15;
 }
 .descubra-frase {
   display: grid;
@@ -461,7 +482,12 @@
   border-top: var(--hairline) solid var(--border);
 }
 .descubra-frase .quote-text {
-  max-width: 32ch;
+  font-size: var(--quote-modal);
+  max-width: 24ch;
+}
+.descubra-frase .quote-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 34ch;
 }
 .descubra-frase cite {
   font-style: normal;
@@ -531,6 +557,9 @@
   transform: scaleX(0);
   transform-origin: left;
 }
+.descubra-progresso .atual {
+  background: var(--border-strong);
+}
 .descubra-progresso .lido i {
   transform: scaleX(1);
 }
@@ -571,9 +600,9 @@
 }
 .historia-botao {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: var(--space-1) var(--space-5);
+  gap: var(--space-1) var(--space-4);
   width: 100%;
   min-height: var(--tap);
   padding: var(--space-4) 0;
@@ -584,9 +613,27 @@
 }
 @media (min-width: 768px) {
   .historia-botao {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 16rem) auto;
-    align-items: baseline;
+    grid-template-columns: auto minmax(0, 1fr) minmax(0, 15rem);
+    gap: var(--space-1) var(--space-5);
   }
+}
+/* retrato pequeno de quem está na história; some quando ela está aberta (a foto grande está logo abaixo) */
+.historia-miniatura {
+  grid-row: 1 / span 2;
+  width: 3rem;
+  aspect-ratio: 4 / 5;
+}
+@media (min-width: 768px) {
+  .historia-miniatura {
+    grid-row: auto;
+  }
+}
+/* aberta, a história perde a miniatura e o título encosta na margem, alinhado com a foto grande */
+.historia-botao[aria-expanded='true'] .historia-miniatura {
+  display: none;
+}
+.historia-botao[aria-expanded='true'] .historia-titulo {
+  grid-column: 1 / span 2;
 }
 .historia-titulo {
   font-family: var(--font-title);
@@ -595,33 +642,19 @@
   color: var(--brand);
 }
 .historia-quem {
-  grid-row: 2;
-  font-size: var(--fs-small);
-  color: var(--text-meta);
+  grid-column: 2;
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.1;
+  color: var(--text-secondary);
 }
 @media (min-width: 768px) {
   .historia-quem {
-    grid-row: auto;
-  }
-}
-.historia-sinal {
-  grid-row: 1 / span 2;
-  width: 20px;
-  height: 20px;
-  color: var(--text-meta);
-  transition: transform var(--dur-2) var(--ease-out);
-}
-@media (min-width: 768px) {
-  .historia-sinal {
-    grid-row: auto;
-    align-self: center;
+    grid-column: auto;
   }
 }
 .historia-botao[aria-expanded='true'] .historia-quem {
   visibility: hidden;
-}
-.historia-botao[aria-expanded='true'] .historia-sinal {
-  transform: rotate(45deg);
 }
 .historia-botao:hover .historia-titulo {
   text-decoration: underline;
@@ -673,10 +706,33 @@
 /* =========================================================
    H. COMUNIDADE — convite para escrever (sala café)
    ========================================================= */
-.convite .wrap {
+.convite-grade {
+  display: grid;
+  gap: var(--space-7);
+}
+@media (min-width: 1024px) {
+  .convite-grade {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-8);
+    align-items: end;
+  }
+}
+.convite-chamada,
+.convite-frase {
   display: grid;
   gap: var(--space-4);
   justify-items: start;
+}
+.convite-frase {
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--border);
+}
+.convite-frase .eyebrow {
+  margin: 0;
+}
+.convite-frase .nome-condensado {
+  font-size: 1.375rem;
+  font-weight: var(--weight-regular);
 }
 .convite h2 {
   font-size: var(--fs-h1);

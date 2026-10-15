@@ -127,6 +127,10 @@ hr {
 [hidden] {
   display: none !important;
 }
+/* datas e nomes que não devem se partir na linha, como "(1920–1977)" */
+.sem-quebra {
+  white-space: nowrap;
+}
 .sr-only {
   position: absolute;
   width: 1px;

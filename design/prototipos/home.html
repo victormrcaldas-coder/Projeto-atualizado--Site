@@ -90,6 +90,22 @@
     </div>
   </section>
 
+  <!-- E. descubra: um autor por vez -->
+  <section class="faixa-roxa home-secao descubra" id="descubra" aria-labelledby="t-descubra" aria-roledescription="carrossel">
+    <div class="wrap descubra-palco">
+      <div>
+        <div class="descubra-slide" id="descubraSlide" aria-live="off"></div>
+        <div class="descubra-controles">
+          <button class="btn-icon" type="button" data-descubra="-1" aria-label="Autor anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg></button>
+          <button class="btn-icon" type="button" id="descubraPausa" aria-label="Pausar a troca automática"></button>
+          <button class="btn-icon" type="button" data-descubra="1" aria-label="Próximo autor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg></button>
+          <div class="descubra-progresso" id="descubraProgresso" aria-hidden="true"></div>
+        </div>
+      </div>
+      <figure class="descubra-retrato" id="descubraRetrato"></figure>
+    </div>
+  </section>
+
   <!-- D. autores: galeria -->
   <section class="home-secao autores" id="autores" aria-labelledby="t-autores">
     <div class="wrap secao-cabeca">
@@ -109,22 +125,6 @@
     </div>
   </section>
 
-  <!-- E. descubra: um autor por vez -->
-  <section class="faixa-roxa home-secao descubra" id="descubra" aria-labelledby="t-descubra" aria-roledescription="carrossel">
-    <div class="wrap descubra-palco">
-      <div>
-        <div class="descubra-slide" id="descubraSlide" aria-live="off"></div>
-        <div class="descubra-controles">
-          <button class="btn-icon" type="button" data-descubra="-1" aria-label="Autor anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg></button>
-          <button class="btn-icon" type="button" id="descubraPausa" aria-label="Pausar a troca automática"></button>
-          <button class="btn-icon" type="button" data-descubra="1" aria-label="Próximo autor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg></button>
-          <div class="descubra-progresso" id="descubraProgresso" aria-hidden="true"></div>
-        </div>
-      </div>
-      <figure class="descubra-retrato" id="descubraRetrato"></figure>
-    </div>
-  </section>
-
   <!-- F. histórias -->
   <section class="wrap home-secao historias" id="historias" aria-labelledby="t-historias">
     <div class="secao-cabeca">
@@ -139,14 +139,14 @@
 
   <!-- H. comunidade: convite (sem relatos inventados) -->
   <section class="faixa-cafe home-secao convite" id="comunidade" aria-labelledby="t-convite">
-    <div class="wrap">
-      <p class="eyebrow rotulo">Comunidade</p>
-      <h2 id="t-convite">Uma frase te acompanhou hoje?</h2>
-      <p class="convite-texto">Escreva o que ela lembrou a você. Fica guardado só para você, ou vai para a comunidade, se quiser.</p>
-      <div class="secao-acoes">
-        <a class="btn btn-primary" href="#comunidade">Escrever</a>
+    <div class="wrap convite-grade">
+      <div class="convite-chamada">
+        <p class="eyebrow rotulo">Comunidade</p>
+        <h2 id="t-convite">Uma frase te acompanhou hoje?</h2>
+        <p class="convite-texto">Escreva o que ela lembrou a você. Fica guardado só para você, ou vai para a comunidade, se quiser.</p>
         <a class="btn-text" href="#comunidade">Ver a comunidade</a>
       </div>
+      <figure class="convite-frase" id="conviteFrase"></figure>
     </div>
   </section>
 
