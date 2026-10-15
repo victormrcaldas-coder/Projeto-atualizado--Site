@@ -36,7 +36,12 @@
   --on-cafe-meta: #d9cdb4; /* 10,8 : 1 */
   --ochre-surface: #e5d17a; /* Muted Ochre: a faixa amarela (temas, destaques curtos) */
   --on-ochre: #2b1811; /* 11,1 : 1 */
+  --on-ochre-meta: #5c4a3d; /* 5,6 : 1 */
   --mass-on-page: transparent; /* na frase ampliada não há massa de cor */
+  /* acento de texto ("fonte conferida") dentro de cada sala de cor */
+  --on-brand-accent: #d9cdb4;
+  --on-cafe-accent: #d9cdb4;
+  --on-ochre-accent: #3f422e; /* Organic sobre o ocre: 6,8 : 1 */
 
   /* ---- cor: linhas ---- */
   --border: rgba(43, 24, 17, 0.16);
@@ -103,6 +108,9 @@
   --quote-hero: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
   --quote-hero-long: clamp(1.625rem, 1.3rem + 1.4vw, 2.5rem);
   --quote-original: 1.0625rem; /* o original vem em itálico menor, na etiqueta */
+  /* a frase sozinha, como cartaz: a frase ao acaso e o encerramento da home */
+  --quote-poster: clamp(2.125rem, 1.2rem + 3.6vw, 4.5rem);
+  --quote-poster-long: clamp(1.625rem, 1.1rem + 2vw, 3rem);
 
   /* ---- espaço ---- */
   --space-1: 4px;
@@ -174,7 +182,11 @@ html[data-theme='dark'] {
   --on-cafe-meta: #d9cdb4;
   --ochre-surface: #2e2818; /* ocre apagado (derivado) */
   --on-ochre: #f5e6c5; /* 11,9 : 1 */
+  --on-ochre-meta: #a79f92; /* 5,6 : 1 */
   --mass-on-page: transparent;
+  --on-brand-accent: #ff6d1f; /* Tangerine só em texto pequeno, como no resto da sala escura */
+  --on-cafe-accent: #ff6d1f;
+  --on-ochre-accent: #ff6d1f;
 
   --border: rgba(245, 230, 197, 0.16);
   --border-strong: rgba(245, 230, 197, 0.55);

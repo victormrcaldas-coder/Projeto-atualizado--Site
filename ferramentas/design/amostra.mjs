@@ -2,9 +2,12 @@
 // Abre o site, espera a cadeia de fases e copia, por qid, os dados exatos de cada frase escolhida:
 // texto, fonte, original, categoria, status, autor, papel e foto curada (arquivo e enquadramento).
 // Depois lê na API do Commons o autor e a licença de cada foto, para o crédito.
+// Para a home (Etapa 4), também copia as contagens ao vivo, os 22 temas com o número de frases
+// de cada um e os autores, perfis e histórias pedidos em HOME.
 // Nada é digitado à mão: se uma frase mudar no acervo, basta rodar de novo.
 //
-// Uso: node ferramentas/design/amostra.mjs   -> design/prototipos/amostra.js
+// Uso: NODE_USE_ENV_PROXY=1 node ferramentas/design/amostra.mjs   -> design/prototipos/amostra.js
+// (a variável faz o fetch do Node passar pelo proxy do ambiente, quando houver um)
 import fs from 'fs';
 import path from 'path';
 import { chromium, servir, soLocal, esperarCuradoria, RAIZ } from '../lib/navegador.mjs';
@@ -25,8 +28,50 @@ const QIDS = [
   'f28asxuhfb', // Guimarães Rosa · frase longa (153 caracteres), sem foto válida
   'f28tdbfmcs', // Clarice Lispector · curta, sem foto válida
   'f2652b1y5', // José Saramago · sem foto curada
-  'q4nnaf81ajlbj5' // Ditado Popular · status X, sem autor nem fonte
+  'q4nnaf81ajlbj5', // Ditado Popular · status X, sem autor nem fonte
+  // Etapa 4 (home): frase ao acaso, Descubra e encerramento
+  'q46feecn4mlr7', // Sêneca · Sobre a Brevidade da Vida
+  'f282h8ph4xa', // Anne Frank · Diário
+  'q1buuxco78ji9v', // Maya Angelou · Still I Rise
+  'f28335mu5ay', // Marielle Franco · discurso na Câmara do Rio
+  'f74104v6eed', // Miguel de Cervantes · Dom Quixote
+  'f282w2tf2nh', // Simón Bolívar · carta a Flores (o "arei no mar" do resumo do perfil)
+  'f282bhxe3sa', // Barbara McClintock · registrada por Evelyn Fox Keller
+  'qozm3uwj8b1zj', // Henry David Thoreau · Walden
+  'f1284wafs4', // Chien-Shiung Wu · Newsweek, 1963
+  'q18hdvqk3wrq1q', // Baruch Spinoza · Tratado Político
+  'f2475ln3' // Voltaire · Cândido, capítulo 30 (encerramento da home)
 ];
+
+// Etapa 4 (home): autores e histórias pedidos pelo nome, com os dados de cada um tirados do site.
+const HOME = {
+  // galeria de autores (seção D): com foto curada e sem foto (versão tipográfica)
+  galeria: [
+    'Machado de Assis',
+    'Virginia Woolf',
+    'Clarice Lispector',
+    'Frida Kahlo',
+    'Fiódor Dostoiévski',
+    'Cora Coralina',
+    'Guimarães Rosa',
+    'Maya Angelou',
+    'Sêneca',
+    'Marie Curie',
+    'Carlos Drummond de Andrade',
+    'Jane Austen'
+  ],
+  // Descubra (seção E): resumo do perfil e uma frase (ou, sem frase, a história)
+  descubra: [
+    ['Simón Bolívar', 'f282w2tf2nh'],
+    ['Nise da Silveira', ''],
+    ['Barbara McClintock', 'f282bhxe3sa'],
+    ['Henry David Thoreau', 'qozm3uwj8b1zj'],
+    ['Chien-Shiung Wu', 'f1284wafs4'],
+    ['Baruch Spinoza', 'q18hdvqk3wrq1q']
+  ],
+  // Histórias (seção F), por id de STORIES
+  historias: ['vangogh', 'katherinej', 'newton', 'hipatia']
+};
 const UA =
   'MeMotiva-redesign/1.0 (prototipos; https://github.com/victormrcaldas-coder/Projeto-atualizado--Site)';
 const SAIDA = path.join(RAIZ, 'design', 'prototipos', 'amostra.js');
@@ -37,34 +82,17 @@ const p = await b.newPage();
 await soLocal(p);
 await p.goto(site.url);
 await esperarCuradoria(p, 3000);
-const dados = await p.evaluate((qids) => {
-  const frases = [];
-  const autores = {};
-  const faltando = [];
-  for (const qid of qids) {
-    const i = QUOTE_POR_QID[qid];
-    const q = i === undefined ? null : QUOTES[i];
-    if (!q) {
-      faltando.push(qid);
-      continue;
-    }
-    const cat = catById(q.cat);
-    frases.push({
-      qid: q.qid,
-      texto: q.text,
-      autor: q.author,
-      fonte: q.src || '',
-      original: q.orig || '',
-      categoria: cat ? cat.name : q.cat,
-      status: q.st,
-      obra: q.obra || '',
-      notaAutoria: q.notaAutoria || ''
-    });
-    if (!autores[q.author]) {
-      const info = photoInfo(q.author);
+const dados = await p.evaluate(
+  ({ qids, home }) => {
+    const frases = [];
+    const autores = {};
+    const faltando = [];
+    const infoAutor = (nome) => {
+      if (autores[nome]) return;
+      const info = photoInfo(nome);
       const arquivo = info && info.f && !PHOTO_BLOCKLIST.has(info.f) ? info.f : '';
-      autores[q.author] = {
-        papel: (typeof papelDe === 'function' ? papelDe(q.author) : PAPEIS[q.author]) || '',
+      autores[nome] = {
+        papel: (typeof papelDe === 'function' ? papelDe(nome) : PAPEIS[nome]) || '',
         foto: arquivo
           ? {
               arquivo,
@@ -73,13 +101,89 @@ const dados = await p.evaluate((qids) => {
             }
           : null
       };
+    };
+    for (const qid of qids) {
+      const i = QUOTE_POR_QID[qid];
+      const q = i === undefined ? null : QUOTES[i];
+      if (!q) {
+        faltando.push(qid);
+        continue;
+      }
+      const cat = catById(q.cat);
+      frases.push({
+        qid: q.qid,
+        texto: q.text,
+        autor: q.author,
+        fonte: q.src || '',
+        original: q.orig || '',
+        categoria: cat ? cat.name : q.cat,
+        status: q.st,
+        obra: q.obra || '',
+        notaAutoria: q.notaAutoria || ''
+      });
+      infoAutor(q.author);
     }
-  }
-  return { frases, autores, faltando };
-}, QIDS);
+    /* ---- home: contagens ao vivo, os 22 temas e os autores, perfis e histórias pedidos ---- */
+    const contar = (nome) => {
+      const c = AUTOR_INDEX.get(canonAuthor(nome));
+      return { frases: c ? c.frases.length : 0, obras: obrasDe(canonAuthor(nome)).length };
+    };
+    const dadosHome = {
+      contagens: {
+        frases: QUOTES.length,
+        verificadas: QUOTES.filter((q) => q.st === 'A').length,
+        temas: CATEGORIES.length,
+        autores: AUTOR_INDEX.size,
+        obras: Object.keys(OBRA_POR_ID).length,
+        historias: STORIES.length
+      },
+      temas: CATEGORIES.map((c) => ({
+        id: c.id,
+        nome: c.name,
+        n: QUOTES.filter((q) => quoteMatchesCat(q, c.id)).length
+      })),
+      galeria: home.galeria.map((nome) => {
+        if (!AUTOR_INDEX.has(canonAuthor(nome))) faltando.push(nome);
+        infoAutor(canonAuthor(nome));
+        return { nome: canonAuthor(nome), ...contar(nome) };
+      }),
+      descubra: home.descubra.map(([nome, qid]) => {
+        const c = canonAuthor(nome);
+        const perfil = PERFIS_PROFUNDOS[c];
+        const ai = AUTOR_INDEX.get(c);
+        if (!perfil || !perfil.resumo || !ai) faltando.push(nome);
+        infoAutor(c);
+        return {
+          nome: c,
+          resumo: perfil ? perfil.resumo : '',
+          qid: qid || '',
+          historia: ai && ai.story ? { id: ai.story.id, titulo: ai.story.title } : null
+        };
+      }),
+      historias: home.historias.map((id) => {
+        const s = STORIES.find((x) => x.id === id);
+        if (!s) {
+          faltando.push(id);
+          return null;
+        }
+        infoAutor(canonAuthor(s.author));
+        const cat = catById(s.cat);
+        return {
+          id: s.id,
+          autor: canonAuthor(s.author),
+          titulo: s.title,
+          resumo: s.excerpt || '',
+          tema: cat ? cat.name : ''
+        };
+      })
+    };
+    return { frases, autores, faltando, home: dadosHome };
+  },
+  { qids: QIDS, home: HOME }
+);
 await b.close();
 site.fechar();
-if (dados.faltando.length) throw new Error('qid não encontrado no acervo: ' + dados.faltando.join(', '));
+if (dados.faltando.length) throw new Error('não encontrado no acervo: ' + dados.faltando.join(', '));
 
 /* ---------- créditos das fotos (API do Commons) ---------- */
 const limpa = (h) =>
@@ -151,7 +255,8 @@ const corpo = {
   commons: 'https://commons.wikimedia.org/wiki/Special:FilePath/',
   frases: dados.frases,
   autores: dados.autores,
-  fotos
+  fotos,
+  home: dados.home
 };
 fs.mkdirSync(path.dirname(SAIDA), { recursive: true });
 fs.writeFileSync(SAIDA, cabecalho + 'window.AMOSTRA = ' + JSON.stringify(corpo, null, 2) + ';\n');

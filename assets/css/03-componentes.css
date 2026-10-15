@@ -13,7 +13,8 @@
 .quote-text, /* (nova) uso genérico: autor, obra, Descubra, Histórias */
 .quote-card-text,
 .expand-text,
-.quote-hero-text /* (nova) abertura da home */ {
+.quote-hero-text, /* (nova) abertura da home */
+.quote-poster-text /* (nova) a frase sozinha, como cartaz: frase ao acaso e encerramento */ {
   margin: 0;
   font-family: var(--quote-font);
   font-weight: var(--quote-weight);
@@ -48,6 +49,14 @@
 .quote-hero-text[data-comprimento='longa'] {
   font-size: var(--quote-hero-long);
   max-width: 36ch;
+}
+.quote-poster-text {
+  font-size: var(--quote-poster);
+  max-width: 21ch;
+}
+.quote-poster-text[data-comprimento='longa'] {
+  font-size: var(--quote-poster-long);
+  max-width: 32ch;
 }
 /* aspa pendurada nos outros navegadores: a aspa de abertura vem num span próprio (nova) */
 .aspa-abre {
@@ -111,6 +120,9 @@
 }
 /* texto: só a palavra, sublinhado laranja fino */
 .btn-text /* (nova) */ {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   min-height: var(--tap);
   padding: 0;
   border: 0;
@@ -704,34 +716,44 @@ textarea.form-input {
   text-decoration-color: var(--on-brand-meta);
 }
 
-/* faixas de cor (novas): café e ocre, para dar peso a uma seção sem caixa nem sombra */
+/* salas de cor (novas): café, ocre e roxo, para dar peso a uma seção sem caixa nem sombra.
+   Dentro de uma sala, a tinta, as linhas, o foco, o botão principal e a frase passam para as cores
+   da sala: os componentes de dentro (etiqueta, botões, links, cartões) se ajustam sozinhos. */
 .faixa-cafe,
-.faixa-ocre {
+.faixa-ocre,
+.faixa-roxa {
   padding-block: var(--space-7);
+  background: var(--bg);
+  color: var(--text);
+  --brand: var(--text);
+  --text-secondary: var(--text);
+  --quote-color: var(--text);
+  --focus-ring: var(--text);
+  --pin: var(--text-meta);
+  --border: color-mix(in srgb, var(--text) 24%, transparent);
+  --border-strong: color-mix(in srgb, var(--text) 60%, transparent);
 }
 .faixa-cafe {
-  background: var(--cafe-surface);
-  color: var(--on-cafe);
-}
-.faixa-cafe :is(h2, h3, .quote-text) {
-  color: var(--on-cafe);
-}
-.faixa-cafe .eyebrow {
-  color: var(--on-cafe-meta);
-}
-.faixa-cafe .btn-coral,
-.faixa-cafe .btn-primary {
-  background: var(--on-cafe);
-  border-color: var(--on-cafe);
-  color: var(--cafe-surface);
+  --bg: var(--cafe-surface);
+  --text: var(--on-cafe);
+  --text-meta: var(--on-cafe-meta);
+  --accent-text: var(--on-cafe-accent);
+  --surface-strong: var(--on-cafe);
+  --text-on-strong: var(--cafe-surface);
 }
 .faixa-ocre {
-  background: var(--ochre-surface);
-  color: var(--on-ochre);
+  --bg: var(--ochre-surface);
+  --text: var(--on-ochre);
+  --text-meta: var(--on-ochre-meta);
+  --accent-text: var(--on-ochre-accent);
 }
-.faixa-ocre a,
-.faixa-ocre .eyebrow {
-  color: var(--on-ochre);
+.faixa-roxa {
+  --bg: var(--brand-surface);
+  --text: var(--on-brand);
+  --text-meta: var(--on-brand-meta);
+  --accent-text: var(--on-brand-accent);
+  --surface-strong: var(--on-brand);
+  --text-on-strong: var(--brand-surface);
 }
 
 /* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */

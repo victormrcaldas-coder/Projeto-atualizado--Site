@@ -42,6 +42,25 @@ const base = site.url.replace(/\/index\.html$/, '');
 const navegador = await chromium.launch({ headless: true });
 const relatorio = { etapa, quando: new Date().toISOString(), capturas: [], erros: [] };
 const overflow = (page) => page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+// Fotos fora da tela (preguiçosas, ou num trilho horizontal) só aparecem no print de página inteira
+// e no de seção se forem carregadas e decodificadas antes.
+const prepararImagens = (page) =>
+  page.evaluate(async () => {
+    const imgs = [...document.images];
+    for (const i of imgs) {
+      i.loading = 'eager';
+      i.decoding = 'sync';
+    }
+    const pronta = (i) =>
+      (i.complete
+        ? Promise.resolve()
+        : new Promise((ok) => {
+            i.addEventListener('load', ok, { once: true });
+            i.addEventListener('error', ok, { once: true });
+          })
+      ).then(() => i.decode().catch(() => {}));
+    await Promise.race([Promise.all(imgs.map(pronta)), new Promise((ok) => setTimeout(ok, 10000))]);
+  });
 
 // Contraste de cada texto visível contra o fundo real (primeiro ancestral com cor de fundo sólida).
 // Letra grande (24 px, ou 18,66 px em negrito) precisa de 3 : 1; o resto, de 4,5 : 1 (WCAG AA).
@@ -128,12 +147,15 @@ for (const pagina of paginas) {
       await page.waitForLoadState('networkidle', { timeout: 20000 }).catch(() => {});
       await page.evaluate(() => document.fonts.ready);
       await page.waitForTimeout(900); // a frase da abertura "chega" em 450 ms
+      await prepararImagens(page);
       const r = { pagina, largura: w, tema, overflow: {} };
       r.overflow.abertura = await overflow(page);
       r.contraste = await page.evaluate(auditarContraste);
       await page.screenshot({ path: nome('abertura'), type: 'jpeg', quality: 80 });
       // cabeçalho fixo não cobre os prints de seção nem aparece no meio do print inteiro
-      const solto = await page.addStyleTag({ content: '.site-header{position:relative!important}' });
+      const solto = await page.addStyleTag({
+        content: '.site-header,.bottom-nav{position:relative!important}'
+      });
       if (inteira) {
         await page.evaluate(async () => {
           for (let y = 0; y < document.body.scrollHeight; y += 600) {

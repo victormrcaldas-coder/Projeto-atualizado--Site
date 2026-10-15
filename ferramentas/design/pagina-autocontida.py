@@ -2,12 +2,14 @@
 # Artifact: CSS e scripts embutidos, fontes em data URI, fotos locais (o Artifact e o navegador automático
 # não carregam o Wikimedia). Uso:
 #   python3 ferramentas/design/pagina-autocontida.py design/prototipos/layout.html .trabalho/design/<etapa>/pagina [--artifact]
-# --artifact tira <!doctype>/<head>/<body> (o Artifact põe o próprio esqueleto). As fotos vêm de
-# .trabalho/design/01-direcao/pagina/fotos/ (baixadas no Portão 1); autor sem foto local fica com iniciais.
-import base64, json, os, re, shutil, sys, unicodedata
+# --artifact tira <!doctype>/<head>/<body> (o Artifact põe o próprio esqueleto). As fotos vêm do cache
+# .trabalho/design/fotos/ (ferramentas/design/baixar-fotos.mjs) ou da pasta do Portão 1; saem em JPEG de até
+# 900 px de largura. Autor sem foto local fica com iniciais.
+import base64, json, os, re, sys, unicodedata
+from PIL import Image
 RAIZ = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 pag, SAIDA = sys.argv[1], os.path.join(RAIZ, sys.argv[2]); artifact = '--artifact' in sys.argv
-FOTOS1 = os.path.join(RAIZ, '.trabalho/design/01-direcao/pagina/fotos')
+CACHES = [os.path.join(RAIZ, '.trabalho/design/fotos'), os.path.join(RAIZ, '.trabalho/design/01-direcao/pagina/fotos')]
 os.makedirs(SAIDA, exist_ok=True)
 ler = lambda p: open(os.path.join(RAIZ, p), encoding='utf-8').read()
 html = ler(pag)
@@ -25,15 +27,19 @@ amostra = ler('design/prototipos/amostra.js')
 dados = json.loads(amostra[amostra.index('{'):amostra.rindex('}') + 1])
 os.makedirs(os.path.join(SAIDA, 'fotos'), exist_ok=True)
 faltam = []
+usados = set(re.findall(r'<script src="(?:prototipos/)?([a-z-]+)\.js"></script>', html))
 for nome, a in dados['autores'].items():
     if not a['foto']: continue
-    f = os.path.join(FOTOS1, slug(nome) + '.jpg')
-    if os.path.exists(f): shutil.copy(f, os.path.join(SAIDA, 'fotos'))
-    else: faltam.append(nome); a['foto'] = None
+    achado = next((os.path.join(d, slug(nome) + x) for d in CACHES for x in ('.jpg', '.png') if os.path.exists(os.path.join(d, slug(nome) + x))), None)
+    if not achado: faltam.append(nome); a['foto'] = None; continue
+    destino = os.path.join(SAIDA, 'fotos', slug(nome) + '.jpg')
+    if not os.path.exists(destino) or os.path.getmtime(destino) < os.path.getmtime(achado):
+        im = Image.open(achado).convert('RGB')
+        if im.width > 900: im = im.resize((900, round(im.height * 900 / im.width)), Image.LANCZOS)
+        im.save(destino, 'JPEG', quality=82, optimize=True, progressive=True)
 novo = amostra[:amostra.index('{')] + json.dumps(dados, ensure_ascii=False) + ';\n'
-for nome in ['amostra', 'comum', 'sistema']:
+for nome in sorted(usados):
     alvo = re.search(r'<script src="(?:prototipos/)?%s\.js"></script>' % nome, html)
-    if not alvo: continue
     corpo = ('window.FOTOS_LOCAIS = true;\n' + novo) if nome == 'amostra' else ler(f'design/prototipos/{nome}.js')
     html = html.replace(alvo.group(0), '<script>\n' + corpo + '</script>')
 assert '../assets' not in html and 'src="' + 'prototipos' not in html, 'sobrou caminho'

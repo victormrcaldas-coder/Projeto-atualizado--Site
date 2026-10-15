@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home MeMotiva</title>
+<meta name="robots" content="noindex">
+<!-- Protótipo da home (Etapa 4a do redesign): a narrativa de A a I do briefing (§7), fora do site.
+     Usa os arquivos reais do sistema (assets/css, inclusive telas/home.css) e conteúdo real do acervo
+     (amostra.js, gerado por ferramentas/design/amostra.mjs). A marcação já é a que a Etapa 4b leva ao site. -->
+<link rel="preload" href="../../assets/fonts/noto-serif-display/noto-serif-display-italico-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/00-fontes.css">
+<link rel="stylesheet" href="../../assets/css/01-tokens.css">
+<link rel="stylesheet" href="../../assets/css/02-base.css">
+<link rel="stylesheet" href="../../assets/css/03-componentes.css">
+<link rel="stylesheet" href="../../assets/css/telas/navegacao.css">
+<link rel="stylesheet" href="../../assets/css/telas/home.css">
+<style>
+  /* Só o que é do protótipo: barra de aviso, janelas e a barra inferior fora do site. */
+  .proto-barra { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: center; padding: var(--space-2) var(--space-4); background: var(--surface); font-size: var(--fs-meta); color: var(--text-meta); }
+  html.limpo .proto-barra { display: none; }
+  #foto-ampliada { position: fixed; inset: 0; z-index: var(--z-modal); display: grid; place-items: center; padding: var(--space-4); background: var(--overlay); }
+  #foto-ampliada[hidden] { display: none; }
+  #foto-ampliada [data-corpo] { position: relative; max-width: min(900px, 100%); max-height: calc(100dvh - 32px); overflow: auto; background: var(--surface-page); border-radius: var(--radius-md); padding: var(--space-4); }
+  .foto-grande { margin: 0; display: grid; gap: var(--space-3); }
+  .foto-grande img { max-height: 72dvh; width: auto; margin-inline: auto; }
+  .foto-grande figcaption { font-size: var(--fs-small); color: var(--text-secondary); }
+  .proto-bn { display: grid; }
+  @media (min-width: 1100px) { .proto-bn { display: none; } }
+  body { padding-bottom: 0; }
+  @media (max-width: 1099px) { body { padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); } }
+</style>
+</head>
+<body>
+<div class="proto-barra">Protótipo da home · fora do site · conteúdo real do acervo <button class="btn-text" type="button" data-alternar-tema>Trocar tema</button></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#topo" aria-label="MeMotiva, ir para o início"><span class="logo-dot"></span>MeMotiva</a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="nav-link active" href="#topo" aria-current="page">Início</a>
+      <a class="nav-link" href="#explorar">Explorar</a>
+      <a class="nav-link" href="#autores">Autores &amp; Obras</a>
+      <a class="nav-link" href="#descubra">Descubra</a>
+      <a class="nav-link" href="#historias">Histórias</a>
+      <a class="nav-link" href="#comunidade">Escrever</a>
+      <a class="nav-link" href="#comunidade">Comunidade</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-icon" type="button" data-alternar-tema aria-label="Usar o tema escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      </button>
+      <button class="btn btn-coral" type="button">Entrar</button>
+      <button class="btn-icon hamburger-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+  <!-- A. abertura: a frase de hoje -->
+  <div class="wrap" id="capa">
+    <section class="abertura" id="abertura" aria-label="Frase de hoje"></section>
+    <p class="faixa-fonte" id="faixa"></p>
+  </div>
+
+  <!-- C. explorar: os números e os 22 temas -->
+  <section class="faixa-ocre home-secao explorar" id="explorar" aria-labelledby="t-explorar">
+    <div class="wrap explorar-grade">
+      <div class="acervo">
+        <p class="eyebrow rotulo">Explorar</p>
+        <h2 class="acervo-numeros" id="t-explorar"></h2>
+        <p class="acervo-nota" id="acervoNota"></p>
+        <a class="btn btn-primary" href="#explorar">Explorar as frases</a>
+      </div>
+      <nav aria-label="Temas do acervo"><ul class="indice-temas" id="indiceTemas"></ul></nav>
+    </div>
+  </section>
+
+  <!-- B. uma frase ao acaso -->
+  <section class="home-secao acaso" id="acaso" aria-labelledby="t-acaso">
+    <div class="wrap acaso-grade">
+      <div class="acaso-topo">
+        <h2 class="eyebrow rotulo" id="t-acaso">Uma frase ao acaso</h2>
+        <button class="btn-text" type="button" id="outraFrase">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4v6h-6"/><path d="M19.4 10A8 8 0 1 0 20 14"/></svg>
+          Outra frase
+        </button>
+      </div>
+      <figure class="acaso-frase" id="acasoFrase" aria-live="polite"></figure>
+    </div>
+  </section>
+
+  <!-- D. autores: galeria -->
+  <section class="home-secao autores" id="autores" aria-labelledby="t-autores">
+    <div class="wrap secao-cabeca">
+      <div>
+        <p class="eyebrow rotulo">Autores &amp; Obras</p>
+        <h2 id="t-autores">Quem está no acervo</h2>
+      </div>
+      <div class="galeria-controles">
+        <button class="btn-icon" type="button" data-galeria="-1" aria-label="Autores anteriores" aria-controls="galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg></button>
+        <button class="btn-icon" type="button" data-galeria="1" aria-label="Mais autores" aria-controls="galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <ul class="galeria-trilho" id="galeria" tabindex="0" aria-label="Galeria de autores: role para o lado ou use as setas"></ul>
+    <div class="wrap galeria-pe secao-acoes">
+      <a class="btn-text" href="#autores" id="todosAutores"></a>
+      <details class="creditos"><summary class="btn-text">Créditos das imagens</summary><ul id="creditosGaleria"></ul></details>
+    </div>
+  </section>
+
+  <!-- E. descubra: um autor por vez -->
+  <section class="faixa-roxa home-secao descubra" id="descubra" aria-labelledby="t-descubra" aria-roledescription="carrossel">
+    <div class="wrap descubra-palco">
+      <div>
+        <div class="descubra-slide" id="descubraSlide" aria-live="off"></div>
+        <div class="descubra-controles">
+          <button class="btn-icon" type="button" data-descubra="-1" aria-label="Autor anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg></button>
+          <button class="btn-icon" type="button" id="descubraPausa" aria-label="Pausar a troca automática"></button>
+          <button class="btn-icon" type="button" data-descubra="1" aria-label="Próximo autor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg></button>
+          <div class="descubra-progresso" id="descubraProgresso" aria-hidden="true"></div>
+        </div>
+      </div>
+      <figure class="descubra-retrato" id="descubraRetrato"></figure>
+    </div>
+  </section>
+
+  <!-- F. histórias -->
+  <section class="wrap home-secao historias" id="historias" aria-labelledby="t-historias">
+    <div class="secao-cabeca">
+      <div>
+        <p class="eyebrow rotulo">Histórias</p>
+        <h2 id="t-historias">Vidas para ler ou ouvir</h2>
+      </div>
+      <a class="btn-text" href="#historias" id="todasHistorias"></a>
+    </div>
+    <ul class="historias-lista" id="historiasLista"></ul>
+  </section>
+
+  <!-- H. comunidade: convite (sem relatos inventados) -->
+  <section class="faixa-cafe home-secao convite" id="comunidade" aria-labelledby="t-convite">
+    <div class="wrap">
+      <p class="eyebrow rotulo">Comunidade</p>
+      <h2 id="t-convite">Uma frase te acompanhou hoje?</h2>
+      <p class="convite-texto">Escreva o que ela lembrou a você. Fica guardado só para você, ou vai para a comunidade, se quiser.</p>
+      <div class="secao-acoes">
+        <a class="btn btn-primary" href="#comunidade">Escrever</a>
+        <a class="btn-text" href="#comunidade">Ver a comunidade</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- I. encerramento, emendado no rodapé -->
+  <section class="faixa-roxa encerramento" id="encerramento" aria-label="Para terminar">
+    <div class="wrap"><div class="encerramento-grade">
+      <figure class="encerramento-frase" id="encerramentoFrase"></figure>
+      <nav aria-label="Todas as áreas do MeMotiva">
+        <ul class="mapa">
+          <li><a href="#explorar">Explorar</a></li>
+          <li><a href="#autores">Autores &amp; Obras</a></li>
+          <li><a href="#descubra">Descubra</a></li>
+          <li><a href="#historias">Histórias</a></li>
+          <li><a href="#comunidade">Comunidade</a></li>
+          <li><a href="#comunidade">Escrever</a></li>
+        </ul>
+      </nav>
+    </div></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="footer-brand"><span class="logo-dot"></span>MeMotiva</span>
+    <p class="footer-note">Frases e biografias reunidas de fontes verificadas, com atribuição correta a cada autor. Feito para acompanhar você nos dias difíceis e nos dias de agir.</p>
+    <p class="footer-note">Frases de outros idiomas aparecem em tradução que busca a maior fidelidade possível ao texto e ao sentido original, com as pequenas adaptações que o português exige.</p>
+  </div>
+</footer>
+
+<nav class="bottom-nav proto-bn" aria-label="Navegação inferior">
+  <a class="bn-item active" href="#topo" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>Início</a>
+  <a class="bn-item" href="#explorar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Explorar</a>
+  <a class="bn-item" href="#autores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Autores</a>
+  <a class="bn-item" href="#comunidade"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Escrever</a>
+  <a class="bn-item" href="#descubra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Mais</a>
+</nav>
+
+<div id="frase-ampliada" class="expand-overlay show" role="dialog" aria-modal="true" aria-label="Frase ampliada" hidden><div class="expand-quote" data-corpo></div></div>
+<div id="foto-ampliada" role="dialog" aria-modal="true" aria-label="Fotografia ampliada" hidden><div data-corpo></div></div>
+
+<script src="amostra.js"></script>
+<script src="comum.js"></script>
+<script src="sistema.js"></script>
+<script src="home.js"></script>
+</body>
+</html>
