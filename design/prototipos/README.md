@@ -24,6 +24,9 @@ python3 -m http.server 8000
 | `b-florada.html` | Direção B · Florada |
 | `c-galeria.html` | Direção C · Galeria |
 | `index.html` | As três lado a lado, no tamanho do celular |
+| `sistema.js` | Etapa 3: modelos do cartão de frase e da frase ampliada com as classes do site, mais as iniciais sem "de", "da" e "dos". Usado pelo guia, pelo layout e pela home. |
+| `layout.html` | Etapa 3: o layout aprovado no Portão 3 (abertura, cartões, frase ampliada, faixas e rodapé), com o CSS real do sistema. |
+| `home.html` e `home.js` | Etapa 4a: a home inteira, da abertura ao rodapé, com o CSS real (`assets/css/telas/home.css`) e a marcação que a Etapa 4b leva ao site. `home.js` cuida da frase ao acaso, da galeria, do Descubra (troca lenta, com pausa) e das histórias. |
 
 ## Regras seguidas
 

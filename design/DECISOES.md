@@ -7,7 +7,10 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 | Etapa | Branch | Situação |
 |---|---|---|
 | 0. Diagnóstico | `redesign/00-diagnostico` | Aprovada em 14/10/2026 |
-| 1. Direção visual | `redesign/01-direcao` (parte da Etapa 0) | Em andamento |
+| 1. Direção visual | `redesign/01-direcao` | Aprovada no Portão 1 (14/10/2026) |
+| 2. Sistema de design | `redesign/02-sistema` | Aprovada no Portão 2 (14/10/2026) |
+| 3. Cabeçalho, navegação e rodapé | `redesign/03-navegacao` | Aprovada no Portão 3 (14/10/2026) |
+| 4. Home | `redesign/04-home` | 4a (protótipo) no Portão 4a |
 
 Nada entra na `main` sem o proprietário dizer "pode juntar". As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -105,3 +108,41 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 - **Faixas novas:** `.faixa-cafe` (espresso com texto linho, por exemplo o convite para escrever) e `.faixa-ocre` (Muted Ochre `#E5D17A` com texto café, por exemplo a faixa de temas).
 - **Arco laranja** atrás do retrato maior (cerca de 2/3 da largura da foto), só no claro.
 - **Barra inferior com 5 itens:** Início, Explorar, Autores, Escrever e Mais. O "Mais" abre o menu lateral com Descubra, Histórias, Comunidade e Perfil (`index.html`, `app/10`, `app/18`).
+
+## Etapa 4a: proposta da home (15/10/2026, aguardando o Portão 4a)
+
+Protótipo em `design/prototipos/home.html`, com conteúdo real do acervo e o CSS que vai para o site (`assets/css/telas/home.css`). Cada seção tem estrutura própria:
+
+| Seção | O que mostra | Cor |
+|---|---|---|
+| A. Frase de hoje | A abertura aprovada no Portão 3: retrato com o arco laranja, nome, frase e etiqueta; embaixo, a faixa roxa da fonte | Linho |
+| C. Explorar | "2.412 frases de 521 autores, em 22 temas", com o número exato, e o índice dos 22 temas com o número de frases de cada um | Sala ocre |
+| B. Uma frase ao acaso | A frase sozinha, grande, com o botão "Outra frase" (o gerador de hoje) | Linho |
+| D. Autores | Galeria de retratos em três tamanhos, alinhados pela base; sem foto, o nome numa placa café | Linho |
+| E. Descubra | Um autor por vez (foto, nome, papel, resumo e uma frase), com troca a cada 9 s | Sala roxa |
+| F. Histórias | Índice de histórias, uma aberta (foto, nome grande, resumo, Ler e Ouvir) | Linho |
+| H. Comunidade | O convite para escrever, no lugar dos relatos inventados (decisão 1) | Sala café |
+| I. Encerramento | Uma frase (Voltaire, Cândido) e o mapa do site, emendados no rodapé roxo | Sala roxa |
+
+- **Sem a seção G (avaliações):** não há avaliações reais.
+- **Descubra:**
+  - pausa com o mouse em cima, com o foco do teclado dentro, ao selecionar texto, fora da tela e pelo botão;
+  - no toque, a pessoa assume o controle;
+  - com movimento reduzido, não troca sozinho.
+- **Sistema:**
+  - as salas de cor (`.faixa-cafe`, `.faixa-ocre`, `.faixa-roxa`) trocam a tinta, as linhas, o foco e o botão principal de tudo o que está dentro delas;
+  - a frase em formato de cartaz (`--quote-poster`) tem o mesmo estilo de todas as frases, só maior.
+- **Defeitos pequenos:**
+  - o índice dos temas quebra só entre palavras, sem "Autoconheciment / o";
+  - as iniciais ignoram "de", "da" e "dos".
+- **Para a Etapa 4b:**
+  - **CSS:** levar a marcação ao `#view-home`; carregar `telas/home.css` e o que ele usa de `03-componentes.css`.
+  - **Abertura:** a frase de hoje passa a ser escolhida entre as frases verificadas de autores com foto curada.
+  - **Gerador:** vira "Uma frase ao acaso", mantendo `#generateBtn`.
+  - **Contadores:**
+    - número exato com ponto de milhar e sem o "+";
+    - as fases de curadoria escrevem o "+", por isso o número é corrigido no fim da cadeia.
+  - **Comunidade:** relatos reais aparecem quando existirem.
+  - **Defeitos:** corrigir `initials()` em `nucleo/01` e a pílula vazia do aviso (`#toast`).
+- **Conteúdo, só anotado:** as fotos curadas de Clarice Lispector, Guimarães Rosa e Cora Coralina apontam para arquivos que não existem no Commons. Na galeria, os três aparecem na placa tipográfica.
+

@@ -195,6 +195,12 @@
     column-gap: var(--space-7);
   }
 }
+/* abaixo de 380 px, duas colunas não cabem "Autoconhecimento" inteiro: uma coluna só */
+@media (max-width: 379px) {
+  .indice-temas {
+    columns: 1;
+  }
+}
 .indice-temas li {
   break-inside: avoid;
   border-bottom: var(--hairline) solid var(--border);
@@ -464,12 +470,14 @@
   color: var(--text-meta);
 }
 .descubra-retrato {
+  width: min(100%, 28rem);
   margin: 0;
   order: -1;
   transition: opacity var(--dur-3) var(--ease-out);
 }
 @media (min-width: 1024px) {
   .descubra-retrato {
+    width: auto;
     order: 0;
   }
 }
