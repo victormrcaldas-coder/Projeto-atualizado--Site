@@ -4,16 +4,17 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 
 ## Etapas e branches
 
-| Etapa                                              | Branch                    | Situação                                                            |
-| -------------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
-| 0. Diagnóstico                                     | `redesign/00-diagnostico` | Aprovada em 14/10/2026                                              |
-| 1. Direção visual                                  | `redesign/01-direcao`     | Aprovada no Portão 1 (14/10/2026)                                   |
-| 2. Sistema de design                               | `redesign/02-sistema`     | Aprovada no Portão 2 (14/10/2026)                                   |
-| 3. Cabeçalho, navegação e rodapé                   | `redesign/03-navegacao`   | Aprovada no Portão 3 (14/10/2026)                                   |
-| 4. Home                                            | `redesign/04-home`        | Aprovada em 20/10/2026, com a rodada 2 do refinamento; já na `main` |
-| 5. Frase: cartão, modal, Explorar, busca e filtros | `redesign/05-frase`       | Feita direto no site em 20/10/2026; já na `main`                    |
-| 6. Autores & Obras, Panorama e Obra                | `redesign/06-autores`     | Feita direto no site em 20/10/2026; já na `main`                    |
-| 7. Descubra e Histórias                            | `redesign/07-descubra`    | Próxima                                                             |
+| Etapa                                                   | Branch                    | Situação                                                            |
+| ------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
+| 0. Diagnóstico                                          | `redesign/00-diagnostico` | Aprovada em 14/10/2026                                              |
+| 1. Direção visual                                       | `redesign/01-direcao`     | Aprovada no Portão 1 (14/10/2026)                                   |
+| 2. Sistema de design                                    | `redesign/02-sistema`     | Aprovada no Portão 2 (14/10/2026)                                   |
+| 3. Cabeçalho, navegação e rodapé                        | `redesign/03-navegacao`   | Aprovada no Portão 3 (14/10/2026)                                   |
+| 4. Home                                                 | `redesign/04-home`        | Aprovada em 20/10/2026, com a rodada 2 do refinamento; já na `main` |
+| 5. Frase: cartão, modal, Explorar, busca e filtros      | `redesign/05-frase`       | Feita direto no site em 20/10/2026; já na `main`                    |
+| 6. Autores & Obras, Panorama e Obra                     | `redesign/06-autores`     | Feita direto no site em 20/10/2026; já na `main`                    |
+| 7. Descubra e Histórias                                 | `redesign/07-descubra`    | Feita direto no site em 20/10/2026; já na `main`                    |
+| 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Próxima                                                             |
 
 **Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -297,3 +298,28 @@ Feita direto no site, sem protótipo, como o proprietário pediu. Segue o cartã
   - biografia em Literata, contribuições e cronologia em lista com fio, sem caixas.
 - **Página da obra:** tipo e ano no rótulo, título grande, o nome do autor como link, o resumo em Literata, e "Conhecer" com o nome do autor.
 - **Teste novo:** `ferramentas/testes/autores.mjs`, com 38 casos.
+
+## Etapa 7: Descubra, Histórias e a história aberta (20/10/2026)
+
+- **Filtros** (Descubra e Histórias): chips com o traço laranja sobre um fio, como os temas do Explorar.
+- **Descubra:**
+  - os retratos viram uma galeria;
+  - o nome sai de cima da foto (antes, branco sobre um escurecido) e vai para baixo dela, em serifa condensada;
+  - sem foto, uma placa café com o nome.
+- **Histórias:**
+  - a capa é o retrato num quadro neutro. Saíram o degradê colorido de cada tema e o fundo desfocado;
+  - título em serifa, resumo em Literata;
+  - "Ler biografia completa ↗" virou "Ler a história";
+  - a narração usa os mesmos controles em todo o site;
+  - subtítulo novo, sem travessão.
+- **História aberta:**
+  - página de leitura: retrato grande, tema, título, nome condensado, papel e resumo;
+  - o texto numa coluna só, em Literata, com medida de livro. Em três colunas, era preciso subir e descer a página para ler;
+  - "Mais informações" virou "Conhecer <nome>";
+  - o fim diz o que a página da pessoa traz.
+- **Correções de acessibilidade:**
+  - a história aberta não fechava com Esc. Agora fecha, e com a foto aberta por cima fecha só a foto;
+  - o foco volta ao cartão e o Tab fica preso nela;
+  - o cartão de história não abria pelo teclado (Enter);
+  - abrir uma história com outra já aberta travava a rolagem da página.
+- **Teste novo:** `ferramentas/testes/historias.mjs`, com 34 casos. O celular roda com movimento reduzido.

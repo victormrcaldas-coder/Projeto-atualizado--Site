@@ -420,16 +420,15 @@ function renderCategoryGrid(containerId, clickable = true) {
    deformado ou decapitado, qualquer que seja a proporção original.
    ================================================================ */
 function storyCoverHTML(s) {
-  const base = catColor(s.cat);
-  const bg = `linear-gradient(135deg, ${base}, color-mix(in srgb, ${base} 65%, black))`;
+  /* Etapa 7 do redesign: a capa é o retrato num quadro neutro, sem o degradê colorido nem o
+     fundo desfocado; sem foto, uma placa com o nome (CSS em telas/historias.css) */
   const p = photoInfo(s.author);
   const file = p ? p.fw || p.f : null;
   const url = file ? commonsURL(file, 600) : '';
-  return `<div class="story-cover" style="background:${bg};" data-open-photo="${escapeHtml(s.author)}" role="button" tabindex="0" aria-label="Ampliar fotografia de ${escapeHtml(s.author)}">
-      ${url ? `<span class="story-cover-blur" style="background-image:url('${url}')" aria-hidden="true"></span>` : ''}
+  return `<div class="story-cover" data-open-photo="${escapeHtml(s.author)}" role="button" tabindex="0" aria-label="Ampliar fotografia de ${escapeHtml(s.author)}">
       <img src="${url || localAuthorPhoto(slugify(canonAuthor(s.author))) || NO_IMG}" alt="${escapeHtml(s.author)}" loading="lazy" decoding="async"
            class="story-cover-img" onerror="window.__photoFail(this)">
-      <span class="story-cover-fallback" style="display:none;">${initials(s.author)}</span>
+      <span class="story-cover-fallback" style="display:none;">${escapeHtml(s.author)}</span>
     </div>`;
 }
 

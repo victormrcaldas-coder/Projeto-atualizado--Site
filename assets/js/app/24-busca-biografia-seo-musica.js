@@ -225,6 +225,16 @@ function bioOverlay() {
     ov.addEventListener('click', (e) => {
       if (e.target === ov) fecharBiografia();
     });
+    /* Esc fecha a história (Etapa 7 do redesign); com a foto aberta por cima, fecha só a foto */
+    document.addEventListener(
+      'keydown',
+      (e) => {
+        if (e.key !== 'Escape' || !ov.classList.contains('show')) return;
+        if (document.getElementById('photoExpand').classList.contains('show')) return;
+        fecharBiografia();
+      },
+      true
+    );
   }
   return ov;
 }
@@ -236,6 +246,8 @@ function abrirBiografiaExpandida(id) {
   }
   bioAberta = id;
   const ov = bioOverlay();
+  if (!ov.classList.contains('show')) ov._origem = document.activeElement;
+  ov.setAttribute('aria-label', `História de ${s.author}`);
   const box = document.getElementById('bioSheet');
   const cat = catById(s.cat);
   const tags = (s.profiles || []).map((p) => profileById(p)).filter(Boolean);
@@ -251,7 +263,7 @@ function abrirBiografiaExpandida(id) {
       <header class="bio-hero">
         <div class="bio-foto" id="bioFoto" role="button" tabindex="0" aria-label="Ampliar fotografia">
           ${photoImgHTML(s.author, 'card', 560)}
-          <div class="avatar-fallback" style="display:none; background:${colorForName(s.author)};">${initials(s.author)}</div>
+          <div class="avatar-fallback" style="display:none;">${escapeHtml(s.author)}</div>
         </div>
         <div class="bio-hero-id">
           ${cat ? `<span class="bio-eyebrow">${escapeHtml(cat.name)}</span>` : ''}
@@ -261,7 +273,7 @@ function abrirBiografiaExpandida(id) {
           ${tags.length ? `<div class="pan-tags">${tags.map((t) => `<span class="discover-tag">${escapeHtml(t.name)}</span>`).join('')}</div>` : ''}
           <p class="bio-resumo">${escapeHtml(s.excerpt)}</p>
           <div class="bio-hero-acoes">
-            <button class="ao-btn primary" id="bioMais">${f5svg('livro', 15)} Mais informações</button>
+            <button class="ao-btn primary" id="bioMais">Conhecer ${escapeHtml(s.author)}</button>
             ${i.frases.length ? `<button class="ao-btn" id="bioFrases">Ver ${i.frases.length} ${i.frases.length === 1 ? 'frase' : 'frases'}</button>` : ''}
           </div>
         </div>
@@ -281,13 +293,14 @@ function abrirBiografiaExpandida(id) {
       </div>
 
       <div class="bio-rodape">
-        <p>Quer ir mais fundo nessa pessoa — obras, contribuições, cronologia e todas as frases?</p>
-        <button class="ao-btn primary" id="bioMais2">${f5svg('seta', 15)} Mais informações em Autores &amp; Obras</button>
+        <p>Quer ir mais fundo? A página de ${escapeHtml(s.author)} traz as obras, as contribuições, a cronologia e todas as frases.</p>
+        <button class="ao-btn primary" id="bioMais2">Abrir a página de ${escapeHtml(s.author)}</button>
       </div>
     </div>`;
 
+  /* trocar de história com ela aberta não trava a rolagem duas vezes */
+  if (!ov.classList.contains('show')) lockScroll();
   ov.classList.add('show');
-  lockScroll();
   document.getElementById('bioClose').addEventListener('click', fecharBiografia);
   const irPan = () => {
     fecharBiografia();
@@ -325,9 +338,14 @@ function abrirBiografiaExpandida(id) {
 }
 function fecharBiografia() {
   const ov = document.getElementById('bioExpand');
-  if (ov) ov.classList.remove('show');
+  if (!ov || !ov.classList.contains('show')) return;
+  ov.classList.remove('show');
   bioAberta = null;
   unlockScroll();
+  /* o foco volta para onde estava antes de abrir */
+  const origem = ov._origem;
+  ov._origem = null;
+  if (origem && origem.isConnected && origem.offsetParent) origem.focus({ preventScroll: true });
   try {
     if (_narracao && _narracao.id && String(_narracao.id).startsWith('bioexp_')) {
       _narracao.cancelada = true;
@@ -344,7 +362,6 @@ function wireStoryCards(scope) {
       const card = btn.closest('.story-card');
       abrirBiografiaExpandida(card.dataset.storyId || btn.dataset.storyToggle);
     });
-    btn.textContent = 'Ler biografia completa ↗';
   });
   scope.querySelectorAll('[data-story-play]:not([data-wired])').forEach((btn) => {
     btn.dataset.wired = '1';
@@ -379,6 +396,12 @@ function wireStoryCards(scope) {
       if (e.target.closest('button, select, a')) return;
       abrirBiografiaExpandida(card.dataset.storyId);
     });
+    /* pelo teclado também (o cartão é role="button") */
+    card.addEventListener('keydown', (e) => {
+      if (e.target !== card || (e.key !== 'Enter' && e.key !== ' ')) return;
+      e.preventDefault();
+      abrirBiografiaExpandida(card.dataset.storyId);
+    });
   });
 }
 /* o cartão não precisa mais guardar o texto inteiro escondido */
@@ -398,7 +421,7 @@ function storyCardHTML(s) {
       <p class="story-author-line">${escapeHtml(s.author)}${s.role ? ' · ' + escapeHtml(s.role) : ''}</p>
       ${tags.length ? `<div class="story-profiles">${tags.map((t) => `<span class="discover-tag">${escapeHtml(t.name)}</span>`).join('')}</div>` : ''}
       <p class="story-excerpt">${escapeHtml(s.excerpt)}</p>
-      <button class="story-toggle" data-story-toggle="${s.id}">Ler biografia completa ↗</button>
+      <button class="story-toggle" data-story-toggle="${s.id}">Ler a história</button>
       <div class="story-audio">
         <button class="play-btn" data-story-play="${s.id}" aria-label="Reproduzir narração">${playIconSVG()}</button>
         <select class="voice-select" data-voice-for="${s.id}">

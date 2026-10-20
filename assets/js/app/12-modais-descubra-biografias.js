@@ -150,10 +150,10 @@ function discoverCardHTML(s) {
            aria-label="Ver biografia de ${escapeHtml(s.author)}">
     <div class="discover-photo">
       ${photoImgHTML(s.author, 'card', 420)}
-      <div class="avatar-fallback" style="display:none; background:${colorForName(s.author)};">${initials(s.author)}</div>
-      <h3 class="discover-name">${escapeHtml(s.author)}</h3>
+      <div class="avatar-fallback" style="display:none;">${escapeHtml(s.author)}</div>
     </div>
     <div class="discover-body">
+      <h3 class="discover-name">${escapeHtml(s.author)}</h3>
       ${s.role ? `<span class="discover-role">${escapeHtml(s.role)}</span>` : ''}
       <p class="discover-why">${escapeHtml(s.why || s.excerpt)}</p>
       ${tags.length ? `<div class="discover-tags">${tags.map((t) => `<span class="discover-tag">${escapeHtml(t.name)}</span>`).join('')}</div>` : ''}
@@ -416,7 +416,7 @@ function initFase2() {
   /* Tab não sai da janela aberta: o foco circula dentro dela (Etapa 5 do redesign) */
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Tab') return;
-    const aberta = ['photoExpand', 'quoteExpand']
+    const aberta = ['photoExpand', 'quoteExpand', 'bioExpand']
       .map((id) => document.getElementById(id))
       .find((el) => el && el.classList.contains('show'));
     if (!aberta) return;

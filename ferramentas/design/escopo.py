@@ -23,6 +23,11 @@ ALVOS = [
     # Etapa 6: Autores & Obras, a página do autor (panorama) e a página da obra
     {'saida': 'assets/css/telas/autores-site.css', 'escopo': ':is(#view-autores, #view-panorama, #view-obra)',
      'raizes': [], 'origens': SISTEMA + ['assets/css/telas/cabeca.css', 'assets/css/telas/autores.css']},
+    # Etapa 7: Descubra, Histórias e a história aberta (#bioExpand, criada por JS e aberta de qualquer tela)
+    {'saida': 'assets/css/telas/historias-site.css',
+     'escopo': ':is(#view-descubra, #view-historias, #bioExpand)',
+     'raizes': [('.bio-overlay', '#bioExpand')],
+     'origens': SISTEMA + ['assets/css/telas/cabeca.css', 'assets/css/telas/historias.css']},
 ]
 
 
