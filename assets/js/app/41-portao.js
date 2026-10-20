@@ -33,7 +33,7 @@
      =================================================================== */
   const filme = (function () {
     const LEITURA = 5000; // o tempo do Descubra pedido pelo proprietário, contado depois que a frase termina
-    const PALAVRA = 55; // intervalo entre uma palavra e a seguinte
+    const PALAVRA = 40; // intervalo entre uma palavra e a seguinte (o --mov-cascata)
     const reduzido = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
     let el = null;
     let pessoas = [];
@@ -41,6 +41,8 @@
     let relogio = null;
     let pausas = new Set();
     let onde = '';
+    let vez = 0; // cada montagem tem a sua vez; um pedido antigo (espera da home, foto atrasada) não age na nova
+    let observador = null;
 
     const esc = (t) => escapeHtml(String(t == null ? '' : t));
     const doDia = (lista) => {
@@ -112,27 +114,41 @@
       texto.classList.add('entrou');
       return n * PALAVRA + 900; // quando a frase, o nome e a obra terminaram de entrar
     }
+    function parar() {
+      if (relogio) clearTimeout(relogio.id);
+      relogio = null;
+    }
     function mostrar(i, direcao) {
-      if (!pessoas.length) return;
+      if (!pessoas.length || !el) return;
+      parar(); // troca manual: o relógio da pessoa anterior não pode disparar de novo
+      const minha = vez;
       atual = (i + pessoas.length) % pessoas.length;
       const palco = el.querySelector('.filme-planos');
       const novo = plano(atual);
       const img = novo.querySelector('img');
       palco.appendChild(novo);
+      // na primeira pessoa o texto entra já, sem esperar a foto chegar (a foto entra em fusão depois)
+      const texto = el.querySelector('.filme-texto');
+      const jaEscrito = !texto.childElementCount;
+      if (jaEscrito) agendar(escrever());
+      let entrou = false;
       const entrar = () => {
+        if (entrou || !novo.isConnected || minha !== vez) return;
+        entrou = true;
         // foto pequena demais para a tela inteira, ou que não veio: passa para a próxima pessoa
         if (!img.naturalWidth || img.naturalWidth < 640 || getComputedStyle(img).display === 'none') {
           novo.remove();
+          parar();
           pessoas.splice(atual, 1);
           return mostrar(direcao < 0 ? atual - 1 : atual, direcao);
         }
         requestAnimationFrame(() => novo.classList.add('ativo'));
         const antigos = [...palco.children].filter((x) => x !== novo);
         setTimeout(() => antigos.forEach((x) => x.remove()), 1600);
+        if (jaEscrito) return;
         // o texto da pessoa anterior sai antes (mais rápido do que o novo entra)
-        const texto = el.querySelector('.filme-texto');
         texto.classList.add('saindo');
-        setTimeout(() => agendar(escrever()), reduzido() || !texto.childElementCount ? 0 : 260);
+        setTimeout(() => minha === vez && novo.isConnected && agendar(escrever()), reduzido() ? 0 : 260);
       };
       if (img.complete && img.naturalWidth) entrar();
       else {
@@ -142,7 +158,7 @@
       }
     }
     function agendar(escrita) {
-      clearTimeout(relogio);
+      parar();
       const tempo = el.querySelector('.filme-tempo');
       tempo.replaceChildren(document.createElement('i'));
       tempo.style.setProperty('--atraso', escrita + 'ms');
@@ -169,10 +185,16 @@
       b.setAttribute('aria-pressed', String(pausas.has('botao')));
       b.setAttribute('aria-label', pausas.has('botao') ? 'Continuar o filme' : 'Pausar o filme');
     }
-    function montar(v) {
+    // a aba escondida pausa o filme que estiver montado (um listener só, para todas as montagens)
+    document.addEventListener('visibilitychange', () => el && pausar('aba', document.hidden));
+    function montar(v, repeticao) {
+      if (!repeticao) vez++;
+      else if (repeticao !== vez) return; // a pessoa já escolheu outra opção
       onde = v;
       if (el) {
-        clearTimeout(relogio && relogio.id);
+        parar();
+        if (observador) observador.disconnect();
+        observador = null;
         el.remove();
         el = null;
       }
@@ -181,8 +203,9 @@
         x.removeAttribute('data-filme-escondido');
       });
       if (!v) return;
+      const minha = vez;
       if (typeof QUOTES === 'undefined' || QUOTES.length < 1000 || typeof STORIES === 'undefined') {
-        setTimeout(() => montar(v), 400);
+        setTimeout(() => montar(v, minha), 400);
         return;
       }
       pessoas = listar();
@@ -191,7 +214,7 @@
         // a frase de hoje abre o filme: espera a abertura da home ficar pronta e usa a mesma frase
         const botao = document.querySelector('#faixa [data-abrir-frase]');
         if (!botao) {
-          setTimeout(() => montar(v), 400);
+          setTimeout(() => montar(v, minha), 400);
           return;
         }
         const q = QUOTES.find((x) => x.qid === botao.dataset.abrirFrase);
@@ -246,10 +269,9 @@
         if (h && !el.closest('#view-home')) openBiography(h.dataset.historia);
         if (a && !el.closest('#view-home')) abrirPanorama(a.dataset.autor);
       });
-      new IntersectionObserver(([r]) => el && pausar('fora', !r.isIntersecting), { threshold: 0.3 }).observe(
-        el
-      );
-      document.addEventListener('visibilitychange', () => el && pausar('aba', document.hidden));
+      observador = new IntersectionObserver(([r]) => pausar('fora', !r.isIntersecting), { threshold: 0.3 });
+      observador.observe(el);
+      pausar('aba', document.hidden);
       mostrar(0, 1);
     }
     return { montar };

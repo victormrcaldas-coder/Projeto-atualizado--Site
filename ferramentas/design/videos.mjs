@@ -2,6 +2,7 @@
 // Os roteiros ficam em ferramentas/design/roteiros/<nome>.mjs e exportam `default async (passo) => {…}`.
 // Uso: node ferramentas/design/videos.mjs <roteiro> [--larguras 390,1440] [--tema claro|escuro] [--consulta "?portao"]
 //      [--reduzido]   (grava com movimento reduzido)
+//      [--pagina design/movimento.html]   (grava outra página do repositório no lugar do site)
 // Saída: .trabalho/design/videos/<roteiro>-<largura>-<tema>[-reduzido].mp4
 // As fotos do Commons vêm do cache em .trabalho/design/fotos-site (as que faltam são baixadas, uma por vez).
 import fs from 'fs';
@@ -27,6 +28,7 @@ const larguras = opcao('larguras', '390,1440').split(',').map(Number);
 const tema = opcao('tema', 'claro');
 const consulta = opcao('consulta', '');
 const reduzido = args.includes('--reduzido');
+const pagina = opcao('pagina', 'index.html');
 const SAIDA = path.join(TRABALHO, 'design/videos');
 const CACHE = path.join(TRABALHO, 'design/fotos-site');
 fs.mkdirSync(SAIDA, { recursive: true });
@@ -115,10 +117,11 @@ for (const largura of larguras) {
     },
     tema === 'escuro' ? 'dark' : 'light'
   );
-  await p.goto(site.url + consulta);
-  await p.waitForFunction(() => typeof QUOTES !== 'undefined' && QUOTES.length > 1000, null, {
-    timeout: 120000
-  });
+  await p.goto(site.url.replace(/index\.html$/, pagina) + consulta);
+  if (pagina === 'index.html')
+    await p.waitForFunction(() => typeof QUOTES !== 'undefined' && QUOTES.length > 1000, null, {
+      timeout: 120000
+    });
   await p.waitForTimeout(2500);
 
   // ajudantes do roteiro

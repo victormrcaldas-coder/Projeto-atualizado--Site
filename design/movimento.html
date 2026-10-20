@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Movimento do MeMotiva</title>
+<meta name="robots" content="noindex">
+<!-- Gramática do movimento (Etapa 9 refeita, Portão A). Não é ligada ao site.
+     Carrega os tokens reais (01-tokens.css) e frases e fotos reais (prototipos/amostra.js). -->
+<link rel="preload" href="../assets/fonts/noto-serif-display/noto-serif-display-italico-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/hanken-grotesk/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/00-fontes.css">
+<link rel="stylesheet" href="../assets/css/01-tokens.css">
+<link rel="stylesheet" href="../assets/css/02-base.css">
+<link rel="stylesheet" href="../assets/css/03-componentes.css">
+<style>
+  /* movimento reduzido simulado pelo botão da página (o do sistema vale sozinho, pelos tokens) */
+  html.simula-reduzido {
+    --mov-curto: 120ms; --mov-base: 120ms; --mov-entrada: 120ms; --mov-longo: 120ms;
+    --mov-cascata: 0ms; --mov-perto: 0px; --mov-longe: 0px;
+  }
+
+  body { background: var(--bg); }
+  .m-topo { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: var(--hairline) solid var(--border); }
+  .m-topo .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-5); min-height: 60px; }
+  .m-marca { font-family: var(--font-sans); font-size: var(--fs-meta); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); text-transform: uppercase; }
+  .m-chaves { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: center; }
+  .m-chave { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--tap); padding: 0; border: 0; background: none; font: inherit; font-size: var(--fs-small); color: var(--text); cursor: pointer; }
+  .m-chave i { position: relative; width: 34px; height: 20px; border-radius: 10px; background: var(--border-strong); transition: background var(--mov-micro) var(--curva-padrao); }
+  .m-chave i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); transition: transform var(--mov-curto) var(--curva-padrao); }
+  .m-chave[aria-pressed='true'] i { background: var(--text); }
+  .m-chave[aria-pressed='true'] i::after { transform: translateX(14px); }
+
+  .m-intro { display: grid; gap: var(--space-4); padding-block: var(--space-8) var(--space-6); }
+  .m-intro h1 { margin: 0; font-family: var(--font-title); font-weight: var(--weight-light); font-size: clamp(2.6rem, 1.6rem + 4vw, 5rem); line-height: 0.95; max-width: 14ch; }
+  .m-intro p { margin: 0; max-width: var(--measure); color: var(--text-secondary); }
+  .m-regras { display: grid; gap: var(--space-2); margin: 0; padding-left: 1.1em; max-width: var(--measure); }
+  .m-regras li::marker { color: var(--pin); }
+
+  .m-tokens { overflow-x: auto; border-top: var(--hairline) solid var(--border-strong); }
+  .m-tokens table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: var(--fs-small); }
+  .m-tokens th, .m-tokens td { padding: var(--space-3) var(--space-3) var(--space-3) 0; text-align: left; vertical-align: top; border-bottom: var(--hairline) solid var(--border); }
+  .m-tokens th { font-size: var(--fs-meta); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-meta); font-weight: var(--weight-semibold); }
+  .m-tokens td:nth-child(2) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .m-tokens td:last-child { color: var(--text-meta); }
+  .m-barra { display: block; height: 6px; background: var(--border); }
+  .m-barra i { display: block; height: 100%; background: var(--text); transform-origin: left; }
+
+  .m-demos { display: grid; gap: var(--space-8); padding-block: var(--space-7) var(--space-9); }
+  .m-demo { display: grid; gap: var(--space-4); }
+  @media (min-width: 1024px) { .m-demo { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-7); align-items: start; } }
+  .m-demo > header { display: grid; gap: var(--space-2); align-content: start; }
+  .m-demo h2 { margin: 0; font-family: var(--font-title); font-weight: var(--weight-regular); font-size: var(--fs-h2); }
+  .m-num { font-family: var(--font-sans); font-size: var(--fs-meta); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-meta); }
+  .m-demo header p { margin: 0; color: var(--text-secondary); font-size: var(--fs-small); max-width: 46ch; }
+  .m-demo .m-origem { color: var(--text-meta); }
+  .m-demo .m-medida { font-variant-numeric: tabular-nums; color: var(--text); }
+  .m-palco { position: relative; overflow: hidden; min-height: 300px; border-top: var(--hairline) solid var(--border-strong); padding-top: var(--space-4); }
+  .m-acoes { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: center; margin-top: var(--space-3); }
+
+  /* 1. troca de tela */
+  .t-janela { position: relative; display: grid; grid-template-rows: auto 1fr; height: 360px; border: var(--hairline) solid var(--border); background: var(--bg); overflow: hidden; }
+  .t-cabeca { display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 var(--space-4); border-bottom: var(--hairline) solid var(--border); font-size: var(--fs-meta); letter-spacing: var(--tracking-label); text-transform: uppercase; font-weight: var(--weight-semibold); view-transition-name: m-cabeca; }
+  .t-tela { padding: var(--space-4); overflow: hidden; view-transition-name: m-tela; }
+  .t-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  .t-pessoa { display: grid; gap: var(--space-2); padding: 0; border: 0; background: none; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+  .t-pessoa .q { aspect-ratio: 4 / 5; overflow: hidden; background: var(--frame); }
+  .t-pessoa img, .t-autor img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .t-pessoa b { font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: 1.25rem; line-height: 1; }
+  .t-autor { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-5); align-items: center; height: 100%; }
+  .t-autor .q { aspect-ratio: 4 / 5; overflow: hidden; background: var(--frame); max-height: 270px; }
+  .t-autor h3 { margin: 0 0 var(--space-2); font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: clamp(2rem, 1.4rem + 2vw, 3rem); line-height: 0.95; }
+  .t-autor p { margin: 0 0 var(--space-3); font-size: var(--fs-small); color: var(--text-secondary); }
+  .t-entra { animation: t-entra var(--mov-entrada) var(--curva-chegada) both; }
+  @keyframes t-entra { from { opacity: 0; transform: translateY(var(--mov-perto)); } }
+  ::view-transition-old(m-tela) { animation: t-sai var(--mov-curto) var(--curva-saida) both; }
+  ::view-transition-new(m-tela) { animation: t-entra var(--mov-entrada) var(--curva-chegada) 60ms both; }
+  @keyframes t-sai { to { opacity: 0; } }
+  ::view-transition-group(m-retrato) { animation-duration: var(--mov-entrada); animation-timing-function: var(--curva-troca); }
+  @media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; } }
+  @media (max-width: 639px) { .t-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } .t-lista > :nth-child(3) { display: none; } .t-autor { grid-template-columns: 1fr; } .t-autor .q { max-height: 150px; aspect-ratio: auto; height: 150px; } }
+
+  /* 2. janela */
+  .j-veu { position: absolute; inset: 0; z-index: 2; background: var(--overlay); opacity: 0; pointer-events: none; transition: opacity var(--mov-curto) var(--curva-saida); }
+  .j-caixa { position: absolute; z-index: 3; left: 50%; top: 50%; width: min(520px, calc(100% - 32px)); padding: var(--space-6) var(--space-5) var(--space-5); background: var(--surface-page, var(--bg)); box-shadow: var(--shadow-float); opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(0.96); transition: opacity var(--mov-curto) var(--curva-saida), transform var(--mov-curto) var(--curva-saida); }
+  .m-palco.aberta .j-veu { opacity: 1; pointer-events: auto; transition: opacity var(--mov-base) var(--curva-padrao); }
+  .m-palco.aberta .j-caixa { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); transition: opacity var(--mov-entrada) var(--curva-chegada), transform var(--mov-entrada) var(--curva-chegada); }
+  .j-caixa .quote-text { margin: 0 0 var(--space-4); font-family: var(--font-title); font-style: italic; font-size: 1.6rem; line-height: 1.18; }
+  .j-caixa .fechar { position: absolute; top: var(--space-2); right: var(--space-2); }
+  /* no celular, a janela vira folha que sobe de baixo (o princípio da gaveta da Cult UI, sem quique) */
+  @media (max-width: 639px) {
+    .j-caixa { left: 0; right: 0; top: auto; bottom: 0; width: auto; transform: translateY(100%); }
+    .m-palco.aberta .j-caixa { transform: none; transition: opacity var(--mov-curto) var(--curva-chegada), transform var(--mov-longo) var(--curva-chegada); }
+  }
+
+  /* 3. lista filtrada */
+  .l-chips { position: relative; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin-bottom: var(--space-5); border-bottom: var(--hairline) solid var(--border); }
+  .l-chip { min-height: var(--tap); padding: 0; border: 0; background: none; font: inherit; font-size: var(--fs-small); color: var(--text-meta); cursor: pointer; transition: color var(--mov-micro) var(--curva-padrao); }
+  .l-chip[aria-pressed='true'] { color: var(--text); }
+  .l-traco { position: absolute; left: 0; bottom: -1px; height: 2px; width: 10px; background: var(--pin); transform-origin: left; transition: transform var(--mov-base) var(--curva-padrao); }
+  .l-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--space-5); min-height: 220px; }
+  .l-cartao { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-3); border-top: var(--hairline) solid var(--border-strong); }
+  .l-cartao p { margin: 0; font-family: var(--font-title); font-style: italic; font-size: 1.15rem; line-height: 1.22; }
+  .l-cartao span { font-size: var(--fs-meta); color: var(--text-meta); }
+  .l-grade.saindo .l-cartao { opacity: 0; transition: opacity var(--mov-curto) var(--curva-saida); }
+  .l-cartao.entra { animation: t-entra var(--mov-entrada) var(--curva-chegada) both; animation-delay: calc(min(var(--i), 5) * var(--mov-cascata)); }
+
+  /* 4. título revelado */
+  .r-titulo { margin: var(--space-4) 0; font-family: var(--font-title); font-weight: var(--weight-light); font-size: clamp(2.4rem, 1.4rem + 4vw, 4.6rem); line-height: 1; max-width: 16ch; }
+  .r-palavra { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 0.08em 0.12em 0; margin: 0 -0.08em -0.12em 0; }
+  .r-palavra > span { display: inline-block; }
+  .r-titulo.vai .r-palavra > span { animation: r-sobe var(--mov-longo) var(--curva-chegada) both; animation-delay: calc(var(--i) * var(--mov-cascata)); }
+  @keyframes r-sobe { from { transform: translateY(105%); opacity: 0; } }
+  .r-sub { margin: 0; max-width: 46ch; color: var(--text-secondary); }
+  .r-titulo.vai + .r-sub { animation: t-entra var(--mov-entrada) var(--curva-chegada) both; animation-delay: calc(var(--n) * var(--mov-cascata) + 200ms); }
+
+  /* 5. foto chegando */
+  .f-linha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  .f-quadro { aspect-ratio: 4 / 5; overflow: hidden; background: var(--frame); }
+  .f-quadro img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transform: scale(1.03); }
+  .f-quadro img.chegou { opacity: 1; transform: none; transition: opacity var(--mov-longo) var(--curva-chegada), transform 900ms var(--curva-chegada); }
+  .f-linha figcaption { margin-top: var(--space-2); font-size: var(--fs-meta); color: var(--text-meta); }
+
+  /* 6. toque */
+  .k-linha { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; }
+  .k-alvo { transition: transform var(--mov-micro) var(--curva-padrao); -webkit-tap-highlight-color: transparent; }
+  .k-alvo:active { transform: scale(0.98); }
+  .k-cartao { width: min(100%, 300px); padding: var(--space-4) 0 0; border: 0; border-top: var(--hairline) solid var(--border-strong); background: none; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+  .k-cartao p { margin: 0 0 var(--space-2); font-family: var(--font-title); font-style: italic; font-size: 1.2rem; line-height: 1.2; }
+  .k-cartao span { font-size: var(--fs-meta); color: var(--text-meta); }
+
+  /* 7. retrato que acompanha o mouse */
+  .c-quadro { position: relative; width: min(100%, 340px); aspect-ratio: 4 / 5; overflow: hidden; background: var(--frame); }
+  .c-quadro img { position: absolute; inset: -12px; width: calc(100% + 24px); height: calc(100% + 24px); object-fit: cover; transform: translate3d(var(--cx, 0px), var(--cy, 0px), 0) scale(1); transition: transform var(--mov-longo) var(--curva-chegada); }
+  .c-quadro:hover img { transform: translate3d(var(--cx, 0px), var(--cy, 0px), 0) scale(1.03); }
+  .c-etiqueta { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-4) var(--space-3) var(--space-3); background: linear-gradient(transparent, rgb(20 14 10 / 0.72)); color: #faf3e1; opacity: 0; transform: translateY(var(--mov-perto)); transition: opacity var(--mov-base) var(--curva-padrao), transform var(--mov-base) var(--curva-padrao); }
+  .c-quadro:is(:hover, :focus-visible) .c-etiqueta { opacity: 1; transform: none; }
+  .c-etiqueta b { display: block; font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: 1.6rem; line-height: 1; }
+  .c-etiqueta span { font-size: var(--fs-meta); }
+  .c-nota { font-size: var(--fs-small); color: var(--text-meta); }
+  html.simula-reduzido .c-quadro img { transform: none !important; }
+
+  /* 8. sublinhado e estados */
+  .s-links { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+  .s-link { position: relative; padding: var(--space-2) 0; border: 0; background: none; font: inherit; font-family: var(--font-title); font-size: 1.5rem; color: var(--text); cursor: pointer; }
+  .s-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform var(--mov-base) var(--curva-padrao); }
+  .s-link:is(:hover, :focus-visible)::after { transform: scaleX(1); transform-origin: left; }
+</style>
+</head>
+<body>
+<header class="m-topo">
+  <div class="wrap">
+    <span class="m-marca">MeMotiva · gramática do movimento</span>
+    <div class="m-chaves">
+      <button class="m-chave" type="button" id="chaveReduzido" aria-pressed="false"><i aria-hidden="true"></i>Movimento reduzido</button>
+      <button class="m-chave" type="button" data-alternar-tema aria-pressed="false"><i aria-hidden="true"></i>Tema escuro</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="m-intro" aria-labelledby="t-mov">
+    <p class="m-num">Portão A · Etapa 9 refeita</p>
+    <h1 id="t-mov">O site responde, sem se exibir.</h1>
+    <p>Tempos e curvas medidos em 14 sites de referência (Brik, Cult UI, Inspotype, Monograph, Scribe, Vessa, Godly, Jitter, Originkit, Proofmode, Refero, Fontshare, Set e Kierkegaard). Abaixo, cada padrão com frases e fotos reais do acervo.</p>
+    <ul class="m-regras">
+      <li>Só deslocamento, opacidade e recorte. Nada de quique, desfoque, 3D ou rolagem sequestrada.</li>
+      <li>O que entra assenta devagar; o que sai é mais rápido e some.</li>
+      <li>No máximo 450 ms. A exceção é o filme vivo, que é lento de propósito.</li>
+      <li>Com movimento reduzido, nada se desloca: só esmaece, em 120 ms. Tudo continua funcionando.</li>
+    </ul>
+    <div class="m-tokens" id="tokens"></div>
+  </section>
+
+  <div class="m-demos">
+    <section class="m-demo" aria-labelledby="d1">
+      <header>
+        <span class="m-num">1 · Troca de tela</span>
+        <h2 id="d1">O retrato que você toca vira o retrato da página</h2>
+        <p>A tela antiga só esmaece, rápido; a nova sobe 8 px. O cabeçalho fica parado. Recurso do próprio navegador (View Transition), sem biblioteca.</p>
+        <p class="m-origem">Princípio: a troca da galeria para o detalhe na Brik (mídia em 340 ms, texto 120 ms depois).</p>
+        <p class="m-medida">--mov-entrada · --curva-troca · --mov-curto na saída</p>
+      </header>
+      <div>
+        <div class="t-janela"><div class="t-cabeca"><span>MeMotiva</span><span>Autores</span></div><div class="t-tela" id="telaDemo"></div></div>
+        <div class="m-acoes"><button class="btn-text" type="button" id="telaVoltar">Voltar para a lista</button></div>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d2">
+      <header>
+        <span class="m-num">2 · Janela</span>
+        <h2 id="d2">A frase abre em cima da página, sem pular</h2>
+        <p>A camada escura esmaece; a janela cresce de 96% para 100%. Ao fechar, tudo sai mais rápido. No celular, vira uma folha que sobe de baixo.</p>
+        <p class="m-origem">Princípio: os menus do Proofmode (entra em 200 ms, sai em 150 ms) e a gaveta da Cult UI, sem o quique.</p>
+        <p class="m-medida">--mov-entrada · --curva-chegada · --mov-curto · --curva-saida</p>
+      </header>
+      <div class="m-palco" id="palcoJanela">
+        <p class="g-nota" style="max-width:40ch;color:var(--text-secondary)">Uma frase do acervo, como ela abre no site.</p>
+        <button class="btn btn-primary" type="button" id="abrirJanela">Abrir a frase</button>
+        <div class="j-veu" id="veuJanela"></div>
+        <div class="j-caixa" role="dialog" aria-modal="true" aria-labelledby="jFrase" id="caixaJanela">
+          <button class="btn-icon fechar" type="button" id="fecharJanela" aria-label="Fechar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          <p class="quote-text" id="jFrase"></p>
+          <p class="g-nota" id="jAutor" style="margin:0;color:var(--text-meta);font-size:var(--fs-small)"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d3">
+      <header>
+        <span class="m-num">3 · Lista filtrada</span>
+        <h2 id="d3">Trocar o tema troca a lista sem piscar</h2>
+        <p>Os cartões antigos esmaecem; os novos sobem 8 px, um depois do outro, até o sexto. O traço laranja desliza até o tema escolhido.</p>
+        <p class="m-origem">Princípio: os cartões em cascata do Inspotype (cascata de 50 ms) e a pílula que desliza nas abas da Cult UI, sem quique.</p>
+        <p class="m-medida">--mov-entrada · --mov-cascata · --mov-base no traço</p>
+      </header>
+      <div class="m-palco">
+        <div class="l-chips" id="chips" role="group" aria-label="Temas"><span class="l-traco" id="traco" aria-hidden="true"></span></div>
+        <div class="l-grade" id="grade" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d4">
+      <header>
+        <span class="m-num">4 · Título revelado</span>
+        <h2 id="d4">Os títulos grandes sobem da própria linha</h2>
+        <p>Cada palavra sobe de dentro da linha, uma vez, quando o título chega na tela. Nada acima da dobra espera por isso.</p>
+        <p class="m-origem">Princípio: o título da Brik, letra por letra em 1,25 s; aqui por palavra, em 450 ms, para não atrasar a leitura.</p>
+        <p class="m-medida">--mov-longo · --curva-chegada · --mov-cascata</p>
+      </header>
+      <div class="m-palco">
+        <h3 class="r-titulo" id="titulo">Vidas para ler ou ouvir</h3>
+        <p class="r-sub">235 histórias de pessoas do acervo, com narração.</p>
+        <div class="m-acoes"><button class="btn-text" type="button" id="repetirTitulo">Repetir</button></div>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d5">
+      <header>
+        <span class="m-num">5 · Foto chegando</span>
+        <h2 id="d5">A foto se revela, não aparece de repente</h2>
+        <p>Enquanto a foto carrega, o quadro fica no tom da moldura. Quando ela chega, esmaece para dentro e assenta, de 103% para 100%.</p>
+        <p class="m-origem">Princípio: a troca de imagem do Vessa (260 ms) e o zoom de 1% do Monograph.</p>
+        <p class="m-medida">--mov-longo · --curva-chegada</p>
+      </header>
+      <div class="m-palco">
+        <div class="f-linha" id="fotos"></div>
+        <div class="m-acoes"><button class="btn-text" type="button" id="recarregarFotos">Carregar de novo</button></div>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d6">
+      <header>
+        <span class="m-num">6 · Toque</span>
+        <h2 id="d6">O dedo sente que apertou</h2>
+        <p>Botões e cartões afundam 2% enquanto estão pressionados. Sem o realce azul do navegador.</p>
+        <p class="m-origem">Nenhuma referência mediu retorno ao toque; esta é a proposta, no tempo do toque.</p>
+        <p class="m-medida">--mov-micro · scale(0,98)</p>
+      </header>
+      <div class="m-palco">
+        <div class="k-linha" id="toque"></div>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d7">
+      <header>
+        <span class="m-num">7 · Cursor (só com mouse)</span>
+        <h2 id="d7">O retrato acompanha o olhar</h2>
+        <p>No computador, a foto anda até 6 px dentro da moldura, seguindo o mouse, e o nome aparece. O nome aparece também com o teclado. No celular, nada disso: o toque abre a pessoa.</p>
+        <p class="m-origem">Princípio: o cartão recortado da Cult UI (imagem a 105%, aqui 103%) e o zoom de 1% do Monograph.</p>
+        <p class="m-medida">--mov-longo · ±6 px · um listener, só quando o mouse está em cima</p>
+      </header>
+      <div class="m-palco">
+        <div id="cursor"></div>
+        <p class="c-nota" id="cursorNota"></p>
+      </div>
+    </section>
+
+    <section class="m-demo" aria-labelledby="d8">
+      <header>
+        <span class="m-num">8 · Estados</span>
+        <h2 id="d8">O sublinhado se desenha</h2>
+        <p>Nos links de texto, o sublinhado nasce da esquerda no hover e no foco, e sai pela direita.</p>
+        <p class="m-origem">Princípio: o sublinhado da navegação da Brik (300 ms).</p>
+        <p class="m-medida">--mov-base · --curva-padrao</p>
+      </header>
+      <div class="m-palco">
+        <div class="s-links"><button class="s-link" type="button">Explorar as frases</button><button class="s-link" type="button">Ler a história</button><button class="s-link" type="button">Conhecer Clarice Lispector</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="prototipos/amostra.js"></script>
+<script src="prototipos/comum.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { A, esc, autor, fotoUrl, comAspas } = window.Proto;
+  const raiz = document.documentElement;
+  const $ = (id) => document.getElementById(id);
+  const reduzido = () => matchMedia('(prefers-reduced-motion: reduce)').matches || raiz.classList.contains('simula-reduzido');
+  const comFoto = (nome) => { const a = autor(nome); return a.foto && !a.fotoQuebrada ? a : null; };
+  const pessoas = [...new Set(A.frases.map((f) => f.autor))].map(comFoto).filter(Boolean);
+  const img = (a, w) => `<img src="${esc(fotoUrl(a, w))}" alt="${esc(a.nome)}" style="object-position:${esc(a.foto.enquadramento || 'center 22%')}" decoding="async">`;
+
+  /* ---- tabela dos tokens, lida do CSS de verdade ---- */
+  const TOKENS = [
+    ['--mov-micro', 'cor, sublinhado, toque', '150 ms em 8 sites'],
+    ['--mov-curto', 'chips, menus, saídas', 'Brik 220, Originkit 220, Proofmode 200'],
+    ['--mov-base', 'hover de cartão, abas, troca de imagem', '300 ms: o valor mais comum (12 sites)'],
+    ['--mov-entrada', 'troca de tela, revelação, painel', 'Brik 340, Inspotype 340 a 360, Refero 340'],
+    ['--mov-longo', 'o teto: frase ampliada, folha, título', 'acima disso a leitura espera'],
+    ['--mov-cascata', 'entre um item e o seguinte, até 6', 'medido entre 18 e 55 ms']
+  ];
+  function tabela() {
+    const cs = getComputedStyle(raiz);
+    const ms = (t) => parseFloat(cs.getPropertyValue(t)) || 0;
+    $('tokens').innerHTML = `<table><thead><tr><th>Token</th><th>Agora</th><th>Para quê</th><th></th><th>De onde veio</th></tr></thead><tbody>${TOKENS.map(
+      ([t, uso, origem]) => `<tr><td><code>${t}</code></td><td>${ms(t)} ms</td><td>${esc(uso)}</td><td style="width:120px"><span class="m-barra"><i style="transform:scaleX(${Math.min(1, ms(t) / 450)})"></i></span></td><td>${esc(origem)}</td></tr>`
+    ).join('')}<tr><td><code>--curva-chegada</code></td><td colspan="2">${esc(cs.getPropertyValue('--curva-chegada').trim())}, o que entra</td><td></td><td>Brik, Inspotype, Kierkegaard, Originkit</td></tr><tr><td><code>--curva-saida</code></td><td colspan="2">${esc(cs.getPropertyValue('--curva-saida').trim())}, o que sai</td><td></td><td>Proofmode</td></tr><tr><td><code>--curva-padrao</code></td><td colspan="2">${esc(cs.getPropertyValue('--curva-padrao').trim())}, estados</td><td></td><td>a mais frequente, em 9 sites</td></tr><tr><td><code>--curva-troca</code></td><td colspan="2">${esc(cs.getPropertyValue('--curva-troca').trim())}, troca de tela</td><td></td><td>a View Transition da Brik</td></tr></tbody></table>`;
+  }
+
+  /* ---- 1. troca de tela ---- */
+  const tela = $('telaDemo');
+  const trocar = (desenhar) => {
+    if (document.startViewTransition && !reduzido()) document.startViewTransition(desenhar);
+    else { desenhar(); tela.firstElementChild && tela.firstElementChild.classList.add('t-entra'); }
+  };
+  function lista(origem) {
+    tela.innerHTML = `<div class="t-lista">${pessoas.slice(0, 3).map((a, i) => `<button class="t-pessoa" type="button" data-i="${i}"><span class="q" style="${origem === i ? 'view-transition-name:m-retrato' : ''}">${img(a, 480)}</span><b>${esc(a.nome)}</b></button>`).join('')}</div>`;
+  }
+  function pagina(i) {
+    const a = pessoas[i];
+    const f = A.frases.find((x) => x.autor === a.nome);
+    tela.innerHTML = `<div class="t-autor"><span class="q" style="view-transition-name:m-retrato">${img(a, 600)}</span><div><h3>${esc(a.nome)}</h3><p>${esc(a.papel)}</p><p style="font-family:var(--font-title);font-style:italic;font-size:1.15rem;color:var(--text)">${comAspas(f.texto)}</p></div></div>`;
+  }
+  let aberta = -1;
+  lista();
+  tela.addEventListener('click', (e) => {
+    const b = e.target.closest('.t-pessoa');
+    if (!b) return;
+    const i = +b.dataset.i;
+    b.querySelector('.q').style.viewTransitionName = 'm-retrato';
+    aberta = i;
+    trocar(() => pagina(i));
+  });
+  $('telaVoltar').addEventListener('click', () => { if (aberta < 0) return; const i = aberta; aberta = -1; trocar(() => lista(i)); });
+
+  /* ---- 2. janela ---- */
+  const fj = A.frases.find((x) => comFoto(x.autor) && x.texto.length < 120) || A.frases[0];
+  $('jFrase').innerHTML = comAspas(fj.texto);
+  $('jAutor').textContent = `${fj.autor} · ${fj.fonte}`;
+  const palco = $('palcoJanela');
+  $('abrirJanela').addEventListener('click', () => { palco.classList.add('aberta'); setTimeout(() => $('fecharJanela').focus(), 50); });
+  const fechar = () => { palco.classList.remove('aberta'); $('abrirJanela').focus(); };
+  $('fecharJanela').addEventListener('click', fechar);
+  $('veuJanela').addEventListener('click', fechar);
+  palco.addEventListener('keydown', (e) => e.key === 'Escape' && fechar());
+
+  /* ---- 3. lista filtrada ---- */
+  const temas = ['Todos', ...new Set(A.frases.map((f) => f.categoria))].slice(0, 6);
+  const chips = $('chips');
+  chips.insertAdjacentHTML('afterbegin', temas.map((t, i) => `<button class="l-chip" type="button" aria-pressed="${i === 0}" data-t="${esc(t)}">${esc(t)}</button>`).join(''));
+  const traco = $('traco');
+  const moverTraco = (b) => { traco.style.width = '10px'; traco.style.transform = `translateX(${b.offsetLeft}px) scaleX(${b.offsetWidth / 10})`; };
+  const grade = $('grade');
+  function mostrar(t, animar) {
+    const lista = A.frases.filter((f) => t === 'Todos' || f.categoria === t).slice(0, 6);
+    const desenhar = () => {
+      grade.classList.remove('saindo');
+      grade.innerHTML = lista.map((f, i) => `<article class="l-cartao${animar ? ' entra' : ''}" style="--i:${i}"><p>${comAspas(f.texto.length > 120 ? f.texto.slice(0, 118) + '…' : f.texto)}</p><span>${esc(f.autor)}</span></article>`).join('');
+    };
+    if (!animar || reduzido()) return desenhar();
+    grade.classList.add('saindo');
+    setTimeout(desenhar, parseFloat(getComputedStyle(raiz).getPropertyValue('--mov-curto')) || 0);
+  }
+  chips.addEventListener('click', (e) => {
+    const b = e.target.closest('.l-chip');
+    if (!b || b.getAttribute('aria-pressed') === 'true') return;
+    chips.querySelectorAll('.l-chip').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    moverTraco(b);
+    mostrar(b.dataset.t, true);
+  });
+  mostrar('Todos', false);
+  requestAnimationFrame(() => moverTraco(chips.querySelector('.l-chip')));
+  addEventListener('resize', () => moverTraco(chips.querySelector('[aria-pressed="true"]')));
+
+  /* ---- 4. título revelado, quando chega na tela ---- */
+  const titulo = $('titulo');
+  const palavras = titulo.textContent.split(/\s+/);
+  titulo.innerHTML = palavras.map((w, i) => `<span class="r-palavra" style="--i:${i}"><span>${esc(w)}</span></span>`).join(' ');
+  titulo.style.setProperty('--n', palavras.length);
+  titulo.nextElementSibling.style.setProperty('--n', palavras.length);
+  const revelar = () => { titulo.classList.remove('vai'); void titulo.offsetWidth; titulo.classList.add('vai'); };
+  new IntersectionObserver(([r], o) => { if (r.isIntersecting) { revelar(); o.disconnect(); } }, { threshold: 0.4 }).observe(titulo);
+  $('repetirTitulo').addEventListener('click', revelar);
+
+  /* ---- 5. foto chegando ---- */
+  function fotos() {
+    $('fotos').innerHTML = pessoas.slice(3, 6).map((a) => `<figure style="margin:0"><div class="f-quadro">${img(a, 480).replace('<img', '<img loading="lazy"')}</div><figcaption>${esc(a.nome)}</figcaption></figure>`).join('');
+    $('fotos').querySelectorAll('img').forEach((im, i) => {
+      // chega com um atraso diferente para cada foto, como na rede de verdade
+      const chegar = () => setTimeout(() => im.classList.add('chegou'), 300 + i * 450);
+      im.complete && im.naturalWidth ? chegar() : im.addEventListener('load', chegar, { once: true });
+    });
+  }
+  fotos();
+  $('recarregarFotos').addEventListener('click', fotos);
+
+  /* ---- 6. toque ---- */
+  const fk = A.frases.find((x) => x.texto.length < 70) || A.frases[1];
+  $('toque').innerHTML = `<button class="btn btn-primary k-alvo" type="button">Ler a história</button><button class="k-cartao k-alvo" type="button"><p>${comAspas(fk.texto)}</p><span>${esc(fk.autor)}</span></button>`;
+
+  /* ---- 7. retrato que acompanha o mouse ---- */
+  const ac = pessoas.find((a) => a.foto.largura >= 900) || pessoas[0];
+  $('cursor').innerHTML = `<div class="c-quadro" tabindex="0" aria-label="${esc(ac.nome)}">${img(ac, 700)}<div class="c-etiqueta"><b>${esc(ac.nome)}</b><span>${esc(ac.papel)}</span></div></div>`;
+  const quadro = $('cursor').firstElementChild;
+  const fino = matchMedia('(hover: hover) and (pointer: fine)');
+  $('cursorNota').textContent = fino.matches ? 'Passe o mouse sobre o retrato.' : 'Neste aparelho não há mouse: o efeito fica desligado.';
+  let quadroPedido = 0;
+  let alvo = { x: 0, y: 0 };
+  function seguir(e) {
+    if (reduzido()) return;
+    const r = quadro.getBoundingClientRect();
+    alvo = { x: ((e.clientX - r.left) / r.width - 0.5) * 12, y: ((e.clientY - r.top) / r.height - 0.5) * 12 };
+    if (!quadroPedido) quadroPedido = requestAnimationFrame(() => {
+      quadroPedido = 0;
+      quadro.style.setProperty('--cx', alvo.x.toFixed(1) + 'px');
+      quadro.style.setProperty('--cy', alvo.y.toFixed(1) + 'px');
+    });
+  }
+  // um listener só, ligado enquanto o mouse está sobre o retrato
+  quadro.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') quadro.addEventListener('pointermove', seguir); });
+  quadro.addEventListener('pointerleave', () => { quadro.removeEventListener('pointermove', seguir); quadro.style.setProperty('--cx', '0px'); quadro.style.setProperty('--cy', '0px'); });
+
+  /* ---- chaves do topo ---- */
+  $('chaveReduzido').addEventListener('click', (e) => {
+    const sim = raiz.classList.toggle('simula-reduzido');
+    e.currentTarget.setAttribute('aria-pressed', String(sim));
+    tabela();
+  });
+  // o nome do botão é o texto dele ("Tema escuro"), e o estado vai em aria-pressed
+  document.addEventListener('proto:tema', () => document.querySelector('[data-alternar-tema]').removeAttribute('aria-label'));
+  window.Proto.iniciar();
+  tabela();
+})();
+</script>
+</body>
+</html>

@@ -356,7 +356,8 @@ html[data-filme='descubra'] #home-descubra {
   inset: 0;
   margin: 0;
   opacity: 0;
-  transition: opacity 1400ms cubic-bezier(0.65, 0, 0.35, 1);
+  /* o filme é a exceção ao teto de 450 ms: a fusão entre retratos é lenta de propósito */
+  transition: opacity 1400ms var(--curva-troca);
 }
 :is(body, #_) .filme-plano.ativo {
   opacity: 1;
@@ -411,12 +412,12 @@ html[data-filme='descubra'] #home-descubra {
   gap: var(--space-4);
   max-width: min(36rem, 52%);
   transition:
-    opacity 240ms cubic-bezier(0.4, 0, 1, 1),
-    transform 240ms cubic-bezier(0.4, 0, 1, 1);
+    opacity var(--mov-curto) var(--curva-saida),
+    transform var(--mov-curto) var(--curva-saida);
 }
 :is(body, #_) .filme-texto.saindo {
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translateY(calc(-1 * var(--mov-perto)));
 }
 :is(body, #_) .filme-rotulo {
   margin: 0;
@@ -459,11 +460,11 @@ html[data-filme='descubra'] #home-descubra {
   display: inline-block;
 }
 :is(body, #_) .filme-texto.entrou .filme-palavra > span {
-  animation: filme-escreve 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--i) * 55ms + 200ms);
+  animation: filme-escreve var(--mov-longo) var(--curva-chegada) both;
+  animation-delay: calc(var(--i) * var(--mov-cascata) + 200ms);
 }
 :is(body, #_) .filme-texto.entrou .filme-aspa {
-  animation: filme-surge 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: filme-surge var(--mov-entrada) var(--curva-chegada) both;
 }
 @keyframes filme-escreve {
   from {
@@ -478,7 +479,7 @@ html[data-filme='descubra'] #home-descubra {
 @keyframes filme-surge {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(var(--mov-perto));
   }
 }
 :is(body, #_) .filme-nome {
@@ -488,7 +489,7 @@ html[data-filme='descubra'] #home-descubra {
   color: var(--on-brand);
 }
 :is(body, #_) .filme-texto.entrou .filme-nome {
-  animation: filme-nome 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: filme-nome 700ms var(--curva-chegada) both;
   animation-delay: calc(var(--escrita) + 300ms);
 }
 @keyframes filme-nome {
@@ -519,8 +520,8 @@ html[data-filme='descubra'] #home-descubra {
   margin-top: var(--space-2);
 }
 :is(body, #_) .filme-texto.entrou :is(.filme-papel, .filme-acoes) {
-  animation: filme-surge 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--escrita) + 650ms);
+  animation: filme-surge var(--mov-entrada) var(--curva-chegada) both;
+  animation-delay: calc(var(--escrita) + 600ms);
 }
 :is(body, #_) .filme-controles {
   display: flex;
@@ -570,30 +571,36 @@ html[data-filme='descubra'] #home-descubra {
   border-color: var(--on-brand);
 }
 /* celular: a foto em cima, o texto embaixo, com o véu subindo da sala roxa */
+/* celular: a foto em cima e o texto embaixo, sempre sobre o roxo cheio (o texto nunca fica sobre a foto) */
 @media (max-width: 767px) {
   :is(body, #_) .filme {
-    min-height: min(92svh, 860px);
+    --foto-h: clamp(240px, 48svh, 460px);
+    min-height: 0;
+    align-content: start;
   }
   :is(body, #_) .filme-planos {
-    inset: 0 0 34% 0;
+    inset: 0 0 auto 0;
+    height: var(--foto-h);
   }
   :is(body, #_) .filme-veu {
+    inset: 0 0 auto 0;
+    height: var(--foto-h);
     background:
       linear-gradient(
-        color-mix(in srgb, var(--brand-surface) 30%, transparent),
-        color-mix(in srgb, var(--brand-surface) 30%, transparent)
+        color-mix(in srgb, var(--brand-surface) 24%, transparent),
+        color-mix(in srgb, var(--brand-surface) 24%, transparent)
       ),
       linear-gradient(
-        0deg,
-        var(--brand-surface) 0%,
-        var(--brand-surface) 38%,
-        color-mix(in srgb, var(--brand-surface) 60%, transparent) 54%,
-        transparent 78%
+        180deg,
+        transparent 40%,
+        color-mix(in srgb, var(--brand-surface) 75%, transparent) 72%,
+        var(--brand-surface) calc(100% - 64px)
       );
   }
   :is(body, #_) .filme-grade {
-    align-content: end;
-    padding-block: var(--space-7) var(--space-6);
+    align-content: start;
+    gap: var(--space-5);
+    padding-block: calc(var(--foto-h) - 56px) var(--space-6);
   }
   :is(body, #_) .filme-texto,
   :is(body, #_) .filme-controles {
@@ -604,7 +611,7 @@ html[data-filme='descubra'] #home-descubra {
     margin-right: 0.04em;
   }
   :is(body, #_) .filme-frase p {
-    font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.2rem);
+    font-size: clamp(1.6rem, 1.15rem + 2.4vw, 2.2rem);
   }
 }
 @media (prefers-reduced-motion: reduce) {

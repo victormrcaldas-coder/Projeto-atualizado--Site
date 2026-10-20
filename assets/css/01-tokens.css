@@ -141,6 +141,20 @@
   --dur-3: 420ms;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-in-out: cubic-bezier(0.6, 0, 0.3, 1);
+  /* gramática do movimento (Etapa 9 refeita, design/movimento.html). Tempos e curvas medidos em
+     14 sites de referência: 300 ms é o valor mais comum; o teto é 450 ms; quem sai é mais rápido. */
+  --mov-micro: 150ms; /* cor, sublinhado, opacidade do hover */
+  --mov-curto: 220ms; /* chips, menus, toque, saídas */
+  --mov-base: 300ms; /* hover de cartão, abas, troca de imagem */
+  --mov-entrada: 360ms; /* troca de tela, revelação na rolagem, painel */
+  --mov-longo: 450ms; /* o teto: frase ampliada, folha, título revelado */
+  --mov-cascata: 40ms; /* entre um item e o seguinte, em até 6 itens */
+  --mov-perto: 8px;
+  --mov-longe: 16px;
+  --curva-padrao: cubic-bezier(0.4, 0, 0.2, 1); /* estados e hover */
+  --curva-chegada: cubic-bezier(0.16, 1, 0.3, 1); /* o que entra assenta devagar */
+  --curva-saida: cubic-bezier(0.4, 0, 1, 1); /* o que sai acelera e some */
+  --curva-troca: cubic-bezier(0.2, 0, 0, 1); /* troca de tela e o elemento que vira o próximo */
 
   /* ---- camadas ---- */
   --z-header: 100;
@@ -225,5 +239,13 @@ html[data-theme='dark'] {
     --dur-1: 0ms;
     --dur-2: 0ms;
     --dur-3: 0ms;
+    /* com movimento reduzido nada se desloca: só esmaece, rápido */
+    --mov-curto: 120ms;
+    --mov-base: 120ms;
+    --mov-entrada: 120ms;
+    --mov-longo: 120ms;
+    --mov-cascata: 0ms;
+    --mov-perto: 0px;
+    --mov-longe: 0px;
   }
 }
