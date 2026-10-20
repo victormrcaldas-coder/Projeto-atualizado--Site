@@ -176,6 +176,7 @@
 .com-dock {
   gap: 0;
   background: var(--bg);
+  box-shadow: none;
   border-top: var(--hairline) solid var(--border);
 }
 .com-dock button {

@@ -336,7 +336,7 @@ function switchAuthTab(tab) {
   document.getElementById('loginForm').classList.toggle('hidden', !isLogin);
   document.getElementById('registerForm').classList.toggle('hidden', isLogin);
   document.getElementById('authModalTitle').textContent = isLogin
-    ? 'Bem-vinda(o) de volta'
+    ? 'Que bom te ver de novo'
     : 'Criar sua conta gratuita';
   document.getElementById('authSwitchLine').innerHTML = isLogin
     ? `Ainda não tem conta? <button id="switchToRegister">Criar conta</button>`
@@ -417,7 +417,7 @@ async function handleRegister(username, email, password, password2) {
   const passwordHash = await sha256(password);
   await dbSet('user:' + email, { username, email, passwordHash, createdAt: Date.now() }, true);
   await dbSet('username:' + username.toLowerCase(), email, true);
-  toast('Conta criada com sucesso! Bem-vinda(o)');
+  toast('Conta criada. Que bom ter você aqui.');
   await completeLogin({ email, username });
 }
 async function completeLogin(user) {

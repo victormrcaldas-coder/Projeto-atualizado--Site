@@ -4,18 +4,18 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 
 ## Etapas e branches
 
-| Etapa                                                   | Branch                    | Situação                                                            |
-| ------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
-| 0. Diagnóstico                                          | `redesign/00-diagnostico` | Aprovada em 14/10/2026                                              |
-| 1. Direção visual                                       | `redesign/01-direcao`     | Aprovada no Portão 1 (14/10/2026)                                   |
-| 2. Sistema de design                                    | `redesign/02-sistema`     | Aprovada no Portão 2 (14/10/2026)                                   |
-| 3. Cabeçalho, navegação e rodapé                        | `redesign/03-navegacao`   | Aprovada no Portão 3 (14/10/2026)                                   |
-| 4. Home                                                 | `redesign/04-home`        | Aprovada em 20/10/2026, com a rodada 2 do refinamento; já na `main` |
-| 5. Frase: cartão, modal, Explorar, busca e filtros      | `redesign/05-frase`       | Feita direto no site em 20/10/2026; já na `main`                    |
-| 6. Autores & Obras, Panorama e Obra                     | `redesign/06-autores`     | Feita direto no site em 20/10/2026; já na `main`                    |
-| 7. Descubra e Histórias                                 | `redesign/07-descubra`    | Feita direto no site em 20/10/2026; já na `main`                    |
-| 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Feita direto no site em 20/10/2026; já na `main`                    |
-| 9. Movimento, cursor e revisão final                    | `redesign/09-revisao`     | Próxima                                                             |
+| Etapa                                                   | Branch                    | Situação                                                                    |
+| ------------------------------------------------------- | ------------------------- | --------------------------------------------------------------------------- |
+| 0. Diagnóstico                                          | `redesign/00-diagnostico` | Aprovada em 14/10/2026                                                      |
+| 1. Direção visual                                       | `redesign/01-direcao`     | Aprovada no Portão 1 (14/10/2026)                                           |
+| 2. Sistema de design                                    | `redesign/02-sistema`     | Aprovada no Portão 2 (14/10/2026)                                           |
+| 3. Cabeçalho, navegação e rodapé                        | `redesign/03-navegacao`   | Aprovada no Portão 3 (14/10/2026)                                           |
+| 4. Home                                                 | `redesign/04-home`        | Aprovada em 20/10/2026, com a rodada 2 do refinamento; já na `main`         |
+| 5. Frase: cartão, modal, Explorar, busca e filtros      | `redesign/05-frase`       | Feita direto no site em 20/10/2026; já na `main`                            |
+| 6. Autores & Obras, Panorama e Obra                     | `redesign/06-autores`     | Feita direto no site em 20/10/2026; já na `main`                            |
+| 7. Descubra e Histórias                                 | `redesign/07-descubra`    | Feita direto no site em 20/10/2026; já na `main`                            |
+| 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Feita direto no site em 20/10/2026; já na `main`                            |
+| 9. Movimento, cursor e revisão final                    | `redesign/09-revisao`     | Feita em 20/10/2026; já na `main`. Relatório em `design/RELATORIO-FINAL.md` |
 
 **Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -333,3 +333,19 @@ Feita direto no site, sem protótipo, como o proprietário pediu. Segue o cartã
 - **Perfil e Escrever:** abas com o traço laranja, nome condensado, compositor sem caixa, as três letras como abas e os fundos como quadrados.
 - **Janela de entrar:** centrada, com a altura do conteúdo. Desde a Etapa 3 ela ficava **abaixo** da camada escura, escurecida e sem receber o clique; corrigido no mesmo dia, e já na `main`.
 - **Teste novo:** `ferramentas/testes/comunidade.mjs`, com 32 casos.
+
+## Etapa 9: revisão final (20/10/2026)
+
+- **Varredura:** contraste AA e rolagem lateral, em 14 telas e janelas, 6 larguras e 2 temas. Nenhuma falha.
+- **Movimento:** a entrada dos blocos passou para 420 ms e 12 px; com movimento reduzido, nada se move.
+- **Iniciais:** sem as partículas (Machado de Assis → MA).
+- **Ajustes do Crítico dentro da direção aprovada:**
+  - links da frase ampliada em caixa normal;
+  - citação no relato sem travessão;
+  - barra Publicados/Seguindo sem sombra;
+  - nome logado com reticências;
+  - borda direita das fileiras de chips esmaecida;
+  - dados do autor alinhados no celular;
+  - "Que bom te ver de novo" na janela de entrar;
+  - o nome da "frase ao acaso" em serifa condensada.
+- **Fica para a sua decisão:** as mudanças que o Crítico sugeriu na direção aprovada (ver `RELATORIO-FINAL.md`).

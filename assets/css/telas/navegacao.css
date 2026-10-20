@@ -136,9 +136,10 @@
   }
 }
 .user-chip {
-  max-width: 11rem;
+  max-width: 9.5rem;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 /* botões de ícone do cabeçalho: sem círculo nem fundo */
 .site-header .btn-icon,
@@ -419,4 +420,33 @@ body:has(#view-home:not(.hidden)) .site-footer {
   transition:
     transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1),
     visibility 0s linear 0.35s;
+}
+
+/* =========================================================
+   MOVIMENTO (Etapa 9): a entrada dos blocos ao rolar, no tempo do sistema.
+   Antes: 0,7 s e 22 px. Agora --dur-3 (420 ms) e 12 px, só opacidade e deslocamento;
+   com movimento reduzido, os tokens de duração valem 0 e o bloco já aparece no lugar.
+   ========================================================= */
+.reveal {
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-3) var(--ease-out),
+    transform var(--dur-3) var(--ease-out);
+}
+.reveal.in-view {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* fileiras de chips que rolam para o lado: a borda direita esmaece, para o corte não parecer defeito
+   (máscara de opacidade: a cor do gradiente não aparece, só a transparência conta) */
+.chip-row,
+.filter-row {
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - var(--space-7)), transparent);
+  mask-image: linear-gradient(to right, black calc(100% - var(--space-7)), transparent);
 }

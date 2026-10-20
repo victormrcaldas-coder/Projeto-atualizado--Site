@@ -1307,6 +1307,7 @@
 :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock {
   gap: 0;
   background: var(--bg);
+  box-shadow: none;
   border-top: var(--hairline) solid var(--border);
 }
 :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock button {

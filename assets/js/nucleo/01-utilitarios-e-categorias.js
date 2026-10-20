@@ -104,11 +104,19 @@ function slugify(str) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 }
+/* Primeiro e último nome, sem partículas nem sufixos: "Machado de Assis" → MA, "Vincent van Gogh" → VG
+   (antes saíam "MD" e "VV"). */
 function initials(name) {
-  return name
-    .split(' ')
-    .filter((w) => w.length > 1 || w === name.split(' ')[0])
-    .slice(0, 2)
+  const partes = String(name || '')
+    .split(/\s+/)
+    .filter(Boolean);
+  const nomes = partes.filter(
+    (w, i) =>
+      i === 0 ||
+      !/^(de|da|do|das|dos|e|van|von|der|den|du|di|del|la|le|y|jr\.?|sr\.?|filho|neto|júnior)$/i.test(w)
+  );
+  const ini = nomes.length > 1 ? [nomes[0], nomes[nomes.length - 1]] : nomes;
+  return ini
     .map((w) => w[0])
     .join('')
     .toUpperCase();

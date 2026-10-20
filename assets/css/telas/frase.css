@@ -367,6 +367,13 @@
 .expand-links {
   justify-content: flex-start;
 }
+/* os links da janela seguem os do resto do site: caixa normal, sublinhado fino */
+.expand-know {
+  font-size: var(--fs-small);
+  letter-spacing: 0;
+  text-transform: none;
+  text-underline-offset: 0.3em;
+}
 
 /* =========================================================
    FRASE AMPLIADA — o que a janela de 03-componentes não tinha

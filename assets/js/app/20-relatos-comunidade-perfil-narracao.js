@@ -48,7 +48,7 @@ function quoteRefHTML(p) {
   if (!p.quote) return '';
   return `<div class="post-quote-ref">
     <p>&ldquo;${escapeHtml(p.quote.text)}&rdquo;</p>
-    <span>— ${escapeHtml(p.quote.author)}</span>
+    <span>${escapeHtml(p.quote.author)}</span>
   </div>`;
 }
 

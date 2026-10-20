@@ -377,6 +377,11 @@
   font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
   line-height: 1;
 }
+.acaso-autor .link-autor.nome-condensado {
+  font-family: var(--font-title);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+}
 .acaso-autor .btn-text {
   justify-self: start;
 }

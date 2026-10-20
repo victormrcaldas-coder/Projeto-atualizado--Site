@@ -45,12 +45,12 @@ Amartya Sen (200), Antoine de Saint-Exupéry (450), Ariano Suassuna (450), Ayrto
 - **Carlos Drummond de Andrade** não tem foto curada.
 - **Como corrigir:** só entra se houver retrato com licença livre confirmada. Se não houver, fica a placa tipográfica.
 
-## Home (para a Etapa 4b)
+## Home e código do site
 
-5. **Contadores com "+":** as fases de curadoria 36 e 37 escrevem "2412+" em `statQuotes` e `statAuthors`. O número exato precisa ser escrito no fim da cadeia.
-6. **`initials()`** (`nucleo/01`) põe o "de" nas iniciais (ex.: "MD" para Machado de Assis).
-7. **Aviso (`#toast`):** aparece como uma pílula vazia.
-8. **Seleção da galeria da home:** no site, ela deve ser escolhida entre autores com foto curada existente e de tamanho bom. Assim, foto quebrada nunca vira um bloco que parece imagem faltando.
+5. ~~**Contadores com "+"**~~ **resolvido na home nova**: ela escreve o número exato. As fases 36 e 37 ainda escrevem "2412+" nos contadores antigos, escondidos (ver o item 9).
+6. ~~**`initials()` com o "de"**~~ **resolvido na Etapa 9**: usa o primeiro e o último nome (Machado de Assis → MA; Vincent van Gogh → VG).
+7. ~~**Pílula vazia do aviso (`#toast`)**~~ **resolvido na Etapa 4**.
+8. ~~**Galeria da home com foto quebrada**~~ **resolvido na Etapa 4**: a pessoa sem foto mostra uma placa com o nome e vai para o fim da fila.
 9. **Código antigo da home:**
    - `renderHeroStack`, `renderQuoteOfDay`, o gerador (`generateBtn`), `renderCategoryGrid('catGridHome')` e os contadores com "+" (`init()` e as fases 36 e 37) ainda escrevem em elementos que a home nova não usa;
    - esses elementos ficam guardados em `.home-legado`, fora da tela;
@@ -65,3 +65,26 @@ Amartya Sen (200), Antoine de Saint-Exupéry (450), Ariano Suassuna (450), Ayrto
     - as fotos curadas (`PHOTOS`, em `app/11`) só dizem a altura do rosto (`center 20%`);
     - numa foto larga num quadro vertical, o rosto que está fora do centro sai cortado. Exemplo: Warren Buffett, no Descubra, com o rosto encostado na borda direita;
     - **como corrigir:** acrescentar a posição horizontal (por exemplo `70% 20%`) nas fotos largas, conferindo uma por uma.
+
+## Achados das etapas 5 a 9
+
+13. **Bloco de CSS injetado por JS** (`<style id="memotiva-responsivo">`, em `curadoria/29`):
+    - ainda força `min-height: 100dvh` em toda `.modal` e limita todo `article` a 72ch;
+    - as telas redesenhadas anulam isso uma a uma;
+    - **como corrigir:** passar as regras que ainda servem para o CSS e deixar de injetar o bloco. Como `curadoria/29` é fase antiga, a troca vai em código novo (app) ou numa fase nova.
+14. **CSS antigo (`memotiva.css`, cerca de 4.500 linhas) ainda carregado:**
+    - todas as telas já foram redesenhadas por cima dele;
+    - **como corrigir:** retirar as regras que ficaram sem uso, tela por tela, conferindo cada uma com os testes e os prints. É trabalho de limpeza, sem mudança visual, e pede uma etapa própria.
+15. **Pré-carga das fotos** (`app/14`): ao abrir o site, ele procura as fotos de quem tem história e não tem foto curada. São muitos pedidos logo na carga. **Como corrigir:** carregar só quando a pessoa aparece na tela.
+16. **Botão "Comprar"** (obras): só mostra o aviso "A função do botão Comprar ainda será definida". **O que decidir:** para onde ele leva (loja, sebo, biblioteca) ou se sai.
+17. **Endereço do site:** o GitHub Pages ainda não está ligado. **O que fazer:** no GitHub, Settings → Pages → Deploy from a branch → `main`, pasta `/ (root)`. O site fica em `https://victormrcaldas-coder.github.io/Projeto-atualizado--Site/`.
+
+18. **Obras repetidas** (conteúdo): Victor Hugo tem "As Contemplações" e "Contemplações", as duas de 1856. **Como corrigir:** fase de curadoria que junte as duas, com registro.
+
+## O que você deve fazer, em ordem
+
+1. Ligar o GitHub Pages (item 17), para abrir o site pelo celular.
+2. Decidir o botão "Comprar" (item 16).
+3. Pedir uma fase de curadoria (itens 1 a 4, 10, 12 e 18): fotos quebradas, fotos pequenas, Pessoa, Drummond, créditos, pontos focais e obras repetidas.
+4. Pedir a limpeza de código (itens 9, 13, 14 e 15). Não muda nada na tela; deixa o site mais leve e mais fácil de manter.
+5. A narração (item 11) depende do navegador; só muda se um dia houver áudio gravado.
