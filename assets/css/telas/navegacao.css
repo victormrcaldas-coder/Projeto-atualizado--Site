@@ -286,6 +286,11 @@
   z-index: calc(var(--z-overlay) - 1);
   transition: opacity var(--dur-2) var(--ease-out);
 }
+/* as janelas (entrar, comentar, denunciar) ficam acima da camada escura; antes ficavam abaixo
+   dela (100 contra 999), escurecidas e sem receber o clique */
+.modal-overlay {
+  z-index: var(--z-modal);
+}
 
 /* =========================================================
    3. BARRA INFERIOR (abaixo de 1100 px)
