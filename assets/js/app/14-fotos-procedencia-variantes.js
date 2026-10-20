@@ -564,7 +564,7 @@ function renderProfileFilter() {
     <button class="profile-opt ${sel === p.id ? 'active' : ''}" data-profile="${p.id}">
       <span class="pd" style="background:${p.color}"></span>
       <span>${escapeHtml(p.name)}</span>
-      <span class="pc">${p.id === 'all' ? QUOTES.length : PROFILE_COUNTS[p.id] || 0}</span>
+      <span class="pc">${(p.id === 'all' ? QUOTES.length : PROFILE_COUNTS[p.id] || 0).toLocaleString('pt-BR')}</span>
     </button>`
     )
     .join('');

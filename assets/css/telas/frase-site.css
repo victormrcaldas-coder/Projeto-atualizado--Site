@@ -1,0 +1,1558 @@
+/* GERADO por ferramentas/design/escopo.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/frase.css.
+   Não edite aqui: mude a origem e rode o script de novo. Vale só dentro de :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid). */
+/* ==================== assets/css/02-base.css ==================== */
+/* ============================================================
+   MEMOTIVA — BASE (Etapa 2 do redesign)
+   Reset curto, tipografia de leitura, links, foco e acessibilidade.
+   Usa só os tokens de 01-tokens.css.
+   ============================================================ */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) *,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) *::before,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) *::after {
+  box-sizing: border-box;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--weight-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h1,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h2,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h3,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  color: var(--brand);
+  text-wrap: balance;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: var(--tracking-display);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h2 {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.01em;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) h3 {
+  font-size: 1.25rem;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) p {
+  margin: 0;
+  text-wrap: pretty;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) img,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) svg,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) video {
+  display: block;
+  max-width: 100%;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) img {
+  height: auto;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) button,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) input,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) select,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) textarea {
+  font: inherit;
+  color: inherit;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) button {
+  cursor: pointer;
+}
+/* ---- links: tinta do texto, sublinhado fino; o laranja aparece no sublinhado ---- */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) a {
+  color: var(--text);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--border-strong);
+  transition: color var(--dur-1) var(--ease-out);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) a:hover {
+  color: var(--accent-text);
+}
+/* ---- foco: visível em todo elemento interativo ---- */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) :focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) ::selection {
+  background: var(--highlight);
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) mark {
+  background: var(--highlight);
+  color: var(--text);
+  padding: 0 0.1em;
+  border-radius: var(--radius-sm);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) hr {
+  border: 0;
+  border-top: var(--hairline) solid var(--border);
+  margin: var(--space-6) 0;
+}
+/* ---- utilitários ---- */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .hidden,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) [hidden] {
+  display: none !important;
+}
+/* datas e nomes que não devem se partir na linha, como "(1920–1977)" */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .sem-quebra {
+  white-space: nowrap;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-left: max(var(--space-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4), env(safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .wrap {
+    padding-left: max(var(--space-6), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-6), env(safe-area-inset-right, 0px));
+  }
+}
+/* rótulo pequeno em caixa alta espaçada, como as etiquetas de museu da Galeria */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* texto longo de leitura (biografias, histórias) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prose {
+  max-width: var(--measure);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prose p + p {
+  margin-top: 1em;
+}
+
+/* ==================== assets/css/03-componentes.css ==================== */
+/* ============================================================
+   MEMOTIVA — COMPONENTES BASE (Etapa 2 do redesign)
+   Usam as classes que o site e o JS já usam (.quote-card, .expand-*, .chip…),
+   para as próximas etapas só ligarem este arquivo, sem trocar a marcação.
+   A navegação (cabeçalho, menu, barra inferior, rodapé) fica em telas/navegacao.css.
+   Classes novas, que ainda não existem no site, estão marcadas com "(nova)".
+   Só tokens de 01-tokens.css; nenhum hex aqui.
+   ============================================================ */
+/* =========================================================
+   1. A FRASE — um estilo só para todas as frases do acervo
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-text,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) /* (nova) uso genérico: autor,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) obra,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) Descubra,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) Histórias */
+.quote-card-text,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-text,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-hero-text,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-poster-text /* (nova) a frase sozinha,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) como cartaz: frase ao acaso e encerramento */ {
+  margin: 0;
+  font-family: var(--quote-font);
+  font-weight: var(--quote-weight);
+  font-style: var(--quote-style);
+  color: var(--quote-color);
+  line-height: var(--quote-leading);
+  letter-spacing: var(--quote-tracking);
+  font-optical-sizing: auto;
+  text-wrap: pretty;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-text,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-text {
+  font-size: var(--quote-card);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-text {
+  font-size: var(--quote-modal);
+  max-width: var(--measure-quote);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-hero-text {
+  font-size: var(--quote-hero);
+  max-width: 34ch;
+}
+/* um único degrau menor para frase longa: o JS marca data-comprimento="longa" (mais de 140 caracteres) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-text[data-comprimento='longa'],
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-text[data-comprimento='longa'] {
+  font-size: var(--quote-card-long);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 40ch;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-hero-text[data-comprimento='longa'] {
+  font-size: var(--quote-hero-long);
+  max-width: 36ch;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-poster-text {
+  font-size: var(--quote-poster);
+  max-width: 21ch;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-poster-text[data-comprimento='longa'] {
+  font-size: var(--quote-poster-long);
+  max-width: 32ch;
+}
+/* aspa pendurada nos outros navegadores: a aspa de abertura vem num span próprio (nova) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .aspa-abre {
+  margin-left: -0.42em;
+}
+/* no celular a margem lateral é estreita demais para pendurar a aspa: ela volta para dentro da linha */
+@media (max-width: 639px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .aspa-abre {
+    margin-left: 0;
+  }
+}
+/* o original, quando existe: mesma família, itálico pequeno, no idioma certo (lang no elemento) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-original {
+  margin: 0;
+  font-family: var(--font-title), var(--font-original-extra);
+  font-style: italic;
+  font-size: var(--quote-original);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+/* =========================================================
+   2. BOTÕES E LINKS
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--text);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn:disabled,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* principal: espresso cheio (no escuro, linho). O nome antigo continua valendo. */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-primary,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-coral {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-primary:hover,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-coral:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+/* secundário: contorno */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-ghost:hover {
+  background: var(--surface);
+}
+/* texto: só a palavra, sublinhado laranja fino */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-text:hover {
+  color: var(--accent-text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-sm {
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-lg {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-size: var(--fs-body);
+}
+/* botão só com ícone: 44 × 44, sem caixa */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-icon:hover {
+  background: var(--surface);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   3. CAMPOS
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-hint {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-input,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-input::placeholder,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-input::placeholder {
+  color: var(--text-meta);
+  opacity: 1;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-input:focus-visible,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-input[aria-invalid='true'] {
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .form-error {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) textarea.form-input {
+  min-height: 120px;
+  line-height: var(--lh-body);
+  resize: vertical;
+}
+/* =========================================================
+   4. CHIPS E FILTROS
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-row,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .filter-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: var(--space-1);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-row::-webkit-scrollbar,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .filter-row::-webkit-scrollbar {
+  display: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-size var(--dur-2) var(--ease-out);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip:hover {
+  color: var(--text);
+}
+/* ativo: texto na tinta e o traço laranja curto, como no menu */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip.active,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip[aria-pressed='true'] {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-count {
+  color: inherit;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-arrow {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .filter-label {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-meta);
+}
+/* =========================================================
+   5. CARTÃO DE FRASE (Explorar e listas)
+   Sem rotação, sem fita: todos iguais, a frase manda.
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-grid,
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-7) var(--space-6);
+  align-items: start;
+}
+/* sem caixa nem fundo: um fio no topo, como verbete de livro */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) 0 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  background: none;
+  transform: none !important; /* desliga a rotação que o template antigo põe inline */
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card:hover {
+  border-top-color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-tape {
+  display: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* o laranja como detalhe: um ponto pequeno antes da categoria */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .avatar-frame {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .avatar-frame img,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-avatar img,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prancha-foto img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sem foto: iniciais em serifa, no tom do papel (o template antigo põe uma cor viva inline) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .avatar-fallback {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  background: var(--frame) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .author-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-regular);
+  color: var(--brand);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn:hover,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act:hover {
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn.active,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act.liked,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn[aria-pressed='true'],
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act[aria-pressed='true'] {
+  color: var(--accent-text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn[aria-pressed='true'] svg,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn svg,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   6. FRASE AMPLIADA (janela)
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-overlay,
+:is(#quoteExpand, #photoExpand).expand-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: none;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--overlay);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-overlay.show,
+:is(#quoteExpand, #photoExpand).expand-overlay.show {
+  display: grid;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-quote {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-close svg {
+  width: 18px;
+  height: 18px;
+}
+/* a "sala" da Galeria: no computador, o retrato ocupa a coluna da esquerda e o texto de parede a da direita.
+   .expand-foot e .expand-ident-wrap viram "transparentes" para o retrato subir para a primeira coluna
+   sem mudar a marcação. */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-foot {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--space-4) var(--space-4);
+  align-items: start;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+@media (min-width: 900px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-auto-flow: dense;
+    gap: var(--space-4) var(--space-7);
+    padding: 0 var(--space-7) 0 0;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner > * {
+    grid-column: 2;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner > .expand-cat {
+    padding-top: var(--space-8);
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-foot {
+    display: contents;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-foot > * {
+    grid-column: 2;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-foot > .expand-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    align-self: stretch;
+    width: 100%;
+    min-height: 520px;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident-wrap {
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-foot > .expand-acts {
+    grid-column: 2;
+    padding-bottom: var(--space-5);
+  }
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-avatar {
+  position: relative;
+  width: 72px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+  cursor: zoom-in;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-avatar .avatar-fallback {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident-wrap {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident {
+  display: grid;
+  gap: var(--space-1);
+}
+/* o nome do autor: Noto Serif Display condensada, como os nomes da Galeria */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-author {
+  font-family: var(--font-title);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--brand);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-src.src-alerta {
+  color: var(--accent-text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-src.src-nota {
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-know {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.4em;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-know:hover {
+  color: var(--accent-text);
+  text-decoration-color: currentColor;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-acts {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid var(--border);
+}
+/* prancha (nova): o retrato da abertura, com o disco laranja da Florada atrás (só no claro) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prancha {
+  position: relative;
+  margin: 0;
+  isolation: isolate;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prancha::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -9%;
+  left: -14%;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mass);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prancha-foto {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: var(--frame);
+  cursor: zoom-in;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prancha-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .prancha figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+/* faixa da fonte (nova), herdada da Florada: roxo com texto linho, só no claro.
+   No escuro vira o quadro escuro da Galeria. */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-fonte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--brand-surface);
+  color: var(--on-brand);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-fonte b {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--on-brand-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-fonte .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-fonte .conferida {
+  color: var(--on-brand-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-fonte a,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-fonte .btn-text {
+  margin-left: auto;
+  color: var(--on-brand);
+  text-decoration-color: var(--on-brand-meta);
+}
+/* salas de cor (novas): café, ocre e roxo, para dar peso a uma seção sem caixa nem sombra.
+   Dentro de uma sala, a tinta, as linhas, o foco, o botão principal e a frase passam para as cores
+   da sala: os componentes de dentro (etiqueta, botões, links, cartões) se ajustam sozinhos. */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-cafe,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-ocre,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-roxa {
+  padding-block: var(--space-7);
+  background: var(--bg);
+  color: var(--text);
+  --brand: var(--text);
+  --text-secondary: var(--text);
+  --quote-color: var(--text);
+  --focus-ring: var(--text);
+  --pin: var(--text-meta);
+  --border: color-mix(in srgb, var(--text) 24%, transparent);
+  --border-strong: color-mix(in srgb, var(--text) 60%, transparent);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-cafe {
+  --bg: var(--cafe-surface);
+  --text: var(--on-cafe);
+  --text-meta: var(--on-cafe-meta);
+  --accent-text: var(--on-cafe-accent);
+  --surface-strong: var(--on-cafe);
+  --text-on-strong: var(--cafe-surface);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-ocre {
+  --bg: var(--ochre-surface);
+  --text: var(--on-ochre);
+  --text-meta: var(--on-ochre-meta);
+  --accent-text: var(--on-ochre-accent);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .faixa-roxa {
+  --bg: var(--brand-surface);
+  --text: var(--on-brand);
+  --text-meta: var(--on-brand-meta);
+  --accent-text: var(--on-brand-accent);
+  --surface-strong: var(--on-brand);
+  --text-on-strong: var(--brand-surface);
+}
+/* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-label {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  font-size: var(--fs-small);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-label dt {
+  padding-top: 0.25em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-label dd {
+  margin: 0;
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-label .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .conferida {
+  display: block;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--accent-text);
+}
+/* =========================================================
+   7. ESTADOS: vazio, carregando, erro, aviso
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .empty-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 44ch;
+  padding: var(--space-7) 0;
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .empty-state svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: var(--space-2);
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .empty-state h3 {
+  font-size: 1.375rem;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .empty-state p {
+  color: var(--text-secondary);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .state-loading {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 320px;
+  padding: var(--space-7) 0;
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .state-loading::after {
+  content: '';
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 30%, var(--border) 30% 100%);
+  background-size: 200% 100%;
+  animation: carregando 1.4s var(--ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .state-loading::after {
+    animation: none;
+  }
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .state-error {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 52ch;
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .state-error strong {
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-medium);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .state-error p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  max-width: min(420px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (min-width: 1024px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .toast {
+    bottom: var(--space-6);
+  }
+}
+/* =========================================================
+   8. AVALIAÇÃO (só no guia por enquanto) (nova)
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating-scale {
+  display: flex;
+  gap: var(--space-1);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating label {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  cursor: pointer;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating label:hover {
+  background: var(--surface);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating input:checked + label {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating input:focus-visible + label {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .rating-ends {
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(5 * var(--tap) + 4 * var(--space-1));
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+
+/* ==================== assets/css/telas/frase.css ==================== */
+/* ============================================================
+   MEMOTIVA — A FRASE (Etapa 5 do redesign)
+   O Explorar (busca, temas, filtros e a grade de cartões) e as janelas da frase ampliada e da
+   fotografia, que abrem de qualquer tela. O cartão e a janela vêm de 03-componentes.css;
+   aqui fica só o que é do Explorar.
+   No site, este arquivo entra pelo escopo do Explorar e das janelas (ferramentas/design/escopo.py).
+   Só tokens; nenhum hex aqui.
+   ============================================================ */
+/* =========================================================
+   EXPLORAR — cabeça, busca, temas, filtros e resultados
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .wrap.section {
+  padding-block: var(--space-7) var(--space-9);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .section-head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 46rem;
+  margin: 0 0 var(--space-6);
+}
+/* o rótulo com o ponto apricot, o mesmo da home */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .section-head .eyebrow::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .section-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-h1);
+  font-weight: var(--weight-regular);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .section-sub {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+/* a nota sobre as traduções fica recolhida: o rodapé do site também a traz */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .nota-traducao summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+  cursor: pointer;
+  list-style: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .nota-traducao summary::-webkit-details-marker {
+  display: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .nota-traducao summary::after {
+  content: '+';
+  font-weight: var(--weight-regular);
+  text-decoration: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .nota-traducao[open] summary::after {
+  content: '−';
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .curation-note {
+  margin: var(--space-2) 0 0;
+  max-width: 68ch;
+  padding: 0 0 0 var(--space-4);
+  border-left: var(--hairline) solid var(--border-strong);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .toolbar {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+}
+/* a busca: um campo só, com a lupa dentro; o anel de foco fica na caixa */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 36rem;
+  min-height: 52px;
+  padding: 0 var(--space-2) 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-box:focus-within {
+  border-color: var(--text);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-box svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-box .search-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 50px;
+  padding: 0;
+  border: 0;
+  background: none;
+  outline: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-box .search-input:focus-visible {
+  outline: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-clear {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-secondary);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .search-clear:hover {
+  color: var(--text);
+}
+/* os temas: a fila de chips com as setas, sobre um fio */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  border-bottom: var(--hairline) solid var(--border);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-nav .chip-row {
+  flex: 1;
+  min-width: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-arrow {
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .chip-arrow:disabled {
+  opacity: 0.3;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .results-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-6);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .results-count {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+}
+/* filtros e frase aleatória: botões secundários, no mesmo desenho dos da home */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-filter-btn,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  box-shadow: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-filter-btn:hover,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-cat-btn:hover {
+  border-color: var(--text);
+  background: var(--surface);
+  transform: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-filter-btn svg,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-cat-btn svg {
+  width: 18px;
+  height: 18px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-filter-btn.has-value {
+  border-color: var(--text);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-panel {
+  border-radius: var(--radius-sm);
+  border-color: var(--border-strong);
+  background: var(--surface-page);
+  box-shadow: var(--shadow-float);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-panel-title,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-title {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-panel-clear {
+  min-height: var(--tap);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-options {
+  gap: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-opt,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-opt {
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-opt:hover,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-opt:hover {
+  background: var(--surface);
+}
+/* escolhida: fundo do papel e o traço laranja à esquerda, como o tema ativo */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-opt.active,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-opt.on {
+  background: var(--surface);
+  font-weight: var(--weight-semibold);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-opt .pd {
+  display: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .profile-opt .pc {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-opt strong {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-opt small {
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .cur-check {
+  border-radius: 2px;
+}
+/* a frase sorteada: uma faixa no tom do papel, com a frase maior */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-slot {
+  margin: 0 0 var(--space-7);
+  padding: var(--space-5);
+  background: var(--surface);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-slot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-2);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-slot-label {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-slot-close {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-secondary);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-slot .quote-card {
+  max-width: 44rem;
+  padding-top: 0;
+  border-top: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .random-slot .quote-card-text {
+  font-size: var(--quote-modal);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .empty-state {
+  padding: var(--space-8) var(--space-4);
+  color: var(--text-secondary);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .empty-state h3 {
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  font-size: var(--fs-h2);
+}
+/* =========================================================
+   O QUE SOBRA DO ESTILO ANTIGO (memotiva.css)
+   O cartão e a janela de 03-componentes não zeram tudo o que o estilo antigo põe nas mesmas
+   classes (papel com textura, sombra, margens, tamanhos fixos). Aqui ficam só esses zeros.
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card {
+  border: 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--text);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card::before {
+  content: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card:hover {
+  box-shadow: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-cat,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-cat {
+  margin: 0;
+  opacity: 1;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-text {
+  min-height: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-src {
+  margin: calc(-1 * var(--space-2)) 0 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .quote-card-foot {
+  margin: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .avatar-frame,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-avatar {
+  border: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .avatar-frame {
+  width: 40px;
+  height: 48px;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .heart-btn,
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-act {
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  transform: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-quote {
+  display: block;
+  height: auto;
+  padding: 0;
+  border: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-quote .quote-card-tape {
+  display: none;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner {
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-text {
+  margin: 0;
+  text-wrap: pretty;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-avatar {
+  height: auto;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-src {
+  font-weight: var(--weight-regular);
+  opacity: 1;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-know {
+  border-radius: 0;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-acts {
+  margin: 0;
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-links {
+  justify-content: flex-start;
+}
+/* =========================================================
+   FRASE AMPLIADA — o que a janela de 03-componentes não tinha
+   ========================================================= */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-papel {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-notas {
+  display: grid;
+  gap: var(--space-1);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident-wrap .quote-label .obra {
+  font-size: 1rem;
+}
+/* no celular, o retrato pequeno fica ao lado do nome e a etiqueta usa a largura toda */
+@media (max-width: 899px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident-wrap {
+    display: contents;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident {
+    align-self: center;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-ident-wrap > :not(.expand-ident) {
+    grid-column: 1 / -1;
+  }
+}
+/* ditado popular: sem retrato, a frase ocupa a janela inteira */
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner.sem-retrato {
+  padding: var(--space-8) var(--space-5) var(--space-5);
+}
+:is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner.sem-retrato .expand-foot {
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 900px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner.sem-retrato {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-8) var(--space-8) 0;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner.sem-retrato > *,
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner.sem-retrato .expand-foot > * {
+    grid-column: 1;
+  }
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .expand-inner.sem-retrato > .expand-cat {
+    padding-top: 0;
+  }
+}
+/* no celular, o número de frases fica numa linha e os dois botões lado a lado embaixo */
+@media (max-width: 639px) {
+  :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .results-count {
+    flex-basis: 100%;
+  }
+}
+
+@keyframes carregando {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

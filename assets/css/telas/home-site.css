@@ -1,4 +1,4 @@
-/* GERADO por ferramentas/design/escopo-home.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/home.css.
+/* GERADO por ferramentas/design/escopo.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/home.css.
    Não edite aqui: mude a origem e rode o script de novo. Vale só dentro de #view-home. */
 /* ==================== assets/css/02-base.css ==================== */
 /* ============================================================
@@ -1099,7 +1099,7 @@
      I  encerramento: uma frase e o mapa do site, emendados no rodapé (sala roxa)
    A seção G (avaliações) não aparece: não há avaliações reais.
    As cores das salas vêm de 03-componentes.css. Só tokens; nenhum hex aqui.
-   No site, este arquivo entra pelo escopo #view-home (ferramentas/design/escopo-home.py).
+   No site, este arquivo entra pelo escopo #view-home (ferramentas/design/escopo.py).
    ============================================================ */
 /* ---- ritmo vertical e cabeças de seção ---- */
 #view-home .home-secao {

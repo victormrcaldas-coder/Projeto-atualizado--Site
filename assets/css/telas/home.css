@@ -11,7 +11,7 @@
      I  encerramento: uma frase e o mapa do site, emendados no rodapé (sala roxa)
    A seção G (avaliações) não aparece: não há avaliações reais.
    As cores das salas vêm de 03-componentes.css. Só tokens; nenhum hex aqui.
-   No site, este arquivo entra pelo escopo #view-home (ferramentas/design/escopo-home.py).
+   No site, este arquivo entra pelo escopo #view-home (ferramentas/design/escopo.py).
    ============================================================ */
 
 /* ---- ritmo vertical e cabeças de seção ---- */

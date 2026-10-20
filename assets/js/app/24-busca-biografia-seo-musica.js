@@ -1916,32 +1916,57 @@ function openQuoteModal(idx) {
   if (!q) return;
   const el = document.getElementById('quoteExpand');
   const box = document.getElementById('quoteExpandBox');
-  const col = colorForName(q.author);
+  if (!el.classList.contains('show')) el._origem = document.activeElement;
   const isFav = isFavQuote(idx);
   const ehPessoa = !SCRIPTURE_RE.test(canonAuthor(q.author));
   const bio = bioIdFor(q.author);
+  /* Etapa 5 do redesign: a "sala" da Galeria. Retrato à esquerda (no computador), nome, papel e a
+     etiqueta Obra · Original · Imagem; ditado popular fica sem retrato. */
+  const ditado = /^ditado/i.test(q.author || '');
+  const papel = ehPessoa && !ditado && typeof papelDe === 'function' ? papelDe(q.author) : '';
+  const rot = STATUS_ROTULO[q.st] || STATUS_ROTULO.R;
+  const conferida = q.st === 'A' ? '<span class="conferida">fonte conferida</span>' : '';
+  const notas = [
+    rot.texto ? `<span class="expand-src ${rot.classe}">${escapeHtml(rot.texto)}</span>` : '',
+    q.autorAnterior
+      ? `<span class="expand-src src-alerta">Circula como frase de ${escapeHtml(q.autorAnterior)}.</span>`
+      : '',
+    q.vn > 1
+      ? `<span class="expand-src src-nota">${q.vn} traduções desta mesma passagem no acervo.</span>`
+      : ''
+  ].join('');
+  const etiqueta = [
+    q.src ? `<dt>Obra</dt><dd><span class="obra">${escapeHtml(q.src)}</span>${conferida}</dd>` : '',
+    q.orig ? `<dt>Original</dt><dd><p class="quote-original">${escapeHtml(q.orig)}</p></dd>` : '',
+    !ditado && photoInfo(q.author) ? '<dt>Imagem</dt><dd>Wikimedia Commons</dd>' : ''
+  ].join('');
 
   box.innerHTML = `
     <button class="expand-close" id="quoteExpandClose" aria-label="Fechar frase ampliada">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
-    <span class="quote-card-tape" aria-hidden="true"></span>
-    <div class="expand-inner">
+    <div class="expand-inner${ditado ? ' sem-retrato' : ''}">
       <span class="expand-cat">${escapeHtml(quoteCatLabel(q))}</span>
-      <p class="expand-text" style="font-size:${quoteFontSize(q.text)}">&ldquo;${escapeHtml(q.text)}&rdquo;</p>
+      <p class="expand-text"${q.text.length > 140 ? ' data-comprimento="longa"' : ''}>&ldquo;${escapeHtml(q.text)}&rdquo;</p>
       <div class="expand-foot">
-        <div class="expand-avatar" data-open-photo="${escapeHtml(q.author)}" role="button" tabindex="0" aria-label="Ampliar fotografia de ${escapeHtml(q.author)}">
-          ${photoImgHTML(q.author, 'card', 420)}
-          <div class="avatar-fallback" style="display:none; background:${col};">${initials(q.author)}</div>
-        </div>
+        ${
+          ditado
+            ? ''
+            : `<div class="expand-avatar" data-open-photo="${escapeHtml(q.author)}" role="button" tabindex="0" aria-label="Ampliar fotografia de ${escapeHtml(q.author)}">
+          ${photoImgHTML(q.author, 'card', 900)}
+          <div class="avatar-fallback" style="display:none;">${initials(q.author)}</div>
+        </div>`
+        }
         <div class="expand-ident-wrap">
           <div class="expand-ident">
-            <span class="expand-author">— ${escapeHtml(q.author)}</span>
-            ${procedenciaHTML(q)}
+            <span class="expand-author">${escapeHtml(ditado ? 'Ditado popular' : q.author)}</span>
+            ${papel ? `<span class="expand-papel">${escapeHtml(papel)}</span>` : ''}
           </div>
+          ${etiqueta ? `<dl class="quote-label">${etiqueta}</dl>` : ''}
+          ${notas ? `<div class="expand-notas">${notas}</div>` : ''}
           <div class="expand-links">
-            ${bio ? `<button class="expand-know" id="expSaiba">${f5svg('livro', 15)} Saiba mais</button>` : ''}
-            ${ehPessoa ? `<button class="expand-know alt" id="expKnow">${f5svg('pessoa', 15)} Conhecer autor</button>` : ''}
+            ${bio ? `<button class="expand-know" id="expSaiba">Ler a história</button>` : ''}
+            ${ehPessoa && !ditado ? `<button class="expand-know alt" id="expKnow">Conhecer ${escapeHtml(canonAuthor(q.author))}</button>` : ''}
           </div>
         </div>
         <div class="expand-acts">
@@ -2140,9 +2165,14 @@ window.__fase5Boot = function () {
   const cab = document.querySelector('.site-header');
   if (!cab) return;
   let pendente = false;
+  /* Com histerese: encolher tira 16 px do topo da página e a rolagem anda junto; com um limite só
+     (24 px), parado perto dele o cabeçalho ficava encolhendo e crescendo sem parar e a página tremia. */
   const atualizar = () => {
     pendente = false;
-    cab.classList.toggle('compact', window.scrollY > 24);
+    const y = window.scrollY;
+    if (!cab.classList.contains('compact')) {
+      if (y > 64) cab.classList.add('compact');
+    } else if (y < 8) cab.classList.remove('compact');
   };
   window.addEventListener(
     'scroll',

@@ -1,0 +1,462 @@
+/* ============================================================
+   MEMOTIVA — A FRASE (Etapa 5 do redesign)
+   O Explorar (busca, temas, filtros e a grade de cartões) e as janelas da frase ampliada e da
+   fotografia, que abrem de qualquer tela. O cartão e a janela vêm de 03-componentes.css;
+   aqui fica só o que é do Explorar.
+   No site, este arquivo entra pelo escopo do Explorar e das janelas (ferramentas/design/escopo.py).
+   Só tokens; nenhum hex aqui.
+   ============================================================ */
+
+/* =========================================================
+   EXPLORAR — cabeça, busca, temas, filtros e resultados
+   ========================================================= */
+.wrap.section {
+  padding-block: var(--space-7) var(--space-9);
+}
+.section-head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 46rem;
+  margin: 0 0 var(--space-6);
+}
+/* o rótulo com o ponto apricot, o mesmo da home */
+.section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+.section-head .eyebrow::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+.section-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-h1);
+  font-weight: var(--weight-regular);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.section-sub {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+/* a nota sobre as traduções fica recolhida: o rodapé do site também a traz */
+.nota-traducao summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+  cursor: pointer;
+  list-style: none;
+}
+.nota-traducao summary::-webkit-details-marker {
+  display: none;
+}
+.nota-traducao summary::after {
+  content: '+';
+  font-weight: var(--weight-regular);
+  text-decoration: none;
+}
+.nota-traducao[open] summary::after {
+  content: '−';
+}
+.curation-note {
+  margin: var(--space-2) 0 0;
+  max-width: 68ch;
+  padding: 0 0 0 var(--space-4);
+  border-left: var(--hairline) solid var(--border-strong);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-meta);
+}
+.toolbar {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+}
+/* a busca: um campo só, com a lupa dentro; o anel de foco fica na caixa */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 36rem;
+  min-height: 52px;
+  padding: 0 var(--space-2) 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+}
+.search-box:focus-within {
+  border-color: var(--text);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+.search-box svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--text-meta);
+}
+.search-box .search-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 50px;
+  padding: 0;
+  border: 0;
+  background: none;
+  outline: none;
+}
+.search-box .search-input:focus-visible {
+  outline: none;
+}
+.search-clear {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-secondary);
+}
+.search-clear:hover {
+  color: var(--text);
+}
+/* os temas: a fila de chips com as setas, sobre um fio */
+.chip-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  border-bottom: var(--hairline) solid var(--border);
+}
+.chip-nav .chip-row {
+  flex: 1;
+  min-width: 0;
+}
+.chip-arrow {
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+}
+.chip-arrow:disabled {
+  opacity: 0.3;
+}
+.results-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-6);
+}
+.results-count {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+}
+/* filtros e frase aleatória: botões secundários, no mesmo desenho dos da home */
+.profile-filter-btn,
+.random-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  box-shadow: none;
+}
+.profile-filter-btn:hover,
+.random-cat-btn:hover {
+  border-color: var(--text);
+  background: var(--surface);
+  transform: none;
+}
+.profile-filter-btn svg,
+.random-cat-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.profile-filter-btn.has-value {
+  border-color: var(--text);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.profile-panel {
+  border-radius: var(--radius-sm);
+  border-color: var(--border-strong);
+  background: var(--surface-page);
+  box-shadow: var(--shadow-float);
+}
+.profile-panel-title,
+.cur-title {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.profile-panel-clear {
+  min-height: var(--tap);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}
+.profile-options {
+  gap: 0;
+}
+.profile-opt,
+.cur-opt {
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+.profile-opt:hover,
+.cur-opt:hover {
+  background: var(--surface);
+}
+/* escolhida: fundo do papel e o traço laranja à esquerda, como o tema ativo */
+.profile-opt.active,
+.cur-opt.on {
+  background: var(--surface);
+  font-weight: var(--weight-semibold);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+.profile-opt .pd {
+  display: none;
+}
+.profile-opt .pc {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+}
+.cur-opt strong {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.cur-opt small {
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+.cur-check {
+  border-radius: 2px;
+}
+/* a frase sorteada: uma faixa no tom do papel, com a frase maior */
+.random-slot {
+  margin: 0 0 var(--space-7);
+  padding: var(--space-5);
+  background: var(--surface);
+}
+.random-slot-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-2);
+}
+.random-slot-label {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.random-slot-close {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-secondary);
+}
+.random-slot .quote-card {
+  max-width: 44rem;
+  padding-top: 0;
+  border-top: 0;
+}
+.random-slot .quote-card-text {
+  font-size: var(--quote-modal);
+}
+.empty-state {
+  padding: var(--space-8) var(--space-4);
+  color: var(--text-secondary);
+}
+.empty-state h3 {
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  font-size: var(--fs-h2);
+}
+
+/* =========================================================
+   O QUE SOBRA DO ESTILO ANTIGO (memotiva.css)
+   O cartão e a janela de 03-componentes não zeram tudo o que o estilo antigo põe nas mesmas
+   classes (papel com textura, sombra, margens, tamanhos fixos). Aqui ficam só esses zeros.
+   ========================================================= */
+.quote-card {
+  border: 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--text);
+}
+.quote-card::before {
+  content: none;
+}
+.quote-card:hover {
+  box-shadow: none;
+}
+.quote-card-cat,
+.expand-cat {
+  margin: 0;
+  opacity: 1;
+}
+.quote-card-text {
+  min-height: 0;
+}
+.quote-card-src {
+  margin: calc(-1 * var(--space-2)) 0 0;
+}
+.quote-card-foot {
+  margin: 0;
+}
+.avatar-frame,
+.expand-avatar {
+  border: 0;
+}
+.avatar-frame {
+  width: 40px;
+  height: 48px;
+}
+.heart-btn,
+.expand-act {
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  transform: none;
+}
+.expand-quote {
+  display: block;
+  height: auto;
+  padding: 0;
+  border: 0;
+}
+.expand-quote .quote-card-tape {
+  display: none;
+}
+.expand-inner {
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+.expand-text {
+  margin: 0;
+  text-wrap: pretty;
+}
+.expand-avatar {
+  height: auto;
+}
+.expand-src {
+  font-weight: var(--weight-regular);
+  opacity: 1;
+}
+.expand-know {
+  border-radius: 0;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.expand-acts {
+  margin: 0;
+}
+.expand-links {
+  justify-content: flex-start;
+}
+
+/* =========================================================
+   FRASE AMPLIADA — o que a janela de 03-componentes não tinha
+   ========================================================= */
+.expand-papel {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.expand-notas {
+  display: grid;
+  gap: var(--space-1);
+}
+.expand-ident-wrap .quote-label .obra {
+  font-size: 1rem;
+}
+/* no celular, o retrato pequeno fica ao lado do nome e a etiqueta usa a largura toda */
+@media (max-width: 899px) {
+  .expand-ident-wrap {
+    display: contents;
+  }
+  .expand-ident {
+    align-self: center;
+  }
+  .expand-ident-wrap > :not(.expand-ident) {
+    grid-column: 1 / -1;
+  }
+}
+/* ditado popular: sem retrato, a frase ocupa a janela inteira */
+.expand-inner.sem-retrato {
+  padding: var(--space-8) var(--space-5) var(--space-5);
+}
+.expand-inner.sem-retrato .expand-foot {
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 900px) {
+  .expand-inner.sem-retrato {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-8) var(--space-8) 0;
+  }
+  .expand-inner.sem-retrato > *,
+  .expand-inner.sem-retrato .expand-foot > * {
+    grid-column: 1;
+  }
+  .expand-inner.sem-retrato > .expand-cat {
+    padding-top: 0;
+  }
+}
+
+/* no celular, o número de frases fica numa linha e os dois botões lado a lado embaixo */
+@media (max-width: 639px) {
+  .results-count {
+    flex-basis: 100%;
+  }
+}

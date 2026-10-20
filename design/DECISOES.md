@@ -257,3 +257,27 @@ O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começ
   - a história em destaque ocupa a largura toda (o bloco injetado por JS limitava todo `article` a 72ch);
   - no celular de 320 a 379 px, o "Entrar" não invade mais o botão do menu, e o nome de quem está logado vira só as iniciais;
   - conferida de 320 a 1920 px, nos dois temas, sem rolagem lateral.
+
+## Etapa 5: a frase, o Explorar, a busca e os filtros (20/10/2026)
+
+Feita direto no site, sem protótipo, como o proprietário pediu. Segue o cartão e a frase ampliada aprovados no Portão 3 (`design/prototipos/layout.html`).
+
+- **Cartão de frase** (em todas as grades: Explorar, autor, obra, favoritos):
+  - sem rotação, sem fita e sem textura de papel: um fio no topo, como verbete;
+  - a obra embaixo da frase;
+  - o nome do autor em serifa (antes, letra manuscrita), sem travessão;
+  - ditado popular sem retrato.
+- **Frase ampliada:**
+  - a "sala" da Galeria: retrato à esquerda no computador; nome, papel e a etiqueta Obra · Original · Imagem;
+  - "Saiba mais" virou "Ler a história" (é o que ele abre), e "Conhecer autor" virou "Conhecer" com o nome da pessoa;
+  - o foco volta ao cartão ao fechar, e o Tab não sai da janela.
+- **Explorar:**
+  - cabeça com o rótulo de ponto, título em serifa e um subtítulo novo (sem travessão);
+  - a nota sobre as traduções fica recolhida em "Sobre as traduções" (o rodapé também a traz);
+  - a busca é um campo só, e o texto de exemplo cabe no celular;
+  - os temas são chips com o traço laranja e as setas;
+  - os números ganham ponto de milhar;
+  - os botões "Filtros" e "Frase aleatória" seguem o desenho da home, e o painel de filtros perde as bolinhas coloridas;
+  - a busca sem resultado diz "Nenhuma frase encontrada" e sugere o que tentar.
+- **Correção de antes:** parado perto do topo, o cabeçalho encolhia e crescia sem parar e a página tremia. Agora encolhe depois de 64 px e só volta abaixo de 8 px.
+- **Teste novo:** `ferramentas/testes/frase.mjs`, com 38 casos.

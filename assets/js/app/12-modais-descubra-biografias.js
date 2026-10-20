@@ -33,11 +33,16 @@ function closeQuoteModal() {
   el.classList.remove('show');
   el.setAttribute('aria-hidden', 'true');
   unlockScroll();
+  /* o foco volta para onde estava antes de abrir (Etapa 5 do redesign) */
+  const origem = el._origem;
+  el._origem = null;
+  if (origem && origem.isConnected && origem.offsetParent) origem.focus({ preventScroll: true });
 }
 
 /* ---- lightbox só da fotografia, independente do cartão (§10.1) ---- */
 function openPhotoModal(author) {
   const el = document.getElementById('photoExpand');
+  if (!el.classList.contains('show')) el._origem = document.activeElement;
   const box = document.getElementById('photoExpandBox');
   const col = colorForName(author);
   const bio = bioIdFor(author);
@@ -64,6 +69,10 @@ function closePhotoModal() {
   el.classList.remove('show');
   el.setAttribute('aria-hidden', 'true');
   unlockScroll();
+  /* o foco volta para onde estava antes de abrir (Etapa 5 do redesign) */
+  const origem = el._origem;
+  el._origem = null;
+  if (origem && origem.isConnected && origem.offsetParent) origem.focus({ preventScroll: true });
 }
 
 /* ================================================================
@@ -72,20 +81,25 @@ function closePhotoModal() {
 function quoteCardHTML(q, idx) {
   const isFav = isFavQuote(idx);
   const catName = catById(q.cat)?.name || 'Motivação';
-  const rot = ((idx % 5) - 2) * 0.6;
+  /* Etapa 5 do redesign: sem rotação nem fita; a obra embaixo da frase; ditado popular sem retrato */
+  const ditado = /^ditado/i.test(q.author || '');
   return `
-  <article class="quote-card reveal in-view" style="transform:rotate(${rot}deg)" data-quote-idx="${idx}"
+  <article class="quote-card reveal in-view" data-quote-idx="${idx}"
            role="button" tabindex="0" aria-label="Ampliar frase de ${escapeHtml(q.author)}">
-    <span class="quote-card-tape" aria-hidden="true"></span>
     <span class="quote-card-cat">${escapeHtml(catName)}</span>
-    <p class="quote-card-text">&ldquo;${escapeHtml(q.text)}&rdquo;</p>
+    <p class="quote-card-text"${q.text.length > 140 ? ' data-comprimento="longa"' : ''}>&ldquo;${escapeHtml(q.text)}&rdquo;</p>
+    ${q.src ? `<p class="quote-card-src">${escapeHtml(q.src)}</p>` : ''}
     <div class="quote-card-foot">
       <div class="quote-author">
-        <div class="avatar-frame" data-open-photo="${escapeHtml(q.author)}" role="button" tabindex="0" aria-label="Ampliar fotografia de ${escapeHtml(q.author)}">
+        ${
+          ditado
+            ? ''
+            : `<div class="avatar-frame" data-open-photo="${escapeHtml(q.author)}" role="button" tabindex="0" aria-label="Ampliar fotografia de ${escapeHtml(q.author)}">
           ${photoImgHTML(q.author, 'card', 200)}
-          <div class="avatar-fallback" style="display:none; background:${colorForName(q.author)};">${initials(q.author)}</div>
-        </div>
-        <span class="author-name" title="${escapeHtml(q.author)}">— ${escapeHtml(q.author)}</span>
+          <div class="avatar-fallback" style="display:none;">${initials(q.author)}</div>
+        </div>`
+        }
+        <span class="author-name" title="${escapeHtml(q.author)}">${escapeHtml(q.author)}</span>
       </div>
       <button class="heart-btn ${isFav ? 'active' : ''}" data-fav-quote="${idx}" aria-label="Salvar frase nos favoritos" aria-pressed="${isFav}">
         <svg viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7.5-4.7-10.2-9.1C.2 9 1 5.4 4.2 4.1 6.7 3 9.3 4 12 7c2.7-3 5.3-4 7.8-2.9 3.2 1.3 4 4.9 2.4 7.8C19.5 16.3 12 21 12 21Z"/></svg>
@@ -398,6 +412,30 @@ function initFase2() {
         id === 'quoteExpand' ? closeQuoteModal() : closePhotoModal();
       }
     });
+  });
+  /* Tab não sai da janela aberta: o foco circula dentro dela (Etapa 5 do redesign) */
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const aberta = ['photoExpand', 'quoteExpand']
+      .map((id) => document.getElementById(id))
+      .find((el) => el && el.classList.contains('show'));
+    if (!aberta) return;
+    const focaveis = [...aberta.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])')].filter(
+      (x) => x.offsetParent
+    );
+    if (!focaveis.length) return;
+    const primeiro = focaveis[0];
+    const ultimo = focaveis[focaveis.length - 1];
+    if (!aberta.contains(document.activeElement)) {
+      e.preventDefault();
+      primeiro.focus();
+    } else if (e.shiftKey && document.activeElement === primeiro) {
+      e.preventDefault();
+      ultimo.focus();
+    } else if (!e.shiftKey && document.activeElement === ultimo) {
+      e.preventDefault();
+      primeiro.focus();
+    }
   });
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;

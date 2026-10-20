@@ -375,9 +375,10 @@ function renderExploreResults() {
   const empty = document.getElementById('exploreEmpty');
   const count = document.getElementById('resultsCount');
   const { q } = state.exploreFilter;
+  const n = results.length.toLocaleString('pt-BR');
   count.textContent = q.trim()
-    ? `${results.length} resultado${results.length === 1 ? '' : 's'} para "${q.trim()}"`
-    : `${results.length} frase${results.length === 1 ? '' : 's'}`;
+    ? `${n} resultado${results.length === 1 ? '' : 's'} para “${q.trim()}”`
+    : `${n} frase${results.length === 1 ? '' : 's'}`;
   grid.innerHTML = '';
   exploreQueue = results;
   if (results.length === 0) {

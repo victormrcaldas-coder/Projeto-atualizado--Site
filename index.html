@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/04-ponte.css">
 <link rel="stylesheet" href="assets/css/telas/navegacao.css">
 <link rel="stylesheet" href="assets/css/telas/home-site.css">
+<link rel="stylesheet" href="assets/css/telas/frase-site.css">
 </head>
 <body data-theme="light">
 
@@ -212,13 +213,16 @@
       <div class="section-head">
         <span class="eyebrow">explorar</span>
         <h2 class="section-title">Busque por autor ou tema</h2>
-        <p class="section-sub">Cada cartão traz só a frase e a assinatura de quem a disse — simples assim.</p>
-        <p class="curation-note">Parte do acervo foi escrita originalmente em outros idiomas. Nem sempre é possível uma tradução literal sem perder o sentido, e por isso a curadoria busca a maior proximidade possível com o texto e a intenção do original, admitindo pequenas adaptações necessárias ao português. Leia cada tradução como uma aproximação cuidadosa do original, não como uma reprodução palavra por palavra.</p>
+        <p class="section-sub">Procure pelo nome de quem disse, por uma palavra ou por um trecho. Ou escolha um tema.</p>
+        <details class="nota-traducao">
+          <summary>Sobre as traduções</summary>
+          <p class="curation-note">Parte do acervo foi escrita originalmente em outros idiomas. Nem sempre é possível uma tradução literal sem perder o sentido, e por isso a curadoria busca a maior proximidade possível com o texto e a intenção do original, admitindo pequenas adaptações necessárias ao português. Leia cada tradução como uma aproximação cuidadosa do original, não como uma reprodução palavra por palavra.</p>
+        </details>
       </div>
       <div class="toolbar">
         <div class="search-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" class="search-input" id="authorSearch" placeholder="Buscar por autor, palavra ou trecho de frase…" autocomplete="off">
+          <input type="text" class="search-input" id="authorSearch" placeholder="Autor, palavra ou trecho de frase" aria-label="Buscar frases por autor, palavra ou trecho" autocomplete="off">
           <button class="search-clear hidden" id="clearSearch" aria-label="Limpar busca">✕</button>
         </div>
         <div class="chip-nav">
@@ -272,8 +276,8 @@
       <div id="exploreSentinel" aria-hidden="true"></div>
       <div class="empty-state hidden" id="exploreEmpty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <h3>Nada por aqui ainda</h3>
-        <p>Tente buscar outro nome ou escolher outro tema.</p>
+        <h3>Nenhuma frase encontrada</h3>
+        <p>Tente outro nome, uma palavra só ou outro tema. A busca aceita pequenos erros de digitação.</p>
       </div>
     </div>
   </section>

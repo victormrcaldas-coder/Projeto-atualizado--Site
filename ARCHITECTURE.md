@@ -14,30 +14,30 @@ Um site em português (pt-BR) de **frases curadas**, com páginas de **autores**
 
 Números atuais, conferidos no Chromium em 13/10/2026:
 
-| Item | Quantidade |
-|---|---|
-| Frases ativas | **2.412** — status A: 2.026; status X: 386 (384 Ditados Populares e 2 de "Autor não identificado") |
-| Autores no índice | 521 |
-| Obras no catálogo | 1.230 |
-| Histórias | 235 |
-| Panoramas biográficos | 529 |
-| Registros de remoção ou decisão | 3.153 |
-| Lacunas (pessoas com 1 ou 2 frases) | 97 |
-| Autores com obra e nenhuma frase | 35 (mantidos por decisão do proprietário) |
+| Item                                | Quantidade                                                                                         |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Frases ativas                       | **2.412** — status A: 2.026; status X: 386 (384 Ditados Populares e 2 de "Autor não identificado") |
+| Autores no índice                   | 521                                                                                                |
+| Obras no catálogo                   | 1.230                                                                                              |
+| Histórias                           | 235                                                                                                |
+| Panoramas biográficos               | 529                                                                                                |
+| Registros de remoção ou decisão     | 3.153                                                                                              |
+| Lacunas (pessoas com 1 ou 2 frases) | 97                                                                                                 |
+| Autores com obra e nenhuma frase    | 35 (mantidos por decisão do proprietário)                                                          |
 
 ---
 
 ## 2. Stack
 
-| Camada | Tecnologia |
-|---|---|
-| Site | **HTML + CSS + JavaScript puro** (ES2020+, scripts clássicos). Sem framework, sem bundler, sem etapa de build. |
-| Entrada | `index.html` na raiz do repositório. Basta servir a pasta como arquivos estáticos (`python3 -m http.server`). |
-| Estilo | `assets/css/memotiva.css`. Fontes do Google Fonts (Fraunces e outras), com tema claro e escuro. |
-| Dados | Literais JavaScript dentro de `assets/js/dados/`, mais as fases de curadoria em `assets/js/curadoria/`, que os modificam na carga. **Não há banco de dados nem API.** |
-| Persistência do usuário | `window.storage` (API de armazenamento dos *artifacts* do Claude.ai). **Fora desse ambiente cai para memória**: contas, favoritos e relatos da comunidade somem ao recarregar. Ver §9. |
-| Recursos externos | Google Fonts; fotos de autores do Wikimedia Commons e consulta à Wikipédia em tempo de execução (`app/14`); fala sintetizada do navegador (`speechSynthesis`) para narrar histórias. |
-| Ferramentas | Node 18+ com **Playwright/Chromium** (testes e exportação), **acorn** (análise do código), **Prettier** (formatação) e Python 3 (geradores de fase, validadores). Ver `ferramentas/README.md`. |
+| Camada                  | Tecnologia                                                                                                                                                                                     |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Site                    | **HTML + CSS + JavaScript puro** (ES2020+, scripts clássicos). Sem framework, sem bundler, sem etapa de build.                                                                                 |
+| Entrada                 | `index.html` na raiz do repositório. Basta servir a pasta como arquivos estáticos (`python3 -m http.server`).                                                                                  |
+| Estilo                  | `assets/css/memotiva.css`. Fontes do Google Fonts (Fraunces e outras), com tema claro e escuro.                                                                                                |
+| Dados                   | Literais JavaScript dentro de `assets/js/dados/`, mais as fases de curadoria em `assets/js/curadoria/`, que os modificam na carga. **Não há banco de dados nem API.**                          |
+| Persistência do usuário | `window.storage` (API de armazenamento dos _artifacts_ do Claude.ai). **Fora desse ambiente cai para memória**: contas, favoritos e relatos da comunidade somem ao recarregar. Ver §9.         |
+| Recursos externos       | Google Fonts; fotos de autores do Wikimedia Commons e consulta à Wikipédia em tempo de execução (`app/14`); fala sintetizada do navegador (`speechSynthesis`) para narrar histórias.           |
+| Ferramentas             | Node 18+ com **Playwright/Chromium** (testes e exportação), **acorn** (análise do código), **Prettier** (formatação) e Python 3 (geradores de fase, validadores). Ver `ferramentas/README.md`. |
 
 ---
 
@@ -46,9 +46,10 @@ Números atuais, conferidos no Chromium em 13/10/2026:
 ```
 index.html                 página única; carrega o CSS e os 41 scripts NA ORDEM (ver §4)
 assets/
-  css/memotiva.css         o estilo antigo (responsivo; 725 regras), ainda o das telas fora da home
+  css/memotiva.css         o estilo antigo (responsivo; 725 regras), ainda o das telas não redesenhadas
   css/00–04, telas/        o sistema do redesign (fontes, tokens, base, componentes, ponte) e as telas novas;
-                           a home usa telas/home-site.css, gerado por ferramentas/design/escopo-home.py
+                           a home usa telas/home-site.css, e o Explorar, as janelas da frase e da foto e
+                           as grades de cartões usam telas/frase-site.css, gerados por ferramentas/design/escopo.py
   js/
     nucleo/                01–02  utilitários, categorias, aliases de autor, perfis, origens
     dados/                 03–08, 16, 21–22  acervo-base: frases, histórias, obras, papéis, panoramas, páginas de obra
@@ -102,13 +103,18 @@ Toda alteração de conteúdo feita depois do acervo-base é uma **fase**: um II
 ```js
 (function () {
   /* Fase N — o que faz, por quê, data. Registro: curadoria/trabalho/faseN-….jsonl */
-  var DADOS = [ /* decisões */ ];
+  var DADOS = [
+    /* decisões */
+  ];
   function aplicar() {
     /* corrige/remove/acrescenta em QUOTES, OBRAS, OBRA_PAGINA, PERFIS_PROFUNDOS, STORIES… */
     console.log('MeMotiva · Fase N: resumo do que aplicou');
   }
   var prev = window.__fase5Boot;
-  window.__fase5Boot = function () { if (typeof prev === 'function') prev(); aplicar(); };
+  window.__fase5Boot = function () {
+    if (typeof prev === 'function') prev();
+    aplicar();
+  };
 })();
 ```
 
@@ -122,44 +128,44 @@ Consequências práticas:
 
 #### Frase (`QUOTES[i]`)
 
-| Campo | Significado |
-|---|---|
-| `author` | Nome canônico (ver `canonAuthor` / `AUTHOR_ALIASES`) |
-| `text` | Texto exibido (pt-BR) |
-| `src` | Fonte exibida: "Obra (ano), capítulo N", "Discurso em X, data", "Carta a Y, data" |
-| `orig` | Texto original exato, quando conferido (1.651 frases) |
-| `cat` | Categoria. Uma de: `vida`, `reflexao`, `filosofos`, `motivacao`, `dificeis`, `conforto`, `felicidade`, `gratidao`, `amor`, `amizade`, `familia`, `educacao`, `autorreconhecimento`, `fe`, `politica`, `lideranca`, `negocios`, `empreendedorismo`, `financas`, `manipulacao`, `empoderamento`, `ditados` |
-| `st` | `A` = verificada, com verificação registrada. `X` = ditado popular ou sem autor (fora de auditoria, ver §6). Os status antigos `A−`, `B`, `R` e `P` foram extintos pelas Fases 116–123. |
-| `qid` | Identificador estável, derivado do conteúdo. Frases novas usam o prefixo `f<fase>…` |
-| `notaAutoria` | Nota **pública** e factual, como "Fala de Eliza Doolittle a Higgins." |
-| `notaInterna` | Processo de curadoria e evidência (não aparece ao leitor; exportado em `notas-internas.csv`) |
-| `obra` | (opcional) Título **exato** da obra no catálogo. Liga a frase à página da obra quando a fonte usa outra forma do título ("Carta aos acionistas…" × "Cartas aos Acionistas…"). Sem ele, a página da obra lista as frases cuja fonte começa pelos 12 primeiros caracteres do título. O gerador de inserções grava `obra` sozinho. |
-| Outros | `proc`, `procTexto`, `procOriginal`, `themes`, `vg`/`vn`/`vdup` (variantes), `srcBruto` e `textoAnterior` são campos auxiliares de fases antigas |
+| Campo         | Significado                                                                                                                                                                                                                                                                                                                     |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `author`      | Nome canônico (ver `canonAuthor` / `AUTHOR_ALIASES`)                                                                                                                                                                                                                                                                            |
+| `text`        | Texto exibido (pt-BR)                                                                                                                                                                                                                                                                                                           |
+| `src`         | Fonte exibida: "Obra (ano), capítulo N", "Discurso em X, data", "Carta a Y, data"                                                                                                                                                                                                                                               |
+| `orig`        | Texto original exato, quando conferido (1.651 frases)                                                                                                                                                                                                                                                                           |
+| `cat`         | Categoria. Uma de: `vida`, `reflexao`, `filosofos`, `motivacao`, `dificeis`, `conforto`, `felicidade`, `gratidao`, `amor`, `amizade`, `familia`, `educacao`, `autorreconhecimento`, `fe`, `politica`, `lideranca`, `negocios`, `empreendedorismo`, `financas`, `manipulacao`, `empoderamento`, `ditados`                        |
+| `st`          | `A` = verificada, com verificação registrada. `X` = ditado popular ou sem autor (fora de auditoria, ver §6). Os status antigos `A−`, `B`, `R` e `P` foram extintos pelas Fases 116–123.                                                                                                                                         |
+| `qid`         | Identificador estável, derivado do conteúdo. Frases novas usam o prefixo `f<fase>…`                                                                                                                                                                                                                                             |
+| `notaAutoria` | Nota **pública** e factual, como "Fala de Eliza Doolittle a Higgins."                                                                                                                                                                                                                                                           |
+| `notaInterna` | Processo de curadoria e evidência (não aparece ao leitor; exportado em `notas-internas.csv`)                                                                                                                                                                                                                                    |
+| `obra`        | (opcional) Título **exato** da obra no catálogo. Liga a frase à página da obra quando a fonte usa outra forma do título ("Carta aos acionistas…" × "Cartas aos Acionistas…"). Sem ele, a página da obra lista as frases cuja fonte começa pelos 12 primeiros caracteres do título. O gerador de inserções grava `obra` sozinho. |
+| Outros        | `proc`, `procTexto`, `procOriginal`, `themes`, `vg`/`vn`/`vdup` (variantes), `srcBruto` e `textoAnterior` são campos auxiliares de fases antigas                                                                                                                                                                                |
 
 #### Índices e estruturas de autor, obra e histórias
 
-| Estrutura | Conteúdo |
-|---|---|
-| `QUOTE_POR_QID[qid]` | Índice em `QUOTES`. Mantido por `reindexarQuotes()` (`curadoria/25`). |
-| `OBRAS[autor]` | `[{ t, tipo, ano, d, autor, oid, dAntiga? }]` |
-| `OBRA_POR_ID[oid]` | A obra pelo `oid`, que vale `slug(autor)--N`. Remover obra não renumera as outras. |
-| `OBRA_PAGINA["Autor\|\|Título"]` | `{ sobre, contexto, momento, importancia, curiosidade }` — página longa da obra |
-| `PERFIS_PROFUNDOS[autor]` | Panorama: `{ titulo, resumo, curta, bio[], contexto, contribuicoes[], cronologia[[ano, texto]], nota }` |
-| `STORIES[]` | Histórias: `{ id, author, title, role, excerpt, text, photo, cat }` |
-| `PAPEIS[autor]` | Descrição curta "Profissão nacionalidade (nasc–morte)". Se existir `story.role`, ele tem prioridade (ver `papelDe()`). |
-| `FEITOS[autor]` | Realizações |
-| `AUTOR_INDEX` | `Map` nome → `{ nome, frases: [índices], story }`. Reúne quem tem história, frase ou obra; escrituras ficam de fora (`SCRIPTURE_RE`). |
+| Estrutura                        | Conteúdo                                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `QUOTE_POR_QID[qid]`             | Índice em `QUOTES`. Mantido por `reindexarQuotes()` (`curadoria/25`).                                                                 |
+| `OBRAS[autor]`                   | `[{ t, tipo, ano, d, autor, oid, dAntiga? }]`                                                                                         |
+| `OBRA_POR_ID[oid]`               | A obra pelo `oid`, que vale `slug(autor)--N`. Remover obra não renumera as outras.                                                    |
+| `OBRA_PAGINA["Autor\|\|Título"]` | `{ sobre, contexto, momento, importancia, curiosidade }` — página longa da obra                                                       |
+| `PERFIS_PROFUNDOS[autor]`        | Panorama: `{ titulo, resumo, curta, bio[], contexto, contribuicoes[], cronologia[[ano, texto]], nota }`                               |
+| `STORIES[]`                      | Histórias: `{ id, author, title, role, excerpt, text, photo, cat }`                                                                   |
+| `PAPEIS[autor]`                  | Descrição curta "Profissão nacionalidade (nasc–morte)". Se existir `story.role`, ele tem prioridade (ver `papelDe()`).                |
+| `FEITOS[autor]`                  | Realizações                                                                                                                           |
+| `AUTOR_INDEX`                    | `Map` nome → `{ nome, frases: [índices], story }`. Reúne quem tem história, frase ou obra; escrituras ficam de fora (`SCRIPTURE_RE`). |
 
 #### Registro e funções de curadoria
 
-| Item | O que faz |
-|---|---|
-| `window.CURADORIA_REMOVIDAS` | **Registro permanente** de tudo o que saiu, foi substituído ou foi recusado. Exportado em `remocoes-curadoria.csv`. |
-| `CURADORIA_BLOQUEADA(texto)` | Impede que texto já removido volte. |
-| `CURADORIA_CHECAR(texto, autor, orig)` | Checagem obrigatória antes de inserir: texto exato, bloqueado ou variante (Dice ≥ 0,70). |
-| `removerFrase(qid, motivo)` | Remove uma frase, ajusta favoritos e reindexa da posição removida em diante. |
-| `LACUNAS()` | Pessoas com 1–2 frases e o motivo. Escrituras e ditados não contam. |
-| `CURADORIA_EXPORT_CSV()` | Gera os CSVs editoriais. |
+| Item                                   | O que faz                                                                                                           |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `window.CURADORIA_REMOVIDAS`           | **Registro permanente** de tudo o que saiu, foi substituído ou foi recusado. Exportado em `remocoes-curadoria.csv`. |
+| `CURADORIA_BLOQUEADA(texto)`           | Impede que texto já removido volte.                                                                                 |
+| `CURADORIA_CHECAR(texto, autor, orig)` | Checagem obrigatória antes de inserir: texto exato, bloqueado ou variante (Dice ≥ 0,70).                            |
+| `removerFrase(qid, motivo)`            | Remove uma frase, ajusta favoritos e reindexa da posição removida em diante.                                        |
+| `LACUNAS()`                            | Pessoas com 1–2 frases e o motivo. Escrituras e ditados não contam.                                                 |
+| `CURADORIA_EXPORT_CSV()`               | Gera os CSVs editoriais.                                                                                            |
 
 ### 4.5 Interface
 
@@ -204,9 +210,10 @@ Valem para **toda frase atribuída a autor**. As versões completas, usadas pelo
    3. fonte confiável que reproduz o trecho com a obra (Quote Investigator, Google Books, editora, imprensa de referência, Wikiquote com página).
 
    **Livro contemporâneo** exige duas fontes independentes com a mesma redação. Sites de frases (Pensador, BrainyQuote…) **não valem**.
+
 5. **Recorte contínuo.** Não juntar pedaços distantes nem trechos confirmados separadamente, e não cortar negação ou condição que mude o sentido.
 6. **Obra protegida.** Só trecho curto: até 2 frases ou até 4 versos.
-7. **Atribuição limpa.** Frases famosas "de internet" costumam ser falsas: conferir no Quote Investigator e na seção *Misattributed* do Wikiquote.
+7. **Atribuição limpa.** Frases famosas "de internet" costumam ser falsas: conferir no Quote Investigator e na seção _Misattributed_ do Wikiquote.
 8. **Na dúvida, não entra.** Se uma frase do site não se confirma, ela sai, com registro.
 9. **Fatos de biografias e obras.** Corrigir com a menor mudança possível. Retirar o que não se confirma, como anedotas, superlativos ("o primeiro…") e falas sem fonte.
 
@@ -225,19 +232,19 @@ Estão na seção C do `PLANO.md`:
 
 ## 7. Arquivos editoriais (`curadoria/`)
 
-| Arquivo | Conteúdo |
-|---|---|
-| `CHECKPOINT.md` | Diário de todas as fases: o que foi feito, como, exemplos, limites e números. **Fonte da verdade do histórico.** |
-| `AUDITORIA-2026-10-13.md` | Auditoria sistemática: achados editoriais e técnicos por gravidade, evidência, impacto e dependências; dúvidas que ainda pedem pesquisa |
-| `PLANO.md` | Itens A (processos editoriais: feito ou pendente), B (lacunas) e C (decisões do proprietário) |
-| `curadoria-frases.csv` | Todas as frases ativas (estado final) |
-| `catalogo-obras.csv` | Todas as obras |
-| `lacunas-restantes.csv` | Pessoas com 1–2 frases e o motivo |
-| `notas-internas.csv` | Evidência de cada frase |
-| `remocoes-curadoria.csv` | Registro de remoções e decisões |
-| `obras-duplicadas.csv`, `atribuicoes-fracas-resolucao.csv`, `fotos-sem-entrada.csv`, `verificacao-orig-pendente.csv` | Listas de apoio de fases anteriores |
-| `trabalho/faseNNN-*-decisoes.jsonl` | Cada decisão individual das Fases 119–129, com evidência |
-| `trabalho/faseNNN-regras.md` | Regras de cada fase |
+| Arquivo                                                                                                              | Conteúdo                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `CHECKPOINT.md`                                                                                                      | Diário de todas as fases: o que foi feito, como, exemplos, limites e números. **Fonte da verdade do histórico.**                        |
+| `AUDITORIA-2026-10-13.md`                                                                                            | Auditoria sistemática: achados editoriais e técnicos por gravidade, evidência, impacto e dependências; dúvidas que ainda pedem pesquisa |
+| `PLANO.md`                                                                                                           | Itens A (processos editoriais: feito ou pendente), B (lacunas) e C (decisões do proprietário)                                           |
+| `curadoria-frases.csv`                                                                                               | Todas as frases ativas (estado final)                                                                                                   |
+| `catalogo-obras.csv`                                                                                                 | Todas as obras                                                                                                                          |
+| `lacunas-restantes.csv`                                                                                              | Pessoas com 1–2 frases e o motivo                                                                                                       |
+| `notas-internas.csv`                                                                                                 | Evidência de cada frase                                                                                                                 |
+| `remocoes-curadoria.csv`                                                                                             | Registro de remoções e decisões                                                                                                         |
+| `obras-duplicadas.csv`, `atribuicoes-fracas-resolucao.csv`, `fotos-sem-entrada.csv`, `verificacao-orig-pendente.csv` | Listas de apoio de fases anteriores                                                                                                     |
+| `trabalho/faseNNN-*-decisoes.jsonl`                                                                                  | Cada decisão individual das Fases 119–129, com evidência                                                                                |
+| `trabalho/faseNNN-regras.md`                                                                                         | Regras de cada fase                                                                                                                     |
 
 Os CSVs são **gerados** a partir do estado real, com `npm run exportar` ou com o e2e. Não os edite à mão.
 
@@ -297,15 +304,15 @@ Valem para o Claude Code na nuvem.
 
 ## 9. Pendências e dívida técnica conhecidas
 
-| Tema | Situação | Sugestão |
-|---|---|---|
-| **Persistência e autenticação** (gravidade alta, ver AUDITORIA S2) | `window.storage` só existe nos *artifacts* do Claude.ai. Em hospedagem comum, login, favoritos e comunidade ficam só em memória. A autenticação é toda no cliente: o hash de senha (SHA-256 sem sal por usuário) fica no armazenamento **compartilhado**, a sessão pode ser forjada e qualquer um pode reescrever o feed. | Trocar `dbGet`/`dbSet` (`nucleo/01`) por um back-end real (Supabase, Firebase etc.), com autenticação no servidor, regras de acesso por autor e hash de senha no servidor. Até lá, contas e comunidade servem só para demonstração. |
-| **Peso da carga** | Cerca de 8,1 MB de JS, com todas as fases rodando a cada carga. Desde a Fase 129 a cadeia leva cerca de 4,5 s no Chromium local; antes eram 17 s. | "Consolidar": gerar `dados/` a partir do estado final (`estado.mjs` já captura tudo) e aposentar as fases antigas, mantendo o registro. É uma decisão de arquitetura: combinar com o proprietário. Testar com `estado:comparar`. |
-| **Fotos** | 338 autores sem foto curada; o site busca na Wikipédia em tempo de execução. | Ver `curadoria/fotos-sem-entrada.csv` (item 11 do PLANO, adiado a pedido). |
-| **Testes** | Só Chromium. Firefox, Safari e toque físico nunca foram testados (item 10 do PLANO). | Rodar no navegador do proprietário. |
-| **`setTimeout` das Fases 75/78** | Redundante desde a Fase 89; mantido para não mudar comportamento. | Pode sair numa consolidação. |
-| **Lacunas** | 97 pessoas com 1–2 frases; 35 autores sem frase. Todos documentados como sem fonte acessível. | Só com fonte nova (§6). |
-| **Nomes herdados** | Funções em inglês do protótipo e parâmetros de uma letra em callbacks. | Manter; renomear só ao reescrever um trecho. |
+| Tema                                                               | Situação                                                                                                                                                                                                                                                                                                                  | Sugestão                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Persistência e autenticação** (gravidade alta, ver AUDITORIA S2) | `window.storage` só existe nos _artifacts_ do Claude.ai. Em hospedagem comum, login, favoritos e comunidade ficam só em memória. A autenticação é toda no cliente: o hash de senha (SHA-256 sem sal por usuário) fica no armazenamento **compartilhado**, a sessão pode ser forjada e qualquer um pode reescrever o feed. | Trocar `dbGet`/`dbSet` (`nucleo/01`) por um back-end real (Supabase, Firebase etc.), com autenticação no servidor, regras de acesso por autor e hash de senha no servidor. Até lá, contas e comunidade servem só para demonstração. |
+| **Peso da carga**                                                  | Cerca de 8,1 MB de JS, com todas as fases rodando a cada carga. Desde a Fase 129 a cadeia leva cerca de 4,5 s no Chromium local; antes eram 17 s.                                                                                                                                                                         | "Consolidar": gerar `dados/` a partir do estado final (`estado.mjs` já captura tudo) e aposentar as fases antigas, mantendo o registro. É uma decisão de arquitetura: combinar com o proprietário. Testar com `estado:comparar`.    |
+| **Fotos**                                                          | 338 autores sem foto curada; o site busca na Wikipédia em tempo de execução.                                                                                                                                                                                                                                              | Ver `curadoria/fotos-sem-entrada.csv` (item 11 do PLANO, adiado a pedido).                                                                                                                                                          |
+| **Testes**                                                         | Só Chromium. Firefox, Safari e toque físico nunca foram testados (item 10 do PLANO).                                                                                                                                                                                                                                      | Rodar no navegador do proprietário.                                                                                                                                                                                                 |
+| **`setTimeout` das Fases 75/78**                                   | Redundante desde a Fase 89; mantido para não mudar comportamento.                                                                                                                                                                                                                                                         | Pode sair numa consolidação.                                                                                                                                                                                                        |
+| **Lacunas**                                                        | 97 pessoas com 1–2 frases; 35 autores sem frase. Todos documentados como sem fonte acessível.                                                                                                                                                                                                                             | Só com fonte nova (§6).                                                                                                                                                                                                             |
+| **Nomes herdados**                                                 | Funções em inglês do protótipo e parâmetros de uma letra em callbacks.                                                                                                                                                                                                                                                    | Manter; renomear só ao reescrever um trecho.                                                                                                                                                                                        |
 
 ---
 
