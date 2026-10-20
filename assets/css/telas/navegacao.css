@@ -388,6 +388,15 @@ body:has(#view-home:not(.hidden)) .site-footer {
   justify-content: start;
   align-items: start;
   gap: var(--space-4);
+  /* a mesma margem lateral do .wrap das telas (02-base): o rodapé alinha com a grade da página */
+  padding-left: max(var(--space-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4), env(safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  .site-footer .footer-inner {
+    padding-left: max(var(--space-6), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-6), env(safe-area-inset-right, 0px));
+  }
 }
 .footer-brand {
   display: inline-flex;

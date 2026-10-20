@@ -89,6 +89,7 @@
   /* ================= A. abertura: a frase de hoje ================= */
   // uma frase com a fonte conferida, curta o bastante para a abertura, de quem tem foto e história
   let hojeQid = null;
+  let limiteAbertura = 0;
   function escolherHoje() {
     const comHistoria = new Set(autoresComHistoria());
     const candidatas = QUOTES.filter(
@@ -112,7 +113,7 @@
       $('abertura'),
       `
       <figure class="prancha">
-        <div class="prancha-foto quadro" role="button" tabindex="0" data-foto="${escapeHtml(nome)}" aria-label="Ampliar a fotografia de ${escapeHtml(nome)}">${quadro(nome, 900)}</div>
+        <div class="prancha-foto quadro" role="button" tabindex="0" data-foto="${escapeHtml(nome)}" aria-label="Ampliar a fotografia de ${escapeHtml(nome)}">${quadro(nome, 900).replace('loading="lazy"', 'loading="eager" fetchpriority="high"')}</div>
         <figcaption>Imagem: Wikimedia Commons</figcaption>
       </figure>
       <div class="parede">
@@ -130,7 +131,21 @@
       $('faixa'),
       `<b>Fonte</b><span class="obra">${texto(q.src)}</span>${conferida(q)}<button class="btn-text" type="button" data-abrir-frase="${escapeHtml(q.qid)}">Abrir a frase</button>`
     );
-    $('abertura').removeAttribute('aria-busy');
+    // a abertura só aparece com a foto: quem tem o arquivo quebrado no Commons aparecia e logo dava
+    // lugar a outra pessoa (a troca vem do observador das fotos, mais abaixo). Até lá fica o quadro.
+    const img = $('abertura').querySelector('.prancha-foto img');
+    const revelar = () => {
+      clearTimeout(limiteAbertura);
+      $('capa').classList.remove('esperando-foto');
+      $('abertura').removeAttribute('aria-busy');
+    };
+    if (!img || (img.complete && img.naturalWidth)) revelar();
+    else {
+      $('capa').classList.add('esperando-foto');
+      img.addEventListener('load', revelar, { once: true });
+      clearTimeout(limiteAbertura);
+      limiteAbertura = setTimeout(revelar, 5000); // sem rede nenhuma foto vem: a placa com o nome aparece
+    }
   }
 
   /* ================= C. explorar: os números e os temas ================= */

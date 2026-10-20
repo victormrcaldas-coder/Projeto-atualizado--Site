@@ -21,6 +21,8 @@
   }
 
   body { background: var(--bg); }
+  button { -webkit-tap-highlight-color: transparent; }
+  button:active { transform: scale(0.98); transition: transform var(--mov-micro) var(--curva-padrao); }
   .m-topo { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: var(--hairline) solid var(--border); }
   .m-topo .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-5); min-height: 60px; }
   .m-marca { font-family: var(--font-sans); font-size: var(--fs-meta); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); text-transform: uppercase; }
@@ -78,7 +80,7 @@
   @keyframes t-sai { to { opacity: 0; } }
   ::view-transition-group(m-retrato) { animation-duration: var(--mov-entrada); animation-timing-function: var(--curva-troca); }
   @media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; } }
-  @media (max-width: 639px) { .t-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } .t-lista > :nth-child(3) { display: none; } .t-autor { grid-template-columns: 1fr; } .t-autor .q { max-height: 150px; aspect-ratio: auto; height: 150px; } }
+  @media (max-width: 639px) { .t-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } .t-lista > :nth-child(3) { display: none; } .t-autor { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); gap: var(--space-4); align-items: start; } .t-autor h3 { font-size: 1.6rem; } .t-autor p { font-size: var(--fs-meta); } }
 
   /* 2. janela */
   .j-veu { position: absolute; inset: 0; z-index: 2; background: var(--overlay); opacity: 0; pointer-events: none; transition: opacity var(--mov-curto) var(--curva-saida); }
@@ -98,7 +100,9 @@
   .l-chip { min-height: var(--tap); padding: 0; border: 0; background: none; font: inherit; font-size: var(--fs-small); color: var(--text-meta); cursor: pointer; transition: color var(--mov-micro) var(--curva-padrao); }
   .l-chip[aria-pressed='true'] { color: var(--text); }
   .l-traco { position: absolute; left: 0; bottom: -1px; height: 2px; width: 10px; background: var(--pin); transform-origin: left; transition: transform var(--mov-base) var(--curva-padrao); }
-  .l-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--space-5); min-height: 220px; }
+  .l-caixa { overflow: hidden; transition: height var(--mov-base) var(--curva-padrao); }
+  .l-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--space-5); }
+  .l-vazia { margin: 0; padding-top: var(--space-3); border-top: var(--hairline) solid var(--border-strong); color: var(--text-secondary); }
   .l-cartao { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-3); border-top: var(--hairline) solid var(--border-strong); }
   .l-cartao p { margin: 0; font-family: var(--font-title); font-style: italic; font-size: 1.15rem; line-height: 1.22; }
   .l-cartao span { font-size: var(--fs-meta); color: var(--text-meta); }
@@ -129,16 +133,17 @@
   .k-cartao p { margin: 0 0 var(--space-2); font-family: var(--font-title); font-style: italic; font-size: 1.2rem; line-height: 1.2; }
   .k-cartao span { font-size: var(--fs-meta); color: var(--text-meta); }
 
-  /* 7. retrato que acompanha o mouse */
-  .c-quadro { position: relative; width: min(100%, 340px); aspect-ratio: 4 / 5; overflow: hidden; background: var(--frame); }
-  .c-quadro img { position: absolute; inset: -12px; width: calc(100% + 24px); height: calc(100% + 24px); object-fit: cover; transform: translate3d(var(--cx, 0px), var(--cy, 0px), 0) scale(1); transition: transform var(--mov-longo) var(--curva-chegada); }
-  .c-quadro:hover img { transform: translate3d(var(--cx, 0px), var(--cy, 0px), 0) scale(1.03); }
-  .c-etiqueta { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-4) var(--space-3) var(--space-3); background: linear-gradient(transparent, rgb(20 14 10 / 0.72)); color: #faf3e1; opacity: 0; transform: translateY(var(--mov-perto)); transition: opacity var(--mov-base) var(--curva-padrao), transform var(--mov-base) var(--curva-padrao); }
+  /* 7. hover e foco: o nome entra embaixo da foto */
+  .c-quadro { display: grid; gap: var(--space-3); width: min(100%, 300px); padding: 0; border: 0; background: none; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+  .c-foto { aspect-ratio: 4 / 5; overflow: hidden; background: var(--frame); }
+  .c-foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--mov-longo) var(--curva-chegada); }
+  .c-quadro:is(:hover, :focus-visible) .c-foto img { transform: scale(1.01); }
+  .c-etiqueta { display: grid; gap: var(--space-1); opacity: 0; transform: translateY(calc(-1 * var(--mov-perto))); transition: opacity var(--mov-curto) var(--curva-chegada), transform var(--mov-curto) var(--curva-chegada); }
   .c-quadro:is(:hover, :focus-visible) .c-etiqueta { opacity: 1; transform: none; }
-  .c-etiqueta b { display: block; font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: 1.6rem; line-height: 1; }
-  .c-etiqueta span { font-size: var(--fs-meta); }
+  @media (hover: none) { .c-etiqueta { opacity: 1; transform: none; } }
+  .c-etiqueta b { font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: 1.6rem; line-height: 1; }
+  .c-etiqueta span { font-size: var(--fs-meta); color: var(--text-meta); }
   .c-nota { font-size: var(--fs-small); color: var(--text-meta); }
-  html.simula-reduzido .c-quadro img { transform: none !important; }
 
   /* 8. sublinhado e estados */
   .s-links { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
@@ -217,7 +222,7 @@
       </header>
       <div class="m-palco">
         <div class="l-chips" id="chips" role="group" aria-label="Temas"><span class="l-traco" id="traco" aria-hidden="true"></span></div>
-        <div class="l-grade" id="grade" aria-live="polite"></div>
+        <div class="l-caixa" id="caixaGrade"><div class="l-grade" id="grade" aria-live="polite"></div></div>
       </div>
     </section>
 
@@ -265,11 +270,11 @@
 
     <section class="m-demo" aria-labelledby="d7">
       <header>
-        <span class="m-num">7 · Cursor (só com mouse)</span>
-        <h2 id="d7">O retrato acompanha o olhar</h2>
-        <p>No computador, a foto anda até 6 px dentro da moldura, seguindo o mouse, e o nome aparece. O nome aparece também com o teclado. No celular, nada disso: o toque abre a pessoa.</p>
-        <p class="m-origem">Princípio: o cartão recortado da Cult UI (imagem a 105%, aqui 103%) e o zoom de 1% do Monograph.</p>
-        <p class="m-medida">--mov-longo · ±6 px · um listener, só quando o mouse está em cima</p>
+        <span class="m-num">7 · Hover e foco</span>
+        <h2 id="d7">O nome aparece quando você chega</h2>
+        <p>Passe o mouse ou chegue com o teclado (Tab): a foto aproxima 1% e o nome entra embaixo dela. Nada depende do mouse: no celular, o nome já está à vista e o toque abre a pessoa.</p>
+        <p class="m-origem">Princípio: o zoom de 1% do Monograph e o texto que entra no cartão recortado da Cult UI, sem desfoque. (O retrato que seguia o mouse saiu na revisão do Crítico: parecia efeito de demonstração.)</p>
+        <p class="m-medida">--mov-curto no nome · --mov-longo na foto</p>
       </header>
       <div class="m-palco">
         <div id="cursor"></div>
@@ -312,7 +317,8 @@
     ['--mov-base', 'hover de cartão, abas, troca de imagem', '300 ms: o valor mais comum (12 sites)'],
     ['--mov-entrada', 'troca de tela, revelação, painel', 'Brik 340, Inspotype 340 a 360, Refero 340'],
     ['--mov-longo', 'o teto: frase ampliada, folha, título', 'acima disso a leitura espera'],
-    ['--mov-cascata', 'entre um item e o seguinte, até 6', 'medido entre 18 e 55 ms']
+    ['--mov-cascata', 'entre um item e o seguinte, até 6', 'medido entre 18 e 55 ms'],
+    ['--mov-filme', 'a exceção: a fusão lenta do filme vivo', 'de propósito acima do teto']
   ];
   function tabela() {
     const cs = getComputedStyle(raiz);
@@ -366,11 +372,22 @@
   const traco = $('traco');
   const moverTraco = (b) => { traco.style.width = '10px'; traco.style.transform = `translateX(${b.offsetLeft}px) scaleX(${b.offsetWidth / 10})`; };
   const grade = $('grade');
+  const caixa = $('caixaGrade');
   function mostrar(t, animar) {
     const lista = A.frases.filter((f) => t === 'Todos' || f.categoria === t).slice(0, 6);
     const desenhar = () => {
+      const antes = caixa.offsetHeight;
       grade.classList.remove('saindo');
-      grade.innerHTML = lista.map((f, i) => `<article class="l-cartao${animar ? ' entra' : ''}" style="--i:${i}"><p>${comAspas(f.texto.length > 120 ? f.texto.slice(0, 118) + '…' : f.texto)}</p><span>${esc(f.autor)}</span></article>`).join('');
+      grade.innerHTML = lista.length
+        ? lista.map((f, i) => `<article class="l-cartao${animar ? ' entra' : ''}" style="--i:${i}"><p>${comAspas(f.texto.length > 120 ? f.texto.slice(0, 118) + '…' : f.texto)}</p><span>${esc(f.autor)}</span></article>`).join('')
+        : '<p class="l-vazia">Nenhuma frase deste tema na amostra.</p>';
+      if (!animar) return;
+      // a altura da lista acompanha a troca, sem empurrar a página de uma vez
+      const depois = grade.offsetHeight;
+      caixa.style.height = antes + 'px';
+      void caixa.offsetHeight;
+      caixa.style.height = depois + 'px';
+      caixa.addEventListener('transitionend', () => (caixa.style.height = ''), { once: true });
     };
     if (!animar || reduzido()) return desenhar();
     grade.classList.add('saindo');
@@ -413,27 +430,10 @@
   const fk = A.frases.find((x) => x.texto.length < 70) || A.frases[1];
   $('toque').innerHTML = `<button class="btn btn-primary k-alvo" type="button">Ler a história</button><button class="k-cartao k-alvo" type="button"><p>${comAspas(fk.texto)}</p><span>${esc(fk.autor)}</span></button>`;
 
-  /* ---- 7. retrato que acompanha o mouse ---- */
+  /* ---- 7. hover e foco ---- */
   const ac = pessoas.find((a) => a.foto.largura >= 900) || pessoas[0];
-  $('cursor').innerHTML = `<div class="c-quadro" tabindex="0" aria-label="${esc(ac.nome)}">${img(ac, 700)}<div class="c-etiqueta"><b>${esc(ac.nome)}</b><span>${esc(ac.papel)}</span></div></div>`;
-  const quadro = $('cursor').firstElementChild;
-  const fino = matchMedia('(hover: hover) and (pointer: fine)');
-  $('cursorNota').textContent = fino.matches ? 'Passe o mouse sobre o retrato.' : 'Neste aparelho não há mouse: o efeito fica desligado.';
-  let quadroPedido = 0;
-  let alvo = { x: 0, y: 0 };
-  function seguir(e) {
-    if (reduzido()) return;
-    const r = quadro.getBoundingClientRect();
-    alvo = { x: ((e.clientX - r.left) / r.width - 0.5) * 12, y: ((e.clientY - r.top) / r.height - 0.5) * 12 };
-    if (!quadroPedido) quadroPedido = requestAnimationFrame(() => {
-      quadroPedido = 0;
-      quadro.style.setProperty('--cx', alvo.x.toFixed(1) + 'px');
-      quadro.style.setProperty('--cy', alvo.y.toFixed(1) + 'px');
-    });
-  }
-  // um listener só, ligado enquanto o mouse está sobre o retrato
-  quadro.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') quadro.addEventListener('pointermove', seguir); });
-  quadro.addEventListener('pointerleave', () => { quadro.removeEventListener('pointermove', seguir); quadro.style.setProperty('--cx', '0px'); quadro.style.setProperty('--cy', '0px'); });
+  $('cursor').innerHTML = `<button class="c-quadro" type="button"><span class="c-foto">${img(ac, 700)}</span><span class="c-etiqueta"><b>${esc(ac.nome)}</b><span>${esc(ac.papel)}</span></span></button>`;
+  $('cursorNota').textContent = matchMedia('(hover: hover)').matches ? 'Passe o mouse, ou use o Tab.' : 'No celular o nome já aparece; o toque abre a pessoa.';
 
   /* ---- chaves do topo ---- */
   $('chaveReduzido').addEventListener('click', (e) => {

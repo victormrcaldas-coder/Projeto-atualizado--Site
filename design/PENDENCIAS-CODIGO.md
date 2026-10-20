@@ -81,6 +81,26 @@ Amartya Sen (200), Antoine de Saint-Exupéry (450), Ariano Suassuna (450), Ayrto
 
 18. **Obras repetidas** (conteúdo): Victor Hugo tem "As Contemplações" e "Contemplações", as duas de 1856. **Como corrigir:** fase de curadoria que junte as duas, com registro.
 
+## Achados do Portão A da Etapa 9 refeita (20/10/2026)
+
+19. **Retrato de Blaise Pascal** com uma linha clara de escaneamento no topo (aparece na frase ampliada). **Como corrigir:** curadoria troca o arquivo ou o recorte.
+20. **Quadros vazios nos cartões:**
+    - quando nenhuma das reservas de foto vem (item 1: Cora Coralina, Clarice Lispector), o avatar do cartão fica como um quadrado bege;
+    - **como corrigir:** desenhar o estado "sem retrato" (iniciais em serifa sobre o tom da moldura, com fio) no Portão E.
+21. **Filmes de arquivo reais** (pesquisa parcial no Commons, em domínio público ou licença livre):
+    - candidatos bons:
+      - Tolstói (1908);
+      - Mark Twain (1909, Edison);
+      - Gandhi (1931);
+      - Amelia Earhart (1932);
+      - Churchill (1946);
+      - Mandela (1994);
+      - Anne Frank (1941, poucos segundos);
+      - Helen Keller (1929);
+    - a busca cobriu só 110 das 383 pessoas que viveram na era do cinema;
+    - **como seguir, só com o seu OK:** uma fase de curadoria que termina a busca, confere licença e imagem arquivo por arquivo e corta trechos de 6 a 10 s em mp4 leve;
+    - cabe como destaque (a página do autor de quem tem filme), não como padrão: a projeção é de 40 a 60 pessoas.
+
 ## O que você deve fazer, em ordem
 
 1. Ligar o GitHub Pages (item 17), para abrir o site pelo celular.

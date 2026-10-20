@@ -16,6 +16,7 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 | 7. Descubra e Histórias                                 | `redesign/07-descubra`    | Feita direto no site em 20/10/2026; já na `main`                            |
 | 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Feita direto no site em 20/10/2026; já na `main`                            |
 | 9. Movimento, cursor e revisão final                    | `redesign/09-revisao`     | Feita em 20/10/2026; já na `main`. Relatório em `design/RELATORIO-FINAL.md` |
+| 9 refeita, Portão A: decisões e direção do movimento    | `redesign/09a-direcao`    | Aguardando as decisões do proprietário. **Fora da `main`**                  |
 
 **Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -349,3 +350,45 @@ Feita direto no site, sem protótipo, como o proprietário pediu. Segue o cartã
   - "Que bom te ver de novo" na janela de entrar;
   - o nome da "frase ao acaso" em serifa condensada.
 - **Fica para a sua decisão:** as mudanças que o Crítico sugeriu na direção aprovada (ver `RELATORIO-FINAL.md`).
+
+## Etapa 9 refeita: o plano de 0 a 10 e o Portão A (20/10/2026, aguardando decisão)
+
+**Resposta do proprietário ao relatório final:**
+
+- notas de 7 / 6,5 / 7,5 são de "trabalho normal": ele quer um site autêntico, nota 10 em cada eixo;
+- a Etapa 9 devia trazer movimento e transições, e quase não trouxe;
+- algumas mudanças foram feitas sem autorização.
+
+Ele aprovou o plano de 0 a 10: cinco portões (A a E), uma branch por bloco, e **nada na `main` sem "pode juntar"**. Pediu também:
+
+- consultar as referências que mandou (bibliotecas de transição);
+- "vídeos" no sentido de movimento contínuo no próprio site: uma sessão de fotos de vários autores, com a frase escrita por cima.
+
+**Feito no Portão A** (branch `redesign/09a-direcao`; as opções ficam atrás de `?portao`, `?assinatura=`, `?home=` e `?filme=`, sem mudar o site padrão):
+
+- **Antes e depois** das telas das etapas 5 a 9, feitas sem portão.
+- **Três assinaturas** no site real:
+  - as aspas;
+  - a ficha;
+  - os retratos (duotono café e linho, passe-partout de museu).
+- **A home mais calma**: uma sala escura só.
+- **O filme vivo**: retratos de várias pessoas, câmera lenta, a frase escrita palavra por palavra. Pode ficar na abertura ou no Descubra.
+- **A gramática do movimento**: tokens `--mov-*` e `--curva-*` em `01-tokens.css`, medidos em 14 sites de referência, e a página `design/movimento.html`.
+- **Ferramenta** `ferramentas/design/videos.mjs`.
+- **Crítico independente:** os retratos ficaram com a melhor nota (8,5 em identidade). Recomendou retratos, home calma, filme no Descubra e a gramática sem o retrato que seguia o mouse. As correções dele foram aplicadas dentro de cada opção.
+- **Defeitos do site corrigidos** (pequenos, dentro da direção aprovada):
+  - a abertura trocava de pessoa na carga quando a foto do dia não existe mais no Commons; agora espera a foto;
+  - a foto da abertura carrega com prioridade;
+  - faixa de 9 px sob a foto da página do autor;
+  - rodapé 8 px fora da grade.
+
+**Decisões pendentes:**
+
+1. o que foi feito sem autorização (manter ou voltar);
+2. a assinatura;
+3. a home mais calma;
+4. o filme (onde fica e o tempo; filmes de arquivo como fase de curadoria);
+5. a gramática do movimento;
+6. os textos com travessão que sobraram;
+7. como ver o site (Pages na branch, ou vídeos);
+8. o tema escuro nascer do café, com o roxo de verdade.

@@ -1529,6 +1529,8 @@
   color: var(--text-meta);
 }
 :is(#view-autores, #view-panorama, #view-obra) .pan-photo {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   max-width: 30rem;
   height: auto;
@@ -1536,6 +1538,14 @@
   border: 0;
   border-radius: 0;
   background: var(--frame);
+}
+/* a foto ocupa o quadro inteiro (com altura em porcentagem sobrava uma faixa de 9 px embaixo) */
+:is(#view-autores, #view-panorama, #view-obra) .pan-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 /* sem foto: uma placa café com o nome, como na home */
 :is(#view-autores, #view-panorama, #view-obra) .pan-photo .avatar-fallback {

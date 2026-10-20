@@ -87,7 +87,7 @@ function quoteCardHTML(q, idx) {
   <article class="quote-card reveal in-view" data-quote-idx="${idx}"
            role="button" tabindex="0" aria-label="Ampliar frase de ${escapeHtml(q.author)}">
     <span class="quote-card-cat">${escapeHtml(catName)}</span>
-    <p class="quote-card-text"${q.text.length > 140 ? ' data-comprimento="longa"' : ''}><span class="aspa-abre" aria-hidden="true">&ldquo;</span>${escapeHtml(q.text)}&rdquo;</p>
+    <p class="quote-card-text"${q.text.length > 140 ? ' data-comprimento="longa"' : ''}><span class="aspa-abre" aria-hidden="true">&ldquo;</span>${escapeHtml(q.text)}<span class="aspa-fecha">&rdquo;</span></p>
     ${q.src ? `<p class="quote-card-src">${escapeHtml(q.src)}</p>` : ''}
     <div class="quote-card-foot">
       <div class="quote-author">

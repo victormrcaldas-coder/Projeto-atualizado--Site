@@ -1294,6 +1294,13 @@
 #view-home .abertura + .faixa-fonte {
   margin-bottom: var(--space-8);
 }
+/* até a foto da frase de hoje chegar, só o quadro guarda o lugar: sem pulo e sem troca de pessoa à vista */
+#view-home #capa :is(.parede, .faixa-fonte, .prancha figcaption, .prancha-foto img) {
+  transition: opacity var(--mov-entrada) var(--curva-chegada);
+}
+#view-home #capa.esperando-foto :is(.parede, .faixa-fonte, .prancha figcaption, .prancha-foto img) {
+  opacity: 0;
+}
 /* =========================================================
    C. EXPLORAR — os números e o índice dos temas (sala ocre)
    ========================================================= */
