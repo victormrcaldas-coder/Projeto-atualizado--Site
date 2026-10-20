@@ -204,7 +204,7 @@ O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começ
 - **Descubra:**
   - entra quem tem história (para "Ler a história" abrir a dela), foto e resumo do perfil;
   - a ordem muda a cada dia;
-  - sem "1 de 6" nem traços: a página apaga no roxo e a próxima pessoa aparece no lugar, a cada 10 s;
+  - sem "1 de 6" nem traços: a página apaga no roxo e a próxima pessoa aparece no lugar, a cada 5 s (pedido do proprietário depois do Portão 4b; eram 10 s), com "Voltar" para quem não acabou de ler;
   - "Próxima pessoa" passa na hora;
   - pausa com o mouse em cima, o foco dentro, a seleção de texto, o toque (volta 5 s depois) e fora da tela; o botão de pausa para de vez;
   - com movimento reduzido, não troca sozinho.

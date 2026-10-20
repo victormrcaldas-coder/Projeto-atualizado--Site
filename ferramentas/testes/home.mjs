@@ -131,6 +131,18 @@ for (const [w, h] of [
     const depois = await p.locator('.descubra-nome').textContent();
     return antes !== depois ? true : 'igual';
   });
+  await caso('Descubra: "Voltar" devolve a pessoa anterior', async () => {
+    await naHome();
+    const antes = await p.locator('.descubra-nome').textContent();
+    await p.locator('#descubraProxima').scrollIntoViewIfNeeded();
+    await p.locator('#descubraProxima').click();
+    await p.waitForTimeout(900);
+    const meio = await p.locator('.descubra-nome').textContent();
+    await p.locator('#descubraAnterior').click();
+    await p.waitForTimeout(900);
+    const depois = await p.locator('.descubra-nome').textContent();
+    return meio !== antes && depois === antes ? true : { antes, meio, depois };
+  });
   await caso('Descubra troca sozinho na tela e para fora dela', async () => {
     await naHome();
     // o foco que ficou no botão clicado antes pausa a troca (de propósito): tira o foco

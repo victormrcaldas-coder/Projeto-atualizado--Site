@@ -195,7 +195,8 @@
 
   /* ================= E. descubra: uma pessoa por vez ================= */
   // Só entra quem tem história (o "Ler a história" abre a dela), foto e resumo do perfil.
-  // A ordem muda a cada dia; a página troca sozinha enquanto a seção está na tela.
+  // A ordem muda a cada dia; a página troca sozinha (a cada 5 s) enquanto a seção está na tela,
+  // e o "Voltar" devolve a pessoa anterior.
   const ICONE = {
     pausa:
       '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" rx="0.6"/><rect x="13.9" y="5" width="3.6" height="14" rx="0.6"/></svg>',
@@ -283,6 +284,8 @@
     const secao = $('home-descubra');
     $('descubraTempo').addEventListener('animationend', () => trocarPessoa(1, false));
     $('descubraProxima').addEventListener('click', () => trocarPessoa(1, true));
+    // para quem não acabou de ler: volta à pessoa anterior
+    $('descubraAnterior').addEventListener('click', () => trocarPessoa(-1, true));
     $('descubraPausa').addEventListener('click', () => pausa('pessoa', !motivos.has('pessoa')));
     // mouse em cima só conta em aparelho com cursor (no celular, o toque cuida disso)
     const cursor = matchMedia('(hover: hover)').matches;
