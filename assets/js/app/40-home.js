@@ -11,6 +11,14 @@
   const raiz = document.getElementById('view-home');
   if (!raiz || !document.getElementById('abertura')) return;
   const $ = (id) => document.getElementById(id);
+  // só troca o conteúdo quando ele mudou: a home se monta de novo no fim da cadeia de fases, e
+  // refazer o que já está igual faria as fotos piscarem
+  const por = (el, html) => {
+    if (el._html === html) return false;
+    el.innerHTML = html;
+    el._html = html;
+    return true;
+  };
   const reduz = () => prefersReducedMotion();
   const num = (n) => Number(n).toLocaleString('pt-BR');
   const plural = (n, um, varios) => `${num(n)} ${n === 1 ? um : varios}`;
@@ -100,7 +108,9 @@
     const nome = canonAuthor(q.author);
     const lingua = q.orig ? linguaDoOriginal(q.orig) : '';
     const data = new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
-    $('abertura').innerHTML = `
+    por(
+      $('abertura'),
+      `
       <figure class="prancha">
         <div class="prancha-foto quadro" role="button" tabindex="0" data-foto="${escapeHtml(nome)}" aria-label="Ampliar a fotografia de ${escapeHtml(nome)}">${quadro(nome, 900)}</div>
         <figcaption>Imagem: Wikimedia Commons</figcaption>
@@ -114,19 +124,25 @@
           <dt>Autor</dt><dd>${papel(papelDe(nome))}</dd>
           ${q.orig ? `<dt>Original</dt><dd><p class="quote-original"${lingua ? ` lang="${lingua}"` : ''}>${escapeHtml(q.orig)}</p></dd>` : ''}
         </dl>
-      </div>`;
-    $('faixa').innerHTML =
-      `<b>Fonte</b><span class="obra">${texto(q.src)}</span>${conferida(q)}<button class="btn-text" type="button" data-abrir-frase="${escapeHtml(q.qid)}">Abrir a frase</button>`;
+      </div>`
+    );
+    por(
+      $('faixa'),
+      `<b>Fonte</b><span class="obra">${texto(q.src)}</span>${conferida(q)}<button class="btn-text" type="button" data-abrir-frase="${escapeHtml(q.qid)}">Abrir a frase</button>`
+    );
   }
 
   /* ================= C. explorar: os números e os temas ================= */
   function montarExplorar() {
     const obras = Object.keys(OBRA_POR_ID).length;
     const verificadas = QUOTES.filter((q) => q.st === 'A').length;
-    $('t-explorar').innerHTML =
-      `<b>${num(QUOTES.length)}</b> frases de <b>${num(AUTOR_INDEX.size)}</b> autores, em <b>${num(CATEGORIES.length)}</b> temas.`;
-    $('acervoNota').innerHTML = texto(
-      `${num(verificadas)} com a fonte conferida e ${num(obras)} obras catalogadas.`
+    por(
+      $('t-explorar'),
+      `<b>${num(QUOTES.length)}</b> frases de <b>${num(AUTOR_INDEX.size)}</b> autores, em <b>${num(CATEGORIES.length)}</b> temas.`
+    );
+    por(
+      $('acervoNota'),
+      texto(`${num(verificadas)} com a fonte conferida e ${num(obras)} obras catalogadas.`)
     );
     const temas = CATEGORIES.map((c) => ({
       id: c.id,
@@ -136,14 +152,17 @@
     const indice = $('indiceTemas');
     // duas colunas de leitura, de cima para baixo, com as linhas alinhadas entre as colunas
     indice.style.setProperty('--linhas', Math.ceil(temas.length / 2));
-    indice.innerHTML = temas
-      .map(
-        (
-          t
-        ) => `<li><button type="button" data-home-tema="${escapeHtml(t.id)}"><span class="tema-nome">${escapeHtml(t.nome)}</span>
+    por(
+      indice,
+      temas
+        .map(
+          (
+            t
+          ) => `<li><button type="button" data-home-tema="${escapeHtml(t.id)}"><span class="tema-nome">${escapeHtml(t.nome)}</span>
           <span class="tema-n">${num(t.n)}<span class="sr-only"> ${t.n === 1 ? 'frase' : 'frases'}</span></span></button></li>`
-      )
-      .join('');
+        )
+        .join('')
+    );
   }
 
   /* ================= B. uma frase ao acaso ================= */
@@ -162,13 +181,16 @@
     const quem = ehDitado(q)
       ? '<span class="nome-condensado">Ditado popular</span>'
       : `<button type="button" class="link-autor nome-condensado" data-autor="${escapeHtml(nome)}">${escapeHtml(nome)}</button>`;
-    $('acasoFrase').innerHTML = `
+    por(
+      $('acasoFrase'),
+      `
       <blockquote><p class="quote-poster-text"${comprimento(q.text)}>${comAspas(q.text)}</p></blockquote>
       <figcaption class="acaso-autor">
         ${quem}
         ${q.src ? `<cite>${texto(q.src)}</cite>` : ''}${conferida(q)}
         <button class="btn-text" type="button" data-abrir-frase="${escapeHtml(q.qid)}">Ampliar a frase</button>
-      </figcaption>`;
+      </figcaption>`
+    );
   }
 
   /* ================= E. descubra: uma pessoa por vez ================= */
@@ -201,7 +223,9 @@
     if (!nome) return;
     const s = historiaDe(nome);
     const q = fraseDaPessoa(nome);
-    $('descubraSlide').innerHTML = `
+    const mudou = por(
+      $('descubraSlide'),
+      `
       <h2 class="eyebrow rotulo" id="t-descubra">Descubra</h2>
       <h3 class="descubra-nome nome-condensado">${escapeHtml(nome)}</h3>
       <p class="descubra-papel">${papel(papelDe(nome))}</p>
@@ -215,13 +239,16 @@
       <div class="secao-acoes">
         <button class="btn btn-primary" type="button" data-historia="${escapeHtml(s.id)}">Ler a história</button>
         <button class="btn-text" type="button" data-autor="${escapeHtml(nome)}">Conhecer ${escapeHtml(nome)}</button>
-      </div>`;
-    $('descubraRetrato').innerHTML = `
+      </div>`
+    );
+    por(
+      $('descubraRetrato'),
+      `
       <div class="quadro" role="button" tabindex="0" data-foto="${escapeHtml(nome)}" aria-label="Ampliar a fotografia de ${escapeHtml(nome)}">${quadro(nome, 900)}</div>
-      <figcaption>Imagem: Wikimedia Commons</figcaption>`;
+      <figcaption>Imagem: Wikimedia Commons</figcaption>`
+    );
     // o traço do tempo recomeça a cada pessoa
-    const tempo = $('descubraTempo');
-    tempo.replaceChildren(document.createElement('i'));
+    if (mudou) $('descubraTempo').replaceChildren(document.createElement('i'));
   }
   function trocarPessoa(passo, manual) {
     if (!pessoas.length) return;
@@ -300,18 +327,21 @@
     const col = (a, b) => a.localeCompare(b, 'pt-BR');
     const nomes = autoresComHistoria();
     galeria = [...nomes.filter(temFoto).sort(col), ...nomes.filter((n) => !temFoto(n)).sort(col)];
-    $('galeria').innerHTML = galeria
-      .map((nome) => {
-        const i = autorInfo(nome);
-        return `<li class="retrato"><button type="button" data-autor="${escapeHtml(nome)}">
+    por(
+      $('galeria'),
+      galeria
+        .map((nome) => {
+          const i = autorInfo(nome);
+          return `<li class="retrato"><button type="button" data-autor="${escapeHtml(nome)}">
           <span class="quadro">${quadro(nome, 528)}</span>
           <span class="legenda">
             <span class="nome-condensado">${escapeHtml(nome)}</span>
             <span>${papel(i.papel)}</span>
             <span class="contagem">${plural(i.frases.length, 'frase', 'frases')} · ${plural(i.obras.length, 'obra', 'obras')}</span>
           </span></button></li>`;
-      })
-      .join('');
+        })
+        .join('')
+    );
     posicaoGaleria();
   }
   const trilho = () => $('galeria');
@@ -427,28 +457,27 @@
       .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
       .slice(0, 3);
     const item = (dest, titulo, sub, extra = '') =>
-      `<li><button class="convite-item${extra}" type="button" data-nav="${dest}"><b>${titulo}</b><span>${sub}</span>${ICONE.seta}</button></li>`;
+      `<li><button class="convite-item${extra}" type="button" data-ir="${dest}"><b>${titulo}</b><span>${sub}</span>${ICONE.seta}</button></li>`;
     const curto = (t) => (t.length > 120 ? t.slice(0, 118).replace(/\s+\S*$/, '') + '…' : t);
-    $('conviteLado').innerHTML = relatos.length
-      ? `<p class="eyebrow">Relatos recentes</p><ul class="convite-lista">${relatos
-          .map((p) =>
-            item(
-              'comunidade',
-              `“${texto(curto(p.text))}”`,
-              `${escapeHtml(p.authorUsername || 'Alguém da comunidade')} · Ler na comunidade`,
-              ' convite-relato'
+    por(
+      $('conviteLado'),
+      relatos.length
+        ? `<p class="eyebrow">Relatos recentes</p><ul class="convite-lista">${relatos
+            .map((p) =>
+              item(
+                'comunidade',
+                `“${texto(curto(p.text))}”`,
+                `${escapeHtml(p.authorUsername || 'Alguém da comunidade')} · Ler na comunidade`,
+                ' convite-relato'
+              )
             )
-          )
-          .join('')}</ul>`
-      : `<p class="eyebrow">O que dá para fazer aqui</p><ul class="convite-lista">
+            .join('')}</ul>`
+        : `<p class="eyebrow">O que dá para fazer aqui</p><ul class="convite-lista">
           ${item('escrever', 'Escrever sobre uma frase', 'Escolha o fundo, a letra e uma trilha para acompanhar o que você escreveu.')}
           ${item('comunidade', 'Ler e comentar os relatos', 'Curta, comente e guarde o que as outras pessoas escreveram.')}
           ${item('perfil', 'Guardar no seu perfil', 'Suas frases favoritas e os seus relatos, num lugar só.')}
-        </ul>`;
-    // os botões novos também vão para as telas do site
-    $('conviteLado')
-      .querySelectorAll('[data-nav]')
-      .forEach((b) => b.addEventListener('click', () => navigateTo(b.dataset.nav)));
+        </ul>`
+    );
   }
 
   /* ================= F. histórias ================= */
@@ -462,7 +491,9 @@
     if (!d) return;
     const nome = canonAuthor(d.author);
     const tema = catById(d.cat);
-    $('historiaDestaque').innerHTML = `
+    por(
+      $('historiaDestaque'),
+      `
       <article class="historia-destaque">
         <div class="quadro" role="button" tabindex="0" data-foto="${escapeHtml(nome)}" aria-label="Ampliar a fotografia de ${escapeHtml(nome)}">${quadro(nome, 800)}</div>
         <div class="historia-texto">
@@ -476,20 +507,24 @@
           </div>
           <p class="historia-credito">Imagem: Wikimedia Commons</p>
         </div>
-      </article>`;
-    $('historiasMais').innerHTML = mais
-      .map((s) => {
-        const n = canonAuthor(s.author);
-        const t = catById(s.cat);
-        return `<li><button class="historia-cartao" type="button" data-historia="${escapeHtml(s.id)}">
+      </article>`
+    );
+    por(
+      $('historiasMais'),
+      mais
+        .map((s) => {
+          const n = canonAuthor(s.author);
+          const t = catById(s.cat);
+          return `<li><button class="historia-cartao" type="button" data-historia="${escapeHtml(s.id)}">
           <span class="quadro">${quadro(n, 600, 'wide')}</span>
           <span class="historia-cartao-texto">
             ${t ? `<span class="eyebrow">${escapeHtml(t.name)}</span>` : ''}
             <span class="historia-cartao-titulo">${texto(s.title)}</span>
             <span class="nome-condensado">${escapeHtml(n)}</span>
           </span></button></li>`;
-      })
-      .join('');
+        })
+        .join('')
+    );
   }
 
   /* ================= I. encerramento ================= */
@@ -499,12 +534,15 @@
     fig.hidden = !q;
     if (!q) return;
     const nome = canonAuthor(q.author);
-    fig.innerHTML = `
+    por(
+      fig,
+      `
       <blockquote><p class="quote-poster-text">${comAspas(q.text)}</p></blockquote>
       <figcaption>
         <button type="button" class="link-autor nome-condensado" data-autor="${escapeHtml(nome)}">${escapeHtml(nome)}</button>
         ${q.src ? `<cite>${texto(q.src)}</cite>` : ''}${conferida(q)}
-      </figcaption>`;
+      </figcaption>`
+    );
   }
 
   /* ================= os botões da home levam às telas do site ================= */
@@ -520,7 +558,7 @@
   }
   raiz.addEventListener('click', (e) => {
     const el = e.target.closest(
-      '[data-home-tema],[data-abrir-frase],[data-autor],[data-historia],[data-ouvir],[data-foto]'
+      '[data-home-tema],[data-abrir-frase],[data-autor],[data-historia],[data-ouvir],[data-foto],[data-ir]'
     );
     if (!el || !raiz.contains(el)) return;
     const d = el.dataset;
@@ -533,6 +571,7 @@
     else if (d.historia) openBiography(d.historia);
     else if (d.ouvir) ouvir(d.ouvir);
     else if (d.foto) openPhotoModal(d.foto);
+    else if (d.ir) navigateTo(d.ir);
   });
   // a foto que amplia também responde ao teclado
   raiz.addEventListener('keydown', (e) => {

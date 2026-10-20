@@ -193,10 +193,15 @@ for (const [w, h] of [
   for (const [sel, view] of [
     ['#home-comunidade .btn-primary', 'escrever'],
     ['#home-comunidade .convite-chamada .btn-text', 'comunidade'],
-    ['#conviteLado [data-nav]', null]
+    ['#conviteLado [data-ir]', null]
   ])
     await caso(`comunidade: ${sel}`, async () => {
-      const alvo = view || (await p.locator(sel).first().getAttribute('data-nav'));
+      const alvo =
+        view ||
+        (await p
+          .locator(sel)
+          .first()
+          .getAttribute(sel.includes('data-ir') ? 'data-ir' : 'data-nav'));
       await clicar(sel);
       return (await visao()) === alvo || { esperado: alvo, veio: await visao() };
     });
