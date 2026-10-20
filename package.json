@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "servir": "python3 -m http.server 8000",
-    "teste": "node ferramentas/codigo/analise-carga.mjs && node ferramentas/testes/e2e.mjs && node ferramentas/testes/home.mjs && node ferramentas/testes/frase.mjs && node ferramentas/testes/autores.mjs && node ferramentas/testes/historias.mjs && node ferramentas/testes/comunidade.mjs && node ferramentas/testes/paginas.mjs",
+    "teste": "node ferramentas/codigo/analise-carga.mjs && node ferramentas/testes/e2e.mjs && node ferramentas/testes/home.mjs && node ferramentas/testes/frase.mjs && node ferramentas/testes/autores.mjs && node ferramentas/testes/historias.mjs && node ferramentas/testes/comunidade.mjs && node ferramentas/testes/movimento.mjs && node ferramentas/testes/paginas.mjs",
     "estado:base": "node ferramentas/testes/estado.mjs --salvar base",
     "estado:comparar": "node ferramentas/testes/estado.mjs --comparar base",
     "exportar": "node ferramentas/exportar/exportar-csv.mjs",

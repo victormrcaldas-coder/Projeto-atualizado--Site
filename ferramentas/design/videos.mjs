@@ -3,7 +3,11 @@
 // Uso: node ferramentas/design/videos.mjs <roteiro> [--larguras 390,1440] [--tema claro|escuro] [--consulta "?portao"]
 //      [--reduzido]   (grava com movimento reduzido)
 //      [--pagina design/movimento.html]   (grava outra página do repositório no lugar do site)
+//      [--folha]   (para cada marca do roteiro, uma folha de quadros a cada 50 ms, para o Crítico. A marca
+//                  acende um quadradinho de cor no canto da tela, e a folha começa no quadro em que ele aparece:
+//                  o vídeo do Playwright atrasa em relação ao relógio, e só assim a folha pega a troca inteira)
 // Saída: .trabalho/design/videos/<roteiro>-<largura>-<tema>[-reduzido].mp4
+//        e, com --folha, .trabalho/design/videos/folhas/<roteiro>-<largura>-<tema>-<n>-<marca>.jpg
 // As fotos do Commons vêm do cache em .trabalho/design/fotos-site (as que faltam são baixadas, uma por vez).
 import fs from 'fs';
 import path from 'path';
@@ -29,6 +33,7 @@ const tema = opcao('tema', 'claro');
 const consulta = opcao('consulta', '');
 const reduzido = args.includes('--reduzido');
 const pagina = opcao('pagina', 'index.html');
+const folha = args.includes('--folha');
 const SAIDA = path.join(TRABALHO, 'design/videos');
 const CACHE = path.join(TRABALHO, 'design/fotos-site');
 fs.mkdirSync(SAIDA, { recursive: true });
@@ -125,6 +130,24 @@ for (const largura of larguras) {
     });
   await p.waitForTimeout(2500);
 
+  const marcas = [];
+  const CORES = ['#ff00ff', '#00ffff'];
+  const marca = async (nome) => {
+    if (!folha) return;
+    const cor = CORES[marcas.length % 2];
+    marcas.push({ nome, cor, agora: Date.now() });
+    await p.evaluate((c) => {
+      let m = document.getElementById('__marca');
+      if (!m) {
+        m = document.createElement('div');
+        m.id = '__marca';
+        m.style.cssText =
+          'position:fixed;left:0;bottom:0;width:12px;height:12px;z-index:2147483647;pointer-events:none';
+        document.documentElement.appendChild(m);
+      }
+      m.style.background = c;
+    }, cor);
+  };
   // ajudantes do roteiro
   const pausa = (ms) => p.waitForTimeout(ms);
   // legenda em cima da tela, para quem assiste saber o que está acontecendo
@@ -164,10 +187,12 @@ for (const largura of larguras) {
     await mover(b.x + b.width / 2, b.y + b.height / 2, passos);
     return el;
   };
-  const clicar = async (seletor, texto) => {
+  // com nomeDaMarca, a marca da folha acende logo antes do clique
+  const clicar = async (seletor, texto, nomeDaMarca) => {
     if (texto) await legenda(texto);
     const el = await sobre(seletor);
     await pausa(350);
+    if (nomeDaMarca) await marca(nomeDaMarca);
     if (movel) await el.tap();
     else await el.click();
   };
@@ -193,6 +218,7 @@ for (const largura of larguras) {
   };
   // o vídeo começa quando o roteiro começa: a carga da página fica de fora
   const inicio = (Date.now() - comeco) / 1000;
+
   await seguir({
     p,
     largura,
@@ -205,6 +231,7 @@ for (const largura of larguras) {
     sobre,
     clicar,
     rolar,
+    marca,
     js: (f, a) => p.evaluate(f, a)
   });
   await pausa(600);
@@ -233,6 +260,65 @@ for (const largura of larguras) {
     mp4
   ]);
   fs.rmSync(pasta, { recursive: true, force: true });
+  // folhas de quadros: 16 quadros a cada 50 ms a partir do quadro em que a marca acende
+  if (folha && marcas.length) {
+    const dir = path.join(SAIDA, 'folhas');
+    fs.mkdirSync(dir, { recursive: true });
+    // a cor do canto em cada quadro (25 por segundo), lida de uma vez
+    const canto = execFileSync(
+      'ffmpeg',
+      [
+        '-loglevel',
+        'error',
+        '-i',
+        mp4,
+        '-vf',
+        'crop=6:6:2:ih-8,scale=1:1',
+        '-f',
+        'rawvideo',
+        '-pix_fmt',
+        'rgb24',
+        '-'
+      ],
+      { maxBuffer: 64 * 1024 * 1024 }
+    );
+    const quadros = canto.length / 3;
+    const perto = (i, hex) => {
+      const [r, g, b] = [1, 3, 5].map((k) => parseInt(hex.slice(k, k + 2), 16));
+      return (
+        Math.abs(canto[i * 3] - r) + Math.abs(canto[i * 3 + 1] - g) + Math.abs(canto[i * 3 + 2] - b) < 90
+      );
+    };
+    let desde = 0;
+    marcas.forEach((m, i) => {
+      // o primeiro quadro, depois da marca anterior, em que o canto tem a cor desta marca
+      let q = desde;
+      while (q < quadros && !perto(q, m.cor)) q++;
+      if (q >= quadros) return console.warn(`marca não achada no vídeo: ${m.nome}`);
+      desde = q + 1;
+      const slug = m.nome
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/gi, '-')
+        .replace(/^-|-$/g, '')
+        .toLowerCase();
+      const colunas = largura < 768 ? 8 : 4;
+      execFileSync('ffmpeg', [
+        '-y',
+        '-loglevel',
+        'error',
+        '-ss',
+        (q / 25).toFixed(2),
+        '-i',
+        mp4,
+        '-frames:v',
+        '1',
+        '-vf',
+        `fps=20,scale=${largura < 768 ? 260 : 480}:-2,tile=${colunas}x${16 / colunas}:padding=4:color=white`,
+        path.join(dir, `${nome}-${String(i + 1).padStart(2, '0')}-${slug}.jpg`)
+      ]);
+    });
+  }
   console.log(`${mp4}${erros.length ? '  (erros na página: ' + erros.join(' | ') + ')' : ''}`);
 }
 await navegador.close();

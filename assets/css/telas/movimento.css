@@ -1,0 +1,173 @@
+/* =========================================================
+   O movimento entre as telas (Etapa 9 refeita, Portão B; o código fica em app/42 e app/43).
+   A troca de tela é uma View Transition: a tela que sai esmaece em 150 ms e só então a que entra
+   sobe 8 px, em 300 ms (no Voltar, desce): as duas nunca aparecem meio transparentes ao mesmo
+   tempo, e o total fica nos 450 ms do teto. O cabeçalho, a barra de baixo e o aviso ficam parados.
+   O retrato tocado vira o retrato da página do autor em 340 ms, na curva de troca (Brik), e no
+   Voltar faz o caminho de volta até o cartão de onde veio.
+   ========================================================= */
+.site-header {
+  view-transition-name: mm-cab;
+}
+.bottom-nav {
+  view-transition-name: mm-barra;
+}
+#toast {
+  view-transition-name: mm-aviso;
+}
+/* durante a troca, o cabeçalho continua clicável; um clique novo pula a troca em andamento */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-group(mm-cab),
+::view-transition-group(mm-barra),
+::view-transition-group(mm-aviso) {
+  z-index: 3;
+  animation: none;
+}
+::view-transition-old(mm-cab),
+::view-transition-old(mm-barra),
+::view-transition-old(mm-aviso) {
+  display: none;
+}
+::view-transition-new(mm-cab),
+::view-transition-new(mm-barra),
+::view-transition-new(mm-aviso) {
+  animation: none;
+}
+/* o grupo da página não muda de tamanho: sem a animação padrão de largura e altura, que roda
+   na linha principal e recalculava o estilo a cada quadro */
+::view-transition-group(root) {
+  animation: none;
+}
+::view-transition-old(root) {
+  animation: mm-some 150ms var(--curva-saida) both;
+}
+::view-transition-new(root) {
+  animation: mm-sobe 300ms var(--curva-chegada) 150ms both;
+}
+html:active-view-transition-type(voltar)::view-transition-new(root) {
+  animation-name: mm-desce;
+}
+html[data-vt-dir='voltar']::view-transition-new(root) {
+  animation-name: mm-desce;
+}
+::view-transition-group(mm-destaque) {
+  z-index: 2;
+  animation-duration: 340ms;
+  animation-timing-function: var(--curva-troca);
+}
+::view-transition-old(mm-destaque),
+::view-transition-new(mm-destaque) {
+  height: 100%;
+  object-fit: cover;
+  animation-duration: 340ms;
+  animation-timing-function: var(--curva-troca);
+}
+@keyframes mm-some {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes mm-sobe {
+  from {
+    opacity: 0;
+    transform: translateY(var(--mov-perto));
+  }
+}
+@keyframes mm-desce {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--mov-perto)));
+  }
+}
+/* uma janela que ainda esmaece não anima de novo por cima da troca */
+html[data-transicao] :is(.expand-overlay, .bio-overlay, .modal-overlay, .scrim) {
+  transition: none;
+}
+
+/* o retrato que chegou do toque: em duotono, com a foto que já estava carregada; a cor revela
+   quando ele pousa (app/42) */
+:is(body, #_) #panPhoto img.mm-provisoria[aria-hidden] {
+  z-index: 1;
+  filter: url('#mm-duotono');
+  pointer-events: none;
+}
+html[data-theme='dark'] :is(body, #_) #panPhoto img.mm-provisoria[aria-hidden] {
+  filter: url('#mm-duotono-escuro');
+}
+
+/* o link direto espera o acervo: a tela não pisca a home antes (no máximo 4 s, app/43) */
+html[data-rota-pendente] #mainApp {
+  visibility: hidden;
+}
+/* o título recebe o foco ao trocar de tela; o anel aparece só para quem usa o teclado */
+.view [tabindex='-1']:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ---------------------------------------------------------
+   O cabeçalho preso no topo
+   overflow-x: hidden no html e no body (memotiva.css e o bloco injetado de curadoria/29) fazia
+   do body uma caixa de rolagem, e o cabeçalho rolava junto com a página. clip corta o transbordo
+   lateral do mesmo jeito, sem criar caixa de rolagem. (:root:root vence o bloco injetado, que
+   entra depois de todos os arquivos.)
+   Ao rolar, o cabeçalho encolhe só com transform: sobe 16 px e o conteúdo desce 8 px, centrado
+   nos 52 px que ficam. A altura não muda e a página não se mexe.
+   --------------------------------------------------------- */
+:root:root,
+:root body {
+  overflow-x: clip;
+}
+:is(body, #_) .site-header {
+  transition: transform var(--mov-base) var(--curva-padrao);
+}
+:is(body, #_) .site-header .header-inner,
+:is(body, #_) .site-header.compact .header-inner {
+  min-height: 68px;
+  transition: transform var(--mov-base) var(--curva-padrao);
+}
+:is(body, #_) .site-header.compact {
+  transform: translateY(-16px);
+}
+:is(body, #_) .site-header.compact .header-inner {
+  transform: translateY(8px);
+}
+
+/* ---------------------------------------------------------
+   O custo de cada troca
+   Cada troca de tela recalculava o estilo e o layout das 5.400 peças da página (até 200 ms na
+   home, medido): a tela congelava antes de a transição começar. O navegador agora pula o que está
+   fora da tela (as seções de baixo da home, os retratos da galeria e os cartões das listas) e desenha cada parte quando ela se aproxima. A altura de cada
+   parte fica guardada depois que ela aparece uma vez ("auto"), e a rolagem não pula. As seções da
+   página do autor e os grupos do índice de A a Z ficam de fora: são alvos de salto ("Ver obras", as
+   letras), e o salto suave mira na altura estimada e para no lugar errado.
+   Medido: home 200 → 13 ms; Explorar 90 → 35 ms; Autores & Obras 110 → 25 ms. Cada transição
+   recalcula a página 3 ou 4 vezes (o navegador marca o html ao começar e ao trocar): por isso conta.
+   --------------------------------------------------------- */
+#view-home > section.home-secao,
+#view-home > section.encerramento {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+.quote-card,
+.ao-card,
+.obra-card,
+.story-card,
+.discover-card,
+.post-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+}
+/* nas páginas do autor e da obra os cartões ficam inteiros: a página é curta e tem saltos ("Ver obras") */
+:is(#view-panorama, #view-obra) :is(.quote-card, .obra-card, .story-card) {
+  content-visibility: visible;
+}
+/* os 230 retratos da galeria da home (2.100 peças): só os da tela são desenhados. A altura guardada
+   é mínima, porque a linha estica todos até a altura do maior; o anel de foco passa da borda
+   (overflow-clip-margin) */
+#view-home .retrato {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--largura) auto 1px;
+  overflow-clip-margin: 8px;
+}
