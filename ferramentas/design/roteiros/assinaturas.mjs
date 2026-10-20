@@ -7,6 +7,8 @@ export default async function ({ js, pausa, legenda, clicar, rolar, movel }) {
     ['ficha', 'Assinatura 2: a ficha'],
     ['retratos', 'Assinatura 3: os retratos']
   ];
+  // no celular a barra do portão começa recolhida
+  if (movel) await clicar('.portao-recolher', 'As opções do portão');
   for (const [valor, nome] of OPCOES) {
     await js(() => {
       navigateTo('home');
