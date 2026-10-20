@@ -28,6 +28,11 @@ ALVOS = [
      'escopo': ':is(#view-descubra, #view-historias, #bioExpand)',
      'raizes': [('.bio-overlay', '#bioExpand')],
      'origens': SISTEMA + ['assets/css/telas/cabeca.css', 'assets/css/telas/historias.css']},
+    # Etapa 8: Comunidade, Perfil, Escrever e a janela de entrar ou criar conta
+    {'saida': 'assets/css/telas/comunidade-site.css',
+     'escopo': ':is(#view-comunidade, #view-perfil, #view-escrever, #authModal)',
+     'raizes': [('.modal-overlay', '#authModal')],
+     'origens': SISTEMA + ['assets/css/telas/cabeca.css', 'assets/css/telas/comunidade.css']},
 ]
 
 

@@ -430,7 +430,7 @@ function f5InjectViews() {
       <div class="section-head">
         <span class="eyebrow">seu espaço</span>
         <h2 class="section-title">Escrever</h2>
-        <p class="section-sub">Escreva um relato, escolha o fundo, a mídia e a música — depois guarde só para você ou publique na comunidade.</p>
+        <p class="section-sub">Escreva um relato e escolha o fundo, a imagem e a música. Depois, guarde só para você ou publique na comunidade.</p>
       </div>
       <div id="escRoot"></div>
     </div>

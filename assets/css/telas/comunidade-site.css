@@ -1,0 +1,1608 @@
+/* GERADO por ferramentas/design/escopo.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/cabeca.css, assets/css/telas/comunidade.css.
+   Não edite aqui: mude a origem e rode o script de novo. Vale só dentro de :is(#view-comunidade, #view-perfil, #view-escrever, #authModal). */
+/* ==================== assets/css/02-base.css ==================== */
+/* ============================================================
+   MEMOTIVA — BASE (Etapa 2 do redesign)
+   Reset curto, tipografia de leitura, links, foco e acessibilidade.
+   Usa só os tokens de 01-tokens.css.
+   ============================================================ */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) *,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) *::before,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) *::after {
+  box-sizing: border-box;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--weight-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h1,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h2,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h3,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  color: var(--brand);
+  text-wrap: balance;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: var(--tracking-display);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h2 {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.01em;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) h3 {
+  font-size: 1.25rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) p {
+  margin: 0;
+  text-wrap: pretty;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) img,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) svg,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) video {
+  display: block;
+  max-width: 100%;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) img {
+  height: auto;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) button,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) input,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) select,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) textarea {
+  font: inherit;
+  color: inherit;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) button {
+  cursor: pointer;
+}
+/* ---- links: tinta do texto, sublinhado fino; o laranja aparece no sublinhado ---- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) a {
+  color: var(--text);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--border-strong);
+  transition: color var(--dur-1) var(--ease-out);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) a:hover {
+  color: var(--accent-text);
+}
+/* ---- foco: visível em todo elemento interativo ---- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) :focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) ::selection {
+  background: var(--highlight);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) mark {
+  background: var(--highlight);
+  color: var(--text);
+  padding: 0 0.1em;
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) hr {
+  border: 0;
+  border-top: var(--hairline) solid var(--border);
+  margin: var(--space-6) 0;
+}
+/* ---- utilitários ---- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .hidden,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) [hidden] {
+  display: none !important;
+}
+/* datas e nomes que não devem se partir na linha, como "(1920–1977)" */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .sem-quebra {
+  white-space: nowrap;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-left: max(var(--space-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4), env(safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .wrap {
+    padding-left: max(var(--space-6), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-6), env(safe-area-inset-right, 0px));
+  }
+}
+/* rótulo pequeno em caixa alta espaçada, como as etiquetas de museu da Galeria */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* texto longo de leitura (biografias, histórias) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prose {
+  max-width: var(--measure);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prose p + p {
+  margin-top: 1em;
+}
+
+/* ==================== assets/css/03-componentes.css ==================== */
+/* ============================================================
+   MEMOTIVA — COMPONENTES BASE (Etapa 2 do redesign)
+   Usam as classes que o site e o JS já usam (.quote-card, .expand-*, .chip…),
+   para as próximas etapas só ligarem este arquivo, sem trocar a marcação.
+   A navegação (cabeçalho, menu, barra inferior, rodapé) fica em telas/navegacao.css.
+   Classes novas, que ainda não existem no site, estão marcadas com "(nova)".
+   Só tokens de 01-tokens.css; nenhum hex aqui.
+   ============================================================ */
+/* =========================================================
+   1. A FRASE — um estilo só para todas as frases do acervo
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-text,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) /* (nova) uso genérico: autor,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) obra,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) Descubra,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) Histórias */
+.quote-card-text,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-text,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-hero-text,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-poster-text /* (nova) a frase sozinha,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) como cartaz: frase ao acaso e encerramento */ {
+  margin: 0;
+  font-family: var(--quote-font);
+  font-weight: var(--quote-weight);
+  font-style: var(--quote-style);
+  color: var(--quote-color);
+  line-height: var(--quote-leading);
+  letter-spacing: var(--quote-tracking);
+  font-optical-sizing: auto;
+  text-wrap: pretty;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-text,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-text {
+  font-size: var(--quote-card);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-text {
+  font-size: var(--quote-modal);
+  max-width: var(--measure-quote);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-hero-text {
+  font-size: var(--quote-hero);
+  max-width: 34ch;
+}
+/* um único degrau menor para frase longa: o JS marca data-comprimento="longa" (mais de 140 caracteres) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-text[data-comprimento='longa'],
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-text[data-comprimento='longa'] {
+  font-size: var(--quote-card-long);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 40ch;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-hero-text[data-comprimento='longa'] {
+  font-size: var(--quote-hero-long);
+  max-width: 36ch;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-poster-text {
+  font-size: var(--quote-poster);
+  max-width: 21ch;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-poster-text[data-comprimento='longa'] {
+  font-size: var(--quote-poster-long);
+  max-width: 32ch;
+}
+/* aspa pendurada nos outros navegadores: a aspa de abertura vem num span próprio (nova) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .aspa-abre {
+  margin-left: -0.42em;
+}
+/* no celular a margem lateral é estreita demais para pendurar a aspa: ela volta para dentro da linha */
+@media (max-width: 639px) {
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .aspa-abre {
+    margin-left: 0;
+  }
+}
+/* o original, quando existe: mesma família, itálico pequeno, no idioma certo (lang no elemento) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-original {
+  margin: 0;
+  font-family: var(--font-title), var(--font-original-extra);
+  font-style: italic;
+  font-size: var(--quote-original);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+/* =========================================================
+   2. BOTÕES E LINKS
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--text);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn:disabled,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* principal: espresso cheio (no escuro, linho). O nome antigo continua valendo. */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-primary,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-coral {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-primary:hover,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-coral:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+/* secundário: contorno */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-ghost:hover {
+  background: var(--surface);
+}
+/* texto: só a palavra, sublinhado laranja fino */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-text:hover {
+  color: var(--accent-text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-sm {
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-lg {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-size: var(--fs-body);
+}
+/* botão só com ícone: 44 × 44, sem caixa */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-icon:hover {
+  background: var(--surface);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   3. CAMPOS
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-hint {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-input,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .search-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-input::placeholder,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .search-input::placeholder {
+  color: var(--text-meta);
+  opacity: 1;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-input:focus-visible,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .search-input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-input[aria-invalid='true'] {
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-error {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) textarea.form-input {
+  min-height: 120px;
+  line-height: var(--lh-body);
+  resize: vertical;
+}
+/* =========================================================
+   4. CHIPS E FILTROS
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip-row,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .filter-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: var(--space-1);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip-row::-webkit-scrollbar,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .filter-row::-webkit-scrollbar {
+  display: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-size var(--dur-2) var(--ease-out);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip:hover {
+  color: var(--text);
+}
+/* ativo: texto na tinta e o traço laranja curto, como no menu */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip.active,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip[aria-pressed='true'] {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip-count {
+  color: inherit;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip-arrow {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .chip-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .filter-label {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-meta);
+}
+/* =========================================================
+   5. CARTÃO DE FRASE (Explorar e listas)
+   Sem rotação, sem fita: todos iguais, a frase manda.
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-7) var(--space-6);
+  align-items: start;
+}
+/* sem caixa nem fundo: um fio no topo, como verbete de livro */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) 0 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  background: none;
+  transform: none !important; /* desliga a rotação que o template antigo põe inline */
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card:hover {
+  border-top-color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-tape {
+  display: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* o laranja como detalhe: um ponto pequeno antes da categoria */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .avatar-frame {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .avatar-frame img,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-avatar img,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prancha-foto img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sem foto: iniciais em serifa, no tom do papel (o template antigo põe uma cor viva inline) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .avatar-fallback {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  background: var(--frame) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .author-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-regular);
+  color: var(--brand);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .heart-btn,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-act {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .heart-btn:hover,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-act:hover {
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .heart-btn.active,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-act.liked,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .heart-btn[aria-pressed='true'],
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-act[aria-pressed='true'] {
+  color: var(--accent-text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .heart-btn[aria-pressed='true'] svg,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-act[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .heart-btn svg,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-act svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   6. FRASE AMPLIADA (janela)
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: none;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--overlay);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-overlay.show {
+  display: grid;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-quote {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-close svg {
+  width: 18px;
+  height: 18px;
+}
+/* a "sala" da Galeria: no computador, o retrato ocupa a coluna da esquerda e o texto de parede a da direita.
+   .expand-foot e .expand-ident-wrap viram "transparentes" para o retrato subir para a primeira coluna
+   sem mudar a marcação. */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-inner {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-foot {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--space-4) var(--space-4);
+  align-items: start;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+@media (min-width: 900px) {
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-auto-flow: dense;
+    gap: var(--space-4) var(--space-7);
+    padding: 0 var(--space-7) 0 0;
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-inner > * {
+    grid-column: 2;
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-inner > .expand-cat {
+    padding-top: var(--space-8);
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-foot {
+    display: contents;
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-foot > * {
+    grid-column: 2;
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-foot > .expand-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    align-self: stretch;
+    width: 100%;
+    min-height: 520px;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-ident-wrap {
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+  }
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-foot > .expand-acts {
+    grid-column: 2;
+    padding-bottom: var(--space-5);
+  }
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-avatar {
+  position: relative;
+  width: 72px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+  cursor: zoom-in;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-avatar .avatar-fallback {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-ident-wrap {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-ident {
+  display: grid;
+  gap: var(--space-1);
+}
+/* o nome do autor: Noto Serif Display condensada, como os nomes da Galeria */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-author {
+  font-family: var(--font-title);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--brand);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-src.src-alerta {
+  color: var(--accent-text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-src.src-nota {
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-know {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.4em;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-know:hover {
+  color: var(--accent-text);
+  text-decoration-color: currentColor;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .expand-acts {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid var(--border);
+}
+/* prancha (nova): o retrato da abertura, com o disco laranja da Florada atrás (só no claro) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prancha {
+  position: relative;
+  margin: 0;
+  isolation: isolate;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prancha::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -9%;
+  left: -14%;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mass);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prancha-foto {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: var(--frame);
+  cursor: zoom-in;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prancha-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .prancha figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+/* faixa da fonte (nova), herdada da Florada: roxo com texto linho, só no claro.
+   No escuro vira o quadro escuro da Galeria. */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-fonte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--brand-surface);
+  color: var(--on-brand);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-fonte b {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--on-brand-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-fonte .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-fonte .conferida {
+  color: var(--on-brand-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-fonte a,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-fonte .btn-text {
+  margin-left: auto;
+  color: var(--on-brand);
+  text-decoration-color: var(--on-brand-meta);
+}
+/* salas de cor (novas): café, ocre e roxo, para dar peso a uma seção sem caixa nem sombra.
+   Dentro de uma sala, a tinta, as linhas, o foco, o botão principal e a frase passam para as cores
+   da sala: os componentes de dentro (etiqueta, botões, links, cartões) se ajustam sozinhos. */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-cafe,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-ocre,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-roxa {
+  padding-block: var(--space-7);
+  background: var(--bg);
+  color: var(--text);
+  --brand: var(--text);
+  --text-secondary: var(--text);
+  --quote-color: var(--text);
+  --focus-ring: var(--text);
+  --pin: var(--text-meta);
+  --border: color-mix(in srgb, var(--text) 24%, transparent);
+  --border-strong: color-mix(in srgb, var(--text) 60%, transparent);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-cafe {
+  --bg: var(--cafe-surface);
+  --text: var(--on-cafe);
+  --text-meta: var(--on-cafe-meta);
+  --accent-text: var(--on-cafe-accent);
+  --surface-strong: var(--on-cafe);
+  --text-on-strong: var(--cafe-surface);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-ocre {
+  --bg: var(--ochre-surface);
+  --text: var(--on-ochre);
+  --text-meta: var(--on-ochre-meta);
+  --accent-text: var(--on-ochre-accent);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .faixa-roxa {
+  --bg: var(--brand-surface);
+  --text: var(--on-brand);
+  --text-meta: var(--on-brand-meta);
+  --accent-text: var(--on-brand-accent);
+  --surface-strong: var(--on-brand);
+  --text-on-strong: var(--brand-surface);
+}
+/* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-label {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-label dt {
+  padding-top: 0.25em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-label dd {
+  margin: 0;
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .quote-label .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .conferida {
+  display: block;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--accent-text);
+}
+/* =========================================================
+   7. ESTADOS: vazio, carregando, erro, aviso
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 44ch;
+  padding: var(--space-7) 0;
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: var(--space-2);
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state h3 {
+  font-size: 1.375rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state p {
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .state-loading {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 320px;
+  padding: var(--space-7) 0;
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .state-loading::after {
+  content: '';
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 30%, var(--border) 30% 100%);
+  background-size: 200% 100%;
+  animation: carregando 1.4s var(--ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .state-loading::after {
+    animation: none;
+  }
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .state-error {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 52ch;
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .state-error strong {
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-medium);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .state-error p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  max-width: min(420px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (min-width: 1024px) {
+  :is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .toast {
+    bottom: var(--space-6);
+  }
+}
+/* =========================================================
+   8. AVALIAÇÃO (só no guia por enquanto) (nova)
+   ========================================================= */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating-scale {
+  display: flex;
+  gap: var(--space-1);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating label {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  cursor: pointer;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating label:hover {
+  background: var(--surface);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating input:checked + label {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating input:focus-visible + label {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .rating-ends {
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(5 * var(--tap) + 4 * var(--space-1));
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+
+/* ==================== assets/css/telas/cabeca.css ==================== */
+/* ============================================================
+   MEMOTIVA — CABEÇA DAS TELAS (redesign, a partir da Etapa 5)
+   O começo de cada tela redesenhada: rótulo com o ponto apricot, título em serifa e subtítulo.
+   Entra no escopo de cada tela por ferramentas/design/escopo.py. Só tokens; nenhum hex aqui.
+   ============================================================ */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .wrap.section {
+  padding-block: var(--space-7) var(--space-9);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .section-head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 46rem;
+  margin: 0 0 var(--space-6);
+}
+/* o rótulo com o ponto apricot, o mesmo da home */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .section-head .eyebrow::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .section-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-h1);
+  font-weight: var(--weight-regular);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .section-sub {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+
+/* ==================== assets/css/telas/comunidade.css ==================== */
+/* ============================================================
+   MEMOTIVA — COMUNIDADE, PERFIL, ESCREVER E ENTRAR (Etapa 8 do redesign)
+   Os relatos (cartão, ações e comentários), o perfil (cabeça, abas e estados vazios), o compositor
+   do Escrever (os ids de cor e de fonte continuam os mesmos) e a janela de entrar ou criar conta.
+   No site, entra pelo escopo das três telas e da janela (ferramentas/design/escopo.py).
+   Só tokens; nenhum hex aqui (os tons dos relatos são --relato-*, em 01-tokens.css).
+   ============================================================ */
+/* ---------- aviso no topo da comunidade e do perfil ---------- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-cta {
+  gap: var(--space-3) var(--space-5);
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-cta svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-cta p {
+  margin: 0;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-cta p b {
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .toolbar {
+  margin: 0 0 var(--space-5) !important;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) #feedFilterChips {
+  border-bottom: var(--hairline) solid var(--border);
+}
+/* ---------- o relato ---------- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .feed {
+  gap: var(--space-7);
+  max-width: 44rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-card {
+  padding: var(--space-4) 0 0;
+  border: 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-head {
+  gap: var(--space-3);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-avatar,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .comment-avatar {
+  border-radius: var(--radius-sm);
+  background: var(--frame) !important; /* o template põe uma cor viva inline */
+  color: var(--text-secondary) !important;
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular) !important;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-avatar {
+  width: 40px;
+  height: 40px;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-username {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-time {
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .follow-btn,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-own-tools button {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-own-tools button:hover,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .follow-btn:hover {
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-content {
+  margin: var(--space-4) 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-text {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+/* a frase citada no relato: a mesma tipografia das frases do acervo */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-quote-ref {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-radius: 0;
+  border-left: 2px solid var(--accent);
+  background: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-quote-ref p {
+  font-family: var(--quote-font);
+  font-style: italic;
+  font-size: 1.125rem;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-quote-ref span {
+  margin-top: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .post-actions {
+  gap: 0;
+  margin: 0;
+  padding-top: var(--space-1);
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .action-btn {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  justify-content: center;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .action-btn:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .action-btn.liked,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .action-btn.saved {
+  color: var(--accent-text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .action-btn.liked svg,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .action-btn.saved svg {
+  fill: currentColor;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .comment-section {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .comment {
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .comment b {
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .comment-input {
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .comment-input:focus {
+  border-color: var(--text);
+}
+/* Publicados e Seguindo: abas no pé da tela, sem pílulas */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock {
+  gap: 0;
+  background: var(--bg);
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock button {
+  min-height: var(--tap);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock button:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock button.on {
+  background: none;
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .com-dock .badge {
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state {
+  padding: var(--space-8) var(--space-4);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state h3 {
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  font-size: var(--fs-h2);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .empty-state .btn {
+  margin-top: var(--space-4);
+}
+/* ---------- perfil ---------- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-head {
+  gap: var(--space-5);
+  margin: 0 0 var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--hairline) solid var(--border);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-sm);
+  background: var(--frame) !important;
+  color: var(--text-secondary) !important;
+  font-family: var(--font-title);
+  font-weight: var(--weight-light) !important;
+}
+/* o nome de quem está logado, condensado como os nomes do acervo (o template põe tamanho inline) */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-head h2,
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-head h3 {
+  font-family: var(--font-title) !important;
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem) !important;
+  line-height: 1;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-stats {
+  gap: var(--space-6);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-stats b {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-tabs {
+  gap: 0 var(--space-1);
+  margin: 0 0 var(--space-6);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-tab {
+  min-height: var(--tap);
+  margin: 0;
+  padding: 0 var(--space-2);
+  border: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .profile-tab.active {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+/* ---------- Escrever ---------- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .composer-head {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .composer-avatar {
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-preview {
+  min-height: 240px;
+  padding: var(--space-6);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-preview textarea {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-quote-ref {
+  border: 0;
+  border-radius: 0;
+  border-left: 2px solid var(--accent);
+  background: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-quote-ref p {
+  font-family: var(--quote-font);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-quote-ref span {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-toolbar {
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-tool-label {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  color: var(--text-meta);
+}
+/* as três letras do relato (Padrão, Serifada, Manuscrita): chips com o traço laranja */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .font-opt {
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .font-opt.active {
+  background: none;
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .bg-opt {
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .bg-opt.active {
+  border-color: var(--text);
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 3px var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-tool {
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-tool:hover {
+  background: var(--surface);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-tool.on {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-panel {
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-cats button {
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-cats button.on {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-bg-opt {
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-bg-opt.on {
+  border-color: var(--text);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-actions {
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-actions .btn {
+  flex: 0 1 auto;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .esc-note {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+/* ---------- janela de entrar ou criar conta ---------- */
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .modal-overlay,
+#authModal.modal-overlay {
+  align-items: center;
+  background: var(--overlay);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .modal {
+  align-self: center;
+  height: auto;
+  min-height: 0; /* o bloco responsivo injetado por JS dá 100dvh a toda .modal */
+  max-height: calc(100dvh - 2 * var(--space-4));
+  max-width: 28rem;
+  padding: var(--space-7) var(--space-6) var(--space-6);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  box-shadow: var(--shadow-float);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .modal-close {
+  top: var(--space-3);
+  right: var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .modal-title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  font-weight: var(--weight-regular);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .modal-sub {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .auth-tabs {
+  gap: var(--space-1);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  border-bottom: var(--hairline) solid var(--border);
+  border-radius: 0;
+  background: none;
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .auth-tab {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border-radius: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .auth-tab.active {
+  background: none;
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .form-field {
+  margin-bottom: var(--space-4);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .auth-submit {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .auth-switch {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-comunidade, #view-perfil, #view-escrever, #authModal) .auth-switch button {
+  min-height: var(--tap);
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}
+
+@keyframes carregando {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

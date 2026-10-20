@@ -155,6 +155,14 @@
   --bp-desktop: 1024px;
 
   color-scheme: light;
+  /* fundos dos relatos (Etapa 8): os mesmos nomes de cor de STYLE_COLORS, em tons da paleta */
+  --relato-coral: #f3dcc9; /* apricot claro */
+  --relato-jade: #e4e3cf; /* oliva claro */
+  --relato-marigold: #f1e59b; /* o amarelo do briefing */
+  --relato-plum: #eadbe6; /* roxo claro */
+  --relato-sky: #e6e1d6; /* pedra */
+  --relato-paper: #fdf9f0;
+  --relato-tinta: #2b1811;
 }
 
 /* Tema escuro: a "sala escura" da Galeria. Fotos no centro, tinta marfim, sem laranja grande. */
@@ -203,6 +211,13 @@ html[data-theme='dark'] {
   --shadow-float: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
 
   color-scheme: dark;
+  --relato-coral: #3a2317;
+  --relato-jade: #2a2b1e;
+  --relato-marigold: #36301a;
+  --relato-plum: #2e1d31;
+  --relato-sky: #25221e;
+  --relato-paper: #1f1c19;
+  --relato-tinta: #f5e6c5;
 }
 
 @media (prefers-reduced-motion: reduce) {

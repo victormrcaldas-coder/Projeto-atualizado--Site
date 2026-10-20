@@ -51,7 +51,8 @@ assets/
                            a home usa telas/home-site.css; o Explorar, as janelas da frase e da foto e
                            as grades de cartões, telas/frase-site.css; Autores & Obras, o autor e a obra,
                            telas/autores-site.css; Descubra, Histórias e a história aberta,
-                           telas/historias-site.css. Todos gerados por ferramentas/design/escopo.py
+                           telas/historias-site.css; Comunidade, Perfil, Escrever e a janela de entrar,
+                           telas/comunidade-site.css. Todos gerados por ferramentas/design/escopo.py
   js/
     nucleo/                01–02  utilitários, categorias, aliases de autor, perfis, origens
     dados/                 03–08, 16, 21–22  acervo-base: frases, histórias, obras, papéis, panoramas, páginas de obra

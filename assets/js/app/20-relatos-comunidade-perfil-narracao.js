@@ -8,14 +8,14 @@
 function relatoFundoCSS(p) {
   const f = fundoPorRef(p.fundo);
   if (f) return f.css;
+  /* Etapa 8 do redesign: os mesmos ids de cor, com os tons da paleta (tokens --relato-*) */
   const c = STYLE_COLORS.find((x) => x.id === p.color) || STYLE_COLORS[0];
-  return state.theme === 'dark' && c.dark ? c.dark : c.bg;
+  return `var(--relato-${c.id})`;
 }
 function relatoTinta(p) {
   const f = fundoPorRef(p.fundo);
   if (f) return f.ink;
-  if (p.color === 'paper') return 'var(--paper-text)';
-  return state.theme === 'dark' ? '#F3ECE3' : '#1B1817';
+  return 'var(--relato-tinta)';
 }
 /* <img>/<video> de uma mídia guardada; src e filtro passam pelas checagens de nucleo/01 */
 function midiaTag(m) {

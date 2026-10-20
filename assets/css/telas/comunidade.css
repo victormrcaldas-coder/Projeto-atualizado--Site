@@ -1,0 +1,470 @@
+/* ============================================================
+   MEMOTIVA — COMUNIDADE, PERFIL, ESCREVER E ENTRAR (Etapa 8 do redesign)
+   Os relatos (cartão, ações e comentários), o perfil (cabeça, abas e estados vazios), o compositor
+   do Escrever (os ids de cor e de fonte continuam os mesmos) e a janela de entrar ou criar conta.
+   No site, entra pelo escopo das três telas e da janela (ferramentas/design/escopo.py).
+   Só tokens; nenhum hex aqui (os tons dos relatos são --relato-*, em 01-tokens.css).
+   ============================================================ */
+
+/* ---------- aviso no topo da comunidade e do perfil ---------- */
+.com-cta {
+  gap: var(--space-3) var(--space-5);
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+}
+.com-cta svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-meta);
+}
+.com-cta p {
+  margin: 0;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+.com-cta p b {
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+.toolbar {
+  margin: 0 0 var(--space-5) !important;
+}
+#feedFilterChips {
+  border-bottom: var(--hairline) solid var(--border);
+}
+
+/* ---------- o relato ---------- */
+.feed {
+  gap: var(--space-7);
+  max-width: 44rem;
+}
+.post-card {
+  padding: var(--space-4) 0 0;
+  border: 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.post-head {
+  gap: var(--space-3);
+}
+.post-avatar,
+.comment-avatar {
+  border-radius: var(--radius-sm);
+  background: var(--frame) !important; /* o template põe uma cor viva inline */
+  color: var(--text-secondary) !important;
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular) !important;
+}
+.post-avatar {
+  width: 40px;
+  height: 40px;
+}
+.post-username {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.post-time {
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+.follow-btn,
+.post-own-tools button {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}
+.post-own-tools button:hover,
+.follow-btn:hover {
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+}
+.post-content {
+  margin: var(--space-4) 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-sm);
+}
+.post-text {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+/* a frase citada no relato: a mesma tipografia das frases do acervo */
+.post-quote-ref {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-radius: 0;
+  border-left: 2px solid var(--accent);
+  background: none;
+}
+.post-quote-ref p {
+  font-family: var(--quote-font);
+  font-style: italic;
+  font-size: 1.125rem;
+}
+.post-quote-ref span {
+  margin-top: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.post-actions {
+  gap: 0;
+  margin: 0;
+  padding-top: var(--space-1);
+  border-top: var(--hairline) solid var(--border);
+}
+.action-btn {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  justify-content: center;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+}
+.action-btn:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+.action-btn.liked,
+.action-btn.saved {
+  color: var(--accent-text);
+}
+.action-btn.liked svg,
+.action-btn.saved svg {
+  fill: currentColor;
+}
+.comment-section {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+}
+.comment {
+  font-size: var(--fs-small);
+}
+.comment b {
+  font-weight: var(--weight-semibold);
+}
+.comment-input {
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  font-size: var(--fs-small);
+}
+.comment-input:focus {
+  border-color: var(--text);
+}
+/* Publicados e Seguindo: abas no pé da tela, sem pílulas */
+.com-dock {
+  gap: 0;
+  background: var(--bg);
+  border-top: var(--hairline) solid var(--border);
+}
+.com-dock button {
+  min-height: var(--tap);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.com-dock button:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+.com-dock button.on {
+  background: none;
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+.com-dock .badge {
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+  font-weight: var(--weight-semibold);
+}
+.empty-state {
+  padding: var(--space-8) var(--space-4);
+  color: var(--text-secondary);
+}
+.empty-state h3 {
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  font-size: var(--fs-h2);
+}
+.empty-state .btn {
+  margin-top: var(--space-4);
+}
+
+/* ---------- perfil ---------- */
+.profile-head {
+  gap: var(--space-5);
+  margin: 0 0 var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--hairline) solid var(--border);
+}
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-sm);
+  background: var(--frame) !important;
+  color: var(--text-secondary) !important;
+  font-family: var(--font-title);
+  font-weight: var(--weight-light) !important;
+}
+/* o nome de quem está logado, condensado como os nomes do acervo (o template põe tamanho inline) */
+.profile-head h2,
+.profile-head h3 {
+  font-family: var(--font-title) !important;
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem) !important;
+  line-height: 1;
+}
+.profile-stats {
+  gap: var(--space-6);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.profile-stats b {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  color: var(--text);
+}
+.profile-tabs {
+  gap: 0 var(--space-1);
+  margin: 0 0 var(--space-6);
+}
+.profile-tab {
+  min-height: var(--tap);
+  margin: 0;
+  padding: 0 var(--space-2);
+  border: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+.profile-tab.active {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+/* ---------- Escrever ---------- */
+.esc-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.composer-head {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.composer-avatar {
+  border-radius: var(--radius-sm);
+}
+.esc-preview {
+  min-height: 240px;
+  padding: var(--space-6);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.esc-preview textarea {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.esc-quote-ref {
+  border: 0;
+  border-radius: 0;
+  border-left: 2px solid var(--accent);
+  background: none;
+}
+.esc-quote-ref p {
+  font-family: var(--quote-font);
+}
+.esc-quote-ref span {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.esc-toolbar {
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.esc-tool-label {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  color: var(--text-meta);
+}
+/* as três letras do relato (Padrão, Serifada, Manuscrita): chips com o traço laranja */
+.font-opt {
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+.font-opt.active {
+  background: none;
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+.bg-opt {
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+.bg-opt.active {
+  border-color: var(--text);
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 3px var(--text);
+}
+.esc-tool {
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+}
+.esc-tool:hover {
+  background: var(--surface);
+}
+.esc-tool.on {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.esc-panel {
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+}
+.esc-cats button {
+  border-radius: var(--radius-sm);
+}
+.esc-cats button.on {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.esc-bg-opt {
+  border-radius: var(--radius-sm);
+}
+.esc-bg-opt.on {
+  border-color: var(--text);
+}
+.esc-actions {
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.esc-actions .btn {
+  flex: 0 1 auto;
+}
+.esc-note {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+
+/* ---------- janela de entrar ou criar conta ---------- */
+.modal-overlay {
+  align-items: center;
+  background: var(--overlay);
+}
+.modal {
+  align-self: center;
+  height: auto;
+  min-height: 0; /* o bloco responsivo injetado por JS dá 100dvh a toda .modal */
+  max-height: calc(100dvh - 2 * var(--space-4));
+  max-width: 28rem;
+  padding: var(--space-7) var(--space-6) var(--space-6);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  box-shadow: var(--shadow-float);
+}
+.modal-close {
+  top: var(--space-3);
+  right: var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+.modal-title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  font-weight: var(--weight-regular);
+}
+.modal-sub {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.auth-tabs {
+  gap: var(--space-1);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  border-bottom: var(--hairline) solid var(--border);
+  border-radius: 0;
+  background: none;
+}
+.auth-tab {
+  flex: none;
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border-radius: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+.auth-tab.active {
+  background: none;
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+.form-field {
+  margin-bottom: var(--space-4);
+}
+.auth-submit {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+.auth-switch {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.auth-switch button {
+  min-height: var(--tap);
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.3em;
+}

@@ -14,7 +14,8 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 | 5. Frase: cartão, modal, Explorar, busca e filtros      | `redesign/05-frase`       | Feita direto no site em 20/10/2026; já na `main`                    |
 | 6. Autores & Obras, Panorama e Obra                     | `redesign/06-autores`     | Feita direto no site em 20/10/2026; já na `main`                    |
 | 7. Descubra e Histórias                                 | `redesign/07-descubra`    | Feita direto no site em 20/10/2026; já na `main`                    |
-| 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Próxima                                                             |
+| 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Feita direto no site em 20/10/2026; já na `main`                    |
+| 9. Movimento, cursor e revisão final                    | `redesign/09-revisao`     | Próxima                                                             |
 
 **Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -323,3 +324,12 @@ Feita direto no site, sem protótipo, como o proprietário pediu. Segue o cartã
   - o cartão de história não abria pelo teclado (Enter);
   - abrir uma história com outra já aberta travava a rolagem da página.
 - **Teste novo:** `ferramentas/testes/historias.mjs`, com 34 casos. O celular roda com movimento reduzido.
+
+## Etapa 8: Comunidade, Perfil, Escrever e entrar (20/10/2026)
+
+- **Decisão 1 do Portão 0 aplicada.** Os 3 relatos de usuários inventados (`marina_sp`, `joao.forte`, `luztotal`) não são mais criados. Quem já os tinha guardado deixa de vê-los. Sem relatos de verdade, a comunidade mostra "Ainda não há relatos aqui" e o botão "Escrever um relato".
+- **Comunidade:** título "O que as pessoas escreveram" e subtítulo novo. Os relatos viram verbetes com um fio no topo: avatar quadrado no tom da moldura, "Seguir" como texto, a frase citada com a tipografia das frases do acervo (antes, o autor saía em letra manuscrita). "Publicados" e "Seguindo" viram abas.
+- **Fundos dos relatos:** os mesmos ids de cor (`coral`, `jade`, `marigold`, `plum`, `sky`, `paper`), agora em tons da paleta (tokens `--relato-*`, claro e escuro), no lugar dos degradês pastel. O dado gravado em cada relato não muda.
+- **Perfil e Escrever:** abas com o traço laranja, nome condensado, compositor sem caixa, as três letras como abas e os fundos como quadrados.
+- **Janela de entrar:** centrada, com a altura do conteúdo. Desde a Etapa 3 ela ficava **abaixo** da camada escura, escurecida e sem receber o clique; corrigido no mesmo dia, e já na `main`.
+- **Teste novo:** `ferramentas/testes/comunidade.mjs`, com 32 casos.

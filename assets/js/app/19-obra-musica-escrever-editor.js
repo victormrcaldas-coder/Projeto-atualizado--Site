@@ -254,13 +254,13 @@ function fundoPorRef(ref) {
 }
 function escFundoCSS() {
   if (escState.fundo) return escState.fundo.css;
+  /* Etapa 8 do redesign: os tons da paleta, como no cartão do relato */
   const c = STYLE_COLORS.find((x) => x.id === escState.cor) || STYLE_COLORS[0];
-  return state.theme === 'dark' && c.dark ? c.dark : c.bg;
+  return `var(--relato-${c.id})`;
 }
 function escTinta() {
   if (escState.fundo) return escState.fundo.ink;
-  if (escState.cor === 'paper') return 'var(--paper-text)';
-  return state.theme === 'dark' ? '#F3ECE3' : '#1B1817';
+  return 'var(--relato-tinta)';
 }
 
 /* ================================================================
@@ -322,7 +322,7 @@ function renderEscrever() {
       </div>
       <div class="esc-toolbar">
         <div class="bg-row" id="escCores">
-          ${STYLE_COLORS.map((c) => `<button class="bg-opt ${!escState.fundo && escState.cor === c.id ? 'active' : ''}" data-color="${c.id}" style="background:${c.bg}" aria-label="Estilo ${c.id}"></button>`).join('')}
+          ${STYLE_COLORS.map((c) => `<button class="bg-opt ${!escState.fundo && escState.cor === c.id ? 'active' : ''}" data-color="${c.id}" style="background:var(--relato-${c.id})" aria-label="Fundo ${c.id}"></button>`).join('')}
         </div>
         <button class="esc-tool ${escState.painel === 'galeria' ? 'on' : ''}" id="escGaleria" title="Galeria de fundos" aria-label="Galeria de fundos">${f5svg('galeria', 20)}</button>
         <button class="esc-tool" id="escMais" title="Adicionar foto ou vídeo" aria-label="Adicionar foto ou vídeo">${f5svg('mais', 20)}</button>

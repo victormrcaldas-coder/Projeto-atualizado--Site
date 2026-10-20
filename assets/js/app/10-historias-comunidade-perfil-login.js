@@ -92,51 +92,13 @@ function sanearPost(p) {
 }
 async function loadCommunityPosts() {
   const posts = await dbGet('feed:posts', true);
-  state.communityPosts = Array.isArray(posts) ? posts.map(sanearPost).filter(Boolean) : [];
-  if (!posts) {
-    await seedCommunityIfNeeded();
-  }
+  /* Etapa 8 do redesign (decisão 1 do Portão 0): os 3 relatos de exemplo, de usuários inventados,
+     saem; quem já os tinha guardado deixa de vê-los */
+  const exemplo = (p) => /^seed_\d+@memotiva\.app$/.test((p && p.authorEmail) || '');
+  state.communityPosts = Array.isArray(posts) ? posts.map(sanearPost).filter((p) => p && !exemplo(p)) : [];
 }
-async function seedCommunityIfNeeded() {
-  const seeded = await dbGet('seeded:v1', true);
-  if (seeded) return;
-  const seedPosts = [
-    {
-      text: 'Hoje escolhi recomeçar. Não porque foi fácil ontem, mas porque ainda acredito no que estou construindo.',
-      authorUsername: 'marina_sp',
-      color: 'jade',
-      font: 'body'
-    },
-    {
-      text: 'Aprendi que pedir ajuda não é fraqueza — é a coragem de admitir que ninguém chega a lugar nenhum sozinho.',
-      authorUsername: 'joao.forte',
-      color: 'sky',
-      font: 'display'
-    },
-    {
-      text: 'Gratidão de hoje: acordar, respirar fundo e lembrar que já superei 100% dos meus dias difíceis até agora.',
-      authorUsername: 'luztotal',
-      color: 'marigold',
-      font: 'hand'
-    }
-  ];
-  const now = Date.now();
-  state.communityPosts = seedPosts.map((p, i) => ({
-    id: uid('post'),
-    authorEmail: 'seed_' + i + '@memotiva.app',
-    authorUsername: p.authorUsername,
-    text: p.text,
-    font: p.font,
-    color: p.color,
-    createdAt: now - (i + 1) * 3600 * 1000 * 7,
-    likes: [],
-    comments: [],
-    reports: [],
-    hidden: false
-  }));
-  await saveCommunityPosts();
-  await dbSet('seeded:v1', true, true);
-}
+/* Não semeia mais relatos de exemplo (decisão 1 do Portão 0): prova social fingida. */
+async function seedCommunityIfNeeded() {}
 
 /* ---------------- ações do feed ---------------- */
 async function toggleLikePost(postId) {
