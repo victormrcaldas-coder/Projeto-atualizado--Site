@@ -4,29 +4,31 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 
 ## Etapas e branches
 
-| Etapa | Branch | Situação |
-|---|---|---|
-| 0. Diagnóstico | `redesign/00-diagnostico` | Aprovada em 14/10/2026 |
-| 1. Direção visual | `redesign/01-direcao` | Aprovada no Portão 1 (14/10/2026) |
-| 2. Sistema de design | `redesign/02-sistema` | Aprovada no Portão 2 (14/10/2026) |
-| 3. Cabeçalho, navegação e rodapé | `redesign/03-navegacao` | Aprovada no Portão 3 (14/10/2026) |
-| 4. Home | `redesign/04-home` | 4a (protótipo) no Portão 4a |
+| Etapa                                              | Branch                    | Situação                                                            |
+| -------------------------------------------------- | ------------------------- | ------------------------------------------------------------------- |
+| 0. Diagnóstico                                     | `redesign/00-diagnostico` | Aprovada em 14/10/2026                                              |
+| 1. Direção visual                                  | `redesign/01-direcao`     | Aprovada no Portão 1 (14/10/2026)                                   |
+| 2. Sistema de design                               | `redesign/02-sistema`     | Aprovada no Portão 2 (14/10/2026)                                   |
+| 3. Cabeçalho, navegação e rodapé                   | `redesign/03-navegacao`   | Aprovada no Portão 3 (14/10/2026)                                   |
+| 4. Home                                            | `redesign/04-home`        | Aprovada em 20/10/2026, com a rodada 2 do refinamento; já na `main` |
+| 5. Frase: cartão, modal, Explorar, busca e filtros | `redesign/05-frase`       | Em andamento                                                        |
 
-Nada entra na `main` sem o proprietário dizer "pode juntar". As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
+**Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
 ## Portão 0 (14/10/2026)
 
-| # | Assunto | Decisão | Onde entra |
-|---|---|---|---|
-| 1 | Relatos inventados da comunidade (`marina_sp`, `joao.forte`, `luztotal`, em `seedCommunityIfNeeded`, `app/10`) | Retirar e pôr no lugar um convite discreto para escrever | Etapas 4b (home, seção H) e 8 (comunidade) |
-| 2 | Botão de compartilhar que já existe nos relatos (`sharePost`) | Manter. Não acrescentar compartilhamento novo | Etapa 8 |
-| 3 | Contadores da home (frases curadas, temas, autores e vozes) | Manter, na seção Explorar, fora da abertura, com o número exato (hoje aparece "2412+") | Etapa 4b |
-| 4 | Fontes | Guardar os arquivos no repositório, com a licença ao lado (ver a decisão 7) | Etapa 2, em `assets/fonts/` |
-| 5 | Navegação no celular | Manter a barra inferior. Propor como reduzir os 8 botões | Etapa 3 |
-| 6 | Rede do ambiente | Acesso "Completo". Em 14/10/2026 abriam: Commons, pt.wikipedia, Fontshare e as 8 referências. O en.wikipedia respondeu 429 (limite de pedidos) | — |
-| 8 | Defeitos pequenos vistos no diagnóstico | Corrigir na etapa em que cada tela for redesenhada | Ver a lista abaixo |
+| #   | Assunto                                                                                                        | Decisão                                                                                                                                        | Onde entra                                 |
+| --- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| 1   | Relatos inventados da comunidade (`marina_sp`, `joao.forte`, `luztotal`, em `seedCommunityIfNeeded`, `app/10`) | Retirar e pôr no lugar um convite discreto para escrever                                                                                       | Etapas 4b (home, seção H) e 8 (comunidade) |
+| 2   | Botão de compartilhar que já existe nos relatos (`sharePost`)                                                  | Manter. Não acrescentar compartilhamento novo                                                                                                  | Etapa 8                                    |
+| 3   | Contadores da home (frases curadas, temas, autores e vozes)                                                    | Manter, na seção Explorar, fora da abertura, com o número exato (hoje aparece "2412+")                                                         | Etapa 4b                                   |
+| 4   | Fontes                                                                                                         | Guardar os arquivos no repositório, com a licença ao lado (ver a decisão 7)                                                                    | Etapa 2, em `assets/fonts/`                |
+| 5   | Navegação no celular                                                                                           | Manter a barra inferior. Propor como reduzir os 8 botões                                                                                       | Etapa 3                                    |
+| 6   | Rede do ambiente                                                                                               | Acesso "Completo". Em 14/10/2026 abriam: Commons, pt.wikipedia, Fontshare e as 8 referências. O en.wikipedia respondeu 429 (limite de pedidos) | —                                          |
+| 8   | Defeitos pequenos vistos no diagnóstico                                                                        | Corrigir na etapa em que cada tela for redesenhada                                                                                             | Ver a lista abaixo                         |
 
 **Defeitos pequenos a corrigir:**
+
 - a pílula escura vazia no pé de todas as telas (`#toast` escondido com `translateY(120%)`, em `memotiva.css`);
 - palavras partidas nos blocos de tema a 390 px ("Empreendedorism / o", "Autoconheciment / o");
 - iniciais "MD" para Machado de Assis (`initials()`, em `nucleo/01`, conta o "de");
@@ -38,6 +40,7 @@ Nada entra na `main` sem o proprietário dizer "pode juntar". As branches `backu
 **Decisão:** o site usa apenas fontes com licença **SIL Open Font License (OFL)**, do Google Fonts ou da parte livre do Fontshare.
 
 **Motivo.** As fontes sugeridas no briefing (Zodiak, Gambetta, Erode, Sentient, Boska, Bespoke Serif, General Sans, Satoshi, Switzer, Supreme, Synonym) são do Fontshare, sob a **ITF Free Font License 2.0, de 17/08/2026**. Essa licença:
+
 - **permite** hospedar as fontes no próprio site;
 - **proíbe** distribuí-las por "repositório" ou "servidores de acesso público". O repositório do MeMotiva é público;
 - **proíbe** oferecê-las "como fonte selecionável para usuários criarem o próprio conteúdo". É o que fazem as opções "Padrão", "Serifada" e "Manuscrita" do Escrever (`STYLE_FONTS`);
@@ -48,6 +51,7 @@ As fontes OFL não têm essas restrições. Podem ficar no repositório público
 ## Portão 1: direção visual (14/10/2026)
 
 **Resposta do proprietário:** gostou do esquema de cores, mas pediu outra disposição:
+
 - usar mais o café e as cores em hex do briefing;
 - o laranja chamativo só como detalhe, sem aparecer muito;
 - um projeto maduro, com tons que combinam e mais sutis, no lugar da combinação forte de laranja com roxo;
@@ -55,16 +59,16 @@ As fontes OFL não têm essas restrições. Podem ficar no repositório público
 
 **O que ficou decidido (aplicado na Etapa 2):**
 
-| Tema | Decisão |
-|---|---|
-| Base | Direção A (Marginália): a frase como página, a fonte como nota, Literata. Da C, a etiqueta da fonte (Obra · Original · Imagem). A cor da B foi recusada. |
-| Paleta | "Café": fundo Linen `#FAF3E1`, superfície Cotton `#F5E7C6`, tinta Espresso `#2B1811`, fios Natural `#9F886F`, segunda tinta rara Organic `#3F422E`, marca-texto Light Gold `#F1E59B` e Muted Ochre `#E5D17A`. |
-| Laranja | Só detalhe: ponto da categoria e da marca, traço do item ativo, sublinhado de link, "fonte conferida". Nunca fundo nem botão cheio. Como texto, `#9A4614`. No escuro, Apricot `#D78B30` / `#E3A15A`. |
-| Roxo | Fora das superfícies. Só no anel de foco do teclado (tema claro). |
-| Botão principal | Espresso cheio com texto Linen (no escuro, o inverso). |
-| Tema escuro | Espresso profundo `#1A120E`, superfícies Espresso, texto Linen, detalhe Apricot. |
-| Fontes | Literata (frases, títulos, leitura) e Ysabeau Office (interface). Caveat só na opção "Manuscrita" do Escrever. Fraunces, Manrope e Playwrite BR saem. |
-| A frase | Um estilo só em todo o site: Literata regular, sem itálico, cor `--text`, mesma entrelinha. Muda só o tamanho, fixo por lugar (`--quote-card`, `--quote-modal`, `--quote-hero`), com um degrau menor para frase de mais de 140 caracteres (`data-comprimento="longa"`). Sai a escala contínua de `quoteFontSize`, a rotação e a "fita" dos cartões. |
+| Tema            | Decisão                                                                                                                                                                                                                                                                                                                                             |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base            | Direção A (Marginália): a frase como página, a fonte como nota, Literata. Da C, a etiqueta da fonte (Obra · Original · Imagem). A cor da B foi recusada.                                                                                                                                                                                            |
+| Paleta          | "Café": fundo Linen `#FAF3E1`, superfície Cotton `#F5E7C6`, tinta Espresso `#2B1811`, fios Natural `#9F886F`, segunda tinta rara Organic `#3F422E`, marca-texto Light Gold `#F1E59B` e Muted Ochre `#E5D17A`.                                                                                                                                       |
+| Laranja         | Só detalhe: ponto da categoria e da marca, traço do item ativo, sublinhado de link, "fonte conferida". Nunca fundo nem botão cheio. Como texto, `#9A4614`. No escuro, Apricot `#D78B30` / `#E3A15A`.                                                                                                                                                |
+| Roxo            | Fora das superfícies. Só no anel de foco do teclado (tema claro).                                                                                                                                                                                                                                                                                   |
+| Botão principal | Espresso cheio com texto Linen (no escuro, o inverso).                                                                                                                                                                                                                                                                                              |
+| Tema escuro     | Espresso profundo `#1A120E`, superfícies Espresso, texto Linen, detalhe Apricot.                                                                                                                                                                                                                                                                    |
+| Fontes          | Literata (frases, títulos, leitura) e Ysabeau Office (interface). Caveat só na opção "Manuscrita" do Escrever. Fraunces, Manrope e Playwrite BR saem.                                                                                                                                                                                               |
+| A frase         | Um estilo só em todo o site: Literata regular, sem itálico, cor `--text`, mesma entrelinha. Muda só o tamanho, fixo por lugar (`--quote-card`, `--quote-modal`, `--quote-hero`), com um degrau menor para frase de mais de 140 caracteres (`data-comprimento="longa"`). Sai a escala contínua de `quoteFontSize`, a rotação e a "fita" dos cartões. |
 
 A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrastes medidos ficam em `design/guia.html`.
 
@@ -80,6 +84,7 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 **Resposta do proprietário:** não pediu para trocar tudo por café. O café entra de forma equilibrada, para compensar onde a tela ficaria laranja demais. Nos prints de navegação real, tirar os excessos de cor que deixam o site ultrapassado. Trazer o layout novo no formato do Portão 1 para aprovar. Etapa 3 aprovada para seguir.
 
 **Aplicado na Etapa 3:**
+
 - **Café** (linho, algodão, espresso) no fundo, nas superfícies e no texto corrido.
 - **Roxo** `#401D47` como marca: títulos, frases, botão principal, rodapé, foco. No escuro, a frase ampliada abre numa página roxa.
 - **Laranja** `#E06F2D` em detalhes (ponto da marca e da categoria, traço do item ativo, sublinhado de link) e numa única massa pequena por tela, a "prancha" atrás do retrato. No escuro, a massa vira roxa e o detalhe vira Apricot.
@@ -93,6 +98,7 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 **Escolhas (perguntas respondidas):** fundo claro = linho da Galeria, sem dourado; abertura = Galeria com toque da Florada.
 
 **Aplicado:**
+
 - **Claro:** parede de linho em tudo; cartões e painéis sem fundo próprio (fio fino); tinta Black Hole `#222222`; oliva `#3F422E` nos acentos de texto; apricot só como ponto. Da Florada: disco laranja atrás do retrato da abertura e faixa roxa da fonte (e rodapé roxo).
 - **Escuro:** a sala escura da Galeria (`#151311`, tinta Ivory), sem disco, sem faixa roxa, laranja só em texto pequeno.
 - **Fontes por papel:** Noto Serif Display (todas as frases em itálico, nomes condensados, títulos), Hanken Grotesk (interface), Literata (leitura longa), Caveat (só "Manuscrita"). A Ysabeau Office sai.
@@ -103,6 +109,7 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 **Resposta do proprietário:** aprovou o modelo da Galeria com toques da Florada e a barra inferior com 5 itens. Pediu para explorar as cores maiores, porque estava ficando "creme e preto": usar café, o amarelo mais escuro do briefing, aumentar o arco laranja e colocar coisas em roxo, sem nada mirabolante. Os movimentos e as transições ficam para a Etapa 9.
 
 **Aplicado:**
+
 - **Tinta café** (Dark Espresso `#2B1811`) no lugar do preto, para títulos, frases e texto.
 - **Roxo** `#401D47` no botão principal, na faixa da fonte e no rodapé.
 - **Faixas novas:** `.faixa-cafe` (espresso com texto linho, por exemplo o convite para escrever) e `.faixa-ocre` (Muted Ochre `#E5D17A` com texto café, por exemplo a faixa de temas).
@@ -113,16 +120,16 @@ A tabela das 17 cores (escolhida, apoio ou descartada, e por quê) e os contrast
 
 Protótipo em `design/prototipos/home.html`, com conteúdo real do acervo e o CSS que vai para o site (`assets/css/telas/home.css`). Cada seção tem estrutura própria, nesta ordem:
 
-| Seção | O que mostra | Cor |
-|---|---|---|
-| A. Frase de hoje | A abertura aprovada no Portão 3: retrato com o arco laranja, nome, frase e etiqueta; embaixo, a faixa roxa da fonte | Linho |
-| C. Explorar | "2.412 frases de 521 autores, em 22 temas", com o número exato, e o índice dos 22 temas com o número de frases de cada um | Sala ocre |
-| B. Uma frase ao acaso | A frase sozinha, grande, com o botão "Outra frase" (o gerador de hoje) | Linho |
-| E. Descubra | Um autor por vez (foto, nome, papel, resumo e uma frase em destaque), com troca a cada 9 s | Sala roxa |
-| D. Autores | Galeria de retratos em três tamanhos, alinhados pela base; sem foto, o nome numa placa café | Linho |
-| F. Histórias | Índice de histórias com retrato pequeno; a aberta mostra a foto, o nome grande, o resumo, Ler e Ouvir | Linho |
-| H. Comunidade | O convite para escrever (decisão 1), ao lado da frase de hoje, com "Escrever sobre esta frase" | Sala café |
-| I. Encerramento | Uma frase (Voltaire, Cândido) e o mapa do site, emendados no rodapé roxo | Sala roxa |
+| Seção                 | O que mostra                                                                                                              | Cor       |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------- |
+| A. Frase de hoje      | A abertura aprovada no Portão 3: retrato com o arco laranja, nome, frase e etiqueta; embaixo, a faixa roxa da fonte       | Linho     |
+| C. Explorar           | "2.412 frases de 521 autores, em 22 temas", com o número exato, e o índice dos 22 temas com o número de frases de cada um | Sala ocre |
+| B. Uma frase ao acaso | A frase sozinha, grande, com o botão "Outra frase" (o gerador de hoje)                                                    | Linho     |
+| E. Descubra           | Um autor por vez (foto, nome, papel, resumo e uma frase em destaque), com troca a cada 9 s                                | Sala roxa |
+| D. Autores            | Galeria de retratos em três tamanhos, alinhados pela base; sem foto, o nome numa placa café                               | Linho     |
+| F. Histórias          | Índice de histórias com retrato pequeno; a aberta mostra a foto, o nome grande, o resumo, Ler e Ouvir                     | Linho     |
+| H. Comunidade         | O convite para escrever (decisão 1), ao lado da frase de hoje, com "Escrever sobre esta frase"                            | Sala café |
+| I. Encerramento       | Uma frase (Voltaire, Cândido) e o mapa do site, emendados no rodapé roxo                                                  | Sala roxa |
 
 - **Sem a seção G (avaliações):** não há avaliações reais.
 - **Descubra:**
@@ -182,6 +189,7 @@ O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começ
 ## Home no site real (20/10/2026, Etapa 4b antecipada)
 
 **O que o proprietário apontou ao testar o Portão 4a:**
+
 - os botões do protótipo não levavam a lugar nenhum;
 - o menu rolava a própria home, em vez de abrir cada tela.
 
@@ -189,18 +197,19 @@ O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começ
 
 **O que mudou:** a home nova foi levada ao `#view-home` do site agora, sem esperar outro portão, com cada botão ligado à tela que já existe:
 
-| Na home | Leva a |
-|---|---|
-| Menu de cima e barra de baixo | A tela própria de cada item (a home some) |
-| "Explorar as frases" e cada tema do índice | Explorar, já filtrado pelo tema (`state.exploreFilter.cat`) |
-| Nome do autor (abertura, acaso, Descubra, galeria, fim) | Página do autor, com biografia, obras e frases (`abrirPanorama`) |
-| "Abrir a frase", "Ampliar a frase" | Frase ampliada (`openQuoteModal`) |
-| Foto | Foto ampliada (`openPhotoModal`) |
-| "Ler a história" (Descubra e Histórias) | A história daquela pessoa, aberta (`openBiography`) |
-| "Ouvir" | A história aberta, já com a narração tocando |
-| "Pesquisar em Autores & Obras", "Ver as 235 histórias", "Escrever", "Ver a comunidade", mapa do fim | A tela correspondente |
+| Na home                                                                                             | Leva a                                                           |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Menu de cima e barra de baixo                                                                       | A tela própria de cada item (a home some)                        |
+| "Explorar as frases" e cada tema do índice                                                          | Explorar, já filtrado pelo tema (`state.exploreFilter.cat`)      |
+| Nome do autor (abertura, acaso, Descubra, galeria, fim)                                             | Página do autor, com biografia, obras e frases (`abrirPanorama`) |
+| "Abrir a frase", "Ampliar a frase"                                                                  | Frase ampliada (`openQuoteModal`)                                |
+| Foto                                                                                                | Foto ampliada (`openPhotoModal`)                                 |
+| "Ler a história" (Descubra e Histórias)                                                             | A história daquela pessoa, aberta (`openBiography`)              |
+| "Ouvir"                                                                                             | A história aberta, já com a narração tocando                     |
+| "Pesquisar em Autores & Obras", "Ver as 235 histórias", "Escrever", "Ver a comunidade", mapa do fim | A tela correspondente                                            |
 
 **Decisões tomadas com o pedido do proprietário:**
+
 - **Descubra:**
   - entra quem tem história (para "Ler a história" abrir a dela), foto e resumo do perfil;
   - a ordem muda a cada dia;
@@ -230,3 +239,21 @@ O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começ
 - **Teste novo:** `ferramentas/testes/home.mjs` (dentro de `npm run teste`). São 35 casos em 1440 e em 390, um por botão.
 - **Protótipo:** `design/prototipos/home.html` ficou como registro do Portão 4a. A referência agora é o site.
 
+## Home aprovada e rodada 2 do refinamento (20/10/2026)
+
+**Resposta do proprietário:** aprovou a home. Pediu:
+
+- o Descubra trocando a cada **5 s** (não 15 nem 10), com a opção de **voltar** para quem não acabou de ler;
+- as histórias ficam como estão por agora;
+- juntar tudo na `main` a cada etapa, trabalhar direto no site e seguir para as etapas 5 a 9.
+
+**Feito:**
+
+- Descubra: 5 s e o botão "Voltar" (teste novo na home);
+- a `main` recebeu a home (avanço direto, sem reescrever histórico) e um `.nojekyll`, para o GitHub Pages servir o site como está;
+- **rodada 2:**
+  - a página não pula mais na carga: a abertura tem um esqueleto com a forma final no `index.html` (CLS na carga de 0,747 para 0,002 no celular e de 0,624 para 0,008 no computador);
+  - no tablet (a partir de 720 px), o retrato da abertura divide a tela com a frase;
+  - a história em destaque ocupa a largura toda (o bloco injetado por JS limitava todo `article` a 72ch);
+  - no celular de 320 a 379 px, o "Entrar" não invade mais o botão do menu, e o nome de quem está logado vira só as iniciais;
+  - conferida de 320 a 1920 px, nos dois temas, sem rolagem lateral.

@@ -130,6 +130,7 @@
       $('faixa'),
       `<b>Fonte</b><span class="obra">${texto(q.src)}</span>${conferida(q)}<button class="btn-text" type="button" data-abrir-frase="${escapeHtml(q.qid)}">Abrir a frase</button>`
     );
+    $('abertura').removeAttribute('aria-busy');
   }
 
   /* ================= C. explorar: os números e os temas ================= */

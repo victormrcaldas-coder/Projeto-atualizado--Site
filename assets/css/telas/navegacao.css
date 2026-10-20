@@ -58,6 +58,7 @@
 }
 /* a marca em caixa alta espaçada, como na Galeria, terminando num ponto laranja */
 .logo-dot {
+  flex: none;
   order: 2;
   width: 6px;
   height: 6px;
@@ -112,6 +113,32 @@
   align-items: center;
   gap: var(--space-2);
   margin-left: auto;
+}
+#headerAuthArea {
+  flex: none;
+}
+/* nos celulares de 320 a 379 px, a marca, o tema, o "Entrar" e o menu não cabiam lado a lado */
+@media (max-width: 379px) {
+  .site-header .header-inner {
+    gap: var(--space-2);
+  }
+  .logo {
+    letter-spacing: 0.22em;
+  }
+  .header-actions {
+    gap: 0;
+  }
+  /* com sessão, fica só o quadrado das iniciais (o nome continua no texto do botão, para leitores de tela) */
+  .user-chip {
+    gap: 0;
+    padding: 0 var(--space-1);
+    font-size: 0;
+  }
+}
+.user-chip {
+  max-width: 11rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 /* botões de ícone do cabeçalho: sem círculo nem fundo */
 .site-header .btn-icon,

@@ -1217,11 +1217,17 @@
   padding-block: var(--space-6) var(--space-7);
   overflow-x: clip;
 }
-@media (min-width: 1024px) {
+/* no tablet o retrato já divide a tela com a frase, para a frase não ficar abaixo da dobra */
+@media (min-width: 720px) {
   #view-home .abertura {
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: var(--space-8);
+    gap: var(--space-6);
     align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+  #view-home .abertura {
+    gap: var(--space-8);
     padding-block: var(--space-8);
   }
 }
@@ -1270,6 +1276,20 @@
 #view-home .parede .quote-label {
   padding-top: var(--space-4);
   border-top: var(--hairline) solid var(--border);
+}
+/* esqueleto da abertura (index.html), até o acervo carregar: blocos no tom da moldura */
+#view-home .esqueleto {
+  width: 88%;
+  margin: 0;
+  background: var(--frame);
+  color: transparent;
+}
+#view-home .nome-autor.esqueleto {
+  width: 55%;
+}
+#view-home .esqueleto-curto {
+  width: 60%;
+  font-size: var(--fs-small);
 }
 #view-home .abertura + .faixa-fonte {
   margin-bottom: var(--space-8);
@@ -1751,6 +1771,7 @@
 #view-home .historia-destaque {
   display: grid;
   gap: var(--space-5);
+  max-width: none; /* o bloco responsivo injetado por JS limita todo article a 72ch */
   padding-bottom: var(--space-7);
   border-bottom: var(--hairline) solid var(--border);
 }

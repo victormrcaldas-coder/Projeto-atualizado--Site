@@ -5,6 +5,7 @@ Achados que melhorariam a estética, mas dependem de código do site ou de uma f
 O proprietário pediu, no refinamento da Etapa 4a (20/10/2026), que todas fossem anotadas e apresentadas no fim das etapas gerais, com o que fazer em cada uma.
 
 Cada item diz:
+
 - onde o problema está;
 - o que se vê na tela;
 - o caminho de correção.
@@ -60,3 +61,7 @@ Amartya Sen (200), Antoine de Saint-Exupéry (450), Ariano Suassuna (450), Ayrto
     - **como corrigir:** guardar autor e licença de cada foto curada (dá para buscar pela API do Commons, como faz `ferramentas/design/amostra.mjs`) e mostrá-los na legenda.
 11. **Narração ("Ouvir"):** usa a voz do próprio navegador (`speechSynthesis`). Em navegador sem voz em português, a narração sai em outra voz, ou não sai.
 
+12. **Ponto focal só na vertical:**
+    - as fotos curadas (`PHOTOS`, em `app/11`) só dizem a altura do rosto (`center 20%`);
+    - numa foto larga num quadro vertical, o rosto que está fora do centro sai cortado. Exemplo: Warren Buffett, no Descubra, com o rosto encostado na borda direita;
+    - **como corrigir:** acrescentar a posição horizontal (por exemplo `70% 20%`) nas fotos largas, conferindo uma por uma.

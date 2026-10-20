@@ -72,8 +72,17 @@
   <section class="view" id="view-home" data-view="home">
     <!-- A. abertura: a frase de hoje -->
     <div class="wrap" id="capa">
-      <section class="abertura" id="abertura" aria-label="Frase de hoje"></section>
-      <p class="faixa-fonte" id="faixa"></p>
+      <!-- esqueleto com a forma final, até o acervo carregar (sem ele a página pula para baixo) -->
+      <section class="abertura" id="abertura" aria-label="Frase de hoje" aria-busy="true">
+        <figure class="prancha"><div class="prancha-foto quadro"></div><figcaption>&nbsp;</figcaption></figure>
+        <div class="parede" aria-hidden="true">
+          <p class="eyebrow rotulo">Frase de hoje</p>
+          <p class="nome-autor nome-condensado esqueleto">&nbsp;</p>
+          <p class="quote-hero-text esqueleto">&nbsp;<br />&nbsp;<br />&nbsp;</p>
+          <p class="esqueleto esqueleto-curto">&nbsp;<br />&nbsp;<br />&nbsp;</p>
+        </div>
+      </section>
+      <p class="faixa-fonte" id="faixa"><b>Fonte</b><span class="obra">&nbsp;</span></p>
     </div>
 
     <!-- C. explorar: os números do acervo e os 22 temas -->
