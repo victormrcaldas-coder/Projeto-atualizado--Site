@@ -1,0 +1,2037 @@
+/* GERADO por ferramentas/design/escopo-home.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/home.css.
+   Não edite aqui: mude a origem e rode o script de novo. Vale só dentro de #view-home. */
+/* ==================== assets/css/02-base.css ==================== */
+/* ============================================================
+   MEMOTIVA — BASE (Etapa 2 do redesign)
+   Reset curto, tipografia de leitura, links, foco e acessibilidade.
+   Usa só os tokens de 01-tokens.css.
+   ============================================================ */
+#view-home *,
+#view-home *::before,
+#view-home *::after {
+  box-sizing: border-box;
+}
+#view-home {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--weight-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+#view-home h1,
+#view-home h2,
+#view-home h3,
+#view-home h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  color: var(--brand);
+  text-wrap: balance;
+}
+#view-home h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: var(--tracking-display);
+}
+#view-home h2 {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.01em;
+}
+#view-home h3 {
+  font-size: 1.25rem;
+}
+#view-home p {
+  margin: 0;
+  text-wrap: pretty;
+}
+#view-home img,
+#view-home svg,
+#view-home video {
+  display: block;
+  max-width: 100%;
+}
+#view-home img {
+  height: auto;
+}
+#view-home button,
+#view-home input,
+#view-home select,
+#view-home textarea {
+  font: inherit;
+  color: inherit;
+}
+#view-home button {
+  cursor: pointer;
+}
+/* ---- links: tinta do texto, sublinhado fino; o laranja aparece no sublinhado ---- */
+#view-home a {
+  color: var(--text);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--border-strong);
+  transition: color var(--dur-1) var(--ease-out);
+}
+#view-home a:hover {
+  color: var(--accent-text);
+}
+/* ---- foco: visível em todo elemento interativo ---- */
+#view-home :focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+#view-home ::selection {
+  background: var(--highlight);
+  color: var(--text);
+}
+#view-home mark {
+  background: var(--highlight);
+  color: var(--text);
+  padding: 0 0.1em;
+  border-radius: var(--radius-sm);
+}
+#view-home hr {
+  border: 0;
+  border-top: var(--hairline) solid var(--border);
+  margin: var(--space-6) 0;
+}
+/* ---- utilitários ---- */
+#view-home .hidden,
+#view-home [hidden] {
+  display: none !important;
+}
+/* datas e nomes que não devem se partir na linha, como "(1920–1977)" */
+#view-home .sem-quebra {
+  white-space: nowrap;
+}
+#view-home .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+#view-home .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-left: max(var(--space-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4), env(safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  #view-home .wrap {
+    padding-left: max(var(--space-6), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-6), env(safe-area-inset-right, 0px));
+  }
+}
+/* rótulo pequeno em caixa alta espaçada, como as etiquetas de museu da Galeria */
+#view-home .eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* texto longo de leitura (biografias, histórias) */
+#view-home .prose {
+  max-width: var(--measure);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+#view-home .prose p + p {
+  margin-top: 1em;
+}
+
+/* ==================== assets/css/03-componentes.css ==================== */
+/* ============================================================
+   MEMOTIVA — COMPONENTES BASE (Etapa 2 do redesign)
+   Usam as classes que o site e o JS já usam (.quote-card, .expand-*, .chip…),
+   para as próximas etapas só ligarem este arquivo, sem trocar a marcação.
+   A navegação (cabeçalho, menu, barra inferior, rodapé) fica em telas/navegacao.css.
+   Classes novas, que ainda não existem no site, estão marcadas com "(nova)".
+   Só tokens de 01-tokens.css; nenhum hex aqui.
+   ============================================================ */
+/* =========================================================
+   1. A FRASE — um estilo só para todas as frases do acervo
+   ========================================================= */
+#view-home .quote-text,
+#view-home /* (nova) uso genérico: autor,
+#view-home obra,
+#view-home Descubra,
+#view-home Histórias */
+.quote-card-text,
+#view-home .expand-text,
+#view-home .quote-hero-text,
+#view-home .quote-poster-text /* (nova) a frase sozinha,
+#view-home como cartaz: frase ao acaso e encerramento */ {
+  margin: 0;
+  font-family: var(--quote-font);
+  font-weight: var(--quote-weight);
+  font-style: var(--quote-style);
+  color: var(--quote-color);
+  line-height: var(--quote-leading);
+  letter-spacing: var(--quote-tracking);
+  font-optical-sizing: auto;
+  text-wrap: pretty;
+}
+#view-home .quote-text,
+#view-home .quote-card-text {
+  font-size: var(--quote-card);
+}
+#view-home .expand-text {
+  font-size: var(--quote-modal);
+  max-width: var(--measure-quote);
+}
+#view-home .quote-hero-text {
+  font-size: var(--quote-hero);
+  max-width: 34ch;
+}
+/* um único degrau menor para frase longa: o JS marca data-comprimento="longa" (mais de 140 caracteres) */
+#view-home .quote-text[data-comprimento='longa'],
+#view-home .quote-card-text[data-comprimento='longa'] {
+  font-size: var(--quote-card-long);
+}
+#view-home .expand-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 40ch;
+}
+#view-home .quote-hero-text[data-comprimento='longa'] {
+  font-size: var(--quote-hero-long);
+  max-width: 36ch;
+}
+#view-home .quote-poster-text {
+  font-size: var(--quote-poster);
+  max-width: 21ch;
+}
+#view-home .quote-poster-text[data-comprimento='longa'] {
+  font-size: var(--quote-poster-long);
+  max-width: 32ch;
+}
+/* aspa pendurada nos outros navegadores: a aspa de abertura vem num span próprio (nova) */
+#view-home .aspa-abre {
+  margin-left: -0.42em;
+}
+/* no celular a margem lateral é estreita demais para pendurar a aspa: ela volta para dentro da linha */
+@media (max-width: 639px) {
+  #view-home .aspa-abre {
+    margin-left: 0;
+  }
+}
+/* o original, quando existe: mesma família, itálico pequeno, no idioma certo (lang no elemento) */
+#view-home .quote-original {
+  margin: 0;
+  font-family: var(--font-title), var(--font-original-extra);
+  font-style: italic;
+  font-size: var(--quote-original);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+/* =========================================================
+   2. BOTÕES E LINKS
+   ========================================================= */
+#view-home .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--text);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+#view-home .btn:disabled,
+#view-home .btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* principal: espresso cheio (no escuro, linho). O nome antigo continua valendo. */
+#view-home .btn-primary,
+#view-home .btn-coral {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+#view-home .btn-primary:hover,
+#view-home .btn-coral:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+/* secundário: contorno */
+#view-home .btn-ghost:hover {
+  background: var(--surface);
+}
+/* texto: só a palavra, sublinhado laranja fino */
+#view-home .btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+#view-home .btn-text:hover {
+  color: var(--accent-text);
+}
+#view-home .btn-sm {
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+}
+#view-home .btn-lg {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-size: var(--fs-body);
+}
+/* botão só com ícone: 44 × 44, sem caixa */
+#view-home .btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+}
+#view-home .btn-icon:hover {
+  background: var(--surface);
+}
+#view-home .btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   3. CAMPOS
+   ========================================================= */
+#view-home .form-field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+#view-home .form-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+#view-home .form-hint {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+#view-home .form-input,
+#view-home .search-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+}
+#view-home .form-input::placeholder,
+#view-home .search-input::placeholder {
+  color: var(--text-meta);
+  opacity: 1;
+}
+#view-home .form-input:focus-visible,
+#view-home .search-input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+#view-home .form-input[aria-invalid='true'] {
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--text);
+}
+#view-home .form-error {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+#view-home textarea.form-input {
+  min-height: 120px;
+  line-height: var(--lh-body);
+  resize: vertical;
+}
+/* =========================================================
+   4. CHIPS E FILTROS
+   ========================================================= */
+#view-home .chip-row,
+#view-home .filter-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: var(--space-1);
+}
+#view-home .chip-row::-webkit-scrollbar,
+#view-home .filter-row::-webkit-scrollbar {
+  display: none;
+}
+#view-home .chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-size var(--dur-2) var(--ease-out);
+}
+#view-home .chip:hover {
+  color: var(--text);
+}
+/* ativo: texto na tinta e o traço laranja curto, como no menu */
+#view-home .chip.active,
+#view-home .chip[aria-pressed='true'] {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
+}
+#view-home .chip-count {
+  color: inherit;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+#view-home .chip-arrow {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+#view-home .chip-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+#view-home .filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+#view-home .filter-label {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-meta);
+}
+/* =========================================================
+   5. CARTÃO DE FRASE (Explorar e listas)
+   Sem rotação, sem fita: todos iguais, a frase manda.
+   ========================================================= */
+#view-home .quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-7) var(--space-6);
+  align-items: start;
+}
+/* sem caixa nem fundo: um fio no topo, como verbete de livro */
+#view-home .quote-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) 0 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  background: none;
+  transform: none !important; /* desliga a rotação que o template antigo põe inline */
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+#view-home .quote-card:hover {
+  border-top-color: var(--text);
+}
+#view-home .quote-card-tape {
+  display: none;
+}
+#view-home .quote-card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* o laranja como detalhe: um ponto pequeno antes da categoria */
+#view-home .quote-card-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+#view-home .quote-card-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--text-meta);
+}
+#view-home .quote-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+#view-home .quote-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+#view-home .avatar-frame {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+}
+#view-home .avatar-frame img,
+#view-home .expand-avatar img,
+#view-home .prancha-foto img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sem foto: iniciais em serifa, no tom do papel (o template antigo põe uma cor viva inline) */
+#view-home .avatar-fallback {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  background: var(--frame) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+}
+#view-home .author-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-regular);
+  color: var(--brand);
+}
+#view-home .heart-btn,
+#view-home .expand-act {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-meta);
+}
+#view-home .heart-btn:hover,
+#view-home .expand-act:hover {
+  color: var(--text);
+}
+#view-home .heart-btn.active,
+#view-home .expand-act.liked,
+#view-home .heart-btn[aria-pressed='true'],
+#view-home .expand-act[aria-pressed='true'] {
+  color: var(--accent-text);
+}
+#view-home .heart-btn[aria-pressed='true'] svg,
+#view-home .expand-act[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+#view-home .heart-btn svg,
+#view-home .expand-act svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   6. FRASE AMPLIADA (janela)
+   ========================================================= */
+#view-home .expand-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: none;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--overlay);
+}
+#view-home .expand-overlay.show {
+  display: grid;
+}
+#view-home .expand-quote {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+}
+#view-home .expand-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+}
+#view-home .expand-close svg {
+  width: 18px;
+  height: 18px;
+}
+/* a "sala" da Galeria: no computador, o retrato ocupa a coluna da esquerda e o texto de parede a da direita.
+   .expand-foot e .expand-ident-wrap viram "transparentes" para o retrato subir para a primeira coluna
+   sem mudar a marcação. */
+#view-home .expand-inner {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+#view-home .expand-foot {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--space-4) var(--space-4);
+  align-items: start;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+@media (min-width: 900px) {
+  #view-home .expand-inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-auto-flow: dense;
+    gap: var(--space-4) var(--space-7);
+    padding: 0 var(--space-7) 0 0;
+  }
+  #view-home .expand-inner > * {
+    grid-column: 2;
+  }
+  #view-home .expand-inner > .expand-cat {
+    padding-top: var(--space-8);
+  }
+  #view-home .expand-foot {
+    display: contents;
+  }
+  #view-home .expand-foot > * {
+    grid-column: 2;
+  }
+  #view-home .expand-foot > .expand-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    align-self: stretch;
+    width: 100%;
+    min-height: 520px;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  #view-home .expand-ident-wrap {
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+  }
+  #view-home .expand-foot > .expand-acts {
+    grid-column: 2;
+    padding-bottom: var(--space-5);
+  }
+}
+#view-home .expand-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+#view-home .expand-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+#view-home .expand-avatar {
+  position: relative;
+  width: 72px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+  cursor: zoom-in;
+}
+#view-home .expand-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#view-home .expand-avatar .avatar-fallback {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+}
+#view-home .expand-ident-wrap {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+#view-home .expand-ident {
+  display: grid;
+  gap: var(--space-1);
+}
+/* o nome do autor: Noto Serif Display condensada, como os nomes da Galeria */
+#view-home .expand-author {
+  font-family: var(--font-title);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--brand);
+}
+#view-home .expand-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+#view-home .expand-src.src-alerta {
+  color: var(--accent-text);
+}
+#view-home .expand-src.src-nota {
+  color: var(--text-meta);
+}
+#view-home .expand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+#view-home .expand-know {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.4em;
+}
+#view-home .expand-know:hover {
+  color: var(--accent-text);
+  text-decoration-color: currentColor;
+}
+#view-home .expand-acts {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid var(--border);
+}
+/* prancha (nova): o retrato da abertura, com o disco laranja da Florada atrás (só no claro) */
+#view-home .prancha {
+  position: relative;
+  margin: 0;
+  isolation: isolate;
+}
+#view-home .prancha::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -9%;
+  left: -14%;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mass);
+}
+#view-home .prancha-foto {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: var(--frame);
+  cursor: zoom-in;
+}
+#view-home .prancha-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#view-home .prancha figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+/* faixa da fonte (nova), herdada da Florada: roxo com texto linho, só no claro.
+   No escuro vira o quadro escuro da Galeria. */
+#view-home .faixa-fonte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--brand-surface);
+  color: var(--on-brand);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+}
+#view-home .faixa-fonte b {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--on-brand-meta);
+}
+#view-home .faixa-fonte .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+#view-home .faixa-fonte .conferida {
+  color: var(--on-brand-meta);
+}
+#view-home .faixa-fonte a,
+#view-home .faixa-fonte .btn-text {
+  margin-left: auto;
+  color: var(--on-brand);
+  text-decoration-color: var(--on-brand-meta);
+}
+/* salas de cor (novas): café, ocre e roxo, para dar peso a uma seção sem caixa nem sombra.
+   Dentro de uma sala, a tinta, as linhas, o foco, o botão principal e a frase passam para as cores
+   da sala: os componentes de dentro (etiqueta, botões, links, cartões) se ajustam sozinhos. */
+#view-home .faixa-cafe,
+#view-home .faixa-ocre,
+#view-home .faixa-roxa {
+  padding-block: var(--space-7);
+  background: var(--bg);
+  color: var(--text);
+  --brand: var(--text);
+  --text-secondary: var(--text);
+  --quote-color: var(--text);
+  --focus-ring: var(--text);
+  --pin: var(--text-meta);
+  --border: color-mix(in srgb, var(--text) 24%, transparent);
+  --border-strong: color-mix(in srgb, var(--text) 60%, transparent);
+}
+#view-home .faixa-cafe {
+  --bg: var(--cafe-surface);
+  --text: var(--on-cafe);
+  --text-meta: var(--on-cafe-meta);
+  --accent-text: var(--on-cafe-accent);
+  --surface-strong: var(--on-cafe);
+  --text-on-strong: var(--cafe-surface);
+}
+#view-home .faixa-ocre {
+  --bg: var(--ochre-surface);
+  --text: var(--on-ochre);
+  --text-meta: var(--on-ochre-meta);
+  --accent-text: var(--on-ochre-accent);
+}
+#view-home .faixa-roxa {
+  --bg: var(--brand-surface);
+  --text: var(--on-brand);
+  --text-meta: var(--on-brand-meta);
+  --accent-text: var(--on-brand-accent);
+  --surface-strong: var(--on-brand);
+  --text-on-strong: var(--brand-surface);
+}
+/* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */
+#view-home .quote-label {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  font-size: var(--fs-small);
+}
+#view-home .quote-label dt {
+  padding-top: 0.25em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+#view-home .quote-label dd {
+  margin: 0;
+  color: var(--text);
+}
+#view-home .quote-label .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+#view-home .conferida {
+  display: block;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--accent-text);
+}
+/* =========================================================
+   7. ESTADOS: vazio, carregando, erro, aviso
+   ========================================================= */
+#view-home .empty-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 44ch;
+  padding: var(--space-7) 0;
+  border-top: var(--hairline) solid var(--border);
+}
+#view-home .empty-state svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: var(--space-2);
+  color: var(--text-meta);
+}
+#view-home .empty-state h3 {
+  font-size: 1.375rem;
+}
+#view-home .empty-state p {
+  color: var(--text-secondary);
+}
+#view-home .state-loading {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 320px;
+  padding: var(--space-7) 0;
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+}
+#view-home .state-loading::after {
+  content: '';
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 30%, var(--border) 30% 100%);
+  background-size: 200% 100%;
+  animation: carregando 1.4s var(--ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  #view-home .state-loading::after {
+    animation: none;
+  }
+}
+#view-home .state-error {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 52ch;
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+#view-home .state-error strong {
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-medium);
+}
+#view-home .state-error p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+#view-home .toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  max-width: min(420px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+#view-home .toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (min-width: 1024px) {
+  #view-home .toast {
+    bottom: var(--space-6);
+  }
+}
+/* =========================================================
+   8. AVALIAÇÃO (só no guia por enquanto) (nova)
+   ========================================================= */
+#view-home .rating {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+#view-home .rating legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+#view-home .rating-scale {
+  display: flex;
+  gap: var(--space-1);
+}
+#view-home .rating input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+#view-home .rating label {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  cursor: pointer;
+}
+#view-home .rating label:hover {
+  background: var(--surface);
+}
+#view-home .rating input:checked + label {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+#view-home .rating input:focus-visible + label {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+#view-home .rating-ends {
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(5 * var(--tap) + 4 * var(--space-1));
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+
+/* ==================== assets/css/telas/home.css ==================== */
+/* ============================================================
+   MEMOTIVA — HOME (Etapa 4 do redesign)
+   A página inicial como narrativa editorial (BRIEFING §7), cada seção com estrutura própria:
+     A  abertura: a frase de hoje, com retrato, arco laranja e faixa roxa da fonte
+     C  explorar: os números do acervo e o índice dos 22 temas (sala ocre)
+     B  uma frase ao acaso: a frase sozinha, como cartaz
+     E  descubra: uma pessoa por vez, trocando de página sozinha (sala roxa)
+     D  autores: a fila de retratos de todas as pessoas com história
+     H  comunidade: o que se faz na comunidade (sala café)
+     F  histórias: uma em destaque e três cartões
+     I  encerramento: uma frase e o mapa do site, emendados no rodapé (sala roxa)
+   A seção G (avaliações) não aparece: não há avaliações reais.
+   As cores das salas vêm de 03-componentes.css. Só tokens; nenhum hex aqui.
+   No site, este arquivo entra pelo escopo #view-home (ferramentas/design/escopo-home.py).
+   ============================================================ */
+/* ---- ritmo vertical e cabeças de seção ---- */
+#view-home .home-secao {
+  padding-block: var(--space-8);
+}
+@media (min-width: 1024px) {
+  #view-home .home-secao {
+    padding-block: var(--space-9);
+  }
+}
+#view-home .secao-cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+#view-home .secao-cabeca h2 {
+  font-size: var(--fs-h1);
+}
+/* rótulo com o ponto apricot, o mesmo da abertura */
+#view-home .rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+}
+#view-home .rotulo::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+/* o traço antes do rótulo é do estilo antigo; na home só o rótulo com o ponto tem marca */
+#view-home .eyebrow:not(.rotulo)::before {
+  content: none;
+}
+#view-home .btn-text svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+#view-home .secao-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+}
+/* nome de pessoa em letra condensada, como na Galeria */
+#view-home .nome-condensado {
+  font-family: var(--font-title);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  letter-spacing: -0.01em;
+  color: var(--brand);
+}
+/* citações e figuras da home sem o recuo padrão do navegador */
+#view-home .home-secao :is(figure, blockquote),
+#view-home .encerramento :is(figure, blockquote) {
+  margin: 0;
+}
+/* quadro de retrato: foto por cima das iniciais; sem foto, o nome vira a imagem numa placa café */
+#view-home .quadro {
+  position: relative;
+  overflow: hidden;
+  background: var(--frame);
+}
+#view-home .quadro img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sem foto (ou se a foto falhar), o nome vira a imagem numa placa café: a mesma família dos retratos */
+#view-home .quadro .avatar-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: var(--space-4);
+  border-radius: 0;
+  background: var(--cafe-surface) !important; /* o 03 põe o tom do papel com !important */
+  color: var(--on-cafe);
+  font-family: var(--font-title);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  font-size: calc(var(--largura, 16rem) * 0.15);
+  line-height: 0.95;
+  text-align: left;
+  text-wrap: balance;
+}
+#view-home .quadro.tipografico {
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4);
+  background: var(--cafe-surface);
+  color: var(--on-cafe);
+}
+#view-home .quadro.tipografico .nome-condensado {
+  color: inherit;
+  font-size: calc(var(--largura, 16rem) * 0.17);
+  line-height: 0.95;
+}
+/* =========================================================
+   A. ABERTURA — a frase de hoje (aprovada no Portão 3)
+   ========================================================= */
+#view-home .abertura {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-6) var(--space-7);
+  overflow-x: clip;
+}
+@media (min-width: 1024px) {
+  #view-home .abertura {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: var(--space-8);
+    align-items: center;
+    padding-block: var(--space-8);
+  }
+}
+#view-home .abertura .prancha::before {
+  left: auto;
+  right: -8%;
+  top: -8%;
+  width: 64%;
+}
+#view-home .parede {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+#view-home .parede .eyebrow {
+  margin: 0;
+}
+#view-home .nome-autor {
+  margin: 0;
+  font-size: clamp(2.4rem, 1.6rem + 2.4vw, 4rem);
+  line-height: 0.95;
+}
+#view-home .nome-autor .link-autor {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 1px;
+}
+/* nome de pessoa que leva à página dela: botão com a cara do texto em volta */
+#view-home .link-autor {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#view-home .link-autor:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+#view-home .parede .quote-label {
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--border);
+}
+#view-home .abertura + .faixa-fonte {
+  margin-bottom: var(--space-8);
+}
+/* =========================================================
+   C. EXPLORAR — os números e o índice dos temas (sala ocre)
+   ========================================================= */
+#view-home .explorar-grade {
+  display: grid;
+  gap: var(--space-7);
+}
+@media (min-width: 1024px) {
+  #view-home .explorar-grade {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
+#view-home .acervo {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+/* os números do acervo numa frase, não em painel de indicadores */
+#view-home .acervo-numeros {
+  font-size: var(--fs-h1);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+#view-home .acervo-numeros b {
+  font-weight: var(--weight-regular);
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+}
+#view-home .acervo-nota {
+  max-width: 38ch;
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+#view-home .acervo .btn {
+  margin-top: var(--space-2);
+}
+/* índice dos temas, como sumário de revista: nome e número de frases */
+/* duas colunas lidas de cima para baixo, com as linhas alinhadas entre elas (--linhas vem do JS) */
+#view-home .indice-temas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--linhas, 11), auto);
+  grid-auto-flow: column;
+  column-gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--hairline) solid var(--border-strong);
+}
+@media (min-width: 640px) {
+  #view-home .indice-temas {
+    column-gap: var(--space-7);
+  }
+}
+/* abaixo de 380 px, duas colunas não cabem "Autoconhecimento" inteiro: uma coluna só */
+@media (max-width: 379px) {
+  #view-home .indice-temas {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+}
+#view-home .indice-temas li {
+  display: flex;
+  border-bottom: var(--hairline) solid var(--border);
+}
+/* no celular, o número vem logo depois do nome, na mesma linha quando cabe */
+#view-home .indice-temas button {
+  display: block;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-3) 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+#view-home .indice-temas button .tema-n {
+  margin-left: 0.4em;
+}
+/* do tablet em diante, o número vai à direita do nome, como num sumário */
+@media (min-width: 640px) {
+  #view-home .indice-temas button {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  #view-home .indice-temas button .tema-n {
+    margin-left: 0;
+  }
+}
+#view-home .tema-nome {
+  font-family: var(--font-title);
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  /* palavra inteira na linha seguinte: nunca "Autoconheciment / o" */
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+@media (min-width: 640px) {
+  #view-home .tema-nome {
+    font-size: 1.3125rem;
+  }
+}
+#view-home .tema-n {
+  flex: none;
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-meta);
+}
+#view-home .indice-temas button:hover .tema-nome {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+/* =========================================================
+   B. UMA FRASE AO ACASO — a frase sozinha, como cartaz
+   ========================================================= */
+#view-home .acaso-grade {
+  display: grid;
+  gap: var(--space-6);
+}
+#view-home .acaso-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+}
+#view-home .acaso-topo .rotulo {
+  margin: 0;
+}
+#view-home .acaso-topo .btn-text svg {
+  width: 18px;
+  height: 18px;
+}
+#view-home .acaso-frase {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  /* reserva a altura de três linhas: trocar a frase não empurra a página */
+  min-height: calc(var(--quote-poster) * 1.24 * 3);
+  align-content: center;
+}
+#view-home .acaso-autor {
+  display: grid;
+  gap: var(--space-1);
+  max-width: 40ch;
+}
+@media (min-width: 1024px) {
+  #view-home .acaso-frase {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    align-items: end;
+    gap: var(--space-8);
+  }
+}
+#view-home .acaso-autor .nome-condensado {
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+  line-height: 1;
+}
+#view-home .acaso-autor .btn-text {
+  justify-self: start;
+}
+#view-home .acaso-autor cite {
+  font-style: normal;
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--text-meta);
+}
+/* =========================================================
+   D. AUTORES — galeria de retratos (parede de linho)
+   Todos os retratos na mesma proporção e altura, rosto no mesmo terço; o próximo retrato
+   aparece pela metade na borda, de propósito, para mostrar que a fila continua.
+   ========================================================= */
+#view-home .galeria-trilho {
+  --recuo: max(var(--space-4), env(safe-area-inset-left, 0px));
+  --largura: clamp(12rem, 58vw, 16.5rem);
+  --vao: var(--space-5);
+  display: flex;
+  gap: var(--vao);
+  margin: 0;
+  /* folga embaixo para o contorno de foco não passar por cima das legendas */
+  padding: 0 var(--recuo) var(--space-3);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--recuo);
+  /* a barra nativa sai: o progresso e as setas abaixo fazem esse papel */
+  scrollbar-width: none;
+}
+#view-home .galeria-trilho::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 640px) {
+  #view-home .galeria-trilho {
+    --recuo: max(var(--space-6), calc((100% - var(--maxw)) / 2 + var(--space-6)));
+    --vao: var(--space-6);
+  }
+}
+#view-home .galeria-trilho.arrastando {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+#view-home .galeria-trilho:focus-visible {
+  outline-offset: -2px;
+}
+#view-home .retrato {
+  flex: none;
+  width: var(--largura);
+  scroll-snap-align: start;
+}
+#view-home .retrato > button {
+  display: grid;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#view-home .retrato .quadro {
+  aspect-ratio: 4 / 5;
+}
+#view-home .retrato .quadro img {
+  transition: transform var(--dur-3) var(--ease-out);
+}
+#view-home .retrato .legenda {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding-top: var(--space-3);
+}
+#view-home .retrato .legenda .nome-condensado {
+  font-size: 1.5rem;
+  line-height: 1.05;
+  color: var(--brand);
+  text-wrap: balance;
+}
+#view-home .retrato .legenda span {
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+  color: var(--text-meta);
+}
+#view-home .retrato .contagem {
+  margin-top: var(--space-1);
+  font-variant-numeric: tabular-nums;
+}
+#view-home .retrato > button:hover .legenda .nome-condensado,
+#view-home .retrato > button:focus-visible .legenda .nome-condensado {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #view-home .retrato > button:hover .quadro img {
+    transform: scale(1.025);
+  }
+}
+/* navegação: traço de progresso, posição e setas, alinhados à coluna do texto */
+#view-home .galeria-navegacao {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+#view-home .galeria-progresso {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+}
+#view-home .galeria-progresso i {
+  position: absolute;
+  inset-block: 0;
+  left: var(--inicio, 0%);
+  width: var(--tamanho, 30%);
+  background: var(--text);
+  transition: left var(--dur-1) linear;
+}
+#view-home .galeria-posicao {
+  min-width: 7ch;
+  margin: 0;
+  text-align: right;
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#view-home .galeria-controles {
+  display: flex;
+  gap: var(--space-2);
+}
+#view-home .galeria-controles .btn-icon {
+  border: var(--hairline) solid var(--border-strong);
+}
+#view-home .galeria-controles .btn-icon:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+#view-home .galeria-pe {
+  margin-top: var(--space-4);
+}
+/* =========================================================
+   E. DESCUBRA — um autor por vez (sala roxa)
+   ========================================================= */
+#view-home .descubra-palco {
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 1024px) {
+  #view-home .descubra-palco {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-8);
+    align-items: center;
+  }
+}
+/* a troca é de página inteira: o palco apaga no roxo e a próxima pessoa aparece no lugar */
+#view-home .descubra-palco {
+  transition:
+    opacity 480ms var(--ease-out),
+    transform 480ms var(--ease-out);
+}
+#view-home .descubra-palco.saindo {
+  opacity: 0;
+  transform: translateY(var(--space-2));
+}
+#view-home .descubra-slide {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+#view-home .descubra-cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  align-items: baseline;
+}
+#view-home .descubra-cabeca .rotulo {
+  margin: 0;
+}
+#view-home .descubra-cabeca .eyebrow:last-child {
+  font-variant-numeric: tabular-nums;
+}
+#view-home .descubra-nome {
+  font-size: var(--fs-h1);
+  line-height: 1;
+}
+#view-home .descubra-papel {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+#view-home .descubra-resumo {
+  max-width: 46ch;
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+#view-home .descubra-historia {
+  display: grid;
+  gap: var(--space-1);
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  line-height: 1.15;
+}
+#view-home .descubra-frase {
+  display: grid;
+  gap: var(--space-2);
+  justify-self: stretch;
+  max-width: 36rem;
+  margin: var(--space-2) 0 0;
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--border);
+}
+#view-home .descubra-frase .quote-text {
+  font-size: var(--quote-modal);
+  max-width: 24ch;
+}
+#view-home .descubra-frase .quote-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 34ch;
+}
+#view-home .descubra-frase cite {
+  font-style: normal;
+  font-size: var(--fs-meta);
+  line-height: 1.45;
+  color: var(--text-meta);
+}
+#view-home .descubra-retrato {
+  width: min(100%, 28rem);
+  margin: 0;
+  order: -1;
+  transition: opacity var(--dur-3) var(--ease-out);
+}
+@media (min-width: 1024px) {
+  #view-home .descubra-retrato {
+    width: auto;
+    order: 0;
+  }
+}
+#view-home .descubra-retrato {
+  --largura: min(100vw, 26rem);
+}
+#view-home .descubra-retrato .quadro {
+  aspect-ratio: 1;
+}
+@media (min-width: 640px) {
+  #view-home .descubra-retrato .quadro {
+    aspect-ratio: 4 / 5;
+  }
+}
+#view-home .descubra-retrato figcaption {
+  margin-top: var(--space-2);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+#view-home .descubra-controles {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+#view-home .descubra-controles .btn-icon {
+  border: var(--hairline) solid var(--border-strong);
+}
+#view-home .descubra-controles .btn-text {
+  white-space: nowrap;
+}
+#view-home .descubra-controles svg,
+#view-home .galeria-controles svg {
+  pointer-events: none;
+}
+/* um traço só, que se enche no tempo da troca; pausar a animação pausa a troca */
+#view-home .descubra-tempo {
+  position: relative;
+  flex: 1;
+  max-width: 12rem;
+  height: 2px;
+  overflow: hidden;
+  background: var(--border);
+}
+#view-home .descubra-tempo i {
+  position: absolute;
+  inset: 0;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: descubra-encher var(--descubra-tempo, 10s) linear forwards;
+}
+#view-home .descubra[data-pausa] .descubra-tempo i {
+  animation-play-state: paused;
+}
+/* com movimento reduzido não há troca automática: a pessoa troca pelo botão */
+@media (prefers-reduced-motion: reduce) {
+  #view-home .descubra-tempo {
+    display: none;
+  }
+  #view-home .descubra-palco {
+    transition: none;
+  }
+}
+/* =========================================================
+   F. HISTÓRIAS — uma história em destaque e, embaixo, três cartões
+   ========================================================= */
+#view-home .historia-destaque {
+  display: grid;
+  gap: var(--space-5);
+  padding-bottom: var(--space-7);
+  border-bottom: var(--hairline) solid var(--border);
+}
+@media (min-width: 768px) {
+  #view-home .historia-destaque {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-7);
+    align-items: end;
+  }
+}
+#view-home .historia-destaque .quadro {
+  width: min(100%, 26rem);
+  aspect-ratio: 4 / 5;
+  cursor: zoom-in;
+}
+#view-home .historia-texto {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+#view-home .historia-texto .eyebrow {
+  margin: 0;
+}
+#view-home .historia-titulo {
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  line-height: 1.15;
+  color: var(--brand);
+}
+/* o nome enorme da pessoa: cresce com a tela, mas os nomes longos usam uma escala menor */
+#view-home .historia-nome {
+  font-size: clamp(3rem, 1.8rem + 5vw, 6.5rem);
+  line-height: 0.9;
+}
+#view-home .historia-nome[data-comprimento='longo'] {
+  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 5rem);
+}
+#view-home .historia-resumo {
+  max-width: 44ch;
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.3125rem);
+  line-height: 1.6;
+}
+#view-home .historia-credito {
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+#view-home .historia-texto .secao-acoes svg {
+  width: 18px;
+  height: 18px;
+}
+/* as outras histórias: cartões do mesmo molde, em fila de três */
+#view-home .historias-mais {
+  display: grid;
+  gap: var(--space-6);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  #view-home .historias-mais {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+}
+#view-home .historia-cartao {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+@media (min-width: 640px) {
+  #view-home .historia-cartao {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+#view-home .historia-cartao .quadro {
+  aspect-ratio: 4 / 5;
+}
+@media (min-width: 640px) {
+  #view-home .historia-cartao .quadro {
+    aspect-ratio: 3 / 2;
+  }
+}
+#view-home .historia-cartao .quadro img {
+  transition: transform var(--dur-3) var(--ease-out);
+}
+#view-home .historia-cartao-texto {
+  display: grid;
+  gap: var(--space-1);
+}
+#view-home .historia-cartao .eyebrow {
+  margin: 0;
+}
+#view-home .historia-cartao-titulo {
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  line-height: 1.2;
+  color: var(--brand);
+  text-wrap: balance;
+}
+#view-home .historia-cartao .nome-condensado {
+  font-size: 1.125rem;
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+#view-home .historia-cartao:hover .historia-cartao-titulo,
+#view-home .historia-cartao:focus-visible .historia-cartao-titulo {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #view-home .historia-cartao:hover .quadro img {
+    transform: scale(1.025);
+  }
+}
+/* =========================================================
+   H. COMUNIDADE — convite para escrever (sala café)
+   ========================================================= */
+#view-home .convite-grade {
+  display: grid;
+  gap: var(--space-7);
+}
+@media (min-width: 1024px) {
+  #view-home .convite-grade {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-8);
+    align-items: end;
+  }
+}
+#view-home .convite-chamada {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+#view-home .convite h2 {
+  font-size: var(--fs-h1);
+  font-style: italic;
+}
+#view-home .convite-texto {
+  max-width: 52ch;
+  color: var(--text-meta);
+}
+/* o que se faz na comunidade (ou os relatos mais recentes, quando há relatos de verdade) */
+#view-home .convite-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--hairline) solid var(--border-strong);
+}
+#view-home .convite-lista li {
+  border-bottom: var(--hairline) solid var(--border);
+}
+#view-home .convite-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-4);
+  align-items: center;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-4) 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+#view-home .convite-item b {
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.2;
+}
+#view-home .convite-item span {
+  grid-column: 1;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--text-meta);
+}
+#view-home .convite-item svg {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 20px;
+  height: 20px;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+#view-home .convite-item:hover b,
+#view-home .convite-item:focus-visible b {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+#view-home .convite-item:hover svg {
+  transform: translateX(3px);
+}
+#view-home .convite-relato b {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+}
+/* =========================================================
+   I. ENCERRAMENTO — uma frase e o mapa do site, emendados no rodapé (sala roxa)
+   ========================================================= */
+#view-home .encerramento {
+  padding-block: var(--space-8) 0;
+}
+#view-home .encerramento-grade {
+  display: grid;
+  gap: var(--space-7);
+  padding-bottom: var(--space-7);
+  border-bottom: var(--hairline) solid var(--border);
+}
+@media (min-width: 1024px) {
+  #view-home .encerramento-grade {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-8);
+    align-items: end;
+  }
+}
+#view-home .encerramento-frase {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+#view-home .encerramento-frase .quote-poster-text {
+  font-size: var(--quote-hero);
+}
+#view-home .encerramento-frase cite {
+  font-style: normal;
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+#view-home .mapa {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#view-home .mapa :is(a, button) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-bottom: var(--hairline) solid var(--border);
+  background: none;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--text);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+#view-home .mapa :is(a, button):hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+/* o rodapé que continua a sala roxa do encerramento fica em telas/navegacao.css (está fora da home) */
+
+@keyframes carregando {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+@keyframes descubra-encher {
+  to {
+    transform: scaleX(1);
+  }
+}

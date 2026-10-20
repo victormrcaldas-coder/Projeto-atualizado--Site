@@ -44,13 +44,15 @@ Números atuais, conferidos no Chromium em 13/10/2026:
 ## 3. Estrutura do repositório
 
 ```
-index.html                 página única; carrega o CSS e os 40 scripts NA ORDEM (ver §4)
+index.html                 página única; carrega o CSS e os 41 scripts NA ORDEM (ver §4)
 assets/
-  css/memotiva.css         todo o estilo (responsivo; 725 regras)
+  css/memotiva.css         o estilo antigo (responsivo; 725 regras), ainda o das telas fora da home
+  css/00–04, telas/        o sistema do redesign (fontes, tokens, base, componentes, ponte) e as telas novas;
+                           a home usa telas/home-site.css, gerado por ferramentas/design/escopo-home.py
   js/
     nucleo/                01–02  utilitários, categorias, aliases de autor, perfis, origens
     dados/                 03–08, 16, 21–22  acervo-base: frases, histórias, obras, papéis, panoramas, páginas de obra
-    app/                   09–20, 24, 99  interface: estado, telas, cartões, busca, navegação, áudio, SEO, init
+    app/                   09–20, 24, 40, 99  interface: estado, telas, cartões, busca, navegação, áudio, SEO, home, init
     curadoria/             23, 25–39  fases de curadoria 6 → 129 (corrigem, removem e acrescentam dados)
 curadoria/
   CHECKPOINT.md            diário completo de todas as fases e decisões (longo; consulte por "## Fase N")
@@ -72,11 +74,11 @@ CLAUDE.md                  instruções curtas para o Claude Code (regras, coman
 
 ### 4.1 Ordem de carga e escopo global
 
-`index.html` carrega **40 scripts clássicos** (sem `type="module"`), nesta ordem:
+`index.html` carrega **41 scripts clássicos** (sem `type="module"`), nesta ordem:
 
 ```
 nucleo/01, nucleo/02, dados/03…08, app/09…15, dados/16, app/17…20, dados/21, dados/22,
-curadoria/23, app/24, curadoria/25…39, app/99-iniciar.js   ← sempre o último
+curadoria/23, app/24, curadoria/25…39, app/40-home.js, app/99-iniciar.js   ← sempre o último
 ```
 
 - **Escopo compartilhado.** Todos os arquivos dividem o mesmo escopo global: `const`, `let` e `function` de topo de um arquivo são visíveis nos outros. Isso é intencional e herdado: até 13/10/2026 tudo era um único arquivo, `memotiva.js`, de 42,5 mil linhas, que foi dividido sem mudar o comportamento.
@@ -89,7 +91,7 @@ curadoria/23, app/24, curadoria/25…39, app/99-iniciar.js   ← sempre o últim
    - Os arquivos de `dados/` definem os arrays-base (`QUOTES`, `STORIES`, `OBRAS_CURADAS`, `PERFIS_PROFUNDOS`, `OBRA_PAGINA`…).
    - Os de `app/` definem as funções da interface.
    - Os de `curadoria/` executam correções imediatas e **registram-se na cadeia de fases**.
-2. **`init()`** (`app/15`): carrega sessão e favoritos e renderiza a home.
+2. **`init()`** (`app/15`): carrega sessão e favoritos e faz a primeira renderização. A home nova (`app/40`) já se monta na carga e se monta de novo no fim da cadeia de fases, com o acervo final; os elementos antigos da home que `init()` e as fases ainda escrevem ficam guardados em `.home-legado`, fora da tela.
 3. **`window.__fase5Boot()`** (disparada por `app/99`): executa a cadeia de fases, da Fase 5 até a última (hoje a 129, em `curadoria/39`). Cada fase altera os dados e, quando precisa, chama `reindexarQuotes()` e `reconstruirIndices()`.
 4. **Fase 89 (portão de duplicatas).** Garante que o portão final de desduplicação (Fase 75) rode dentro da cadeia. As Fases 75 e 78 ainda têm um `setTimeout(…, 0)` redundante.
 

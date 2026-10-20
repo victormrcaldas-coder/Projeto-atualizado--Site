@@ -50,3 +50,13 @@ Amartya Sen (200), Antoine de Saint-Exupéry (450), Ariano Suassuna (450), Ayrto
 6. **`initials()`** (`nucleo/01`) põe o "de" nas iniciais (ex.: "MD" para Machado de Assis).
 7. **Aviso (`#toast`):** aparece como uma pílula vazia.
 8. **Seleção da galeria da home:** no site, ela deve ser escolhida entre autores com foto curada existente e de tamanho bom. Assim, foto quebrada nunca vira um bloco que parece imagem faltando.
+9. **Código antigo da home:**
+   - `renderHeroStack`, `renderQuoteOfDay`, o gerador (`generateBtn`), `renderCategoryGrid('catGridHome')` e os contadores com "+" (`init()` e as fases 36 e 37) ainda escrevem em elementos que a home nova não usa;
+   - esses elementos ficam guardados em `.home-legado`, fora da tela;
+   - **como corrigir:** tirar essas chamadas de `app/09`, `app/10` e `app/15` e trocar a escrita dos contadores por uma chamada à home. As fases antigas não são editadas: a troca vai numa fase nova.
+10. **Créditos das fotos:**
+    - o site guarda só o arquivo do Commons, não o autor da foto nem a licença;
+    - por isso a home diz apenas "Imagem: Wikimedia Commons";
+    - **como corrigir:** guardar autor e licença de cada foto curada (dá para buscar pela API do Commons, como faz `ferramentas/design/amostra.mjs`) e mostrá-los na legenda.
+11. **Narração ("Ouvir"):** usa a voz do próprio navegador (`speechSynthesis`). Em navegador sem voz em português, a narração sai em outra voz, ou não sai.
+

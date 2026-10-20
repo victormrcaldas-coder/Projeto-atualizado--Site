@@ -345,6 +345,11 @@
     padding-bottom: var(--space-7);
   }
 }
+/* na home, o rodapé continua a sala roxa do encerramento, sem emenda */
+body:has(#view-home:not(.hidden)) .site-footer {
+  margin-top: 0;
+  padding-top: var(--space-6);
+}
 .site-footer .footer-inner {
   display: grid;
   justify-content: start;
@@ -373,4 +378,13 @@
 }
 .site-footer :focus-visible {
   outline-color: var(--on-brand);
+}
+
+/* aviso (#toast): escondido de verdade quando não está em uso. O deslocamento antigo (120% da própria
+   altura) não bastava para tirá-lo da tela, e sobrava uma pílula vazia na borda de baixo. */
+.toast:not(.show) {
+  visibility: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1),
+    visibility 0s linear 0.35s;
 }

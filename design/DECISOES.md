@@ -178,3 +178,55 @@ O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começ
   - no teclado, ← e → andam um retrato, e Home e End vão às pontas;
   - ao arrastar com o mouse, a fila encaixa no retrato mais próximo.
 - **Cabeçalho:** "Ver os 521 autores" foi para o lado do título, como "Ver as 235 histórias".
+
+## Home no site real (20/10/2026, Etapa 4b antecipada)
+
+**O que o proprietário apontou ao testar o Portão 4a:**
+- os botões do protótipo não levavam a lugar nenhum;
+- o menu rolava a própria home, em vez de abrir cada tela.
+
+**Causa:** o link era um protótipo estático. Os botões apontavam para âncoras da própria página e o menu rolava até a seção. O site real nunca deixou de ter as telas separadas.
+
+**O que mudou:** a home nova foi levada ao `#view-home` do site agora, sem esperar outro portão, com cada botão ligado à tela que já existe:
+
+| Na home | Leva a |
+|---|---|
+| Menu de cima e barra de baixo | A tela própria de cada item (a home some) |
+| "Explorar as frases" e cada tema do índice | Explorar, já filtrado pelo tema (`state.exploreFilter.cat`) |
+| Nome do autor (abertura, acaso, Descubra, galeria, fim) | Página do autor, com biografia, obras e frases (`abrirPanorama`) |
+| "Abrir a frase", "Ampliar a frase" | Frase ampliada (`openQuoteModal`) |
+| Foto | Foto ampliada (`openPhotoModal`) |
+| "Ler a história" (Descubra e Histórias) | A história daquela pessoa, aberta (`openBiography`) |
+| "Ouvir" | A história aberta, já com a narração tocando |
+| "Pesquisar em Autores & Obras", "Ver as 235 histórias", "Escrever", "Ver a comunidade", mapa do fim | A tela correspondente |
+
+**Decisões tomadas com o pedido do proprietário:**
+- **Descubra:**
+  - entra quem tem história (para "Ler a história" abrir a dela), foto e resumo do perfil;
+  - a ordem muda a cada dia;
+  - sem "1 de 6" nem traços: a página apaga no roxo e a próxima pessoa aparece no lugar, a cada 10 s;
+  - "Próxima pessoa" passa na hora;
+  - pausa com o mouse em cima, o foco dentro, a seleção de texto, o toque (volta 5 s depois) e fora da tela; o botão de pausa para de vez;
+  - com movimento reduzido, não troca sozinho.
+- **Galeria:**
+  - mostra todas as pessoas com história (hoje 235): primeiro as que têm retrato, em ordem alfabética, depois as outras;
+  - o botão leva à tela Autores & Obras, que é de busca. Por isso o texto é "Pesquisar em Autores & Obras", e não "Ver os 521".
+- **Histórias:** o índice em sanfona saiu. Ficou uma história em destaque, no molde de que o proprietário gostou (a do Van Gogh), com três cartões embaixo. Elas mudam a cada dia.
+- **Comunidade:**
+  - não repete a frase de hoje;
+  - mostra o que se faz na comunidade (escrever, ler e comentar, guardar no perfil), ou os relatos mais recentes quando houver relatos de verdade;
+  - os três exemplos inventados não aparecem;
+  - foi para antes das Histórias, para o café não encostar no roxo do fim (o proprietário achou que café, preto e roxo juntos não combinavam).
+- **Uma frase ao acaso:** sorteia entre as frases com fonte conferida de até 110 caracteres. "Outra frase" foi mantido, como o proprietário pediu.
+- **Abertura:**
+  - a frase de hoje é escolhida entre as frases com fonte conferida, curtas, de quem tem foto e história;
+  - se a foto não vier, a home escolhe outra pessoa;
+  - o mesmo vale para o Descubra e para as Histórias.
+- **Contadores:** saem com o número exato, montados pela home a partir dos dados. Os contadores antigos, com "+", seguem guardados fora da tela, porque as fases de curadoria ainda escrevem neles.
+- **CSS:**
+  - o sistema novo (02, 03) e `telas/home.css` valem só dentro de `#view-home`, pelo arquivo gerado `telas/home-site.css`;
+  - as outras telas continuam como estavam, até a etapa de cada uma.
+- **Aviso (`#toast`):** a pílula vazia na borda de baixo foi corrigida no site todo.
+- **Teste novo:** `ferramentas/testes/home.mjs` (dentro de `npm run teste`). São 35 casos em 1440 e em 390, um por botão.
+- **Protótipo:** `design/prototipos/home.html` ficou como registro do Portão 4a. A referência agora é o site.
+

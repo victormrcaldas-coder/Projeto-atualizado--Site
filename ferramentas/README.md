@@ -31,6 +31,7 @@ Numa mudança de conteúdo (fase de curadoria), o passo 3 deve mostrar diferenç
 | `lib/` | `navegador.mjs` | Infra comum: Playwright, servidor estático, bloqueio de rede externa, espera da cadeia de fases. |
 | `testes/` | `estado.mjs` | Estado final completo do site (frases, obras, páginas, biografias, histórias, registro de remoções, índices, logs) e comparação com uma captura anterior. |
 | | `e2e.mjs` | Ponta a ponta em 390×844 e 1440×900: exceções, favoritos por `qid`, busca, rolagem, números, registro. Exporta os CSVs para `.trabalho/csv/`. |
+| | `home.mjs` | Cada botão da home em 1440×900 e 390×844: leva à tela certa (Explorar filtrado, página do autor, história aberta, narração, Escrever, Comunidade), o Descubra troca sozinho só na tela, a galeria tem todas as pessoas com história, e o menu abre telas próprias. Faz parte de `npm run teste`. |
 | | `paginas.mjs` | Abre as 1.230 páginas de obra e as 521 de autor e acusa erro, página vazia ou "undefined". |
 | | `legado/` | Testes antigos (`@sparticuz/chromium`), guardados como referência. |
 | `exportar/` | `exportar-csv.mjs` | Gera os 5 CSVs de `curadoria/` a partir do estado real, mais `quotes.json`, `obras.json` e `lacunas.json`. |
@@ -53,6 +54,7 @@ Numa mudança de conteúdo (fase de curadoria), o passo 3 deve mostrar diferenç
 | | `capturas-prototipos.mjs` | Prints dos protótipos (abertura, cartões, frase ampliada, paleta, tipografia) por largura e tema; mede a rolagem lateral, confere Esc e foco e audita o contraste de cada texto contra o fundo real. Com `--arquivo design/guia.html --secoes … --inteira`, faz o mesmo no guia da Etapa 2. |
 | | `baixar-fontes.mjs` | Baixa do Google Fonts os `.woff2` das fontes do sistema (Literata, Ysabeau Office, Caveat, todas OFL) para `assets/fonts/`, com o `OFL.txt` de cada uma, e gera `assets/css/00-fontes.css`. Rodar com `NODE_USE_ENV_PROXY=1` na nuvem. |
 | | `metricas-fallback.py` | Calcula `size-adjust` e os `*-override` das fontes de reserva (para o texto não pular quando a fonte chega). Precisa de `pip install fonttools brotli`; rodar antes de `baixar-fontes.mjs`. |
+| | `escopo-home.py` | Gera `assets/css/telas/home-site.css`: `02-base`, `03-componentes` e `telas/home.css` valendo só dentro de `#view-home`. Rode depois de mudar qualquer um dos três. |
 | | `pagina-autocontida.py` | Gera a versão autocontida de uma página de `design/` (guia, layout, protótipos) para prints e para Artifact: CSS e scripts embutidos, fontes em data URI e fotos locais (do cache de `baixar-fotos.mjs`, em JPEG de até 900 px). `--artifact` tira o esqueleto HTML. |
 
 ## Fluxo de uma nova fase de curadoria

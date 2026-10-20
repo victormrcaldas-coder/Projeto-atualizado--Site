@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/css/01-tokens.css">
 <link rel="stylesheet" href="assets/css/04-ponte.css">
 <link rel="stylesheet" href="assets/css/telas/navegacao.css">
+<link rel="stylesheet" href="assets/css/telas/home-site.css">
 </head>
 <body data-theme="light">
 
@@ -67,76 +68,131 @@
 <!-- ===================== MAIN ===================== -->
 <main id="mainApp">
 
-  <!-- ---------- HOME ---------- -->
+  <!-- ---------- HOME (Etapa 4 do redesign: app/40-home.js monta as seções) ---------- -->
   <section class="view" id="view-home" data-view="home">
-    <div class="hero">
-      <div class="hero-glow"></div>
-      <div class="hero-glow-2"></div>
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">frases · histórias · comunidade</span>
-          <h1 class="hero-title">Palavras que <em>acolhem</em> nos dias difíceis e <em>impulsionam</em> nos dias de agir.</h1>
-          <p class="hero-sub">Uma coleção viva de frases, histórias e vozes que ajudam você a atravessar qualquer capítulo — e um espaço para guardar e compartilhar as suas próprias palavras.</p>
-          <div class="hero-ctas">
-            <button class="btn btn-coral btn-lg" data-nav="explorar">Explorar frases</button>
-            <button class="btn btn-outline btn-lg" data-nav="historias">Ver histórias</button>
-          </div>
-          <div class="hero-stats">
-            <div class="hero-stat"><b id="statQuotes">—</b><span>frases curadas</span></div>
-            <div class="hero-stat"><b id="statCats">—</b><span>temas</span></div>
-            <div class="hero-stat"><b id="statAuthors">—</b><span>autores e vozes</span></div>
-          </div>
-        </div>
-        <div class="card-stack" id="heroCardStack" aria-hidden="true"></div>
-      </div>
+    <!-- A. abertura: a frase de hoje -->
+    <div class="wrap" id="capa">
+      <section class="abertura" id="abertura" aria-label="Frase de hoje"></section>
+      <p class="faixa-fonte" id="faixa"></p>
     </div>
 
-    <div class="wrap section-tight reveal">
+    <!-- C. explorar: os números do acervo e os 22 temas -->
+    <section class="faixa-ocre home-secao explorar" id="home-explorar" aria-labelledby="t-explorar">
+      <div class="wrap explorar-grade">
+        <div class="acervo">
+          <p class="eyebrow rotulo">Explorar</p>
+          <h2 class="acervo-numeros" id="t-explorar"></h2>
+          <p class="acervo-nota" id="acervoNota"></p>
+          <button class="btn btn-primary" type="button" data-home-tema="all">Explorar as frases</button>
+        </div>
+        <nav aria-label="Temas do acervo"><ul class="indice-temas" id="indiceTemas"></ul></nav>
+      </div>
+    </section>
+
+    <!-- B. uma frase ao acaso -->
+    <section class="home-secao acaso" id="home-acaso" aria-labelledby="t-acaso">
+      <div class="wrap acaso-grade">
+        <div class="acaso-topo">
+          <h2 class="eyebrow rotulo" id="t-acaso">Uma frase ao acaso</h2>
+          <button class="btn-text" type="button" id="outraFrase">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4v6h-6"/><path d="M19.4 10A8 8 0 1 0 20 14"/></svg>
+            Outra frase
+          </button>
+        </div>
+        <figure class="acaso-frase" id="acasoFrase" aria-live="polite"></figure>
+      </div>
+    </section>
+
+    <!-- E. descubra: uma pessoa por vez; a página troca sozinha -->
+    <section class="faixa-roxa home-secao descubra" id="home-descubra" aria-labelledby="t-descubra">
+      <div class="wrap descubra-palco" id="descubraPalco">
+        <div>
+          <div class="descubra-slide" id="descubraSlide" aria-live="off"></div>
+          <div class="descubra-controles">
+            <button class="btn-icon" type="button" id="descubraPausa"></button>
+            <button class="btn-text" type="button" id="descubraProxima">Próxima pessoa <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg></button>
+            <span class="descubra-tempo" id="descubraTempo" aria-hidden="true"><i></i></span>
+          </div>
+        </div>
+        <figure class="descubra-retrato" id="descubraRetrato"></figure>
+      </div>
+    </section>
+
+    <!-- D. autores: todas as pessoas com história -->
+    <section class="home-secao autores" id="home-autores" aria-labelledby="t-autores">
+      <div class="wrap secao-cabeca">
+        <div>
+          <p class="eyebrow rotulo">Autores &amp; Obras</p>
+          <h2 id="t-autores">Quem está no acervo</h2>
+        </div>
+        <button class="btn-text" type="button" data-nav="autores">Pesquisar em Autores &amp; Obras</button>
+      </div>
+      <ul class="galeria-trilho" id="galeria" tabindex="0" aria-label="Galeria de autores: role para o lado, arraste ou use as setas do teclado"></ul>
+      <div class="wrap galeria-navegacao">
+        <div class="galeria-progresso" id="galeriaProgresso" aria-hidden="true"><i></i></div>
+        <p class="galeria-posicao" id="galeriaPosicao" aria-live="polite"></p>
+        <div class="galeria-controles">
+          <button class="btn-icon" type="button" data-galeria="-1" aria-label="Autores anteriores" aria-controls="galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg></button>
+          <button class="btn-icon" type="button" data-galeria="1" aria-label="Mais autores" aria-controls="galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- H. comunidade: o que se faz nela (sem relatos inventados) -->
+    <section class="faixa-cafe home-secao convite" id="home-comunidade" aria-labelledby="t-convite">
+      <div class="wrap convite-grade">
+        <div class="convite-chamada">
+          <p class="eyebrow rotulo">Comunidade</p>
+          <h2 id="t-convite">Uma frase te acompanhou hoje?</h2>
+          <p class="convite-texto">Escreva o que ela lembrou a você. Fica guardado só para você, ou vai para a comunidade, se quiser.</p>
+          <div class="secao-acoes">
+            <button class="btn btn-primary" type="button" data-nav="escrever">Escrever</button>
+            <button class="btn-text" type="button" data-nav="comunidade">Ver a comunidade</button>
+          </div>
+        </div>
+        <div id="conviteLado"></div>
+      </div>
+    </section>
+
+    <!-- F. histórias -->
+    <section class="wrap home-secao historias" id="home-historias" aria-labelledby="t-historias">
+      <div class="secao-cabeca">
+        <div>
+          <p class="eyebrow rotulo">Histórias</p>
+          <h2 id="t-historias">Vidas para ler ou ouvir</h2>
+        </div>
+        <button class="btn-text" type="button" data-nav="historias" id="todasHistorias">Ver as histórias</button>
+      </div>
+      <div id="historiaDestaque"></div>
+      <ul class="historias-mais" id="historiasMais"></ul>
+    </section>
+
+    <!-- I. encerramento, emendado no rodapé -->
+    <section class="faixa-roxa encerramento" id="home-encerramento" aria-label="Para terminar">
+      <div class="wrap"><div class="encerramento-grade">
+        <figure class="encerramento-frase" id="encerramentoFrase"></figure>
+        <nav aria-label="Todas as áreas do MeMotiva">
+          <ul class="mapa">
+            <li><button type="button" data-nav="explorar">Explorar</button></li>
+            <li><button type="button" data-nav="autores">Autores &amp; Obras</button></li>
+            <li><button type="button" data-nav="descubra">Descubra</button></li>
+            <li><button type="button" data-nav="historias">Histórias</button></li>
+            <li><button type="button" data-nav="comunidade">Comunidade</button></li>
+            <li><button type="button" data-nav="escrever">Escrever</button></li>
+          </ul>
+        </nav>
+      </div></div>
+    </section>
+
+    <!-- A home antiga: o init() e as fases de curadoria ainda escrevem nestes elementos
+         (contadores com "+", gerador, frase do dia). Ficam guardados e fora da tela até esse código
+         ser revisto (design/PENDENCIAS-CODIGO.md). -->
+    <div class="home-legado" hidden aria-hidden="true">
+      <div id="heroCardStack"></div>
       <div id="quoteOfDaySlot"></div>
-    </div>
-
-    <div class="wrap section reveal">
-      <div class="generator" id="generatorBox">
-        <span class="generator-eyebrow">Gerador de frases</span>
-        <div class="generator-card">
-          <p class="generator-quote" id="generatorQuote">Clique para receber uma frase para este exato momento.</p>
-        </div>
-        <button class="btn btn-coral btn-lg" id="generateBtn">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6M3 22v-6h6M3.5 9a8.5 8.5 0 0 1 14.5-4.9L21 8M20.5 15a8.5 8.5 0 0 1-14.5 4.9L3 16"/></svg>
-          Gerar frase aleatória
-        </button>
-      </div>
-    </div>
-
-    <div class="wrap section reveal">
-      <div class="section-head">
-        <span class="eyebrow">conselhos temáticos</span>
-        <h2 class="section-title">Um tema para cada momento</h2>
-        <p class="section-sub">Curadoria de filósofos, líderes, mães, artistas e pensadores — organizada pelo que você está vivendo agora.</p>
-      </div>
-      <div class="cat-grid" id="catGridHome"></div>
-    </div>
-
-    <div class="wrap section reveal">
-      <div class="section-head section-head-row">
-        <div>
-          <span class="eyebrow">histórias e relatos</span>
-          <h2 class="section-title">Vidas que inspiram</h2>
-        </div>
-        <button class="btn btn-ghost btn-sm" data-nav="historias">Ver todas →</button>
-      </div>
-      <div class="stories-grid" id="storiesPreview"></div>
-    </div>
-
-    <div class="wrap section reveal">
-      <div class="section-head section-head-row">
-        <div>
-          <span class="eyebrow">encontre pessoas</span>
-          <h2 class="section-title">Da comunidade, para você</h2>
-        </div>
-        <button class="btn btn-ghost btn-sm" data-nav="comunidade">Ver comunidade →</button>
-      </div>
-      <div class="feed" id="communityPreview"></div>
+      <p id="generatorQuote"></p>
+      <button type="button" id="generateBtn" tabindex="-1"></button>
+      <b id="statQuotes"></b><b id="statCats"></b><b id="statAuthors"></b>
     </div>
   </section>
 
@@ -431,6 +487,7 @@
 <script src="assets/js/curadoria/37-fases100-118-registro-lacunas.js"></script>
 <script src="assets/js/curadoria/38-fases119-128-auditorias-finais.js"></script>
 <script src="assets/js/curadoria/39-fase129-auditoria.js"></script>
+<script src="assets/js/app/40-home.js"></script>
 <script src="assets/js/app/99-iniciar.js"></script>
 </body>
 </html>
