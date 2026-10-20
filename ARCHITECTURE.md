@@ -48,8 +48,9 @@ index.html                 página única; carrega o CSS e os 41 scripts NA ORDE
 assets/
   css/memotiva.css         o estilo antigo (responsivo; 725 regras), ainda o das telas não redesenhadas
   css/00–04, telas/        o sistema do redesign (fontes, tokens, base, componentes, ponte) e as telas novas;
-                           a home usa telas/home-site.css, e o Explorar, as janelas da frase e da foto e
-                           as grades de cartões usam telas/frase-site.css, gerados por ferramentas/design/escopo.py
+                           a home usa telas/home-site.css; o Explorar, as janelas da frase e da foto e
+                           as grades de cartões, telas/frase-site.css; Autores & Obras, o autor e a obra,
+                           telas/autores-site.css. Todos gerados por ferramentas/design/escopo.py
   js/
     nucleo/                01–02  utilitários, categorias, aliases de autor, perfis, origens
     dados/                 03–08, 16, 21–22  acervo-base: frases, histórias, obras, papéis, panoramas, páginas de obra

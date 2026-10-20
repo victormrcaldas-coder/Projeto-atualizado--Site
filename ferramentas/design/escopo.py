@@ -19,7 +19,10 @@ ALVOS = [
     {'saida': 'assets/css/telas/frase-site.css',
      'escopo': ':is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid)',
      'raizes': [('.expand-overlay', ':is(#quoteExpand, #photoExpand)'), ('.quote-grid', '')],
-     'origens': SISTEMA + ['assets/css/telas/frase.css']},
+     'origens': SISTEMA + ['assets/css/telas/cabeca.css', 'assets/css/telas/frase.css']},
+    # Etapa 6: Autores & Obras, a página do autor (panorama) e a página da obra
+    {'saida': 'assets/css/telas/autores-site.css', 'escopo': ':is(#view-autores, #view-panorama, #view-obra)',
+     'raizes': [], 'origens': SISTEMA + ['assets/css/telas/cabeca.css', 'assets/css/telas/autores.css']},
 ]
 
 

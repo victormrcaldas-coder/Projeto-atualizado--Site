@@ -499,39 +499,41 @@ const aoState = { modo: null, q: '', vis: 'autores' };
 function aoCardAutor(nome) {
   const i = autorInfo(nome);
   const temObras = i.obras.length > 0;
+  /* Etapa 6 do redesign: retrato, nome em serifa condensada e papel; a placa leva o nome */
   return `
   <article class="ao-card">
     <div class="ao-card-top">
       <div class="ao-thumb">
         ${photoImgHTML(i.nome, 'card', 180)}
-        <div class="avatar-fallback" style="display:none; background:${colorForName(i.nome)};">${initials(i.nome)}</div>
+        <div class="avatar-fallback" style="display:none;">${initials(i.nome)}</div>
       </div>
       <div style="min-width:0;">
         <h3 class="ao-name">${escapeHtml(i.nome)}</h3>
         <p class="ao-role">${escapeHtml(i.papel)}</p>
-        ${temObras ? '' : '<p class="ao-none" style="margin-top:6px;">Obras: nenhum resultado relevante</p>'}
+        ${temObras ? '' : '<p class="ao-none">Sem obras catalogadas</p>'}
       </div>
     </div>
     <div class="ao-actions">
-      <button class="ao-btn primary" data-pan="${escapeHtml(i.nome)}">Conhecer autor</button>
+      <button class="ao-btn primary" data-pan="${escapeHtml(i.nome)}">Conhecer ${escapeHtml(i.nome)}</button>
       ${temObras ? `<button class="ao-btn" data-verobras="${escapeHtml(i.nome)}">Ver obras</button>` : ''}
     </div>
   </article>`;
 }
 function aoCardObra(o) {
   const t = tipoObra(o.tipo);
+  /* Etapa 6 do redesign: o tipo e o ano viram rótulo; sem o selo colorido */
   return `
   <article class="obra-card">
     <div class="obra-head">
-      <div class="obra-ico" style="background:${t.cor};">${f5svg(t.ico, 20)}</div>
       <div style="min-width:0;">
+        <span class="obra-tipo">${escapeHtml(t.nome)}${o.ano ? ' · ' + escapeHtml(String(o.ano)) : ''}</span>
         <h3 class="obra-title">${escapeHtml(o.t)}</h3>
-        <p class="obra-author">${escapeHtml(o.autor)}${o.ano ? ' · ' + escapeHtml(String(o.ano)) : ''}</p>
+        <p class="obra-author">${escapeHtml(o.autor)}</p>
       </div>
     </div>
     <p class="obra-desc">${escapeHtml(o.d)}</p>
     <div class="ao-actions">
-      <button class="ao-btn primary" data-obra="${o.oid}">Conhecer obra</button>
+      <button class="ao-btn primary" data-obra="${o.oid}">Conhecer a obra</button>
       <button class="ao-btn" data-comprar="${o.oid}">${f5svg('carrinho', 15)} Comprar</button>
     </div>
   </article>`;
@@ -540,67 +542,22 @@ function aoCardObra(o) {
 function renderAutoresObras() {
   const root = document.getElementById('aoRoot');
   if (!root) return;
-
-  if (!aoState.modo) {
-    root.innerHTML = `
-    <div class="ao-ask">
-      <h3>Você deseja pesquisar por:</h3>
-      <p>Escolha o ponto de partida. A tela muda conforme a sua escolha.</p>
-      <div class="ao-choice">
-        <button class="ao-big" data-modo="autor">
-          ${f5svg('pessoa', 26)}
-          <b>Autor</b>
-          <small>Procurar uma pessoa pelo nome</small>
-        </button>
-        <button class="ao-big" data-modo="obras">
-          ${f5svg('livro', 26)}
-          <b>Obras / Campo</b>
-          <small>Procurar por área ou por obra</small>
-        </button>
-      </div>
-    </div>`;
-    root.querySelectorAll('[data-modo]').forEach((b) =>
-      b.addEventListener('click', () => {
-        aoState.modo = b.dataset.modo;
-        aoState.q = '';
-        aoState.vis = 'autores';
-        renderAutoresObras();
-        setTimeout(() => {
-          const i = document.getElementById('aoInput');
-          if (i) i.focus();
-        }, 60);
-      })
-    );
-    return;
-  }
-
-  const ehAutor = aoState.modo === 'autor';
+  /* Etapa 6 do redesign: a busca aparece direto (antes havia a escolha "Autor" ou "Obras / Campo",
+     um clique a mais). A mesma busca acha pessoas, campos e obras; as abas trocam a lista. */
+  aoState.modo = 'obras';
   root.innerHTML = `
-    <div class="ao-bar">
-      <button class="ao-back" id="aoBack">${f5svg('voltar', 15)} Voltar</button>
-      <span class="ao-hint" style="margin:0;">${ehAutor ? 'Pesquisando por autor' : 'Pesquisando por obras ou campo'}</span>
-    </div>
-    <span class="f5-label">${ehAutor ? 'Pesquisar autor' : 'Pesquisar obras ou campo'}</span>
+    <label class="f5-label" for="aoInput">Pesquisar no acervo</label>
     <div class="f5-search">
       ${f5svg('busca', 19)}
       <input type="text" id="aoInput" autocomplete="off" value="${escapeHtml(aoState.q)}"
-        placeholder="${ehAutor ? 'Exemplo: Fernando Pessoa' : 'Exemplo: Literatura'}">
+        placeholder="Nome, campo de atuação ou obra">
     </div>
-    ${
-      ehAutor
-        ? ''
-        : `
-    <div class="ao-mode" style="margin-bottom:16px;">
-      <button class="ao-tab ${aoState.vis === 'autores' ? 'on' : ''}" data-vis="autores">Apenas autores</button>
-      <button class="ao-tab ${aoState.vis === 'obras' ? 'on' : ''}" data-vis="obras">Apenas obras</button>
-    </div>`
-    }
+    <div class="ao-mode" role="group" aria-label="Mostrar">
+      <button class="ao-tab ${aoState.vis === 'autores' ? 'on' : ''}" data-vis="autores" aria-pressed="${aoState.vis === 'autores'}">Pessoas</button>
+      <button class="ao-tab ${aoState.vis === 'obras' ? 'on' : ''}" data-vis="obras" aria-pressed="${aoState.vis === 'obras'}">Obras</button>
+    </div>
     <div id="aoResults"></div>`;
 
-  document.getElementById('aoBack').addEventListener('click', () => {
-    aoState.modo = null;
-    renderAutoresObras();
-  });
   const input = document.getElementById('aoInput');
   let tm = null;
   input.addEventListener('input', () => {
@@ -621,6 +578,20 @@ function renderAutoresObras() {
       }, 50);
     })
   );
+  /* o índice de A a Z tem 500 nomes: um ouvinte só, na raiz */
+  if (!root.dataset.indiceLigado) {
+    root.dataset.indiceLigado = '1';
+    root.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-indice]');
+      if (b) abrirPanorama(b.dataset.indice);
+      const letra = e.target.closest('[data-letra]');
+      if (letra) {
+        const alvo = document.getElementById('ao-letra-' + letra.dataset.letra);
+        if (alvo)
+          alvo.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+      }
+    });
+  }
   aoRenderResultados();
 }
 

@@ -1,4 +1,4 @@
-/* GERADO por ferramentas/design/escopo.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/frase.css.
+/* GERADO por ferramentas/design/escopo.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/cabeca.css, assets/css/telas/frase.css.
    Não edite aqui: mude a origem e rode o script de novo. Vale só dentro de :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid). */
 /* ==================== assets/css/02-base.css ==================== */
 /* ============================================================
@@ -1088,18 +1088,12 @@
   color: var(--text-meta);
 }
 
-/* ==================== assets/css/telas/frase.css ==================== */
+/* ==================== assets/css/telas/cabeca.css ==================== */
 /* ============================================================
-   MEMOTIVA — A FRASE (Etapa 5 do redesign)
-   O Explorar (busca, temas, filtros e a grade de cartões) e as janelas da frase ampliada e da
-   fotografia, que abrem de qualquer tela. O cartão e a janela vêm de 03-componentes.css;
-   aqui fica só o que é do Explorar.
-   No site, este arquivo entra pelo escopo do Explorar e das janelas (ferramentas/design/escopo.py).
-   Só tokens; nenhum hex aqui.
+   MEMOTIVA — CABEÇA DAS TELAS (redesign, a partir da Etapa 5)
+   O começo de cada tela redesenhada: rótulo com o ponto apricot, título em serifa e subtítulo.
+   Entra no escopo de cada tela por ferramentas/design/escopo.py. Só tokens; nenhum hex aqui.
    ============================================================ */
-/* =========================================================
-   EXPLORAR — cabeça, busca, temas, filtros e resultados
-   ========================================================= */
 :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .wrap.section {
   padding-block: var(--space-7) var(--space-9);
 }
@@ -1138,6 +1132,19 @@
   font-size: var(--fs-body);
   color: var(--text-secondary);
 }
+
+/* ==================== assets/css/telas/frase.css ==================== */
+/* ============================================================
+   MEMOTIVA — A FRASE (Etapa 5 do redesign)
+   O Explorar (busca, temas, filtros e a grade de cartões) e as janelas da frase ampliada e da
+   fotografia, que abrem de qualquer tela. O cartão e a janela vêm de 03-componentes.css;
+   aqui fica só o que é do Explorar.
+   No site, este arquivo entra pelo escopo do Explorar e das janelas (ferramentas/design/escopo.py).
+   Só tokens; nenhum hex aqui.
+   ============================================================ */
+/* =========================================================
+   EXPLORAR — cabeça, busca, temas, filtros e resultados
+   ========================================================= */
 /* a nota sobre as traduções fica recolhida: o rodapé do site também a traz */
 :is(#view-explorar, #quoteExpand, #photoExpand, .quote-grid) .nota-traducao summary {
   display: inline-flex;

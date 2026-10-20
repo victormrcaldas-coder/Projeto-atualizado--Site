@@ -627,6 +627,38 @@ function fimDoFiltroHTML(campos, modo) {
    ================================================================ */
 let aoMostrarTodas = false;
 function aoRenderResultados() {
+  /* Todas as pessoas do acervo, de A a Z, como índice remissivo de livro */
+  function aoIndiceHTML() {
+    const letraDe = (n) =>
+      n
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .charAt(0)
+        .toUpperCase();
+    const nomes = [...AUTOR_INDEX.values()].map((v) => v.nome).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+    const grupos = new Map();
+    nomes.forEach((n) => {
+      const l = /[A-Z]/.test(letraDe(n)) ? letraDe(n) : '#';
+      if (!grupos.has(l)) grupos.set(l, []);
+      grupos.get(l).push(n);
+    });
+    return `
+      <section class="ao-indice" aria-labelledby="aoIndiceTitulo">
+        <h3 class="ao-sub" id="aoIndiceTitulo">Todas as ${nomes.length.toLocaleString('pt-BR')} pessoas, de A a Z</h3>
+        <nav class="ao-letras" aria-label="Ir para a letra">${[...grupos.keys()]
+          .map((l) => `<button type="button" data-letra="${l}">${l}</button>`)
+          .join('')}</nav>
+        ${[...grupos.entries()]
+          .map(
+            ([l, lista]) => `
+          <div class="ao-grupo" id="ao-letra-${l}">
+            <h4 class="ao-letra">${l}</h4>
+            <ul>${lista.map((n) => `<li><button type="button" data-indice="${escapeHtml(n)}">${escapeHtml(n)}</button></li>`).join('')}</ul>
+          </div>`
+          )
+          .join('')}
+      </section>`;
+  }
   const box = document.getElementById('aoResults');
   if (!box) return;
   const q = aoState.q.trim();
@@ -635,9 +667,14 @@ function aoRenderResultados() {
   const campos = camposDaBusca(q);
 
   if (!q) {
-    box.innerHTML = ehAutor
-      ? `<p class="ao-hint">Digite o nome de quem você quer conhecer. Exemplo: <b>Fernando Pessoa</b>. A busca entende maiúsculas, acentos e pequenos erros de digitação.</p>${aoSugestoes()}`
-      : `<p class="ao-hint">Digite um campo (<b>Literatura</b>, <b>Filosofia</b>, <b>Ciência</b>, <b>Negócios</b>…) ou o nome de uma obra.</p>${aoSugestoesCampo()}`;
+    /* Etapa 6 do redesign: sem busca, os campos, algumas pessoas e o índice de A a Z */
+    box.innerHTML = `
+      <p class="ao-hint">Digite o nome de uma pessoa (<b>Fernando Pessoa</b>), um campo (<b>Literatura</b>, <b>Filosofia</b>, <b>Ciência</b>…) ou o título de uma obra. A busca entende acentos e pequenos erros de digitação.</p>
+      <h3 class="ao-sub">Comece por um campo</h3>
+      ${aoSugestoesCampo()}
+      <h3 class="ao-sub">Algumas pessoas do acervo</h3>
+      ${aoSugestoes()}
+      ${aoIndiceHTML()}`;
     aoWire(box);
     return;
   }
@@ -722,21 +759,25 @@ function renderPanorama() {
     </div>
 
     <div class="pan-hero">
-      <div class="pan-photo" id="panPhoto" role="button" tabindex="0" aria-label="Ampliar fotografia">
-        ${photoImgHTML(i.nome, 'card', 520)}
-        <div class="avatar-fallback" style="display:none; background:${colorForName(i.nome)};">${initials(i.nome)}</div>
-      </div>
+      <figure class="pan-retrato">
+        <div class="pan-photo" id="panPhoto" role="button" tabindex="0" aria-label="Ampliar a fotografia de ${escapeHtml(i.nome)}">
+          ${photoImgHTML(i.nome, 'card', 900)}
+          <div class="avatar-fallback" style="display:none;">${escapeHtml(i.nome)}</div>
+        </div>
+        ${photoInfo(i.nome) ? '<figcaption>Imagem: Wikimedia Commons</figcaption>' : ''}
+      </figure>
       <div class="pan-id">
-        <h2 class="pan-name">${escapeHtml(i.nome)}</h2>
+        ${i.perfis.length ? `<p class="pan-campos">${i.perfis.map((x) => escapeHtml(x.name)).join(' · ')}</p>` : ''}
+        <h1 class="pan-name">${escapeHtml(i.nome)}</h1>
         <p class="pan-role">${escapeHtml(i.papelLimpo)}</p>
         ${p && p.resumo ? `<p class="pan-resumo">${escapeHtml(p.resumo)}</p>` : s ? `<p class="pan-resumo">${escapeHtml(s.excerpt)}</p>` : ''}
-        <div class="pan-dates">
-          ${i.nasc ? `<div class="pan-date"><b>Nascimento</b><span>${escapeHtml(i.nasc)}</span></div>` : ''}
-          ${i.morte ? `<div class="pan-date"><b>Morte</b><span>${escapeHtml(i.morte)}</span></div>` : ''}
-          ${nFrases ? `<div class="pan-date"><b>Frases no acervo</b><span>${nFrases}</span></div>` : ''}
-          ${i.obras.length ? `<div class="pan-date"><b>Obras catalogadas</b><span>${i.obras.length}</span></div>` : ''}
-        </div>
-        ${i.perfis.length ? `<div class="pan-tags">${i.perfis.map((x) => `<span class="discover-tag">${escapeHtml(x.name)}</span>`).join('')}</div>` : ''}
+        <dl class="pan-dates">
+          ${i.nasc ? `<div class="pan-date"><dt>Nascimento</dt><dd>${escapeHtml(i.nasc)}</dd></div>` : ''}
+          ${i.morte ? `<div class="pan-date"><dt>Morte</dt><dd>${escapeHtml(i.morte)}</dd></div>` : ''}
+          ${nFrases ? `<div class="pan-date"><dt>Frases no acervo</dt><dd>${nFrases}</dd></div>` : ''}
+          ${i.obras.length ? `<div class="pan-date"><dt>Obras catalogadas</dt><dd>${i.obras.length}</dd></div>` : ''}
+        </dl>
+        ${s ? `<div class="pan-acoes"><button class="ao-btn primary" id="panVerHistoria">Ler a história</button></div>` : ''}
       </div>
     </div>
 
@@ -764,7 +805,6 @@ function renderPanorama() {
           : ''
       }
       <div class="pan-bio">${textoBio || '<p class="pan-empty">Biografia em curadoria.</p>'}</div>
-      ${s ? `<div class="ao-maisbox"><button class="ao-btn" id="panVerHistoria">Ver em Histórias</button></div>` : ''}
     </section>
 
     ${
@@ -1005,11 +1045,10 @@ function renderObra() {
 
     <article class="obra-pagina">
       <header class="obra-cabeca">
-        <div class="obra-selo" style="background:${t.cor};">${f5svg(t.ico, 32)}</div>
         <div>
           <span class="obra-meta">${escapeHtml(t.nome)}${o.ano ? ' · ' + escapeHtml(String(o.ano)) : ''}</span>
           <h1 class="obra-h1">${escapeHtml(o.t)}</h1>
-          <p class="obra-sub">${escapeHtml(o.autor)} — ${escapeHtml(i.papelLimpo)}</p>
+          <p class="obra-sub"><button type="button" class="obra-autor-link" data-pan="${escapeHtml(o.autor)}">${escapeHtml(o.autor)}</button> · ${escapeHtml(i.papelLimpo)}</p>
         </div>
       </header>
 
@@ -1037,7 +1076,7 @@ function renderObra() {
       }
 
       <div class="obra-acoes">
-        <button class="ao-btn primary" id="obraAutor">${f5svg('pessoa', 15)} Conhecer o autor</button>
+        <button class="ao-btn primary" id="obraAutor">Conhecer ${escapeHtml(o.autor)}</button>
         <button class="ao-btn" id="obraComprar">${f5svg('carrinho', 15)} Comprar</button>
       </div>
 

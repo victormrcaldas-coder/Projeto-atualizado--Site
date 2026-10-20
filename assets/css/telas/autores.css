@@ -1,0 +1,724 @@
+/* ============================================================
+   MEMOTIVA — AUTORES & OBRAS, AUTOR E OBRA (Etapa 6 do redesign)
+   A busca do acervo (pessoas, campos e obras, com o índice de A a Z), a página do autor
+   (panorama: retrato, nome, papel, dados, biografia, cronologia, frases e obras) e a página da obra.
+   Os cartões de frase vêm de telas/frase.css. No site, entra pelo escopo das três telas
+   (ferramentas/design/escopo.py). Só tokens; nenhum hex aqui.
+   ============================================================ */
+
+/* ---------- botões das três telas: o principal cheio, o resto como texto sublinhado ---------- */
+.ao-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: none;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+.ao-btn:hover {
+  background: none;
+  color: var(--accent-text);
+}
+.ao-btn svg {
+  width: 16px;
+  height: 16px;
+}
+.pan-acoes .ao-btn.primary,
+.obra-acoes .ao-btn.primary {
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--surface-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+  text-decoration: none;
+}
+.pan-acoes .ao-btn.primary:hover,
+.obra-acoes .ao-btn.primary:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  filter: none;
+}
+.ao-maisbox {
+  justify-content: flex-start;
+  margin: var(--space-5) 0 0;
+}
+.ao-maisbox .ao-btn {
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+/* voltar: só a palavra, com a seta */
+.ao-bar {
+  margin: 0 0 var(--space-5);
+}
+.ao-back {
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.ao-back:hover {
+  border: 0;
+  color: var(--text);
+}
+
+/* ---------- a busca ---------- */
+.f5-label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.f5-search {
+  max-width: 36rem;
+  min-height: 52px;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+}
+.f5-search:focus-within {
+  border-color: var(--text);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+.f5-search svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-meta);
+}
+.f5-search input {
+  min-height: 50px;
+  font-size: var(--fs-body);
+}
+.f5-search input::placeholder {
+  color: var(--text-meta);
+}
+/* as abas e os campos: chips com o traço laranja, como os temas do Explorar */
+.ao-mode,
+.obra-filtros,
+.fim-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-1);
+  margin: 0 0 var(--space-5);
+}
+.ao-mode[role='group'] {
+  border-bottom: var(--hairline) solid var(--border);
+}
+.ao-tab {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transition: background-size var(--dur-2) var(--ease-out);
+}
+.ao-tab:hover {
+  color: var(--text);
+}
+.ao-tab.on {
+  background: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+}
+.obra-filtros .pc,
+.obra-filtros .ao-tab.on .pc {
+  margin-left: var(--space-1);
+  padding: 0;
+  background: none;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+.ao-hint {
+  max-width: 62ch;
+  margin: 0 0 var(--space-6);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.ao-hint b {
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+.ao-sub {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-7) 0 var(--space-4);
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-weight: var(--weight-regular);
+  color: var(--text);
+}
+.ao-sub::after {
+  content: '';
+  flex: 1;
+  height: var(--hairline);
+  background: var(--border);
+}
+.f5-count {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+.fim-filtro {
+  max-width: none;
+  margin: var(--space-8) 0 0;
+  padding: var(--space-5);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+}
+.fim-filtro p {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+.fim-chips {
+  margin: 0;
+}
+
+/* ---------- cartões de pessoa e de obra: verbetes com um fio no topo ---------- */
+.ao-list {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-7) var(--space-6);
+}
+.ao-card,
+.obra-card {
+  gap: var(--space-3);
+  padding: var(--space-4) 0 0;
+  border: 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.ao-card-top {
+  gap: var(--space-4);
+}
+.ao-thumb {
+  width: 64px;
+  height: 80px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+}
+.ao-thumb .avatar-fallback {
+  background: var(--frame) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  font-size: 1.125rem;
+}
+.ao-name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 1.625rem;
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  color: var(--text);
+}
+.ao-role {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+.ao-none {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+.ao-actions {
+  gap: 0 var(--space-5);
+}
+.obra-head {
+  gap: 0;
+}
+.obra-tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.obra-tipo::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+.obra-title {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.15;
+}
+.obra-author {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+.obra-desc {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- índice de A a Z ---------- */
+.ao-indice {
+  margin-top: var(--space-8);
+}
+.ao-letras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 var(--space-5);
+}
+.ao-letras button {
+  min-width: 2.5rem;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+}
+.ao-letras button:hover {
+  color: var(--accent-text);
+}
+.ao-grupo {
+  scroll-margin-top: 96px;
+  padding: var(--space-4) 0 var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+.ao-letra {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-title);
+  font-size: 2.25rem;
+  font-weight: var(--weight-light);
+  line-height: 1;
+  color: var(--text);
+}
+.ao-grupo ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 9.5rem auto;
+  column-gap: var(--space-5);
+}
+.ao-grupo li {
+  break-inside: avoid;
+}
+.ao-grupo li button {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  text-align: left;
+}
+.ao-grupo li button:hover {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* ---------- página do autor: a "sala" da Galeria ---------- */
+.pan-hero {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+  margin: 0 0 var(--space-7);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+@media (min-width: 768px) {
+  .pan-hero {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-8);
+  }
+}
+.pan-retrato {
+  margin: 0;
+}
+.pan-retrato figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+.pan-photo {
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 0;
+  background: var(--frame);
+}
+/* sem foto: uma placa café com o nome, como na home */
+.pan-photo .avatar-fallback {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--space-5);
+  background: var(--cafe-surface) !important;
+  color: var(--on-cafe);
+  font-family: var(--font-title);
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 0.95;
+  text-align: left;
+}
+.pan-id {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.pan-campos {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.pan-campos::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+.pan-name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 1.8rem + 5vw, 6rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.pan-role {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+.pan-resumo {
+  max-width: 48ch;
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.3125rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+@media (max-width: 767px) {
+  .pan-dates {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.pan-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  width: 100%;
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--border);
+}
+.pan-date dt {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+.pan-date dd {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.pan-acoes {
+  margin-top: var(--space-3);
+}
+/* o índice da página: chips com o traço, numa linha com fio embaixo */
+.pan-jump {
+  gap: 0 var(--space-1);
+  margin: 0 0 var(--space-7);
+  border-bottom: var(--hairline) solid var(--border);
+}
+.pan-jump button {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+.pan-jump button:hover {
+  background: none;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5em;
+}
+.pan-sec {
+  margin: 0 0 var(--space-8);
+}
+.pan-sec > h3 {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  font-weight: var(--weight-regular);
+}
+.pan-sec > h3::after {
+  height: var(--hairline);
+  background: var(--border);
+}
+.pan-audio .play-btn {
+  width: var(--tap);
+  height: var(--tap);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+.pan-audio .play-btn.playing {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.pan-audio .voice-select {
+  min-height: 40px;
+  padding: 0 var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+}
+.pan-audio .audio-status {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+.pan-audio {
+  gap: var(--space-3);
+  max-width: 68ch;
+  margin: 0 0 var(--space-5);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.pan-bio {
+  max-width: 68ch;
+}
+.pan-bio p {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.pan-bio p:first-child {
+  color: var(--text);
+}
+.pan-feitos {
+  max-width: 68ch;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+.pan-feitos li {
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border: 0;
+  border-bottom: var(--hairline) solid var(--border);
+  border-radius: 0;
+  background: none;
+  font-size: var(--fs-body);
+  color: var(--text);
+}
+.pan-feitos li::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 0;
+  margin-top: 0.6em;
+  background: var(--pin);
+}
+.pan-crono {
+  max-width: 68ch;
+}
+.pan-crono li {
+  gap: var(--space-5);
+  padding: var(--space-3) 0;
+  border-bottom: var(--hairline) solid var(--border);
+}
+.pan-crono b {
+  min-width: 4.5rem;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  color: var(--text);
+}
+.pan-crono span {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+.pan-empty {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+
+/* ---------- página da obra ---------- */
+/* a página usa a largura toda (as grades de frases e de obras respiram); os textos têm medida */
+.obra-pagina {
+  max-width: none;
+  margin: 0;
+}
+.obra-cabeca {
+  display: block;
+  margin: 0 0 var(--space-6);
+  padding: 0 0 var(--space-6);
+  border-bottom: var(--hairline) solid var(--border);
+}
+.obra-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  color: var(--text-meta);
+}
+.obra-meta::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+.obra-h1 {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-title);
+  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.obra-sub {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+.obra-autor-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+.obra-autor-link:hover {
+  color: var(--accent-text);
+}
+.obra-lead {
+  max-width: 60ch;
+  margin: 0 0 var(--space-7);
+  padding: 0;
+  border: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+.obra-sec {
+  margin: 0 0 var(--space-7);
+}
+.obra-sec > h2 {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: var(--weight-regular);
+}
+.obra-sec > p {
+  max-width: 68ch;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+.obra-acoes {
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  margin: var(--space-7) 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}

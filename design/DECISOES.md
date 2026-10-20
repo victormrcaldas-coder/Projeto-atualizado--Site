@@ -11,7 +11,9 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 | 2. Sistema de design                               | `redesign/02-sistema`     | Aprovada no Portão 2 (14/10/2026)                                   |
 | 3. Cabeçalho, navegação e rodapé                   | `redesign/03-navegacao`   | Aprovada no Portão 3 (14/10/2026)                                   |
 | 4. Home                                            | `redesign/04-home`        | Aprovada em 20/10/2026, com a rodada 2 do refinamento; já na `main` |
-| 5. Frase: cartão, modal, Explorar, busca e filtros | `redesign/05-frase`       | Em andamento                                                        |
+| 5. Frase: cartão, modal, Explorar, busca e filtros | `redesign/05-frase`       | Feita direto no site em 20/10/2026; já na `main`                    |
+| 6. Autores & Obras, Panorama e Obra                | `redesign/06-autores`     | Feita direto no site em 20/10/2026; já na `main`                    |
+| 7. Descubra e Histórias                            | `redesign/07-descubra`    | Próxima                                                             |
 
 **Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -281,3 +283,17 @@ Feita direto no site, sem protótipo, como o proprietário pediu. Segue o cartã
   - a busca sem resultado diz "Nenhuma frase encontrada" e sugere o que tentar.
 - **Correção de antes:** parado perto do topo, o cabeçalho encolhia e crescia sem parar e a página tremia. Agora encolhe depois de 64 px e só volta abaixo de 8 px.
 - **Teste novo:** `ferramentas/testes/frase.mjs`, com 38 casos.
+
+## Etapa 6: Autores & Obras, a página do autor e a da obra (20/10/2026)
+
+- **Autores & Obras:**
+  - a busca aparece direto. Saiu a escolha "Autor" ou "Obras / Campo", que era um clique a mais. A mesma busca acha pessoas, campos e obras, e as abas "Pessoas" e "Obras" trocam a lista;
+  - sem busca, a tela mostra os campos, algumas pessoas e o **índice de todas as pessoas, de A a Z**, com as letras no topo;
+  - a regra dos 3 cliques: menu → letra → nome.
+- **Cartões de pessoa e de obra:** verbetes com um fio no topo, como os de frase. O selo colorido da obra virou um rótulo com o tipo e o ano. Os botões são texto sublinhado; só a ação principal de cada página é cheia.
+- **Página do autor:**
+  - a "sala" da Galeria: retrato grande à esquerda (placa café com o nome, sem foto); campo, nome condensado, papel, resumo e os dados (nascimento, morte, frases, obras);
+  - "Ler a história" subiu para o topo;
+  - biografia em Literata, contribuições e cronologia em lista com fio, sem caixas.
+- **Página da obra:** tipo e ano no rótulo, título grande, o nome do autor como link, o resumo em Literata, e "Conhecer" com o nome do autor.
+- **Teste novo:** `ferramentas/testes/autores.mjs`, com 38 casos.

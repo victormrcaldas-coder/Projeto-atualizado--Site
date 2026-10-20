@@ -1,0 +1,1860 @@
+/* GERADO por ferramentas/design/escopo.py a partir de assets/css/02-base.css, assets/css/03-componentes.css, assets/css/telas/cabeca.css, assets/css/telas/autores.css.
+   Não edite aqui: mude a origem e rode o script de novo. Vale só dentro de :is(#view-autores, #view-panorama, #view-obra). */
+/* ==================== assets/css/02-base.css ==================== */
+/* ============================================================
+   MEMOTIVA — BASE (Etapa 2 do redesign)
+   Reset curto, tipografia de leitura, links, foco e acessibilidade.
+   Usa só os tokens de 01-tokens.css.
+   ============================================================ */
+:is(#view-autores, #view-panorama, #view-obra) *,
+:is(#view-autores, #view-panorama, #view-obra) *::before,
+:is(#view-autores, #view-panorama, #view-obra) *::after {
+  box-sizing: border-box;
+}
+:is(#view-autores, #view-panorama, #view-obra) {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--weight-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+:is(#view-autores, #view-panorama, #view-obra) h1,
+:is(#view-autores, #view-panorama, #view-obra) h2,
+:is(#view-autores, #view-panorama, #view-obra) h3,
+:is(#view-autores, #view-panorama, #view-obra) h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  color: var(--brand);
+  text-wrap: balance;
+}
+:is(#view-autores, #view-panorama, #view-obra) h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: var(--tracking-display);
+}
+:is(#view-autores, #view-panorama, #view-obra) h2 {
+  font-size: var(--fs-h2);
+  letter-spacing: -0.01em;
+}
+:is(#view-autores, #view-panorama, #view-obra) h3 {
+  font-size: 1.25rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) p {
+  margin: 0;
+  text-wrap: pretty;
+}
+:is(#view-autores, #view-panorama, #view-obra) img,
+:is(#view-autores, #view-panorama, #view-obra) svg,
+:is(#view-autores, #view-panorama, #view-obra) video {
+  display: block;
+  max-width: 100%;
+}
+:is(#view-autores, #view-panorama, #view-obra) img {
+  height: auto;
+}
+:is(#view-autores, #view-panorama, #view-obra) button,
+:is(#view-autores, #view-panorama, #view-obra) input,
+:is(#view-autores, #view-panorama, #view-obra) select,
+:is(#view-autores, #view-panorama, #view-obra) textarea {
+  font: inherit;
+  color: inherit;
+}
+:is(#view-autores, #view-panorama, #view-obra) button {
+  cursor: pointer;
+}
+/* ---- links: tinta do texto, sublinhado fino; o laranja aparece no sublinhado ---- */
+:is(#view-autores, #view-panorama, #view-obra) a {
+  color: var(--text);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--border-strong);
+  transition: color var(--dur-1) var(--ease-out);
+}
+:is(#view-autores, #view-panorama, #view-obra) a:hover {
+  color: var(--accent-text);
+}
+/* ---- foco: visível em todo elemento interativo ---- */
+:is(#view-autores, #view-panorama, #view-obra) :focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+:is(#view-autores, #view-panorama, #view-obra) ::selection {
+  background: var(--highlight);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) mark {
+  background: var(--highlight);
+  color: var(--text);
+  padding: 0 0.1em;
+  border-radius: var(--radius-sm);
+}
+:is(#view-autores, #view-panorama, #view-obra) hr {
+  border: 0;
+  border-top: var(--hairline) solid var(--border);
+  margin: var(--space-6) 0;
+}
+/* ---- utilitários ---- */
+:is(#view-autores, #view-panorama, #view-obra) .hidden,
+:is(#view-autores, #view-panorama, #view-obra) [hidden] {
+  display: none !important;
+}
+/* datas e nomes que não devem se partir na linha, como "(1920–1977)" */
+:is(#view-autores, #view-panorama, #view-obra) .sem-quebra {
+  white-space: nowrap;
+}
+:is(#view-autores, #view-panorama, #view-obra) .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-left: max(var(--space-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4), env(safe-area-inset-right, 0px));
+}
+@media (min-width: 640px) {
+  :is(#view-autores, #view-panorama, #view-obra) .wrap {
+    padding-left: max(var(--space-6), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--space-6), env(safe-area-inset-right, 0px));
+  }
+}
+/* rótulo pequeno em caixa alta espaçada, como as etiquetas de museu da Galeria */
+:is(#view-autores, #view-panorama, #view-obra) .eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* texto longo de leitura (biografias, histórias) */
+:is(#view-autores, #view-panorama, #view-obra) .prose {
+  max-width: var(--measure);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+}
+:is(#view-autores, #view-panorama, #view-obra) .prose p + p {
+  margin-top: 1em;
+}
+
+/* ==================== assets/css/03-componentes.css ==================== */
+/* ============================================================
+   MEMOTIVA — COMPONENTES BASE (Etapa 2 do redesign)
+   Usam as classes que o site e o JS já usam (.quote-card, .expand-*, .chip…),
+   para as próximas etapas só ligarem este arquivo, sem trocar a marcação.
+   A navegação (cabeçalho, menu, barra inferior, rodapé) fica em telas/navegacao.css.
+   Classes novas, que ainda não existem no site, estão marcadas com "(nova)".
+   Só tokens de 01-tokens.css; nenhum hex aqui.
+   ============================================================ */
+/* =========================================================
+   1. A FRASE — um estilo só para todas as frases do acervo
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .quote-text,
+:is(#view-autores, #view-panorama, #view-obra) /* (nova) uso genérico: autor,
+:is(#view-autores, #view-panorama, #view-obra) obra,
+:is(#view-autores, #view-panorama, #view-obra) Descubra,
+:is(#view-autores, #view-panorama, #view-obra) Histórias */
+.quote-card-text,
+:is(#view-autores, #view-panorama, #view-obra) .expand-text,
+:is(#view-autores, #view-panorama, #view-obra) .quote-hero-text,
+:is(#view-autores, #view-panorama, #view-obra) .quote-poster-text /* (nova) a frase sozinha,
+:is(#view-autores, #view-panorama, #view-obra) como cartaz: frase ao acaso e encerramento */ {
+  margin: 0;
+  font-family: var(--quote-font);
+  font-weight: var(--quote-weight);
+  font-style: var(--quote-style);
+  color: var(--quote-color);
+  line-height: var(--quote-leading);
+  letter-spacing: var(--quote-tracking);
+  font-optical-sizing: auto;
+  text-wrap: pretty;
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-text,
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-text {
+  font-size: var(--quote-card);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-text {
+  font-size: var(--quote-modal);
+  max-width: var(--measure-quote);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-hero-text {
+  font-size: var(--quote-hero);
+  max-width: 34ch;
+}
+/* um único degrau menor para frase longa: o JS marca data-comprimento="longa" (mais de 140 caracteres) */
+:is(#view-autores, #view-panorama, #view-obra) .quote-text[data-comprimento='longa'],
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-text[data-comprimento='longa'] {
+  font-size: var(--quote-card-long);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-text[data-comprimento='longa'] {
+  font-size: var(--quote-modal-long);
+  max-width: 40ch;
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-hero-text[data-comprimento='longa'] {
+  font-size: var(--quote-hero-long);
+  max-width: 36ch;
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-poster-text {
+  font-size: var(--quote-poster);
+  max-width: 21ch;
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-poster-text[data-comprimento='longa'] {
+  font-size: var(--quote-poster-long);
+  max-width: 32ch;
+}
+/* aspa pendurada nos outros navegadores: a aspa de abertura vem num span próprio (nova) */
+:is(#view-autores, #view-panorama, #view-obra) .aspa-abre {
+  margin-left: -0.42em;
+}
+/* no celular a margem lateral é estreita demais para pendurar a aspa: ela volta para dentro da linha */
+@media (max-width: 639px) {
+  :is(#view-autores, #view-panorama, #view-obra) .aspa-abre {
+    margin-left: 0;
+  }
+}
+/* o original, quando existe: mesma família, itálico pequeno, no idioma certo (lang no elemento) */
+:is(#view-autores, #view-panorama, #view-obra) .quote-original {
+  margin: 0;
+  font-family: var(--font-title), var(--font-original-extra);
+  font-style: italic;
+  font-size: var(--quote-original);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+/* =========================================================
+   2. BOTÕES E LINKS
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--text);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn:disabled,
+:is(#view-autores, #view-panorama, #view-obra) .btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* principal: espresso cheio (no escuro, linho). O nome antigo continua valendo. */
+:is(#view-autores, #view-panorama, #view-obra) .btn-primary,
+:is(#view-autores, #view-panorama, #view-obra) .btn-coral {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn-primary:hover,
+:is(#view-autores, #view-panorama, #view-obra) .btn-coral:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+/* secundário: contorno */
+:is(#view-autores, #view-panorama, #view-obra) .btn-ghost:hover {
+  background: var(--surface);
+}
+/* texto: só a palavra, sublinhado laranja fino */
+:is(#view-autores, #view-panorama, #view-obra) .btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn-text:hover {
+  color: var(--accent-text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn-sm {
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn-lg {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-size: var(--fs-body);
+}
+/* botão só com ícone: 44 × 44, sem caixa */
+:is(#view-autores, #view-panorama, #view-obra) .btn-icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn-icon:hover {
+  background: var(--surface);
+}
+:is(#view-autores, #view-panorama, #view-obra) .btn-icon svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   3. CAMPOS
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .form-field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-hint {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-input,
+:is(#view-autores, #view-panorama, #view-obra) .search-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-input::placeholder,
+:is(#view-autores, #view-panorama, #view-obra) .search-input::placeholder {
+  color: var(--text-meta);
+  opacity: 1;
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-input:focus-visible,
+:is(#view-autores, #view-panorama, #view-obra) .search-input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-input[aria-invalid='true'] {
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .form-error {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) textarea.form-input {
+  min-height: 120px;
+  line-height: var(--lh-body);
+  resize: vertical;
+}
+/* =========================================================
+   4. CHIPS E FILTROS
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .chip-row,
+:is(#view-autores, #view-panorama, #view-obra) .filter-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: var(--space-1);
+}
+:is(#view-autores, #view-panorama, #view-obra) .chip-row::-webkit-scrollbar,
+:is(#view-autores, #view-panorama, #view-obra) .filter-row::-webkit-scrollbar {
+  display: none;
+}
+:is(#view-autores, #view-panorama, #view-obra) .chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background-size var(--dur-2) var(--ease-out);
+}
+:is(#view-autores, #view-panorama, #view-obra) .chip:hover {
+  color: var(--text);
+}
+/* ativo: texto na tinta e o traço laranja curto, como no menu */
+:is(#view-autores, #view-panorama, #view-obra) .chip.active,
+:is(#view-autores, #view-panorama, #view-obra) .chip[aria-pressed='true'] {
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
+}
+:is(#view-autores, #view-panorama, #view-obra) .chip-count {
+  color: inherit;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+}
+:is(#view-autores, #view-panorama, #view-obra) .chip-arrow {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: none;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .chip-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+:is(#view-autores, #view-panorama, #view-obra) .filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .filter-label {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-meta);
+}
+/* =========================================================
+   5. CARTÃO DE FRASE (Explorar e listas)
+   Sem rotação, sem fita: todos iguais, a frase manda.
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-7) var(--space-6);
+  align-items: start;
+}
+/* sem caixa nem fundo: um fio no topo, como verbete de livro */
+:is(#view-autores, #view-panorama, #view-obra) .quote-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) 0 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  background: none;
+  transform: none !important; /* desliga a rotação que o template antigo põe inline */
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-card:hover {
+  border-top-color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-tape {
+  display: none;
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+/* o laranja como detalhe: um ponto pequeno antes da categoria */
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .avatar-frame {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+}
+:is(#view-autores, #view-panorama, #view-obra) .avatar-frame img,
+:is(#view-autores, #view-panorama, #view-obra) .expand-avatar img,
+:is(#view-autores, #view-panorama, #view-obra) .prancha-foto img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sem foto: iniciais em serifa, no tom do papel (o template antigo põe uma cor viva inline) */
+:is(#view-autores, #view-panorama, #view-obra) .avatar-fallback {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  background: var(--frame) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .author-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-regular);
+  color: var(--brand);
+}
+:is(#view-autores, #view-panorama, #view-obra) .heart-btn,
+:is(#view-autores, #view-panorama, #view-obra) .expand-act {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .heart-btn:hover,
+:is(#view-autores, #view-panorama, #view-obra) .expand-act:hover {
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .heart-btn.active,
+:is(#view-autores, #view-panorama, #view-obra) .expand-act.liked,
+:is(#view-autores, #view-panorama, #view-obra) .heart-btn[aria-pressed='true'],
+:is(#view-autores, #view-panorama, #view-obra) .expand-act[aria-pressed='true'] {
+  color: var(--accent-text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .heart-btn[aria-pressed='true'] svg,
+:is(#view-autores, #view-panorama, #view-obra) .expand-act[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+:is(#view-autores, #view-panorama, #view-obra) .heart-btn svg,
+:is(#view-autores, #view-panorama, #view-obra) .expand-act svg {
+  width: 20px;
+  height: 20px;
+}
+/* =========================================================
+   6. FRASE AMPLIADA (janela)
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .expand-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: none;
+  place-items: center;
+  padding: var(--space-4);
+  background: var(--overlay);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-overlay.show {
+  display: grid;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-quote {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-page);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-close svg {
+  width: 18px;
+  height: 18px;
+}
+/* a "sala" da Galeria: no computador, o retrato ocupa a coluna da esquerda e o texto de parede a da direita.
+   .expand-foot e .expand-ident-wrap viram "transparentes" para o retrato subir para a primeira coluna
+   sem mudar a marcação. */
+:is(#view-autores, #view-panorama, #view-obra) .expand-inner {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-foot {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: var(--space-4) var(--space-4);
+  align-items: start;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+@media (min-width: 900px) {
+  :is(#view-autores, #view-panorama, #view-obra) .expand-inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-auto-flow: dense;
+    gap: var(--space-4) var(--space-7);
+    padding: 0 var(--space-7) 0 0;
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-inner > * {
+    grid-column: 2;
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-inner > .expand-cat {
+    padding-top: var(--space-8);
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-foot {
+    display: contents;
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-foot > * {
+    grid-column: 2;
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-foot > .expand-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    align-self: stretch;
+    width: 100%;
+    min-height: 520px;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-ident-wrap {
+    padding-top: var(--space-4);
+    border-top: var(--hairline) solid var(--border);
+  }
+  :is(#view-autores, #view-panorama, #view-obra) .expand-foot > .expand-acts {
+    grid-column: 2;
+    padding-bottom: var(--space-5);
+  }
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-cat::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-avatar {
+  position: relative;
+  width: 72px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+  cursor: zoom-in;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-avatar .avatar-fallback {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-ident-wrap {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-ident {
+  display: grid;
+  gap: var(--space-1);
+}
+/* o nome do autor: Noto Serif Display condensada, como os nomes da Galeria */
+:is(#view-autores, #view-panorama, #view-obra) .expand-author {
+  font-family: var(--font-title);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--brand);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-src {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-src.src-alerta {
+  color: var(--accent-text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-src.src-nota {
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-know {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.4em;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-know:hover {
+  color: var(--accent-text);
+  text-decoration-color: currentColor;
+}
+:is(#view-autores, #view-panorama, #view-obra) .expand-acts {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid var(--border);
+}
+/* prancha (nova): o retrato da abertura, com o disco laranja da Florada atrás (só no claro) */
+:is(#view-autores, #view-panorama, #view-obra) .prancha {
+  position: relative;
+  margin: 0;
+  isolation: isolate;
+}
+:is(#view-autores, #view-panorama, #view-obra) .prancha::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -9%;
+  left: -14%;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--mass);
+}
+:is(#view-autores, #view-panorama, #view-obra) .prancha-foto {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: var(--frame);
+  cursor: zoom-in;
+}
+:is(#view-autores, #view-panorama, #view-obra) .prancha-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+:is(#view-autores, #view-panorama, #view-obra) .prancha figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+/* faixa da fonte (nova), herdada da Florada: roxo com texto linho, só no claro.
+   No escuro vira o quadro escuro da Galeria. */
+:is(#view-autores, #view-panorama, #view-obra) .faixa-fonte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--brand-surface);
+  color: var(--on-brand);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-fonte b {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--on-brand-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-fonte .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-fonte .conferida {
+  color: var(--on-brand-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-fonte a,
+:is(#view-autores, #view-panorama, #view-obra) .faixa-fonte .btn-text {
+  margin-left: auto;
+  color: var(--on-brand);
+  text-decoration-color: var(--on-brand-meta);
+}
+/* salas de cor (novas): café, ocre e roxo, para dar peso a uma seção sem caixa nem sombra.
+   Dentro de uma sala, a tinta, as linhas, o foco, o botão principal e a frase passam para as cores
+   da sala: os componentes de dentro (etiqueta, botões, links, cartões) se ajustam sozinhos. */
+:is(#view-autores, #view-panorama, #view-obra) .faixa-cafe,
+:is(#view-autores, #view-panorama, #view-obra) .faixa-ocre,
+:is(#view-autores, #view-panorama, #view-obra) .faixa-roxa {
+  padding-block: var(--space-7);
+  background: var(--bg);
+  color: var(--text);
+  --brand: var(--text);
+  --text-secondary: var(--text);
+  --quote-color: var(--text);
+  --focus-ring: var(--text);
+  --pin: var(--text-meta);
+  --border: color-mix(in srgb, var(--text) 24%, transparent);
+  --border-strong: color-mix(in srgb, var(--text) 60%, transparent);
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-cafe {
+  --bg: var(--cafe-surface);
+  --text: var(--on-cafe);
+  --text-meta: var(--on-cafe-meta);
+  --accent-text: var(--on-cafe-accent);
+  --surface-strong: var(--on-cafe);
+  --text-on-strong: var(--cafe-surface);
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-ocre {
+  --bg: var(--ochre-surface);
+  --text: var(--on-ochre);
+  --text-meta: var(--on-ochre-meta);
+  --accent-text: var(--on-ochre-accent);
+}
+:is(#view-autores, #view-panorama, #view-obra) .faixa-roxa {
+  --bg: var(--brand-surface);
+  --text: var(--on-brand);
+  --text-meta: var(--on-brand-meta);
+  --accent-text: var(--on-brand-accent);
+  --surface-strong: var(--on-brand);
+  --text-on-strong: var(--brand-surface);
+}
+/* etiqueta da fonte, herdada da Galeria: Obra · Original · Imagem (nova) */
+:is(#view-autores, #view-panorama, #view-obra) .quote-label {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+  font-size: var(--fs-small);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-label dt {
+  padding-top: 0.25em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-label dd {
+  margin: 0;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .quote-label .obra {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .conferida {
+  display: block;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--accent-text);
+}
+/* =========================================================
+   7. ESTADOS: vazio, carregando, erro, aviso
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .empty-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 44ch;
+  padding: var(--space-7) 0;
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .empty-state svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: var(--space-2);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .empty-state h3 {
+  font-size: 1.375rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .empty-state p {
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .state-loading {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 320px;
+  padding: var(--space-7) 0;
+  color: var(--text-meta);
+  font-size: var(--fs-small);
+}
+:is(#view-autores, #view-panorama, #view-obra) .state-loading::after {
+  content: '';
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0 30%, var(--border) 30% 100%);
+  background-size: 200% 100%;
+  animation: carregando 1.4s var(--ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(#view-autores, #view-panorama, #view-obra) .state-loading::after {
+    animation: none;
+  }
+}
+:is(#view-autores, #view-panorama, #view-obra) .state-error {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  max-width: 52ch;
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+:is(#view-autores, #view-panorama, #view-obra) .state-error strong {
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: var(--weight-medium);
+}
+:is(#view-autores, #view-panorama, #view-obra) .state-error p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+}
+:is(#view-autores, #view-panorama, #view-obra) .toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  max-width: min(420px, calc(100vw - 2 * var(--space-4)));
+  padding: var(--space-3) var(--space-5);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow-float);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+:is(#view-autores, #view-panorama, #view-obra) .toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (min-width: 1024px) {
+  :is(#view-autores, #view-panorama, #view-obra) .toast {
+    bottom: var(--space-6);
+  }
+}
+/* =========================================================
+   8. AVALIAÇÃO (só no guia por enquanto) (nova)
+   ========================================================= */
+:is(#view-autores, #view-panorama, #view-obra) .rating {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating-scale {
+  display: flex;
+  gap: var(--space-1);
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating label {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  cursor: pointer;
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating label:hover {
+  background: var(--surface);
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating input:checked + label {
+  background: var(--surface-strong);
+  border-color: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating input:focus-visible + label {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+:is(#view-autores, #view-panorama, #view-obra) .rating-ends {
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(5 * var(--tap) + 4 * var(--space-1));
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+
+/* ==================== assets/css/telas/cabeca.css ==================== */
+/* ============================================================
+   MEMOTIVA — CABEÇA DAS TELAS (redesign, a partir da Etapa 5)
+   O começo de cada tela redesenhada: rótulo com o ponto apricot, título em serifa e subtítulo.
+   Entra no escopo de cada tela por ferramentas/design/escopo.py. Só tokens; nenhum hex aqui.
+   ============================================================ */
+:is(#view-autores, #view-panorama, #view-obra) .wrap.section {
+  padding-block: var(--space-7) var(--space-9);
+}
+:is(#view-autores, #view-panorama, #view-obra) .section-head {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 46rem;
+  margin: 0 0 var(--space-6);
+}
+/* o rótulo com o ponto apricot, o mesmo da home */
+:is(#view-autores, #view-panorama, #view-obra) .section-head .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .section-head .eyebrow::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .section-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--fs-h1);
+  font-weight: var(--weight-regular);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .section-sub {
+  margin: 0;
+  max-width: 52ch;
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+
+/* ==================== assets/css/telas/autores.css ==================== */
+/* ============================================================
+   MEMOTIVA — AUTORES & OBRAS, AUTOR E OBRA (Etapa 6 do redesign)
+   A busca do acervo (pessoas, campos e obras, com o índice de A a Z), a página do autor
+   (panorama: retrato, nome, papel, dados, biografia, cronologia, frases e obras) e a página da obra.
+   Os cartões de frase vêm de telas/frase.css. No site, entra pelo escopo das três telas
+   (ferramentas/design/escopo.py). Só tokens; nenhum hex aqui.
+   ============================================================ */
+/* ---------- botões das três telas: o principal cheio, o resto como texto sublinhado ---------- */
+:is(#view-autores, #view-panorama, #view-obra) .ao-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: none;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-btn:hover {
+  background: none;
+  color: var(--accent-text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-btn svg {
+  width: 16px;
+  height: 16px;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-acoes .ao-btn.primary,
+:is(#view-autores, #view-panorama, #view-obra) .obra-acoes .ao-btn.primary {
+  padding: 0 var(--space-5);
+  border: var(--hairline) solid var(--surface-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+  text-decoration: none;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-acoes .ao-btn.primary:hover,
+:is(#view-autores, #view-panorama, #view-obra) .obra-acoes .ao-btn.primary:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  filter: none;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-maisbox {
+  justify-content: flex-start;
+  margin: var(--space-5) 0 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-maisbox .ao-btn {
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+/* voltar: só a palavra, com a seta */
+:is(#view-autores, #view-panorama, #view-obra) .ao-bar {
+  margin: 0 0 var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-back {
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-back:hover {
+  border: 0;
+  color: var(--text);
+}
+/* ---------- a busca ---------- */
+:is(#view-autores, #view-panorama, #view-obra) .f5-label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .f5-search {
+  max-width: 36rem;
+  min-height: 52px;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: 0 var(--space-4);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-muted);
+}
+:is(#view-autores, #view-panorama, #view-obra) .f5-search:focus-within {
+  border-color: var(--text);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+:is(#view-autores, #view-panorama, #view-obra) .f5-search svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .f5-search input {
+  min-height: 50px;
+  font-size: var(--fs-body);
+}
+:is(#view-autores, #view-panorama, #view-obra) .f5-search input::placeholder {
+  color: var(--text-meta);
+}
+/* as abas e os campos: chips com o traço laranja, como os temas do Explorar */
+:is(#view-autores, #view-panorama, #view-obra) .ao-mode,
+:is(#view-autores, #view-panorama, #view-obra) .obra-filtros,
+:is(#view-autores, #view-panorama, #view-obra) .fim-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-1);
+  margin: 0 0 var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-mode[role='group'] {
+  border-bottom: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-tab {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+  transition: background-size var(--dur-2) var(--ease-out);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-tab:hover {
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-tab.on {
+  background: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: calc(100% - 2 * var(--space-2)) 2px;
+  background-position: var(--space-2) calc(100% - 8px);
+  background-repeat: no-repeat;
+  color: var(--text);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-filtros .pc,
+:is(#view-autores, #view-panorama, #view-obra) .obra-filtros .ao-tab.on .pc {
+  margin-left: var(--space-1);
+  padding: 0;
+  background: none;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-hint {
+  max-width: 62ch;
+  margin: 0 0 var(--space-6);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-hint b {
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-sub {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-7) 0 var(--space-4);
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-weight: var(--weight-regular);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-sub::after {
+  content: '';
+  flex: 1;
+  height: var(--hairline);
+  background: var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .f5-count {
+  margin: 0 0 var(--space-5);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .fim-filtro {
+  max-width: none;
+  margin: var(--space-8) 0 0;
+  padding: var(--space-5);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface);
+}
+:is(#view-autores, #view-panorama, #view-obra) .fim-filtro p {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-semibold);
+}
+:is(#view-autores, #view-panorama, #view-obra) .fim-chips {
+  margin: 0;
+}
+/* ---------- cartões de pessoa e de obra: verbetes com um fio no topo ---------- */
+:is(#view-autores, #view-panorama, #view-obra) .ao-list {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-7) var(--space-6);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-card,
+:is(#view-autores, #view-panorama, #view-obra) .obra-card {
+  gap: var(--space-3);
+  padding: var(--space-4) 0 0;
+  border: 0;
+  border-top: var(--hairline) solid var(--border-strong);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-card-top {
+  gap: var(--space-4);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-thumb {
+  width: 64px;
+  height: 80px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--frame);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-thumb .avatar-fallback {
+  background: var(--frame) !important;
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-weight: var(--weight-regular);
+  font-size: 1.125rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 1.625rem;
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 1;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-role {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-none {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-actions {
+  gap: 0 var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-head {
+  gap: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-tipo::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-title {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-weight: var(--weight-regular);
+  line-height: 1.15;
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-author {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-desc {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+/* ---------- índice de A a Z ---------- */
+:is(#view-autores, #view-panorama, #view-obra) .ao-indice {
+  margin-top: var(--space-8);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-letras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-letras button {
+  min-width: 2.5rem;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-letras button:hover {
+  color: var(--accent-text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-grupo {
+  scroll-margin-top: 96px;
+  padding: var(--space-4) 0 var(--space-5);
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-letra {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-title);
+  font-size: 2.25rem;
+  font-weight: var(--weight-light);
+  line-height: 1;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-grupo ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 9.5rem auto;
+  column-gap: var(--space-5);
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-grupo li {
+  break-inside: avoid;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-grupo li button {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  text-align: left;
+}
+:is(#view-autores, #view-panorama, #view-obra) .ao-grupo li button:hover {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+/* ---------- página do autor: a "sala" da Galeria ---------- */
+:is(#view-autores, #view-panorama, #view-obra) .pan-hero {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+  margin: 0 0 var(--space-7);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+@media (min-width: 768px) {
+  :is(#view-autores, #view-panorama, #view-obra) .pan-hero {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-8);
+  }
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-retrato {
+  margin: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-retrato figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-photo {
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 0;
+  background: var(--frame);
+}
+/* sem foto: uma placa café com o nome, como na home */
+:is(#view-autores, #view-panorama, #view-obra) .pan-photo .avatar-fallback {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--space-5);
+  background: var(--cafe-surface) !important;
+  color: var(--on-cafe);
+  font-family: var(--font-title);
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 0.95;
+  text-align: left;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-id {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-campos {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-campos::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 1.8rem + 5vw, 6rem);
+  font-weight: var(--weight-light);
+  font-variation-settings: 'wdth' var(--name-wdth);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-role {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-resumo {
+  max-width: 48ch;
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.3125rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+@media (max-width: 767px) {
+  :is(#view-autores, #view-panorama, #view-obra) .pan-dates {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  width: 100%;
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-date dt {
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-date dd {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-title);
+  font-size: 1.375rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-acoes {
+  margin-top: var(--space-3);
+}
+/* o índice da página: chips com o traço, numa linha com fio embaixo */
+:is(#view-autores, #view-panorama, #view-obra) .pan-jump {
+  gap: 0 var(--space-1);
+  margin: 0 0 var(--space-7);
+  border-bottom: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-jump button {
+  min-height: var(--tap);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-medium);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-jump button:hover {
+  background: none;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5em;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-sec {
+  margin: 0 0 var(--space-8);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-sec > h3 {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-title);
+  font-size: var(--fs-h2);
+  font-weight: var(--weight-regular);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-sec > h3::after {
+  height: var(--hairline);
+  background: var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-audio .play-btn {
+  width: var(--tap);
+  height: var(--tap);
+  background: var(--surface-strong);
+  color: var(--text-on-strong);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-audio .play-btn.playing {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-audio .voice-select {
+  min-height: 40px;
+  padding: 0 var(--space-3);
+  border: var(--hairline) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-audio .audio-status {
+  font-size: var(--fs-small);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-audio {
+  gap: var(--space-3);
+  max-width: 68ch;
+  margin: 0 0 var(--space-5);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-bio {
+  max-width: 68ch;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-bio p {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-bio p:first-child {
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-feitos {
+  max-width: 68ch;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-feitos li {
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border: 0;
+  border-bottom: var(--hairline) solid var(--border);
+  border-radius: 0;
+  background: none;
+  font-size: var(--fs-body);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-feitos li::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 0;
+  margin-top: 0.6em;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-crono {
+  max-width: 68ch;
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-crono li {
+  gap: var(--space-5);
+  padding: var(--space-3) 0;
+  border-bottom: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-crono b {
+  min-width: 4.5rem;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: var(--weight-regular);
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-crono span {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .pan-empty {
+  font-size: var(--fs-small);
+  font-weight: var(--weight-regular);
+  color: var(--text-meta);
+}
+/* ---------- página da obra ---------- */
+/* a página usa a largura toda (as grades de frases e de obras respiram); os textos têm medida */
+:is(#view-autores, #view-panorama, #view-obra) .obra-pagina {
+  max-width: none;
+  margin: 0;
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-cabeca {
+  display: block;
+  margin: 0 0 var(--space-6);
+  padding: 0 0 var(--space-6);
+  border-bottom: var(--hairline) solid var(--border);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  color: var(--text-meta);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-meta::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--pin);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-h1 {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-title);
+  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-sub {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-autor-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-autor-link:hover {
+  color: var(--accent-text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-lead {
+  max-width: 60ch;
+  margin: 0 0 var(--space-7);
+  padding: 0;
+  border: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-sec {
+  margin: 0 0 var(--space-7);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-sec > h2 {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: var(--weight-regular);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-sec > p {
+  max-width: 68ch;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+:is(#view-autores, #view-panorama, #view-obra) .obra-acoes {
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  margin: var(--space-7) 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+@keyframes carregando {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
