@@ -318,7 +318,121 @@
 
 /* =========================================================
    D. AUTORES — galeria de retratos (parede de linho)
+   Todos os retratos na mesma proporção e altura, rosto no mesmo terço; o próximo retrato
+   aparece pela metade na borda, de propósito, para mostrar que a fila continua.
    ========================================================= */
+.galeria-trilho {
+  --recuo: max(var(--space-4), env(safe-area-inset-left, 0px));
+  --largura: clamp(12rem, 58vw, 16.5rem);
+  --vao: var(--space-5);
+  display: flex;
+  gap: var(--vao);
+  margin: 0;
+  /* folga embaixo para o contorno de foco não passar por cima das legendas */
+  padding: 0 var(--recuo) var(--space-3);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--recuo);
+  /* a barra nativa sai: o progresso e as setas abaixo fazem esse papel */
+  scrollbar-width: none;
+}
+.galeria-trilho::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 640px) {
+  .galeria-trilho {
+    --recuo: max(var(--space-6), calc((100% - var(--maxw)) / 2 + var(--space-6)));
+    --vao: var(--space-6);
+  }
+}
+.galeria-trilho.arrastando {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+.galeria-trilho:focus-visible {
+  outline-offset: -2px;
+}
+.retrato {
+  flex: none;
+  width: var(--largura);
+  scroll-snap-align: start;
+}
+.retrato a {
+  display: grid;
+  color: inherit;
+  text-decoration: none;
+}
+.retrato .quadro {
+  aspect-ratio: 4 / 5;
+}
+.retrato .quadro img {
+  transition: transform var(--dur-3) var(--ease-out);
+}
+.retrato .legenda {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  padding-top: var(--space-3);
+}
+.retrato .legenda .nome-condensado {
+  font-size: 1.5rem;
+  line-height: 1.05;
+  color: var(--brand);
+  text-wrap: balance;
+}
+.retrato .legenda span {
+  font-size: var(--fs-meta);
+  line-height: 1.4;
+  color: var(--text-meta);
+}
+.retrato .contagem {
+  margin-top: var(--space-1);
+  font-variant-numeric: tabular-nums;
+}
+.retrato a:hover .legenda .nome-condensado,
+.retrato a:focus-visible .legenda .nome-condensado {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .retrato a:hover .quadro img {
+    transform: scale(1.025);
+  }
+}
+/* navegação: traço de progresso, posição e setas, alinhados à coluna do texto */
+.galeria-navegacao {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+.galeria-progresso {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+}
+.galeria-progresso i {
+  position: absolute;
+  inset-block: 0;
+  left: var(--inicio, 0%);
+  width: var(--tamanho, 30%);
+  background: var(--text);
+  transition: left var(--dur-1) linear;
+}
+.galeria-posicao {
+  min-width: 7ch;
+  margin: 0;
+  text-align: right;
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 .galeria-controles {
   display: flex;
   gap: var(--space-2);
@@ -330,89 +444,8 @@
   opacity: 0.35;
   cursor: default;
 }
-.galeria-trilho {
-  --recuo: max(var(--space-4), env(safe-area-inset-left, 0px));
-  display: flex;
-  align-items: stretch;
-  gap: var(--space-5);
-  margin: 0;
-  padding: 0 var(--recuo) var(--space-4);
-  list-style: none;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  scroll-padding-inline: var(--recuo);
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
-}
-@media (min-width: 640px) {
-  .galeria-trilho {
-    --recuo: max(var(--space-6), calc((100% - var(--maxw)) / 2 + var(--space-6)));
-    gap: var(--space-6);
-  }
-}
-.galeria-trilho:focus-visible {
-  outline-offset: -2px;
-}
-.retrato {
-  flex: none;
-  width: var(--largura);
-  scroll-snap-align: start;
-}
-.retrato.tam-g {
-  --largura: clamp(13.5rem, 56vw, 21rem);
-}
-.retrato.tam-m {
-  --largura: clamp(11rem, 46vw, 17rem);
-}
-.retrato.tam-p {
-  --largura: clamp(9.5rem, 40vw, 13.5rem);
-}
-.retrato a {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  color: inherit;
-  text-decoration: none;
-}
-/* os quadros se alinham pela base, como pendurados na mesma altura de olhar */
-.retrato .moldura {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-}
-.retrato .quadro {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-}
-.retrato .legenda {
-  display: grid;
-  align-content: start;
-  gap: 2px;
-  min-height: 7.5rem;
-  padding-top: var(--space-3);
-}
-.retrato .legenda .nome-condensado {
-  font-size: 1.5rem;
-  line-height: 1.05;
-  color: var(--brand);
-}
-.retrato .legenda span {
-  font-size: var(--fs-meta);
-  line-height: 1.4;
-  color: var(--text-meta);
-}
-.retrato .contagem {
-  font-variant-numeric: tabular-nums;
-}
-.retrato a:hover .legenda .nome-condensado,
-.retrato a:focus-visible .legenda .nome-condensado {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.14em;
-}
 .galeria-pe {
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 /* =========================================================

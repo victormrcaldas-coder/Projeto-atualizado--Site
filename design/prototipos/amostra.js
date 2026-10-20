@@ -1,9 +1,9 @@
 /* MeMotiva · amostra de conteúdo real para os protótipos do redesign.
-   GERADO por ferramentas/design/amostra.mjs em 2026-10-14. Não edite à mão:
+   GERADO por ferramentas/design/amostra.mjs em 2026-10-20. Não edite à mão:
    rode o script de novo. Frases, fontes, originais, papéis e fotos vêm do estado final do site;
    autor e licença das fotos vêm da API do Wikimedia Commons. */
 window.AMOSTRA = {
-  "geradoEm": "2026-10-14",
+  "geradoEm": "2026-10-20",
   "commons": "https://commons.wikimedia.org/wiki/Special:FilePath/",
   "frases": [
     {
@@ -442,6 +442,14 @@ window.AMOSTRA = {
         "enquadramentoLargo": "center 24%"
       }
     },
+    "William Shakespeare": {
+      "papel": "Dramaturgo inglês (1564–1616)",
+      "foto": {
+        "arquivo": "Shakespeare.jpg",
+        "enquadramento": "center 22%",
+        "enquadramentoLargo": "center 26%"
+      }
+    },
     "Fiódor Dostoiévski": {
       "papel": "Escritor russo (1821–1881)",
       "foto": {
@@ -450,10 +458,13 @@ window.AMOSTRA = {
         "enquadramentoLargo": "center 24%"
       }
     },
-    "Cora Coralina": {
-      "papel": "Poeta e doceira (1889–1985)",
-      "foto": null,
-      "fotoQuebrada": "Cora Coralina 1984.jpg"
+    "Victor Hugo": {
+      "papel": "Escritor francês (1802–1885)",
+      "foto": {
+        "arquivo": "Victor Hugo by Étienne Carjat 1876 - full.jpg",
+        "enquadramento": "center 20%",
+        "enquadramentoLargo": "center 24%"
+      }
     },
     "Marie Curie": {
       "papel": "Física e química polonesa (1867–1934)",
@@ -463,9 +474,21 @@ window.AMOSTRA = {
         "enquadramentoLargo": "center 30%"
       }
     },
-    "Carlos Drummond de Andrade": {
-      "papel": "Poeta brasileiro (1902–1987)",
-      "foto": null
+    "Helen Keller": {
+      "papel": "Escritora e ativista (1880–1968)",
+      "foto": {
+        "arquivo": "Helen KellerA.jpg",
+        "enquadramento": "center 22%",
+        "enquadramentoLargo": "center 28%"
+      }
+    },
+    "Oscar Wilde": {
+      "papel": "Escritor irlandês (1854–1900)",
+      "foto": {
+        "arquivo": "Oscar Wilde portrait.jpg",
+        "enquadramento": "center 20%",
+        "enquadramentoLargo": "center 24%"
+      }
     },
     "Jane Austen": {
       "papel": "Escritora inglesa (1775–1817)",
@@ -669,13 +692,13 @@ window.AMOSTRA = {
       "licenca": "Public domain",
       "pagina": "https://commons.wikimedia.org/wiki/File%3AAtelier_de_Nicolas_de_Largilli%C3%A8re%2C_portrait_de_Voltaire%2C_d%C3%A9tail_(mus%C3%A9e_Carnavalet)_-002.jpg"
     },
-    "Jane Austen, from A Memoir of Jane Austen (1870).jpg": {
+    "Shakespeare.jpg": {
       "existe": true,
-      "largura": 4862,
-      "altura": 8312,
-      "autor": "From a watercolour by James Andrews of Maidenhead based on an unfinished work by Cassandra Austen. Engraving by William Home Lizars.",
+      "largura": 2400,
+      "altura": 3059,
+      "autor": "Attributed to John Taylor",
       "licenca": "Public domain",
-      "pagina": "https://commons.wikimedia.org/wiki/File%3AJane_Austen%2C_from_A_Memoir_of_Jane_Austen_(1870).jpg"
+      "pagina": "https://commons.wikimedia.org/wiki/File%3AShakespeare.jpg"
     },
     "Vasily Perov - Портрет Ф.М.Достоевского - Google Art Project.jpg": {
       "existe": true,
@@ -685,6 +708,14 @@ window.AMOSTRA = {
       "licenca": "Public domain",
       "pagina": "https://commons.wikimedia.org/wiki/File%3AVasily_Perov_-_%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_-_Google_Art_Project.jpg"
     },
+    "Victor Hugo by Étienne Carjat 1876 - full.jpg": {
+      "existe": true,
+      "largura": 2140,
+      "altura": 2632,
+      "autor": "Étienne Carjat",
+      "licenca": "Public domain",
+      "pagina": "https://commons.wikimedia.org/wiki/File%3AVictor_Hugo_by_%C3%89tienne_Carjat_1876_-_full.jpg"
+    },
     "Marie Curie c1920.jpg": {
       "existe": true,
       "largura": 1460,
@@ -693,13 +724,21 @@ window.AMOSTRA = {
       "licenca": "Public domain",
       "pagina": "https://commons.wikimedia.org/wiki/File%3AMarie_Curie_c1920.jpg"
     },
-    "Hypatia portrait.png": {
+    "Oscar Wilde portrait.jpg": {
       "existe": true,
-      "largura": 1176,
-      "altura": 1722,
-      "autor": "Jules Maurice Gaspard",
+      "largura": 2190,
+      "altura": 3291,
+      "autor": "Napoleon Sarony",
       "licenca": "Public domain",
-      "pagina": "https://commons.wikimedia.org/wiki/File%3AHypatia_portrait.png"
+      "pagina": "https://commons.wikimedia.org/wiki/File%3AOscar_Wilde_portrait.jpg"
+    },
+    "Jane Austen, from A Memoir of Jane Austen (1870).jpg": {
+      "existe": true,
+      "largura": 4862,
+      "altura": 8312,
+      "autor": "From a watercolour by James Andrews of Maidenhead based on an unfinished work by Cassandra Austen. Engraving by William Home Lizars.",
+      "licenca": "Public domain",
+      "pagina": "https://commons.wikimedia.org/wiki/File%3AJane_Austen%2C_from_A_Memoir_of_Jane_Austen_(1870).jpg"
     },
     "Vincent van Gogh - Self-Portrait - Google Art Project (454045).jpg": {
       "existe": true,
@@ -708,6 +747,30 @@ window.AMOSTRA = {
       "autor": "Vincent van Gogh",
       "licenca": "Public domain",
       "pagina": "https://commons.wikimedia.org/wiki/File%3AVincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_(454045).jpg"
+    },
+    "Nise da Silveira.jpg": {
+      "existe": true,
+      "largura": 1489,
+      "altura": 2005,
+      "autor": "Unknown photographer Unknown photographer",
+      "licenca": "Public domain",
+      "pagina": "https://commons.wikimedia.org/wiki/File%3ANise_da_Silveira.jpg"
+    },
+    "Helen KellerA.jpg": {
+      "existe": true,
+      "largura": 2837,
+      "altura": 3534,
+      "autor": "Unknown author Unknown author",
+      "licenca": "Public domain",
+      "pagina": "https://commons.wikimedia.org/wiki/File%3AHelen_KellerA.jpg"
+    },
+    "Hypatia portrait.png": {
+      "existe": true,
+      "largura": 1176,
+      "altura": 1722,
+      "autor": "Jules Maurice Gaspard",
+      "licenca": "Public domain",
+      "pagina": "https://commons.wikimedia.org/wiki/File%3AHypatia_portrait.png"
     },
     "Katherine Johnson 1983.jpg": {
       "existe": true,
@@ -724,14 +787,6 @@ window.AMOSTRA = {
       "autor": "Godfrey Kneller",
       "licenca": "Public domain",
       "pagina": "https://commons.wikimedia.org/wiki/File%3APortrait_of_Sir_Isaac_Newton%2C_1689_(brightened).jpg"
-    },
-    "Nise da Silveira.jpg": {
-      "existe": true,
-      "largura": 1489,
-      "altura": 2005,
-      "autor": "Unknown photographer Unknown photographer",
-      "licenca": "Public domain",
-      "pagina": "https://commons.wikimedia.org/wiki/File%3ANise_da_Silveira.jpg"
     }
   },
   "home": {
@@ -867,9 +922,9 @@ window.AMOSTRA = {
         "obras": 5
       },
       {
-        "nome": "Clarice Lispector",
-        "frases": 3,
-        "obras": 5
+        "nome": "William Shakespeare",
+        "frases": 41,
+        "obras": 12
       },
       {
         "nome": "Frida Kahlo",
@@ -882,24 +937,14 @@ window.AMOSTRA = {
         "obras": 4
       },
       {
-        "nome": "Cora Coralina",
-        "frases": 2,
-        "obras": 4
-      },
-      {
-        "nome": "Guimarães Rosa",
-        "frases": 6,
-        "obras": 3
-      },
-      {
         "nome": "Maya Angelou",
         "frases": 3,
         "obras": 4
       },
       {
-        "nome": "Sêneca",
-        "frases": 26,
-        "obras": 7
+        "nome": "Victor Hugo",
+        "frases": 3,
+        "obras": 4
       },
       {
         "nome": "Marie Curie",
@@ -907,8 +952,18 @@ window.AMOSTRA = {
         "obras": 2
       },
       {
-        "nome": "Carlos Drummond de Andrade",
-        "frases": 5,
+        "nome": "Sêneca",
+        "frases": 26,
+        "obras": 7
+      },
+      {
+        "nome": "Helen Keller",
+        "frases": 6,
+        "obras": 3
+      },
+      {
+        "nome": "Oscar Wilde",
+        "frases": 6,
         "obras": 4
       },
       {

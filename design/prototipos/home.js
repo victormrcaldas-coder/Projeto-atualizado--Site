@@ -44,12 +44,16 @@
         ${hoje.original ? `<dt>Original</dt><dd><p class="quote-original"${lingua ? ` lang="${lingua}"` : ''}>${esc(hoje.original)}</p></dd>` : ''}
       </dl>
     </div>`;
-  $('faixa').innerHTML = `<b>Fonte</b><span class="obra">${texto(hoje.fonte)}</span>${conferida(hoje)}<button class="btn-text" type="button" data-abrir="${esc(hoje.qid)}">Abrir a frase</button>`;
+  $('faixa').innerHTML =
+    `<b>Fonte</b><span class="obra">${texto(hoje.fonte)}</span>${conferida(hoje)}<button class="btn-text" type="button" data-abrir="${esc(hoje.qid)}">Abrir a frase</button>`;
 
   /* ---------- C. explorar: os números do acervo e os temas ---------- */
   const c = H.contagens;
-  $('t-explorar').innerHTML = `<b>${num(c.frases)}</b> frases de <b>${num(c.autores)}</b> autores, em <b>${num(c.temas)}</b> temas.`;
-  $('acervoNota').innerHTML = texto(`${num(c.verificadas)} com a fonte conferida e ${num(c.obras)} obras catalogadas.`);
+  $('t-explorar').innerHTML =
+    `<b>${num(c.frases)}</b> frases de <b>${num(c.autores)}</b> autores, em <b>${num(c.temas)}</b> temas.`;
+  $('acervoNota').innerHTML = texto(
+    `${num(c.verificadas)} com a fonte conferida e ${num(c.obras)} obras catalogadas.`
+  );
   const temas = [...H.temas].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR'));
   const indice = $('indiceTemas');
   // duas colunas de leitura (de cima para baixo), com as linhas alinhadas entre as colunas
@@ -162,7 +166,10 @@
     if (parado === motivos.has('pessoa')) return;
     parado = motivos.has('pessoa');
     botaoPausa.innerHTML = parado ? ICONE.tocar : ICONE.pausa;
-    botaoPausa.setAttribute('aria-label', parado ? 'Retomar a troca automática' : 'Pausar a troca automática');
+    botaoPausa.setAttribute(
+      'aria-label',
+      parado ? 'Retomar a troca automática' : 'Pausar a troca automática'
+    );
   }
   progresso.addEventListener('animationend', () => irPara(atual + 1, false));
   document
@@ -187,33 +194,16 @@
   if (reduz) botaoPausa.hidden = true;
 
   /* ---------- D. autores: galeria ---------- */
-  // ordem pensada para alternar retrato e versão tipográfica; tamanhos em ritmo, não em grade
-  const ORDEM = [
-    'Machado de Assis',
-    'Clarice Lispector',
-    'Virginia Woolf',
-    'Frida Kahlo',
-    'Cora Coralina',
-    'Fiódor Dostoiévski',
-    'Maya Angelou',
-    'Guimarães Rosa',
-    'Sêneca',
-    'Marie Curie',
-    'Carlos Drummond de Andrade',
-    'Jane Austen'
-  ];
-  const TAMANHOS = ['g', 'p', 'm', 'g', 'm', 'p'];
-  const galeria = ORDEM.map((n) => H.galeria.find((g) => g.nome === n)).filter(Boolean);
+  // todos com retrato curado e na mesma proporção (sem foto, a placa tipográfica fica de reserva)
+  const galeria = H.galeria;
   $('galeria').innerHTML = galeria
-    .map((g, i) => {
+    .map((g) => {
       const a = autor(g.nome);
-      const tam = TAMANHOS[i % TAMANHOS.length];
-      const largura = tam === 'g' ? 340 : tam === 'm' ? 272 : 216;
       const retrato = a.foto
-        ? `<span class="quadro">${imagem(a, { largura: largura * 2, larguras: [largura, largura * 2], tamanhos: `(min-width: 640px) ${largura}px, 50vw` })}</span>`
+        ? `<span class="quadro">${imagem(a, { largura: 528, larguras: [264, 528], tamanhos: '(min-width: 640px) 264px, 58vw' })}</span>`
         : `<span class="quadro tipografico"><span class="nome-condensado" aria-hidden="true">${esc(g.nome)}</span></span>`;
-      return `<li class="retrato tam-${tam}"><a href="#autores">
-        <span class="moldura">${retrato}</span>
+      return `<li class="retrato"><a href="#autores">
+        ${retrato}
         <span class="legenda">
           <span class="nome-condensado">${esc(g.nome)}</span>
           <span>${papel(a.papel)}</span>
@@ -229,21 +219,63 @@
     .join('');
   const trilho = $('galeria');
   const [setaAntes, setaDepois] = document.querySelectorAll('[data-galeria]');
-  const setas = () => {
-    setaAntes.disabled = trilho.scrollLeft <= 2;
-    setaDepois.disabled = trilho.scrollLeft >= trilho.scrollWidth - trilho.clientWidth - 2;
+  const passo = () => {
+    const r = trilho.querySelector('.retrato');
+    return r ? r.offsetWidth + parseFloat(getComputedStyle(trilho).columnGap || 0) : 280;
   };
+  // progresso: o traço mostra a parte da fila que está à vista; o texto diz quais retratos
+  let anuncio;
+  const posicaoGaleria = () => {
+    const max = trilho.scrollWidth - trilho.clientWidth;
+    setaAntes.disabled = trilho.scrollLeft <= 2;
+    setaDepois.disabled = trilho.scrollLeft >= max - 2;
+    const tamanho = Math.min(100, (trilho.clientWidth / trilho.scrollWidth) * 100);
+    const inicio = max > 0 ? (trilho.scrollLeft / max) * (100 - tamanho) : 0;
+    const barra = $('galeriaProgresso');
+    barra.style.setProperty('--tamanho', tamanho + '%');
+    barra.style.setProperty('--inicio', inicio + '%');
+    const p = passo();
+    const inteiros = Math.max(
+      1,
+      Math.floor((trilho.clientWidth - parseFloat(getComputedStyle(trilho).paddingLeft) + 8) / p)
+    );
+    // no fim da fila, os últimos retratos é que estão inteiros à vista
+    const noFim = trilho.scrollLeft >= max - 2;
+    const primeiro = noFim
+      ? Math.max(1, galeria.length - inteiros + 1)
+      : Math.round(trilho.scrollLeft / p) + 1;
+    const ultimo = Math.min(galeria.length, primeiro + inteiros - 1);
+    clearTimeout(anuncio);
+    anuncio = setTimeout(() => {
+      $('galeriaPosicao').textContent =
+        primeiro === ultimo
+          ? `${primeiro} de ${galeria.length}`
+          : `${primeiro}–${ultimo} de ${galeria.length}`;
+    }, 120);
+  };
+  const andar = (n) => trilho.scrollBy({ left: n, behavior: reduz ? 'auto' : 'smooth' });
+  // as setas andam o que está à vista, sem pular retrato
   document.querySelectorAll('[data-galeria]').forEach((b) =>
-    b.addEventListener('click', () =>
-      trilho.scrollBy({
-        left: trilho.clientWidth * 0.8 * Number(b.dataset.galeria),
-        behavior: reduz ? 'auto' : 'smooth'
-      })
-    )
+    b.addEventListener('click', () => {
+      const p = passo();
+      const visiveis = Math.max(
+        1,
+        Math.floor((trilho.clientWidth - parseFloat(getComputedStyle(trilho).paddingLeft)) / p)
+      );
+      andar(p * visiveis * Number(b.dataset.galeria));
+    })
   );
-  trilho.addEventListener('scroll', () => requestAnimationFrame(setas), { passive: true });
-  addEventListener('resize', setas);
-  setas();
+  // teclado na fila: setas andam um retrato, Home e End vão às pontas
+  trilho.addEventListener('keydown', (e) => {
+    const p = passo();
+    const mapa = { ArrowRight: p, ArrowLeft: -p, Home: -trilho.scrollWidth, End: trilho.scrollWidth };
+    if (!(e.key in mapa) || e.target !== trilho) return;
+    e.preventDefault();
+    andar(mapa[e.key]);
+  });
+  trilho.addEventListener('scroll', () => requestAnimationFrame(posicaoGaleria), { passive: true });
+  addEventListener('resize', posicaoGaleria);
+  posicaoGaleria();
   // arrastar com o mouse (no toque, a rolagem do próprio navegador já arrasta)
   let arraste = null;
   trilho.addEventListener('pointerdown', (e) => {
@@ -255,17 +287,21 @@
     const dx = e.clientX - arraste.x;
     if (Math.abs(dx) > 5) arraste.moveu = true;
     if (arraste.moveu) {
-      trilho.scrollLeft = arraste.inicio - dx;
       trilho.classList.add('arrastando');
+      trilho.scrollLeft = arraste.inicio - dx;
     }
   });
   addEventListener('pointerup', () => {
     if (!arraste) return;
     const moveu = arraste.moveu;
     arraste = null;
+    if (!moveu) return;
+    // solta e deixa o encaixe levar ao retrato mais próximo
+    const alvo = Math.round(trilho.scrollLeft / passo()) * passo();
     trilho.classList.remove('arrastando');
+    trilho.scrollTo({ left: alvo, behavior: reduz ? 'auto' : 'smooth' });
     // depois de arrastar, o clique que vem junto não abre o autor
-    if (moveu) trilho.addEventListener('click', (e) => e.preventDefault(), { capture: true, once: true });
+    trilho.addEventListener('click', (e) => e.preventDefault(), { capture: true, once: true });
   });
 
   /* ---------- F. histórias: uma aberta por vez ---------- */

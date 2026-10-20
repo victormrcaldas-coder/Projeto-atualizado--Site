@@ -155,3 +155,26 @@ Protótipo em `design/prototipos/home.html`, com conteúdo real do acervo e o CS
   - **Comunidade:** relatos reais aparecem quando existirem.
   - **Defeitos:** corrigir `initials()` em `nucleo/01` e a pílula vazia do aviso (`#toast`).
 - **Conteúdo, só anotado:** as fotos curadas de Clarice Lispector, Guimarães Rosa e Cora Coralina apontam para arquivos que não existem no Commons. Na galeria, os três aparecem na placa tipográfica.
+
+### Refinamento da 4a, rodada 1: Autores & Obras (20/10/2026)
+
+O proprietário revisou o Portão 4a e mandou um refinamento por rodadas, começando pela galeria.
+
+- **Cartões:**
+  - todos os retratos na mesma proporção (4:5) e na mesma altura;
+  - o rosto fica no enquadramento curado;
+  - a legenda segue a mesma ordem em todos: nome, papel com datas, frases e obras.
+- **Placa tipográfica:** saiu da galeria da home, porque parecia foto faltando. Continua de reserva no sistema para autor sem foto.
+- **Autores da galeria:** só entra quem tem foto curada que existe no Commons, com 1.000 px ou mais.
+  - Saíram Clarice, Cora, Guimarães Rosa e Drummond.
+  - Entraram Shakespeare, Victor Hugo, Helen Keller e Oscar Wilde.
+  - Fernando Pessoa ficou fora porque a foto curada é uma estátua.
+  - A lista do que corrigir está em `design/PENDENCIAS-CODIGO.md`.
+- **Carrossel:**
+  - sem a barra nativa;
+  - um traço de progresso mostra a parte da fila à vista, com a posição ("1–4 de 12") e as setas na mesma linha, alinhados à coluna do texto;
+  - o retrato seguinte aparece pela metade na borda, de propósito;
+  - as setas andam uma tela de retratos inteiros;
+  - no teclado, ← e → andam um retrato, e Home e End vão às pontas;
+  - ao arrastar com o mouse, a fila encaixa no retrato mais próximo.
+- **Cabeçalho:** "Ver os 521 autores" foi para o lado do título, como "Ver as 235 histórias".

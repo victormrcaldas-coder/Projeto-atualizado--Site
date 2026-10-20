@@ -113,14 +113,18 @@
         <p class="eyebrow rotulo">Autores &amp; Obras</p>
         <h2 id="t-autores">Quem está no acervo</h2>
       </div>
+      <a class="btn-text" href="#autores" id="todosAutores"></a>
+    </div>
+    <ul class="galeria-trilho" id="galeria" tabindex="0" aria-label="Galeria de autores: role para o lado, arraste ou use as setas do teclado"></ul>
+    <div class="wrap galeria-navegacao">
+      <div class="galeria-progresso" id="galeriaProgresso" aria-hidden="true"><i></i></div>
+      <p class="galeria-posicao" id="galeriaPosicao" aria-live="polite"></p>
       <div class="galeria-controles">
         <button class="btn-icon" type="button" data-galeria="-1" aria-label="Autores anteriores" aria-controls="galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg></button>
         <button class="btn-icon" type="button" data-galeria="1" aria-label="Mais autores" aria-controls="galeria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 5 7 7-7 7"/></svg></button>
       </div>
     </div>
-    <ul class="galeria-trilho" id="galeria" tabindex="0" aria-label="Galeria de autores: role para o lado ou use as setas"></ul>
-    <div class="wrap galeria-pe secao-acoes">
-      <a class="btn-text" href="#autores" id="todosAutores"></a>
+    <div class="wrap galeria-pe">
       <details class="creditos"><summary class="btn-text">Créditos das imagens</summary><ul id="creditosGaleria"></ul></details>
     </div>
   </section>

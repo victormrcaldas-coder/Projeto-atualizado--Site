@@ -45,19 +45,22 @@ const QIDS = [
 
 // Etapa 4 (home): autores e histórias pedidos pelo nome, com os dados de cada um tirados do site.
 const HOME = {
-  // galeria de autores (seção D): com foto curada e sem foto (versão tipográfica)
+  // galeria de autores (seção D): só quem tem retrato curado que existe no Commons, com 1.000 px ou mais.
+  // Clarice Lispector, Cora Coralina, Guimarães Rosa e Cecília Meireles (arquivo curado inexistente) e
+  // Drummond (sem foto curada) voltam quando a curadoria corrigir as fotos; Fernando Pessoa, quando a foto
+  // curada for um retrato (hoje é a estátua do Chiado). Ver design/PENDENCIAS-CODIGO.md.
   galeria: [
     'Machado de Assis',
     'Virginia Woolf',
-    'Clarice Lispector',
+    'William Shakespeare',
     'Frida Kahlo',
     'Fiódor Dostoiévski',
-    'Cora Coralina',
-    'Guimarães Rosa',
     'Maya Angelou',
-    'Sêneca',
+    'Victor Hugo',
     'Marie Curie',
-    'Carlos Drummond de Andrade',
+    'Sêneca',
+    'Helen Keller',
+    'Oscar Wilde',
     'Jane Austen'
   ],
   // Descubra (seção E): resumo do perfil e uma frase (ou, sem frase, a história)
