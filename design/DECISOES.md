@@ -382,6 +382,36 @@ Ele aprovou o plano de 0 a 10: cinco portões (A a E), uma branch por bloco, e *
   - faixa de 9 px sob a foto da página do autor;
   - rodapé 8 px fora da grade.
 
+**Crítico, segunda rodada** (depois das correções), notas de identidade, fluidez e acabamento:
+
+| Opção             | Notas         |
+| ----------------- | ------------- |
+| Retratos          | 9 / 8 / 7,5   |
+| Home calma        | 8,5 / 8 / 7   |
+| Filme no Descubra | 8,5 / 7 / 6,5 |
+| Filme na abertura | 7 / 6,5 / 6,5 |
+| Gramática         | 8 / 8,5 / 7   |
+| Aspas             | 7 / 7 / 6,5   |
+| Ficha             | 6 / 6,5 / 6   |
+
+- **A combinação recomendada** (retratos, home calma, filme no Descubra e gramática) ficou em **8,5 / 7,5 / 7**.
+- **Depois dessa rodada foram corrigidos:**
+  - o engasgo da escrita no filme;
+  - a dupla exposição;
+  - as cabeças cortadas no filme;
+  - a altura do filme, agora medida nas 145 pessoas;
+  - os fios fora da coluna;
+  - o "Abrir a frase" solto;
+  - a frase de hoje abaixo da dobra no celular;
+  - a lista de temas no celular;
+  - as abas da página de movimento.
+- **O que ainda separa do 10:**
+  - as transições entre telas (Portão B);
+  - o tema escuro (decisão 8);
+  - a aspa pendurada e a tipografia fina em todo bloco de frase (Portão E);
+  - o estado "sem foto";
+  - o foco por foto e fotos melhores (curadoria).
+
 **Decisões pendentes:**
 
 1. o que foi feito sem autorização (manter ou voltar);
