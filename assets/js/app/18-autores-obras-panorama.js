@@ -404,7 +404,7 @@ function f5InjectViews() {
       <div class="section-head">
         <span class="eyebrow">acervo</span>
         <h2 class="section-title">Autores &amp; Obras</h2>
-        <p class="section-sub">Procure uma pessoa, um campo de atuação ou uma obra — e aprofunde a partir daí.</p>
+        <p class="section-sub">Procure uma pessoa, um campo de atuação ou uma obra, e siga a partir daí.</p>
       </div>
       <div id="aoRoot"></div>
     </div>

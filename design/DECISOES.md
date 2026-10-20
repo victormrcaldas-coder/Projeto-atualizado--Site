@@ -16,7 +16,8 @@ Registro das decisões tomadas nos portões do redesign. Serve para continuar o 
 | 7. Descubra e Histórias                                 | `redesign/07-descubra`    | Feita direto no site em 20/10/2026; já na `main`                            |
 | 8. Comunidade, Perfil, Escrever, login e estados vazios | `redesign/08-comunidade`  | Feita direto no site em 20/10/2026; já na `main`                            |
 | 9. Movimento, cursor e revisão final                    | `redesign/09-revisao`     | Feita em 20/10/2026; já na `main`. Relatório em `design/RELATORIO-FINAL.md` |
-| 9 refeita, Portão A: decisões e direção do movimento    | `redesign/09a-direcao`    | Aguardando as decisões do proprietário. **Fora da `main`**                  |
+| 9 refeita, Portão A: decisões e direção do movimento    | `redesign/09a-direcao`    | Decidido em 20/10/2026 (as recomendações). **Fora da `main`**               |
+| 9 refeita, Portão B: transições entre telas             | `redesign/09b-transicoes` | Em andamento. **Fora da `main`**                                            |
 
 **Desde 20/10/2026** o proprietário autorizou juntar na `main` ao fim de cada etapa e trabalhar direto no site, sem protótipos separados: "salva tudo na branch, e na main também… altere direto no site". Cada etapa continua na sua branch `redesign/NN`. As branches `backup/main-original-2026-10-13` e `backup/trabalho-completo-2026-10-13` não são tocadas.
 
@@ -422,3 +423,34 @@ Ele aprovou o plano de 0 a 10: cinco portões (A a E), uma branch por bloco, e *
 6. os textos com travessão que sobraram;
 7. como ver o site (Pages na branch, ou vídeos);
 8. o tema escuro nascer do café, com o roxo de verdade.
+
+## Portão A: decisões do proprietário (20/10/2026)
+
+**Resposta:** "aprovo todas as modificações e minhas decisões… vão de acordo com suas recomendações". Pediu também:
+
+- levar movimento e transições a todas as telas, com itens da biblioteca e transições novas;
+- padrões de UI/UX mais novos e "vídeos no site";
+- o Crítico seguir avaliando, sem amenizar, até o melhor resultado ("quero buscar o 10").
+
+**Decidido:**
+
+1. **Etapas 5 a 9:** fica tudo o que foi feito sem portão.
+2. **Assinatura:** os retratos (duotono café e linho, passe-partout). Saem as aspas e a ficha.
+3. **Home:** a mais calma, com uma sala escura só.
+4. **Filme vivo:** no Descubra da home, que sobe para logo depois do Explorar. A próxima pessoa entra 5 s depois que a frase termina de ser escrita. Sai a opção na abertura.
+5. **Filmes de arquivo:** uma fase de curadoria depois do Portão B.
+6. **Gramática do movimento:** aprovada (tokens `--mov-*` e `--curva-*`), vale para os portões B a E.
+7. **Tema escuro:** nasce do café, com o roxo de verdade nas salas e "fonte conferida" numa cor só. Fica para o Portão E.
+8. **Textos com travessão:** trocados pela redação proposta (subtítulo de Autores & Obras, aviso de paráfrase, biografia em curadoria, texto de compartilhar e títulos da aba).
+9. **Ver o site:** pelo GitHub Pages numa branch. A `redesign/vitrine` vai acompanhar o último portão fechado; quem liga o Pages é o proprietário (Settings → Pages).
+
+**Aplicado na `redesign/09a-direcao`:**
+
+- `telas/assinatura.css` (retratos e home calma), `telas/filme.css` e `app/41-filme.js` no lugar de `portao-a.css` e `app/41-portao.js`.
+- O filme entra no lugar do Descubra de antes só quando a primeira foto está pronta. Sem rede, fica o Descubra de antes.
+
+**Como seguimos (plano aprovado):**
+
+- Portões B a E em branches em cadeia, sem parar entre eles.
+- O Crítico é novo a cada rodada e não vê as notas anteriores. Libera cada portão com 9,5 ou mais em cada eixo, em duas rodadas seguidas.
+- **Nada vai para a `main` sem o "pode juntar".**

@@ -1,26 +1,7 @@
-/* Portão A da Etapa 9 (refeita): o seletor das assinaturas e da home mais calma.
-   Lê ?assinatura=aspas|ficha|retratos e ?home=calma do endereço e põe em <html>
-   (o CSS fica em telas/portao-a.css). Com ?portao no endereço, mostra uma barra
-   para trocar ao vivo. Sai depois da escolha do proprietário. */
+/* A assinatura "os retratos" e o filme vivo do Descubra (Portão A da Etapa 9 refeita,
+   escolhidos pelo proprietário). Põe na página o filtro de duotono que telas/assinatura.css
+   usa e monta o filme na seção Descubra da home (o CSS fica em telas/filme.css). */
 (function () {
-  const OPCOES = {
-    assinatura: [
-      ['', 'Como está'],
-      ['aspas', 'As aspas'],
-      ['ficha', 'A ficha'],
-      ['retratos', 'Os retratos']
-    ],
-    home: [
-      ['', 'Como está'],
-      ['calma', 'Mais calma']
-    ],
-    filme: [
-      ['', 'Sem filme'],
-      ['descubra', 'No Descubra'],
-      ['abertura', 'Na abertura']
-    ]
-  };
-  const ROTULO = { assinatura: 'Assinatura', home: 'Home', filme: 'Filme' };
   const raiz = document.documentElement;
 
   // duotono dos retratos (café nas sombras nos dois temas, linho nas luzes; no escuro, um linho mais baixo)
@@ -37,13 +18,14 @@
   );
 
   /* ===================================================================
-     O FILME VIVO (opção do Portão A): retratos de várias pessoas, um por vez,
+     O FILME VIVO: retratos de várias pessoas, um por vez,
      no mesmo duotono café e linho dos retratos, com uma câmera lenta (só em
      foto grande o bastante para não borrar). A frase de cada pessoa é escrita
      palavra por palavra; depois vêm o nome e a obra. Só dados reais: quem tem
      história, foto curada que carrega e frase com a fonte conferida, dita pela
-     própria pessoa. A sala aparece na hora e a primeira pessoa entra quando a
-     foto dela está pronta; a próxima foto carrega durante a leitura. Pausa com o
+     própria pessoa. O filme entra no lugar do Descubra de antes só quando a foto
+     da primeira pessoa está pronta: se nenhuma foto vier (sem rede, Commons fora
+     do ar), o Descubra de antes fica. A próxima foto carrega durante a leitura. Pausa com o
      mouse em cima, com o foco dentro, fora da tela, com a aba escondida e no
      botão. Com movimento reduzido, nada se move nem troca sozinho.
      =================================================================== */
@@ -51,7 +33,6 @@
     const LEITURA = 5000; // o tempo do Descubra pedido pelo proprietário, contado depois que a frase termina
     const PALAVRA = 40; // intervalo entre uma palavra e a seguinte (o --mov-cascata)
     const FUSAO = 1400; // a fusão das fotos (o --mov-filme, a exceção ao teto de 450 ms)
-    const HOJE_A_MAIS = 4000; // a frase de hoje abre o filme pronta e fica um pouco mais na tela
     // notas de fonte que atribuem a frase a outra pessoa ficam de fora (vão para a curadoria)
     const NOTA_DE_OUTRA_PESSOA = /credit|atribu|segundo |apud|citad|popular/i;
     const reduzido = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -60,8 +41,8 @@
     let atual = 0;
     let relogio = null;
     let pausas = new Set();
-    let vez = 0; // cada montagem tem a sua vez: um pedido antigo não age na nova
     let passo = 0; // cada troca de pessoa tem o seu número: uma foto que chega atrasada não age na troca seguinte
+    let falhas = 0;
     let observador = null;
     // o filme só monta com o acervo final: a cadeia de fases de curadoria (app/99) ainda muda os dados
     // depois da carga; a home faz o mesmo (app/40)
@@ -170,7 +151,6 @@
       const texto = el.querySelector('.filme-texto');
       texto.classList.remove('entrou', 'saindo');
       texto.innerHTML = `
-        <p class="filme-rotulo">${x.hoje ? 'Frase de hoje' : 'Descubra'}</p>
         <blockquote class="filme-frase"><p data-tamanho="${q.text.length > 80 ? 'longa' : q.text.length > 50 ? 'media' : 'curta'}"><span class="filme-linhas"><span class="filme-aspa" aria-hidden="true">“</span>${palavras(q.text)}</span></p></blockquote>
         <p class="filme-nome nome-condensado">${esc(x.nome)}</p>
         <p class="filme-papel">${esc(papel)}${q.src ? `<span class="filme-obra">${esc(q.src)}${q.st === 'A' ? ' <span class="filme-conferida">· fonte conferida</span>' : ''}</span>` : ''}</p>
@@ -205,12 +185,15 @@
         if (f) break;
         pessoas.splice(k, 1); // sem foto que sirva: sai do filme desta visita
         if (direcao < 0) k--;
+        // antes de entrar, quatro fotos seguidas sem chegar querem dizer sem rede: fica o Descubra de antes
+        if (!el.isConnected && ++falhas >= 4) return;
       }
       if (!f) return;
       atual = k;
       const palco = el.querySelector('.filme-planos');
       const texto = el.querySelector('.filme-texto');
       const primeira = !texto.childElementCount;
+      if (primeira) entrar();
       // a câmera só anda em foto pelo menos 25% maior do que a sala, para não borrar
       if (f.querySelector('img').naturalWidth >= 1.25 * f.getBoundingClientRect().width)
         f.classList.add('camera');
@@ -223,8 +206,7 @@
       texto.setAttribute('aria-live', manual ? 'polite' : 'off');
       if (primeira) {
         escrever(false);
-        el.classList.add('pronto');
-        agendar(0, pessoas[atual].hoje ? HOJE_A_MAIS : 0);
+        agendar(0);
       } else {
         // o texto anterior sai rápido e o novo começa a 40% da fusão: não há sala vazia entre as pessoas
         texto.classList.add('saindo');
@@ -235,14 +217,14 @@
       const src = prox && fotoHTML(prox.nome).match(/src="([^"]+)"/);
       if (src) new Image().src = src[1].replace(/&amp;/g, '&');
     }
-    function agendar(escrita, aMais = 0) {
+    function agendar(escrita) {
       parar();
       const tempo = el.querySelector('.filme-tempo');
       tempo.replaceChildren(document.createElement('i'));
       tempo.style.setProperty('--atraso', escrita + 'ms');
-      tempo.style.setProperty('--leitura', LEITURA + aMais + 'ms');
+      tempo.style.setProperty('--leitura', LEITURA + 'ms');
       if (reduzido()) return;
-      relogio = { fim: performance.now() + escrita + LEITURA + aMais, resta: escrita + LEITURA + aMais };
+      relogio = { fim: performance.now() + escrita + LEITURA, resta: escrita + LEITURA };
       continuar();
     }
     function continuar() {
@@ -267,27 +249,25 @@
     // a aba escondida pausa o filme que estiver montado (um listener só, para todas as montagens)
     document.addEventListener('visibilitychange', () => el && pausar('aba', document.hidden));
 
-    function desmontar() {
-      parar();
-      passo++;
-      if (observador) observador.disconnect();
-      observador = null;
-      if (el) el.remove();
-      el = null;
+    // o filme entra no lugar do Descubra de antes, com o rótulo da seção
+    function entrar() {
+      const secao = document.getElementById('home-descubra');
+      secao.querySelector('.descubra-palco').before(el);
+      secao.setAttribute('aria-labelledby', 't-filme');
+      raiz.setAttribute('data-filme', 'descubra');
+      requestAnimationFrame(() => el.classList.add('pronto'));
+      observador = new IntersectionObserver(([r]) => pausar('fora', !r.isIntersecting), { threshold: 0.3 });
+      observador.observe(el);
     }
-    function montar(v) {
-      vez++;
-      desmontar();
-      if (!v) return;
-      pausas = new Set();
-      // a sala aparece na hora, no lugar da abertura ou do Descubra; o conteúdo entra quando estiver pronto
-      el = document.createElement('section');
-      el.className = 'filme' + (v === 'abertura' ? ' faixa-roxa' : '');
-      el.setAttribute('aria-label', 'Vozes do acervo');
+    function montar() {
+      if (!document.querySelector('#home-descubra .descubra-palco')) return;
+      el = document.createElement('div');
+      el.className = 'filme';
       el.innerHTML = `
         <div class="filme-planos" aria-hidden="true"></div>
         <div class="filme-veu" aria-hidden="true"></div>
         <div class="wrap filme-grade">
+          <h2 class="filme-rotulo" id="t-filme">Descubra</h2>
           <div class="filme-texto" aria-live="off"></div>
           <div class="filme-controles">
             <button class="btn-icon filme-pausa" type="button" aria-pressed="false" aria-label="Pausar o filme">
@@ -299,11 +279,6 @@
             <span class="filme-tempo" aria-hidden="true"><i></i></span>
           </div>
         </div>`;
-      const lugar =
-        v === 'abertura'
-          ? document.getElementById('capa')
-          : document.querySelector('#home-descubra .descubra-palco');
-      lugar.before(el);
       el.querySelector('.filme-pausa').addEventListener('click', () => pausar('botao', !pausas.has('botao')));
       el.querySelector('.filme-voltar').addEventListener('click', () => mostrar(atual - 1, -1, true));
       el.querySelector('.filme-proxima').addEventListener('click', () => mostrar(atual + 1, 1, true));
@@ -311,99 +286,26 @@
       el.addEventListener('pointerleave', (e) => e.pointerType === 'mouse' && pausar('mouse', false));
       el.addEventListener('focusin', () => pausar('foco', true));
       el.addEventListener('focusout', (e) => !el.contains(e.relatedTarget) && pausar('foco', false));
-      // os botões do texto usam a delegação da home (data-historia, data-autor) quando o filme está dentro dela
-      el.addEventListener('click', (e) => {
-        const h = e.target.closest('[data-historia]');
-        const a = e.target.closest('[data-autor]');
-        if (h && !el.closest('#view-home')) openBiography(h.dataset.historia);
-        if (a && !el.closest('#view-home')) abrirPanorama(a.dataset.autor);
-      });
-      observador = new IntersectionObserver(([r]) => pausar('fora', !r.isIntersecting), { threshold: 0.3 });
-      observador.observe(el);
+      // os botões "Ler a história" e "Conhecer" usam a delegação da home (data-historia, data-autor)
       pausar('aba', document.hidden);
-      preparar(v, vez, Date.now());
+      preparar();
     }
-    // espera o acervo (e, na abertura, a frase de hoje com a foto já carregada pela home)
-    function preparar(v, minha, desde) {
-      if (minha !== vez || !el) return;
-      const capa = document.getElementById('capa');
-      const botao = document.querySelector('#faixa [data-abrir-frase]');
+    // espera o acervo final
+    function preparar() {
       const semDados =
         !curadoriaPronta ||
         typeof QUOTES === 'undefined' ||
         QUOTES.length < 1000 ||
         typeof STORIES === 'undefined';
-      const hojeIncerta = v === 'abertura' && (!botao || capa.classList.contains('esperando-foto'));
-      if (semDados || (hojeIncerta && Date.now() - desde < 8000)) {
-        setTimeout(() => preparar(v, minha, desde), 300);
+      if (semDados) {
+        setTimeout(preparar, 300);
         return;
       }
       pessoas = listar();
       atual = 0;
-      if (v === 'abertura' && botao) {
-        const q = QUOTES.find((x) => x.qid === botao.dataset.abrirFrase);
-        const nome = q && canonAuthor(q.author);
-        const k = pessoas.findIndex((x) => x.nome === nome);
-        const h =
-          k >= 0
-            ? pessoas.splice(k, 1)[0]
-            : nome && { nome, historia: (STORIES.find((s) => canonAuthor(s.author) === nome) || {}).id };
-        if (h && h.historia) pessoas.unshift({ ...h, q, hoje: true });
-      }
       mostrar(0, 1, false);
     }
     return { montar };
   })();
-  const params = new URLSearchParams(location.search);
-  const valido = (k, v) => OPCOES[k].some(([id]) => id === v);
-  const aplicar = (k, v) => {
-    v ? raiz.setAttribute('data-' + k, v) : raiz.removeAttribute('data-' + k);
-    if (k === 'filme') filme.montar(v);
-  };
-  for (const k of Object.keys(OPCOES)) if (valido(k, params.get(k) || '')) aplicar(k, params.get(k) || '');
-  if (!params.has('portao')) return;
-
-  const barra = document.createElement('div');
-  barra.className = 'portao-barra';
-  barra.setAttribute('role', 'region');
-  barra.setAttribute('aria-label', 'Opções do Portão A');
-  // só textos fixos deste arquivo entram aqui
-  barra.innerHTML =
-    Object.keys(OPCOES)
-      .map(
-        (k) =>
-          `<div class="portao-grupo"><span>${ROTULO[k]}</span>${OPCOES[k]
-            .map(
-              ([id, nome]) =>
-                `<button type="button" data-portao="${k}" data-valor="${id}" aria-pressed="${(raiz.getAttribute('data-' + k) || '') === id}">${nome}</button>`
-            )
-            .join('')}</div>`
-      )
-      .join('') + '<button type="button" class="portao-recolher" aria-expanded="true">Esconder</button>';
-  // no celular a barra começa recolhida, para não cobrir a tela
-  if (innerWidth < 768) {
-    barra.classList.add('recolhida');
-    barra.querySelector('.portao-recolher').textContent = 'Opções do portão';
-    barra.querySelector('.portao-recolher').setAttribute('aria-expanded', 'false');
-  }
-  barra.addEventListener('click', (e) => {
-    const r = e.target.closest('.portao-recolher');
-    if (r) {
-      const fechada = barra.classList.toggle('recolhida');
-      r.textContent = fechada ? 'Opções do portão' : 'Esconder';
-      r.setAttribute('aria-expanded', String(!fechada));
-      return;
-    }
-    const b = e.target.closest('[data-portao]');
-    if (!b) return;
-    const k = b.dataset.portao;
-    aplicar(k, b.dataset.valor);
-    barra
-      .querySelectorAll(`[data-portao="${k}"]`)
-      .forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    const p = new URLSearchParams(location.search);
-    b.dataset.valor ? p.set(k, b.dataset.valor) : p.delete(k);
-    history.replaceState(history.state, '', '?' + p.toString() + location.hash);
-  });
-  document.body.appendChild(barra);
+  filme.montar();
 })();

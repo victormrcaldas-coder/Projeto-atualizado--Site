@@ -364,7 +364,7 @@ const STATUS_ROTULO = {
   A: { texto: '', classe: '' },
   'A-': { texto: '', classe: '' },
   B: { texto: '', classe: '' },
-  P: { texto: 'Paráfrase ou atribuição popular — sem fonte primária localizada.', classe: 'src-alerta' },
+  P: { texto: 'Paráfrase ou atribuição popular, sem fonte primária localizada.', classe: 'src-alerta' },
   R: { texto: 'Atribuição corrente; fonte ainda não localizada.', classe: 'src-alerta' },
   X: { texto: '', classe: '' }
 };

@@ -1,0 +1,166 @@
+/* =========================================================
+   A assinatura do MeMotiva (Portão A da Etapa 9 refeita, escolhida pelo proprietário):
+   "os retratos", com a home mais calma.
+   - Todo retrato no mesmo duotono café e linho (filtro SVG que o app/41 põe na página).
+     A cor original fica para a página da própria pessoa, a história dela e a foto ampliada.
+   - Os retratos grandes com passe-partout de museu.
+   - A home com uma sala escura só (o Descubra), sem a faixa ocre, sem o café e sem o disco laranja.
+   ========================================================= */
+
+/* peso: ":is(body, #_)" casa o body e conta como um id, para vencer as regras com escopo das telas (#view-…) */
+/* a aspa do cartão vem num span próprio (app/12) e fica na linha */
+:is(body, #_) .quote-card-text .aspa-abre {
+  margin-left: 0;
+}
+/* sai o disco laranja da abertura: a marca agora é o retrato */
+:is(body, #_) .prancha::before {
+  content: none;
+}
+
+/* ---------------------------------------------------------
+   OS RETRATOS
+   --------------------------------------------------------- */
+:is(body, #_) img[data-person] {
+  filter: url('#mm-duotono');
+}
+html[data-theme='dark'] :is(body, #_) img[data-person] {
+  filter: url('#mm-duotono-escuro');
+}
+:is(body, #_) :is(#panPhoto, #bioSheet, #photoExpand) img[data-person] {
+  filter: none;
+}
+/* passe-partout só nos retratos grandes: a mesma margem nos quatro lados, um tom acima da parede */
+:root {
+  --passe: 12px;
+}
+@media (max-width: 767px) {
+  :root {
+    --passe: 8px;
+  }
+}
+:is(body, #_) :is(.prancha-foto, .pan-photo, .descubra-retrato .quadro, .historia-destaque .quadro) {
+  position: relative;
+  background: color-mix(in srgb, var(--bg) 45%, #fff);
+  outline: var(--hairline) solid var(--border);
+}
+:is(body, #_) :is(.prancha-foto, .pan-photo, .descubra-retrato .quadro, .historia-destaque .quadro) img {
+  position: absolute;
+  inset: var(--passe);
+  width: calc(100% - 2 * var(--passe));
+  height: calc(100% - 2 * var(--passe));
+  object-fit: cover;
+}
+/* na sala roxa e no tema escuro, sem moldura clara: só um fio de linho */
+:is(body, #_) .faixa-roxa :is(.quadro, .prancha-foto),
+html[data-theme='dark']
+  :is(body, #_)
+  :is(.prancha-foto, .pan-photo, .descubra-retrato .quadro, .historia-destaque .quadro) {
+  --passe: 0px;
+  background: var(--frame);
+  outline: var(--hairline) solid color-mix(in srgb, var(--on-brand) 25%, transparent);
+}
+
+/* ---------------------------------------------------------
+   A HOME MAIS CALMA
+   Os fios ficam dentro da coluna; a faixa da fonte não repete a linha OBRA;
+   a coluna dos números acompanha os temas; o convite sem setas; a frase ao
+   acaso na medida inteira.
+   --------------------------------------------------------- */
+:is(body, #_) #view-home :is(#home-explorar, #home-comunidade) {
+  --bg: inherit;
+  --text: inherit;
+  --text-meta: inherit;
+  --text-secondary: inherit;
+  --accent-text: inherit;
+  --brand: inherit;
+  --quote-color: inherit;
+  --focus-ring: inherit;
+  --pin: inherit;
+  --border: inherit;
+  --border-strong: inherit;
+  --surface-strong: inherit;
+  --text-on-strong: inherit;
+  background: none;
+  padding-block: 0;
+}
+/* o fio de cada seção fica dentro da coluna, como os outros fios da home (desenhado no conteúdo,
+   não na caixa inteira, que inclui a margem lateral) */
+:is(body, #_) #view-home :is(#home-explorar, #home-comunidade) > .wrap {
+  padding-block: var(--space-7) var(--space-8);
+  background: linear-gradient(var(--border-strong), var(--border-strong)) no-repeat;
+  background-origin: content-box;
+  background-clip: border-box;
+  background-size: 100% var(--hairline);
+  background-position: 0 calc(-1 * var(--space-7));
+}
+/* a fonte já está na linha OBRA da abertura: fica só "Abrir a frase", logo abaixo da ficha, na coluna
+   do texto (a frase desce para o pé do retrato, e o link vem em seguida) */
+:is(body, #_) #view-home .faixa-fonte {
+  justify-content: flex-start;
+  padding: 0;
+  background: none;
+  color: var(--text);
+}
+@media (min-width: 720px) {
+  :is(body, #_) #view-home .abertura {
+    align-items: end;
+    padding-bottom: var(--space-4);
+  }
+  :is(body, #_) #view-home .abertura + .faixa-fonte {
+    margin-left: calc((100% - var(--space-6)) * 0.475 + var(--space-6));
+  }
+}
+@media (min-width: 1024px) {
+  :is(body, #_) #view-home .abertura + .faixa-fonte {
+    margin-left: calc((100% - var(--space-8)) * 0.475 + var(--space-8));
+  }
+}
+/* no celular, o retrato da abertura num quadro de até 34% da tela: a frase de hoje aparece sem rolar */
+@media (max-width: 719px) {
+  :is(body, #_) #view-home .abertura .prancha-foto {
+    width: auto;
+    height: min(34svh, 300px);
+    aspect-ratio: 4 / 5;
+  }
+  :is(body, #_) #view-home .abertura {
+    gap: var(--space-5);
+    padding-top: var(--space-5);
+  }
+}
+:is(body, #_) #view-home .faixa-fonte :is(b, .obra, .conferida) {
+  display: none;
+}
+:is(body, #_) #view-home .faixa-fonte .btn-text {
+  color: var(--text);
+}
+/* os números do acervo acompanham a lista dos temas, sem deixar a coluna vazia */
+@media (min-width: 1024px) {
+  :is(body, #_) #view-home .acervo {
+    position: sticky;
+    top: calc(52px + var(--space-6));
+  }
+}
+/* o convite: os verbos como links, sem as setas de lista de recursos */
+:is(body, #_) #view-home .convite-item svg {
+  display: none;
+}
+:is(body, #_) #view-home .convite-item {
+  grid-template-columns: minmax(0, 1fr);
+}
+:is(body, #_) #view-home .convite-item b {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.18em;
+}
+/* a frase ao acaso na medida inteira, com o autor embaixo: quebra a sequência de duas colunas */
+@media (min-width: 1024px) {
+  :is(body, #_) #view-home .acaso-frase {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-5);
+  }
+  :is(body, #_) #view-home .acaso-frase .quote-poster-text {
+    max-width: 26ch;
+  }
+}

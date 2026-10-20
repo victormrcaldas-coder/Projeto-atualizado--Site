@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>MeMotiva — Frases, histórias e motivação para cada dia</title>
+<title>MeMotiva: frases, histórias e motivação para cada dia</title>
 <meta name="description" content="Frases motivacionais, histórias inspiradoras e uma comunidade para guardar e compartilhar o que te move.">
 <link rel="preload" href="assets/fonts/noto-serif-display/noto-serif-display-italico-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/hanken-grotesk/hanken-grotesk-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="assets/css/telas/autores-site.css">
 <link rel="stylesheet" href="assets/css/telas/historias-site.css">
 <link rel="stylesheet" href="assets/css/telas/comunidade-site.css">
-<link rel="stylesheet" href="assets/css/telas/portao-a.css">
+<link rel="stylesheet" href="assets/css/telas/assinatura.css">
+<link rel="stylesheet" href="assets/css/telas/filme.css">
 </head>
 <body data-theme="light">
 
@@ -103,20 +104,6 @@
       </div>
     </section>
 
-    <!-- B. uma frase ao acaso -->
-    <section class="home-secao acaso" id="home-acaso" aria-labelledby="t-acaso">
-      <div class="wrap acaso-grade">
-        <div class="acaso-topo">
-          <h2 class="eyebrow rotulo" id="t-acaso">Uma frase ao acaso</h2>
-          <button class="btn-text" type="button" id="outraFrase">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4v6h-6"/><path d="M19.4 10A8 8 0 1 0 20 14"/></svg>
-            Outra frase
-          </button>
-        </div>
-        <figure class="acaso-frase" id="acasoFrase" aria-live="polite"></figure>
-      </div>
-    </section>
-
     <!-- E. descubra: uma pessoa por vez; a página troca sozinha -->
     <section class="faixa-roxa home-secao descubra" id="home-descubra" aria-labelledby="t-descubra">
       <div class="wrap descubra-palco" id="descubraPalco">
@@ -130,6 +117,20 @@
           </div>
         </div>
         <figure class="descubra-retrato" id="descubraRetrato"></figure>
+      </div>
+    </section>
+
+    <!-- B. uma frase ao acaso -->
+    <section class="home-secao acaso" id="home-acaso" aria-labelledby="t-acaso">
+      <div class="wrap acaso-grade">
+        <div class="acaso-topo">
+          <h2 class="eyebrow rotulo" id="t-acaso">Uma frase ao acaso</h2>
+          <button class="btn-text" type="button" id="outraFrase">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4v6h-6"/><path d="M19.4 10A8 8 0 1 0 20 14"/></svg>
+            Outra frase
+          </button>
+        </div>
+        <figure class="acaso-frase" id="acasoFrase" aria-live="polite"></figure>
       </div>
     </section>
 
@@ -507,7 +508,7 @@
 <script src="assets/js/curadoria/38-fases119-128-auditorias-finais.js"></script>
 <script src="assets/js/curadoria/39-fase129-auditoria.js"></script>
 <script src="assets/js/app/40-home.js"></script>
-<script src="assets/js/app/41-portao.js"></script>
+<script src="assets/js/app/41-filme.js"></script>
 <script src="assets/js/app/99-iniciar.js"></script>
 </body>
 </html>

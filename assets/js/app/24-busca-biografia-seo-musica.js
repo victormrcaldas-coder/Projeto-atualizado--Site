@@ -948,7 +948,7 @@ function textoPanorama(i, p) {
       .map((t) => `<p>${escapeHtml(t)}</p>`)
       .join('');
   const partes = [];
-  partes.push(`${i.nome} — ${i.papelLimpo}.`);
+  partes.push(`${i.nome}, ${i.papelLimpo}.`);
   if (i.nasc) partes.push(i.morte ? `Viveu entre ${i.nasc} e ${i.morte}.` : `Nasceu em ${i.nasc}.`);
   if (i.obras.length)
     partes.push(
@@ -957,7 +957,7 @@ function textoPanorama(i, p) {
   if (i.frases.length)
     partes.push(`Está no acervo com ${i.frases.length} ${i.frases.length === 1 ? 'frase' : 'frases'}.`);
   partes.push(
-    'A biografia completa desta pessoa ainda está em curadoria — o site prefere dizer isso a inventar um texto.'
+    'A biografia completa desta pessoa ainda está em curadoria. Preferimos dizer isso a inventar um texto.'
   );
   return `<p>${escapeHtml(partes.join(' '))}</p>`;
 }
@@ -1158,7 +1158,7 @@ function _canonico(hash) {
   el.href = location.origin + location.pathname + (hash || '');
 }
 const SEO_PADRAO = {
-  titulo: 'MeMotiva — Frases, histórias e motivação para cada dia',
+  titulo: 'MeMotiva: frases, histórias e motivação para cada dia',
   desc: 'Frases motivacionais, histórias inspiradoras e uma comunidade para guardar e compartilhar o que te move.'
 };
 function seoPadrao() {
@@ -1175,7 +1175,7 @@ function seoPadrao() {
   });
 }
 function seoObra(o, i, t, secoes) {
-  const titulo = `${o.t} — ${o.autor} | MeMotiva`;
+  const titulo = `${o.t}, de ${o.autor} | MeMotiva`;
   const sobre = (secoes.find((s) => s.id === 'sobre') || {}).texto || o.d;
   const desc = String(sobre).replace(/\s+/g, ' ').slice(0, 300);
   document.title = titulo;
@@ -1217,7 +1217,7 @@ function seoObra(o, i, t, secoes) {
   });
 }
 function seoPessoa(i) {
-  const titulo = `${i.nome} — biografia, frases e obras | MeMotiva`;
+  const titulo = `${i.nome}: biografia, frases e obras | MeMotiva`;
   const p = perfilProfundo(i.nome);
   const desc = ((p && p.resumo) || (i.story && i.story.excerpt) || i.papel)
     .replace(/\s+/g, ' ')

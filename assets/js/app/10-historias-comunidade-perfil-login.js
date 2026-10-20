@@ -155,7 +155,7 @@ async function reportPost(postId) {
   renderCommunityView();
 }
 async function sharePost(post) {
-  const shareText = `"${post.text}" — via MeMotiva`;
+  const shareText = `"${post.text}" (via MeMotiva)`;
   if (navigator.share) {
     try {
       await navigator.share({ text: shareText });
