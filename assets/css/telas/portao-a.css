@@ -350,6 +350,7 @@ html[data-filme='descubra'] #home-descubra {
   position: absolute;
   inset: 0 0 0 28%;
   z-index: -2;
+  overflow: hidden; /* a câmera aproxima a foto até 113%: ela não pode vazar do quadro */
 }
 :is(body, #_) .filme-plano {
   position: absolute;

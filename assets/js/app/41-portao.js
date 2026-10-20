@@ -152,9 +152,11 @@
       };
       if (img.complete && img.naturalWidth) entrar();
       else {
-        img.addEventListener('load', entrar, { once: true });
-        const t = setTimeout(entrar, 6000);
-        img.addEventListener('load', () => clearTimeout(t), { once: true });
+        img.addEventListener('load', entrar);
+        // a foto que falha passa pelas reservas do site (cópia local, Wikipédia); se nenhuma vier
+        // em pouco mais de 1 s, segue para a próxima pessoa, sem deixar o roxo vazio
+        img.addEventListener('error', () => setTimeout(() => !img.naturalWidth && entrar(), 1200));
+        setTimeout(entrar, 6000);
       }
     }
     function agendar(escrita) {

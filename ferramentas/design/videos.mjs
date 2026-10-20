@@ -97,6 +97,7 @@ for (const largura of larguras) {
     recordVideo: { dir: pasta, size: { width: largura, height: altura } }
   });
   const p = await ctx.newPage();
+  const comeco = Date.now();
   const erros = [];
   p.on('pageerror', (e) => erros.push(String(e)));
   const base = site.url.replace(/index\.html$/, '');
@@ -190,6 +191,8 @@ for (const largura of larguras) {
       [ate, ms]
     );
   };
+  // o vídeo começa quando o roteiro começa: a carga da página fica de fora
+  const inicio = (Date.now() - comeco) / 1000;
   await seguir({
     p,
     largura,
@@ -213,6 +216,8 @@ for (const largura of larguras) {
     '-y',
     '-loglevel',
     'error',
+    '-ss',
+    Math.max(0, inicio - 0.2).toFixed(2),
     '-i',
     bruto,
     '-c:v',
