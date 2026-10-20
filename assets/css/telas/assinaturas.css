@@ -1,0 +1,328 @@
+/* =========================================================
+   Portão A da Etapa 9 (refeita): as três assinaturas e a home mais calma.
+   Só valem com html[data-assinatura] e html[data-home], que o seletor do portão
+   (app/41-portao.js) põe. Sem eles, o site fica exatamente como está na main.
+   Depois da escolha do proprietário, a opção escolhida vira regra das telas e
+   este arquivo sai.
+   ========================================================= */
+
+/* peso: ":is(body, #_)" casa o body e conta como um id, para vencer as regras com escopo das telas (#view-…) */
+/* a aspa do cartão agora vem num span próprio (app/12); por padrão fica na linha, como antes */
+:is(body, #_) .quote-card-text .aspa-abre {
+  margin-left: 0;
+}
+
+/* ---------------------------------------------------------
+   Comum às três assinaturas: sai o disco laranja da abertura
+   (cada opção põe a sua marca no lugar)
+   --------------------------------------------------------- */
+html[data-assinatura] :is(body, #_) .prancha::before {
+  content: none;
+}
+
+/* =========================================================
+   1. AS ASPAS: a aspa de abertura é a marca
+   ========================================================= */
+html[data-assinatura='aspas'] {
+  --aspa-cor: var(--pin);
+}
+html[data-assinatura='aspas'][data-theme='dark'] {
+  --aspa-cor: var(--accent-text);
+}
+/* a marca do logo: a aspa no lugar do ponto */
+html[data-assinatura='aspas'] :is(body, #_) .logo-dot {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.9em;
+  line-height: 0;
+  color: var(--aspa-cor);
+  transform: translateY(0.2em);
+}
+html[data-assinatura='aspas'] :is(body, #_) .logo-dot::before {
+  content: '“';
+}
+/* rótulos: sem marca nenhuma. A aspa só aparece onde há frase (e no logo) */
+html[data-assinatura='aspas']
+  :is(body, #_)
+  :is(.rotulo, .quote-card-cat, .expand-cat, .pan-campos, .section-head .eyebrow, .eyebrow.rotulo)::before {
+  content: none;
+}
+/* abertura: a aspa grande, pendurada fora da coluna da frase */
+html[data-assinatura='aspas'] :is(body, #_) .abertura .quote-hero-text {
+  position: relative;
+}
+html[data-assinatura='aspas'] :is(body, #_) .abertura .quote-hero-text .aspa-abre {
+  position: absolute;
+  left: -0.62em;
+  top: -0.36em;
+  margin: 0;
+  font-size: 3.4em;
+  line-height: 1;
+  color: var(--aspa-cor);
+}
+@media (max-width: 719px) {
+  html[data-assinatura='aspas'] :is(body, #_) .abertura .quote-hero-text {
+    padding-top: 0.9em;
+  }
+  html[data-assinatura='aspas'] :is(body, #_) .abertura .quote-hero-text .aspa-abre {
+    left: -0.04em;
+    top: -0.3em;
+    font-size: 2.8em;
+  }
+}
+/* cartão: o fio do topo se abre para a aspa, que pendura na margem */
+html[data-assinatura='aspas'] :is(body, #_) .quote-card {
+  border-top: 0;
+  padding-top: var(--space-5);
+  background: linear-gradient(var(--border-strong), var(--border-strong)) no-repeat 2.1rem 0 /
+    calc(100% - 2.1rem) var(--hairline);
+}
+html[data-assinatura='aspas'] :is(body, #_) .quote-card:hover {
+  background-image: linear-gradient(var(--text), var(--text));
+}
+html[data-assinatura='aspas'] :is(body, #_) .quote-card-text {
+  position: static;
+}
+html[data-assinatura='aspas'] :is(body, #_) .quote-card-text .aspa-abre {
+  position: absolute;
+  left: -0.04em;
+  top: -0.2em;
+  font-size: 2.9rem;
+  font-style: italic;
+  line-height: 1;
+  color: var(--aspa-cor);
+}
+/* página do autor: a aspa marca a seção de frases */
+html[data-assinatura='aspas'] :is(body, #_) .pan-sec#pan-frases > h3::before {
+  content: '“';
+  margin-right: 0.12em;
+  font-style: italic;
+  color: var(--aspa-cor);
+}
+
+/* =========================================================
+   2. A FICHA: a biblioteca viva como catálogo
+   ========================================================= */
+html[data-assinatura='ficha'] {
+  --ficha-papel: color-mix(in srgb, var(--bg) 70%, #fff);
+  --ficha-topo: var(--pin);
+}
+html[data-assinatura='ficha'][data-theme='dark'] {
+  --ficha-papel: color-mix(in srgb, var(--bg) 88%, #fff);
+}
+/* a marca: dois fios no topo (a linha vermelha da ficha de biblioteca, aqui em apricot) e o furo */
+html[data-assinatura='ficha'] :is(body, #_) :is(.quote-card, .parede .quote-label, .pan-dates) {
+  position: relative;
+  border: var(--hairline) solid var(--border);
+  border-top: 0;
+  background:
+    linear-gradient(var(--ficha-topo), var(--ficha-topo)) no-repeat 0 0 / 100% 2px,
+    linear-gradient(var(--ficha-topo), var(--ficha-topo)) no-repeat 0 5px / 100% 1px,
+    var(--ficha-papel);
+}
+html[data-assinatura='ficha'] :is(body, #_) :is(.quote-card, .parede .quote-label, .pan-dates)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.55rem;
+  width: 0.7rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: var(--hairline) solid var(--border-strong);
+  background: var(--bg);
+  transform: translateX(-50%);
+}
+/* cartão de frase como ficha: a entrada (o autor) no topo, a frase, a obra */
+html[data-assinatura='ficha'] :is(body, #_) .quote-card {
+  padding: var(--space-5) var(--space-4) var(--space-6);
+}
+html[data-assinatura='ficha'] :is(body, #_) .quote-card:hover {
+  border-color: var(--border-strong);
+}
+html[data-assinatura='ficha'] :is(body, #_) .quote-card-foot {
+  order: -1;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--hairline) solid var(--border);
+}
+html[data-assinatura='ficha'] :is(body, #_) .quote-card .author-name {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.04em;
+  font-size: 1.15em;
+}
+html[data-assinatura='ficha'] :is(body, #_) .quote-card-cat {
+  order: 9;
+}
+html[data-assinatura='ficha'] :is(body, #_) .quote-card-cat::before {
+  content: 'Tema';
+  width: auto;
+  height: auto;
+  margin-right: var(--space-2);
+  background: none;
+  color: var(--text-meta);
+  font-weight: var(--weight-regular);
+}
+html[data-assinatura='ficha'] :is(body, #_) .quote-card-src::before {
+  content: 'Obra  ';
+  white-space: pre;
+  font-size: var(--fs-meta);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+/* abertura e página do autor: os dados viram a ficha */
+html[data-assinatura='ficha'] :is(body, #_) .parede .quote-label {
+  padding: var(--space-5) var(--space-5) var(--space-7);
+  row-gap: 0;
+}
+html[data-assinatura='ficha'] :is(body, #_) .parede .quote-label :is(dt, dd) {
+  padding-block: 0.55rem;
+  border-bottom: var(--hairline) solid var(--border);
+}
+html[data-assinatura='ficha'] :is(body, #_) .pan-dates {
+  padding: var(--space-5) var(--space-5) var(--space-7);
+  margin-top: var(--space-4);
+}
+html[data-assinatura='ficha'] :is(body, #_) :is(.rotulo, .pan-campos)::before {
+  width: 12px;
+  height: 3px;
+  box-shadow: 0 4px 0 -1px var(--pin);
+}
+
+/* =========================================================
+   3. OS RETRATOS: o mesmo tratamento em todas as fotografias
+   ========================================================= */
+html[data-assinatura='retratos'] {
+  --retrato-filtro: grayscale(1) sepia(0.5) saturate(0.75) contrast(1.05) brightness(1.03);
+  --passe: clamp(6px, 0.9vw, 14px);
+}
+html[data-assinatura='retratos'][data-theme='dark'] {
+  --retrato-filtro: grayscale(1) sepia(0.3) saturate(0.7) contrast(1.04) brightness(0.9);
+}
+html[data-assinatura='retratos'] :is(body, #_) img[data-person] {
+  filter: var(--retrato-filtro);
+  transition: filter var(--dur-3) var(--ease-out);
+}
+/* a cor volta quando a pessoa escolhe o retrato: no hover, no foco e na página da própria pessoa */
+html[data-assinatura='retratos']
+  :is(body, #_)
+  :is(a, button, [role='button'], [tabindex], .quote-card, .discover-card, .story-card):is(
+    :hover,
+    :focus-visible
+  )
+  img[data-person],
+html[data-assinatura='retratos'] :is(body, #_) :is(#panPhoto, #bioSheet, #photoExpand) img[data-person] {
+  filter: none;
+}
+/* passe-partout: a foto ganha a margem clara de quadro de museu e um fio */
+html[data-assinatura='retratos']
+  :is(body, #_)
+  :is(.prancha-foto, .pan-photo, .descubra-retrato .quadro, .galeria .quadro, .historia-destaque .quadro) {
+  padding: var(--passe);
+  background: color-mix(in srgb, var(--bg) 55%, #fff);
+  outline: var(--hairline) solid var(--border);
+  outline-offset: 0;
+}
+html[data-assinatura='retratos'][data-theme='dark']
+  :is(body, #_)
+  :is(.prancha-foto, .pan-photo, .descubra-retrato .quadro, .galeria .quadro, .historia-destaque .quadro) {
+  background: color-mix(in srgb, var(--bg) 80%, #fff);
+}
+html[data-assinatura='retratos']
+  :is(body, #_)
+  :is(.prancha-foto, .pan-photo, .descubra-retrato .quadro, .galeria .quadro, .historia-destaque .quadro)
+  img {
+  outline: var(--hairline) solid color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+/* =========================================================
+   HOME MAIS CALMA (sugestão do Crítico): uma sala escura só (Descubra),
+   sem a faixa ocre, sem o café, sem o disco e sem a faixa roxa da fonte
+   ========================================================= */
+html[data-home='calma'] :is(body, #_) .prancha::before {
+  content: none;
+}
+html[data-home='calma'] :is(body, #_) #view-home :is(#home-explorar, #home-comunidade) {
+  --bg: inherit;
+  --text: inherit;
+  --text-meta: inherit;
+  --text-secondary: inherit;
+  --accent-text: inherit;
+  --brand: inherit;
+  --quote-color: inherit;
+  --focus-ring: inherit;
+  --pin: inherit;
+  --border: inherit;
+  --border-strong: inherit;
+  --surface-strong: inherit;
+  --text-on-strong: inherit;
+  background: none;
+  border-top: var(--hairline) solid var(--border-strong);
+}
+html[data-home='calma'] :is(body, #_) #view-home .faixa-fonte {
+  background: none;
+  color: var(--text);
+  border-block: var(--hairline) solid var(--border-strong);
+  --text-meta: inherit;
+}
+html[data-home='calma'] :is(body, #_) #view-home .faixa-fonte :is(b, .conferida, .btn-text) {
+  color: inherit;
+}
+
+/* ---------------------------------------------------------
+   A barra do portão (ferramenta, não faz parte do design)
+   --------------------------------------------------------- */
+.portao-barra {
+  position: fixed;
+  z-index: 2000;
+  left: 8px;
+  bottom: calc(8px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  max-width: calc(100vw - 16px);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #1d1d1f;
+  color: #fff;
+  font:
+    500 12px/1.2 system-ui,
+    sans-serif;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.3);
+}
+.portao-grupo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.portao-grupo span {
+  margin-right: 4px;
+  opacity: 0.7;
+}
+.portao-barra button {
+  min-height: 30px;
+  padding: 4px 9px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.portao-barra button[aria-pressed='true'] {
+  background: #fff;
+  color: #111;
+}
+.portao-barra.recolhida .portao-grupo {
+  display: none;
+}
+@media (max-width: 767px) {
+  .portao-barra {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}
