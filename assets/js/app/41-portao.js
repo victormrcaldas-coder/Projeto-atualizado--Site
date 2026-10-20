@@ -23,7 +23,7 @@
   const ROTULO = { assinatura: 'Assinatura', home: 'Home', filme: 'Filme' };
   const raiz = document.documentElement;
 
-  // duotono dos retratos (café nas sombras, linho nas luzes), usado pela assinatura "os retratos" e pelo filme
+  // duotono dos retratos (café nas sombras nos dois temas, linho nas luzes; no escuro, um linho mais baixo)
   const duotono = (id, [r0, g0, b0], [r1, g1, b1]) => {
     const linha = (a, b) => {
       const d = (b - a) / 255;
@@ -33,7 +33,7 @@
   };
   document.body.insertAdjacentHTML(
     'beforeend',
-    `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">${duotono('mm-duotono', [43, 24, 17], [250, 243, 225])}${duotono('mm-duotono-escuro', [26, 18, 14], [237, 227, 204])}</svg>`
+    `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">${duotono('mm-duotono', [43, 24, 17], [250, 243, 225])}${duotono('mm-duotono-escuro', [43, 24, 17], [237, 227, 204])}</svg>`
   );
 
   /* ===================================================================
@@ -96,7 +96,7 @@
           (q) =>
             q &&
             q.st === 'A' &&
-            q.text.length <= 130 &&
+            q.text.length <= 110 && // até 110 caracteres: a frase cabe em quatro linhas na sala
             (q.src || '').length <= 70 && // a fonte cabe em duas linhas: a altura do filme não muda
             !NOTA_DE_OUTRA_PESSOA.test(q.src || '')
         );
@@ -109,7 +109,13 @@
     }
     // a aspa de fechamento vai junto da última palavra: nunca fica sozinha antes da frase ser escrita
     const palavras = (t) => {
-      const ws = t.split(/\s+/);
+      // palavra de uma letra não fica sozinha no fim da linha ("quanto o / riso"): vai junto da seguinte
+      const ws = t.split(/\s+/).reduce((acc, w) => {
+        const ant = acc[acc.length - 1];
+        if (ant && ant.length === 1 && /\p{L}/u.test(ant)) acc[acc.length - 1] = ant + '\u00a0' + w;
+        else acc.push(w);
+        return acc;
+      }, []);
       return ws
         .map(
           (w, i) =>
@@ -129,6 +135,12 @@
         f.className = 'filme-plano';
         f.innerHTML = fotoHTML(x.nome);
         const img = f.querySelector('img');
+        // na sala larga do computador a foto vertical é muito cortada em altura: o enquadramento sobe
+        // em relação ao do cartão, para a cabeça não sair pelo alto (Gandhi, Buffett)
+        if (innerWidth >= 768) {
+          const y = parseFloat(((photoInfo(x.nome) || {}).card || 'center 22%').split(' ')[1]) || 22;
+          img.style.objectPosition = `center ${Math.max(0, y - 10)}%`;
+        }
         el.querySelector('.filme-planos').appendChild(f); // invisível até a troca (opacidade 0)
         let feito = false;
         const fim = (boa) => {
@@ -159,9 +171,9 @@
       texto.classList.remove('entrou', 'saindo');
       texto.innerHTML = `
         <p class="filme-rotulo">${x.hoje ? 'Frase de hoje' : 'Descubra'}</p>
-        <blockquote class="filme-frase"><p><span class="filme-aspa" aria-hidden="true">“</span>${palavras(q.text)}</p></blockquote>
+        <blockquote class="filme-frase"><p data-tamanho="${q.text.length > 80 ? 'longa' : q.text.length > 50 ? 'media' : 'curta'}"><span class="filme-linhas"><span class="filme-aspa" aria-hidden="true">“</span>${palavras(q.text)}</span></p></blockquote>
         <p class="filme-nome nome-condensado">${esc(x.nome)}</p>
-        <p class="filme-papel">${esc(papel)}${q.src ? `<span class="filme-obra">${esc(q.src)}</span>` : ''}</p>
+        <p class="filme-papel">${esc(papel)}${q.src ? `<span class="filme-obra">${esc(q.src)}${q.st === 'A' ? ' <span class="filme-conferida">· fonte conferida</span>' : ''}</span>` : ''}</p>
         <div class="filme-acoes">
           <button class="btn btn-primary" type="button" data-historia="${esc(x.historia)}">Ler a história</button>
           <button class="btn-text" type="button" data-autor="${esc(x.nome)}">Conhecer ${esc(x.nome)}</button>
@@ -202,8 +214,10 @@
       // a câmera só anda em foto pelo menos 25% maior do que a sala, para não borrar
       if (f.querySelector('img').naturalWidth >= 1.25 * f.getBoundingClientRect().width)
         f.classList.add('camera');
-      requestAnimationFrame(() => f.classList.add('ativo'));
+      // a troca passa pelo roxo da sala: a foto anterior sai e a nova entra logo depois (sem dupla exposição)
       const antigos = [...palco.children].filter((x) => x !== f && x.classList.contains('ativo'));
+      antigos.forEach((x) => x.classList.remove('ativo'));
+      requestAnimationFrame(() => f.classList.add('ativo'));
       setTimeout(() => antigos.forEach((x) => x.remove()), FUSAO + 100);
       // o leitor de tela anuncia só a troca pedida pela pessoa, não a automática
       texto.setAttribute('aria-live', manual ? 'polite' : 'off');

@@ -1357,8 +1357,9 @@
     column-gap: var(--space-7);
   }
 }
-/* abaixo de 380 px, duas colunas não cabem "Autoconhecimento" inteiro: uma coluna só */
-@media (max-width: 379px) {
+/* no celular, uma coluna só, com o número à direita como no computador (em duas colunas o número
+   caía sozinho na linha de baixo: "Ditados Populares / 383") */
+@media (max-width: 639px) {
   #view-home .indice-temas {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
@@ -1369,9 +1370,12 @@
   display: flex;
   border-bottom: var(--hairline) solid var(--border);
 }
-/* no celular, o número vem logo depois do nome, na mesma linha quando cabe */
+/* o número à direita do nome, como num sumário */
 #view-home .indice-temas button {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
   width: 100%;
   min-height: var(--tap);
   padding: var(--space-3) 0;
@@ -1381,21 +1385,6 @@
   color: var(--text);
   text-align: left;
   cursor: pointer;
-}
-#view-home .indice-temas button .tema-n {
-  margin-left: 0.4em;
-}
-/* do tablet em diante, o número vai à direita do nome, como num sumário */
-@media (min-width: 640px) {
-  #view-home .indice-temas button {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-3);
-  }
-  #view-home .indice-temas button .tema-n {
-    margin-left: 0;
-  }
 }
 #view-home .tema-nome {
   font-family: var(--font-title);

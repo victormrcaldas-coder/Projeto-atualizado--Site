@@ -43,19 +43,12 @@ html[data-assinatura='aspas']
   .aspa-abre {
   color: var(--aspa-cor);
 }
-/* abertura: um pouco maior que a frase, no alto da primeira linha, longe do retrato */
-html[data-assinatura='aspas'] :is(body, #_) .abertura .quote-hero-text {
-  position: relative;
-}
-@media (min-width: 720px) {
-  html[data-assinatura='aspas'] :is(body, #_) .abertura .quote-hero-text .aspa-abre {
-    position: absolute;
-    left: -0.62em;
-    top: -0.1em;
-    margin: 0;
-    font-size: 1.35em;
-    line-height: 1;
-  }
+/* o par de aspas com o mesmo corpo e a mesma cor: a de fechamento acompanha a de abertura */
+html[data-assinatura='aspas']
+  :is(body, #_)
+  :is(.quote-hero-text, .quote-poster-text, .quote-text)
+  > span[aria-hidden='true']:last-child {
+  color: var(--aspa-cor);
 }
 /* cartão: o fio do topo se abre para a aspa, que pendura na margem; a de fechamento sai */
 html[data-assinatura='aspas'] :is(body, #_) .quote-card {
@@ -236,17 +229,49 @@ html[data-home='calma'] :is(body, #_) #view-home :is(#home-explorar, #home-comun
   background: none;
   padding-block: 0;
 }
-/* o fio de cada seção fica dentro da coluna, como os outros fios da home */
+/* o fio de cada seção fica dentro da coluna, como os outros fios da home (desenhado no conteúdo,
+   não na caixa inteira, que inclui a margem lateral) */
 html[data-home='calma'] :is(body, #_) #view-home :is(#home-explorar, #home-comunidade) > .wrap {
   padding-block: var(--space-7) var(--space-8);
-  border-top: var(--hairline) solid var(--border-strong);
+  background: linear-gradient(var(--border-strong), var(--border-strong)) no-repeat;
+  background-origin: content-box;
+  background-clip: border-box;
+  background-size: 100% var(--hairline);
+  background-position: 0 calc(-1 * var(--space-7));
 }
-/* a fonte já está na linha OBRA da abertura: fica só "Abrir a frase", alinhado à direita */
+/* a fonte já está na linha OBRA da abertura: fica só "Abrir a frase", logo abaixo da ficha, na coluna
+   do texto (a frase desce para o pé do retrato, e o link vem em seguida) */
 html[data-home='calma'] :is(body, #_) #view-home .faixa-fonte {
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 0;
   background: none;
   color: var(--text);
+}
+@media (min-width: 720px) {
+  html[data-home='calma'] :is(body, #_) #view-home .abertura {
+    align-items: end;
+    padding-bottom: var(--space-4);
+  }
+  html[data-home='calma'] :is(body, #_) #view-home .abertura + .faixa-fonte {
+    margin-left: calc((100% - var(--space-6)) * 0.475 + var(--space-6));
+  }
+}
+@media (min-width: 1024px) {
+  html[data-home='calma'] :is(body, #_) #view-home .abertura + .faixa-fonte {
+    margin-left: calc((100% - var(--space-8)) * 0.475 + var(--space-8));
+  }
+}
+/* no celular, o retrato da abertura num quadro de até 34% da tela: a frase de hoje aparece sem rolar */
+@media (max-width: 719px) {
+  html[data-home='calma'] :is(body, #_) #view-home .abertura .prancha-foto {
+    width: auto;
+    height: min(34svh, 300px);
+    aspect-ratio: 4 / 5;
+  }
+  html[data-home='calma'] :is(body, #_) #view-home .abertura {
+    gap: var(--space-5);
+    padding-top: var(--space-5);
+  }
 }
 html[data-home='calma'] :is(body, #_) #view-home .faixa-fonte :is(b, .obra, .conferida) {
   display: none;
@@ -374,7 +399,7 @@ html[data-theme='dark'] :is(body, #_) .filme {
 }
 :is(body, #_) .filme-planos {
   position: absolute;
-  inset: 0 0 0 28%;
+  inset: 0 0 0 38%;
   z-index: -2;
   overflow: hidden; /* a câmera aproxima a foto: ela não pode vazar do quadro */
 }
@@ -382,21 +407,47 @@ html[data-theme='dark'] :is(body, #_) .filme {
   position: absolute;
   inset: 0;
   margin: 0;
+  isolation: isolate; /* o duotono em camadas mistura só com a própria foto */
   opacity: 0;
-  transition: opacity var(--mov-filme) var(--curva-troca);
+  /* a fusão de 1,4 s em duas metades: a foto anterior sai e a nova entra, passando pelo roxo da sala */
+  transition: opacity calc(var(--mov-filme) * 0.5) var(--curva-saida);
 }
 :is(body, #_) .filme-plano.ativo {
   opacity: 1;
+  transition: opacity calc(var(--mov-filme) * 0.6) var(--curva-chegada) calc(var(--mov-filme) * 0.4);
+}
+/* o duotono do filme em camadas que a placa de vídeo compõe (o filtro SVG pesa na câmera em movimento):
+   a foto em cinza, o café clareia as sombras e o linho tinge as luzes */
+:is(body, #_) .filme-plano::before,
+:is(body, #_) .filme-plano::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+:is(body, #_) .filme-plano::before {
+  background: #2b1811;
+  mix-blend-mode: lighten;
+}
+:is(body, #_) .filme-plano::after {
+  z-index: 2;
+  background: #faf3e1;
+  mix-blend-mode: multiply;
+}
+html[data-theme='dark'] :is(body, #_) .filme-plano::after {
+  background: #ede3cc;
 }
 :is(body, #_) .filme-plano img {
+  position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: url('#mm-duotono') brightness(0.86);
+  filter: grayscale(1) contrast(1.04) brightness(0.84);
   transform-origin: 62% 32%;
 }
 html[data-theme='dark'] :is(body, #_) .filme-plano img {
-  filter: url('#mm-duotono-escuro') brightness(0.82);
+  filter: grayscale(1) contrast(1.04) brightness(0.8);
 }
 /* a câmera: de 100% a 106%, devagar, só em foto grande o bastante (o app/41 põe .camera) */
 :is(body, #_) .filme-plano.camera img {
@@ -422,14 +473,14 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
   background: linear-gradient(
     90deg,
     var(--filme-sala) 0%,
-    var(--filme-sala) 40%,
-    color-mix(in srgb, var(--filme-sala) 55%, transparent) 50%,
-    transparent 62%
+    var(--filme-sala) 42%,
+    color-mix(in srgb, var(--filme-sala) 50%, transparent) 48%,
+    transparent 56%
   );
 }
 :is(body, #_) .filme-grade {
   display: grid;
-  align-content: center;
+  align-content: end; /* o bloco é ancorado por baixo: frase mais longa cresce para cima, nada mais se move */
   gap: var(--space-6);
   padding-block: var(--space-8);
   opacity: 1;
@@ -442,7 +493,7 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
 :is(body, #_) .filme-texto {
   display: grid;
   gap: var(--space-4);
-  max-width: min(36rem, 50%);
+  max-width: min(38rem, 48%);
   transition:
     opacity var(--mov-micro) var(--curva-saida),
     transform var(--mov-micro) var(--curva-saida);
@@ -461,25 +512,48 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
   color: var(--on-brand-meta);
 }
 :is(body, #_) .filme-frase {
+  /* a reserva de altura é medida no corpo maior: quatro linhas cabem a frase mais longa do filme
+     (medido nas 145 pessoas), e a frase cresce para cima, sem mover o nome, a fonte e os botões */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(4 * 1.12em);
   margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(1.9rem, 1.1rem + 2.5vw, 3.3rem);
+  line-height: 1.12;
 }
 :is(body, #_) .filme-frase p {
-  position: relative;
   margin: 0;
-  min-height: calc(4 * 1.12em); /* a frase mais longa do filme cabe em 4 linhas: nada pula */
-  font-family: var(--font-title);
   font-style: italic;
   font-weight: var(--weight-regular);
-  font-size: clamp(1.9rem, 1.1rem + 2.5vw, 3.3rem);
+  font-size: 1em;
   line-height: 1.12;
   color: var(--on-brand);
   text-wrap: pretty;
+}
+/* três degraus de corpo, pelo tamanho da frase: a curta é grande, a longa cabe nas mesmas quatro linhas */
+:is(body, #_) .filme-frase p[data-tamanho='media'] {
+  font-size: 0.85em;
+}
+:is(body, #_) .filme-frase p[data-tamanho='longa'] {
+  font-size: 0.72em;
+}
+:is(body, #_) .filme-linhas {
+  position: relative;
+  display: block;
 }
 :is(body, #_) .filme-aspa {
   position: absolute;
   left: -0.55em;
   top: 0;
   color: var(--filme-acento);
+}
+:is(body, #_) .filme-conferida {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--on-brand-meta);
 }
 /* cada palavra é escrita de baixo para cima, dentro da própria linha */
 :is(body, #_) .filme-palavra {
@@ -538,7 +612,7 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
   display: grid;
   align-content: start;
   gap: var(--space-1);
-  min-height: calc(3 * 1.45em);
+  min-height: 4.5rem; /* o papel e a obra mais longos do filme (medido) */
   margin: 0;
   font-size: var(--fs-small);
   line-height: 1.45;
@@ -569,6 +643,9 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
 :is(body, #_) .filme .btn-icon svg {
   width: 18px;
   height: 18px;
+}
+:is(body, #_) .filme-pausa {
+  border: var(--hairline) solid color-mix(in srgb, var(--on-brand) 35%, transparent);
 }
 :is(body, #_) .filme-pausa .ic-tocar,
 :is(body, #_) .filme-pausa[aria-pressed='true'] .ic-pausa {
@@ -608,7 +685,7 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
 }
 /* celular: o retrato num quadro 4:5 no alto (no máximo 38% da tela), com a pausa e o tempo no canto
    dele; o texto embaixo, sempre sobre o roxo cheio */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   :is(body, #_) .filme {
     --foto-h: min(34svh, 300px);
     min-height: 0;
@@ -645,9 +722,12 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
     align-items: flex-start;
     gap: var(--space-3);
   }
-  :is(body, #_) .filme-frase p {
-    min-height: calc(5 * 1.14em);
+  :is(body, #_) .filme-frase {
+    min-height: calc(4 * 1.14em);
     font-size: clamp(1.55rem, 1.15rem + 2.2vw, 2.1rem);
+    line-height: 1.14;
+  }
+  :is(body, #_) .filme-frase p {
     line-height: 1.14;
   }
   /* a pausa e o tempo ficam no canto do retrato, sempre à vista */
@@ -663,6 +743,14 @@ html[data-theme='dark'] :is(body, #_) .filme-plano img {
     left: var(--gutter, 16px);
     width: calc(var(--foto-h) * 0.8);
     flex: none;
+  }
+}
+@media (max-width: 359px) {
+  :is(body, #_) .filme-frase {
+    min-height: calc(6 * 1.14em);
+  }
+  :is(body, #_) .filme-papel {
+    min-height: 7.5rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

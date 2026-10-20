@@ -57,6 +57,11 @@ export default async function ({ p, js, pausa, legenda, clicar, sobre, mover, mo
       await pausa(700);
     }
   }
+  await ver('d9');
+  await legenda('9. O filme: a troca passa pelo roxo e a frase é escrita por cima');
+  await pausa(9000);
+  await clicar('#salaProxima');
+  await pausa(6000);
   await legenda('Com movimento reduzido: nada se desloca, só esmaece');
   await js(() => document.getElementById('chaveReduzido').click());
   await ver('d3');

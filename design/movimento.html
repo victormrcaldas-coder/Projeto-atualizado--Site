@@ -21,6 +21,8 @@
   }
 
   body { background: var(--bg); }
+  img[data-duotono] { filter: url('#mm-duotono'); }
+  html[data-theme='dark'] img[data-duotono] { filter: url('#mm-duotono-escuro'); }
   button { -webkit-tap-highlight-color: transparent; }
   button:active { transform: scale(0.98); transition: transform var(--mov-micro) var(--curva-padrao); }
   .m-topo { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: var(--hairline) solid var(--border); }
@@ -96,7 +98,9 @@
   }
 
   /* 3. lista filtrada */
-  .l-chips { position: relative; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin-bottom: var(--space-5); border-bottom: var(--hairline) solid var(--border); }
+  .l-chips { position: relative; display: flex; flex-wrap: nowrap; gap: var(--space-4); margin-bottom: var(--space-5); overflow-x: auto; scrollbar-width: none; border-bottom: var(--hairline) solid var(--border); }
+  .l-chips::-webkit-scrollbar { display: none; }
+  .l-chip { flex: none; white-space: nowrap; }
   .l-chip { min-height: var(--tap); padding: 0; border: 0; background: none; font: inherit; font-size: var(--fs-small); color: var(--text-meta); cursor: pointer; transition: color var(--mov-micro) var(--curva-padrao); }
   .l-chip[aria-pressed='true'] { color: var(--text); }
   .l-traco { position: absolute; left: 0; bottom: -1px; height: 2px; width: 10px; background: var(--pin); transform-origin: left; transition: transform var(--mov-base) var(--curva-padrao); }
@@ -106,6 +110,7 @@
   .l-cartao { display: grid; gap: var(--space-2); align-content: start; padding-top: var(--space-3); border-top: var(--hairline) solid var(--border-strong); }
   .l-cartao p { margin: 0; font-family: var(--font-title); font-style: italic; font-size: 1.15rem; line-height: 1.22; }
   .l-cartao span { font-size: var(--fs-meta); color: var(--text-meta); }
+  .l-cartao .aspa-abre { margin-left: 0; }
   .l-grade.saindo .l-cartao { opacity: 0; transition: opacity var(--mov-curto) var(--curva-saida); }
   .l-cartao.entra { animation: t-entra var(--mov-entrada) var(--curva-chegada) both; animation-delay: calc(min(var(--i), 5) * var(--mov-cascata)); }
 
@@ -144,6 +149,30 @@
   .c-etiqueta b { font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: 1.6rem; line-height: 1; }
   .c-etiqueta span { font-size: var(--fs-meta); color: var(--text-meta); }
   .c-nota { font-size: var(--fs-small); color: var(--text-meta); }
+
+  /* 9. o filme em miniatura (as mesmas regras do filme do site) */
+  .v-sala { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); min-height: 360px; overflow: hidden; background: #401d47; color: #faf3e1; }
+  .v-planos { position: relative; grid-column: 2; overflow: hidden; }
+  .v-plano { position: absolute; inset: 0; margin: 0; isolation: isolate; opacity: 0; transition: opacity calc(var(--mov-filme) * 0.5) var(--curva-saida); }
+  .v-plano.ativo { opacity: 1; transition: opacity calc(var(--mov-filme) * 0.6) var(--curva-chegada) calc(var(--mov-filme) * 0.4); }
+  .v-plano img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.04) brightness(0.84); animation: v-camera 16s linear both; }
+  .v-plano::before, .v-plano::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .v-plano::before { background: #2b1811; mix-blend-mode: lighten; }
+  .v-plano::after { z-index: 2; background: #faf3e1; mix-blend-mode: multiply; }
+  @keyframes v-camera { to { transform: scale(1.06); } }
+  .v-texto { grid-column: 1; grid-row: 1; align-self: end; display: grid; gap: var(--space-3); padding: var(--space-6) var(--space-5); transition: opacity var(--mov-micro) var(--curva-saida); }
+  .v-texto.saindo { opacity: 0; }
+  .v-texto q { quotes: none; font-family: var(--font-title); font-style: italic; font-size: clamp(1.4rem, 1rem + 1.4vw, 2rem); line-height: 1.14; }
+  .v-palavra { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 0.1em 0.16em 0; margin: 0 -0.1em -0.16em 0; }
+  .v-palavra > span { display: inline-block; }
+  .v-texto.entrou .v-palavra > span { animation: v-escreve var(--mov-longo) var(--curva-chegada) both; animation-delay: calc(var(--i) * var(--mov-cascata)); }
+  @keyframes v-escreve { from { transform: translateY(105%); opacity: 0; } }
+  .v-texto b { font-family: var(--font-title); font-weight: var(--weight-light); font-variation-settings: 'wdth' var(--name-wdth); font-size: 1.5rem; line-height: 1; }
+  .v-texto.entrou b { animation: v-nome 700ms var(--curva-chegada) both; animation-delay: var(--escrita); }
+  @keyframes v-nome { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  html.simula-reduzido .v-plano img, html.simula-reduzido .v-texto * { animation: none !important; }
+  @media (prefers-reduced-motion: reduce) { .v-plano img, .v-texto * { animation: none !important; } }
+  @media (max-width: 639px) { .v-sala { grid-template-columns: 1fr; grid-template-rows: 220px auto; } .v-planos { grid-column: 1; grid-row: 1; } .v-texto { grid-row: 2; } }
 
   /* 8. sublinhado e estados */
   .s-links { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
@@ -294,6 +323,19 @@
         <div class="s-links"><button class="s-link" type="button">Explorar as frases</button><button class="s-link" type="button">Ler a história</button><button class="s-link" type="button">Conhecer Clarice Lispector</button></div>
       </div>
     </section>
+    <section class="m-demo" aria-labelledby="d9">
+      <header>
+        <span class="m-num">9 · O filme vivo (a exceção)</span>
+        <h2 id="d9">Uma pessoa por vez, a frase escrita por cima</h2>
+        <p>O único movimento lento do site, e de propósito: a foto anterior sai e a nova entra passando pelo roxo da sala (1,4 s ao todo); a frase começa a ser escrita a 40% da troca, uma palavra a cada 40 ms; o nome se revela da esquerda; a câmera vai de 100% a 106% em 16 s. Pausa com o mouse, o foco e o botão.</p>
+        <p class="m-origem">Princípio: o título letra a letra da Brik e as palavras mascaradas do Set, aqui por palavra e mais rápidos.</p>
+        <p class="m-medida">--mov-filme · --mov-cascata · com movimento reduzido: sem câmera, sem troca sozinha</p>
+      </header>
+      <div class="m-palco">
+        <div class="v-sala" id="sala"><div class="v-planos" id="planos"></div><div class="v-texto" id="salaTexto"></div></div>
+        <div class="m-acoes"><button class="btn-text" type="button" id="salaProxima">Próxima pessoa</button></div>
+      </div>
+    </section>
   </div>
 </main>
 
@@ -308,7 +350,13 @@
   const reduzido = () => matchMedia('(prefers-reduced-motion: reduce)').matches || raiz.classList.contains('simula-reduzido');
   const comFoto = (nome) => { const a = autor(nome); return a.foto && !a.fotoQuebrada ? a : null; };
   const pessoas = [...new Set(A.frases.map((f) => f.autor))].map(comFoto).filter(Boolean);
-  const img = (a, w) => `<img src="${esc(fotoUrl(a, w))}" alt="${esc(a.nome)}" style="object-position:${esc(a.foto.enquadramento || 'center 22%')}" decoding="async">`;
+  const img = (a, w) => `<img data-duotono src="${esc(fotoUrl(a, w))}" alt="${esc(a.nome)}" style="object-position:${esc(a.foto.enquadramento || 'center 22%')}" decoding="async">`;
+  // o mesmo duotono da opção "os retratos" (app/41): sombras em café, luzes em linho
+  const duotono = (id, [r0, g0, b0], [r1, g1, b1]) => {
+    const linha = (a, b) => { const d = (b - a) / 255; return `${(d * 0.2126).toFixed(4)} ${(d * 0.7152).toFixed(4)} ${(d * 0.0722).toFixed(4)} 0 ${(a / 255).toFixed(4)}`; };
+    return `<filter id="${id}" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="${linha(r0, r1)} ${linha(g0, g1)} ${linha(b0, b1)} 0 0 0 1 0"/></filter>`;
+  };
+  document.body.insertAdjacentHTML('beforeend', `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">${duotono('mm-duotono', [43, 24, 17], [250, 243, 225])}${duotono('mm-duotono-escuro', [43, 24, 17], [237, 227, 204])}</svg>`);
 
   /* ---- tabela dos tokens, lida do CSS de verdade ---- */
   const TOKENS = [
@@ -434,6 +482,37 @@
   const ac = pessoas.find((a) => a.foto.largura >= 900) || pessoas[0];
   $('cursor').innerHTML = `<button class="c-quadro" type="button"><span class="c-foto">${img(ac, 700)}</span><span class="c-etiqueta"><b>${esc(ac.nome)}</b><span>${esc(ac.papel)}</span></span></button>`;
   $('cursorNota').textContent = matchMedia('(hover: hover)').matches ? 'Passe o mouse, ou use o Tab.' : 'No celular o nome já aparece; o toque abre a pessoa.';
+
+  /* ---- 9. o filme em miniatura ---- */
+  const elenco = pessoas.filter((a) => a.foto.largura >= 900).map((a) => ({ a, f: A.frases.find((x) => x.autor === a.nome && x.texto.length <= 110) })).filter((x) => x.f).slice(0, 5);
+  let vez = 0;
+  let relogioSala = 0;
+  function cena(k) {
+    if (!elenco.length) return;
+    const x = elenco[k % elenco.length];
+    const planos = $('planos');
+    const novo = document.createElement('figure');
+    novo.className = 'v-plano';
+    novo.innerHTML = img(x.a, 700).replace(' data-duotono', '');
+    planos.appendChild(novo);
+    [...planos.children].filter((p) => p !== novo).forEach((p) => { p.classList.remove('ativo'); setTimeout(() => p.remove(), 1500); });
+    requestAnimationFrame(() => novo.classList.add('ativo'));
+    const t = $('salaTexto');
+    t.classList.add('saindo');
+    const fusao = parseFloat(getComputedStyle(raiz).getPropertyValue('--mov-filme')) || 1400;
+    setTimeout(() => {
+      const ws = x.f.texto.split(/\s+/);
+      t.innerHTML = `<q>“${ws.map((w, i) => `<span class="v-palavra" style="--i:${i}"><span>${esc(w)}${i === ws.length - 1 ? '”' : ''}</span></span>`).join(' ')}</q><b>${esc(x.a.nome)}</b>`;
+      t.style.setProperty('--escrita', ws.length * 40 + 200 + 'ms');
+      t.classList.remove('saindo', 'entrou');
+      void t.offsetWidth;
+      t.classList.add('entrou');
+    }, reduzido() ? 0 : fusao * 0.4);
+    clearTimeout(relogioSala);
+    if (!reduzido()) relogioSala = setTimeout(() => cena(++vez), 7000);
+  }
+  new IntersectionObserver(([r], o) => { if (r.isIntersecting) { cena(vez); o.disconnect(); } }, { threshold: 0.3 }).observe($('sala'));
+  $('salaProxima').addEventListener('click', () => cena(++vez));
 
   /* ---- chaves do topo ---- */
   $('chaveReduzido').addEventListener('click', (e) => {
