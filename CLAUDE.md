@@ -1,6 +1,7 @@
 # CLAUDE.md — MeMotiva
 
 Site estático em pt-BR (HTML + CSS + JS puro, sem build) de frases curadas, autores, obras e histórias.
+**Chat novo? Leia primeiro `COMO-TRABALHAR.md` (o método, os agentes e o Crítico) e `RETOMAR.md` (onde parou e tudo o que falta).** Prompts prontos em `PROMPT-NOVO-CHAT.md`; plano aprovado em `design/PLANO-ETAPA-9.md`. Fale com o proprietário em português.
 **Leia `ARCHITECTURE.md` antes de qualquer mudança.** A auditoria mais recente está em `curadoria/AUDITORIA-2026-10-13.md`.
 
 ## Comandos
@@ -12,7 +13,11 @@ npm run estado:comparar                        # depois: mudança só de código
 npm run teste                                  # ordem de carga + e2e (390×844 e 1440×900) + 1.751 páginas
 npm run auditoria:tecnica                      # XSS, listeners, CLS, tempo de carga
 npm run formatar                               # Prettier
+node ferramentas/design/videos.mjs transicoes-curto --larguras 1440,390 --folha   # folhas de quadros (nunca o roteiro longo)
+node ferramentas/critico/q1-galeria.mjs 390 light   # quadros congelados do Crítico (ferramentas/critico/LEIA.md)
 ```
+
+O Crítico é o agente `.claude/agents/critico.md`: um novo a cada rodada oficial, o mesmo para verificar as correções que pediu.
 
 No Claude Code na nuvem, o Playwright e o Chromium já estão em `/opt/node-tools` e `/opt/pw-browsers`. Não rode `playwright install`.
 

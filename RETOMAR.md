@@ -1,5 +1,8 @@
 # Onde parei (21/10/2026): tudo o que falta, para retomar
 
+> Chat novo: leia antes `COMO-TRABALHAR.md` (o método, os agentes e o Crítico). Os prompts prontos estão em
+> `PROMPT-NOVO-CHAT.md`.
+
 ## Estado do repositório
 
 - **`main`**: tem todo o trabalho até aqui. O proprietário pediu, em 21/10, para juntar tudo na `main`.
@@ -45,9 +48,7 @@
 - **Rodada 3 oficial** (Crítico novo, commit d975072): **7,6 / 6,8 / 6,5 / 8,6, reprovado.**
   - Eixos: coreografia, integridade, resposta, navegação.
 - **Os 10 defeitos dele, corrigidos nos commits cad30c6 e 94f685f.** Conferi com os scripts de quadros
-  congelados do próprio Crítico (cópias em `scratchpad/critico-b3/scripts`, r1 a r7; o scratchpad
-  some com a sessão; o método é `congelar()`: pausa as animações `::view-transition-*` e fotografa
-  em 0, 40, 80, 120, 160, 200, 260 e 340 ms).
+  congelados do próprio Crítico (agora guardados em `ferramentas/critico/`, q1 a q7; ver o `LEIA.md` de lá).
   - título sem texto por baixo: grupo `mm-titulo` com 80 ms de espera e tipo `titulo`;
   - fusão das fontes;
   - cabeçalho compacto já dentro de `update()`;
