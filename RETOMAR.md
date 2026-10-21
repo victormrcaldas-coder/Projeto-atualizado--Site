@@ -49,39 +49,49 @@
 - **Vídeo:** não gravar o roteiro longo de 25 min. Usar o roteiro curto:
   `node ferramentas/design/videos.mjs transicoes-curto --larguras 1440,390 --folha` (e `--tema escuro`).
 
-## 1. Portão B (transições entre telas): verificar e fechar
+## 1. Portão B (transições entre telas): rodada 4 feita, corrigir e repetir
 
-- **Rodada 3 oficial** (Crítico novo, commit d975072): **7,6 / 6,8 / 6,5 / 8,6, reprovado.**
-  - Eixos: coreografia, integridade, resposta, navegação.
-- **Os 10 defeitos dele, corrigidos nos commits cad30c6 e 94f685f.** Conferi com os scripts de quadros
-  congelados do próprio Crítico (agora guardados em `ferramentas/critico/`, q1 a q7; ver o `LEIA.md` de lá).
-  - título sem texto por baixo: grupo `mm-titulo` com 80 ms de espera e tipo `titulo`;
-  - fusão das fontes;
-  - cabeçalho compacto já dentro de `update()`;
-  - coluna do autor com máscara suave;
-  - pré-carga da foto no toque e no hover;
-  - filme com tipo `filme` e volta em cortina (`:only-child`);
-  - moldura no Voltar;
-  - animações do JS canceladas;
-  - link direto: 30 s, foco e tema em `localStorage('mm-tema')`;
-  - folhas de quadros: uma cor por marca, fora da View Transition.
+- **Rodada 3 oficial** (commit d975072): 7,6 / 6,8 / 6,5 / 8,6, reprovado. Os 10 defeitos foram corrigidos
+  em cad30c6 e 94f685f.
+- **Rodada 4 oficial** (Crítico novo, 21/10, commit 501e19b na `main`): **8,4 / 8,0 / 7,6 / 9,0,
+  REPROVADO**. Subiu em todos os eixos. Os 10 defeitos dele, a corrigir agora (código em `app/42`,
+  `app/43` e `telas/movimento.css`):
+  1. **Texto duplicado** no lugar do toque: a fusão de 80 ms entre as fontes de `mm-titulo` mostra
+     as duas famílias juntas (quadro d-indice-040). Correção: trocar de família num quadro só,
+     escondido pelo voo, ou viajar só a fonte de chegada desde 0 ms.
+  2. **Tela vazia de 80 a 200 ms** na ida e na volta do título (só o título sobre o fundo). Correção:
+     a página nova começar aos 120 ms, com deslocamento, acompanhando o pouso. Equilibrar com o
+     defeito da rodada 3 (texto sobre texto).
+  3. **Latência** do toque ao `ready` de 172 a 276 ms. Correção: tirar as 5 cópias do CSS (adiantar
+     essa parte do Portão E) e medir; o alvo é menos de 100 ms.
+  4. **A cortina do filme corta letra a seco** (1440, folha 06, quadro 15). Correção: borda em
+     degradê (máscara, como a coluna do autor) ou a citação sumir antes da cortina.
+  5. **A página nova vaza por baixo do filme parado** (1440, folha 06, quadros 9 a 14). Correção: a
+     cortina começar no mesmo quadro, ou cobrir a viewport.
+  6. **No Voltar, o retrato muda de cor em 40 ms** (b-volta-000 cinza, b-volta-040 sépia). Correção:
+     o mesmo tom nas duas pontas, ou uma transição de filtro no grupo.
+  7. **A cor chega em dois saltos depois do pouso** (sépia e depois cinza frio, com o passe-partout
+     aparecendo). Correção: o duotono terminar perto do tom real, e a moldura entrar junto com o
+     fade. Liga com "cor em P&B" no Portão E.
+  8. **Tela vazia só com o retrato aos 80 ms** (a-galeria-080, b-volta-080). Correção: a nova começar
+     aos 60 ms, ou uma sobreposição mínima.
+  9. **Legenda sobreposta no pouso do Voltar** (b-volta-120). Correção: o rótulo entrar depois do
+     pouso, por volta de 260 ms.
+  10. **O foco vai para a tela ainda invisível** (`43-rota.js:257`, no `updateCallbackDone`).
+      Correção: focar em `t.finished`, ou depois de 340 ms, e anunciar sempre pelo `aviso`.
+- **O Crítico não conferiu:** o Avançar, o movimento reduzido na prática e o tema escuro do link
+  direto. O código prevê os três.
+- **Os quadros da rodada 4** ficam em `.trabalho/critico/` (local) e se regeram com
+  `ferramentas/critico/q1` a `q3`.
 - **A FAZER:**
-  1. Pedir a verificação das correções a um Crítico. O da rodada 3 bateu no limite antes de
-     responder. Mandar a ele (ou a um novo, se não der) a lista acima e as folhas regeradas com
-     `transicoes-curto`.
-  2. Corrigir o que ele apontar e consultar de novo o mesmo Crítico.
-  3. Fazer duas rodadas oficiais com Críticos novos, até 9,5 em cada eixo.
-- **Ainda não resolvido, e o Crítico vai cobrar:**
-  - **"A cor chega" em foto P&B:** o sépia vira cinza e parece perder cor. A causa é que o
-    `Special:FilePath` do Commons não tem CORS, então não dá para medir a saturação. A saída é usar as
-    URLs diretas do `upload.wikimedia.org` (o caminho sai do md5 do nome do arquivo) e medir num
-    canvas pequeno. Para foto monocromática, fazer uma revelação tonal em vez da cor.
-  - **Latência** do toque até o movimento: ~170–250 ms neste ambiente.
-    - ~85 ms são recálculo de estilo, porque o CSS do site está em 5 cópias com escopo: consolidar.
-    - ~90 ms são raster por software, um limite do ambiente.
-  - **Link direto num aparelho lento** (~20 s com a CPU 4×): carregar só os dados da rota pedida.
-  - **O filme do Descubra não tem elemento compartilhado.** Ideia do Crítico: viajar com o mesmo
-    enquadramento do filme, com `clip-path` no old e transform no retrato.
+  1. Corrigir os 10.
+  2. Mandar ao MESMO Crítico da rodada 4 para verificar. Se ele não existir mais no chat novo, um
+     Crítico novo com esta lista.
+  3. Fazer duas rodadas oficiais novas, até 9,5 em todos os eixos.
+- **Continua adiado com motivo:**
+  - cor em foto P&B (Commons sem CORS; Portão E com URLs diretas);
+  - dados só da rota no link direto;
+  - elemento compartilhado no filme.
 
 ## 2. Portão C (janelas, listas, fotos e carregamento): falta o Crítico
 

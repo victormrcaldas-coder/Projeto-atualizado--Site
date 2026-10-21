@@ -83,6 +83,7 @@ gosto e curadoria duvidosa. Entre os blocos não se espera resposta.
   | Portão      | Notas                 | Resultado |
   | ----------- | --------------------- | --------- |
   | B, rodada 3 | 7,6 / 6,8 / 6,5 / 8,6 | reprovado |
+| B, rodada 4 | 8,4 / 8,0 / 7,6 / 9,0 | reprovado (defeitos no RETOMAR.md) |
 
   As correções estão nos commits cad30c6 e 94f685f e falta a verificação (ver `RETOMAR.md`).
 
