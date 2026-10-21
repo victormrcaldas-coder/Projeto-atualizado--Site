@@ -7,17 +7,18 @@ O proprietário só manda o material e as decisões; a IA faz o resto.
 
 ## 1. O que ler, nesta ordem
 
-| Arquivo                       | Para quê                                                                         |
-| ----------------------------- | -------------------------------------------------------------------------------- |
-| `CLAUDE.md`                   | Regras do projeto e comandos. O Claude Code lê sozinho.                          |
-| `COMO-TRABALHAR.md`           | Este guia: o método, os agentes, o Crítico e as armadilhas.                      |
-| `RETOMAR.md`                  | **Onde parou e TUDO o que falta**, portão por portão. É o ponto de partida.      |
-| `design/PLANO-ETAPA-9.md`     | O plano aprovado: os portões B a E, o portão final e a biblioteca de movimentos. |
-| `ARCHITECTURE.md`             | Como o site é montado. Ler antes de mudar código.                                |
-| `design/DECISOES.md`          | As decisões de design já tomadas pelo proprietário.                              |
-| `curadoria/CHECKPOINT.md`     | O histórico das fases de conteúdo e as dúvidas de curadoria.                     |
-| `.claude/agents/critico.md`   | O briefing do Crítico, usado como agente.                                        |
-| `ferramentas/critico/LEIA.md` | As ferramentas de quadro a quadro do Crítico.                                    |
+| Arquivo                       | Para quê                                                                                                                              |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `CLAUDE.md`                   | Regras do projeto e comandos. O Claude Code lê sozinho.                                                                               |
+| `COMO-TRABALHAR.md`           | Este guia: o método, os agentes, o Crítico e as armadilhas.                                                                           |
+| `RETOMAR.md`                  | **Onde parou e TUDO o que falta**, portão por portão. É o ponto de partida.                                                           |
+| `design/PLANO-ETAPA-9.md`     | O plano aprovado: os portões B a E, o portão final e a biblioteca de movimentos.                                                      |
+| `ARCHITECTURE.md`             | Como o site é montado. Ler antes de mudar código.                                                                                     |
+| `design/BRIEFING-REDESIGN.md` | O briefing original (13/10): a visão, as regras, a paleta medida e as referências. É contexto: o trabalho continua pelo `RETOMAR.md`. |
+| `design/DECISOES.md`          | As decisões de design já tomadas pelo proprietário.                                                                                   |
+| `curadoria/CHECKPOINT.md`     | O histórico das fases de conteúdo e as dúvidas de curadoria.                                                                          |
+| `.claude/agents/critico.md`   | O briefing do Crítico, usado como agente.                                                                                             |
+| `ferramentas/critico/LEIA.md` | As ferramentas de quadro a quadro do Crítico.                                                                                         |
 
 ## 2. O método: portões
 

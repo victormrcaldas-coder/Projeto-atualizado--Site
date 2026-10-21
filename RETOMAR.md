@@ -5,8 +5,14 @@
 
 ## Estado do repositório
 
-- **`main`**: tem todo o trabalho até aqui. O proprietário pediu, em 21/10, para juntar tudo na `main`.
-  A `main` avançou por fast-forward até a `redesign/09c-janelas-listas`, sem merge e sem reescrita.
+- **`main` no GitHub tem TUDO** (conferido num clone limpo em 21/10/2026). Nenhuma branch remota tem
+  commit fora da `main`, além dos backups.
+  - Em 21/10, a pedido do proprietário, a `main` avançou por fast-forward até a
+    `redesign/09c-janelas-listas`, sem reescrita.
+  - Recebeu também o briefing original (`design/BRIEFING-REDESIGN.md`) e as referências de paleta da
+    branch `claude/modest-edison-so8ay4`.
+  - Recebeu ainda os guias para um chat novo (`COMO-TRABALHAR.md`, `PROMPT-NOVO-CHAT.md`,
+    `.claude/agents/critico.md`, `ferramentas/critico/`).
 - **Branches de trabalho** (já contidas na `main`, ficam como histórico):
   - `redesign/09b-transicoes`: Portão B, último commit 94f685f;
   - `redesign/09c-janelas-listas`: Fases 130 e 131 e Portão C, mais os merges da 09b.

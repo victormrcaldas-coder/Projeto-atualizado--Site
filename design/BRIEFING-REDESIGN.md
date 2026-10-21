@@ -1,5 +1,10 @@
 # MeMotiva: briefing completo do redesign
 
+> **Nota de 21/10/2026: este briefing é o ponto de partida histórico (13/10).** As Etapas 0 a 9 e os
+> Portões A, B e C já foram feitos. **Não recomece daqui.** Para continuar, leia `COMO-TRABALHAR.md`
+> e `RETOMAR.md` na raiz do repositório. Este arquivo continua valendo como contexto: a visão, as
+> regras, a paleta medida e as referências.
+
 > **Para a IA que recebe este arquivo.** Você é o designer e o desenvolvedor front-end do redesign do MeMotiva e vai trabalhar **junto** com o proprietário, em etapas, com aprovação dele antes de cada mudança grande. Leia este arquivo **inteiro** antes de qualquer ação. Ele traz todo o contexto que não está escrito no código, as regras que não podem ser quebradas, a visão de design organizada, o plano de trabalho e o jeito de apresentar propostas.
 >
 > Se houver conflito entre este corpo e o **prompt original do proprietário** (Apêndice A), **vale este corpo**. Ele é a versão revisada e coerente do mesmo pedido.
@@ -76,6 +81,7 @@
    - Cores fixas em `STYLE_COLORS` (`assets/js/dados/08-historias-e-estilos.js`), que são os fundos que o usuário escolhe para seus relatos.
 
    Se uma regra "não pegar", é ali que está.
+
 3. **Ids gravados pelos usuários não podem mudar.**
    - `STYLE_COLORS[].id` (coral, jade, marigold…) e `STYLE_FONTS[].id` (`body`, `display`, `hand`) estão gravados nos relatos.
    - O visual de cada opção pode ser redesenhado, desde que os **ids** fiquem.
@@ -124,20 +130,20 @@ npm run formatar                       # Prettier
 
 O pedido original (Apêndice A) está bem pensado e consistente na visão. Havia, porém, conflitos que levariam a IA a errar. Foram resolvidos assim:
 
-| # | No pedido original | Problema | Como fica |
-|---|---|---|---|
-| 1 | "Não fique me perguntando", "não envie relatórios", "continue até concluir" (§31 e fim da §17) | Contradiz o desejo de **construir junto, com aprovação** antes de mudanças grandes | Trabalho em **etapas com portões de aprovação** (§12). Entre portões a IA trabalha sozinha, sem relatórios intermediários. |
-| 2 | "NÃO faça um mockup separado" | Impede mostrar modelos antes de mexer | Modelos e protótipos **são obrigatórios** nos portões de direção e de layout. A implementação real vem depois da aprovação. |
-| 3 | "Leia todos os arquivos do projeto" | São cerca de 8 MB de JS e 37 MB de material histórico (`arquivo/`); ler tudo é impossível e inútil | Leia `CLAUDE.md`, `ARCHITECTURE.md`, `index.html`, `assets/css/memotiva.css` e os templates de `assets/js/app/`. Ignore `arquivo/`, `.trabalho/` e o miolo das fases de curadoria. |
-| 4 | "Revise os textos" e "remova travessões artificiais" (§4) | Os textos das frases, biografias e histórias são **conteúdo editorial verificado**. Um travessão dentro de uma citação ou biografia faz parte do texto. | A revisão de texto vale **só para a interface**: títulos de seção, subtítulos, rótulos, botões, estados vazios e descrições escritas para o site (por exemplo, "Da comunidade, para você", "Ver comunidade →"). Conteúdo editorial não muda. |
-| 5 | "Não adicionar compartilhamento social" (§11) | O site **já tem** compartilhar nos relatos da comunidade (`sharePost`) | Não **adicionar** compartilhamento novo. O que já existe fica até o proprietário decidir (§15). |
-| 6 | Seção "Avaliações" (§6.G) | Não existe nenhuma avaliação real no sistema | O componente pode ser desenhado **no guia de estilo** (Etapa 2), mas **não aparece na home** enquanto não houver dados reais. "Espaço discreto" significa ausência, não espaço vazio com título. |
-| 7 | Comunidade integrada à home (§6.H) | Os posts que aparecem hoje são **fictícios** (sementes) | Decisão do proprietário (§15). Até lá, a seção da home mostra só relatos reais; se não houver nenhum, mostra um convite discreto para escrever. |
-| 8 | Fotografias grandes como centro da identidade (§12) | Cerca de 65 % dos autores não têm foto curada | Layouts com foto **e** com versão tipográfica. Seleções automáticas (Descubra, galeria, abertura) priorizam autores com foto curada, sem esconder os demais. |
-| 9 | Referências por URL (§2) | A rede do ambiente pode bloquear os sites | Ver §2.4: pedir liberação de domínio ou prints. Não descrever o que não viu. |
-| 10 | "Paleta original" | Os tons claros são quase idênticos entre si, e nenhum laranja passa contraste AA como texto sobre fundo claro (§6.2) | A IA propõe uma paleta **hierárquica** com variações derivadas para texto. O proprietário aprova. |
-| 11 | Rotação automática (Descubra, biografias) | Conteúdo que muda sozinho por mais de 5 s exige forma de **pausar** (WCAG 2.2.2) | Botão de pausar/retomar visível e pausa no hover, foco e toque. Com `prefers-reduced-motion`, não gira sozinho. |
-| 12 | Header "menu mobile" | O site já usa barra inferior no celular | Manter a navegação inferior no celular (é a mais confortável para o polegar), redesenhada. O header superior fica mínimo. Se quiser mudar, proponha na Etapa 3. |
+| #   | No pedido original                                                                             | Problema                                                                                                                                                | Como fica                                                                                                                                                                                                                                    |
+| --- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | "Não fique me perguntando", "não envie relatórios", "continue até concluir" (§31 e fim da §17) | Contradiz o desejo de **construir junto, com aprovação** antes de mudanças grandes                                                                      | Trabalho em **etapas com portões de aprovação** (§12). Entre portões a IA trabalha sozinha, sem relatórios intermediários.                                                                                                                   |
+| 2   | "NÃO faça um mockup separado"                                                                  | Impede mostrar modelos antes de mexer                                                                                                                   | Modelos e protótipos **são obrigatórios** nos portões de direção e de layout. A implementação real vem depois da aprovação.                                                                                                                  |
+| 3   | "Leia todos os arquivos do projeto"                                                            | São cerca de 8 MB de JS e 37 MB de material histórico (`arquivo/`); ler tudo é impossível e inútil                                                      | Leia `CLAUDE.md`, `ARCHITECTURE.md`, `index.html`, `assets/css/memotiva.css` e os templates de `assets/js/app/`. Ignore `arquivo/`, `.trabalho/` e o miolo das fases de curadoria.                                                           |
+| 4   | "Revise os textos" e "remova travessões artificiais" (§4)                                      | Os textos das frases, biografias e histórias são **conteúdo editorial verificado**. Um travessão dentro de uma citação ou biografia faz parte do texto. | A revisão de texto vale **só para a interface**: títulos de seção, subtítulos, rótulos, botões, estados vazios e descrições escritas para o site (por exemplo, "Da comunidade, para você", "Ver comunidade →"). Conteúdo editorial não muda. |
+| 5   | "Não adicionar compartilhamento social" (§11)                                                  | O site **já tem** compartilhar nos relatos da comunidade (`sharePost`)                                                                                  | Não **adicionar** compartilhamento novo. O que já existe fica até o proprietário decidir (§15).                                                                                                                                              |
+| 6   | Seção "Avaliações" (§6.G)                                                                      | Não existe nenhuma avaliação real no sistema                                                                                                            | O componente pode ser desenhado **no guia de estilo** (Etapa 2), mas **não aparece na home** enquanto não houver dados reais. "Espaço discreto" significa ausência, não espaço vazio com título.                                             |
+| 7   | Comunidade integrada à home (§6.H)                                                             | Os posts que aparecem hoje são **fictícios** (sementes)                                                                                                 | Decisão do proprietário (§15). Até lá, a seção da home mostra só relatos reais; se não houver nenhum, mostra um convite discreto para escrever.                                                                                              |
+| 8   | Fotografias grandes como centro da identidade (§12)                                            | Cerca de 65 % dos autores não têm foto curada                                                                                                           | Layouts com foto **e** com versão tipográfica. Seleções automáticas (Descubra, galeria, abertura) priorizam autores com foto curada, sem esconder os demais.                                                                                 |
+| 9   | Referências por URL (§2)                                                                       | A rede do ambiente pode bloquear os sites                                                                                                               | Ver §2.4: pedir liberação de domínio ou prints. Não descrever o que não viu.                                                                                                                                                                 |
+| 10  | "Paleta original"                                                                              | Os tons claros são quase idênticos entre si, e nenhum laranja passa contraste AA como texto sobre fundo claro (§6.2)                                    | A IA propõe uma paleta **hierárquica** com variações derivadas para texto. O proprietário aprova.                                                                                                                                            |
+| 11  | Rotação automática (Descubra, biografias)                                                      | Conteúdo que muda sozinho por mais de 5 s exige forma de **pausar** (WCAG 2.2.2)                                                                        | Botão de pausar/retomar visível e pausa no hover, foco e toque. Com `prefers-reduced-motion`, não gira sozinho.                                                                                                                              |
+| 12  | Header "menu mobile"                                                                           | O site já usa barra inferior no celular                                                                                                                 | Manter a navegação inferior no celular (é a mais confortável para o polegar), redesenhada. O header superior fica mínimo. Se quiser mudar, proponha na Etapa 3.                                                                              |
 
 O restante do pedido é coerente e fica como está, organizado nas seções a seguir.
 
@@ -150,6 +156,7 @@ O restante do pedido é coerente e fica como está, organizado nas seções a se
 **Personalidade:** literatura, cultura, conhecimento, descoberta, profundidade, humanidade, sofisticação, contemporaneidade, calma, curiosidade. O usuário entra para **permanecer, explorar e descobrir**.
 
 **Não pode parecer:**
+
 - landing page genérica, template de SaaS, site de startup, dashboard ou portfólio de agência;
 - template pronto de Framer ou projeto escolar;
 - sequência de cards iguais;
@@ -158,6 +165,7 @@ O restante do pedido é coerente e fica como está, organizado nas seções a se
 **Maturidade:** menos elementos, melhor hierarquia, mais espaço, melhor tipografia, mais consistência e mais intenção. **Espaço vazio é parte do design.** A sofisticação vem de tipografia, composição, fotografia, ritmo, espaçamento, contraste, proporção e microinterações, não da quantidade de efeitos.
 
 **Sinais de "feito por IA" a eliminar na interface:**
+
 - travessões e frases picadas por "—" nos textos da interface;
 - blocos de texto genéricos e excesso de texto explicativo;
 - grades de cards idênticos e estruturas repetidas seção após seção;
@@ -178,6 +186,7 @@ O restante do pedido é coerente e fica como está, organizado nas seções a se
   - sans: General Sans, Satoshi, Switzer, Supreme, Synonym.
 
   Confira se a família tem os caracteres do português e qual é a licença.
+
 - **Escala curta e com contraste forte.** Cerca de 6 tamanhos fluidos com `clamp()`: display, título 1, título 2, corpo, pequeno e meta. Títulos podem ser muito grandes. O corpo precisa ser **muito legível**: 16–18 px no celular, linha de 60–75 caracteres e entrelinha generosa.
 - **A frase é a protagonista.** Defina um estilo próprio para a citação, com aspas tipográficas, recuo ótico das aspas (hanging punctuation onde for possível) e tamanho que se adapta ao comprimento da frase. Já existe `quoteFontSize(q.text)`; reaproveite a ideia.
 - **Hospede os arquivos `.woff2`** em `assets/fonts/`, use `font-display: swap`, faça preload só das 1–2 variantes da primeira dobra e use métricas de fallback (`size-adjust`) para não haver salto de layout.
@@ -188,49 +197,50 @@ O restante do pedido é coerente e fica como está, organizado nas seções a se
 
 ### 6.1 Todas as cores fornecidas (todas devem entrar na comparação)
 
-| Grupo | Nome | HEX |
-|---|---|---|
-| Paleta original | Light Parchment | `#FFF4D6` |
-| | Light Gold | `#F1E59B` |
-| | Muted Ochre | `#E5D17A` |
-| | Dark Espresso | `#2B1811` |
-| | Deep Purple | `#401D47` |
-| | Burnt Orange | `#E06F2D` |
-| Novas, das referências | Sustainable Linen | `#FAF3E1` |
-| | Recycled Cotton | `#F5E7C6` |
-| | Electric Tangerine | `#FF6D1F` |
-| | Black Hole | `#222222` |
-| | Ivory | `#F5E6C5` |
-| | Apricot | `#D78B30` |
-| | Natural | `#9F886F` |
-| | Organic | `#3F422E` |
-| Pôster "bloom" (imagem 1, amostra **aproximada** da foto) | areia (Pantone P 15-2 C) | ≈ `#B1A082` |
-| | roxo (Pantone P 95-16 C) | ≈ `#3C1C44`, quase o Deep Purple |
-| | laranja (Pantone P 30-8 C) | ≈ `#E06F2D`, igual ao Burnt Orange |
+| Grupo                                                     | Nome                       | HEX                                |
+| --------------------------------------------------------- | -------------------------- | ---------------------------------- |
+| Paleta original                                           | Light Parchment            | `#FFF4D6`                          |
+|                                                           | Light Gold                 | `#F1E59B`                          |
+|                                                           | Muted Ochre                | `#E5D17A`                          |
+|                                                           | Dark Espresso              | `#2B1811`                          |
+|                                                           | Deep Purple                | `#401D47`                          |
+|                                                           | Burnt Orange               | `#E06F2D`                          |
+| Novas, das referências                                    | Sustainable Linen          | `#FAF3E1`                          |
+|                                                           | Recycled Cotton            | `#F5E7C6`                          |
+|                                                           | Electric Tangerine         | `#FF6D1F`                          |
+|                                                           | Black Hole                 | `#222222`                          |
+|                                                           | Ivory                      | `#F5E6C5`                          |
+|                                                           | Apricot                    | `#D78B30`                          |
+|                                                           | Natural                    | `#9F886F`                          |
+|                                                           | Organic                    | `#3F422E`                          |
+| Pôster "bloom" (imagem 1, amostra **aproximada** da foto) | areia (Pantone P 15-2 C)   | ≈ `#B1A082`                        |
+|                                                           | roxo (Pantone P 95-16 C)   | ≈ `#3C1C44`, quase o Deep Purple   |
+|                                                           | laranja (Pantone P 30-8 C) | ≈ `#E06F2D`, igual ao Burnt Orange |
 
 O pôster "bloom" é a referência de **clima e proporção**: fundo de areia e papel, laranja como massa principal, roxo profundo como tinta e contorno, muito espaço e formas simples. As outras três imagens só mostram amostras com nome e HEX. **Não copie os nomes comerciais nem os layouts das imagens.**
 
 ### 6.2 Fatos medidos (contraste WCAG, calculado)
 
-| Par | Contraste | Leitura |
-|---|---|---|
-| Espresso `#2B1811` sobre Linen `#FAF3E1` | **15,3 : 1** | Excelente para texto |
-| Deep Purple `#401D47` sobre Linen | **12,8 : 1** | Serve para títulos e texto |
-| Organic `#3F422E` sobre Linen | 9,4 : 1 | Serve para texto de apoio |
-| Natural `#9F886F` sobre Linen | 3,05 : 1 | **Reprova como texto comum.** Só para texto grande ou decoração; `#7A6450` dá 5,0 : 1. |
-| Burnt Orange `#E06F2D` sobre Linen | 2,9 : 1 | **Reprova como texto.** Variante escura `#A9501A` dá 4,9 : 1. |
-| Electric Tangerine `#FF6D1F` sobre Linen | 2,5 : 1 | Reprova como texto. Só como **massa de cor** ou acento grande. |
-| Apricot `#D78B30` sobre Linen | 2,5 : 1 | Reprova como texto |
-| Branco sobre Burnt Orange | 3,2 : 1 | **Reprova** para texto de botão |
-| Espresso sobre Burnt Orange | 5,2 : 1 | Passa: botão laranja usa **texto escuro** |
-| Espresso sobre Tangerine | 6,0 : 1 | Passa |
-| Linen sobre Deep Purple | 12,8 : 1 | Excelente: seções e blocos roxos com texto claro |
-| Tangerine sobre Deep Purple | 5,0 : 1 | Passa: acento sobre roxo |
-| Linen sobre Espresso | 15,3 : 1 | Excelente (tema escuro) |
-| Tangerine sobre Espresso | 6,0 : 1 | Passa (acento no tema escuro) |
-| Deep Purple sobre Espresso | 1,2 : 1 | **Invisível.** No tema escuro o roxo só funciona como superfície com texto claro, nunca como texto. |
+| Par                                      | Contraste    | Leitura                                                                                             |
+| ---------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------- |
+| Espresso `#2B1811` sobre Linen `#FAF3E1` | **15,3 : 1** | Excelente para texto                                                                                |
+| Deep Purple `#401D47` sobre Linen        | **12,8 : 1** | Serve para títulos e texto                                                                          |
+| Organic `#3F422E` sobre Linen            | 9,4 : 1      | Serve para texto de apoio                                                                           |
+| Natural `#9F886F` sobre Linen            | 3,05 : 1     | **Reprova como texto comum.** Só para texto grande ou decoração; `#7A6450` dá 5,0 : 1.              |
+| Burnt Orange `#E06F2D` sobre Linen       | 2,9 : 1      | **Reprova como texto.** Variante escura `#A9501A` dá 4,9 : 1.                                       |
+| Electric Tangerine `#FF6D1F` sobre Linen | 2,5 : 1      | Reprova como texto. Só como **massa de cor** ou acento grande.                                      |
+| Apricot `#D78B30` sobre Linen            | 2,5 : 1      | Reprova como texto                                                                                  |
+| Branco sobre Burnt Orange                | 3,2 : 1      | **Reprova** para texto de botão                                                                     |
+| Espresso sobre Burnt Orange              | 5,2 : 1      | Passa: botão laranja usa **texto escuro**                                                           |
+| Espresso sobre Tangerine                 | 6,0 : 1      | Passa                                                                                               |
+| Linen sobre Deep Purple                  | 12,8 : 1     | Excelente: seções e blocos roxos com texto claro                                                    |
+| Tangerine sobre Deep Purple              | 5,0 : 1      | Passa: acento sobre roxo                                                                            |
+| Linen sobre Espresso                     | 15,3 : 1     | Excelente (tema escuro)                                                                             |
+| Tangerine sobre Espresso                 | 6,0 : 1      | Passa (acento no tema escuro)                                                                       |
+| Deep Purple sobre Espresso               | 1,2 : 1      | **Invisível.** No tema escuro o roxo só funciona como superfície com texto claro, nunca como texto. |
 
 **Redundâncias medidas:**
+
 - Linen × Parchment: **1,01 : 1**, praticamente iguais;
 - Recycled Cotton × Ivory: **1,01 : 1**, praticamente iguais;
 - Linen × Cotton: 1,11 : 1, diferença sutil, mas útil para **separar superfícies**.
@@ -260,17 +270,17 @@ O pôster "bloom" é a referência de **clima e proporção**: fundo de areia e 
 
 A home atual é curta. A nova deve ser **mais extensa e contar uma história ao longo da rolagem**, com seções de personalidades diferentes que pertençam ao mesmo sistema. Cada seção abaixo traz a ideia e de onde vêm os **dados reais**.
 
-| Seção | Ideia | Dados reais | Cuidados |
-|---|---|---|---|
-| **A. Abertura** | Capa contemporânea, assimétrica: tipografia grande, uma frase, um retrato, o nome e pequenos atalhos de navegação. **Nunca** o padrão título + subtítulo + botão + imagem ao lado. | `QUOTES` (status A) com autor que tenha foto curada; `AUTOR_INDEX` | Precisa funcionar antes de o acervo terminar de carregar (§2.3, item 7): tipografia e composição aparecem primeiro, a frase entra suavemente. |
-| **B. Frase em destaque** | A frase como protagonista, fora de card, enorme, com muito ar; autor com presença e foto integrada. Mostrar a **fonte/obra** com elegância, porque é o diferencial do site. | `QUOTES` com `src`; foto do autor | Tamanho adaptado ao comprimento da frase |
-| **C. Explorar** | Convite à exploração: grid editorial, grandes títulos, categorias como índice de revista e números reais. Evitar cara de catálogo. | `CATEGORIES` (22); contagens ao vivo | Categorias são navegação: precisam ser claramente clicáveis |
-| **D. Autores** | Coleção editorial: trilho horizontal ou galeria com tamanhos diferentes e sobreposição leve. Não reduzir todos a miniaturas iguais. | `AUTOR_INDEX`, `PAPEIS`, fotos | Versão tipográfica para quem não tem foto |
-| **E. Descubra** | O ponto alto: um autor por vez (foto, nome, papel, biografia curta, frase), trocando **devagar** (crossfade ou deslocamento pequeno). O usuário assume o controle ao interagir. | `PERFIS_PROFUNDOS` (`curta`, `resumo`), `PAPEIS`, `QUOTES` | Pausa no hover, no foco e no toque; botão de pausa; não trocar enquanto a pessoa lê; com movimento reduzido, troca só manual (§9) |
-| **F. Histórias / Biografias** | Experiência editorial: imagem grande + nome enorme + texto curto, ou texto revelado na rolagem, ou o autor atual e o próximo surgindo. **Componente extensível** para novas biografias. | `STORIES` (235), `PERFIS_PROFUNDOS` | Narração por áudio continua acessível |
-| **G. Avaliações** | **Não aparece** enquanto não houver avaliações reais. O componente (nome, nota, comentário, data, avatar) fica pronto no guia de estilo. | Nenhum hoje | Nunca usar "4,9 estrelas", "milhares de usuários" ou similares |
-| **H. Comunidade** | Parte natural do ecossistema, sem botão gigante de conversão e sem linguagem agressiva. | Relatos reais de `feed:posts` | Decisão sobre os posts semente (§15, item 1) |
-| **I. Encerramento** | Final forte e **diferente** da abertura: uma frase, um autor, descoberta e acesso às outras áreas. Integrado ao **rodapé**, que também pertence à identidade. | `QUOTES`, navegação | Não repetir a estrutura da abertura |
+| Seção                         | Ideia                                                                                                                                                                                   | Dados reais                                                        | Cuidados                                                                                                                                      |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **A. Abertura**               | Capa contemporânea, assimétrica: tipografia grande, uma frase, um retrato, o nome e pequenos atalhos de navegação. **Nunca** o padrão título + subtítulo + botão + imagem ao lado.      | `QUOTES` (status A) com autor que tenha foto curada; `AUTOR_INDEX` | Precisa funcionar antes de o acervo terminar de carregar (§2.3, item 7): tipografia e composição aparecem primeiro, a frase entra suavemente. |
+| **B. Frase em destaque**      | A frase como protagonista, fora de card, enorme, com muito ar; autor com presença e foto integrada. Mostrar a **fonte/obra** com elegância, porque é o diferencial do site.             | `QUOTES` com `src`; foto do autor                                  | Tamanho adaptado ao comprimento da frase                                                                                                      |
+| **C. Explorar**               | Convite à exploração: grid editorial, grandes títulos, categorias como índice de revista e números reais. Evitar cara de catálogo.                                                      | `CATEGORIES` (22); contagens ao vivo                               | Categorias são navegação: precisam ser claramente clicáveis                                                                                   |
+| **D. Autores**                | Coleção editorial: trilho horizontal ou galeria com tamanhos diferentes e sobreposição leve. Não reduzir todos a miniaturas iguais.                                                     | `AUTOR_INDEX`, `PAPEIS`, fotos                                     | Versão tipográfica para quem não tem foto                                                                                                     |
+| **E. Descubra**               | O ponto alto: um autor por vez (foto, nome, papel, biografia curta, frase), trocando **devagar** (crossfade ou deslocamento pequeno). O usuário assume o controle ao interagir.         | `PERFIS_PROFUNDOS` (`curta`, `resumo`), `PAPEIS`, `QUOTES`         | Pausa no hover, no foco e no toque; botão de pausa; não trocar enquanto a pessoa lê; com movimento reduzido, troca só manual (§9)             |
+| **F. Histórias / Biografias** | Experiência editorial: imagem grande + nome enorme + texto curto, ou texto revelado na rolagem, ou o autor atual e o próximo surgindo. **Componente extensível** para novas biografias. | `STORIES` (235), `PERFIS_PROFUNDOS`                                | Narração por áudio continua acessível                                                                                                         |
+| **G. Avaliações**             | **Não aparece** enquanto não houver avaliações reais. O componente (nome, nota, comentário, data, avatar) fica pronto no guia de estilo.                                                | Nenhum hoje                                                        | Nunca usar "4,9 estrelas", "milhares de usuários" ou similares                                                                                |
+| **H. Comunidade**             | Parte natural do ecossistema, sem botão gigante de conversão e sem linguagem agressiva.                                                                                                 | Relatos reais de `feed:posts`                                      | Decisão sobre os posts semente (§15, item 1)                                                                                                  |
+| **I. Encerramento**           | Final forte e **diferente** da abertura: uma frase, um autor, descoberta e acesso às outras áreas. Integrado ao **rodapé**, que também pertence à identidade.                           | `QUOTES`, navegação                                                | Não repetir a estrutura da abertura                                                                                                           |
 
 **Ritmo:** alterne tipografia grande, fotografia, vazio, grid, assimetria, frase isolada, galeria e biografia. Nenhuma seção deve ter a mesma estrutura da anterior.
 
@@ -279,6 +289,7 @@ A home atual é curta. A nova deve ser **mais extensa e contar uma história ao 
 ## 8. Referências visuais (princípios, nunca cópia)
 
 Referências do proprietário:
+
 - https://jitter.video/
 - https://brik.space/
 - https://godly.design/
@@ -293,6 +304,7 @@ Busque também referências de sites editoriais, revistas digitais, literatura, 
 **O que estudar:** composição, tipografia, espaçamento, grids, proporção, imagens, hierarquia, ritmo, navegação, comportamento na rolagem, galerias, carrosséis, microinterações, movimento, cursor, transições e apresentação de conteúdo.
 
 **Regras para usar as referências:**
+
 - **Não copiar**, não reproduzir layout específico e não virar mistura das referências. A identidade final é do MeMotiva.
 - **Refero:** priorize sistemas de marcas ligadas a leitura, cultura e fotografia, não as que estão em alta. Pode exigir login: se não abrir, peça prints.
 - **Cult UI:** é feito em React, Tailwind e shadcn. **Extraia o princípio** da interação e reproduza com CSS e JS puros. Não instale nada dele.
@@ -304,50 +316,60 @@ Busque também referências de sites editoriais, revistas digitais, literatura, 
 ## 9. Comportamento global
 
 ### Header e navegação
+
 - O header fica acessível durante a rolagem (sticky), mas **sem dominar a tela**: mais aberto e integrado no topo, mais compacto durante a rolagem, com transição discreta.
 - **No celular:** header mínimo e a barra inferior redesenhada, com alvos de toque de pelo menos 44 px. Nada cobre conteúdo e o menu fecha corretamente.
 - Ao trocar de tela, o usuário sabe **onde está**, **como voltar** e **o que é clicável**.
 
 ### Rolagem
+
 - O conteúdo aparece conforme a pessoa chega: fade, reveal, clipping, pequeno deslocamento, entrada de imagem e escala muito discreta, com `IntersectionObserver` e só `transform` e `opacity`.
 - Sensação de "conteúdo sendo descoberto", não de "apresentação".
 - **Proibido:** sequestrar a rolagem, parallax extremo, zoom exagerado, texto girando, elementos voando, animação longa ou lenta demais, e qualquer efeito que atrapalhe a leitura.
 - Duração típica: 200–450 ms, curvas suaves.
 
 ### Cursor (só desktop, `@media (hover: hover) and (pointer: fine)`)
+
 - Camada **quase imperceptível**: imagens e fotos com deslocamento sutil, leve profundidade, cards reagindo à posição, revelação de detalhes, escala mínima e clipping suave em áreas específicas.
 - **Sem cursor customizado chamativo** e sem "efeito de videogame".
 - **Um único listener** de `pointermove` por componente ativo, com `requestAnimationFrame`, desligado fora da tela.
 - **Nenhuma informação depende do mouse.** No toque, use comportamento próprio (toque revela e arrastar navega).
 
 ### Galeria horizontal de autores
+
 - **No desktop:** arrastar com o mouse, hover, movimento suave, autoplay opcional que **pausa na interação**.
 - **No celular:** arrastar natural com `scroll-snap` e áreas de toque confortáveis.
 - Precisa parecer **galeria de museu**, não carrossel de loja. O loop não pode "quebrar" visualmente. Setas e teclado também funcionam.
 
 ### Biografias em renovação
+
 - Troca elegante, **só com dados reais**.
 - **Não muda enquanto a pessoa lê**: pausa com foco, hover, toque ou seleção de texto. Tem controle manual e botão de pausa.
 
 ### Frase ampliada (modal)
+
 - Mantém a função atual de abrir em tamanho ampliado, redesenhada como **página editorial**: a frase respira, o autor tem presença, a foto está integrada e a fonte e a obra aparecem.
 - **X sempre visível e acessível**, fechamento com Esc e retorno do foco.
 - A foto do autor **continua podendo abrir em visualização maior**.
 - Não adicionar compartilhamento social novo.
 
 ### Fotografias
+
 - Escalas variadas (retrato grande, vertical, quadrada, horizontal, foto ocupando área), mas **nunca cortar rosto mal**.
 - Revise `object-fit`, `object-position`, `aspect-ratio` e ponto focal (mapa visual da §2.3, item 4).
 - Use `loading="lazy"`, dimensões declaradas, `srcset` ou `?width=` do Commons, e fallback tipográfico.
 
 ### Fluidez dos fluxos existentes
+
 - Navegação, busca, filtros, exploração, troca de frases, seleção de autores, biografias, Descubra, Histórias, comunidade, perfil, modais, tema e carrosséis devem parecer **o mesmo sistema**.
 - Sem saltos de layout, sem elementos surgindo em posição inesperada e sem loading agressivo. Use skeleton com a forma final, nunca spinner gigante.
 
 ### Dark mode
+
 - Faz parte da identidade, não é extra. Toda tela e todo estado (hover, foco, ativo, desabilitado) precisa estar certo nos **dois temas**: botões, modais, menus, filtros, carrosséis, cards, separadores e fotos.
 
 ### Microinterações
+
 - **Permitidas:** hover suave, pequeno zoom em imagem, sublinhado surgindo, opacidade, escala mínima, transição de cor, indicadores, troca suave de autores e entrada de conteúdo. Todas rápidas e com propósito.
 - **Proibidas:** partículas, blobs, cursor exagerado, glassmorphism generalizado, gradiente animado contínuo, 3D pesado e animação decorativa sem propósito.
 
@@ -376,6 +398,7 @@ Busque também referências de sites editoriais, revistas digitais, literatura, 
 ## 11. Sistema de design (tokens e organização do CSS)
 
 **Tokens centralizados**, sem HEX nem valores soltos nos componentes:
+
 - **Cor (semânticos):** `--bg`, `--surface`, `--surface-muted`, `--text`, `--text-secondary`, `--text-meta`, `--border`, `--accent`, `--accent-ink` (texto sobre o acento), `--accent-text` (acento usado como texto, versão AA), `--brand` (roxo), `--focus-ring`, `--overlay`.
   - Os nomes atuais (`--bg`, `--surface`, `--text`…) podem continuar, para reduzir a troca no código.
   - Os antigos (`--coral`, `--jade`, `--marigold`, `--plum`, `--paper-*`) devem ser **mapeados** para os novos ou retirados com cuidado: procure todos os usos, inclusive nos templates JS e em `STYLE_COLORS`.
@@ -406,18 +429,18 @@ O bloco `memotiva-responsivo` injetado por JS (§2.3) deve ser **migrado para o 
 
 Cada etapa termina num **PORTÃO**: a IA apresenta o resultado (§14) e **espera** o "aprovado" do proprietário. Entre portões, trabalha sem pedir licença e sem relatórios intermediários.
 
-| Etapa | O que fazer | O que mostrar no portão |
-|---|---|---|
-| **0. Diagnóstico** (branch `redesign/00-diagnostico`, só leitura) | Ler `CLAUDE.md`, `ARCHITECTURE.md`, `index.html`, o CSS e os templates; capturar **prints do site atual** (6 telas + Autores & Obras, Panorama, Obra, Escrever e modal) em 390 e 1440 px, claro e escuro; inventariar componentes, estilos inline, tokens em uso, ids e classes usados pelo JS e pelos testes; listar riscos. | Folha de contato com os prints atuais, inventário curto, riscos e as **decisões pendentes da §15**. **PORTÃO 0** |
-| **1. Direção visual** | Montar **2 ou 3 direções** diferentes de verdade, com nome curto e uma frase de conceito cada. Cada uma traz: paleta (com tabela de contraste), par tipográfico (espécime com frases reais), **abertura da home** e **cartão/modal de frase**, em celular e desktop, nos dois temas, como protótipo HTML estático em `design/prototipos/` (fora do site) ou página de pré-visualização. Dizer quais princípios vieram de quais referências. | As direções lado a lado + recomendação da IA. **PORTÃO 1:** o proprietário escolhe ou mistura. |
-| **2. Sistema de design** | Tokens (§11) e componentes base: botões, links, campos, chips/filtros, cartão de frase, modal, header, barra inferior, rodapé, estados vazio, erro e carregamento, componente de avaliação (só no guia). Página `design/guia.html`, que **não é linkada no site** e carrega os tokens reais. | O guia de estilo nos dois temas, em 390 e 1440. **PORTÃO 2** |
-| **3. Header, navegação e rodapé** | Aplicar ao site real: header sticky que compacta e barra inferior no celular. | Prints antes e depois + vídeo curto ou sequência mostrando a compactação. **PORTÃO 3** |
-| **4. Home** (a maior) | **4a.** Wireframe ou protótipo da narrativa A–I com dados reais. **PORTÃO 4a.** **4b.** Implementação no site real. | 4a: protótipo navegável. 4b: prints de todas as seções (celular, tablet e desktop, dois temas). **PORTÃO 4b** |
-| **5. Frase: cartão, modal, Explorar, busca e filtros** | Cartão e modal editoriais; Explorar com filtros fluidos; busca. | Prints + fluxo (abrir, ampliar foto, fechar, filtrar, buscar). **PORTÃO 5** |
-| **6. Autores & Obras, Panorama (autor) e Obra** | Galeria horizontal, página de autor com cronologia e obras, página de obra com frases ligadas. | Prints de 3 autores (com foto, sem foto, com muitas obras) e 2 obras. **PORTÃO 6** |
-| **7. Descubra e Histórias** | Renovação automática com pausa; histórias com narração. | Sequência de prints ou vídeo da troca; prints com movimento reduzido. **PORTÃO 7** |
-| **8. Comunidade, Perfil, Escrever, login, favoritos e estados vazios** | Compositor de relatos (mantendo os ids de cor e fonte), feed, perfil, modais de entrada. | Prints dos fluxos. **PORTÃO 8** |
-| **9. Movimento, cursor e revisão final** | Camada única de movimento e cursor; QA completo (§14); acessibilidade e performance; revisão crítica (§10 + perguntas do Apêndice A, §30); retirada do CSS antigo sem uso. | Relatório final: o que mudou, a paleta escolhida, apoio e descartada com motivo, referências e princípios, resultados de teste. **PORTÃO FINAL:** merge na `main` só com "pode juntar". |
+| Etapa                                                                  | O que fazer                                                                                                                                                                                                                                                                                                                                                                                                                                 | O que mostrar no portão                                                                                                                                                                 |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **0. Diagnóstico** (branch `redesign/00-diagnostico`, só leitura)      | Ler `CLAUDE.md`, `ARCHITECTURE.md`, `index.html`, o CSS e os templates; capturar **prints do site atual** (6 telas + Autores & Obras, Panorama, Obra, Escrever e modal) em 390 e 1440 px, claro e escuro; inventariar componentes, estilos inline, tokens em uso, ids e classes usados pelo JS e pelos testes; listar riscos.                                                                                                               | Folha de contato com os prints atuais, inventário curto, riscos e as **decisões pendentes da §15**. **PORTÃO 0**                                                                        |
+| **1. Direção visual**                                                  | Montar **2 ou 3 direções** diferentes de verdade, com nome curto e uma frase de conceito cada. Cada uma traz: paleta (com tabela de contraste), par tipográfico (espécime com frases reais), **abertura da home** e **cartão/modal de frase**, em celular e desktop, nos dois temas, como protótipo HTML estático em `design/prototipos/` (fora do site) ou página de pré-visualização. Dizer quais princípios vieram de quais referências. | As direções lado a lado + recomendação da IA. **PORTÃO 1:** o proprietário escolhe ou mistura.                                                                                          |
+| **2. Sistema de design**                                               | Tokens (§11) e componentes base: botões, links, campos, chips/filtros, cartão de frase, modal, header, barra inferior, rodapé, estados vazio, erro e carregamento, componente de avaliação (só no guia). Página `design/guia.html`, que **não é linkada no site** e carrega os tokens reais.                                                                                                                                                | O guia de estilo nos dois temas, em 390 e 1440. **PORTÃO 2**                                                                                                                            |
+| **3. Header, navegação e rodapé**                                      | Aplicar ao site real: header sticky que compacta e barra inferior no celular.                                                                                                                                                                                                                                                                                                                                                               | Prints antes e depois + vídeo curto ou sequência mostrando a compactação. **PORTÃO 3**                                                                                                  |
+| **4. Home** (a maior)                                                  | **4a.** Wireframe ou protótipo da narrativa A–I com dados reais. **PORTÃO 4a.** **4b.** Implementação no site real.                                                                                                                                                                                                                                                                                                                         | 4a: protótipo navegável. 4b: prints de todas as seções (celular, tablet e desktop, dois temas). **PORTÃO 4b**                                                                           |
+| **5. Frase: cartão, modal, Explorar, busca e filtros**                 | Cartão e modal editoriais; Explorar com filtros fluidos; busca.                                                                                                                                                                                                                                                                                                                                                                             | Prints + fluxo (abrir, ampliar foto, fechar, filtrar, buscar). **PORTÃO 5**                                                                                                             |
+| **6. Autores & Obras, Panorama (autor) e Obra**                        | Galeria horizontal, página de autor com cronologia e obras, página de obra com frases ligadas.                                                                                                                                                                                                                                                                                                                                              | Prints de 3 autores (com foto, sem foto, com muitas obras) e 2 obras. **PORTÃO 6**                                                                                                      |
+| **7. Descubra e Histórias**                                            | Renovação automática com pausa; histórias com narração.                                                                                                                                                                                                                                                                                                                                                                                     | Sequência de prints ou vídeo da troca; prints com movimento reduzido. **PORTÃO 7**                                                                                                      |
+| **8. Comunidade, Perfil, Escrever, login, favoritos e estados vazios** | Compositor de relatos (mantendo os ids de cor e fonte), feed, perfil, modais de entrada.                                                                                                                                                                                                                                                                                                                                                    | Prints dos fluxos. **PORTÃO 8**                                                                                                                                                         |
+| **9. Movimento, cursor e revisão final**                               | Camada única de movimento e cursor; QA completo (§14); acessibilidade e performance; revisão crítica (§10 + perguntas do Apêndice A, §30); retirada do CSS antigo sem uso.                                                                                                                                                                                                                                                                  | Relatório final: o que mudou, a paleta escolhida, apoio e descartada com motivo, referências e princípios, resultados de teste. **PORTÃO FINAL:** merge na `main` só com "pode juntar". |
 
 **Ao fim de cada etapa aprovada:** `npm run teste` passa, `npm run estado:comparar` dá IDÊNTICO e o commit está na branch. O merge na `main` acontece **só** quando o proprietário disser "pode juntar".
 
@@ -427,15 +450,15 @@ Cada etapa termina num **PORTÃO**: a IA apresenta o resultado (§14) e **espera
 
 Use subagentes para **ler, comparar e testar em paralelo**. A **escrita de código** fica com um agente por vez, ou com agentes em paralelo **só** quando cada um mexe em arquivos diferentes (por exemplo `telas/autores.css` × `telas/comunidade.css`), de preferência em worktrees separadas, juntando com cuidado.
 
-| Agente | Quando | Função |
-|---|---|---|
-| **Explorador** (só leitura) | Etapa 0 | Inventário: ids e classes usados por JS e testes, estilos inline, tokens em uso, telas e componentes. Devolve listas, não opiniões. |
-| **Diretor de arte** | Etapas 1 e 2 | Monta as direções, a paleta, a tipografia e o guia. É o "dono" da coerência visual. |
-| **Implementador** | Etapas 3 a 8 | Aplica a direção aprovada uma tela por vez, sem mudar dados nem ids. |
-| **Revisor visual (QA)** | Fim de cada etapa | Gera a folha de prints (larguras da §10 × 2 temas) com Playwright, procura rolagem horizontal, cortes, sobreposição, rosto mal enquadrado e texto quebrado. |
-| **Revisor de acessibilidade e desempenho** | Fim das etapas 3–9 | Contraste medido, teclado, foco, movimento reduzido, CLS, listeners e peso de imagens (`npm run auditoria:tecnica`). |
-| **Guardião do conteúdo** | Antes de cada commit | `npm run estado:comparar` (IDÊNTICO), `npm run teste`, e checa se nenhum texto editorial, número ou id gravado mudou. |
-| **Crítico "isso parece IA?"** | Etapas 1, 4 e 9 | Olhar externo e duro com a lista de sinais da §4 e as perguntas finais do Apêndice A, §30. Aponta o que parece template. |
+| Agente                                     | Quando               | Função                                                                                                                                                      |
+| ------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Explorador** (só leitura)                | Etapa 0              | Inventário: ids e classes usados por JS e testes, estilos inline, tokens em uso, telas e componentes. Devolve listas, não opiniões.                         |
+| **Diretor de arte**                        | Etapas 1 e 2         | Monta as direções, a paleta, a tipografia e o guia. É o "dono" da coerência visual.                                                                         |
+| **Implementador**                          | Etapas 3 a 8         | Aplica a direção aprovada uma tela por vez, sem mudar dados nem ids.                                                                                        |
+| **Revisor visual (QA)**                    | Fim de cada etapa    | Gera a folha de prints (larguras da §10 × 2 temas) com Playwright, procura rolagem horizontal, cortes, sobreposição, rosto mal enquadrado e texto quebrado. |
+| **Revisor de acessibilidade e desempenho** | Fim das etapas 3–9   | Contraste medido, teclado, foco, movimento reduzido, CLS, listeners e peso de imagens (`npm run auditoria:tecnica`).                                        |
+| **Guardião do conteúdo**                   | Antes de cada commit | `npm run estado:comparar` (IDÊNTICO), `npm run teste`, e checa se nenhum texto editorial, número ou id gravado mudou.                                       |
+| **Crítico "isso parece IA?"**              | Etapas 1, 4 e 9      | Olhar externo e duro com a lista de sinais da §4 e as perguntas finais do Apêndice A, §30. Aponta o que parece template.                                    |
 
 **Script recomendado para criar na Etapa 0:** `ferramentas/design/capturas.mjs`. Ele abre cada tela com `navigateTo('<tela>')` e, nas larguras e nos temas pedidos, salva os prints em `.trabalho/design/<etapa>/` e monta uma folha de contato. Esse script é a base dos portões e da QA.
 
