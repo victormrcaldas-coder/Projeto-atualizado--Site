@@ -71,6 +71,11 @@ Warren Buffett está entre as PEQUENAS: a foto atual tem 640×386.
 
 **Sem foto, PEQUENA:** Florbela Espanca, Jean Piaget, John Maynard Keynes, Michel Foucault, Paulo Freire, Rainer Maria Rilke e bell hooks.
 
+## Achados da conferência visual
+
+- **Mário Quintana:** a foto curada hoje ("Mario Quintana.jpg") mostra um homem de hoje, de camisa azul. Não é o poeta, que morreu em 1994. A troca é urgente.
+- **Florbela Espanca:** a foto atual é uma pintura digital moderna, não um retrato de época.
+
 ## Dúvidas para o dono
 
 - **Trocas aceitas com ressalva** (passam no critério, mas o rosto fica pequeno no quadro): Ailton Krenak, Ayrton Senna, Coco Chanel, Manuel Bandeira, Simone Weil e Stephen Hawking.
