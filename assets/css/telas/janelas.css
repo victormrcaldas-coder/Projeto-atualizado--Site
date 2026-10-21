@@ -190,3 +190,17 @@
     transition-duration: 1ms !important;
   }
 }
+
+/* ---------- listas (app/46): o traço do chip que desliza até o chip novo ---------- */
+.mm-traco {
+  position: fixed;
+  z-index: 5;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left center;
+  pointer-events: none;
+}
+/* o chip novo esconde o próprio traço enquanto o que desliza não chega (sem crescer de novo depois) */
+:is(body, #_) .chip.mm-traco-vindo {
+  background-image: none;
+}
