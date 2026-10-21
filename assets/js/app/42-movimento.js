@@ -46,6 +46,42 @@
   document.addEventListener('keydown', (e) => (e.key === 'Enter' || e.key === ' ') && marcar(e), true);
   const tomarOrigem = () => (performance.now() - quando < 600 ? origem : null);
 
+  // a foto grande da página do autor começa a chegar no toque (ou quando o mouse para sobre a pessoa):
+  // a troca não precisa mais esperar a decodificação dela
+  const preparadas = new Map();
+  function nomeEm(el) {
+    if (!(el instanceof Element) || typeof photoImgHTML !== 'function') return null;
+    const b = el.closest('[data-pan], [data-autor], [data-indice]');
+    if (b) return b.dataset.pan || b.dataset.autor || b.dataset.indice || null;
+    const caixa = el.closest('.ao-card, .retrato, .quote-card, .story-card, .historia-destaque');
+    const i = caixa && caixa.querySelector('img[data-person]');
+    return i ? i.dataset.person : null;
+  }
+  function prepararFoto(el) {
+    const nome = nomeEm(el);
+    if (!nome || preparadas.has(nome)) return;
+    const molde = document.createElement('template');
+    molde.innerHTML = photoImgHTML(nome, 'card', 900); // num template: nada carrega nem roda aqui
+    const m = molde.content.querySelector('img');
+    if (!m || !m.getAttribute('src')) return;
+    const img = new Image();
+    if (m.getAttribute('srcset')) img.srcset = m.getAttribute('srcset');
+    if (m.getAttribute('sizes')) img.sizes = m.getAttribute('sizes');
+    img.src = m.getAttribute('src');
+    preparadas.set(nome, img.decode ? img.decode().catch(() => {}) : Promise.resolve());
+    if (preparadas.size > 40) preparadas.delete(preparadas.keys().next().value);
+  }
+  document.addEventListener('pointerdown', (e) => prepararFoto(e.target), true);
+  let parado = 0;
+  document.addEventListener(
+    'pointerover',
+    (e) => {
+      clearTimeout(parado);
+      if (e.pointerType === 'mouse') parado = setTimeout(() => prepararFoto(e.target), 90);
+    },
+    { passive: true }
+  );
+
   const naTela = (el) => {
     if (!el || !el.isConnected) return false;
     const r = el.getBoundingClientRect();
@@ -123,8 +159,11 @@
       if (!nome || !naTela(fonte)) return null;
       // o destino é o quadro do cartão (com o recorte dele), não só a imagem de dentro
       const destino = () => {
+        // a foto do filme do Descubra tem outro enquadramento (a ida também não usa par): a volta
+        // para o filme é a cortina ao contrário
         const i = [...(tela(view) || document).querySelectorAll('img[data-person]')].find(
-          (i) => i.dataset.person === nome && i.naturalWidth && naTela(desenhar(i, soltos))
+          (i) =>
+            i.dataset.person === nome && !i.closest('.filme') && i.naturalWidth && naTela(desenhar(i, soltos))
         );
         return i ? i.closest('.quadro') || i : null;
       };
@@ -246,11 +285,21 @@
     let nomeDaPessoa = null;
     let destino = null;
     let retrato = null;
+    let filmeVolta = null;
+    const extras = []; // as animações feitas aqui (canceladas no fim: com fill, ficavam presas)
     const update = async () => {
       if (par) par.fonte.style.viewTransitionName = '';
       if (minha !== vez) return;
       run();
       desenharVisiveis(view, soltos);
+      // o cabeçalho da tela nova já vem no estado certo (compacto ou não): conferido só no fim, ele
+      // saltava 16 px depois do pouso
+      const cab = document.querySelector('.site-header');
+      if (cab) {
+        if (scrollY > 64) cab.classList.add('compact');
+        else if (scrollY < 8) cab.classList.remove('compact');
+      }
+
       // a foto da página do autor não pode pousar aos pedaços: saindo do filme, ela chega com a foto
       // do filme (a mesma pessoa, já decodificada), e a versão da página entra na revelação da cor;
       // nos outros casos, espera a decodificação (até 120 ms)
@@ -259,9 +308,25 @@
       if (foto && doFilme && doFilme.currentSrc) {
         retrato = await prepararRetrato({ fonte: doFilme }, foto);
         if (retrato) retrato.real.style.visibility = 'hidden';
-      } else if (foto && foto.decode) await Promise.race([foto.decode().catch(() => {}), espera(120)]);
+      } else if (foto) {
+        // a foto já começou a chegar no toque (prepararFoto); a espera aqui é só um teto curto
+        const pre = preparadas.get(panAtual);
+        await Promise.race([
+          pre || (foto.decode ? foto.decode().catch(() => {}) : null),
+          espera(pre ? 60 : 40)
+        ]);
+      }
       destino = par && par.destino();
-      if (!destino) return;
+      if (!destino) {
+        // voltando para a home sem um retrato para pousar e com o filme do Descubra na tela: o filme
+        // desce como uma cortina (a ida sobe), simétrico
+        const f = dir === 'voltar' && view === 'home' && document.getElementById('home-descubra');
+        if (f && naTela(f)) {
+          filmeVolta = f;
+          f.style.viewTransitionName = 'mm-filme';
+        }
+        return;
+      }
       if (par.retrato) {
         retrato = await prepararRetrato(par, destino);
         if (retrato) {
@@ -283,14 +348,25 @@
           // com ele: a letra nunca fica sobre a foto nem cortada no ar
           const r1 = destino.getBoundingClientRect();
           const c = nomeDaPessoa.getBoundingClientRect();
+          // a borda é suave (48 px de degradê) e fica uma medianiz (24 px) depois da borda do retrato:
+          // a letra nunca encosta na foto nem aparece cortada a seco. O degradê é uma máscara longa
+          // (transparente até 1000 px, opaca a partir de 1048 px) que desliza com o retrato
+          const G = 24;
+          const deslize = (a, b) => [a - 1000, Math.min(b - 1000, -1048)];
           if (r0 && c.left >= r1.right - 2) {
-            const a = Math.max(0, r0.right - c.left);
-            const b = Math.max(0, r1.right - c.left);
-            corte = [`inset(0 0 0 ${a}px)`, `inset(0 0 0 ${b}px)`];
+            const [p0, p1] = deslize(r0.right + G - c.left, r1.right + G - c.left);
+            corte = {
+              maskImage: 'linear-gradient(90deg, transparent 1000px, #000 1048px)',
+              maskSize: 'calc(100% + 2096px) 100%',
+              maskPosition: [`${p0}px 0`, `${p1}px 0`]
+            };
           } else if (r0 && c.top >= r1.bottom - 2) {
-            const a = Math.max(0, r0.bottom - c.top);
-            const b = Math.max(0, r1.bottom - c.top);
-            corte = [`inset(${a}px 0 0 0)`, `inset(${b}px 0 0 0)`];
+            const [p0, p1] = deslize(r0.bottom + G - c.top, r1.bottom + G - c.top);
+            corte = {
+              maskImage: 'linear-gradient(180deg, transparent 1000px, #000 1048px)',
+              maskSize: '100% calc(100% + 2096px)',
+              maskPosition: [`0 ${p0}px`, `0 ${p1}px`]
+            };
           }
         }
       }
@@ -304,7 +380,8 @@
     try {
       t = document.startViewTransition({
         update,
-        types: [dir]
+        // "titulo": o título que cresce tem a página nova esperando por ele (telas/movimento.css)
+        types: par && par.nome === 'mm-titulo' ? [dir, 'titulo'] : [dir]
       });
     } catch (e) {
       raiz.dataset.vtDir = dir;
@@ -315,15 +392,51 @@
       () => {
         if (tocado) tocado.classList.remove('mm-tocado');
         // o recorte da coluna anda com a borda do retrato: mesma duração e curva do voo dele
+        // com o filme (ida e volta), a tela nova está inteira desde o primeiro quadro, debaixo da
+        // cortina: sem isso a cortina subia sobre um vazio
+        if (filme || filmeVolta)
+          extras.push(
+            raiz.animate(
+              { opacity: [1, 1], transform: ['none', 'none'] },
+              { duration: 480, pseudoElement: '::view-transition-new(root)' }
+            )
+          );
+        // um par sem destino (o retrato que volta para o filme, onde não há onde pousar) sai junto
+        // com a página antiga, em 80 ms: sem isso, ficava um fantasma esmaecendo por cima do filme
+        if (par && !destino)
+          extras.push(
+            raiz.animate(
+              { opacity: [1, 0] },
+              { duration: 80, fill: 'both', pseudoElement: `::view-transition-old(${par.nome})` }
+            )
+          );
+        if (filmeVolta)
+          extras.push(
+            raiz.animate(
+              { opacity: [1, 1], clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0 0)'] },
+              {
+                duration: 280,
+                easing: 'cubic-bezier(0.2, 0, 0, 1)',
+                pseudoElement: '::view-transition-new(mm-filme)'
+              }
+            )
+          );
         if (corte)
-          raiz.animate(
-            { clipPath: corte },
-            {
-              duration: 340,
-              easing: 'cubic-bezier(0.2, 0, 0, 1)',
-              fill: 'both',
-              pseudoElement: '::view-transition-new(mm-nome)'
-            }
+          extras.push(
+            raiz.animate(
+              {
+                maskImage: [corte.maskImage, corte.maskImage],
+                maskSize: [corte.maskSize, corte.maskSize],
+                maskRepeat: ['no-repeat', 'no-repeat'],
+                maskPosition: corte.maskPosition
+              },
+              {
+                duration: 340,
+                easing: 'cubic-bezier(0.2, 0, 0, 1)',
+                fill: 'both',
+                pseudoElement: '::view-transition-new(mm-nome)'
+              }
+            )
           );
       },
       () => {}
@@ -339,6 +452,8 @@
       .finally(() => {
         if (par) par.fonte.style.viewTransitionName = '';
         if (filme) filme.style.viewTransitionName = '';
+        if (filmeVolta) filmeVolta.style.viewTransitionName = '';
+        extras.forEach((a) => a.cancel());
         if (tocado) tocado.classList.remove('mm-tocado');
         if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = '';
         soltos.forEach((a) => (a.style.contentVisibility = ''));

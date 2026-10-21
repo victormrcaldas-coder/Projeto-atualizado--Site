@@ -348,10 +348,12 @@
     raiz.removeAttribute('data-rota-pendente');
     window.__rotaPronta = true;
   };
-  // o script do <head> já escondeu a tela na primeira pintura; aqui só a garantia de 4 s
+  // o script do <head> já escondeu a tela na primeira pintura; aqui só a garantia (a mesma do
+  // <head>: 30 s, para o caso de o acervo não carregar; num aparelho lento ele leva perto de 20 s, e
+  // uma garantia mais curta mostrava a home e depois arrancava a pessoa dela)
   if (!window.__rotaDesistiu && (pendente || raiz.hasAttribute('data-rota-pendente'))) {
     if (!raiz.hasAttribute('data-rota-pendente')) raiz.setAttribute('data-rota-pendente', 'tela');
-    setTimeout(soltar, 12000);
+    setTimeout(soltar, 30000);
   }
   function rotearInicial() {
     const s = history.state;
@@ -371,6 +373,10 @@
         });
         const agora = { mm: 1, autor: null, obra: null, janelas: [], ...alvo };
         history.replaceState({ ...agora, idx: idxAtual }, '', urlDe(agora));
+        // o foco vai para a tela do link (o título, ou o primeiro item à vista se ela abriu rolada),
+        // depois que ela aparece: o leitor de tela começa nela, não no body
+        const v = state.view;
+        requestAnimationFrame(() => (scrollY > 0 ? focarVisivel(v) : focar(v)));
       } else if (/^#(autor|obra)-/.test(location.hash))
         // endereço de autor ou obra que não existe (ou com caracteres que não são de um nome): fica a
         // home, com o endereço limpo
@@ -419,6 +425,23 @@
     if (history.state && history.state.mm)
       history.replaceState({ ...history.state, y: yAtual(), ancora: ancoraDe(history.state.view) }, '');
   });
+  // o tema escolhido vai também para o localStorage, que o <head> lê antes da primeira pintura (o
+  // guardado no IndexedDB só chega depois, e quem escolheu o claro num sistema escuro via o escuro e
+  // depois a troca). Igual ao do sistema, não precisa: o <head> já acerta sozinho
+  if (typeof applyTheme === 'function') {
+    const _tema = applyTheme;
+    applyTheme = function (mode) {
+      const r = _tema.apply(this, arguments);
+      try {
+        const sistema = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (mode === sistema) localStorage.removeItem('mm-tema');
+        else localStorage.setItem('mm-tema', mode);
+      } catch (e) {
+        // sem armazenamento: fica o tema do sistema na primeira pintura, como antes
+      }
+      return r;
+    };
+  }
   const cadeia = window.__fase5Boot;
   window.__fase5Boot = function () {
     if (typeof cadeia === 'function') cadeia.apply(this, arguments);
