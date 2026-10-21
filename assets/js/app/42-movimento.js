@@ -381,7 +381,8 @@
       t = document.startViewTransition({
         update,
         // "titulo": o título que cresce tem a página nova esperando por ele (telas/movimento.css)
-        types: par && par.nome === 'mm-titulo' ? [dir, 'titulo'] : [dir]
+        // "filme": saindo do filme, a tela nova fica inteira debaixo da cortina (telas/movimento.css)
+        types: par && par.nome === 'mm-titulo' ? [dir, 'titulo'] : filme ? [dir, 'filme'] : [dir]
       });
     } catch (e) {
       raiz.dataset.vtDir = dir;
@@ -392,35 +393,6 @@
       () => {
         if (tocado) tocado.classList.remove('mm-tocado');
         // o recorte da coluna anda com a borda do retrato: mesma duração e curva do voo dele
-        // com o filme (ida e volta), a tela nova está inteira desde o primeiro quadro, debaixo da
-        // cortina: sem isso a cortina subia sobre um vazio
-        if (filme || filmeVolta)
-          extras.push(
-            raiz.animate(
-              { opacity: [1, 1], transform: ['none', 'none'] },
-              { duration: 480, pseudoElement: '::view-transition-new(root)' }
-            )
-          );
-        // um par sem destino (o retrato que volta para o filme, onde não há onde pousar) sai junto
-        // com a página antiga, em 80 ms: sem isso, ficava um fantasma esmaecendo por cima do filme
-        if (par && !destino)
-          extras.push(
-            raiz.animate(
-              { opacity: [1, 0] },
-              { duration: 80, fill: 'both', pseudoElement: `::view-transition-old(${par.nome})` }
-            )
-          );
-        if (filmeVolta)
-          extras.push(
-            raiz.animate(
-              { opacity: [1, 1], clipPath: ['inset(0 0 100% 0)', 'inset(0 0 0 0)'] },
-              {
-                duration: 280,
-                easing: 'cubic-bezier(0.2, 0, 0, 1)',
-                pseudoElement: '::view-transition-new(mm-filme)'
-              }
-            )
-          );
         if (corte)
           extras.push(
             raiz.animate(
