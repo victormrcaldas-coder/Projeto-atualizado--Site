@@ -200,7 +200,13 @@
       mudou = false;
     } else if (!restaurando) {
       if (!atual) history.replaceState({ ...novo, idx: idxAtual }, '', urlDe(novo));
-      else if (mesma(atual, novo)) mudou = false;
+      else if (atual.janela) {
+        // a troca veio de dentro de uma janela ("Conhecer" na história): a entrada da janela vira a da
+        // tela nova, e o Voltar dela vai para a tela de baixo, sem reabrir a janela
+        navegou = true;
+        idxAtual = atual.idx || 0;
+        history.replaceState({ ...novo, idx: idxAtual }, '', urlDe(novo));
+      } else if (mesma(atual, novo)) mudou = false;
       else {
         history.replaceState({ ...atual, y: yAtual(), ancora: ancoraDe(atual.view), foco: focoDe(ev) }, '');
         alturas.set(atual.idx || 0, { y: Math.round(yAtual()), ancora: ancoraDe(atual.view) });
@@ -276,7 +282,38 @@
     }
   }
 
+  // ---------- as janelas no histórico (app/45 avisa quando abre e fecha) ----------
+  // cada janela modal ganha uma entrada no mesmo endereço; o Voltar fecha a janela de cima
+  let ignorarPop = 0;
+  window.Rota = {
+    abrirJanela(id) {
+      const st =
+        history.state && history.state.mm ? history.state : { ...estadoDe(state.view), idx: idxAtual };
+      if (!st.janela) history.replaceState({ ...st, y: yAtual(), ancora: ancoraDe(st.view) }, '');
+      idxAtual = (st.idx || 0) + 1;
+      history.pushState({ ...st, janela: id, idx: idxAtual }, '');
+    },
+    // fechada pelo X, pelo Esc ou pelo fundo: a entrada dela sai (a não ser que uma troca de tela já
+    // a tenha reaproveitado)
+    fecharJanela(id) {
+      if (history.state && history.state.mm && history.state.janela === id) {
+        ignorarPop++;
+        history.back();
+      }
+    }
+  };
   addEventListener('popstate', (e) => {
+    if (ignorarPop) {
+      ignorarPop--;
+      if (e.state && e.state.mm) idxAtual = e.state.idx;
+      return;
+    }
+    // Voltar com uma janela aberta: fecha a de cima e fica na mesma tela
+    if (window.Janelas && Janelas.aberta() && !(e.state && e.state.mm && e.state.idx > idxAtual)) {
+      if (e.state && e.state.mm) idxAtual = e.state.idx;
+      Janelas.fecharDoTopo();
+      return;
+    }
     const nosso = e.state && e.state.mm;
     const s = nosso ? e.state : estadoDoHash(location.hash) || { view: 'home' };
     const dir = nosso && e.state.idx < idxAtual ? 'voltar' : 'ir';
