@@ -146,6 +146,23 @@
       requestAnimationFrame(() => (aviso.textContent = nomeDa(view)));
     }
   }
+  // com a tela rolada, o foco vai para o primeiro item focável que está à vista (nunca um contêiner
+  // nem o título lá no alto, fora da tela)
+  const naTela = (el) => {
+    const r = el.getBoundingClientRect();
+    const cab = document.querySelector('.site-header');
+    return r.height > 0 && r.top >= (cab ? cab.getBoundingClientRect().bottom : 0) && r.bottom <= innerHeight;
+  };
+  function focarVisivel(view) {
+    const tela = document.querySelector(`.view[data-view="${view}"]`);
+    const el =
+      tela &&
+      [
+        ...tela.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])')
+      ].find((x) => x.offsetParent !== null && !x.disabled && naTela(x));
+    if (el) el.focus({ preventScroll: true });
+    else focar(view);
+  }
   function marcarMenu(view) {
     const v = GRUPO[view] || view;
     document
@@ -165,6 +182,7 @@
   let navegou = false;
   // na recarga, o navegador devolve o estado da entrada: o índice continua de onde estava
   let idxAtual = history.state && history.state.mm ? history.state.idx || 0 : 0;
+  const alturas = new Map(); // idx da entrada → { y, ancora } mais recentes
   let restaurando = null; // { dir, y, sem } enquanto o Voltar ou o link direto refaz uma tela
   let ultimo = { ev: null, view: null };
   navigateTo = function (view) {
@@ -185,8 +203,11 @@
       else if (mesma(atual, novo)) mudou = false;
       else {
         history.replaceState({ ...atual, y: yAtual(), ancora: ancoraDe(atual.view), foco: focoDe(ev) }, '');
+        alturas.set(atual.idx || 0, { y: Math.round(yAtual()), ancora: ancoraDe(atual.view) });
         idxAtual = (atual.idx || 0) + 1;
         navegou = true;
+        // as entradas que estavam à frente deixam de existir
+        for (const k of [...alturas.keys()]) if (k >= idxAtual) alturas.delete(k);
         history.pushState({ ...novo, idx: idxAtual }, '', urlDe(novo));
       }
     }
@@ -209,13 +230,16 @@
     // na tela, e não para o título lá no alto da página rolada
     const volta = () => {
       const tela = document.querySelector(`.view[data-view="${view}"]`);
-      const el = rest && rest.dir === 'voltar' && rest.foco && document.querySelector(rest.foco);
-      const ancora = rest && rest.ancora && scrollY > 0 && tela && tela.querySelector(rest.ancora.sel);
-      if (el && el.offsetParent) el.focus({ preventScroll: true });
-      else if (ancora) {
-        if (!ancora.matches('a, button, input, [tabindex]')) ancora.setAttribute('tabindex', '-1');
-        ancora.focus({ preventScroll: true });
-      } else focar(view);
+      // o mesmo nome pode aparecer mais de uma vez (cartão e índice): vale o que está à vista; a
+      // altura ainda pode ser acertada no quadro seguinte, então serve também o que está na tela nova
+      const todos =
+        rest && rest.dir === 'voltar' && rest.foco && tela
+          ? [...tela.querySelectorAll(rest.foco)].filter((x) => x.offsetParent !== null)
+          : [];
+      const el = todos.find(naTela) || todos[0];
+      if (el) el.focus({ preventScroll: true });
+      else if (rest && scrollY > 0) focarVisivel(view);
+      else focar(view);
     };
     if (t) t.updateCallbackDone.then(volta, () => {});
     else volta();
@@ -257,10 +281,17 @@
     const s = nosso ? e.state : estadoDoHash(location.hash) || { view: 'home' };
     const dir = nosso && e.state.idx < idxAtual ? 'voltar' : 'ir';
     idxAtual = nosso ? e.state.idx : idxAtual + 1;
+    const lembrada = nosso && alturas.get(e.state.idx);
     refazer(s, {
       dir,
-      y: nosso && e.state.y != null ? e.state.y : 0,
-      ancora: nosso ? e.state.ancora : null,
+      y: lembrada ? lembrada.y : nosso && e.state.y != null ? e.state.y : 0,
+      // a âncora gravada só vale se a altura lembrada é a mesma de quando ela foi tirada
+      ancora:
+        lembrada && !lembrada.ancora && lembrada.y !== e.state.y
+          ? null
+          : nosso
+            ? (lembrada && lembrada.ancora) || e.state.ancora
+            : null,
       foco: nosso ? e.state.foco : null
     });
     // um endereço digitado à mão vira uma entrada nossa (a troca pode terminar no quadro seguinte:
@@ -324,15 +355,35 @@
   // a altura vai sendo guardada na entrada atual quando a rolagem para: assim o Avançar também
   // volta para onde a pessoa estava (no popstate a entrada de antes já não pode ser escrita)
   let guardar = 0;
+  let lendo = false;
   addEventListener(
     'scroll',
     () => {
+      // a altura de cada entrada fica também na memória, lida uma vez por quadro: o Avançar e o
+      // Voltar usam a de agora, mesmo que a rolagem tenha parado há pouco
+      if (!lendo) {
+        lendo = true;
+        requestAnimationFrame(() => {
+          lendo = false;
+          const st = history.state;
+          if (
+            st &&
+            st.mm &&
+            !restaurando &&
+            !raiz.hasAttribute('data-transicao') &&
+            !document.body.classList.contains('modal-open')
+          )
+            alturas.set(st.idx || 0, { y: Math.round(scrollY), ancora: null });
+        });
+      }
       clearTimeout(guardar);
       guardar = setTimeout(() => {
         const st = history.state;
         if (!st || !st.mm || restaurando || raiz.hasAttribute('data-transicao')) return;
         if (document.body.classList.contains('modal-open')) return;
-        history.replaceState({ ...st, y: yAtual(), ancora: ancoraDe(st.view) }, '');
+        const a = ancoraDe(st.view);
+        alturas.set(st.idx || 0, { y: Math.round(yAtual()), ancora: a });
+        history.replaceState({ ...st, y: yAtual(), ancora: a }, '');
       }, 220);
     },
     { passive: true }
