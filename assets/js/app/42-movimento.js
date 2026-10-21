@@ -182,6 +182,24 @@
     }
   }
 
+  // o título que cresce viaja dentro de um span que abraça só as letras (inline-block): as duas pontas
+  // ficam com a mesma proporção e o texto não escorrega na vertical. O span sai no fim.
+  function envolver(el) {
+    if (el.firstElementChild && el.firstElementChild.classList.contains('mm-letras'))
+      return el.firstElementChild;
+    const s = document.createElement('span');
+    s.className = 'mm-letras';
+    while (el.firstChild) s.appendChild(el.firstChild);
+    el.appendChild(s);
+    return s;
+  }
+  function desenvolver(s) {
+    const el = s && s.parentNode;
+    if (!el || !s.classList.contains('mm-letras')) return;
+    while (s.firstChild) el.insertBefore(s.firstChild, s);
+    s.remove();
+  }
+
   let atual = null;
   // cada troca recebe um número: a atualização de uma troca pulada por outra mais nova não roda
   // (o navegador ainda a chama, às vezes depois da nova, e a tela voltaria para a de antes)
@@ -213,10 +231,8 @@
         : o && PARES[view]
           ? PARES[view](o)
           : null;
+    if (par && par.nome === 'mm-titulo') par.fonte = envolver(par.fonte);
     if (par) par.fonte.style.viewTransitionName = par.nome;
-    // o título que cresce: as duas pontas com a largura do texto (só nelas; uma regra geral
-    // recalculava os 500 nomes do índice)
-    if (par && par.nome === 'mm-titulo') par.fonte.style.width = 'fit-content';
     // o que foi tocado fica marcado até a animação começar (o :active acaba quando o dedo solta)
     const tocado = o && o.closest('button, a, [role="button"]');
     if (tocado) tocado.classList.add('mm-tocado');
@@ -239,8 +255,8 @@
           retrato.real.style.visibility = 'hidden';
         }
       }
+      if (par.nome === 'mm-titulo') destino = envolver(destino);
       destino.style.viewTransitionName = par.nome;
-      if (par.nome === 'mm-titulo') destino.style.width = 'fit-content';
       // a coluna do nome e do texto entra por cima do retrato que pousa, um pouco depois dele: o
       // retrato em voo nunca corta o texto
       if (par.nome === 'mm-destaque' && view === 'panorama') {
@@ -248,7 +264,9 @@
         if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = 'mm-nome';
       }
     };
-    raiz.setAttribute('data-transicao', '');
+    // "em troca" é uma marca no JS: um atributo no html recalculava o estilo da página inteira (o CSS
+    // usa :active-view-transition, que o navegador já liga)
+    window.__emTroca = true;
     // o sentido vai no tipo da transição (:active-view-transition-type no CSS); só o navegador sem
     // tipos recebe o atributo, que custa um recálculo do estilo da página inteira
     let t;
@@ -281,14 +299,14 @@
         soltos.forEach((a) => (a.style.contentVisibility = ''));
         if (destino) destino.style.viewTransitionName = '';
         if (par && par.nome === 'mm-titulo') {
-          par.fonte.style.width = '';
-          if (destino) destino.style.width = '';
+          desenvolver(par.fonte);
+          desenvolver(destino);
         }
         if (retrato) retrato.real.style.visibility = '';
         revelarCor(retrato);
         if (atual === t) {
           atual = null;
-          raiz.removeAttribute('data-transicao');
+          window.__emTroca = false;
           if (raiz.dataset.vtDir) delete raiz.dataset.vtDir;
           // o cabeçalho, que esperou a troca, confere a altura da página de novo
           dispatchEvent(new Event('scroll'));

@@ -2233,7 +2233,7 @@ window.__fase5Boot = function () {
     pendente = false;
     /* durante a troca de tela o cabeçalho espera: animar junto recalculava a página a cada quadro;
        ele abre depois, quando a tela nova pousa (app/42 avisa com um scroll) */
-    if (document.documentElement.hasAttribute('data-transicao')) return;
+    if (window.__emTroca) return;
     const y = window.scrollY;
     if (!cab.classList.contains('compact')) {
       if (y > 64) cab.classList.add('compact');

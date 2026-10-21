@@ -23,10 +23,11 @@
 :root {
   background-color: var(--bg);
 }
+/* o cabeçalho, a barra de baixo e o aviso ficam acima de tudo o que viaja (o retrato, o nome) */
 ::view-transition-group(mm-cab),
 ::view-transition-group(mm-barra),
 ::view-transition-group(mm-aviso) {
-  z-index: 3;
+  z-index: 5;
   animation: none;
 }
 ::view-transition-old(mm-cab),
@@ -70,19 +71,35 @@ html[data-vt-dir='voltar']::view-transition-new(root) {
   animation-duration: 340ms;
   animation-timing-function: var(--curva-troca);
 }
-/* o título (da obra, ou o nome tocado no índice) cresce do cartão até o alto da página: as duas
-   pontas têm a largura do texto (app/42 põe só nelas), a imagem acompanha a largura do grupo sem
-   deformar. O pequeno some logo (ampliado, ele borrava), e o grande aparece desde o começo, nítido */
+/* o título (da obra, ou o nome tocado no índice) cresce do cartão até o alto da página. Viaja um
+   span que abraça só as letras (app/42), então as duas pontas têm a mesma proporção. O pequeno só dá
+   a geometria (some no primeiro quadro: ampliado, ele borrava e duplicava o texto); o grande viaja
+   reduzido, nítido, e a página nova entra sem subir enquanto ele voa */
+.mm-letras {
+  display: inline-block;
+}
 ::view-transition-group(mm-titulo) {
   z-index: 3;
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
 }
 ::view-transition-old(mm-titulo) {
-  animation: mm-some 90ms var(--curva-saida) both;
+  animation: none;
+  opacity: 0;
 }
 ::view-transition-new(mm-titulo) {
-  animation: mm-aparece 120ms var(--curva-chegada) 40ms both;
+  animation: none;
+}
+/* no Voltar é o contrário: o grande (antigo) viaja encolhendo, e o pequeno aparece só no pouso */
+html:active-view-transition-type(voltar)::view-transition-old(mm-titulo) {
+  opacity: 1;
+  animation: mm-some 60ms linear 200ms both;
+}
+html:active-view-transition-type(voltar)::view-transition-new(mm-titulo) {
+  animation: mm-aparece 60ms linear 200ms both;
+}
+html:active-view-transition-type(titulo)::view-transition-new(root) {
+  animation-name: mm-aparece;
 }
 /* a coluna do nome e do texto entra por cima do retrato que pousa (app/42), um pouco depois dele */
 ::view-transition-group(mm-nome) {
@@ -90,7 +107,7 @@ html[data-vt-dir='voltar']::view-transition-new(root) {
   animation: none;
 }
 ::view-transition-new(mm-nome) {
-  animation: mm-sobe 280ms var(--curva-chegada) 200ms both;
+  animation: mm-sobe 280ms var(--curva-chegada) 120ms both;
 }
 @keyframes mm-aparece {
   from {
@@ -131,7 +148,7 @@ html[data-vt-dir='voltar']::view-transition-new(root) {
   }
 }
 /* uma janela que ainda esmaece não anima de novo por cima da troca */
-html[data-transicao] :is(.expand-overlay, .bio-overlay, .modal-overlay, .scrim) {
+html:active-view-transition :is(.expand-overlay, .bio-overlay, .modal-overlay, .scrim) {
   transition: none;
 }
 
@@ -142,13 +159,13 @@ html[data-transicao] :is(.expand-overlay, .bio-overlay, .modal-overlay, .scrim) 
     background-color var(--mov-base) var(--curva-chegada),
     outline-color var(--mov-base) var(--curva-chegada);
 }
-html[data-transicao] :is(body, #_) #panPhoto {
+html:active-view-transition :is(body, #_) #panPhoto {
   background-color: transparent;
   outline-color: transparent;
   transition: none;
 }
 /* o lugar que o retrato deixa no cartão fica da cor do papel, não do fundo da moldura */
-html[data-transicao] :is(body, #_) #view-home .retrato .quadro {
+html:active-view-transition :is(body, #_) #view-home .retrato .quadro {
   background-color: var(--bg);
 }
 /* o toque fica marcado até a animação começar (app/42) */

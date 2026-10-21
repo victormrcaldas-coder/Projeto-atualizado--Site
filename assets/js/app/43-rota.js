@@ -202,8 +202,14 @@
       if (!atual) history.replaceState({ ...novo, idx: idxAtual }, '', urlDe(novo));
       else if (mesma(atual, novo)) mudou = false;
       else {
-        history.replaceState({ ...atual, y: yAtual(), ancora: ancoraDe(atual.view), foco: focoDe(ev) }, '');
-        alturas.set(atual.idx || 0, { y: Math.round(yAtual()), ancora: ancoraDe(atual.view) });
+        // a âncora tirada quando a rolagem parou ainda vale se a página não se mexeu: sem ler o layout
+        // de novo no meio do toque (cada leitura ali custava um recálculo de estilo)
+        const lembrada = alturas.get(atual.idx || 0);
+        const y = Math.round(yAtual());
+        const ancora =
+          lembrada && lembrada.ancora && lembrada.y === y ? lembrada.ancora : ancoraDe(atual.view);
+        history.replaceState({ ...atual, y, ancora, foco: focoDe(ev) }, '');
+        alturas.set(atual.idx || 0, { y, ancora });
         idxAtual = (atual.idx || 0) + 1;
         navegou = true;
         // as entradas que estavam à frente deixam de existir
@@ -327,12 +333,17 @@
   function estadoDoHashSemDados(h) {
     return /^#(autor|obra)-[a-z0-9-]{1,160}$/.test(h || '') || TELAS.includes((h || '').slice(1));
   }
+  // depois que a tela apareceu sem o link (o acervo demorou), qualquer uso conta: rolar, tocar, teclar
+  let usou = false;
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((t) =>
+    addEventListener(t, () => window.__rotaDesistiu && (usou = true), { capture: true, passive: true })
+  );
   const soltar = () => {
     raiz.removeAttribute('data-rota-pendente');
     window.__rotaPronta = true;
   };
   // o script do <head> já escondeu a tela na primeira pintura; aqui só a garantia de 4 s
-  if (pendente || raiz.hasAttribute('data-rota-pendente')) {
+  if (!window.__rotaDesistiu && (pendente || raiz.hasAttribute('data-rota-pendente'))) {
     raiz.setAttribute('data-rota-pendente', '');
     setTimeout(soltar, 4000);
   }
@@ -341,8 +352,17 @@
     // a pessoa já navegou enquanto o acervo carregava: fica onde está
     if (!navegou) {
       const alvo = s && s.mm && s.view !== 'home' ? s : estadoDoHash(location.hash);
-      if (alvo) {
-        refazer(alvo, { dir: 'ir', y: alvo.y != null ? alvo.y : 0, ancora: alvo.ancora, sem: true });
+      if (alvo && window.__rotaDesistiu && usou) {
+        // a pessoa já está usando a home: não é arrancada dela; o endereço volta a ser o da home
+        history.replaceState({ ...estadoDe('home'), idx: idxAtual }, '', urlDe(estadoDe('home')));
+      } else if (alvo) {
+        // se a tela já apareceu (o acervo demorou), a troca para o link é animada, como um toque
+        refazer(alvo, {
+          dir: 'ir',
+          y: alvo.y != null ? alvo.y : 0,
+          ancora: alvo.ancora,
+          sem: !window.__rotaDesistiu
+        });
         const agora = { mm: 1, autor: null, obra: null, janelas: [], ...alvo };
         history.replaceState({ ...agora, idx: idxAtual }, '', urlDe(agora));
       } else if (/^#(autor|obra)-/.test(location.hash))
@@ -370,7 +390,7 @@
             st &&
             st.mm &&
             !restaurando &&
-            !raiz.hasAttribute('data-transicao') &&
+            !window.__emTroca &&
             !document.body.classList.contains('modal-open')
           )
             alturas.set(st.idx || 0, { y: Math.round(scrollY), ancora: null });
@@ -379,7 +399,7 @@
       clearTimeout(guardar);
       guardar = setTimeout(() => {
         const st = history.state;
-        if (!st || !st.mm || restaurando || raiz.hasAttribute('data-transicao')) return;
+        if (!st || !st.mm || restaurando || window.__emTroca) return;
         if (document.body.classList.contains('modal-open')) return;
         const a = ancoraDe(st.view);
         alturas.set(st.idx || 0, { y: Math.round(yAtual()), ancora: a });
