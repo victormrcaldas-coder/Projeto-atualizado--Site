@@ -131,10 +131,12 @@ for (const largura of larguras) {
   await p.waitForTimeout(2500);
 
   const marcas = [];
-  const CORES = ['#ff00ff', '#00ffff'];
+  // uma cor por marca (com só duas alternando, uma marca podia ser achada no quadro da anterior, e
+  // a folha mostrava a troca errada)
+  const CORES = ['#ff00ff', '#00ffff', '#ffff00', '#00ff00', '#ff8000', '#0000ff', '#ff0000', '#8000ff'];
   const marca = async (nome) => {
     if (!folha) return;
-    const cor = CORES[marcas.length % 2];
+    const cor = CORES[marcas.length % CORES.length];
     marcas.push({ nome, cor, agora: Date.now() });
     await p.evaluate((c) => {
       let m = document.getElementById('__marca');
@@ -142,8 +144,14 @@ for (const largura of larguras) {
         m = document.createElement('div');
         m.id = '__marca';
         m.style.cssText =
-          'position:fixed;left:0;bottom:0;width:12px;height:12px;z-index:2147483647;pointer-events:none';
+          'position:fixed;left:0;bottom:0;width:12px;height:12px;z-index:2147483647;pointer-events:none;view-transition-name:mm-marca';
         document.documentElement.appendChild(m);
+        // a marca fica fora da View Transition (sempre a de agora, por cima de tudo): dentro da foto
+        // da página que sai, ela esmaecia com ela e o quadro da troca não era achado
+        const st = document.createElement('style');
+        st.textContent =
+          '::view-transition-group(mm-marca){z-index:2147483647;animation:none}::view-transition-old(mm-marca){display:none}::view-transition-new(mm-marca){animation:none}';
+        document.head.appendChild(st);
       }
       m.style.background = c;
     }, cor);
@@ -186,7 +194,21 @@ for (const largura of larguras) {
     const el = p.locator(seletor).first();
     let b = await el.boundingBox();
     const vp = p.viewportSize();
-    if (!b || b.y < 0 || b.y + b.height > vp.height || b.x < 0 || b.x + b.width > vp.width) {
+    // fora da tela, ou coberto (pela barra de baixo, pelo cabeçalho): o ponto do clique tem de cair nele
+    const coberto = async () =>
+      el.evaluate((e) => {
+        const r = e.getBoundingClientRect();
+        const no = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return !no || !(e === no || e.contains(no));
+      });
+    if (
+      !b ||
+      b.y < 0 ||
+      b.y + b.height > vp.height ||
+      b.x < 0 ||
+      b.x + b.width > vp.width ||
+      (await coberto())
+    ) {
       await el.evaluate((e) => e.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' }));
       await pausa(150);
       b = await el.boundingBox();

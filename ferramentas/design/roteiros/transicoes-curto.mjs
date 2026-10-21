@@ -1,5 +1,6 @@
 // As 5 trocas mais delicadas do Portão B, para conferir depressa em folha de quadros (sem o roteiro
-// inteiro): retrato → autor, Voltar à galeria, nome do índice → título, obra → página e filme → autor.
+// inteiro): retrato → autor, Voltar à galeria, nome do índice → título, obra → página e a volta,
+// filme → autor e a volta ao filme.
 // Gravar com: node ferramentas/design/videos.mjs transicoes-curto --larguras 1440 --folha
 export default async function ({ p, pausa, legenda, clicar, rolar, marca, js }) {
   await rolar('#home-autores', 600);
@@ -18,10 +19,18 @@ export default async function ({ p, pausa, legenda, clicar, rolar, marca, js }) 
   await pausa(400);
   await clicar('#pan-obras .obra-card [data-obra]', 'Obra → página', 'obra → página da obra');
   await pausa(1500);
+  await legenda('Voltar ao autor');
+  await marca('obra → volta');
+  await p.goBack();
+  await pausa(1500);
   await js(() => navigateTo('home'));
   await rolar('#home-descubra', 600);
   await pausa(2500);
   await clicar('.filme [data-autor]', 'Filme → autor', 'filme → autor');
+  await pausa(1500);
+  await legenda('Voltar ao filme');
+  await marca('volta ao filme');
+  await p.goBack();
   await pausa(1500);
   await legenda('');
 }

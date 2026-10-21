@@ -82,26 +82,30 @@ html[data-vt-dir='voltar']::view-transition-new(root) {
   z-index: 3;
   animation-duration: 260ms;
   animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: both;
+  /* o título só sai do lugar depois que a tela antiga sumiu (80 ms), nos dois sentidos: ele nunca
+     passa por cima de texto. Na ida, nesses 80 ms, no lugar do toque, a letra do índice vira a letra
+     do título (as duas famílias se fundem, em vez de trocar num quadro) */
+  animation-delay: 80ms;
 }
 ::view-transition-old(mm-titulo) {
-  animation: none;
-  opacity: 0;
+  animation: mm-some 80ms linear both;
 }
 ::view-transition-new(mm-titulo) {
-  animation: none;
+  animation: mm-aparece 80ms linear both;
 }
 /* no Voltar é o contrário: o grande (antigo) viaja encolhendo, e o pequeno aparece só no pouso */
 html:active-view-transition-type(voltar)::view-transition-old(mm-titulo) {
   opacity: 1;
-  animation: mm-some 60ms linear 200ms both;
+  animation: mm-some 60ms linear 280ms both;
 }
 html:active-view-transition-type(voltar)::view-transition-new(mm-titulo) {
-  animation: mm-aparece 60ms linear 200ms both;
+  animation: mm-aparece 60ms linear 280ms both;
 }
 html:active-view-transition-type(titulo)::view-transition-new(root) {
-  /* a página aparece enquanto o título pousa e fica inteira junto com ele (linear: sem chegar quase
-     opaca na metade); começa depois que o título passou pela linha de baixo */
-  animation: mm-aparece 160ms linear 120ms both;
+  /* a página não sobe: começa a aparecer quando o título já passou pelas linhas de cima (200 ms) e
+     fica inteira junto com o pouso dele, aos 340 ms (linear: sem chegar quase opaca na metade) */
+  animation: mm-aparece 140ms linear 200ms both;
 }
 /* a coluna do nome e do texto entra por cima do retrato que pousa (app/42), um pouco depois dele */
 ::view-transition-group(mm-nome) {
@@ -109,9 +113,9 @@ html:active-view-transition-type(titulo)::view-transition-new(root) {
   animation: none;
 }
 ::view-transition-new(mm-nome) {
-  /* aparece quando a tela de antes já saiu; o recorte que acompanha a borda do retrato é animado
-     pelo app/42 */
-  animation: mm-aparece 160ms var(--curva-chegada) 80ms both;
+  /* aparece quando o retrato já fez quase todo o caminho (85% aos 160 ms); o recorte, uma medianiz
+     depois da borda do retrato, é animado pelo app/42 */
+  animation: mm-aparece 180ms var(--curva-chegada) 160ms both;
 }
 /* do filme do Descubra para a página: o filme sai por cortina, de baixo para cima, sem ficar
    transparente (o roxo meio apagado sobre o papel virava malva) */
@@ -180,7 +184,8 @@ html:active-view-transition :is(.expand-overlay, .bio-overlay, .modal-overlay, .
     background-color var(--mov-base) var(--curva-chegada),
     outline-color var(--mov-base) var(--curva-chegada);
 }
-html:active-view-transition :is(body, #_) #panPhoto {
+/* no Voltar a moldura fica na página que sai e esmaece com ela (sumia de uma vez no quadro 0) */
+html:active-view-transition:not(:active-view-transition-type(voltar)) :is(body, #_) #panPhoto {
   background-color: transparent;
   outline-color: transparent;
   transition: none;
@@ -213,7 +218,7 @@ html[data-theme='dark'] :is(body, #_) #panPhoto img.mm-provisoria[aria-hidden] {
   filter: url('#mm-duotono-escuro');
 }
 
-/* o link direto espera o acervo: a tela não pisca a home antes (no máximo 4 s, app/43) */
+/* o link direto espera o acervo: a tela não pisca a home antes (no máximo 30 s, se o acervo não carregar; app/43) */
 html[data-rota-pendente] #mainApp {
   visibility: hidden;
 }
