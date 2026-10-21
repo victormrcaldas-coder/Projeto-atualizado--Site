@@ -10,8 +10,8 @@ Fale comigo em português. Leia, nesta ordem: COMO-TRABALHAR.md, RETOMAR.md e de
 portões em branches novas a partir da main, testes e estado:comparar a cada passo, folhas de quadros
 curtas (nunca o roteiro longo), o agente "critico" (.claude/agents/critico.md) NOVO a cada rodada
 oficial e o MESMO Crítico para verificar cada correção que ele pediu. Um portão só fecha com duas
-rodadas oficiais seguidas com 9,5 ou mais em todos os eixos. Comece pelo item 1 do RETOMAR.md (a
-verificação das correções do Portão B) e siga sem parar entre os portões. O que depender de mim vai
+rodadas oficiais seguidas com 9,5 ou mais em todos os eixos. Comece pelo item 1 do RETOMAR.md (corrigir os 10
+defeitos da rodada 4 do Portão B, depois o Crítico verifica) e siga sem parar entre os portões. O que depender de mim vai
 para a lista de decisões do RETOMAR.md, sem parar o trabalho. Nada vai para a main sem eu dizer "pode
 juntar". Antes do limite da sessão acabar, faça commit e push de tudo e atualize o RETOMAR.md.
 No fim de cada portão, me diga as notas do Crítico.
