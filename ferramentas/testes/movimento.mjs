@@ -288,6 +288,112 @@ for (const [w, h] of [
     const c = await ir(50);
     return a === c ? true : { depoisDe10: a, depoisDe60: c };
   });
+  // ---------- janelas (Portão C, app/45) ----------
+  const janela = () =>
+    p.evaluate(() => ({
+      frase: document.getElementById('quoteExpand').classList.contains('show'),
+      historia: !!document.querySelector('#bioExpand.show'),
+      inert: document.querySelectorAll('[inert]').length,
+      entrada: !!(history.state && history.state.janela),
+      n: history.length,
+      view: state.view
+    }));
+  const abrirFrase = async () => {
+    await p.evaluate(() => navigateTo('explorar'));
+    await rolar(0);
+    await p.waitForTimeout(300);
+    const idx = await p.evaluate(() => history.state && history.state.idx);
+    await tocar('#exploreGrid .quote-card .quote-card-text', 700);
+    return idx;
+  };
+  await caso('a frase ampliada entra no histórico e deixa o resto inert', async () => {
+    // o Chromium guarda no máximo 50 entradas: a prova é o estado novo (pushState com a janela), não
+    // o tamanho do histórico
+    const idx0 = await abrirFrase();
+    const j = await janela();
+    const idx = await p.evaluate(() => history.state && history.state.idx);
+    return j.frase && j.inert > 0 && j.entrada && idx === idx0 + 1 ? true : { idx0, idx, ...j };
+  });
+  await caso('o Voltar do navegador fecha só a janela e fica na tela', async () => {
+    await p.goBack();
+    await p.waitForTimeout(500);
+    const j = await janela();
+    return !j.frase && !j.inert && !j.entrada && j.view === 'explorar' ? true : j;
+  });
+  await caso('Esc fecha e tira a entrada da janela', async () => {
+    await abrirFrase();
+    const n = await p.evaluate(() => history.length);
+    await p.keyboard.press('Escape');
+    await p.waitForTimeout(500);
+    const j = await janela();
+    // a entrada de cima fica para o Avançar (o navegador não apaga), mas o estado atual é o da tela
+    return !j.frase && !j.inert && !j.entrada && j.n === n ? true : { n, ...j };
+  });
+  await caso('o X fecha e devolve o foco ao cartão', async () => {
+    await abrirFrase();
+    await p.evaluate(() => closeQuoteModal());
+    await p.waitForTimeout(500);
+    const r = await p.evaluate(() => ({
+      foco: !!document.activeElement.closest('.quote-card'),
+      entrada: !!(history.state && history.state.janela)
+    }));
+    return r.foco && !r.entrada ? true : r;
+  });
+  await caso('"Conhecer" dentro da história e depois Voltar não reabre a janela', async () => {
+    await p.evaluate(() => navigateTo('historias'));
+    await rolar(0);
+    await p.waitForTimeout(400);
+    await tocar('#storiesGrid .story-card', 800);
+    const aberta = (await janela()).historia;
+    await tocar('#bioExpand.show #bioMais', 900);
+    const nos = await janela();
+    await p.goBack();
+    await p.waitForTimeout(700);
+    const j = await janela();
+    return aberta &&
+      nos.view === 'panorama' &&
+      !nos.historia &&
+      j.view === 'historias' &&
+      !j.historia &&
+      !j.inert
+      ? true
+      : { aberta, nos, j };
+  });
+  if (movel) {
+    // arrasto de verdade (eventos de toque do Chrome), devagar para não contar como gesto rápido
+    const arrastar = async (fracao) => {
+      const cdp = await ctx.newCDPSession(p);
+      const caixa = await p.locator('#quoteExpandBox').boundingBox();
+      const x = caixa.x + caixa.width / 2;
+      const y0 = caixa.y + 16;
+      const dy = caixa.height * fracao;
+      const toque = (type, y) =>
+        cdp.send('Input.dispatchTouchEvent', { type, touchPoints: type === 'touchEnd' ? [] : [{ x, y }] });
+      await toque('touchStart', y0);
+      for (let i = 1; i <= 12; i++) {
+        await toque('touchMove', y0 + (dy * i) / 12);
+        await p.waitForTimeout(40);
+      }
+      await toque('touchEnd', y0 + dy);
+      await p.waitForTimeout(700);
+      await cdp.detach();
+      return janela();
+    };
+    await caso('a folha arrastada 10% volta para o lugar', async () => {
+      await abrirFrase();
+      const j = await arrastar(0.1);
+      const resto = await p.evaluate(
+        () => getComputedStyle(document.getElementById('quoteExpandBox')).transform
+      );
+      return j.frase && (resto === 'none' || /matrix\(1, 0, 0, 1, 0, 0\)/.test(resto))
+        ? true
+        : { ...j, resto };
+    });
+    await caso('a folha arrastada 40% fecha', async () => {
+      const j = await arrastar(0.4);
+      return !j.frase && !j.inert && !j.entrada ? true : j;
+    });
+  }
   await caso('nada inert nem página presa depois das trocas', async () =>
     p.evaluate(() => {
       const inert = document.querySelectorAll('[inert]').length;

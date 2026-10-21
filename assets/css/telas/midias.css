@@ -83,12 +83,18 @@ html[data-theme='dark'] :is(body, #_) #panPhoto .pan-filme {
   }
 }
 
-/* sem retrato livre: as iniciais em serifa, grandes e claras sobre o café, no centro da moldura */
+/* sem retrato livre: as iniciais em serifa no centro do quadro, no tom do passe-partout (o --frame
+   foi guardado para isto) e com o fio do passe-partout por dentro; um retângulo de café pesava mais
+   que qualquer foto ao lado */
 :is(#view-panorama) .pan-photo .avatar-fallback.placa-iniciais {
   align-items: center;
   justify-content: center;
   padding: 0;
   font-size: clamp(5rem, 3rem + 9vw, 9rem);
   letter-spacing: 0.04em;
-  color: color-mix(in srgb, var(--on-cafe) 78%, transparent);
+  background: var(--frame) !important; /* vence o café com !important de autores-site.css */
+  color: var(--text-meta);
+  box-shadow:
+    inset 0 0 0 clamp(12px, 4%, 22px) var(--frame),
+    inset 0 0 0 calc(clamp(12px, 4%, 22px) + 1px) var(--border);
 }

@@ -39,6 +39,35 @@
     return _falha.apply(this, arguments);
   };
 
+  // ---------- a foto que chega: esmaece e assenta de 1,02 para 1 em 300 ms ----------
+  // só a que ainda não tinha carregado quando entrou na página (a do cache aparece direto); a animação
+  // é dada no load, então nenhuma foto fica escondida se um evento se perder
+  new MutationObserver((mudancas) => {
+    for (const m of mudancas)
+      for (const n of m.addedNodes)
+        if (n.nodeType === 1)
+          (n.matches('img[data-person]') ? [n] : n.querySelectorAll('img[data-person]')).forEach(
+            (i) => !i.complete && (i.dataset.chega = '1')
+          );
+  }).observe(document.body, { childList: true, subtree: true });
+  document.addEventListener(
+    'load',
+    (e) => {
+      const i = e.target;
+      if (!(i instanceof HTMLImageElement) || !i.dataset.chega) return;
+      delete i.dataset.chega;
+      if (!reduz() && i.offsetParent !== null)
+        i.animate(
+          [
+            { opacity: 0, transform: 'scale(1.02)' },
+            { opacity: 1, transform: 'none' }
+          ],
+          { duration: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+        );
+    },
+    true
+  );
+
   // ---------- crédito e filme na página do autor ----------
   const _render = renderPanorama;
   renderPanorama = function () {

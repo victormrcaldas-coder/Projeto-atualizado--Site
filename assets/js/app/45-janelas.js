@@ -92,6 +92,66 @@
     if (o && o.isConnected && o.offsetParent !== null) o.focus({ preventScroll: true });
   }
 
+  // ---------- "a aspa que abre": a aspa do cartão tocado vira a aspa grande da frase ampliada ----------
+  let toque = null;
+  addEventListener('pointerdown', (e) => (toque = e.target instanceof Element ? e.target : null), true);
+  function aspaQueAbre(el) {
+    if (matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches) return; // no celular, a folha sobe
+    const cartao = toque && toque.closest('.quote-card');
+    const a0 = cartao && cartao.querySelector('.aspa-abre');
+    const texto = el.querySelector('.expand-text');
+    if (!a0 || !texto) return;
+    let a1 = texto.querySelector('.aspa-abre');
+    const n = texto.firstChild;
+    if (!a1 && n && n.nodeType === 3 && n.data.startsWith('\u201c')) {
+      // a aspa vira um span (escondido do leitor de tela, como no cartão); o texto não muda
+      n.data = n.data.slice(1);
+      a1 = document.createElement('span');
+      a1.className = 'aspa-abre';
+      a1.setAttribute('aria-hidden', 'true');
+      a1.textContent = '\u201c';
+      texto.prepend(a1);
+    }
+    if (!a1) return;
+    a1.style.display = 'inline-block';
+    // a caixa entra esmaecendo e corta o que passa da borda: quem voa é uma cópia por cima de tudo,
+    // que segue a aspa de destino quadro a quadro (a caixa também se mexe enquanto entra)
+    const r0 = a0.getBoundingClientRect();
+    if (!r0.height) return;
+    const cs = getComputedStyle(a1);
+    const voo = document.createElement('span');
+    voo.className = 'mm-aspa-voo';
+    voo.setAttribute('aria-hidden', 'true');
+    voo.textContent = '\u201c';
+    Object.assign(voo.style, {
+      fontFamily: cs.fontFamily,
+      fontSize: cs.fontSize,
+      lineHeight: cs.lineHeight,
+      fontWeight: cs.fontWeight,
+      color: cs.color
+    });
+    document.body.appendChild(voo);
+    const escala0 = parseFloat(getComputedStyle(a0).fontSize) / parseFloat(cs.fontSize);
+    a0.style.visibility = a1.style.visibility = 'hidden';
+    const t0 = performance.now();
+    const curva = (x) => 1 - Math.pow(1 - x, 3);
+    const passo = (agora) => {
+      const k = Math.min(1, (agora - t0) / 450);
+      const e = curva(k);
+      const r1 = a1.getBoundingClientRect();
+      const x = r0.left + (r1.left - r0.left) * e;
+      const y = r0.top + (r1.top - r0.top) * e;
+      const s = escala0 + (1 - escala0) * e;
+      voo.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+      if (k < 1 && el.classList.contains('show')) requestAnimationFrame(passo);
+      else {
+        a0.style.visibility = a1.style.visibility = '';
+        voo.remove();
+      }
+    };
+    requestAnimationFrame(passo);
+  }
+
   // ---------- abrir e fechar (vistos pela classe) ----------
   let porVoltar = false; // fechando pelo Voltar do navegador: a entrada já saiu
   function abriu(j, el) {
@@ -103,6 +163,7 @@
       sincronizarInert();
       if (window.Rota) Rota.abrirJanela(j.id);
     }
+    if (j.id === 'quoteExpand') aspaQueAbre(el);
     focarDentro(el);
   }
   function fechou(j, el) {

@@ -200,7 +200,54 @@
   transform-origin: left center;
   pointer-events: none;
 }
+/* a aspa que voa do cartão para a frase ampliada (app/45), por cima da janela que entra */
+.mm-aspa-voo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1400;
+  transform-origin: 0 0;
+  pointer-events: none;
+  will-change: transform;
+}
 /* o chip novo esconde o próprio traço enquanto o que desliza não chega (sem crescer de novo depois) */
 :is(body, #_) .chip.mm-traco-vindo {
   background-image: none;
+}
+
+/* ---------- o aviso: uma pílula que cresce a partir do centro (o "dynamic island" do Cult UI) ----------
+   entra subindo 8 px e abrindo dos lados em 360 ms; sai fechando em 200 ms. É anunciado ao leitor de
+   tela (role=status no index.html). */
+:is(body, #_) #toast {
+  bottom: max(22px, calc(env(safe-area-inset-bottom) + 14px));
+  transform: translateX(-50%) translateY(var(--mov-perto));
+  clip-path: inset(0 calc(50% - 22px) round 999px);
+  opacity: 0;
+  transition:
+    transform 200ms var(--curva-saida),
+    clip-path 200ms var(--curva-saida),
+    opacity 200ms var(--curva-saida),
+    visibility 0s linear 200ms;
+}
+:is(body, #_) #toast.show {
+  transform: translateX(-50%);
+  clip-path: inset(0 0 round 999px);
+  opacity: 1;
+  transition:
+    transform 360ms var(--curva-chegada),
+    clip-path 360ms var(--curva-chegada),
+    opacity 160ms var(--curva-chegada),
+    visibility 0s;
+}
+/* no celular, acima da barra de baixo */
+@media (max-width: 767px) {
+  :is(body, #_) #toast {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(body, #_) #toast {
+    clip-path: none;
+    transform: translateX(-50%);
+  }
 }
