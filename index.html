@@ -24,8 +24,11 @@
 <!-- link direto (#autor-…, #obra-…, #explorar…) ou recarga fora da home: a tela fica escondida até o
      acervo carregar, desde a primeira pintura (app/43 solta) -->
 <script>
-  if (/^#(autor|obra)-|^#(explorar|descubra|historias|comunidade|perfil|autores|escrever)$/.test(location.hash) || (history.state && history.state.mm && history.state.view !== 'home'))
+  if (/^#(autor|obra)-|^#(explorar|descubra|historias|comunidade|perfil|autores|escrever)$/.test(location.hash) || (history.state && history.state.mm && history.state.view !== 'home')) {
     document.documentElement.setAttribute('data-rota-pendente', '');
+    // a garantia de 4 s começa aqui, não quando o resto dos scripts carrega
+    setTimeout(function () { document.documentElement.removeAttribute('data-rota-pendente'); }, 4000);
+  }
 </script>
 </head>
 <body data-theme="light">

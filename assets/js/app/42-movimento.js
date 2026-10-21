@@ -76,10 +76,6 @@
     });
   }
 
-  // o filme do Descubra é largo e o retrato da página é 4:5: o próprio plano do filme (com as camadas
-  // do duotono) viaja e se fecha até a proporção do retrato; a foto da página só aparece no pouso
-  // (telas/movimento.css, tipo "filme")
-
   // os pares "o que a pessoa tocou → o que abre"; o nome da transição vai só nos dois. O retrato
   // viaja de imagem para imagem (sem a moldura de nenhum dos lados, que aparecia de repente)
   const tela = (v) => document.querySelector(`.view[data-view="${v}"]`);
@@ -87,13 +83,10 @@
   const PARES = {
     panorama(o) {
       const nome = panAtual;
-      const filme = o.closest('.filme');
-      if (filme) {
-        const plano = filme.querySelector('.filme-plano.ativo');
-        return naTela(plano)
-          ? { nome: 'mm-destaque', fonte: plano, destino: fotoDoAutor, retrato: true, filme: true }
-          : null;
-      }
+      // do filme do Descubra não há elemento que viaja: o filme mostra o rosto num enquadramento
+      // diferente do retrato da página, e qualquer passagem entre os dois deformava o rosto. Fica a
+      // troca de tela limpa.
+      if (o.closest('.filme')) return null;
       const caixa = o.closest(
         '.ao-card, .retrato, .abertura, .quote-card, .expand-quote, .bio-sheet, .story-card, .historia-destaque, .descubra-palco, article, li'
       );
@@ -135,7 +128,7 @@
         );
         return i ? i.closest('.quadro') || i : null;
       };
-      return { nome: 'mm-destaque', fonte, destino, saindo: true };
+      return { nome: 'mm-destaque', fonte, destino };
     },
     obra(view) {
       const oid = obraAtual && obraAtual.oid;
@@ -221,6 +214,9 @@
           ? PARES[view](o)
           : null;
     if (par) par.fonte.style.viewTransitionName = par.nome;
+    // o título que cresce: as duas pontas com a largura do texto (só nelas; uma regra geral
+    // recalculava os 500 nomes do índice)
+    if (par && par.nome === 'mm-titulo') par.fonte.style.width = 'fit-content';
     // o que foi tocado fica marcado até a animação começar (o :active acaba quando o dedo solta)
     const tocado = o && o.closest('button, a, [role="button"]');
     if (tocado) tocado.classList.add('mm-tocado');
@@ -244,9 +240,11 @@
         }
       }
       destino.style.viewTransitionName = par.nome;
-      // o nome da pessoa entra por cima do retrato que pousa, um pouco depois dele
+      if (par.nome === 'mm-titulo') destino.style.width = 'fit-content';
+      // a coluna do nome e do texto entra por cima do retrato que pousa, um pouco depois dele: o
+      // retrato em voo nunca corta o texto
       if (par.nome === 'mm-destaque' && view === 'panorama') {
-        nomeDaPessoa = document.querySelector('#view-panorama .pan-name');
+        nomeDaPessoa = document.querySelector('#view-panorama .pan-id');
         if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = 'mm-nome';
       }
     };
@@ -257,7 +255,7 @@
     try {
       t = document.startViewTransition({
         update,
-        types: [dir, ...(par && par.filme ? ['filme'] : []), ...(par && par.saindo ? ['saindo'] : [])]
+        types: [dir]
       });
     } catch (e) {
       raiz.dataset.vtDir = dir;
@@ -282,6 +280,10 @@
         if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = '';
         soltos.forEach((a) => (a.style.contentVisibility = ''));
         if (destino) destino.style.viewTransitionName = '';
+        if (par && par.nome === 'mm-titulo') {
+          par.fonte.style.width = '';
+          if (destino) destino.style.width = '';
+        }
         if (retrato) retrato.real.style.visibility = '';
         revelarCor(retrato);
         if (atual === t) {
