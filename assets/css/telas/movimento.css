@@ -99,8 +99,9 @@ html:active-view-transition-type(voltar)::view-transition-new(mm-titulo) {
   animation: mm-aparece 60ms linear 200ms both;
 }
 html:active-view-transition-type(titulo)::view-transition-new(root) {
-  /* a página termina junto com o título */
-  animation: mm-aparece 200ms cubic-bezier(0.2, 0, 0, 1) 60ms both;
+  /* a página aparece enquanto o título pousa e fica inteira junto com ele (linear: sem chegar quase
+     opaca na metade); começa depois que o título passou pela linha de baixo */
+  animation: mm-aparece 160ms linear 120ms both;
 }
 /* a coluna do nome e do texto entra por cima do retrato que pousa (app/42), um pouco depois dele */
 ::view-transition-group(mm-nome) {
@@ -108,16 +109,9 @@ html:active-view-transition-type(titulo)::view-transition-new(root) {
   animation: none;
 }
 ::view-transition-new(mm-nome) {
-  /* revelada da direita para a esquerda, atrás do retrato que pousa: a letra nunca fica sobre a foto */
-  animation: mm-cortina-esquerda 240ms var(--curva-chegada) 120ms both;
-}
-@keyframes mm-cortina-esquerda {
-  from {
-    clip-path: inset(0 0 0 100%);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
+  /* aparece quando a tela de antes já saiu; o recorte que acompanha a borda do retrato é animado
+     pelo app/42 */
+  animation: mm-aparece 160ms var(--curva-chegada) 80ms both;
 }
 /* do filme do Descubra para a página: o filme sai por cortina, de baixo para cima, sem ficar
    transparente (o roxo meio apagado sobre o papel virava malva) */
@@ -223,64 +217,78 @@ html[data-theme='dark'] :is(body, #_) #panPhoto img.mm-provisoria[aria-hidden] {
 html[data-rota-pendente] #mainApp {
   visibility: hidden;
 }
-/* enquanto o link direto espera o acervo: o esqueleto da tela de destino, parado, pulsando devagar.
-   Autor: o retrato à esquerda (em cima, no celular) e as linhas do nome e do texto. Obra e telas: o
-   título e as linhas. */
+/* enquanto o link direto espera o acervo: o esqueleto da tela de destino, no lugar exato do conteúdo
+   (medido na página do autor: Voltar a 117 px, retrato 4:5 a 185 px com 39% da largura útil, a coluna
+   de texto 64 px depois dele; no celular, o retrato em cima e o texto embaixo), parado, pulsando
+   devagar. O menu do cabeçalho espera junto (ele é completado pelo JS). */
 html[data-rota-pendente] {
-  --g: max(var(--space-5), calc((100vw - var(--maxw)) / 2 + var(--space-6)));
-  --retrato: min(30vw, 26rem);
+  --g: max(var(--space-4), calc((100vw - var(--maxw)) / 2 + var(--space-6)));
+  --foto: calc((100vw - 2 * var(--g)) * 0.39);
   --peca: color-mix(in srgb, var(--text) 8%, transparent);
+}
+html[data-rota-pendente] .site-header .header-inner > :not(.logo) {
+  visibility: hidden;
 }
 html[data-rota-pendente] body::before,
 html[data-rota-pendente] body::after {
   content: '';
   position: fixed;
-  top: 110px;
-  height: min(60vh, 520px);
   pointer-events: none;
   animation: mm-pulso 1500ms ease-in-out infinite alternate;
 }
+/* o Voltar e o retrato */
 html[data-rota-pendente] body::before {
+  top: 129px;
   left: var(--g);
-  width: var(--retrato);
-  background: var(--peca);
-}
-html[data-rota-pendente] body::after {
-  left: calc(var(--g) + var(--retrato) + 64px);
-  right: var(--g);
+  width: var(--foto);
+  height: calc(var(--foto) * 1.25 + 56px);
   background:
-    linear-gradient(var(--peca) 0 0) 0 96px / 60% 56px no-repeat,
-    linear-gradient(var(--peca) 0 0) 0 172px / 36% 14px no-repeat,
-    linear-gradient(var(--peca) 0 0) 0 220px / 70% 14px no-repeat,
-    linear-gradient(var(--peca) 0 0) 0 246px / 62% 14px no-repeat;
+    linear-gradient(var(--peca) 0 0) 0 0 / 60px 20px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 56px / 100% calc(100% - 56px) no-repeat;
 }
+/* a coluna: campo, nome, papel e o resumo */
+html[data-rota-pendente] body::after {
+  top: 268px;
+  left: calc(var(--g) + var(--foto) + 64px);
+  right: var(--g);
+  height: 260px;
+  background:
+    linear-gradient(var(--peca) 0 0) 0 0 / 106px 14px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 40px / min(70%, 560px) 64px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 136px / 144px 16px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 186px / 92% 16px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 216px / 86% 16px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 246px / 58% 14px no-repeat;
+}
+/* obra e telas: o Voltar e o título, e as linhas do texto */
 html:is([data-rota-pendente='tela'], [data-rota-pendente='obra']) body::before {
-  content: none;
+  width: min(52%, 640px);
+  height: 140px;
+  background:
+    linear-gradient(var(--peca) 0 0) 0 0 / 60px 20px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 64px / 100% 64px no-repeat;
 }
 html:is([data-rota-pendente='tela'], [data-rota-pendente='obra']) body::after {
+  top: 320px;
   left: var(--g);
   background:
-    linear-gradient(var(--peca) 0 0) 0 0 / 52% 56px no-repeat,
-    linear-gradient(var(--peca) 0 0) 0 96px / 70% 14px no-repeat,
-    linear-gradient(var(--peca) 0 0) 0 122px / 64% 14px no-repeat,
-    linear-gradient(var(--peca) 0 0) 0 148px / 68% 14px no-repeat;
+    linear-gradient(var(--peca) 0 0) 0 0 / min(70%, 640px) 16px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 30px / min(64%, 600px) 16px no-repeat,
+    linear-gradient(var(--peca) 0 0) 0 60px / min(68%, 620px) 16px no-repeat;
 }
 @media (max-width: 767px) {
-  html[data-rota-pendente='autor'] body::before {
-    left: var(--space-4);
-    right: var(--space-4);
-    top: 96px;
-    width: auto;
-    height: 50vh;
+  html[data-rota-pendente] {
+    --foto: calc(100vw - 2 * var(--g));
   }
   html[data-rota-pendente='autor'] body::after {
-    left: var(--space-4);
-    right: var(--space-4);
-    top: calc(96px + 50vh + 24px);
-    height: 120px;
+    top: calc(185px + var(--foto) * 1.25 + 64px);
+    left: var(--g);
+    height: 160px;
     background:
-      linear-gradient(var(--peca) 0 0) 0 0 / 70% 44px no-repeat,
-      linear-gradient(var(--peca) 0 0) 0 64px / 50% 14px no-repeat;
+      linear-gradient(var(--peca) 0 0) 0 0 / 106px 14px no-repeat,
+      linear-gradient(var(--peca) 0 0) 0 34px / 80% 44px no-repeat,
+      linear-gradient(var(--peca) 0 0) 0 92px / 136px 16px no-repeat,
+      linear-gradient(var(--peca) 0 0) 0 136px / 92% 16px no-repeat;
   }
 }
 @keyframes mm-pulso {

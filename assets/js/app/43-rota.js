@@ -339,6 +339,12 @@
     addEventListener(t, () => window.__rotaDesistiu && (usou = true), { capture: true, passive: true })
   );
   const soltar = () => {
+    // a tela chega esmaecendo sobre o esqueleto, sem corte seco
+    if (raiz.hasAttribute('data-rota-pendente') && !Movimento.reduz()) {
+      const app = document.getElementById('mainApp');
+      if (app && app.animate)
+        app.animate({ opacity: [0, 1] }, { duration: 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    }
     raiz.removeAttribute('data-rota-pendente');
     window.__rotaPronta = true;
   };
