@@ -76,77 +76,9 @@
     });
   }
 
-  // o filme do Descubra é largo e o retrato da página é 4:5: a transição parte de um recorte do
-  // plano que está na tela, com a proporção do retrato, por cima dele e com o mesmo duotono. O
-  // recorte é preparado no toque (pointerdown) e a foto dele é decodificada antes do clique: sem isso
-  // ele saía vazio (só as camadas do duotono, em marrom) nos primeiros quadros. Se não ficar pronto
-  // a tempo, a troca segue sem o retrato que viaja.
-  let preparado = null;
-  function recorte(plano) {
-    const img = plano && plano.querySelector('img');
-    if (!img || !naTela(plano)) return null;
-    const r = plano.getBoundingClientRect();
-    const w = Math.min(r.width, r.height * 0.8);
-    const px = parseFloat(getComputedStyle(img).objectPosition) / 100;
-    const cx = r.left + r.width * (isNaN(px) ? 0.5 : px);
-    const left = Math.max(r.left, Math.min(cx - w / 2, r.right - w));
-    const caixa = document.createElement('div');
-    caixa.className = 'mm-recorte';
-    caixa.setAttribute('aria-hidden', 'true');
-    Object.assign(caixa.style, {
-      left: left + 'px',
-      top: r.top + 'px',
-      width: w + 'px',
-      height: r.height + 'px',
-      opacity: '0'
-    });
-    const copia = plano.cloneNode(true);
-    Object.assign(copia.style, {
-      position: 'absolute',
-      inset: 'auto',
-      left: r.left - left + 'px',
-      top: '0px',
-      width: r.width + 'px',
-      height: r.height + 'px',
-      opacity: '1',
-      transition: 'none'
-    });
-    const ci = copia.querySelector('img');
-    ci.removeAttribute('loading');
-    ci.style.animation = 'none';
-    ci.style.transform = getComputedStyle(img).transform;
-    caixa.appendChild(copia);
-    document.body.appendChild(caixa);
-    const x = { caixa, plano, pronto: false };
-    (ci.decode ? ci.decode() : Promise.resolve()).then(
-      () => (x.pronto = true),
-      () => {}
-    );
-    return x;
-  }
-  document.addEventListener(
-    'pointerdown',
-    (e) => {
-      const b = e.target instanceof Element && e.target.closest('.filme [data-autor]');
-      if (!b || !temVT || reduz()) return;
-      if (preparado) preparado.caixa.remove();
-      preparado = recorte(b.closest('.filme').querySelector('.filme-plano.ativo'));
-      if (preparado)
-        setTimeout((x) => x === preparado && (x.caixa.remove(), (preparado = null)), 1500, preparado);
-    },
-    true
-  );
-  function tomarRecorte(filme) {
-    const plano = filme.querySelector('.filme-plano.ativo');
-    const x = preparado && preparado.plano === plano ? preparado : null;
-    preparado = null;
-    if (!x || !x.pronto) {
-      if (x) x.caixa.remove();
-      return null;
-    }
-    x.caixa.style.opacity = '';
-    return x.caixa;
-  }
+  // o filme do Descubra é largo e o retrato da página é 4:5: o próprio plano do filme (com as camadas
+  // do duotono) viaja e se fecha até a proporção do retrato; a foto da página só aparece no pouso
+  // (telas/movimento.css, tipo "filme")
 
   // os pares "o que a pessoa tocou → o que abre"; o nome da transição vai só nos dois. O retrato
   // viaja de imagem para imagem (sem a moldura de nenhum dos lados, que aparecia de repente)
@@ -155,25 +87,31 @@
   const PARES = {
     panorama(o) {
       const nome = panAtual;
-      let fonte = null;
-      let temporaria = false;
       const filme = o.closest('.filme');
       if (filme) {
-        fonte = tomarRecorte(filme);
-        temporaria = !!fonte;
-      } else {
-        const caixa = o.closest(
-          '.ao-card, .retrato, .abertura, .quote-card, .expand-quote, .bio-sheet, .story-card, .historia-destaque, .descubra-palco, article, li'
-        );
-        fonte =
-          (caixa &&
-            [...caixa.querySelectorAll('img[data-person]')].find(
-              (i) => i.dataset.person === nome && i.naturalWidth && naTela(i)
-            )) ||
-          null;
+        const plano = filme.querySelector('.filme-plano.ativo');
+        return naTela(plano)
+          ? { nome: 'mm-destaque', fonte: plano, destino: fotoDoAutor, retrato: true, filme: true }
+          : null;
       }
-      if (!naTela(fonte)) return null;
-      return { nome: 'mm-destaque', fonte, temporaria, destino: fotoDoAutor, retrato: true };
+      const caixa = o.closest(
+        '.ao-card, .retrato, .abertura, .quote-card, .expand-quote, .bio-sheet, .story-card, .historia-destaque, .descubra-palco, article, li'
+      );
+      const img =
+        caixa &&
+        [...caixa.querySelectorAll('img[data-person]')].find(
+          (i) => i.dataset.person === nome && i.naturalWidth && naTela(i)
+        );
+      if (img) return { nome: 'mm-destaque', fonte: img, destino: fotoDoAutor, retrato: true };
+      // sem retrato na origem (o nome no índice, um link de texto): o nome vira o título da página
+      const texto = o.closest('[data-indice], [data-autor], .author-name, a, button');
+      if (texto && naTela(texto) && texto.textContent.trim() === nome)
+        return {
+          nome: 'mm-titulo',
+          fonte: texto,
+          destino: () => document.querySelector('#view-panorama .pan-name')
+        };
+      return null;
     },
     obra(o) {
       const cartao = o.closest('.obra-card');
@@ -190,11 +128,14 @@
       const nome = panAtual;
       const fonte = document.querySelector('#panPhoto img.mm-provisoria') || fotoDoAutor();
       if (!nome || !naTela(fonte)) return null;
-      const destino = () =>
-        [...(tela(view) || document).querySelectorAll('img[data-person]')].find(
+      // o destino é o quadro do cartão (com o recorte dele), não só a imagem de dentro
+      const destino = () => {
+        const i = [...(tela(view) || document).querySelectorAll('img[data-person]')].find(
           (i) => i.dataset.person === nome && i.naturalWidth && naTela(desenhar(i, soltos))
-        ) || null;
-      return { nome: 'mm-destaque', fonte, destino };
+        );
+        return i ? i.closest('.quadro') || i : null;
+      };
+      return { nome: 'mm-destaque', fonte, destino, saindo: true };
     },
     obra(view) {
       const oid = obraAtual && obraAtual.oid;
@@ -224,7 +165,7 @@
     prov.style.objectPosition = real.style.objectPosition;
     real.after(prov);
     // a foto já está no cache: a decodificação é curta e não pode segurar a troca
-    await Promise.race([prov.decode ? prov.decode().catch(() => {}) : null, espera(40)]);
+    await Promise.race([prov.decode ? prov.decode().catch(() => {}) : null, espera(24)]);
     return { prov, real };
   }
   function revelarCor(x) {
@@ -280,13 +221,14 @@
           ? PARES[view](o)
           : null;
     if (par) par.fonte.style.viewTransitionName = par.nome;
+    // o que foi tocado fica marcado até a animação começar (o :active acaba quando o dedo solta)
+    const tocado = o && o.closest('button, a, [role="button"]');
+    if (tocado) tocado.classList.add('mm-tocado');
+    let nomeDaPessoa = null;
     let destino = null;
     let retrato = null;
     const update = async () => {
-      if (par) {
-        par.fonte.style.viewTransitionName = '';
-        if (par.temporaria) par.fonte.remove();
-      }
+      if (par) par.fonte.style.viewTransitionName = '';
       if (minha !== vez) return;
       run();
       desenharVisiveis(view, soltos);
@@ -302,19 +244,30 @@
         }
       }
       destino.style.viewTransitionName = par.nome;
+      // o nome da pessoa entra por cima do retrato que pousa, um pouco depois dele
+      if (par.nome === 'mm-destaque' && view === 'panorama') {
+        nomeDaPessoa = document.querySelector('#view-panorama .pan-name');
+        if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = 'mm-nome';
+      }
     };
     raiz.setAttribute('data-transicao', '');
     // o sentido vai no tipo da transição (:active-view-transition-type no CSS); só o navegador sem
     // tipos recebe o atributo, que custa um recálculo do estilo da página inteira
     let t;
     try {
-      t = document.startViewTransition({ update, types: par && par.temporaria ? [dir, 'filme'] : [dir] });
+      t = document.startViewTransition({
+        update,
+        types: [dir, ...(par && par.filme ? ['filme'] : []), ...(par && par.saindo ? ['saindo'] : [])]
+      });
     } catch (e) {
       raiz.dataset.vtDir = dir;
       t = document.startViewTransition(update);
     }
     atual = t;
-    t.ready.catch(() => {});
+    t.ready.then(
+      () => tocado && tocado.classList.remove('mm-tocado'),
+      () => {}
+    );
     // um erro de verdade na troca continua aparecendo, como antes da transição
     t.updateCallbackDone.catch((e) =>
       setTimeout(() => {
@@ -324,10 +277,9 @@
     t.finished
       .catch(() => {})
       .finally(() => {
-        if (par) {
-          par.fonte.style.viewTransitionName = '';
-          if (par.temporaria) par.fonte.remove();
-        }
+        if (par) par.fonte.style.viewTransitionName = '';
+        if (tocado) tocado.classList.remove('mm-tocado');
+        if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = '';
         soltos.forEach((a) => (a.style.contentVisibility = ''));
         if (destino) destino.style.viewTransitionName = '';
         if (retrato) retrato.real.style.visibility = '';
