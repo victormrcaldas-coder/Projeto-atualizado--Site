@@ -180,21 +180,33 @@ for (const largura of larguras) {
     await p.mouse.move(x, y, { steps: passos });
     mouse = { x, y };
   };
+  // o ponteiro vai até o elemento e clica no ponto, como uma pessoa. Os métodos do Playwright rolam
+  // a página "até o elemento" antes, e com o cabeçalho preso (sticky) isso rolava a página inteira
   const sobre = async (seletor, passos = 18) => {
     const el = p.locator(seletor).first();
-    await el.scrollIntoViewIfNeeded();
-    const b = await el.boundingBox();
+    let b = await el.boundingBox();
+    const vp = p.viewportSize();
+    if (!b || b.y < 0 || b.y + b.height > vp.height || b.x < 0 || b.x + b.width > vp.width) {
+      await el.evaluate((e) => e.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' }));
+      await pausa(150);
+      b = await el.boundingBox();
+    }
     await mover(b.x + b.width / 2, b.y + b.height / 2, passos);
-    return el;
+    return { el, x: b.x + b.width / 2, y: b.y + b.height / 2 };
   };
   // com nomeDaMarca, a marca da folha acende logo antes do clique
   const clicar = async (seletor, texto, nomeDaMarca) => {
     if (texto) await legenda(texto);
-    const el = await sobre(seletor);
+    const { x, y } = await sobre(seletor);
     await pausa(350);
     if (nomeDaMarca) await marca(nomeDaMarca);
-    if (movel) await el.tap();
-    else await el.click();
+    if (movel) await p.touchscreen.tap(x, y);
+    else {
+      // como um clique de verdade: 90 ms entre apertar e soltar
+      await p.mouse.down();
+      await p.waitForTimeout(90);
+      await p.mouse.up();
+    }
   };
   const rolar = async (ate, ms = 1600) => {
     await p.evaluate(

@@ -77,7 +77,11 @@
   }
 
   // o filme do Descubra é largo e o retrato da página é 4:5: a transição parte de um recorte do
-  // plano que está na tela, com a proporção do retrato, por cima dele e com o mesmo duotono
+  // plano que está na tela, com a proporção do retrato, por cima dele e com o mesmo duotono. O
+  // recorte é preparado no toque (pointerdown) e a foto dele é decodificada antes do clique: sem isso
+  // ele saía vazio (só as camadas do duotono, em marrom) nos primeiros quadros. Se não ficar pronto
+  // a tempo, a troca segue sem o retrato que viaja.
+  let preparado = null;
   function recorte(plano) {
     const img = plano && plano.querySelector('img');
     if (!img || !naTela(plano)) return null;
@@ -93,7 +97,8 @@
       left: left + 'px',
       top: r.top + 'px',
       width: w + 'px',
-      height: r.height + 'px'
+      height: r.height + 'px',
+      opacity: '0'
     });
     const copia = plano.cloneNode(true);
     Object.assign(copia.style, {
@@ -107,11 +112,40 @@
       transition: 'none'
     });
     const ci = copia.querySelector('img');
+    ci.removeAttribute('loading');
     ci.style.animation = 'none';
     ci.style.transform = getComputedStyle(img).transform;
     caixa.appendChild(copia);
     document.body.appendChild(caixa);
-    return caixa;
+    const x = { caixa, plano, pronto: false };
+    (ci.decode ? ci.decode() : Promise.resolve()).then(
+      () => (x.pronto = true),
+      () => {}
+    );
+    return x;
+  }
+  document.addEventListener(
+    'pointerdown',
+    (e) => {
+      const b = e.target instanceof Element && e.target.closest('.filme [data-autor]');
+      if (!b || !temVT || reduz()) return;
+      if (preparado) preparado.caixa.remove();
+      preparado = recorte(b.closest('.filme').querySelector('.filme-plano.ativo'));
+      if (preparado)
+        setTimeout((x) => x === preparado && (x.caixa.remove(), (preparado = null)), 1500, preparado);
+    },
+    true
+  );
+  function tomarRecorte(filme) {
+    const plano = filme.querySelector('.filme-plano.ativo');
+    const x = preparado && preparado.plano === plano ? preparado : null;
+    preparado = null;
+    if (!x || !x.pronto) {
+      if (x) x.caixa.remove();
+      return null;
+    }
+    x.caixa.style.opacity = '';
+    return x.caixa;
   }
 
   // os pares "o que a pessoa tocou → o que abre"; o nome da transição vai só nos dois. O retrato
@@ -125,7 +159,7 @@
       let temporaria = false;
       const filme = o.closest('.filme');
       if (filme) {
-        fonte = recorte(filme.querySelector('.filme-plano.ativo'));
+        fonte = tomarRecorte(filme);
         temporaria = !!fonte;
       } else {
         const caixa = o.closest(
@@ -260,7 +294,12 @@
       if (!destino) return;
       if (par.retrato) {
         retrato = await prepararRetrato(par, destino);
-        if (retrato) destino = retrato.prov;
+        if (retrato) {
+          destino = retrato.prov;
+          // a foto colorida fica escondida enquanto a provisória voa: sem ela, aparecia o retrato
+          // duas vezes (o que voa e o que já estava no lugar)
+          retrato.real.style.visibility = 'hidden';
+        }
       }
       destino.style.viewTransitionName = par.nome;
     };
@@ -269,7 +308,7 @@
     // tipos recebe o atributo, que custa um recálculo do estilo da página inteira
     let t;
     try {
-      t = document.startViewTransition({ update, types: [dir] });
+      t = document.startViewTransition({ update, types: par && par.temporaria ? [dir, 'filme'] : [dir] });
     } catch (e) {
       raiz.dataset.vtDir = dir;
       t = document.startViewTransition(update);
@@ -291,6 +330,7 @@
         }
         soltos.forEach((a) => (a.style.contentVisibility = ''));
         if (destino) destino.style.viewTransitionName = '';
+        if (retrato) retrato.real.style.visibility = '';
         revelarCor(retrato);
         if (atual === t) {
           atual = null;

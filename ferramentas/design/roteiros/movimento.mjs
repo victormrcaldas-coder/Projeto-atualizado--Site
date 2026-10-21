@@ -38,7 +38,7 @@ export default async function ({ p, js, pausa, legenda, clicar, sobre, mover, mo
   if (!movel) {
     await ver('d7');
     await legenda('7. Hover e foco: a foto aproxima 1% e o nome entra embaixo');
-    const q = await sobre('#cursor .c-quadro', 10);
+    const { el: q } = await sobre('#cursor .c-quadro', 10);
     const b = await q.boundingBox();
     for (const [x, y] of [
       [0.15, 0.2],

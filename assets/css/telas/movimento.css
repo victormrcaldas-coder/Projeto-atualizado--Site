@@ -51,6 +51,11 @@
 html:active-view-transition-type(voltar)::view-transition-new(root) {
   animation-name: mm-desce;
 }
+/* do filme para a página: o plano largo some mais depressa, para o rosto não aparecer duas vezes
+   (o recorte que viaja e o plano que fica) */
+html:active-view-transition-type(filme)::view-transition-old(root) {
+  animation-duration: 90ms;
+}
 html[data-vt-dir='voltar']::view-transition-new(root) {
   animation-name: mm-desce;
 }
