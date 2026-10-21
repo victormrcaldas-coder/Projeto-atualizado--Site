@@ -233,8 +233,12 @@
           : null;
     if (par && par.nome === 'mm-titulo') par.fonte = envolver(par.fonte);
     if (par) par.fonte.style.viewTransitionName = par.nome;
+    // onde o retrato começa: a coluna de texto da página nova é recortada pela borda dele (abaixo)
+    const r0 = par && par.nome === 'mm-destaque' ? par.fonte.getBoundingClientRect() : null;
+    let corte = null;
     // saindo do filme do Descubra, o filme tem a própria saída (cortina, telas/movimento.css)
-    const filme = !par && o && o.closest('.filme');
+    // a seção inteira (o filme e a borda dele), para não sobrar uma faixa do roxo esmaecendo
+    const filme = !par && o && o.closest('.filme') && (o.closest('#home-descubra') || o.closest('.filme'));
     if (filme) filme.style.viewTransitionName = 'mm-filme';
     // o que foi tocado fica marcado até a animação começar (o :active acaba quando o dedo solta)
     const tocado = o && o.closest('button, a, [role="button"]');
@@ -247,6 +251,15 @@
       if (minha !== vez) return;
       run();
       desenharVisiveis(view, soltos);
+      // a foto da página do autor não pode pousar aos pedaços: saindo do filme, ela chega com a foto
+      // do filme (a mesma pessoa, já decodificada), e a versão da página entra na revelação da cor;
+      // nos outros casos, espera a decodificação (até 120 ms)
+      const foto = view === 'panorama' && !(par && par.retrato) && fotoDoAutor();
+      const doFilme = filme && filme.querySelector('.filme-plano.ativo img');
+      if (foto && doFilme && doFilme.currentSrc) {
+        retrato = await prepararRetrato({ fonte: doFilme }, foto);
+        if (retrato) retrato.real.style.visibility = 'hidden';
+      } else if (foto && foto.decode) await Promise.race([foto.decode().catch(() => {}), espera(120)]);
       destino = par && par.destino();
       if (!destino) return;
       if (par.retrato) {
@@ -264,7 +277,22 @@
       // retrato em voo nunca corta o texto
       if (par.nome === 'mm-destaque' && view === 'panorama') {
         nomeDaPessoa = document.querySelector('#view-panorama .pan-id');
-        if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = 'mm-nome';
+        if (nomeDaPessoa) {
+          nomeDaPessoa.style.viewTransitionName = 'mm-nome';
+          // a coluna aparece à direita da borda do retrato (embaixo dela, no celular), que anda junto
+          // com ele: a letra nunca fica sobre a foto nem cortada no ar
+          const r1 = destino.getBoundingClientRect();
+          const c = nomeDaPessoa.getBoundingClientRect();
+          if (r0 && c.left >= r1.right - 2) {
+            const a = Math.max(0, r0.right - c.left);
+            const b = Math.max(0, r1.right - c.left);
+            corte = [`inset(0 0 0 ${a}px)`, `inset(0 0 0 ${b}px)`];
+          } else if (r0 && c.top >= r1.bottom - 2) {
+            const a = Math.max(0, r0.bottom - c.top);
+            const b = Math.max(0, r1.bottom - c.top);
+            corte = [`inset(${a}px 0 0 0)`, `inset(${b}px 0 0 0)`];
+          }
+        }
       }
     };
     // "em troca" é uma marca no JS: um atributo no html recalculava o estilo da página inteira (o CSS
@@ -284,7 +312,20 @@
     }
     atual = t;
     t.ready.then(
-      () => tocado && tocado.classList.remove('mm-tocado'),
+      () => {
+        if (tocado) tocado.classList.remove('mm-tocado');
+        // o recorte da coluna anda com a borda do retrato: mesma duração e curva do voo dele
+        if (corte)
+          raiz.animate(
+            { clipPath: corte },
+            {
+              duration: 340,
+              easing: 'cubic-bezier(0.2, 0, 0, 1)',
+              fill: 'both',
+              pseudoElement: '::view-transition-new(mm-nome)'
+            }
+          );
+      },
       () => {}
     );
     // um erro de verdade na troca continua aparecendo, como antes da transição
