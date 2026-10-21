@@ -158,6 +158,63 @@
     true
   );
 
+  // ---------- a folha do celular fecha arrastando para baixo ----------
+  // fecha se o arrasto passar de 25% da altura ou se o gesto for rápido; senão volta. Só começa com o
+  // conteúdo no topo (senão é a rolagem de dentro da folha)
+  const FOLHAS = {
+    quoteExpand: '#quoteExpandBox',
+    bioExpand: '.bio-sheet',
+    sheetOverlay: '.sheet',
+    musOverlay: '.mus-sheet'
+  };
+  const celular = matchMedia('(max-width: 767px)');
+  let arrasto = null;
+  const noTopo = (folha, alvo) => {
+    for (let el = alvo; el && el !== folha.parentElement; el = el.parentElement)
+      if (el.scrollTop > 0) return false;
+    return true;
+  };
+  addEventListener(
+    'touchstart',
+    (e) => {
+      const topo = modais().at(-1);
+      if (!celular.matches || !topo || !FOLHAS[topo.j.id] || e.touches.length !== 1) return;
+      const folha = topo.el.querySelector(FOLHAS[topo.j.id]);
+      if (!folha || !folha.contains(e.target) || !noTopo(folha, e.target)) return;
+      arrasto = { topo, folha, y0: e.touches[0].clientY, t0: performance.now(), dy: 0, ativo: false };
+    },
+    { passive: true }
+  );
+  addEventListener(
+    'touchmove',
+    (e) => {
+      if (!arrasto) return;
+      const dy = e.touches[0].clientY - arrasto.y0;
+      if (!arrasto.ativo) {
+        if (dy < -4) return (arrasto = null); // subindo: é rolagem
+        if (dy < 8) return;
+        arrasto.ativo = true;
+        arrasto.folha.classList.add('arrastando');
+      }
+      e.preventDefault();
+      arrasto.dy = Math.max(0, dy);
+      arrasto.folha.style.setProperty('--arrasto', arrasto.dy + 'px');
+    },
+    { passive: false }
+  );
+  const soltarArrasto = () => {
+    if (!arrasto) return;
+    const { topo, folha, dy, t0, ativo } = arrasto;
+    arrasto = null;
+    if (!ativo) return;
+    folha.classList.remove('arrastando');
+    const rapido = dy / Math.max(1, performance.now() - t0) > 0.5;
+    if (dy > folha.offsetHeight * 0.25 || (rapido && dy > 40)) topo.j.fechar();
+    folha.style.removeProperty('--arrasto');
+  };
+  addEventListener('touchend', soltarArrasto, { passive: true });
+  addEventListener('touchcancel', soltarArrasto, { passive: true });
+
   window.Janelas = {
     aberta: () => modais().length > 0,
     // o Voltar do navegador (app/43): fecha a de cima sem mexer de novo no histórico

@@ -1,0 +1,192 @@
+/* =========================================================
+   As janelas (Etapa 9 refeita, Portão C; o comportamento fica em app/45).
+   Uma gramática só para todas:
+   - o fundo escurece em 240 ms e clareia em 200 ms;
+   - no computador a caixa chega de 0,96 e 8 px abaixo, em 360 ms na curva de chegada, e sai em
+     200 ms acelerando;
+   - no celular, a frase ampliada, a história, Publicados/Seguindo e a busca de música sobem de baixo
+     como folha, em 450 ms na curva da folha (Cult UI), com a alça para arrastar e fechar;
+   - o "Mais" é um painel que entra pela direita, na mesma curva;
+   - os filtros crescem a partir do botão (220 ms).
+   As que trocavam display (frase, foto, Publicados, editor) passam a ter a saída animada com
+   @starting-style e transition-behavior: allow-discrete; sem esses recursos, abrem e fecham na hora.
+   ========================================================= */
+
+/* ---------- camadas: a foto ampliada abre acima da história, o login acima de qualquer janela, o
+   aviso acima de tudo ---------- */
+:is(body, #_) #photoExpand {
+  z-index: 1350;
+}
+:is(body, #_) #authModal {
+  z-index: 1360;
+}
+:is(body, #_) #toast {
+  z-index: 1500;
+}
+/* o bloco injetado de curadoria/29 dava altura de tela inteira à folha e à caixa do login */
+:is(body, #_) :is(.sheet, .modal) {
+  min-height: 0;
+}
+
+/* ---------- o fundo ---------- */
+:is(body, #_) :is(#quoteExpand, #photoExpand, #sheetOverlay, #medOverlay) {
+  opacity: 0;
+  transition:
+    opacity 200ms var(--curva-saida),
+    display 200ms allow-discrete,
+    overlay 200ms allow-discrete;
+}
+:is(body, #_) :is(#quoteExpand, #photoExpand, #sheetOverlay, #medOverlay).show {
+  opacity: 1;
+  transition:
+    opacity 240ms var(--curva-chegada),
+    display 240ms allow-discrete,
+    overlay 240ms allow-discrete;
+}
+@starting-style {
+  :is(body, #_) :is(#quoteExpand, #photoExpand, #sheetOverlay, #medOverlay).show {
+    opacity: 0;
+  }
+}
+:is(body, #_) :is(#bioExpand, #authModal, #musOverlay) {
+  transition: opacity 200ms var(--curva-saida);
+}
+:is(body, #_) :is(#bioExpand, #authModal, #musOverlay).show {
+  transition: opacity 240ms var(--curva-chegada);
+}
+
+/* ---------- a caixa, no computador ---------- */
+:is(body, #_)
+  :is(
+    #quoteExpandBox,
+    #photoExpand .photo-frame,
+    #bioExpand .bio-sheet,
+    #authModal .modal,
+    #sheetOverlay .sheet,
+    #medOverlay .med-box,
+    #musOverlay .mus-sheet
+  ) {
+  opacity: 0;
+  transform: translateY(var(--mov-perto)) scale(0.96);
+  transition:
+    transform 200ms var(--curva-saida),
+    opacity 200ms var(--curva-saida);
+}
+:is(body, #_)
+  :is(#quoteExpand, #photoExpand, #bioExpand, #authModal, #sheetOverlay, #medOverlay, #musOverlay).show
+  :is(#quoteExpandBox, .photo-frame, .bio-sheet, .modal, .sheet, .med-box, .mus-sheet) {
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 360ms var(--curva-chegada),
+    opacity 240ms var(--curva-chegada);
+}
+@starting-style {
+  :is(body, #_)
+    :is(#quoteExpand, #photoExpand, #sheetOverlay, #medOverlay).show
+    :is(#quoteExpandBox, .photo-frame, .sheet, .med-box) {
+    opacity: 0;
+    transform: translateY(var(--mov-perto)) scale(0.96);
+  }
+}
+
+/* ---------- a folha, no celular ---------- */
+@media (max-width: 767px) {
+  :is(body, #_) :is(#quoteExpand, #bioExpand, #sheetOverlay, #musOverlay) {
+    align-items: end;
+    place-items: end center;
+    padding: 0;
+  }
+  :is(body, #_) :is(#quoteExpandBox, #bioExpand .bio-sheet, #sheetOverlay .sheet, #musOverlay .mus-sheet) {
+    width: 100%;
+    height: auto;
+    max-height: 92dvh;
+    border: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    opacity: 1;
+    transform: translateY(100%);
+    transition: transform 240ms var(--curva-saida);
+  }
+  :is(body, #_) #bioExpand .bio-sheet .bio-scroll {
+    max-height: 92dvh;
+  }
+  :is(body, #_)
+    :is(#quoteExpand, #bioExpand, #sheetOverlay, #musOverlay).show
+    :is(#quoteExpandBox, .bio-sheet, .sheet, .mus-sheet) {
+    transform: translateY(var(--arrasto, 0px));
+    transition: transform 450ms var(--curva-folha);
+  }
+  /* enquanto o dedo arrasta, a folha acompanha sem atraso (app/45) */
+  :is(body, #_) .arrastando:is(#quoteExpandBox, .bio-sheet, .sheet, .mus-sheet) {
+    transition: none;
+  }
+  @starting-style {
+    :is(body, #_) :is(#quoteExpand, #sheetOverlay).show :is(#quoteExpandBox, .sheet) {
+      transform: translateY(100%);
+    }
+  }
+  /* a alça: diz que a folha se arrasta */
+  :is(body, #_)
+    :is(#quoteExpandBox, #bioExpand .bio-sheet, #sheetOverlay .sheet, #musOverlay .mus-sheet)::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    z-index: 3;
+    width: 40px;
+    height: 4px;
+    margin-left: -20px;
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--text) 22%, transparent);
+  }
+}
+
+/* ---------- o "Mais": painel lateral ---------- */
+:is(body, #_) #mobileMenu {
+  transition: transform 300ms var(--curva-saida);
+}
+:is(body, #_) #mobileMenu.open {
+  transition: transform 450ms var(--curva-folha);
+}
+
+/* ---------- os filtros: crescem a partir do botão ---------- */
+:is(body, #_) :is(#profilePanel, #traditionPanel) {
+  transform-origin: top left;
+  transform: translateY(-4px) scale(0.96);
+  transition:
+    opacity var(--mov-curto) var(--curva-saida),
+    transform var(--mov-curto) var(--curva-saida),
+    visibility 0s linear var(--mov-curto);
+}
+:is(body, #_) :is(#profilePanel, #traditionPanel).open {
+  transform: none;
+  transition:
+    opacity var(--mov-curto) var(--curva-chegada),
+    transform var(--mov-curto) var(--curva-chegada),
+    visibility 0s;
+}
+
+/* movimento reduzido: as janelas só esmaecem (o "Mais" e a folha continuam fora da tela quando fechados) */
+@media (prefers-reduced-motion: reduce) {
+  :is(body, #_)
+    :is(#quoteExpand, #photoExpand, #bioExpand, #authModal, #sheetOverlay, #medOverlay, #musOverlay).show
+    :is(#quoteExpandBox, .photo-frame, .bio-sheet, .modal, .sheet, .med-box, .mus-sheet),
+  :is(body, #_) :is(#profilePanel, #traditionPanel).open {
+    transform: none;
+  }
+  :is(body, #_)
+    :is(
+      #quoteExpandBox,
+      .photo-frame,
+      .bio-sheet,
+      .modal,
+      .sheet,
+      .med-box,
+      .mus-sheet,
+      #mobileMenu,
+      #profilePanel,
+      #traditionPanel
+    ) {
+    transition-duration: 1ms !important;
+  }
+}

@@ -155,6 +155,7 @@
   --curva-chegada: cubic-bezier(0.16, 1, 0.3, 1); /* o que entra assenta devagar */
   --curva-saida: cubic-bezier(0.4, 0, 1, 1); /* o que sai acelera e some */
   --curva-troca: cubic-bezier(0.2, 0, 0, 1); /* troca de tela e o elemento que vira o próximo */
+  --curva-folha: cubic-bezier(0.32, 0.72, 0, 1); /* a folha que sobe de baixo e o painel lateral (Cult UI) */
   --mov-filme: 1400ms; /* a exceção ao teto: a fusão lenta entre os retratos do filme vivo */
 
   /* ---- camadas ---- */
