@@ -231,7 +231,9 @@ for (const [w, h] of [
         .filter((e) => !fixos.includes(getComputedStyle(e).viewTransitionName))
         .map((e) => e.tagName + '#' + e.id + '.' + e.className);
       const raiz = document.documentElement;
-      return !sobra.length && !raiz.hasAttribute('data-transicao') && !raiz.dataset.vtDir ? true : { sobra };
+      return !sobra.length && !raiz.hasAttribute('data-transicao') && !window.__emTroca && !raiz.dataset.vtDir
+        ? true
+        : { sobra };
     });
   });
   await caso('três cliques em 50 ms: termina na última tela, sem travar', async () => {
@@ -248,7 +250,7 @@ for (const [w, h] of [
     await p.waitForTimeout(1000);
     const r = await p.evaluate(() => ({
       view: state.view,
-      preso: document.documentElement.hasAttribute('data-transicao'),
+      preso: document.documentElement.hasAttribute('data-transicao') || !!window.__emTroca,
       hash: location.hash
     }));
     return r.view === 'explorar' && !r.preso && r.hash === '#explorar' ? true : r;
