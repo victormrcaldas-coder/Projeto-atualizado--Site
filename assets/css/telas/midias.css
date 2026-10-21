@@ -1,0 +1,94 @@
+/* =========================================================
+   As fotos e os filmes do acervo (Etapa 9 refeita, Portão C; o código fica em app/44).
+   O filme de arquivo toca dentro da moldura do retrato da página do autor, por cima da foto, em
+   duotono feito com filtros simples (o filtro SVG pesa a cada quadro de vídeo), e entra esmaecendo
+   quando começa a tocar. Embaixo, o botão de pausa e o crédito do filme.
+   ========================================================= */
+:is(body, #_) #panPhoto .pan-filme {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: grayscale(1) sepia(0.32) contrast(1.06) brightness(0.92);
+  pointer-events: none;
+  transition: opacity var(--mov-longo) var(--curva-chegada);
+}
+html[data-theme='dark'] :is(body, #_) #panPhoto .pan-filme {
+  filter: grayscale(1) sepia(0.28) contrast(1.04) brightness(0.86);
+}
+:is(body, #_) #panPhoto .pan-filme.tocando {
+  opacity: 1;
+}
+.pan-filme-linha {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  font-size: var(--fs-meta);
+  color: var(--text-meta);
+}
+.pan-filme-linha a,
+:is(#view-panorama) .pan-retrato figcaption a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.pan-filme-botao {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-strong, currentColor);
+  border-radius: 50%;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+}
+/* o ícone: duas barras (tocando, o botão pausa) ou um triângulo (parado, o botão toca) */
+.pan-filme-botao::before,
+.pan-filme-botao::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+.pan-filme-botao[data-estado='tocando']::before,
+.pan-filme-botao[data-estado='tocando']::after {
+  width: 3px;
+  height: 11px;
+  background: currentColor;
+}
+.pan-filme-botao[data-estado='tocando']::before {
+  left: 11px;
+}
+.pan-filme-botao[data-estado='tocando']::after {
+  left: 17px;
+}
+.pan-filme-botao[data-estado='parado']::before {
+  left: 12px;
+  border-block: 6px solid transparent;
+  border-left: 10px solid currentColor;
+}
+.pan-filme-botao:focus-visible {
+  outline: 2px solid var(--focus, var(--brand));
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(body, #_) #panPhoto .pan-filme {
+    transition: none;
+  }
+}
+
+/* sem retrato livre: as iniciais em serifa, grandes e claras sobre o café, no centro da moldura */
+:is(#view-panorama) .pan-photo .avatar-fallback.placa-iniciais {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: clamp(5rem, 3rem + 9vw, 9rem);
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--on-cafe) 78%, transparent);
+}

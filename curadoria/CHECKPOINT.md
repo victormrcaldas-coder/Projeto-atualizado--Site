@@ -2559,3 +2559,73 @@ Mais leitura do código e perfil de CPU.
 **Documentação.** `CLAUDE.md` novo, para o Claude Code: regras, comandos e notas para o redesign. Atualizados `ARCHITECTURE.md` (campo `obra`, §4.6 Segurança e desempenho, números, `main`), `README.md`, `PLANO.md` (item 16), `trabalho/LEIAME.md` e `ferramentas/README.md`.
 
 **Estado:** frases **2.412** (A 2.026 · X 386) · autores 521 · obras 1.230 · histórias 235 · lacunas 97 · registros 3.153 · com `orig` 1.651.
+
+## Fase 130 — filmes de arquivo (21/10/2026)
+
+**Por quê.** O redesign pediu "vídeos no site". O que entra são filmagens reais das pessoas do acervo, não ilustração: trechos curtos que tocam dentro da moldura do retrato, na página do autor.
+
+**Método.** A busca cobriu as 381 pessoas da era do cinema, de 521 no site. As fontes foram:
+- o P10 (vídeo) do Wikidata;
+- as categorias do Commons;
+- o `depicts` (P180).
+
+Só entram arquivos em domínio público, CC0, CC BY ou CC BY-SA, em que a pessoa aparece de verdade. Ficam de fora:
+- ficção (141 filmes de Chaplin);
+- reconstituição;
+- funeral, doença ou violência;
+- logotipo gravado na imagem.
+
+Cada candidato foi conferido quadro a quadro numa folha de contato, e a descrição do Commons nomeia a pessoa. Cada trecho tem de 6 a 10 s, sem som, em H.264 e também em VP9 (WebM), com no máximo 450 KB por arquivo, mais um pôster.
+
+**Resultado.**
+- 23 filmes em `assets/video/arquivo/`: 5,7 MB em mp4 e 4,7 MB em WebM. Eles só carregam na página da pessoa.
+- Bloco `assets/js/curadoria/40-fase130-filmes-de-arquivo.js` (`FILMES_DE_ARQUIVO`), gerado por `ferramentas/curadoria/gerar_fases_130_131.py`.
+- Registro em `trabalho/fase130-filmes-de-arquivo/`: `REGRAS.md`, `aprovados.json`, `candidatos.jsonl` com 919 pares pessoa×arquivo e `folhas/`.
+- Exemplos: Tolstói (1908), Twain (1909), Gandhi (1931), Einstein (1933), Mandela (1994) e Paulo Freire (1985, CC BY).
+
+**Limites.**
+- **Ano:** não se estima. Fica `null` quando o Commons não dá a data (Vinicius de Moraes).
+- **Helen Keller:** o trecho saiu do transcode de 240p; refazer quando o Commons liberar o original.
+- **Einstein:** o arquivo inteiro tem três planos.
+- **Não conferidos por limite de tempo** (ficam para uma rodada seguinte): Sagan, Ginsburg, Powell, Mao e Angela Davis.
+
+## Fase 131 — fotos (21/10/2026)
+
+**Por quê.** O levantamento das 190 fotos curadas encontrou problemas de três tipos:
+- 41 arquivos que não existem mais no Commons;
+- 40 pequenos demais para o retrato grande;
+- Drummond sem arquivo, Pessoa representado por uma estátua e o retrato de Pascal com a linha de escaneamento.
+
+**Método.** Para cada caso, a busca seguiu esta ordem: primeiro o P18 do Wikidata, depois a categoria da pessoa no Commons. O novo retrato tinha de:
+- ter licença livre;
+- ter 1000 px ou mais de altura;
+- ser conferido a olho;
+- ter a descrição do Commons nomeando a pessoa.
+
+Na revisão (`revisao.jsonl`) ficaram dois ajustes:
+- **Florbela Espanca vai para a placa:** a foto atual é uma pintura digital moderna.
+- **Paulo Freire passa ao P18** (660×833, CC BY-SA 3.0): exceção aos 1000 px, porque é retrato real e muito melhor que o atual.
+
+**Resultado.**
+- **67 trocas**, entre elas:
+  - **Mário Quintana:** a foto antiga não era ele;
+  - **Pessoa:** passa à foto da carteira de identidade;
+  - **Pascal:** passa à gravura de Edelinck;
+  - **Buffett;**
+  - **Getúlio Vargas:** o nome do arquivo tinha acento errado.
+- **12 sem foto:** o site mostra a placa com as iniciais e "Sem retrato de licença livre", sem buscar a Wikipédia.
+- **5 com foto pequena:** a foto vale nos cartões, e o retrato grande usa a placa.
+- **173 créditos** "Foto: autor · licença", com link para a página do Commons. O autor que o Commons não sabe aparece como "autor desconhecido".
+- **Ponto focal nos dois eixos** em cada troca.
+- **Bloco** `assets/js/curadoria/41-fase131-fotos.js`.
+- **Registro** em `trabalho/fase131-fotos/`: `REGRAS.md`, `estado.jsonl`, `decisoes.jsonl`, `revisao.jsonl`, `creditos.jsonl` e `folha-decisoes.jpg`.
+
+**Limites e dúvidas para o proprietário.**
+- **Rosto pequeno na foto:** Krenak, Senna, Chanel, Bandeira, Weil e Hawking, com Franklin e Callas no limite. Qualquer um pode passar à placa.
+- **Lima Barreto:** a foto é da ficha de internação de 1914.
+- **Profeta Muhammad:** fica com a placa.
+- **Arquivos do Correio da Manhã:** seguem a marcação de domínio público do Commons.
+- **Sêneca:** o arquivo dele redireciona para uma herma dupla.
+- **Chien-Shiung Wu:** a licença é "No restrictions" (Flickr Commons). Não foi tocada nesta fase.
+
+**Estado.** `npm run teste` passa; `estado:comparar` diverge só em `globais` (os dois mapas novos).
