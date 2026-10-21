@@ -1,10 +1,10 @@
 /* =========================================================
    O movimento entre as telas (Etapa 9 refeita, Portão B; o código fica em app/42 e app/43).
-   A troca de tela é uma View Transition: a tela que sai esmaece em 150 ms e só então a que entra
-   sobe 8 px, em 300 ms (no Voltar, desce): as duas nunca aparecem meio transparentes ao mesmo
-   tempo, e o total fica nos 450 ms do teto. O cabeçalho, a barra de baixo e o aviso ficam parados.
-   O retrato tocado vira o retrato da página do autor em 340 ms, na curva de troca (Brik), e no
-   Voltar faz o caminho de volta até o cartão de onde veio.
+   A troca de tela é uma View Transition: a tela que sai some em 80 ms e só então a que entra sobe
+   8 px, em 320 ms (no Voltar, desce): nunca duas telas legíveis no mesmo quadro, e o total fica
+   nos 400 ms. O cabeçalho, a barra de baixo e o aviso ficam parados.
+   O retrato tocado viaja até o retrato da página do autor em 340 ms, na curva de troca (Brik), e o
+   nome entra por cima dele; no Voltar, o retrato faz o caminho de volta até o cartão de onde veio.
    ========================================================= */
 .site-header {
   view-transition-name: mm-cab;
@@ -18,6 +18,10 @@
 /* durante a troca, o cabeçalho continua clicável; um clique novo pula a troca em andamento */
 ::view-transition {
   pointer-events: none;
+}
+/* entre a tela que sai e a que entra aparece o fundo do documento: o papel, não o vazio */
+:root {
+  background-color: var(--bg);
 }
 ::view-transition-group(mm-cab),
 ::view-transition-group(mm-barra),
@@ -40,21 +44,26 @@
 ::view-transition-group(root) {
   animation: none;
 }
+/* a antiga some em 80 ms, acelerando; a nova só começa quando ela já não está lá: nunca duas
+   telas legíveis no mesmo quadro, e o vazio entre elas dura um quadro */
 ::view-transition-old(root) {
-  animation: mm-some 140ms var(--curva-saida) both;
+  animation: mm-some 80ms var(--curva-saida) both;
 }
-/* a nova entra aos 70 ms, quando a antiga já está quase apagada: sem dupla exposição e sem um
-   quadro de papel vazio entre as duas */
 ::view-transition-new(root) {
-  animation: mm-sobe 330ms var(--curva-chegada) 70ms both;
+  animation: mm-sobe 320ms var(--curva-chegada) 80ms both;
 }
 html:active-view-transition-type(voltar)::view-transition-new(root) {
   animation-name: mm-desce;
 }
-/* do filme para a página: o plano largo some mais depressa, para o rosto não aparecer duas vezes
-   (o recorte que viaja e o plano que fica) */
-html:active-view-transition-type(filme)::view-transition-old(root) {
-  animation-duration: 90ms;
+/* do filme para a página: o plano do filme viaja e se fecha até o retrato (cortado pelo centro);
+   a foto da página só aparece no pouso, sem fundir dois rostos no meio do voo */
+html:active-view-transition-type(filme)::view-transition-old(mm-destaque) {
+  /* o corte acompanha o enquadramento do retrato (o rosto no terço de cima) */
+  object-position: 50% 16%;
+  animation: mm-some 80ms linear 270ms both;
+}
+html:active-view-transition-type(filme)::view-transition-new(mm-destaque) {
+  animation: mm-aparece 80ms linear 260ms both;
 }
 html[data-vt-dir='voltar']::view-transition-new(root) {
   animation-name: mm-desce;
@@ -71,35 +80,36 @@ html[data-vt-dir='voltar']::view-transition-new(root) {
   animation-duration: 340ms;
   animation-timing-function: var(--curva-troca);
 }
-/* o título da obra desliza do cartão até o alto da página, cada um no seu tamanho (sem esticar):
-   o de antes some logo, o novo aparece no caminho */
+/* o título (da obra, ou o nome tocado no índice) cresce do cartão até o alto da página: as duas
+   pontas têm a largura do texto, a imagem acompanha a largura do grupo sem deformar, e a troca de
+   uma pela outra acontece no meio do caminho */
+html[data-transicao]
+  :is(.obra-card .obra-title, #view-obra .obra-h1, #view-panorama .pan-name, [data-indice]) {
+  width: fit-content;
+}
 ::view-transition-group(mm-titulo) {
-  z-index: 2;
+  z-index: 3;
   animation-duration: 340ms;
   animation-timing-function: var(--curva-troca);
 }
-::view-transition-old(mm-titulo),
-::view-transition-new(mm-titulo) {
-  width: auto;
-  height: auto;
-}
 ::view-transition-old(mm-titulo) {
-  animation: mm-some 120ms var(--curva-saida) both;
+  animation: mm-some 160ms var(--curva-saida) both;
 }
 ::view-transition-new(mm-titulo) {
-  animation: mm-aparece 260ms var(--curva-chegada) 80ms both;
+  animation: mm-aparece 130ms var(--curva-chegada) 130ms both;
+}
+/* o nome da pessoa entra por cima do retrato que pousa (app/42), um pouco depois dele */
+::view-transition-group(mm-nome) {
+  z-index: 3;
+  animation: none;
+}
+::view-transition-new(mm-nome) {
+  animation: mm-sobe 300ms var(--curva-chegada) 160ms both;
 }
 @keyframes mm-aparece {
   from {
     opacity: 0;
   }
-}
-/* o recorte do filme que vira retrato (app/42): fica por cima do plano só durante a troca */
-.mm-recorte {
-  position: fixed;
-  z-index: 5;
-  overflow: hidden;
-  pointer-events: none;
 }
 /* o toque responde na hora: o retrato afunda um pouco enquanto a tela nova se prepara */
 @media (prefers-reduced-motion: no-preference) {
@@ -139,6 +149,36 @@ html[data-transicao] :is(.expand-overlay, .bio-overlay, .modal-overlay, .scrim) 
   transition: none;
 }
 
+/* a moldura do retrato (o passe-partout) nasce depois que ele pousa; durante o voo ela não aparece
+   vazia. Ao sair da página, a cor vai embora com a pessoa: o retrato volta em duotono */
+:is(body, #_) #panPhoto {
+  transition:
+    background-color var(--mov-base) var(--curva-chegada),
+    outline-color var(--mov-base) var(--curva-chegada);
+}
+html[data-transicao] :is(body, #_) #panPhoto {
+  background-color: transparent;
+  outline-color: transparent;
+}
+html:active-view-transition-type(saindo) :is(body, #_) #panPhoto img[data-person] {
+  filter: url('#mm-duotono');
+}
+html[data-theme='dark']:active-view-transition-type(saindo) :is(body, #_) #panPhoto img[data-person] {
+  filter: url('#mm-duotono-escuro');
+}
+/* o toque fica marcado até a animação começar (app/42) */
+.site-header .nav-link.mm-tocado {
+  color: var(--brand);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bottom-nav .bn-item.mm-tocado {
+    transform: scale(0.94);
+  }
+  #view-home .retrato > button.mm-tocado .quadro {
+    transform: scale(0.98);
+  }
+}
+
 /* o retrato que chegou do toque: em duotono, com a foto que já estava carregada; a cor revela
    quando ele pousa (app/42) */
 :is(body, #_) #panPhoto img.mm-provisoria[aria-hidden] {
@@ -153,6 +193,17 @@ html[data-theme='dark'] :is(body, #_) #panPhoto img.mm-provisoria[aria-hidden] {
 /* o link direto espera o acervo: a tela não pisca a home antes (no máximo 4 s, app/43) */
 html[data-rota-pendente] #mainApp {
   visibility: hidden;
+}
+/* se o acervo demorar, uma linha discreta no lugar da tela, depois de meio segundo */
+html[data-rota-pendente] body::after {
+  content: 'Abrindo…';
+  position: fixed;
+  inset: 45% 0 auto;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--text-meta);
+  animation: mm-aparece var(--mov-base) var(--curva-chegada) 500ms both;
 }
 /* o título recebe o foco ao trocar de tela; o anel aparece só para quem usa o teclado */
 .view [tabindex='-1']:focus:not(:focus-visible) {

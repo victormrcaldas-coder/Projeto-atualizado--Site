@@ -205,10 +205,17 @@
     const t = Movimento.trocarTela(run, { gesto, dir: rest ? rest.dir : 'ir', view });
     if (!gesto) return;
     // no Voltar, o foco volta para o que a pessoa tinha tocado; senão, vai para o título da tela
+    // sem o que foi tocado (saiu pelo menu, por exemplo), o foco vai para o item da âncora, que está
+    // na tela, e não para o título lá no alto da página rolada
     const volta = () => {
+      const tela = document.querySelector(`.view[data-view="${view}"]`);
       const el = rest && rest.dir === 'voltar' && rest.foco && document.querySelector(rest.foco);
+      const ancora = rest && rest.ancora && scrollY > 0 && tela && tela.querySelector(rest.ancora.sel);
       if (el && el.offsetParent) el.focus({ preventScroll: true });
-      else focar(view);
+      else if (ancora) {
+        if (!ancora.matches('a, button, input, [tabindex]')) ancora.setAttribute('tabindex', '-1');
+        ancora.focus({ preventScroll: true });
+      } else focar(view);
     };
     if (t) t.updateCallbackDone.then(volta, () => {});
     else volta();
@@ -293,7 +300,8 @@
     raiz.removeAttribute('data-rota-pendente');
     window.__rotaPronta = true;
   };
-  if (pendente) {
+  // o script do <head> já escondeu a tela na primeira pintura; aqui só a garantia de 4 s
+  if (pendente || raiz.hasAttribute('data-rota-pendente')) {
     raiz.setAttribute('data-rota-pendente', '');
     setTimeout(soltar, 4000);
   }
@@ -313,6 +321,22 @@
     }
     soltar();
   }
+  // a altura vai sendo guardada na entrada atual quando a rolagem para: assim o Avançar também
+  // volta para onde a pessoa estava (no popstate a entrada de antes já não pode ser escrita)
+  let guardar = 0;
+  addEventListener(
+    'scroll',
+    () => {
+      clearTimeout(guardar);
+      guardar = setTimeout(() => {
+        const st = history.state;
+        if (!st || !st.mm || restaurando || raiz.hasAttribute('data-transicao')) return;
+        if (document.body.classList.contains('modal-open')) return;
+        history.replaceState({ ...st, y: yAtual(), ancora: ancoraDe(st.view) }, '');
+      }, 220);
+    },
+    { passive: true }
+  );
   // ao sair ou recarregar, a altura da tela fica guardada na entrada
   addEventListener('pagehide', () => {
     if (history.state && history.state.mm)

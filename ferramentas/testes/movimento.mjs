@@ -160,6 +160,21 @@ for (const [w, h] of [
         : { autor, obra, volta };
     }
   );
+  await caso('Avançar também volta à altura em que a pessoa estava', async () => {
+    await p.evaluate(() => navigateTo('autores'));
+    await p.waitForTimeout(400);
+    await rolar(1200);
+    await p.waitForTimeout(500);
+    await tocar(`${menu} [data-nav="explorar"]`);
+    await p.goBack();
+    await p.waitForTimeout(900);
+    await p.goForward();
+    await p.waitForTimeout(900);
+    await p.goBack();
+    await p.waitForTimeout(900);
+    const r = await agora();
+    return r.view === 'autores' && Math.abs(r.y - 1200) <= 40 ? true : r;
+  });
   await caso('Voltar ao índice: o nome tocado no mesmo lugar e com o foco', async () => {
     await p.evaluate(() => navigateTo('autores'));
     await p.waitForTimeout(400);

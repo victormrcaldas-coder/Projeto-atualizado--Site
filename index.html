@@ -20,6 +20,12 @@
 <link rel="stylesheet" href="assets/css/telas/assinatura.css">
 <link rel="stylesheet" href="assets/css/telas/filme.css">
 <link rel="stylesheet" href="assets/css/telas/movimento.css">
+<!-- link direto (#autor-…, #obra-…, #explorar…) ou recarga fora da home: a tela fica escondida até o
+     acervo carregar, desde a primeira pintura (app/43 solta) -->
+<script>
+  if (/^#(autor|obra)-|^#(explorar|descubra|historias|comunidade|perfil|autores|escrever)$/.test(location.hash) || (history.state && history.state.mm && history.state.view !== 'home'))
+    document.documentElement.setAttribute('data-rota-pendente', '');
+</script>
 </head>
 <body data-theme="light">
 
