@@ -21,17 +21,22 @@
 <link rel="stylesheet" href="assets/css/telas/filme.css">
 <link rel="stylesheet" href="assets/css/telas/movimento.css">
 <!-- link direto (#autor-…, #obra-…, #explorar…) ou recarga fora da home: a tela fica escondida até o
-     acervo carregar, desde a primeira pintura (app/43 solta) -->
+     acervo carregar, desde a primeira pintura, com o esqueleto da tela de destino (app/43 solta) -->
 <script>
-  if (/^#(autor|obra)-|^#(explorar|descubra|historias|comunidade|perfil|autores|escrever)$/.test(location.hash) || (history.state && history.state.mm && history.state.view !== 'home')) {
-    document.documentElement.setAttribute('data-rota-pendente', '');
-    // a garantia de 4 s começa aqui, não quando o resto dos scripts carrega
+  (function () {
+    var h = location.hash, st = history.state;
+    var tipo = /^#autor-/.test(h) ? 'autor' : /^#obra-/.test(h) ? 'obra'
+      : /^#(explorar|descubra|historias|comunidade|perfil|autores|escrever)$/.test(h) ? 'tela'
+      : st && st.mm && st.view !== 'home' ? (st.view === 'panorama' ? 'autor' : st.view === 'obra' ? 'obra' : 'tela') : '';
+    if (!tipo) return;
+    document.documentElement.setAttribute('data-rota-pendente', tipo);
+    // só para o caso de o acervo não carregar: a tela aparece, e app/43 não leva mais ao link se a
+    // pessoa já estiver usando a página
     setTimeout(function () {
-      // o acervo demorou: a tela aparece (a home), e app/43 só leva ao link se a pessoa não começou a usá-la
       window.__rotaDesistiu = true;
       document.documentElement.removeAttribute('data-rota-pendente');
-    }, 4000);
-  }
+    }, 12000);
+  })();
 </script>
 </head>
 <body data-theme="light">

@@ -344,8 +344,8 @@
   };
   // o script do <head> já escondeu a tela na primeira pintura; aqui só a garantia de 4 s
   if (!window.__rotaDesistiu && (pendente || raiz.hasAttribute('data-rota-pendente'))) {
-    raiz.setAttribute('data-rota-pendente', '');
-    setTimeout(soltar, 4000);
+    if (!raiz.hasAttribute('data-rota-pendente')) raiz.setAttribute('data-rota-pendente', 'tela');
+    setTimeout(soltar, 12000);
   }
   function rotearInicial() {
     const s = history.state;

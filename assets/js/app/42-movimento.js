@@ -233,6 +233,9 @@
           : null;
     if (par && par.nome === 'mm-titulo') par.fonte = envolver(par.fonte);
     if (par) par.fonte.style.viewTransitionName = par.nome;
+    // saindo do filme do Descubra, o filme tem a própria saída (cortina, telas/movimento.css)
+    const filme = !par && o && o.closest('.filme');
+    if (filme) filme.style.viewTransitionName = 'mm-filme';
     // o que foi tocado fica marcado até a animação começar (o :active acaba quando o dedo solta)
     const tocado = o && o.closest('button, a, [role="button"]');
     if (tocado) tocado.classList.add('mm-tocado');
@@ -294,6 +297,7 @@
       .catch(() => {})
       .finally(() => {
         if (par) par.fonte.style.viewTransitionName = '';
+        if (filme) filme.style.viewTransitionName = '';
         if (tocado) tocado.classList.remove('mm-tocado');
         if (nomeDaPessoa) nomeDaPessoa.style.viewTransitionName = '';
         soltos.forEach((a) => (a.style.contentVisibility = ''));
