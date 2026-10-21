@@ -41,10 +41,12 @@
   animation: none;
 }
 ::view-transition-old(root) {
-  animation: mm-some 150ms var(--curva-saida) both;
+  animation: mm-some 140ms var(--curva-saida) both;
 }
+/* a nova entra aos 70 ms, quando a antiga já está quase apagada: sem dupla exposição e sem um
+   quadro de papel vazio entre as duas */
 ::view-transition-new(root) {
-  animation: mm-sobe 300ms var(--curva-chegada) 150ms both;
+  animation: mm-sobe 330ms var(--curva-chegada) 70ms both;
 }
 html:active-view-transition-type(voltar)::view-transition-new(root) {
   animation-name: mm-desce;
@@ -63,6 +65,52 @@ html[data-vt-dir='voltar']::view-transition-new(root) {
   object-fit: cover;
   animation-duration: 340ms;
   animation-timing-function: var(--curva-troca);
+}
+/* o título da obra desliza do cartão até o alto da página, cada um no seu tamanho (sem esticar):
+   o de antes some logo, o novo aparece no caminho */
+::view-transition-group(mm-titulo) {
+  z-index: 2;
+  animation-duration: 340ms;
+  animation-timing-function: var(--curva-troca);
+}
+::view-transition-old(mm-titulo),
+::view-transition-new(mm-titulo) {
+  width: auto;
+  height: auto;
+}
+::view-transition-old(mm-titulo) {
+  animation: mm-some 120ms var(--curva-saida) both;
+}
+::view-transition-new(mm-titulo) {
+  animation: mm-aparece 260ms var(--curva-chegada) 80ms both;
+}
+@keyframes mm-aparece {
+  from {
+    opacity: 0;
+  }
+}
+/* o recorte do filme que vira retrato (app/42): fica por cima do plano só durante a troca */
+.mm-recorte {
+  position: fixed;
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+}
+/* o toque responde na hora: o retrato afunda um pouco enquanto a tela nova se prepara */
+@media (prefers-reduced-motion: no-preference) {
+  #view-home .retrato > button .quadro {
+    transition: transform var(--mov-micro) var(--curva-padrao);
+  }
+  #view-home .retrato > button:active .quadro {
+    transform: scale(0.98);
+  }
+  .bottom-nav .bn-item:active {
+    transform: scale(0.94);
+  }
+}
+/* no menu de cima, o item tocado já se marca no toque, antes de a tela trocar */
+.site-header .nav-link:active {
+  color: var(--brand);
 }
 @keyframes mm-some {
   to {
@@ -136,38 +184,23 @@ html[data-rota-pendente] #mainApp {
 
 /* ---------------------------------------------------------
    O custo de cada troca
-   Cada troca de tela recalculava o estilo e o layout das 5.400 peças da página (até 200 ms na
-   home, medido): a tela congelava antes de a transição começar. O navegador agora pula o que está
-   fora da tela (as seções de baixo da home, os retratos da galeria e os cartões das listas) e desenha cada parte quando ela se aproxima. A altura de cada
-   parte fica guardada depois que ela aparece uma vez ("auto"), e a rolagem não pula. As seções da
-   página do autor e os grupos do índice de A a Z ficam de fora: são alvos de salto ("Ver obras", as
-   letras), e o salto suave mira na altura estimada e para no lugar errado.
-   Medido: home 200 → 13 ms; Explorar 90 → 35 ms; Autores & Obras 110 → 25 ms. Cada transição
-   recalcula a página 3 ou 4 vezes (o navegador marca o html ao começar e ao trocar): por isso conta.
+   Cada troca de tela recalculava o estilo das peças desenhadas (até 200 ms na home, medido): a
+   tela congelava antes de a transição começar, e a transição recalcula a página 3 ou 4 vezes (o
+   navegador marca o html ao começar e ao trocar). O grosso eram os 230 retratos da galeria da home
+   (2.100 peças): só os que estão na tela são desenhados. A altura guardada é mínima, porque a linha
+   estica todos até a altura do maior; o anel de foco passa da borda (overflow-clip-margin). Ao voltar
+   para a home, app/42 desenha na hora os que aparecem, para a foto da tela não sair com um vão.
+   O mesmo vale para os grupos do índice de A a Z de Autores & Obras (500 nomes); o salto pelas
+   letras desenha os grupos antes de saltar (app/18).
+   Seções e cartões ficam inteiros: com content-visibility neles, a foto da tela que sai saía
+   deslocada (a página "pulava" antes de esmaecer) e o salto para uma seção parava no lugar errado.
    --------------------------------------------------------- */
-#view-home > section.home-secao,
-#view-home > section.encerramento {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-.quote-card,
-.ao-card,
-.obra-card,
-.story-card,
-.discover-card,
-.post-card {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 320px;
-}
-/* nas páginas do autor e da obra os cartões ficam inteiros: a página é curta e tem saltos ("Ver obras") */
-:is(#view-panorama, #view-obra) :is(.quote-card, .obra-card, .story-card) {
-  content-visibility: visible;
-}
-/* os 230 retratos da galeria da home (2.100 peças): só os da tela são desenhados. A altura guardada
-   é mínima, porque a linha estica todos até a altura do maior; o anel de foco passa da borda
-   (overflow-clip-margin) */
 #view-home .retrato {
   content-visibility: auto;
   contain-intrinsic-size: auto var(--largura) auto 1px;
   overflow-clip-margin: 8px;
+}
+.ao-grupo {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }

@@ -44,6 +44,64 @@
   // com uma janela aberta, a página está presa (lockScroll) e scrollY vale 0
   const yAtual = () => (document.body.classList.contains('modal-open') ? _scrollLockY : scrollY);
 
+  // a altura de volta vai por âncora: o elemento no alto da tela e a distância dele até o topo. Só o
+  // scrollY não basta: as listas crescem aos poucos e partes da página medem diferente na volta
+  const ATRIBUTOS = ['data-qid', 'data-indice', 'data-obra', 'data-autor', 'data-person', 'data-nav'];
+  function seletorDe(el) {
+    if (!el) return null;
+    if (el.id) return '#' + CSS.escape(el.id);
+    for (const a of ATRIBUTOS) if (el.hasAttribute(a)) return `[${a}="${CSS.escape(el.getAttribute(a))}"]`;
+    return null;
+  }
+  const PROCURA = '[id], [' + ATRIBUTOS.join('], [') + ']';
+  function ancoraDe(view) {
+    const tela = document.querySelector(`.view[data-view="${view}"]`);
+    if (!tela || document.body.classList.contains('modal-open')) return null;
+    const cab = document.querySelector('.site-header');
+    const topo = (cab ? cab.getBoundingClientRect().bottom : 0) + 16;
+    // o item pequeno (um nome, um cartão) vale mais que a caixa grande em volta dele: a caixa pode
+    // mudar de altura acima do ponto
+    let reserva = null;
+    for (const dy of [0, 48, 120, 240])
+      for (const fx of [0.5, 0.25, 0.75]) {
+        let el = document.elementFromPoint(innerWidth * fx, topo + dy);
+        while (el && tela.contains(el) && el !== tela) {
+          const sel = el.matches(PROCURA) ? seletorDe(el) : null;
+          if (sel && tela.querySelector(sel) === el) {
+            const a = { sel, off: Math.round(el.getBoundingClientRect().top) };
+            if (!sel.startsWith('#') && el.getBoundingClientRect().height < innerHeight / 2) return a;
+            reserva = reserva || a;
+            break;
+          }
+          el = el.parentElement;
+        }
+      }
+    return reserva;
+  }
+  function irParaAncora(view, a) {
+    const tela = document.querySelector(`.view[data-view="${view}"]`);
+    const el = a && tela && tela.querySelector(a.sel);
+    if (!el) return false;
+    // um grupo não desenhado (content-visibility) não sabe onde ficam os filhos: é desenhado antes
+    for (let p = el.parentElement; p && p !== tela; p = p.parentElement)
+      if (getComputedStyle(p).contentVisibility === 'auto') p.style.contentVisibility = 'visible';
+    Movimento.rolarJa(scrollY + el.getBoundingClientRect().top - a.off);
+    // o que está acima pode ainda mudar de altura no quadro seguinte (listas que se completam):
+    // confere de novo quando a tela pousa, se a pessoa não rolou nesse meio tempo
+    const y0 = scrollY;
+    setTimeout(() => {
+      const d = el.isConnected ? el.getBoundingClientRect().top - a.off : 0;
+      if (Math.abs(d) > 2 && Math.abs(scrollY - y0) < 2) Movimento.rolarJa(scrollY + d);
+    }, 520);
+    return true;
+  }
+  // o que a pessoa tocou para sair da tela: no Voltar, o foco volta para ele
+  function focoDe(ev) {
+    const t = ev && ev.target instanceof Element ? ev.target : null;
+    const el = t && t.closest('a, button, [tabindex]');
+    return el && !el.closest('.site-header, .bottom-nav, #mobileMenu') ? seletorDe(el) : null;
+  }
+
   function estadoDoHash(h) {
     const m = /^#(autor|obra)-([a-z0-9-]{1,160})$/.exec(h || '');
     if (m && m[1] === 'autor') {
@@ -126,7 +184,7 @@
       if (!atual) history.replaceState({ ...novo, idx: idxAtual }, '', urlDe(novo));
       else if (mesma(atual, novo)) mudou = false;
       else {
-        history.replaceState({ ...atual, y: yAtual() }, '');
+        history.replaceState({ ...atual, y: yAtual(), ancora: ancoraDe(atual.view), foco: focoDe(ev) }, '');
         idxAtual = (atual.idx || 0) + 1;
         navegou = true;
         history.pushState({ ...novo, idx: idxAtual }, '', urlDe(novo));
@@ -141,17 +199,19 @@
     const run = () => {
       _nav(view);
       Movimento.rolarJa(rest && rest.y != null ? rest.y : 0);
-      if (rest && rest.y) recuperarAltura(rest.y);
+      if (rest && !irParaAncora(view, rest.ancora) && rest.y) recuperarAltura(rest.y);
       marcarMenu(view);
     };
     const t = Movimento.trocarTela(run, { gesto, dir: rest ? rest.dir : 'ir', view });
     if (!gesto) return;
-    if (t)
-      t.updateCallbackDone.then(
-        () => focar(view),
-        () => {}
-      );
-    else focar(view);
+    // no Voltar, o foco volta para o que a pessoa tinha tocado; senão, vai para o título da tela
+    const volta = () => {
+      const el = rest && rest.dir === 'voltar' && rest.foco && document.querySelector(rest.foco);
+      if (el && el.offsetParent) el.focus({ preventScroll: true });
+      else focar(view);
+    };
+    if (t) t.updateCallbackDone.then(volta, () => {});
+    else volta();
   };
 
   // a lista longa (rolagem infinita) cresce aos poucos: insiste até chegar à altura de antes
@@ -190,7 +250,12 @@
     const s = nosso ? e.state : estadoDoHash(location.hash) || { view: 'home' };
     const dir = nosso && e.state.idx < idxAtual ? 'voltar' : 'ir';
     idxAtual = nosso ? e.state.idx : idxAtual + 1;
-    refazer(s, { dir, y: nosso && e.state.y != null ? e.state.y : 0 });
+    refazer(s, {
+      dir,
+      y: nosso && e.state.y != null ? e.state.y : 0,
+      ancora: nosso ? e.state.ancora : null,
+      foco: nosso ? e.state.foco : null
+    });
     // um endereço digitado à mão vira uma entrada nossa (a troca pode terminar no quadro seguinte:
     // vale o destino, não a tela de agora)
     if (!nosso) {
@@ -238,7 +303,7 @@
     if (!navegou) {
       const alvo = s && s.mm && s.view !== 'home' ? s : estadoDoHash(location.hash);
       if (alvo) {
-        refazer(alvo, { dir: 'ir', y: alvo.y != null ? alvo.y : 0, sem: true });
+        refazer(alvo, { dir: 'ir', y: alvo.y != null ? alvo.y : 0, ancora: alvo.ancora, sem: true });
         const agora = { mm: 1, autor: null, obra: null, janelas: [], ...alvo };
         history.replaceState({ ...agora, idx: idxAtual }, '', urlDe(agora));
       } else if (/^#(autor|obra)-/.test(location.hash))
@@ -250,7 +315,8 @@
   }
   // ao sair ou recarregar, a altura da tela fica guardada na entrada
   addEventListener('pagehide', () => {
-    if (history.state && history.state.mm) history.replaceState({ ...history.state, y: yAtual() }, '');
+    if (history.state && history.state.mm)
+      history.replaceState({ ...history.state, y: yAtual(), ancora: ancoraDe(history.state.view) }, '');
   });
   const cadeia = window.__fase5Boot;
   window.__fase5Boot = function () {

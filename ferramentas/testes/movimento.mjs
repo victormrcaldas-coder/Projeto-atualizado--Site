@@ -160,6 +160,24 @@ for (const [w, h] of [
         : { autor, obra, volta };
     }
   );
+  await caso('Voltar ao índice: o nome tocado no mesmo lugar e com o foco', async () => {
+    await p.evaluate(() => navigateTo('autores'));
+    await p.waitForTimeout(400);
+    const sel = '#aoRoot [data-indice="Clarice Lispector"]';
+    await p.locator(sel).evaluate((e) => e.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    await p.waitForTimeout(500);
+    const antes = await p.locator(sel).evaluate((e) => Math.round(e.getBoundingClientRect().top));
+    await tocar(sel);
+    await p.goBack();
+    await p.waitForTimeout(1000);
+    const r = await p.locator(sel).evaluate((e) => ({
+      top: Math.round(e.getBoundingClientRect().top),
+      foco: document.activeElement === e
+    }));
+    await p.goForward();
+    await p.waitForTimeout(900);
+    return Math.abs(r.top - antes) <= 2 && r.foco ? true : { antes, ...r };
+  });
   await caso('o Voltar do navegador refaz a página do autor e a home', async () => {
     await tocar(`${menu} [data-nav="home"]`);
     await p.goBack();

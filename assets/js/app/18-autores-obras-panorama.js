@@ -587,6 +587,9 @@ function renderAutoresObras() {
       const letra = e.target.closest('[data-letra]');
       if (letra) {
         const alvo = document.getElementById('ao-letra-' + letra.dataset.letra);
+        // os grupos fora da tela não são desenhados (telas/movimento.css) e medem uma altura
+        // estimada: são desenhados antes do salto, para o salto parar na letra certa
+        root.querySelectorAll('.ao-grupo').forEach((g) => (g.style.contentVisibility = 'visible'));
         if (alvo)
           alvo.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
       }
